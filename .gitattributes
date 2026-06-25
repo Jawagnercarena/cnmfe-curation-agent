@@ -1,0 +1,20 @@
+# Normalize text line endings inside the repo; Git picks the working-copy EOL.
+* text=auto
+
+# Known binaries — never apply EOL conversion or text diffs.
+*.mat        binary
+*.mexw64     binary
+*.mexa64     binary
+*.mexmaci64  binary
+*.dll        binary
+*.exe        binary
+*.so         binary
+*.joblib     binary
+*.tif        binary
+*.tiff       binary
+*.png        binary
+*.jpg        binary
+*.jpeg       binary
+*.pdf        binary
+*.npz        binary
+*.mp4        binary

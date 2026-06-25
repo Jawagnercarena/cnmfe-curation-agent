@@ -1,0 +1,13 @@
+# Python dependencies for the CNMFe curation agent (central / training side).
+# Reviewer machines need only MATLAB R2023b — NOT these.
+#   conda activate <env>  &&  pip install -r requirements.txt      (Python 3.10)
+#
+# Versions are floored at the lab's known-good set (2026-06); bump as needed.
+numpy>=2.2
+scipy>=1.15
+scikit-learn>=1.7
+joblib>=1.5
+matplotlib>=3.10
+xgboost>=3.2
+lightgbm>=4.6
+pandas>=2.3

@@ -1,0 +1,21 @@
+# Conda environment for the CNMFe curation agent (central / Python side).
+# Reviewer machines do NOT need this — the final-review step is pure MATLAB.
+#
+#   conda env create -f environment.yml
+#   conda activate cnmfe
+#
+# (The lab's existing central env is named "valence"; this generic spec is for
+#  setting the Python side up on a fresh machine.)
+name: cnmfe
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy>=2.2
+  - scipy>=1.15
+  - scikit-learn>=1.7
+  - joblib>=1.5
+  - matplotlib>=3.10
+  - xgboost>=3.2
+  - lightgbm>=4.6
+  - pandas>=2.3

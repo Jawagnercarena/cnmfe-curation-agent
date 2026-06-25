@@ -1,0 +1,314 @@
+================================================================================
+CNMFe Agent — Setup & Usage Instructions
+================================================================================
+This folder (CNMF_E_LEGACY_BIANE_CLAUDE) is a self-contained copy of the
+CNMFe MATLAB codebase plus a Python agent that automates headless processing.
+The original codebase (CNMF_E_legacy_Biane) is not modified.
+
+--------------------------------------------------------------------------------
+PREREQUISITES
+--------------------------------------------------------------------------------
+1. MATLAB (R2023b or R2025b)
+   - Must be installed and licensed on this machine
+   - Verify MATLAB is callable from command line:
+       "C:\Program Files\MATLAB\R2025b\bin\matlab.exe" -batch "disp('ok')"
+
+2. Anaconda / Mamba with the 'valence' environment
+   - The environment needs these Python packages:
+       numpy, scipy, scikit-learn, matplotlib
+   - To check existing environment:
+       conda activate valence
+       python -c "import numpy, scipy, sklearn, matplotlib; print('ok')"
+   - To create the environment from scratch (if needed):
+       mamba create -n valence python=3.10
+       mamba activate valence
+       mamba install numpy scipy scikit-learn matplotlib
+
+3. Data folder: D:\Julian_CNMFe\BLA\
+   - Organized as: D:\Julian_CNMFe\BLA\{Task}\{Session}\
+   - Tasks: 2tones, 3odor, 4odorDO, Block_Valence, CTA, Valence, WSE
+   - New .tif files are dropped into the task folder (e.g., D:\Julian_CNMFe\BLA\Valence\)
+   - Other brain areas (vCA1, DG, dCA1) will have their own subdirectory when data arrives
+
+--------------------------------------------------------------------------------
+ONE-TIME SETUP ON A NEW MACHINE
+--------------------------------------------------------------------------------
+Step 1 — Update hardcoded paths if different from the original machine
+   Open each file below and update any paths that differ on the new machine:
+
+   agent\config.py          line ~16:  DATA_ROOT  (area data folder — single source of truth)
+   agent\extract_params.m   line ~12:  base_root  (parent of all area folders, e.g. D:\Julian_CNMFe)
+   agent\run_cnmfe.py       line ~16:  MATLAB_EXE (path to matlab.exe)
+   agent\run_cnmfe.py       line ~17:  REPO_ROOT  (path to this folder)
+   CNMFe_final_save.m       line ~34:  repo_root  (path to this folder)
+
+   NOTE: DATA_ROOT and MODEL_DIR are centralised in agent\config.py. All other
+   Python scripts import from there. To run a different brain area, import from
+   the corresponding config file (e.g. config_vCA1.py) instead.
+
+   On the original machine these are:
+       MATLAB:    C:\Program Files\MATLAB\R2025b\bin\matlab.exe
+       Repo:      C:\code\CNMF_E_LEGACY_BIANE_CLAUDE
+       Data:      D:\Julian_CNMFe\{AREA}\  (e.g. D:\Julian_CNMFe\BLA\)
+       Model:     agent\model\{AREA}\classifier.joblib
+
+Step 2 — Build animal_params.json (reads gSig/gSiz from existing sessions)
+   Open MATLAB and run:
+       cd('C:\code\CNMF_E_LEGACY_BIANE_CLAUDE')
+       addpath(genpath('ca_source_extraction'))
+       run('agent/extract_params.m')
+
+   This scans ALL brain areas under D:\Julian_CNMFe\ (BLA, vCA1, etc.), reads
+   gSig/gSiz from each completed session's neuron.mat, and writes a combined
+   agent\config\animal_params.json with one entry per animal (including an 'area'
+   field so you know which area each animal belongs to).
+
+   Run this once on setup and again after completing sessions for a new animal or
+   adding a new brain area. The file is portable across machines.
+
+Step 3 — Verify the agent works (optional smoke test)
+   From Anaconda Prompt with the valence environment active:
+       cd C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent
+       C:\ProgramData\anaconda3\envs\valence\python.exe -c "import watcher, params, run_cnmfe, features, curator; print('all imports ok')"
+
+--------------------------------------------------------------------------------
+STARTING THE WATCHER (normal daily use)
+--------------------------------------------------------------------------------
+1. Open Anaconda Prompt AS ADMINISTRATOR (right-click → Run as administrator)
+   This ensures MATLAB can be launched as a subprocess without permission issues.
+
+2. Activate the environment:
+       mamba activate valence
+   or:
+       conda activate valence
+
+3. Navigate to the agent folder and start the watcher:
+       cd C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent
+       python watcher.py
+
+4. Leave the Anaconda Prompt window open. The watcher runs until you close it.
+   It polls every 60 seconds for new .tif files.
+
+   NOTE: watcher.py monitors the area set in agent\config.py (currently BLA).
+   To run a watcher for another area, open a second Anaconda Prompt and run
+   the area-specific wrapper (e.g. watcher_vCA1.py when created).
+
+To stop the watcher: Ctrl+C in the Anaconda Prompt window.
+
+Logs are written to:
+   agent\logs\watcher.log          (all sessions, main log)
+   {session_folder}\agent_run.log  (per-session detail)
+
+--------------------------------------------------------------------------------
+NORMAL WORKFLOW — WHAT HAPPENS AUTOMATICALLY
+--------------------------------------------------------------------------------
+1. You drop a new .tif file into a task folder:
+       e.g., D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-030126-bla8-600um-23z-000.tif
+
+2. The watcher detects it. It waits 120 seconds with no size change before
+   starting (transfer-safety check — prevents processing mid-download files).
+
+3. Automatically:
+   a. Creates the session folder and moves the .tif inside it
+   b. Looks up gSig/gSiz from animal_params.json using the animal ID in the
+      folder name (e.g., 'bla8'). Falls back to gSig=9/gSiz=36 if unknown.
+   c. Runs a quick MATLAB pre-pass (~2 min) to compute the correlation image
+      and peak-to-noise ratio image, then saves them
+   d. Estimates min_corr, min_pnr, and bd from those images (permissive defaults)
+   e. Runs the full headless CNMFe pipeline (30 min – 2 hrs depending on data size)
+   f. Scores all candidate neurons with the classifier
+   g. Flags motion artifact suspects and merge candidates
+   h. Writes review_neuron.mat (pre-curated set for your review)
+   i. Writes review_summary.txt and review_report.pdf
+   j. Writes run_final_review.m (MATLAB launcher for your review)
+
+4. The watcher keeps a live review queue updated every 60 seconds:
+
+       D:\Julian_CNMFe\BLA\REVIEW_QUEUE.md
+
+   Open this in any text editor or VSCode to see which sessions are waiting
+   for review, how many neurons each has, and whether the background
+   pre-computation is done (makes run_final_review.m start in ~30 s instead
+   of ~10 min).  The file is also printed to the Anaconda Prompt on startup.
+
+--------------------------------------------------------------------------------
+FINAL REVIEW STEP (your manual curation — always required)
+--------------------------------------------------------------------------------
+1. Open MATLAB
+2. Navigate to the session folder:
+       cd('D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-...')
+3. Run:
+       run_final_review.m
+
+   This script will:
+   a. Load the pre-curated neuron set (review_neuron.mat)
+   b. Open viewNeurons — delete any remaining bad neurons, close window when done
+   c. Open viewNeuronsVideo — watch for motion artifacts, delete if needed
+   d. Optionally run manual merge (for split cells)
+   e. Run one final spatial/temporal update on the curated set
+   f. Save all standard output files (A.txt, C.txt, C_df.txt, C_raw.txt,
+      Cnn.txt, S.txt, neuron.mat, Cn.mat, Coor.mat, spatial_footprints.mat,
+      ROIs.jpg, {session}_neurons/)
+
+   Final saved files are identical in format to the original pipeline outputs.
+
+--------------------------------------------------------------------------------
+FILES SAVED IN EACH SESSION FOLDER
+--------------------------------------------------------------------------------
+After headless run (intermediate — used by agent):
+   neuron.mat              all candidate neurons (Sources2D object)
+   A.txt                   spatial footprints (pixels x neurons)
+   C.txt                   deconvolved traces (neurons x frames)
+   C_raw.txt               raw calcium traces (neurons x frames)
+   C_df.txt                dF/F traces (neurons x frames)
+   S.txt                   inferred spikes (neurons x frames)
+   Cnn.txt                 correlation image (text)
+   Cn.mat                  correlation image (mat)
+   pnr.mat                 peak-to-noise ratio image (mat) [new]
+   Ybg_mean.mat            mean background signal per frame (1×T vector) [new, for motion detection]
+   spatial_footprints.mat  3D footprint array (neurons x H x W)
+   Coor.mat                neuron contour coordinates
+   ROIs_candidates.jpg     contour overlay of all candidates [new]
+   {session}_neurons/      individual neuron images (all candidates)
+
+After final MATLAB review (these overwrite the above with curated values):
+   neuron.mat              curated neurons only
+   A.txt, C.txt, C_raw.txt, C_df.txt, S.txt, Cnn.txt  (curated)
+   Cn.mat, Coor.mat, spatial_footprints.mat             (curated)
+   ROIs.jpg                contour overlay of final neurons
+   {session}_neurons/      individual neuron images (final set only)
+
+Agent outputs (not overwritten):
+   review_neuron.mat       pre-curated set the agent prepared for your review
+   review_summary.txt      counts and flags (auto-rejected, merges, motion)
+   review_report.pdf       visual report: flagged neurons, merge pairs
+   run_final_review.m      MATLAB launcher (run this to start your review)
+   Ybg_weights.mat         pre-computed background weights (makes review fast)
+   agent_run.log           detailed processing log for this session
+
+In D:\Julian_CNMFe\BLA\ (data root, updated every 60 s while watcher runs):
+   REVIEW_QUEUE.md         live list of sessions awaiting review vs. complete
+
+--------------------------------------------------------------------------------
+UPDATING animal_params.json MANUALLY
+--------------------------------------------------------------------------------
+Edit agent\config\animal_params.json to add a new animal or override a value:
+
+   "bla99": {
+     "area": "BLA",
+     "gSig": 8,
+     "gSiz": 32,
+     "flag": "ok",
+     "n_sessions": 0,
+     "gSig_all": [8],
+     "gSiz_all": [32]
+   }
+
+Or re-run agent\extract_params.m in MATLAB after completing new sessions to
+rebuild the file automatically.
+
+--------------------------------------------------------------------------------
+CLASSIFIER TRAINING (automatic — happens in the background)
+--------------------------------------------------------------------------------
+The classifier is an XGBoost binary classifier + StandardScaler saved to
+agent\model\{AREA}\classifier.joblib (e.g. agent\model\BLA\classifier.joblib).
+Each brain area keeps its own model so areas never overwrite each other.
+
+Each session review automatically generates:
+  labels.mat              — keep/delete decision for every reviewed candidate
+                            (written by CNMFe_final_save.m at the end of review)
+  candidate_features.npz  — features for ALL candidates including auto-rejected
+                            (written by curator.py during agent processing)
+
+The watcher detects new labels.mat files every poll cycle and automatically
+retrains the classifier on all labeled sessions.  No action required — the
+model updates silently in the background.
+
+Note: candidate_features.npz stores features for all N candidates; labels.mat
+covers only the non-auto-rejected subset seen in MATLAB review.  The trainer
+reconstructs the full label vector using the auto_rejected index array in the
+npz (auto-rejected candidates get label=0 automatically).
+
+To force a manual retrain (e.g. after a code change or failed auto-retrain):
+  cd C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent
+  python train_classifier.py --prospective-only
+  (model saved to agent\model\BLA\classifier.joblib — set by config.py)
+
+To process retrospective sessions (reviewed before this infrastructure existed,
+i.e. have review_neuron.mat + neuron.mat but no labels.mat):
+  python train_classifier.py
+
+This calls MATLAB to match review_neuron.mat against the final neuron.mat and
+saves labels so future runs use the fast prospective path.
+
+Other options:
+  python train_classifier.py --dry-run           Show stats without saving
+  python train_classifier.py --retro-only        Extract retro labels only
+
+--------------------------------------------------------------------------------
+BOOTSTRAPPING PRE-AGENT SESSIONS INTO THE TRAINING SET
+--------------------------------------------------------------------------------
+Pre-agent sessions (processed before the agent existed) have a curated neuron.mat
+but no candidate pool — the rejected neurons were discarded during interactive
+MATLAB review.  bootstrap_preagent.py recovers training data from these sessions:
+
+  For each pre-agent session that has a .tif file:
+    1. Runs the MATLAB pre-pass to compute pnr.mat (Cn.mat usually already exists)
+    2. Estimates parameters via params.py
+    3. Runs the full headless CNMFe pipeline to generate a fresh candidate pool
+    4. Hungarian-matches candidates against the curated neuron.mat to derive labels
+    5. Saves candidate_features.npz + labels.mat
+
+  After bootstrap, train_classifier.py automatically includes these sessions
+  (same prospective path — no special handling needed).
+
+To check what would be processed first (recommended):
+  cd C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent
+  python bootstrap_preagent.py --dry-run
+
+To run (expect 30–120 min per session; ~91 sessions total = several days of compute;
+leave running overnight across multiple nights):
+  python bootstrap_preagent.py
+
+The script is resumable — sessions already bootstrapped are skipped automatically.
+Sessions without a .tif file are also skipped automatically (marked in REVIEW_QUEUE.md).
+
+REVIEW_QUEUE.md tracks bootstrap status:
+  "Pre-agent — in training set"       sessions already bootstrapped
+  "Pre-agent — not yet bootstrapped"  sessions still to run
+
+After bootstrap completes, retrain the classifier to incorporate the new data:
+  python train_classifier.py --prospective-only
+
+--------------------------------------------------------------------------------
+MULTI-AREA SETUP (vCA1, DG, dCA1, etc.)
+--------------------------------------------------------------------------------
+Each brain area has its own:
+  - Data root:   D:\Julian_CNMFe\{AREA}\{Task}\{Session}\
+  - Config file: agent\config_{AREA}.py  (DATA_ROOT, MODEL_DIR, AREA)
+  - Model:       agent\model\{AREA}\classifier.joblib
+  - Bootstrap:   agent\bootstrap_{AREA}.py  (wrapper that injects area config)
+
+Currently implemented areas:
+  BLA   -- config.py, model\BLA\, watcher.py monitors D:\Julian_CNMFe\BLA\
+  vCA1  -- config_vCA1.py, model\vCA1\ (model trained after bootstrap completes)
+
+To bootstrap a new area (all sessions pre-agent, no watcher yet):
+  1. Copy sessions into D:\Julian_CNMFe\{AREA}\{Task}\{Session}\
+     Each session must have: neuron.mat, spatial_footprints.mat, and .tif file
+  2. Run extract_params.m in MATLAB to add area animals to animal_params.json
+  3. Create agent\config_{AREA}.py (copy config_vCA1.py, update AREA + DATA_ROOT)
+  4. Create agent\bootstrap_{AREA}.py (copy bootstrap_vCA1.py, update import)
+  5. Run two bootstrap workers:
+       python bootstrap_{AREA}.py --worker 0 --num-workers 2
+       python bootstrap_{AREA}.py --worker 1 --num-workers 2  (second window)
+  6. After bootstrap, train the area classifier:
+       (temporarily swap config.py to point at new area, OR add --area support)
+       python train_classifier.py --prospective-only
+  7. For ongoing watcher support: create watcher_{AREA}.py (copy pattern from
+     bootstrap_{AREA}.py, call watcher.main() instead of bootstrap_preagent.main())
+
+vCA1 bootstrap commands (run when sessions finish copying):
+  Worker 0:  python bootstrap_vCA1.py --worker 0 --num-workers 2
+  Worker 1:  python bootstrap_vCA1.py --worker 1 --num-workers 2
+================================================================================
