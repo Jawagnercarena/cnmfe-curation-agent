@@ -14,6 +14,10 @@ Usage:
   python push_review_bundle.py vCA1\\3odor\\AVG5x-...-000      # relative to DATA_PARENT
 Set CNMFE_EXCHANGE_ROOT (or agent/.env) to the server exchange folder first,
 or pass --exchange.
+
+SAFETY: this script only COPIES files to the server outbox (creating the session
+subfolder if needed). It never deletes or removes anything — on the server or
+locally. There is no delete/move call anywhere in this file.
 """
 import argparse
 import shutil

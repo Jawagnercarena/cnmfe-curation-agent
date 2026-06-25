@@ -15,6 +15,10 @@ Usage:
   python ingest_returns.py --force                # copy all files, even same-size ones
   python ingest_returns.py --dry-run
 Set CNMFE_EXCHANGE_ROOT (or agent/.env) first, or pass --exchange.
+
+SAFETY: this script only READS from the server inbox and writes copies into the
+LOCAL data tree. It never writes to, modifies, or deletes anything on the server.
+There is no delete/move call anywhere in this file.
 """
 import argparse
 import shutil
@@ -70,7 +74,8 @@ def main():
         sys.exit("ERROR: exchange root not set. Set CNMFE_EXCHANGE_ROOT (or agent/.env), or pass --exchange.")
     inbox = Path(args.exchange) / "inbox"
     if not inbox.is_dir():
-        sys.exit(f"ERROR: inbox not found: {inbox}")
+        print(f"No inbox yet at {inbox} — nothing to ingest.")
+        return
 
     sessions = [inbox / args.session] if args.session else list(iter_sessions(inbox))
     if not sessions:

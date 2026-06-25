@@ -14,9 +14,10 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
 - **MATLAB R2023b** with toolboxes: Image Processing, Signal Processing,
   Statistics, Optimization, Curve Fitting.
 - **Git** (to clone/update this repo).
-- Access to the lab server exchange folder (ask the central operator for the
-  path; below it is written as `\\LABSERVER\share\cnmfe_exchange` — replace with
-  the real one).
+- Access to the lab server exchange folder. Use the **drive-independent UNC
+  path** `\\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review` (the
+  `kheirbek1` share). It may be mapped to a different drive letter (e.g. `X:`) on
+  your machine — the UNC path works regardless of the letter.
 - ~64 GB RAM recommended; a fast **local** disk with room for ~3 GB per session.
 
 > CVX is vendored in this repo with the free SeDuMi / SDPT3 solvers. The
@@ -50,7 +51,7 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
    (do not run the review directly off the network share — the ~2.4 GB video
    needs local disk):
    ```
-   \\LABSERVER\share\cnmfe_exchange\outbox\{area}\{task}\{session}\
+   \\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review\outbox\{area}\{task}\{session}\
         ->  D:\review_work\{area}\{task}\{session}\
    ```
    The bundle contains: `{session}.mat` (raw video), `review_neuron.mat`,
@@ -65,7 +66,7 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
 3. **Push the finished folder back** to the server inbox (whole folder is fine):
    ```
    D:\review_work\{area}\{task}\{session}\
-        ->  \\LABSERVER\share\cnmfe_exchange\inbox\{area}\{task}\{session}\
+        ->  \\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review\inbox\{area}\{task}\{session}\
    ```
    The key new file is `labels.mat` (your keep/delete decisions); the curated
    `neuron.mat`, traces, and `ROIs.jpg` come along for the archive.
@@ -91,3 +92,6 @@ automatic retrain.
 - Stage a bundle:  `python agent/push_review_bundle.py {area}\{task}\{session}`
 - Bring results home + retrain:  `python agent/ingest_returns.py`
 - Set the server path once via `CNMFE_EXCHANGE_ROOT` (see `agent/.env.example`).
+- **Server safety:** these scripts never delete anything from the server. `push`
+  only copies to the outbox; `ingest` only reads the inbox and writes to the
+  local `D:` tree. Any cleanup of the server is manual — it is never automated.
