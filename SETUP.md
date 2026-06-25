@@ -9,7 +9,7 @@ This supersedes the older `SETUP_INSTRUCTIONS.txt`.
 
 ## What this is
 
-A pipeline that turns raw 1‑photon miniscope videos into curated neurons:
+A pipeline that turns motion-corrected, averaged 2‑photon miniscope videos into curated neurons:
 
 1. **Headless CNMFe** (MATLAB) extracts candidate neurons from each `.tif`.
 2. **Agent auto-curation** (Python) scores candidates with a trained classifier and pre-rejects the obvious junk, producing a small review package.
@@ -17,8 +17,8 @@ A pipeline that turns raw 1‑photon miniscope videos into curated neurons:
 4. **Auto-retrain** (Python) — the classifier retrains on the new human labels.
 
 There are two machine **roles**:
-- **Central machine** — runs steps 1, 2, 4 (heavy compute + the single canonical model), and stages/retrieves work via the lab server.
-- **Reviewer machine** — runs step 3 only (MATLAB). Reviewers never train the model.
+- **Central machine** — runs steps 1, 2, 4 (heavy compute + the single canonical model), stages/retrieves work via the lab server, and still does some of the review itself.
+- **Reviewer machines** — run step 3 (MATLAB) and take the bulk of the reviewing. They never train the model.
 
 ---
 

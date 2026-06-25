@@ -79,6 +79,7 @@ automatic retrain.
 
 ## 4. Troubleshooting
 
+- **Error about a missing `review_neuron.mat`, or `session_dir` pointing at `D:\...`** - your `run_final_review.m` is an old hardcoded launcher. Quick fix: in MATLAB, `cd` to the local session folder and run `session_dir = pwd; CNMFe_final_save`. Freshly staged bundles already self-locate, so re-pulling the session also fixes it.
 - **"CNMFe_final_save.m not found ... Add the CNMFe repo to your MATLAB path"** —
   you skipped step 2. Run `addpath(genpath(<repo>))`.
 - **CVX / solver errors during an update pass** — run `cvx_setup` once (step 2).
