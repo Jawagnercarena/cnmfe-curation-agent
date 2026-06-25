@@ -1,5 +1,5 @@
 """
-ingest_returns.py — bring curated session folders back from the lab server into
+ingest_returns.py - bring curated session folders back from the lab server into
 the canonical DATA_PARENT tree, so the watcher's auto-retrain picks up the new
 labels.mat.
 
@@ -74,7 +74,7 @@ def main():
         sys.exit("ERROR: exchange root not set. Set CNMFE_EXCHANGE_ROOT (or agent/.env), or pass --exchange.")
     inbox = Path(args.exchange) / "inbox"
     if not inbox.is_dir():
-        print(f"No inbox yet at {inbox} — nothing to ingest.")
+        print(f"No inbox yet at {inbox} - nothing to ingest.")
         return
 
     sessions = [inbox / args.session] if args.session else list(iter_sessions(inbox))

@@ -1,5 +1,5 @@
 """
-push_review_bundle.py — stage a session's review bundle on the lab server so a
+push_review_bundle.py - stage a session's review bundle on the lab server so a
 remote reviewer can pull it, run run_final_review.m in MATLAB, and push the
 curated folder back (ingest_returns.py brings it home for retraining).
 
@@ -12,11 +12,12 @@ The bundle is copied to  <exchange>/outbox/{area}/{task}/{session}/ .
 Usage:
   python push_review_bundle.py <session_dir>                  # absolute path
   python push_review_bundle.py vCA1\\3odor\\AVG5x-...-000      # relative to DATA_PARENT
+  python push_review_bundle.py vCA1\\3odor\\AVG5x-...-000 --dry-run
 Set CNMFE_EXCHANGE_ROOT (or agent/.env) to the server exchange folder first,
 or pass --exchange.
 
 SAFETY: this script only COPIES files to the server outbox (creating the session
-subfolder if needed). It never deletes or removes anything — on the server or
+subfolder if needed). It never deletes or removes anything, on the server or
 locally. There is no delete/move call anywhere in this file.
 """
 import argparse
@@ -33,7 +34,7 @@ REQUIRED = ["review_neuron.mat", "run_final_review.m"]
 # Helpful but non-fatal (review still runs, just slower / less guidance).
 OPTIONAL = ["Cn.mat", "pnr.mat", "Ybg_weights.mat",
             "review_report.pdf", "review_summary.txt"]
-# {SESSION}.mat (raw video) is handled separately — it is named after the folder.
+# {SESSION}.mat (raw video) is handled separately; it is named after the folder.
 
 
 def resolve_session(arg: str) -> Path:
@@ -55,6 +56,8 @@ def main():
                     help="session dir (absolute) or area\\task\\session relative to DATA_PARENT")
     ap.add_argument("--exchange", default=EXCHANGE_ROOT,
                     help="exchange root (default: CNMFE_EXCHANGE_ROOT / .env)")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="list the files that would be staged, without copying anything")
     args = ap.parse_args()
 
     if not args.exchange:
@@ -67,14 +70,13 @@ def main():
         sys.exit(f"ERROR: session folder not found: {session_dir}")
 
     dest = Path(args.exchange) / "outbox" / session_rel(session_dir)
-    dest.mkdir(parents=True, exist_ok=True)
 
     files = []
     video = session_dir / f"{session_dir.name}.mat"
     if video.exists():
         files.append(video)
     else:
-        print(f"WARNING: raw video {video.name} not found — the reviewer needs it for the video pass.")
+        print(f"WARNING: raw video {video.name} not found - the reviewer needs it for the video pass.")
     for name in REQUIRED:
         f = session_dir / name
         if not f.exists():
@@ -87,17 +89,28 @@ def main():
         else:
             print(f"  (optional) missing: {name}")
 
+    if not args.dry_run:
+        dest.mkdir(parents=True, exist_ok=True)
+
     total = 0
     for f in files:
-        target = dest / f.name
         size = f.stat().st_size
+        if args.dry_run:
+            print(f"  would copy {f.name} ({size/1e6:.1f} MB)")
+            total += size
+            continue
+        target = dest / f.name
         if target.exists() and target.stat().st_size == size:
             print(f"  skip (already staged): {f.name}")
             continue
         print(f"  copy {f.name} ({size/1e6:.1f} MB) ...")
         shutil.copy2(str(f), str(target))
         total += size
-    print(f"\nBundle staged at: {dest}\n  newly copied: {total/1e6:.1f} MB")
+    if args.dry_run:
+        print(f"\nDRY RUN - nothing copied. Bundle would contain {len(files)} files "
+              f"({total/1e6:.1f} MB), destined for:\n  {dest}")
+    else:
+        print(f"\nBundle staged at: {dest}\n  newly copied: {total/1e6:.1f} MB")
 
 
 if __name__ == "__main__":
