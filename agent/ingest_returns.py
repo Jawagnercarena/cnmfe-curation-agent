@@ -3,16 +3,20 @@ ingest_returns.py - bring curated session folders back from the lab server into
 the canonical DATA_PARENT tree, so the watcher's auto-retrain picks up the new
 labels.mat.
 
-It mirrors  <exchange>/inbox/{area}/{task}/{session}/  ->  DATA_PARENT/{area}/{task}/{session}/
-copying files that are new or changed. By default the unchanged multi-GB raw
-video already present on this machine is NOT re-copied (matched by size); use
---force to copy every file regardless. Either way, the full curated folder ends
-up archived on this machine.
+It mirrors  <exchange>/inbox/<reviewer>/{area}/{task}/{session}/  ->  DATA_PARENT/{area}/{task}/{session}/
+copying files that are new or changed. Reviewers push their finished folder into
+their own inbox/<name>/ subfolder (mirroring outbox/<name>/), so each reviewer's
+"done" pile sits in one place; the <reviewer> prefix is dropped on the way into
+the canonical tree. (A flat inbox/{area}/{task}/{session} still works too - the
+destination is always taken from the last three path parts.) By default the
+unchanged multi-GB raw video already present on this machine is NOT re-copied
+(matched by size); use --force to copy every file regardless. Either way, the
+full curated folder ends up archived on this machine.
 
 Usage:
-  python ingest_returns.py                        # ingest every session found in inbox
-  python ingest_returns.py vCA1\\3odor\\AVG5x-...  # one session
-  python ingest_returns.py --force                # copy all files, even same-size ones
+  python ingest_returns.py                              # ingest every session found in inbox
+  python ingest_returns.py Alisia\\vCA1\\3odor\\AVG5x-...  # one session (inbox-relative path)
+  python ingest_returns.py --force                      # copy all files, even same-size ones
   python ingest_returns.py --dry-run
 Set CNMFE_EXCHANGE_ROOT (or agent/.env) first, or pass --exchange.
 
@@ -86,9 +90,9 @@ def main():
         if not src.is_dir():
             print(f"SKIP (not found): {src}")
             continue
-        rel = src.relative_to(inbox)
-        dst = DATA_PARENT / rel
-        print(f"\nIngest {rel}")
+        canon = Path(*src.parts[-3:])   # {area}/{task}/{session}, dropping any reviewer prefix
+        dst = DATA_PARENT / canon
+        print(f"\nIngest {canon}")
         print(f"  {src}  ->  {dst}")
         c, s, b = copy_session(src, dst, args.force, args.dry_run)
         print(f"  copied {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")

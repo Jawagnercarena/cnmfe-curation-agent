@@ -67,13 +67,26 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
    Work through the steps: `viewNeurons` (delete bad cells) → optional update →
    `viewNeuronsVideo` (catch motion artifacts) → merges → save.
 
-3. **Push the finished folder back** to the server inbox (whole folder is fine):
+3. **Push the finished folder back** to **your own** inbox folder (whole folder
+   is fine) - same name as your outbox folder:
    ```
    D:\review_work\{area}\{task}\{session}\
-        ->  \\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review\inbox\{area}\{task}\{session}\
+        ->  \\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review\inbox\<your name>\{area}\{task}\{session}\
    ```
    The key new file is `labels.mat` (your keep/delete decisions); the curated
    `neuron.mat`, traces, and `ROIs.jpg` come along for the archive.
+
+**Knowing what's done (no extra bookkeeping).** Your two server folders are a
+matched pair, both named after you:
+
+- `outbox\<your name>\`  =  your **to-do** list (sessions assigned to you)
+- `inbox\<your name>\`   =  your **done** list (sessions you've returned)
+
+Returning a session in step 3 is the only "mark done" there is: anything still
+only in your **outbox** is outstanding; once it's in your **inbox** it's
+finished. There's no checklist to keep. (If you ever want to confirm a single
+folder, a reviewed session contains `labels.mat` and `ROIs.jpg`; an un-reviewed
+one only has `review_neuron.mat` and `ROIs_candidates.jpg`.)
 
 That's it. The central operator runs `python agent/ingest_returns.py`, which
 copies your curated folder into the canonical data tree and triggers an
@@ -97,7 +110,7 @@ automatic retrain.
 - Stage a bundle to a reviewer:  `python agent/push_review_bundle.py {area}\{task}\{session} --assignee <name>`
 - Stage a whole batch, split across reviewers:  `python agent/push_review_bundle.py --all --assignee Alisia,Julian`
 - `--assignee` is required: it routes the bundle into `outbox\<name>\` so each session lands in exactly one reviewer's folder.
-- Bring results home + retrain:  `python agent/ingest_returns.py`
+- Bring results home + retrain:  `python agent/ingest_returns.py` (auto-discovers every `inbox\<name>\` folder; the reviewer-name prefix is dropped into the canonical tree)
 - Set the server path once via `CNMFE_EXCHANGE_ROOT` (see `agent/.env.example`).
 - **Server safety:** these scripts never delete anything from the server. `push`
   only copies to the outbox; `ingest` only reads the inbox and writes to the

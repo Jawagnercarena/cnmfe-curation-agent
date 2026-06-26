@@ -111,7 +111,7 @@ This copies the bundle to `…\cnmfe_review\outbox\{REVIEWER}\{AREA}\{TASK}\{SES
 python agent\ingest_returns.py            # ingest everything waiting in inbox
 python agent\ingest_returns.py --dry-run  # preview first
 ```
-This mirrors `…\cnmfe_review\inbox\{AREA}\{TASK}\{SESSION}\` into your local `DATA_PARENT\{AREA}\{TASK}\{SESSION}\` (skipping the unchanged video), and the watcher then auto-retrains on the new `labels.mat`.
+This auto-discovers each reviewer's `…\cnmfe_review\inbox\{REVIEWER}\{AREA}\{TASK}\{SESSION}\` and mirrors it into your local `DATA_PARENT\{AREA}\{TASK}\{SESSION}\` (the reviewer-name prefix is dropped; the unchanged video is skipped), and the watcher then auto-retrains on the new `labels.mat`. Reviewers track their own progress for free this way: `outbox\{REVIEWER}\` is their to-do pile, `inbox\{REVIEWER}\` is their done pile.
 
 *Manual alternative:* copy the returned folder (`neuron.mat`, `labels.mat`, `A.txt`, traces, `spatial_footprints.mat`, `ROIs.jpg`, `{SESSION}_neurons/`, …) into your local data tree by hand.
 
@@ -119,7 +119,7 @@ This mirrors `…\cnmfe_review\inbox\{AREA}\{TASK}\{SESSION}\` into your local `
 
 ## 7. Reviewer machines
 
-Hand reviewers the repo and [REVIEW_SETUP.md](REVIEW_SETUP.md). They need MATLAB only — no Python, no model. They pull a bundle from **their own** `outbox\<name>\` folder, run `run_final_review.m`, and drop the finished folder in `inbox`.
+Hand reviewers the repo and [REVIEW_SETUP.md](REVIEW_SETUP.md). They need MATLAB only — no Python, no model. They pull a bundle from **their own** `outbox\<name>\` folder, run `run_final_review.m`, and drop the finished folder in their own `inbox\<name>\` folder. (Their `outbox\<name>\` is their to-do list, `inbox\<name>\` is their done list — see [REVIEW_SETUP.md](REVIEW_SETUP.md).)
 
 ---
 
