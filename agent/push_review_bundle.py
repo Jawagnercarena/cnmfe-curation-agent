@@ -3,19 +3,24 @@ push_review_bundle.py - stage CNMFe review bundles on the lab server so remote
 reviewers can pull them, run run_final_review.m, and push the curated folder
 back (ingest_returns.py brings it home for retraining).
 
+Sessions are routed to a PER-REVIEWER subfolder so each machine only pulls its
+own work:  outbox/<reviewer>/{area}/{task}/{session}/ . --assignee names the
+reviewer and is REQUIRED (that name is the folder, and is recorded in the marker).
+
 Single session:
-  python push_review_bundle.py vCA1\\3odor\\AVG5x-...-000
-  python push_review_bundle.py vCA1\\3odor\\AVG5x-...-000 --dry-run
+  python push_review_bundle.py vCA1\\3odor\\AVG5x-...-000 --assignee Alisia
+  python push_review_bundle.py vCA1\\3odor\\AVG5x-...-000 --assignee Alisia --dry-run
 
 Batch (every session awaiting review, skipping ones already out for review):
-  python push_review_bundle.py --all
-  python push_review_bundle.py --all --area vCA1 --task 3odor
-  python push_review_bundle.py --all --dry-run
+  python push_review_bundle.py --all --assignee Alisia
+  python push_review_bundle.py --all --assignee Alisia,Julian      # split round-robin
+  python push_review_bundle.py --all --area vCA1 --task 3odor --assignee Alisia
+  python push_review_bundle.py --all --assignee Alisia --dry-run
 
-Each staged session is marked "out for review" via a review_assigned.txt marker
-in the LOCAL session folder, so the watcher's REVIEW_QUEUE.md lists it as out and
-a later --all run will not send it again. To re-open a session, delete that
-marker file (the scripts never delete it for you).
+Each staged session is also marked "out for review" via a review_assigned.txt
+marker in the LOCAL session folder, so the watcher's REVIEW_QUEUE.md lists it as
+out (and to whom) and a later --all run will not send it again. To re-open a
+session, delete that marker file (the scripts never delete it for you).
 
 Outbound bundle = the minimal set CNMFe_final_save.m needs:
   {SESSION}.mat (raw video), review_neuron.mat, Cn.mat, pnr.mat, Ybg_weights.mat,
@@ -29,6 +34,7 @@ assignment marker / launcher. It never deletes or removes anything, on the serve
 or locally. There is no delete/move call anywhere in this file.
 """
 import argparse
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -43,6 +49,11 @@ OPTIONAL = ["Cn.mat", "pnr.mat", "Ybg_weights.mat",
             "review_report.pdf", "review_summary.txt"]
 # {SESSION}.mat (raw video) is handled separately; run_final_review.m is generated
 # fresh into the bundle (never copied from the session, which may be stale).
+
+
+def safe_name(name: str) -> str:
+    """Folder-safe reviewer name, so outbox/<reviewer>/ is always a clean path."""
+    return re.sub(r"[^A-Za-z0-9._-]+", "_", (name or "").strip()).strip("_")
 
 
 def resolve_session(arg: str) -> Path:
@@ -104,10 +115,11 @@ def collect_files(session_dir: Path):
     return files
 
 
-def stage_one(session_dir: Path, exchange: str, dry_run: bool, assignee):
-    """Stage one session's bundle. Returns total bytes (would-be in dry-run)."""
-    dest = Path(exchange) / "outbox" / session_rel(session_dir)
+def stage_one(session_dir: Path, exchange: str, dry_run: bool, assignee: str):
+    """Stage one session's bundle into outbox/<assignee>/. Returns total bytes."""
+    dest = Path(exchange) / "outbox" / assignee / session_rel(session_dir)
     files = collect_files(session_dir)
+    print(f"  assignee: {assignee}")
     if not dry_run:
         dest.mkdir(parents=True, exist_ok=True)
     total = 0
@@ -143,7 +155,10 @@ def main():
                     help="batch: stage every awaiting session not already out for review")
     ap.add_argument("--area", help="(with --all) limit to this brain area")
     ap.add_argument("--task", help="(with --all) limit to this task")
-    ap.add_argument("--assignee", help="optional reviewer name, recorded in the marker")
+    ap.add_argument("--assignee",
+                    help="reviewer name -> routes the bundle to outbox/<name>/ and records the "
+                         "marker. REQUIRED. With --all you may pass a comma-separated list "
+                         "(e.g. Alisia,Julian) to split the batch round-robin across reviewers.")
     ap.add_argument("--force", action="store_true",
                     help="(with --all) include sessions already out for review")
     ap.add_argument("--exchange", default=EXCHANGE_ROOT,
@@ -156,18 +171,25 @@ def main():
         sys.exit("ERROR: exchange root not set. Set CNMFE_EXCHANGE_ROOT (or agent/.env), or pass --exchange.")
 
     if args.all:
+        assignees = [safe_name(a) for a in (args.assignee or "").split(",") if safe_name(a)]
+        if not assignees:
+            sys.exit("ERROR: --assignee is required (routes each session to outbox/<reviewer>/). "
+                     "Pass one name, or several comma-separated to split the batch round-robin.")
         sessions = list(find_awaiting(DATA_PARENT, args.area, args.task))
         if not args.force:
             sessions = [s for s in sessions if read_assignment(s) is None]
         if not sessions:
             print("No awaiting sessions to stage (all reviewed or already out for review).")
             return
-        print(f"{'DRY RUN: ' if args.dry_run else ''}{len(sessions)} session(s) to stage:\n")
+        split = (f" across {len(assignees)} reviewers ({', '.join(assignees)})"
+                 if len(assignees) > 1 else f" to {assignees[0]}")
+        print(f"{'DRY RUN: ' if args.dry_run else ''}{len(sessions)} session(s) to stage{split}:\n")
         staged, grand, failures = 0, 0, []
-        for sd in sessions:
+        for i, sd in enumerate(sessions):
+            who = assignees[i % len(assignees)]
             print(f"[{session_rel(sd)}]")
             try:
-                grand += stage_one(sd, args.exchange, args.dry_run, args.assignee)
+                grand += stage_one(sd, args.exchange, args.dry_run, who)
                 staged += 1
             except Exception as e:
                 failures.append((sd, e))
@@ -184,15 +206,19 @@ def main():
     # single session
     if not args.session:
         sys.exit("ERROR: provide a session (area\\task\\session) or use --all.")
+    who = safe_name((args.assignee or "").split(",")[0])
+    if not who:
+        sys.exit("ERROR: --assignee <reviewer> is required (routes the bundle to outbox/<reviewer>/).")
     session_dir = resolve_session(args.session)
     if not session_dir.is_dir():
         sys.exit(f"ERROR: session folder not found: {session_dir}")
     existing = read_assignment(session_dir)
     if existing and not args.dry_run:
-        print(f"NOTE: already out for review (since {existing.get('assigned', '?')}); re-staging anyway.")
+        print(f"NOTE: already out for review (since {existing.get('assigned', '?')}, "
+              f"to {existing.get('to', '-')}); re-staging anyway.")
     print(f"[{session_rel(session_dir)}]")
     try:
-        stage_one(session_dir, args.exchange, args.dry_run, args.assignee)
+        stage_one(session_dir, args.exchange, args.dry_run, who)
     except Exception as e:
         sys.exit(f"ERROR: {e}")
 

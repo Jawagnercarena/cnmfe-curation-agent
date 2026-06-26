@@ -47,13 +47,17 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
 
 ## 3. Per-session workflow
 
-1. **Pull the bundle** from the server outbox to a **local** working folder
-   (do not run the review directly off the network share — the ~2.4 GB video
-   needs local disk):
+1. **Pull the bundle** from *your own* folder in the server outbox to a **local**
+   working folder (do not run the review directly off the network share — the
+   ~2.4 GB video needs local disk):
    ```
-   \\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review\outbox\{area}\{task}\{session}\
+   \\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review\outbox\<your name>\{area}\{task}\{session}\
         ->  D:\review_work\{area}\{task}\{session}\
    ```
+   Only the sessions under **your name** are assigned to you. Each session is
+   placed in exactly one reviewer's folder, so two machines never pick up the
+   same one - don't pull from another reviewer's folder. (If your folder is
+   empty, nothing is assigned to you yet; ask the central operator to stage some.)
    The bundle contains: `{session}.mat` (raw video), `review_neuron.mat`,
    `Cn.mat`, `pnr.mat`, `Ybg_weights.mat`, `run_final_review.m`, and
    `review_report.pdf` / `review_summary.txt` (the agent's guidance).
@@ -90,7 +94,9 @@ automatic retrain.
 
 ## Central operator notes (not for reviewers)
 
-- Stage a bundle:  `python agent/push_review_bundle.py {area}\{task}\{session}`
+- Stage a bundle to a reviewer:  `python agent/push_review_bundle.py {area}\{task}\{session} --assignee <name>`
+- Stage a whole batch, split across reviewers:  `python agent/push_review_bundle.py --all --assignee Alisia,Julian`
+- `--assignee` is required: it routes the bundle into `outbox\<name>\` so each session lands in exactly one reviewer's folder.
 - Bring results home + retrain:  `python agent/ingest_returns.py`
 - Set the server path once via `CNMFE_EXCHANGE_ROOT` (see `agent/.env.example`).
 - **Server safety:** these scripts never delete anything from the server. `push`

@@ -88,15 +88,23 @@ Each watcher polls for new `.tif` files, runs headless CNMFe, auto-scores, and w
 >
 > **Server safety:** the scripts here **never delete anything on the server** — `push` only copies out, `ingest` only reads the inbox and writes to your local tree. Any server cleanup is manual.
 
-**Send a session out to a reviewer** (run on the central machine):
+**Send a session out to a reviewer** (run on the central machine). `--assignee`
+names the reviewer and routes the bundle into **their** outbox folder, so no two
+machines ever pick up the same session:
 ```
-python agent\push_review_bundle.py {AREA}\{TASK}\{SESSION} --dry-run   # preview the ~2.6 GB bundle
-python agent\push_review_bundle.py {AREA}\{TASK}\{SESSION}             # actually stage it
+python agent\push_review_bundle.py {AREA}\{TASK}\{SESSION} --assignee Alisia --dry-run   # preview the ~2.6 GB bundle
+python agent\push_review_bundle.py {AREA}\{TASK}\{SESSION} --assignee Alisia             # actually stage it
 ```
-This copies the bundle to `…\cnmfe_review\outbox\{AREA}\{TASK}\{SESSION}\`. The bundle is:
+To hand out many at once, batch every awaiting session and split it across
+reviewers round-robin (comma-separated names):
+```
+python agent\push_review_bundle.py --all --assignee Alisia,Julian               # all areas
+python agent\push_review_bundle.py --all --area BLA --task 2tones --assignee Alisia
+```
+This copies the bundle to `…\cnmfe_review\outbox\{REVIEWER}\{AREA}\{TASK}\{SESSION}\`. The bundle is:
 `{SESSION}.mat` (raw video), `review_neuron.mat`, `run_final_review.m`, `Cn.mat`, `pnr.mat`, `Ybg_weights.mat`, `review_report.pdf`, `review_summary.txt`.
 
-*Manual alternative:* copy those files into the same `outbox\{AREA}\{TASK}\{SESSION}\` path by hand.
+*Manual alternative:* copy those files into the same `outbox\{REVIEWER}\{AREA}\{TASK}\{SESSION}\` path by hand.
 
 **Bring a reviewer's curated session back** (run on the central machine):
 ```
@@ -111,7 +119,7 @@ This mirrors `…\cnmfe_review\inbox\{AREA}\{TASK}\{SESSION}\` into your local `
 
 ## 7. Reviewer machines
 
-Hand reviewers the repo and [REVIEW_SETUP.md](REVIEW_SETUP.md). They need MATLAB only — no Python, no model. They pull a bundle from `outbox`, run `run_final_review.m`, and drop the finished folder in `inbox`.
+Hand reviewers the repo and [REVIEW_SETUP.md](REVIEW_SETUP.md). They need MATLAB only — no Python, no model. They pull a bundle from **their own** `outbox\<name>\` folder, run `run_final_review.m`, and drop the finished folder in `inbox`.
 
 ---
 
