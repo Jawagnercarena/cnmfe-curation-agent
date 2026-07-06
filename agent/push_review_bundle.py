@@ -15,7 +15,14 @@ Batch (every session awaiting review, skipping ones already out for review):
   python push_review_bundle.py --all --assignee Alisia
   python push_review_bundle.py --all --assignee Alisia,Julian      # split round-robin
   python push_review_bundle.py --all --area vCA1 --task 3odor --assignee Alisia
+  python push_review_bundle.py --all --animal bla8,bla12 --assignee Alisia   # by animal/FOV
   python push_review_bundle.py --all --assignee Alisia --dry-run
+
+To RE-assign sessions already out for review (e.g. re-deal Alisia's pile across
+several reviewers), add --force so already-marked sessions are re-staged and the
+marker is rewritten to the new reviewer. Delete the stale outbox/<old>/ folder on
+the server first (that server delete is a manual operator step - this script and
+Claude never delete from the server).
 
 Each staged session is also marked "out for review" via a review_assigned.txt
 marker in the LOCAL session folder, so the watcher's REVIEW_QUEUE.md lists it as
@@ -54,6 +61,18 @@ OPTIONAL = ["Cn.mat", "pnr.mat", "Ybg_weights.mat",
 def safe_name(name: str) -> str:
     """Folder-safe reviewer name, so outbox/<reviewer>/ is always a clean path."""
     return re.sub(r"[^A-Za-z0-9._-]+", "_", (name or "").strip()).strip("_")
+
+
+ANIMAL_RE = re.compile(r"^[a-z]+\d+$", re.IGNORECASE)
+
+
+def animal_of(session_name: str):
+    """The animal token in a session name (e.g. 'bla12', 'pnb88'), or None.
+    It is the hyphen-delimited segment that is letters-then-digits."""
+    for seg in session_name.split("-"):
+        if ANIMAL_RE.match(seg):
+            return seg.lower()
+    return None
 
 
 def resolve_session(arg: str) -> Path:
@@ -155,6 +174,9 @@ def main():
                     help="batch: stage every awaiting session not already out for review")
     ap.add_argument("--area", help="(with --all) limit to this brain area")
     ap.add_argument("--task", help="(with --all) limit to this task")
+    ap.add_argument("--animal",
+                    help="(with --all) limit to sessions for these animals (comma list, e.g. "
+                         "bla8,bla12) - lets you give each reviewer consistent animals/FOVs.")
     ap.add_argument("--assignee",
                     help="reviewer name -> routes the bundle to outbox/<name>/ and records the "
                          "marker. REQUIRED. With --all you may pass a comma-separated list "
@@ -176,6 +198,9 @@ def main():
             sys.exit("ERROR: --assignee is required (routes each session to outbox/<reviewer>/). "
                      "Pass one name, or several comma-separated to split the batch round-robin.")
         sessions = list(find_awaiting(DATA_PARENT, args.area, args.task))
+        if args.animal:
+            wanted = {a.strip().lower() for a in args.animal.split(",") if a.strip()}
+            sessions = [s for s in sessions if animal_of(s.name) in wanted]
         if not args.force:
             sessions = [s for s in sessions if read_assignment(s) is None]
         if not sessions:
