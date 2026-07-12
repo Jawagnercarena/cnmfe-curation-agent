@@ -6,12 +6,21 @@ labels.mat.
 It mirrors  <exchange>/inbox/<reviewer>/{area}/{task}/{session}/  ->  DATA_PARENT/{area}/{task}/{session}/
 copying files that are new or changed. Reviewers push their finished folder into
 their own inbox/<name>/ subfolder (mirroring outbox/<name>/), so each reviewer's
-"done" pile sits in one place; the <reviewer> prefix is dropped on the way into
-the canonical tree. (A flat inbox/{area}/{task}/{session} still works too - the
-destination is always taken from the last three path parts.) By default the
-unchanged multi-GB raw video already present on this machine is NOT re-copied
-(matched by size); use --force to copy every file regardless. Either way, the
-full curated folder ends up archived on this machine.
+"done" pile sits in one place.
+
+Destination resolution is by SESSION NAME, not by path shape: central always
+already has the session folder (it generated the outbound bundle), so we find the
+existing local DATA_PARENT/{area}/{task}/{session} by name and repatriate into it.
+This is robust to a reviewer dropping the {area} level when they copy into their
+inbox (e.g. inbox/<name>/{task}/{session} instead of .../{area}/{task}/...): a
+blind "last three path parts" would otherwise invent a phantom area folder named
+after the reviewer/task and strand the labels away from candidate_features.npz.
+If no existing folder matches, we fall back to the path-derived {area}/{task}/{session}
+ONLY when that area already exists on disk; otherwise the session is SKIPPED with a
+loud warning rather than silently creating a bogus area. By default the unchanged
+multi-GB raw video already present on this machine is NOT re-copied (matched by
+size); use --force to copy every file regardless. Either way, the full curated
+folder ends up archived on this machine.
 
 Usage:
   python ingest_returns.py                              # ingest every session found in inbox
@@ -39,6 +48,52 @@ def iter_sessions(inbox: Path):
     for p in inbox.rglob("*"):
         if p.is_dir() and ((p / "labels.mat").exists() or (p / "neuron.mat").exists()):
             yield p
+
+
+def _is_real_session(d: Path) -> bool:
+    """A central session folder we'd repatriate into (has features / the review set)."""
+    return (d / "candidate_features.npz").exists() or (d / "review_neuron.mat").exists()
+
+
+def find_local_session(session_name: str):
+    """Existing DATA_PARENT/{area}/{task}/{session_name} folders, searched by name.
+    Restricted to the canonical 3-level depth so it stays cheap."""
+    matches = []
+    for area in DATA_PARENT.iterdir():
+        if not area.is_dir() or area.name.startswith("."):
+            continue
+        for task in area.iterdir():
+            if not task.is_dir() or task.name.startswith("."):
+                continue
+            cand = task / session_name
+            if cand.is_dir():
+                matches.append(cand)
+    return matches
+
+
+def resolve_dest(src: Path):
+    """Return (dst, note) for a returned session, or (None, reason) to skip.
+    Resolves by session name against the local tree first; falls back to the
+    path-derived location only if that area already exists on disk."""
+    matches = find_local_session(src.name)
+    real = [m for m in matches if _is_real_session(m)]
+    pick = real or matches
+    if len(pick) == 1:
+        return pick[0], "matched existing local session by name"
+    if len(pick) > 1:
+        listing = ", ".join(str(m.relative_to(DATA_PARENT)) for m in pick)
+        return None, f"AMBIGUOUS: {len(pick)} existing folders named '{src.name}': {listing}"
+    # No existing local folder -> derive {area}/{task}/{session} from the path,
+    # but only trust it if the area already exists (guards against phantom areas).
+    canon = Path(*src.parts[-3:])
+    area = canon.parts[0]
+    if (DATA_PARENT / area).is_dir():
+        return DATA_PARENT / canon, f"new session, area '{area}' exists"
+    return None, (
+        f"cannot resolve destination: no existing folder named '{src.name}', and the "
+        f"path-derived area '{area}' is not a known area under {DATA_PARENT}. The reviewer "
+        f"likely dropped the {{area}} level when copying into the inbox ({src}). "
+        f"Fix the inbox path to <reviewer>/<area>/<task>/<session> and re-run.")
 
 
 def copy_session(src: Path, dst: Path, force: bool, dry: bool):
@@ -86,18 +141,28 @@ def main():
         print("Nothing to ingest.")
         return
 
+    skipped_sessions = []
     for src in sessions:
         if not src.is_dir():
             print(f"SKIP (not found): {src}")
             continue
-        canon = Path(*src.parts[-3:])   # {area}/{task}/{session}, dropping any reviewer prefix
-        dst = DATA_PARENT / canon
-        print(f"\nIngest {canon}")
+        dst, note = resolve_dest(src)
+        if dst is None:
+            print(f"\nSKIP {src.name}")
+            print(f"  !! {note}")
+            skipped_sessions.append((src, note))
+            continue
+        print(f"\nIngest {dst.relative_to(DATA_PARENT)}  ({note})")
         print(f"  {src}  ->  {dst}")
         c, s, b = copy_session(src, dst, args.force, args.dry_run)
         print(f"  copied {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")
         if not args.dry_run and (dst / "labels.mat").exists():
             print("  labels.mat present -> watcher will auto-retrain on its next poll.")
+
+    if skipped_sessions:
+        print(f"\n{len(skipped_sessions)} session(s) SKIPPED (unresolved destination):")
+        for src, note in skipped_sessions:
+            print(f"  - {src.name}: {note}")
     print("\nDone.")
 
 

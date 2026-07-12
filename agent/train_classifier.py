@@ -876,7 +876,15 @@ def main():
     # (0.9% false-AR, 15.6% garbage caught, ~1.7x the garbage at 0.11). floor=4.0 and
     # bad_w=0.4 re-confirmed optimal (both sit at the false-AR minimum). vCA1 overrides
     # this default to 0.05 via train_classifier_vCA1.py.
-    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.15, "lightgbm": 0.11}
+    # UPDATE 2026-07-12 (BLA, 39 agent sessions after recovering 5 stranded bla12
+    # returns): re-ran the OOF threshold sweep + sweep_weights.py. Model sharpened
+    # further (OOF AUC 0.859 -> 0.874), but the added bla12 sessions have some
+    # low-scoring real neurons, so 0.15 now costs 1.1% false-AR (was 0.7%). Lowered
+    # XGBoost 0.15 -> 0.14 to hold the sub-1% false-AR posture: 0.8% false-AR,
+    # 19.2% garbage caught (vs 21.4% at 0.15) — smooth curve, knee still at 0.18.
+    # floor=4.0 / bad_w=0.4 left unchanged (AUC flat across floors 1-8; the false-AR
+    # wiggles are noise from a single 5-session, single-animal batch — not re-tuned).
+    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.14, "lightgbm": 0.11}
     reject_threshold = _THRESHOLD_BY_MODEL.get(best_model, 0.10)
     if args.threshold is not None:
         log(f"\n  Overriding reject_threshold: {reject_threshold:.2f} -> {args.threshold:.2f} (--threshold flag)")

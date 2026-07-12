@@ -76,6 +76,13 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
    The key new file is `labels.mat` (your keep/delete decisions); the curated
    `neuron.mat`, traces, and `ROIs.jpg` come along for the archive.
 
+   > **Keep the full `{area}\{task}\{session}` path** under your inbox name — the
+   > same folder layout you pulled from your outbox. Don't drop the `{area}` level
+   > (e.g. push to `inbox\<you>\{area}\{task}\...`, not `inbox\<you>\{task}\...`).
+   > The simplest safe habit: copy the whole `{area}` folder as-is. (Ingest now
+   > also matches returns by session name, so a slip is caught rather than
+   > misfiled, but keeping the layout avoids the warning.)
+
 **Knowing what's done (no extra bookkeeping).** Your two server folders are a
 matched pair, both named after you:
 
