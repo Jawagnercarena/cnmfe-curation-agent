@@ -96,6 +96,24 @@ def resolve_dest(src: Path):
         f"Fix the inbox path to <reviewer>/<area>/<task>/<session> and re-run.")
 
 
+def read_label_counts(labels_path: Path):
+    """
+    Read a returned labels.mat and return (n_keep, n_delete, n_motion).
+    n_motion is None for labels.mat written before the (m) motion-delete option
+    existed (no 'motion_delete' variable). Returns None if the file can't be read.
+    """
+    try:
+        import scipy.io as sio
+        d = sio.loadmat(str(labels_path))
+        labels = d["labels"].flatten()
+        n_keep   = int((labels == 1).sum())
+        n_delete = int((labels == 0).sum())
+        n_motion = int(d["motion_delete"].flatten().sum()) if "motion_delete" in d else None
+        return n_keep, n_delete, n_motion
+    except Exception:
+        return None
+
+
 def copy_session(src: Path, dst: Path, force: bool, dry: bool):
     copied = skipped = 0
     bytes_copied = 0
@@ -142,6 +160,9 @@ def main():
         return
 
     skipped_sessions = []
+    total_motion_tags = 0        # motion-tagged deletes across this ingest
+    sessions_with_motion = 0     # sessions that carried >=1 motion tag
+    sessions_with_field = 0      # sessions whose labels.mat has the motion_delete field
     for src in sessions:
         if not src.is_dir():
             print(f"SKIP (not found): {src}")
@@ -156,13 +177,37 @@ def main():
         print(f"  {src}  ->  {dst}")
         c, s, b = copy_session(src, dst, args.force, args.dry_run)
         print(f"  copied {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")
-        if not args.dry_run and (dst / "labels.mat").exists():
-            print("  labels.mat present -> watcher will auto-retrain on its next poll.")
+
+        # Report the reviewer's label breakdown, including motion-delete tags.
+        # Read from the source so this works in --dry-run too (nothing copied yet).
+        labels_src = src / "labels.mat"
+        if labels_src.exists():
+            counts = read_label_counts(labels_src)
+            if counts is None:
+                print("  labels.mat present but could not be read for a summary.")
+            else:
+                n_keep, n_delete, n_motion = counts
+                if n_motion is None:
+                    print(f"  labels: {n_keep} keep / {n_delete} delete "
+                          f"(no motion tags -- reviewed before the (m) option)")
+                else:
+                    sessions_with_field += 1
+                    total_motion_tags += n_motion
+                    if n_motion > 0:
+                        sessions_with_motion += 1
+                    print(f"  labels: {n_keep} keep / {n_delete} delete, "
+                          f"of which {n_motion} tagged as motion deletes")
+            if not args.dry_run:
+                print("  labels.mat present -> watcher will auto-retrain on its next poll.")
 
     if skipped_sessions:
         print(f"\n{len(skipped_sessions)} session(s) SKIPPED (unresolved destination):")
         for src, note in skipped_sessions:
             print(f"  - {src.name}: {note}")
+    if sessions_with_field:
+        print(f"\nMotion labels this ingest: {total_motion_tags} tag(s) across "
+              f"{sessions_with_motion} session(s) "
+              f"({sessions_with_field} session(s) reviewed with the (m) option).")
     print("\nDone.")
 
 
