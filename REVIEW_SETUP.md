@@ -67,6 +67,13 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
    Work through the steps: `viewNeurons` (delete bad cells) → optional update →
    `viewNeuronsVideo` (catch motion artifacts) → merges → save.
 
+   > **Motion deletes:** at the per-neuron prompt you can now press **`m`**
+   > instead of `d`. It deletes the neuron exactly like `d`, but also logs it as
+   > a *motion artifact* (most useful in the `viewNeuronsVideo` pass, where you
+   > see spikes that track brain motion). This trains the agent to pre-catch
+   > motion — use `m` whenever the reason you're deleting is motion, and plain
+   > `d` for everything else. No extra steps; it's saved automatically.
+
 3. **Push the finished folder back** to **your own** inbox folder (whole folder
    is fine) - same name as your outbox folder:
    ```

@@ -29,6 +29,13 @@ warning('off', 'MATLAB:singularMatrix');
 warning('off', 'MATLAB:nearlySingularMatrix');
 warning('off', 'MATLAB:illConditionedMatrix');
 
+% Reset the motion-delete accumulator for this session. viewNeurons /
+% viewNeuronsVideo append a neuron's footprint here whenever the reviewer marks
+% it 'm' (motion delete); we match those back to the review candidates at save
+% time to record which deletes were motion artifacts.
+global MOTION_DELETE_FP; %#ok<GVMIS>
+MOTION_DELETE_FP = [];
+
 %% --- Setup paths ---
 repo_root = fileparts(mfilename('fullpath'));   % self-locating: this file lives at the repo root
 addpath(genpath(fullfile(repo_root, 'ca_source_extraction')));
@@ -179,7 +186,8 @@ Nspatial      = 5;
 %% STEP 1: Final viewNeurons — delete anything that looks wrong
 %% ========================================================
 fprintf('\n--- STEP 1: Final neuron inspection (spatial footprints + traces) ---\n');
-fprintf('Delete any remaining bad neurons. Close the window when done.\n\n');
+fprintf('Delete any remaining bad neurons: (d) to delete, or (m) if the neuron\n');
+fprintf('is a motion artifact (logged as a motion delete). Close when done.\n\n');
 
 neuron.orderROIs('mean');
 neuron.viewNeurons([], neuron.C_raw);
@@ -255,6 +263,7 @@ video_done = false;
 while ~video_done
     fprintf('\n--- STEP 2: Video inspection (motion artifact check) ---\n');
     fprintf('Watch for spikes that coincide with global brain motion.\n');
+    fprintf('Tag motion artifacts with (m) so they are logged as motion deletes.\n');
     fprintf('Close the window when done.\n\n');
 
     neuron.viewNeuronsVideo([], neuron.C_raw);
@@ -414,9 +423,40 @@ for jf = 1:N_final
 end
 fprintf('  Labels: %d kept, %d deleted (from %d review candidates)\n', ...
     sum(labels), sum(labels == 0), N_review);
-save(fullfile(session_dir, 'labels.mat'), 'labels', '-v7');
+
+% --- Motion-delete labels ---
+% Match the footprints the reviewer tagged 'm' (accumulated in MOTION_DELETE_FP by
+% viewNeurons/viewNeuronsVideo) back to the review candidates by cosine similarity,
+% the same way keep labels are matched above. motion_delete(i)=1 marks candidate i
+% as deleted specifically for a motion artifact -- a SUBSET of the deletes; the
+% keep/delete labels above are unaffected. Saved as an extra variable in labels.mat
+% (train_classifier.py reads only 'labels' and ignores this). Note: a tagged
+% footprint may have drifted slightly from its original candidate if updates ran
+% before the tag, so an unmatched tag (corr < 0.60) is silently skipped rather than
+% mislabelled.
+motion_delete  = zeros(N_review, 1);
+n_motion_marks = size(MOTION_DELETE_FP, 2);
+if n_motion_marks > 0
+    nmf   = sqrt(sum(MOTION_DELETE_FP.^2, 1)) + 1e-12;
+    ncr   = sqrt(sum(A_review_init.^2,    1)) + 1e-12;
+    mcorr = bsxfun(@rdivide, A_review_init, ncr)' * ...
+            bsxfun(@rdivide, MOTION_DELETE_FP, nmf);   % N_review × n_marks
+    for jm = 1:n_motion_marks
+        [best_m, bm] = max(mcorr(:, jm));
+        if best_m > 0.60
+            motion_delete(bm) = 1;
+        end
+    end
+end
+% A motion delete is still a delete: never let it collide with a keep label.
+motion_delete(labels == 1) = 0;
+fprintf('  Motion deletes: %d tagged, %d matched to review candidates.\n', ...
+    n_motion_marks, sum(motion_delete));
+
+save(fullfile(session_dir, 'labels.mat'), 'labels', 'motion_delete', '-v7');
 fprintf('  labels.mat saved.\n');
-clear A_review_init A_final corr_mat nr nf used N_final;
+clear A_review_init A_final corr_mat nr nf used N_final motion_delete mcorr nmf ncr;
+MOTION_DELETE_FP = [];
 
 b0 = mean(Y,2) - neuron.A*mean(neuron.C,2);
 Ybg = bsxfun(@plus, Ybg, b0 - mean(Ybg, 2));

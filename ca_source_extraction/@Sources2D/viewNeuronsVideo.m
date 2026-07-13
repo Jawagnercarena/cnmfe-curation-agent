@@ -11,6 +11,7 @@
 %% Author: Pengcheng Zhou, Carnegie Mellon University, 2016
 %% Modified by: Aadith Vittala, Rice University, 2019
     global ssub % use the global ssub variable for scaling of the contours
+    global MOTION_DELETE_FP; % motion-delete footprint accumulator (see viewNeurons)
     if ~exist('ind', 'var') || isempty(ind)
         % display all neurons if ind is not specified.
         ind = 1:size(obj.A, 2);
@@ -33,8 +34,9 @@
     end
 
     Amask = (obj.A>0); 
-    ind_trim = false(size(ind));    % indicator of trimming neurons 
+    ind_trim = false(size(ind));    % indicator of trimming neurons
     ind_del = false(size(ind));     % indicator of deleting neurons
+    ind_motion = false(size(ind));  % indicator of motion-delete neurons (subset of ind_del)
     ctr = obj.estCenter();      %neuron's center
     gSiz = obj.options.gSiz;        % maximum size of a neuron
 
@@ -73,7 +75,7 @@
             end
         end
         if neuronClicked
-            fprintf('\nNeuron %d, keep(k, default)/delete(d)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
+            fprintf('\nNeuron %d, keep(k, default)/delete(d)/MOTION delete(m)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
         end
     end
     video_struct = load(obj.options.name); % load video from the .mat file
@@ -147,10 +149,15 @@
             saveas(gcf, sprintf('neuron_%d.png', ind(m)));
             m = m+1;
         else
-            fprintf('Neuron %d, keep(k, default)/delete(d)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
+            fprintf('Neuron %d, keep(k, default)/delete(d)/MOTION delete(m)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
             temp = input('', 's');
             if temp=='d'
                 ind_del(m) = true;
+                ind_motion(m) = false;
+                m = m+1;
+            elseif strcmpi(temp, 'm')
+                ind_del(m) = true;
+                ind_motion(m) = true;
                 m = m+1;
             elseif strcmpi(temp, 'b')
                 m = m-1;
@@ -159,6 +166,7 @@
                 break;
             elseif strcmpi(temp, 'k')
                 ind_del(m) = false;
+                ind_motion(m) = false;
                 m= m+1;
             elseif strcmpi(temp, 's')
                 try
@@ -201,7 +209,12 @@
     if save_img
         cd(cur_cd);
     else
-        obj.A(:, ind(ind_trim)) = obj.A(:,ind(ind_trim)).*Amask(:, ind(ind_trim)); 
+        if any(ind_motion)
+            % Snapshot footprints of motion-tagged neurons BEFORE deletion so their
+            % identity can be matched back to the review candidates in CNMFe_final_save.
+            MOTION_DELETE_FP = [MOTION_DELETE_FP, full(obj.A(:, ind(ind_motion)))];
+        end
+        obj.A(:, ind(ind_trim)) = obj.A(:,ind(ind_trim)).*Amask(:, ind(ind_trim));
         obj.delete(ind(ind_del));
     end
-end 
+end

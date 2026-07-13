@@ -19,6 +19,11 @@ elseif ind==-1
 end
 if ~exist('C2', 'var'); C2=[]; end
 
+% Motion-delete tagging: when a reviewer marks a neuron 'm' (motion delete), its
+% footprint is appended to this global so CNMFe_final_save can record which
+% deletes were motion artifacts. Deletion behaviour is identical to 'd'.
+global MOTION_DELETE_FP; %#ok<GVMIS>
+
 if exist('folder_nm', 'var')&&(~isempty(folder_nm))
     % create a folder to save images
     save_img = true;
@@ -35,8 +40,9 @@ end
 % obj.delete(sum(obj.A>0, 1)<max(obj.options.min_pixel, 1));
 
 Amask = (obj.A>0); 
-ind_trim = false(size(ind));    % indicator of trimming neurons 
+ind_trim = false(size(ind));    % indicator of trimming neurons
 ind_del = false(size(ind));     % indicator of deleting neurons
+ind_motion = false(size(ind));  % indicator of motion-delete neurons (subset of ind_del)
 ctr = obj.estCenter();      %neuron's center
 gSiz = obj.options.gSiz;        % maximum size of a neuron
 
@@ -91,11 +97,16 @@ while and(m>=1, m<=length(ind))
         saveas(gcf, sprintf('neuron_%d.png', ind(m)));
         m = m+1;
     else
-        fprintf('Neuron %d, keep(k, default)/delete(d)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e):    ', ind(m));
+        fprintf('Neuron %d, keep(k, default)/delete(d)/MOTION delete(m)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e):    ', ind(m));
 
         temp = input('', 's');
         if temp=='d'
             ind_del(m) = true;
+            ind_motion(m) = false;
+            m = m+1;
+        elseif strcmpi(temp, 'm')
+            ind_del(m) = true;
+            ind_motion(m) = true;
             m = m+1;
         elseif strcmpi(temp, 'b')
             m = m-1;
@@ -104,6 +115,7 @@ while and(m>=1, m<=length(ind))
             break;
         elseif strcmpi(temp, 'k')
             ind_del(m) = false;
+            ind_motion(m) = false;
             m= m+1;
         elseif strcmpi(temp, 's')
             try
@@ -146,7 +158,12 @@ end
 if save_img
     cd(cur_cd);
 else
-    obj.A(:, ind(ind_trim)) = obj.A(:,ind(ind_trim)).*Amask(:, ind(ind_trim)); 
+    if any(ind_motion)
+        % Snapshot footprints of motion-tagged neurons BEFORE deletion so their
+        % identity can be matched back to the review candidates in CNMFe_final_save.
+        MOTION_DELETE_FP = [MOTION_DELETE_FP, full(obj.A(:, ind(ind_motion)))];
+    end
+    obj.A(:, ind(ind_trim)) = obj.A(:,ind(ind_trim)).*Amask(:, ind(ind_trim));
     obj.delete(ind(ind_del));
 %     obj.Coor = obj.get_contours(0.9);
 end
