@@ -80,6 +80,9 @@
     end
     video_struct = load(obj.options.name); % load video from the .mat file
     video = flip(video_struct.Y); % extract video and flip over y-axis
+    yflip = size(video, 1); % image height (== im.YData(2)); used to flip contour
+                            % y-coords WITHOUT touching the im handle, which can go
+                            % invalid while jumping between neurons and abort the review
 
     subplot(221); 
     hold on;
@@ -124,17 +127,28 @@
         xlabel(str_xlabel);    
 
         %% video with contours
-        subplot(221); 
-        allCoor = obj.get_contours(0.8,ind); % find all contours
-        for i = 1:size(allCoor) % extract and plot all contours in blue
-            contour = allCoor{i,1};
-            plot(contour(1,:)*2/obj.options.ssub,im.YData(2)-contour(2,:)*2/obj.options.ssub,"-k","PickableParts","none");
-%            plot(contour(1,:)*ssub/obj.options.ssub,im.YData(2)-contour(2,:)*ssub/obj.options.ssub,"-k","PickableParts","none");
+        subplot(221);
+        % Draw contours defensively. Two things here have aborted whole reviews
+        % (losing the reviewer's labels): a degenerate all-zero footprint yields an
+        % EMPTY contour (indexing contour(1,:) then errors), and the cached image
+        % handle im can go INVALID while jumping between neurons (im.YData(2) then
+        % errors). So: skip empty contours, use the numeric image height yflip
+        % instead of im.YData(2), and never let a draw glitch propagate out.
+        try
+            allCoor = obj.get_contours(0.8,ind); % find all contours
+            for i = 1:numel(allCoor) % extract and plot all contours in blue
+                contour = allCoor{i,1};
+                if isempty(contour); continue; end % degenerate footprint -> no contour
+                plot(contour(1,:)*2/obj.options.ssub,yflip-contour(2,:)*2/obj.options.ssub,"-k","PickableParts","none");
+            end
+            Coor = obj.get_contours(0.8,ind(m)); % find the contours for this neuron
+            if ~isempty(Coor) && ~isempty(Coor{1,1})
+                contour = Coor{1,1}; % extract coordinates
+                plot(contour(1,:)*2/obj.options.ssub,yflip-contour(2,:)*2/obj.options.ssub,"-r","PickableParts","none");
+            end
+        catch ME
+            fprintf(2, 'Contour draw skipped for neuron %d (%s); review continues.\n', ind(m), ME.message);
         end
-        Coor = obj.get_contours(0.8,ind(m)); % find the contours for this neuron
-        contour = Coor{1,1}; % extract coordinates
-        plot(contour(1,:)*2/obj.options.ssub,im.YData(2)-contour(2,:)*2/obj.options.ssub,"-r","PickableParts","none");
-%        plot(contour(1,:)*ssub/obj.options.ssub,im.YData(2)-contour(2,:)*ssub/obj.options.ssub,"-r","PickableParts","none");
 
         %% move scrollbar to time of max value
         [maxVal, maxInd] = max(obj.C(ind(m),:));
