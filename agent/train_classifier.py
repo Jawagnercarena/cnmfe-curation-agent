@@ -884,7 +884,7 @@ def main():
     # 19.2% garbage caught (vs 21.4% at 0.15) — smooth curve, knee still at 0.18.
     # floor=4.0 / bad_w=0.4 left unchanged (AUC flat across floors 1-8; the false-AR
     # wiggles are noise from a single 5-session, single-animal batch — not re-tuned).
-    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.14, "lightgbm": 0.11}
+    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.12, "lightgbm": 0.11}
     reject_threshold = _THRESHOLD_BY_MODEL.get(best_model, 0.10)
     if args.threshold is not None:
         log(f"\n  Overriding reject_threshold: {reject_threshold:.2f} -> {args.threshold:.2f} (--threshold flag)")
