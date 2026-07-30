@@ -41,3 +41,6 @@ Thumbs.db
 
 # Claude Code personal/local settings (keep shared settings.json if present)
 .claude/settings.local.json
+
+# MATLAB GUI "last used data path" cache (machine-specific absolute path)
+.dir.mat
