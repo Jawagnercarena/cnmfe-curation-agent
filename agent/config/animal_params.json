@@ -415,12 +415,8 @@
     "gSig": 7,
     "gSiz": 28,
     "flag": "ok",
-    "n_sessions": 17,
+    "n_sessions": 13,
     "gSig_all": [
-      7,
-      7,
-      7,
-      7,
       7,
       7,
       7,
@@ -436,10 +432,6 @@
       7
     ],
     "gSiz_all": [
-      28,
-      28,
-      28,
-      28,
       28,
       28,
       28,
@@ -667,8 +659,11 @@
     "gSig": 9,
     "gSiz": 36,
     "flag": "ok",
-    "n_sessions": 6,
+    "n_sessions": 9,
     "gSig_all": [
+      9,
+      9,
+      9,
       9,
       9,
       9,
@@ -677,6 +672,9 @@
       9
     ],
     "gSiz_all": [
+      36,
+      36,
+      36,
       36,
       36,
       36,
@@ -690,14 +688,22 @@
     "gSig": 9,
     "gSiz": 36,
     "flag": "ok",
-    "n_sessions": 4,
+    "n_sessions": 8,
     "gSig_all": [
+      9,
+      9,
+      9,
+      9,
       9,
       9,
       9,
       9
     ],
     "gSiz_all": [
+      36,
+      36,
+      36,
+      36,
       36,
       36,
       36,
@@ -922,13 +928,34 @@
       36
     ]
   },
-  "pnb98": {
-    "area": "vCA1",
+  "pnb97": {
+    "area": "BLA",
     "gSig": 9,
     "gSiz": 36,
     "flag": "ok",
-    "n_sessions": 1,
-    "gSig_all": 9,
-    "gSiz_all": 36
+    "n_sessions": 2,
+    "gSig_all": [
+      9,
+      9
+    ],
+    "gSiz_all": [
+      36,
+      36
+    ]
+  },
+  "pnb98": {
+    "area": "BLA",
+    "gSig": 9,
+    "gSiz": 36,
+    "flag": "ok",
+    "n_sessions": 2,
+    "gSig_all": [
+      9,
+      9
+    ],
+    "gSiz_all": [
+      36,
+      36
+    ]
   }
 }
