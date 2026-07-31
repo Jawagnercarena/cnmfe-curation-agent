@@ -41,16 +41,20 @@ GOOD       = "#2E7D5B"
 WHITE      = "#FFFFFF"   # cards stay white
 
 # ---------------------------------------------------------------- fonts
-# Register a condensed "engineered" display face for the wordmark & titles.
-# Prefer Bahnschrift (the chosen look); fall back to Arial Narrow, both on Windows.
+# Condensed "engineered" display face for the wordmark & titles. Ship Barlow Semi
+# Condensed (SIL OFL) next to this script so the figure is reproducible on any
+# machine and matches the embedded webfont in the interactive HTML; fall back to
+# Bahnschrift / Arial Narrow if the TTF is missing.
+_here = Path(__file__).parent
 DISP_FAMILY = "sans-serif"
-for _fp in (r"C:\Windows\Fonts\bahnschrift.ttf",
-            r"C:\Windows\Fonts\ARIALN.TTF",
-            r"C:\Windows\Fonts\arialn.ttf"):
+for _fp in (_here / "BarlowSemiCondensed-SemiBold.ttf",
+            Path(r"C:\Windows\Fonts\bahnschrift.ttf"),
+            Path(r"C:\Windows\Fonts\ARIALN.TTF"),
+            Path(r"C:\Windows\Fonts\arialn.ttf")):
     if Path(_fp).exists():
         try:
-            font_manager.fontManager.addfont(_fp)
-            DISP_FAMILY = font_manager.FontProperties(fname=_fp).get_name()
+            font_manager.fontManager.addfont(str(_fp))
+            DISP_FAMILY = font_manager.FontProperties(fname=str(_fp)).get_name()
             break
         except Exception:
             continue
