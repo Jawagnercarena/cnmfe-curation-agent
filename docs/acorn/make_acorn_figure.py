@@ -186,9 +186,21 @@ ax.text(135.5, 62.6,
         ha="right", va="center", fontsize=8.5, color=MUTED, **SANS)
 
 # ---------------------------------------------------------------- stats strip
-ax.plot([4.5, 135.5], [26.5, 26.5], color=LINE, lw=1.0, zorder=1)
-ax.text(4.5, 25.0, "WHAT THE AUTOMATION BUYS YOU", ha="left", va="center",
-        fontsize=7, fontweight="bold", color=TEAL_STR, **MONO)
+BAND_Y, BAND_H = 22.6, 6.0
+card(4.5, BAND_Y, 131.0, BAND_H, LINE, fill=WHITE, lw=1.0, rounding=1.4, z=2)
+ax.add_patch(FancyBboxPatch(
+    (4.5, BAND_Y + 0.9), 0.8, BAND_H - 1.8,
+    boxstyle="round,pad=0,rounding_size=0.3", linewidth=0, facecolor=AMBER, zorder=3))
+ax.text(8.6, BAND_Y + BAND_H - 1.6, "BY THE NUMBERS  ·  HUMAN CURATION BEHIND THE MODEL",
+        ha="left", va="center", fontsize=6.4, fontweight="bold", color=TEAL_STR, zorder=4, **MONO)
+ax.text(8.6, BAND_Y + 2.3, "88,000+ human-labeled cells  ·  261 sessions",
+        ha="left", va="center", fontsize=12.5, fontweight="bold",
+        color=AMBER_STR, zorder=4, **MONO)
+_cap = ("Each carries a human keep/delete decision - made directly in ACORN review, "
+        "or transferred from the lab's prior hand-curation by spatial matching "
+        "(BLA + vCA1).")
+ax.text(74, BAND_Y + BAND_H - 1.5, "\n".join(textwrap.wrap(_cap, width=48)),
+        ha="left", va="top", fontsize=6.5, color=MUTED, linespacing=1.4, zorder=4, **SANS)
 
 tiles = [
     ("5 → 0", "Parameters you set by hand. Estimated per session from the animal and the images.", AMBER, AMBER_STR),
@@ -201,7 +213,7 @@ NT = len(tiles)
 T_W = 23.5
 T_GAP = 3.25
 T_START = 4.75
-ty, th = 5.6, 16.4
+ty, th = 4.6, 15.6
 for i, (big, cap, accent, big_col) in enumerate(tiles):
     tx = T_START + i * (T_W + T_GAP)
     card(tx, ty, T_W, th, LINE, fill=WHITE, lw=1.0, rounding=1.2, z=2)

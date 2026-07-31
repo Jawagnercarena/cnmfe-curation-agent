@@ -241,6 +241,41 @@
   .tile .cap b{color:var(--ink);font-weight:600}
   .tile .cap .note{color:var(--muted);font-style:italic}
 
+  /* ---------- Training / bootstrap ---------- */
+  .headline-stat{display:flex;align-items:center;gap:26px;margin-top:24px;padding:22px 26px;
+    background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+    border-radius:var(--r);box-shadow:var(--shadow);flex-wrap:wrap}
+  .hs-num{font-family:var(--mono);font-weight:800;font-size:clamp(2.6rem,7vw,3.7rem);line-height:1;
+    color:var(--amber-strong);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .hs-num .plus{color:var(--amber)}
+  .hs-body{flex:1;min-width:250px}
+  .hs-label{font-weight:750;font-size:1.06rem;letter-spacing:-.01em}
+  .hs-desc{margin-top:5px;color:var(--muted);font-size:.92rem;max-width:68ch}
+  .two-source{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+  @media (max-width:720px){.two-source{grid-template-columns:1fr}}
+  .src{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+  .src-direct{border-top:3px solid var(--amber)}
+  .src-boot{border-top:3px solid var(--teal)}
+  .src-tag{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    padding:3px 8px;border-radius:999px;display:inline-block;margin-bottom:11px}
+  .src-direct .src-tag{background:var(--amber)}
+  .src-boot .src-tag{background:var(--teal)}
+  :root[data-theme="light"] .src-tag{color:#fff}
+  :root[data-theme="dark"] .src-direct .src-tag{color:#241705}
+  :root[data-theme="dark"] .src-boot .src-tag{color:#08201d}
+  @media (prefers-color-scheme:dark){.src-direct .src-tag{color:#241705}.src-boot .src-tag{color:#08201d}}
+  @media (prefers-color-scheme:light){.src-tag{color:#fff}}
+  .src h3{margin:0 0 6px;font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
+  .src p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.5}
+  .src p b{color:var(--ink);font-weight:600}
+  .boot-flow{display:flex;align-items:stretch;gap:8px;margin-top:18px;flex-wrap:wrap}
+  .bf-node{flex:1;min-width:158px;background:var(--surface-2);border:1px solid var(--line);
+    border-radius:12px;padding:13px 15px}
+  .bf-h{font-weight:700;font-size:.86rem;letter-spacing:-.01em}
+  .bf-s{margin-top:4px;color:var(--muted);font-size:.77rem;line-height:1.4}
+  .bf-op{display:flex;align-items:center;justify-content:center;color:var(--amber-strong);
+    font-weight:700;font-size:1.15rem;flex:none;width:16px}
+
   /* ---------- Footer ---------- */
   .foot{
     margin-top:clamp(40px,6vw,64px);padding-top:22px;border-top:1px solid var(--line);
@@ -461,6 +496,44 @@
         <div class="big">&lt;1%</div>
         <div class="cap"><b>Real neurons ever auto&#8209;rejected.</b> The cutoff is tuned to almost never discard a good cell.</div>
       </div>
+    </div>
+  </section>
+
+  <!-- ================= TRAINING / BOOTSTRAP ================= -->
+  <section class="sec" id="training">
+    <p class="kicker">Where the model's judgment comes from</p>
+    <h2>Trained on real, human-curated neurons</h2>
+    <p class="sub">The classifier only ever learns from decisions a person actually made &mdash; and it didn't start from zero. It inherited years of the lab's manual curation.</p>
+
+    <div class="headline-stat reveal" style="--d:.05s">
+      <div class="hs-num">88,000<span class="plus">+</span></div>
+      <div class="hs-body">
+        <div class="hs-label">human&#8209;labeled candidate cells, across 261 sessions</div>
+        <div class="hs-desc">Two brain areas (BLA + vCA1). Every candidate carries a keep / delete decision &mdash; made <b>directly in ACORN review</b>, or <b>transferred from the lab's prior hand&#8209;curation</b> by spatial matching.</div>
+      </div>
+    </div>
+
+    <div class="two-source">
+      <div class="src src-direct reveal" style="--d:.12s">
+        <div class="src-tag">Direct review</div>
+        <h3>Curated inside ACORN</h3>
+        <p>Every session you review turns your keep / delete / merge calls into labeled examples &mdash; about <b>8,400 cells reviewed directly</b> so far, and growing with every session. This is the online&#8209;retraining loop from the pipeline above.</p>
+      </div>
+      <div class="src src-boot reveal" style="--d:.19s">
+        <div class="src-tag">Bootstrap</div>
+        <h3>Inherited from prior hand-curation</h3>
+        <p>The lab had already hand&#8209;curated <b>~7,700 neurons</b> from older recordings with manual CNMF&#8209;E. ACORN re&#8209;extracts those recordings and spatially matches each new candidate to that trusted set &mdash; a match is a real neuron, everything else a reject &mdash; seeding the model with tens of thousands of labeled cells <b>before its first ACORN review</b>.</p>
+      </div>
+    </div>
+
+    <div class="boot-flow">
+      <div class="bf-node reveal" style="--d:.24s"><div class="bf-h">Prior hand&#8209;curated neurons</div><div class="bf-s">the lab's trusted set from manual CNMF&#8209;E</div></div>
+      <div class="bf-op">+</div>
+      <div class="bf-node reveal" style="--d:.30s"><div class="bf-h">Re&#8209;extracted candidates</div><div class="bf-s">ACORN re&#8209;runs CNMF&#8209;E on the same recording</div></div>
+      <div class="bf-op">&rarr;</div>
+      <div class="bf-node reveal" style="--d:.36s"><div class="bf-h">Spatial match</div><div class="bf-s">line the new candidates up with the trusted neurons</div></div>
+      <div class="bf-op">&rarr;</div>
+      <div class="bf-node reveal" style="--d:.42s"><div class="bf-h">Labeled cells</div><div class="bf-s">matched &rarr; real &nbsp;&middot;&nbsp; unmatched &rarr; reject &nbsp;&middot;&nbsp; ambiguous dropped</div></div>
     </div>
   </section>
 
