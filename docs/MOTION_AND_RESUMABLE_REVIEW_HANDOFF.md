@@ -15,10 +15,10 @@ _Status date: 2026-07-26. Background: memory notes `project_motion_features`, `p
 
 Reviewers can already tag motion artifacts with **`(m)`** during review (shipped, commit `393977d`). `(m)` deletes the neuron exactly like `(d)` **and** records it as a motion artifact:
 
-- [viewNeurons.m](ca_source_extraction/@Sources2D/viewNeurons.m) and [viewNeuronsVideo.m](ca_source_extraction/@Sources2D/viewNeuronsVideo.m) accumulate each tagged footprint in the global `MOTION_DELETE_FP`.
-- [CNMFe_final_save.m:427-456](CNMFe_final_save.m#L427-L456) cosine-matches those footprints (0.60 threshold) back to the review candidates and writes a `motion_delete` vector as an **extra** variable in `labels.mat`, alongside the binary `labels` (keep=1 / delete=0).
+- [viewNeurons.m](../ca_source_extraction/@Sources2D/viewNeurons.m) and [viewNeuronsVideo.m](../ca_source_extraction/@Sources2D/viewNeuronsVideo.m) accumulate each tagged footprint in the global `MOTION_DELETE_FP`.
+- [CNMFe_final_save.m:427-456](../CNMFe_final_save.m#L427-L456) cosine-matches those footprints (0.60 threshold) back to the review candidates and writes a `motion_delete` vector as an **extra** variable in `labels.mat`, alongside the binary `labels` (keep=1 / delete=0).
 
-**The trained classifier does not use `motion_delete` yet.** [train_classifier.py:287](agent/train_classifier.py#L287) reads only `labels`. To the model, an `(m)` is identical to a `(d)`. This is deliberate — collect the labels first, then decide how to use them.
+**The trained classifier does not use `motion_delete` yet.** [train_classifier.py:287](../agent/train_classifier.py#L287) reads only `labels`. To the model, an `(m)` is identical to a `(d)`. This is deliberate — collect the labels first, then decide how to use them.
 
 **Current label stock** (scan 2026-07-23, `scratchpad/scan_motion.py`):
 
@@ -43,7 +43,7 @@ This is the **go/no-go gate and the missing tool.** What exists today — `refre
 
 Write an eval (new script, e.g. `agent/eval_motion.py`) that:
 
-1. Loads `candidate_features.npz` + `labels.mat` per session; builds `y_motion = motion_delete` (positive = motion), reconstructed onto the reviewed subset the same way [train_classifier.load_prospective_session](agent/train_classifier.py#L272) reconstructs labels.
+1. Loads `candidate_features.npz` + `labels.mat` per session; builds `y_motion = motion_delete` (positive = motion), reconstructed onto the reviewed subset the same way [train_classifier.load_prospective_session](../agent/train_classifier.py#L272) reconstructs labels.
 2. Runs **grouped-by-session** CV (`StratifiedGroupKFold`, mirror `train_classifier._grouped_cv`), and additionally a **leave-one-cohort-out** split to defeat the confound.
 3. Answers two questions:
    - **Q1:** do the features separate motion-deletes from **keeps**? (can we flag them at all)
@@ -64,13 +64,13 @@ Driven by 1.2:
 
 ### 1.4 Step 3 — Deploy = the atomic feature-contract swap
 
-The feature matrix is **positional** and the model stores **no** feature names ([train_classifier.py:893-907](agent/train_classifier.py#L893-L907) dumps scaler/clf/threshold/… but not names). Adding features means rebuilding **every** `candidate_features.npz` + retraining + restarting the watcher as **one atomic operation, per area** (BLA and vCA1 separately):
+The feature matrix is **positional** and the model stores **no** feature names ([train_classifier.py:893-907](../agent/train_classifier.py#L893-L907) dumps scaler/clf/threshold/… but not names). Adding features means rebuilding **every** `candidate_features.npz` + retraining + restarting the watcher as **one atomic operation, per area** (BLA and vCA1 separately):
 
-1. **Stop the watcher** ([watcher.py](agent/watcher.py) / [watcher_vCA1.py](agent/watcher_vCA1.py)). It holds `features.py` in memory and **drives loose-`.tif` conversions — never restart it mid-conversion.**
+1. **Stop the watcher** ([watcher.py](../agent/watcher.py) / [watcher_vCA1.py](../agent/watcher_vCA1.py)). It holds `features.py` in memory and **drives loose-`.tif` conversions — never restart it mid-conversion.**
 2. **Finalize the feature code.** `git stash@{0}` ("wip: motion features (#1 indicator + #2 coherence infra)") holds the `features.py` + `train_classifier.py` edits. Finalize the schema per the 1.2/1.3 decision (drop coherence/kinetics if they didn't validate).
 3. **`python refresh_features.py --write-forward`** — migrates every npz to the new column order (asserts against `features.FORWARD_FEATURE_NAMES`). Historical rows get neutral zeros + `present=0` (**forward-only**; trace features can't be backfilled — the candidate traces are gone, see `project_bootstrap_matching_study`). Run only with the watcher down.
-4. **`python train_classifier.py --prospective-only`** (`--dry-run` first). vCA1 uses [train_classifier_vCA1.py](agent/train_classifier_vCA1.py).
-5. **Re-sweep `reject_threshold`** with [diagnose_model.py](agent/diagnose_model.py) (BLA) / [diagnose_model_vCA1.py](agent/diagnose_model_vCA1.py) (vCA1). The current thresholds (BLA **0.14**, vCA1 **0.05**) were swept for the 13-column model and **will shift** with new features.
+4. **`python train_classifier.py --prospective-only`** (`--dry-run` first). vCA1 uses [train_classifier_vCA1.py](../agent/train_classifier_vCA1.py).
+5. **Re-sweep `reject_threshold`** with [diagnose_model.py](../agent/diagnose_model.py) (BLA) / [diagnose_model_vCA1.py](../agent/diagnose_model_vCA1.py) (vCA1). The current thresholds (BLA **0.14**, vCA1 **0.05**) were swept for the 13-column model and **will shift** with new features.
 6. **Restart the watcher.** A restarted watcher loads the new `features.py` and **requires a matching new model**, or curation crashes on `scaler.transform` width. Code + npz + model must all move together.
 
 ### 1.5 Step 4 — Validate honestly
@@ -96,7 +96,7 @@ Validate via a **real** `train_classifier.py --dry-run` / `diagnose_model.py`, *
 
 ### 2.0 The problem
 
-A final review is a long interactive MATLAB session — the current BLA queue has a **166-neuron** session awaiting review ([REVIEW_QUEUE.md](d:/Julian_CNMFe/BLA/REVIEW_QUEUE.md)). The reviewer steps through candidates one at a time. **Today nothing is written until the very end** of `CNMFe_final_save.m`: `labels.mat` and the outputs are saved only after *all* steps complete ([CNMFe_final_save.m:456](CNMFe_final_save.m#L456), [488+](CNMFe_final_save.m#L488)). If MATLAB dies mid-review (forced OS update/restart, crash, accidental window close), the **entire session's work is lost** and the reviewer restarts `run_final_review.m` from zero. There is no autosave and no "save & quit."
+A final review is a long interactive MATLAB session — the current BLA queue has a **166-neuron** session awaiting review ([REVIEW_QUEUE.md](d:/Julian_CNMFe/BLA/REVIEW_QUEUE.md)). The reviewer steps through candidates one at a time. **Today nothing is written until the very end** of `CNMFe_final_save.m`: `labels.mat` and the outputs are saved only after *all* steps complete ([CNMFe_final_save.m:456](../CNMFe_final_save.m#L456), [488+](../CNMFe_final_save.m#L488)). If MATLAB dies mid-review (forced OS update/restart, crash, accidental window close), the **entire session's work is lost** and the reviewer restarts `run_final_review.m` from zero. There is no autosave and no "save & quit."
 
 (The recent crash-hardening, commit `f14f5ee`, stops a bad contour from *aborting* a review — but it does nothing for a *killed process*. That's what this feature is for.)
 
@@ -105,7 +105,7 @@ A final review is a long interactive MATLAB session — the current BLA queue ha
 The review isn't one loop; it's a pipeline of interactive figures interleaved with expensive, destructive re-estimation passes (`updateTemporal`/`updateSpatial` ~1–2 min each, background reconstruct, merges). So progress lives at two layers:
 
 - **A. Pipeline-step state** — which STEP we've reached (STEP 1 `viewNeurons` → 1b/1c updates/merge → STEP 2 video → STEP 3 merge → STEP 4 update → STEP 4b final loop) and the current, progressively-**mutated** `neuron` object. The coarse "where in the workflow."
-- **B. In-figure state** — within a single long `viewNeurons`/`viewNeuronsVideo` pass, the per-neuron decisions made so far. Both files share the *identical* local state ([viewNeurons.m:43-45](ca_source_extraction/@Sources2D/viewNeurons.m#L43-L45), [viewNeuronsVideo.m:37-39](ca_source_extraction/@Sources2D/viewNeuronsVideo.m#L37-L39)): `ind_del`, `ind_motion`, `ind_trim`, `Amask`, and the cursor `m` — all applied only at the *end* of the figure ([viewNeurons.m:161-167](ca_source_extraction/@Sources2D/viewNeurons.m#L161-L167)). The fine "where in the 166 neurons."
+- **B. In-figure state** — within a single long `viewNeurons`/`viewNeuronsVideo` pass, the per-neuron decisions made so far. Both files share the *identical* local state ([viewNeurons.m:43-45](../ca_source_extraction/@Sources2D/viewNeurons.m#L43-L45), [viewNeuronsVideo.m:37-39](../ca_source_extraction/@Sources2D/viewNeuronsVideo.m#L37-L39)): `ind_del`, `ind_motion`, `ind_trim`, `Amask`, and the cursor `m` — all applied only at the *end* of the figure ([viewNeurons.m:161-167](../ca_source_extraction/@Sources2D/viewNeurons.m#L161-L167)). The fine "where in the 166 neurons."
 
 **The 166-neuron marathon is a single figure, so layer B is where the real pain is.**
 
@@ -118,7 +118,7 @@ The review isn't one loop; it's a pipeline of interactive figures interleaved wi
 - A **fingerprint** (see 2.4).
 
 **Do *not* persist:**
-- `Y`, the raw video (~3.5 GB in RAM). It is reloaded from the session `.mat` on entry ([CNMFe_final_save.m:79-133](CNMFe_final_save.m#L79-L133)) and the background is reconstructed via the `Ybg_weights.mat` **fast path** (~30–60 s, [lines 138-168](CNMFe_final_save.m#L138-L168)). **This is why resume is feasible:** a resume re-runs a cheap ~1-min preamble instead of checkpointing gigabytes.
+- `Y`, the raw video (~3.5 GB in RAM). It is reloaded from the session `.mat` on entry ([CNMFe_final_save.m:79-133](../CNMFe_final_save.m#L79-L133)) and the background is reconstructed via the `Ybg_weights.mat` **fast path** (~30–60 s, [lines 138-168](../CNMFe_final_save.m#L138-L168)). **This is why resume is feasible:** a resume re-runs a cheap ~1-min preamble instead of checkpointing gigabytes.
 
 ### 2.3 Design options
 
@@ -139,7 +139,7 @@ The review isn't one loop; it's a pipeline of interactive figures interleaved wi
 ### 2.5 Interactions / landmines
 
 - **A forced OS restart gives no on-exit hook** — so real crash protection **requires periodic autosave** (Option B), not just a save-on-quit key (Option C).
-- **The checkpoint filename must not look like completion** to downstream scanners. Verified-safe signals: `watcher.py` keys on `neuron.mat` / `review_neuron.mat` / `ROIs.jpg` ([watcher.py:200](agent/watcher.py#L200), [331-333](agent/watcher.py#L331-L333), [349](agent/watcher.py#L349)); `ingest_returns.iter_sessions` keys on `labels.mat` / `neuron.mat`; `train_classifier` discovery keys on `candidate_features.npz` / `labels.mat` / `ROIs.jpg`. A name like **`review_checkpoint.mat` collides with none of them.** Do not write anything named those as part of a checkpoint.
+- **The checkpoint filename must not look like completion** to downstream scanners. Verified-safe signals: `watcher.py` keys on `neuron.mat` / `review_neuron.mat` / `ROIs.jpg` ([watcher.py:200](../agent/watcher.py#L200), [331-333](../agent/watcher.py#L331-L333), [349](../agent/watcher.py#L349)); `ingest_returns.iter_sessions` keys on `labels.mat` / `neuron.mat`; `train_classifier` discovery keys on `candidate_features.npz` / `labels.mat` / `ROIs.jpg`. A name like **`review_checkpoint.mat` collides with none of them.** Do not write anything named those as part of a checkpoint.
 - **Single-machine by nature:** reviewers work on their own machines and only push a folder back when done ("_Out for review — don't hand these to another machine_"), so the checkpoint stays local and won't ship mid-review. Keep it in the session folder.
 - **Splits/trims:** a split appends neurons to `neuron` beyond the reviewed `ind`; a trim modifies `Amask` (applied at figure end). A mid-figure checkpoint must capture these, or be taken only at safe points.
 

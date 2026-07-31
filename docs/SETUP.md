@@ -70,7 +70,7 @@ CNMFE_MATLAB_EXE=C:\Program Files\MATLAB\R2023b\bin\matlab.exe
 CNMFE_PYTHON_EXE=C:\ProgramData\anaconda3\envs\valence\python.exe
 CNMFE_EXCHANGE_ROOT=\\kheirbek-nas.cin.ucsf.edu\kheirbek1\Julian\cnmfe_review
 ```
-All paths resolve through [agent/local_config.py](agent/local_config.py); anything left unset falls back to its default there.
+All paths resolve through [agent/local_config.py](../agent/local_config.py); anything left unset falls back to its default there.
 
 ## 5. Run the pipeline (central machine)
 

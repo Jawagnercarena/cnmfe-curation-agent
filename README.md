@@ -1,3 +1,24 @@
+# ACORN — Automated CNMFe Of Recording-Networks
+
+This repository extends CNMF-E with **ACORN**: a self-improving,
+automation-assisted curation layer. It auto-tunes parameters, extracts candidates,
+pre-rejects junk with a trained classifier, hands you a short review list, and
+retrains itself on every human review — and distributes that reviewing across a
+network of machines. Developed for calcium-imaging analysis in the **Kheirbek Lab
+at UCSF**.
+
+[![ACORN — the full pipeline at a glance](docs/acorn/acorn_schematic.png)](docs/acorn/acorn_schematic.pdf)
+
+_Click the figure for the print-resolution PDF, or open the [interactive version](docs/acorn/acorn-schematic.html)._
+
+**Start here → [`docs/`](docs/)** for setup, the review workflow, developer notes, and
+the system schematic ([interactive HTML](docs/acorn/acorn-schematic.html) ·
+[PDF figure](docs/acorn/acorn_schematic.pdf)).
+
+The upstream CNMF-E README follows.
+
+---
+
 # CNMF_E
 Constrained Nonnegative Matrix Factorization for microEndoscopic data 
 

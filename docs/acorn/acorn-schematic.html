@@ -1,0 +1,474 @@
+<style>
+  :root{
+    --bg:#F3F6F5; --surface:#FFFFFF; --surface-2:#EAEFED;
+    --ink:#16211F; --muted:#566965; --line:#DBE3E0;
+    --teal:#0E7C73; --teal-strong:#0A5F58; --teal-tint:#E1F0EE;
+    --amber:#BE7A1C; --amber-strong:#9C6413; --amber-tint:#F6EAD4;
+    --good:#2E7D5B; --bad:#B8492E; --bad-tint:#F5E5E0;
+    --sans:"Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,system-ui,sans-serif;
+    --mono:"Cascadia Code","JetBrains Mono","SF Mono",ui-monospace,Consolas,"Liberation Mono",monospace;
+    --shadow:0 1px 2px rgba(20,40,36,.06),0 8px 24px rgba(20,40,36,.06);
+    --shadow-lift:0 2px 6px rgba(20,40,36,.10),0 16px 40px rgba(20,40,36,.12);
+    --r:14px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0C1413; --surface:#131E1C; --surface-2:#1A2724;
+      --ink:#E9EEEC; --muted:#93A5A0; --line:#26332F;
+      --teal:#46B6AA; --teal-strong:#79D0C5; --teal-tint:#10312D;
+      --amber:#E0A64C; --amber-strong:#EEBE70; --amber-tint:#2C2413;
+      --good:#57BA8B; --bad:#E27B5E; --bad-tint:#2C1A15;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+      --shadow-lift:0 2px 6px rgba(0,0,0,.4),0 18px 46px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#F3F6F5; --surface:#FFFFFF; --surface-2:#EAEFED;
+    --ink:#16211F; --muted:#566965; --line:#DBE3E0;
+    --teal:#0E7C73; --teal-strong:#0A5F58; --teal-tint:#E1F0EE;
+    --amber:#BE7A1C; --amber-strong:#9C6413; --amber-tint:#F6EAD4;
+    --good:#2E7D5B; --bad:#B8492E; --bad-tint:#F5E5E0;
+    --shadow:0 1px 2px rgba(20,40,36,.06),0 8px 24px rgba(20,40,36,.06);
+    --shadow-lift:0 2px 6px rgba(20,40,36,.10),0 16px 40px rgba(20,40,36,.12);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0C1413; --surface:#131E1C; --surface-2:#1A2724;
+    --ink:#E9EEEC; --muted:#93A5A0; --line:#26332F;
+    --teal:#46B6AA; --teal-strong:#79D0C5; --teal-tint:#10312D;
+    --amber:#E0A64C; --amber-strong:#EEBE70; --amber-tint:#2C2413;
+    --good:#57BA8B; --bad:#E27B5E; --bad-tint:#2C1A15;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    --shadow-lift:0 2px 6px rgba(0,0,0,.4),0 18px 46px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0}
+  .page{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+    padding:clamp(20px,4vw,56px) clamp(16px,4vw,40px);
+  }
+  .wrap{max-width:1140px;margin:0 auto}
+
+  /* ---------- Hero ---------- */
+  .hero{margin-bottom:clamp(32px,5vw,56px)}
+  .brandrow{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .lab-credit{margin-left:auto;font-family:var(--mono);font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--teal-strong);white-space:nowrap}
+  @media (max-width:560px){.lab-credit{margin-left:0}}
+  .acorn-mark{width:46px;height:46px;flex:none;color:var(--amber)}
+  .wordmark{
+    font-family:var(--sans);font-weight:800;
+    font-size:clamp(2.4rem,6vw,3.6rem);letter-spacing:.12em;
+    line-height:1;margin:0;
+  }
+  .wordmark .lit{color:var(--amber)}
+  .expand{
+    font-family:var(--mono);font-size:clamp(.82rem,2.1vw,1.02rem);
+    color:var(--teal-strong);letter-spacing:.02em;margin-top:14px;font-weight:600;
+  }
+  .expand b{color:var(--ink)}
+  .thesis{
+    max-width:60ch;margin:18px 0 0;color:var(--muted);
+    font-size:clamp(1rem,2.4vw,1.14rem);text-wrap:pretty;
+  }
+  .thesis strong{color:var(--ink);font-weight:600}
+
+  /* ---------- Acronym decode ---------- */
+  .decode{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;
+  }
+  .glyph{
+    display:flex;flex-direction:column;gap:2px;
+    padding:10px 14px;border:1px solid var(--line);border-radius:12px;
+    background:var(--surface);box-shadow:var(--shadow);min-width:96px;
+  }
+  .glyph .l{font-family:var(--mono);font-weight:800;font-size:1.5rem;color:var(--amber);line-height:1}
+  .glyph .w{font-size:.86rem;color:var(--ink);font-weight:600}
+  .glyph.pun .l{color:var(--teal)}
+  .decode-note{
+    margin-top:12px;font-size:.9rem;color:var(--muted);max-width:62ch;font-style:italic;text-wrap:pretty;
+  }
+  .decode-note b{color:var(--teal-strong);font-style:normal}
+
+  /* ---------- Section headings ---------- */
+  .sec{margin-top:clamp(40px,6vw,68px)}
+  .kicker{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--teal-strong);font-weight:700;margin:0 0 6px;
+  }
+  h2{
+    font-size:clamp(1.35rem,3.2vw,1.9rem);font-weight:750;margin:0;
+    letter-spacing:-.01em;text-wrap:balance;
+  }
+  .sub{color:var(--muted);margin:8px 0 0;max-width:64ch;text-wrap:pretty}
+
+  /* ---------- Pipeline diagram ---------- */
+  .diagram-scroll{overflow-x:auto;margin-top:26px;padding:6px 2px 14px}
+  .pipeline{display:flex;align-items:stretch;gap:10px;min-width:1120px}
+  .frontend{display:flex;align-items:stretch;gap:8px}
+
+  .stage{
+    position:relative;width:158px;flex:none;display:flex;flex-direction:column;gap:9px;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:14px 14px 16px;box-shadow:var(--shadow);
+    border-top:3px solid var(--teal);
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  }
+  .stage:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+  .stage.human{border-top-color:var(--amber)}
+  .stage.model{border-top-color:var(--teal-strong)}
+  .stage-top{display:flex;align-items:center;justify-content:space-between}
+  .num{font-family:var(--mono);font-size:.82rem;font-weight:700;color:var(--muted);letter-spacing:.04em}
+  .tag{
+    font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;padding:3px 7px;border-radius:999px;white-space:nowrap;
+  }
+  .tag.auto{background:var(--teal-tint);color:var(--teal-strong)}
+  .tag.ai{background:var(--teal);color:#fff}
+  .tag.you{background:var(--amber);color:#fff}
+  @media (prefers-color-scheme:dark){.tag.ai{color:#08201d}.tag.you{color:#241705}}
+  :root[data-theme="dark"] .tag.ai{color:#08201d}
+  :root[data-theme="dark"] .tag.you{color:#241705}
+  :root[data-theme="light"] .tag.ai{color:#fff}
+  :root[data-theme="light"] .tag.you{color:#fff}
+
+  .motif{color:var(--teal);height:44px;display:flex;align-items:center}
+  .stage.human .motif{color:var(--amber)}
+  .stage.model .motif{color:var(--teal-strong)}
+  .motif svg{width:44px;height:44px}
+  .stage-title{font-weight:700;font-size:1rem;letter-spacing:-.01em}
+  .stage-desc{font-size:.82rem;color:var(--muted);line-height:1.4}
+  .stage-desc code{font-family:var(--mono);font-size:.9em;color:var(--ink);background:var(--surface-2);padding:.5px 4px;border-radius:5px}
+
+  .conn{display:flex;align-items:center;color:var(--muted);flex:none;width:22px;justify-content:center}
+  .conn svg{width:20px;height:20px}
+  .join{display:flex;align-items:center;color:var(--teal-strong);flex:none;width:30px;justify-content:center}
+  .join svg{width:26px;height:26px}
+
+  /* Self-improving loop panel */
+  .loop-panel{
+    flex:none;position:relative;border:1.5px dashed var(--amber);
+    border-radius:18px;padding:30px 16px 14px;background:
+      linear-gradient(180deg,var(--amber-tint),transparent 70%);
+  }
+  .loop-head{
+    position:absolute;top:-11px;left:20px;background:var(--amber);color:#fff;
+    font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;padding:4px 10px;border-radius:999px;
+  }
+  :root[data-theme="dark"] .loop-head{color:#241705}
+  :root[data-theme="light"] .loop-head{color:#fff}
+  @media (prefers-color-scheme:dark){.loop-head{color:#241705}}
+  .loop-cards{display:flex;align-items:stretch;gap:8px}
+
+  .return{position:relative;height:86px;margin-top:2px}
+  .return-bracket{
+    position:absolute;left:26px;right:26px;top:6px;bottom:32px;
+    border:2px solid var(--amber);border-top:none;border-radius:0 0 16px 16px;
+  }
+  .return-flow{
+    position:absolute;left:28px;right:28px;top:52px;height:3px;border-radius:2px;
+    background:repeating-linear-gradient(90deg,var(--amber) 0 9px,transparent 9px 18px);
+    background-size:18px 3px;
+  }
+  .return-arrow{
+    position:absolute;left:19px;top:-2px;width:0;height:0;
+    border-left:7px solid transparent;border-right:7px solid transparent;
+    border-bottom:10px solid var(--amber);
+  }
+  .return-label{
+    position:absolute;top:14px;left:50%;transform:translateX(-50%);
+    background:var(--surface);border:1px solid var(--amber);color:var(--amber-strong);
+    font-size:.78rem;font-weight:600;padding:5px 12px;border-radius:999px;white-space:nowrap;
+    box-shadow:var(--shadow);
+  }
+  .return-label b{font-family:var(--mono);font-weight:700}
+
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-size:.82rem;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:11px;height:11px;border-radius:3px;flex:none}
+  .dot.auto{background:var(--teal-tint);border:1.5px solid var(--teal)}
+  .dot.ai{background:var(--teal)}
+  .dot.you{background:var(--amber)}
+
+  /* ---------- Comparison ---------- */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+  @media (max-width:720px){.compare{grid-template-columns:1fr}}
+  .col{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .col.old{border-top:3px solid var(--bad)}
+  .col.new{border-top:3px solid var(--amber)}
+  .col h3{margin:0;font-size:1.15rem;font-weight:750;letter-spacing:-.01em}
+  .col .tagline{color:var(--muted);font-size:.88rem;margin:3px 0 4px}
+  .clist{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:12px;flex:1}
+  .clist li{display:flex;gap:11px;align-items:flex-start;font-size:.92rem}
+  .clist .ci{flex:none;width:20px;height:20px;margin-top:1px}
+  .old .ci{color:var(--bad)}
+  .new .ci{color:var(--good)}
+  .clist code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);padding:.5px 4px;border-radius:5px}
+  .touch{
+    margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .touch .lbl{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .people{display:flex;gap:3px;align-items:center}
+  .people svg{width:19px;height:19px}
+  .old .people{color:var(--bad)}
+  .new .people{color:var(--amber)}
+  .people .faint{opacity:.22}
+  .touch .val{font-size:.86rem;font-weight:600;color:var(--ink)}
+
+  /* ---------- Impact tiles ---------- */
+  .tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:26px}
+  @media (max-width:980px){.tiles{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:620px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:400px){.tiles{grid-template-columns:1fr}}
+  .tile{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:20px;box-shadow:var(--shadow);border-left:3px solid var(--teal);
+  }
+  .tile.amber{border-left-color:var(--amber)}
+  .tile .big{
+    font-family:var(--mono);font-weight:800;font-size:clamp(1.7rem,4vw,2.2rem);
+    line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink);
+  }
+  .tile.teal .big{color:var(--teal-strong)}
+  .tile.amber .big{color:var(--amber-strong)}
+  .tile .eyebrow{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--teal-strong);font-weight:700;margin-bottom:7px}
+  .tile .cap{margin-top:9px;font-size:.86rem;color:var(--muted);line-height:1.4}
+  .tile .cap b{color:var(--ink);font-weight:600}
+  .tile .cap .note{color:var(--muted);font-style:italic}
+
+  /* ---------- Footer ---------- */
+  .foot{
+    margin-top:clamp(40px,6vw,64px);padding-top:22px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:.86rem;max-width:78ch;text-wrap:pretty;
+  }
+  .foot b{color:var(--ink);font-weight:600}
+  .foot .grow{
+    display:inline-block;margin-top:12px;font-style:italic;color:var(--amber-strong);
+  }
+
+  /* ---------- Motion ---------- */
+  .stage,.tile,.col,.glyph{opacity:1}
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{opacity:0;transform:translateY(10px);animation:rise .55s cubic-bezier(.2,.7,.3,1) forwards;animation-delay:var(--d,0s)}
+    .return-flow{animation:flow 1.1s linear infinite}
+  }
+  @keyframes rise{to{opacity:1;transform:none}}
+  @keyframes flow{to{background-position-x:-18px}}
+
+  :focus-visible{outline:2.5px solid var(--teal);outline-offset:3px;border-radius:6px}
+</style>
+
+<main class="page">
+<div class="wrap">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="brandrow">
+      <svg class="acorn-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path d="M11 17.5c0-2.6 5.8-5.5 13-5.5s13 2.9 13 5.5c0 1.4-1.1 2.5-2.6 2.5H13.6c-1.5 0-2.6-1.1-2.6-2.5Z" fill="currentColor"/>
+        <path d="M14 20.5c0 9 4.5 17.5 10 17.5s10-8.5 10-17.5" stroke="currentColor" stroke-width="2.4"/>
+        <path d="M24 9.5V6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      <h1 class="wordmark">AC<span class="lit">O</span>RN</h1>
+      <span class="lab-credit">Kheirbek Lab &middot; UCSF</span>
+    </div>
+    <div class="expand"><b>A</b>utomated <b>C</b>NMFe <b>O</b>f <b>R</b>ecording&#8209;<b>N</b>etworks</div>
+    <p class="thesis">Drop in a raw miniscope recording. ACORN tunes the parameters, extracts the candidate neurons, throws out the obvious junk, and hands you a short review list &mdash; then <strong>learns from your calls</strong> so the next session is easier. A self&#8209;improving curation layer built on top of CNMF&#8209;E.</p>
+
+    <div class="decode">
+      <div class="glyph reveal" style="--d:.05s"><span class="l">A</span><span class="w">Automated</span></div>
+      <div class="glyph reveal" style="--d:.10s"><span class="l">C</span><span class="w">CNMF&#8209;E</span></div>
+      <div class="glyph reveal" style="--d:.15s"><span class="l">O</span><span class="w">Of</span></div>
+      <div class="glyph pun reveal" style="--d:.20s"><span class="l">R</span><span class="w">Recording&#8209;</span></div>
+      <div class="glyph pun reveal" style="--d:.25s"><span class="l">N</span><span class="w">Networks</span></div>
+    </div>
+    <p class="decode-note"><b>Recording&#8209;Networks</b> reads two ways on purpose: the neural <em>networks you record</em> from &mdash; and the <em>network of reviewers</em> the pipeline coordinates across machines.</p>
+  </header>
+
+  <!-- ================= PIPELINE ================= -->
+  <section class="sec">
+    <p class="kicker">The pipeline</p>
+    <h2>One session, end to end</h2>
+    <p class="sub">A one&#8209;time automated front&#8209;end feeds a self&#8209;improving review loop. Cool = the machine does it; warm = your one human step.</p>
+
+    <div class="diagram-scroll">
+      <div class="pipeline">
+        <div class="frontend">
+
+          <div class="stage reveal" style="--d:.05s">
+            <div class="stage-top"><span class="num">01</span><span class="tag auto">Auto</span></div>
+            <div class="motif"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><rect x="7" y="13" width="27" height="21" rx="3"/><path d="M14 9h27a3 3 0 0 1 3 3v20"/><path d="M7 21h27"/><circle cx="13" cy="17.5" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+            <div class="stage-title">Ingest</div>
+            <div class="stage-desc">A watcher spots each new recording and waits until the transfer is safely complete before touching it.</div>
+          </div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 7l6 5-6 5"/></svg></div>
+
+          <div class="stage reveal" style="--d:.12s">
+            <div class="stage-top"><span class="num">02</span><span class="tag auto">Auto</span></div>
+            <div class="motif"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><path d="M9 16h30M9 24h30M9 32h30"/><circle cx="19" cy="16" r="3.4" fill="var(--surface)"/><circle cx="31" cy="24" r="3.4" fill="var(--surface)"/><circle cx="15" cy="32" r="3.4" fill="var(--surface)"/></svg></div>
+            <div class="stage-title">Auto&#8209;tune</div>
+            <div class="stage-desc">Sets <code>gSig/gSiz</code> from the animal's learned profile and <code>min_corr</code>, <code>min_pnr</code>, <code>bd</code> from the image statistics &mdash; no hand&#8209;tuning.</div>
+          </div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 7l6 5-6 5"/></svg></div>
+
+          <div class="stage reveal" style="--d:.19s">
+            <div class="stage-top"><span class="num">03</span><span class="tag auto">Auto</span></div>
+            <div class="motif"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.1"><ellipse cx="17" cy="19" rx="7.5" ry="5.5"/><ellipse cx="31" cy="27" rx="6" ry="7.5"/><ellipse cx="21" cy="33" rx="5" ry="4"/></svg></div>
+            <div class="stage-title">Extract</div>
+            <div class="stage-desc">Headless CNMF&#8209;E factorizes the video into hundreds of candidate footprints and calcium traces.</div>
+          </div>
+          <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 7l6 5-6 5"/></svg></div>
+
+          <div class="stage reveal" style="--d:.26s">
+            <div class="stage-top"><span class="num">04</span><span class="tag auto">Auto</span></div>
+            <div class="motif"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 29h4l3-13 3.5 20 3-24 3 27 3.5-14 4 4h9"/></svg></div>
+            <div class="stage-title">Measure</div>
+            <div class="stage-desc"><code>13</code> features per candidate: footprint shape, trace quality, motion coupling, and correlation&#8209;map fit.</div>
+          </div>
+        </div>
+
+        <div class="join"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h16M14 7l7 6-7 6"/></svg></div>
+
+        <!-- Self-improving loop -->
+        <div class="loop-panel reveal" style="--d:.34s">
+          <span class="loop-head">Self&#8209;improving loop</span>
+          <div class="loop-cards">
+
+            <div class="stage model">
+              <div class="stage-top"><span class="num">05</span><span class="tag ai">AI</span></div>
+              <div class="motif"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="15" cy="17" rx="7" ry="5.5"/><path d="M11.5 17.5l2.8 2.8L20 14"/><ellipse cx="32" cy="31" rx="7" ry="5.5"/><path d="M28.5 27.5l7 7M35.5 27.5l-7 7"/></svg></div>
+              <div class="stage-title">Auto&#8209;curate</div>
+              <div class="stage-desc">The trained classifier scores every candidate, drops confident junk, and flags motion artifacts &amp; split&#8209;cell merges &mdash; leaving a short shortlist.</div>
+            </div>
+            <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 7l6 5-6 5"/></svg></div>
+
+            <div class="stage human">
+              <div class="stage-top"><span class="num">06</span><span class="tag you">You</span></div>
+              <div class="motif"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="21" r="11"/><path d="M29 29l8 8"/><path d="M16.5 21l3 3 6.5-8"/></svg></div>
+              <div class="stage-title">Review</div>
+              <div class="stage-desc">You make the final keep / delete / merge calls &mdash; on the <strong>survivors only</strong>, not the raw hundreds, with a PDF pre&#8209;read.</div>
+            </div>
+            <div class="conn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h14M13 7l6 5-6 5"/></svg></div>
+
+            <div class="stage human">
+              <div class="stage-top"><span class="num">07</span><span class="tag auto">Auto</span></div>
+              <div class="motif"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="10" width="30" height="28" rx="3"/><path d="M15 21l3.5 3.5L26 15"/><path d="M15 31h13"/></svg></div>
+              <div class="stage-title">Capture labels</div>
+              <div class="stage-desc">Your decisions are matched back to the candidates and saved as labeled training examples.</div>
+            </div>
+
+          </div>
+
+          <div class="return">
+            <div class="return-bracket"></div>
+            <div class="return-flow"></div>
+            <div class="return-arrow"></div>
+            <div class="return-label"><b>online retraining</b> &middot; new labels sharpen the classifier</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i class="dot auto"></i> Automated step (no human)</span>
+      <span><i class="dot ai"></i> Model&#8209;powered decision</span>
+      <span><i class="dot you"></i> Your one human step</span>
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON ================= -->
+  <section class="sec">
+    <p class="kicker">The payoff</p>
+    <h2>Why it beats running CNMF&#8209;E by hand</h2>
+    <p class="sub">Vanilla CNMF&#8209;E extracts candidates &mdash; everything else is manual, every session, forever. ACORN automates the front&#8209;end, pre&#8209;filters the junk, and gets better the more you use it.</p>
+
+    <div class="compare">
+      <div class="col old reveal" style="--d:.05s">
+        <h3>CNMF&#8209;E by hand</h3>
+        <p class="tagline">Every session, from scratch.</p>
+        <ul class="clist">
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Eyeball <strong>5 parameters</strong> per session by staring at the correlation and PNR images.</span></li>
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Inspect and delete <strong>every candidate by hand</strong> &mdash; often several hundred per session.</span></li>
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Nothing carries forward &mdash; the next session starts from zero. The work never gets easier.</span></li>
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>One operator at a time; consistency drifts between people and days.</span></li>
+        </ul>
+        <div class="touch">
+          <span class="lbl">Human touchpoints</span>
+          <span class="people" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </span>
+          <span class="val">every step, every session</span>
+        </div>
+      </div>
+
+      <div class="col new reveal" style="--d:.14s">
+        <h3>With ACORN</h3>
+        <p class="tagline">Drop the file, review the shortlist.</p>
+        <ul class="clist">
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Parameters set <strong>automatically</strong> from the animal profile and the image statistics.</span></li>
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Confident junk is <strong>removed before you look</strong>; motion and split&#8209;cell pairs are flagged for you.</span></li>
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Every review <strong>retrains the model</strong> &mdash; so there's less to review the next time.</span></li>
+          <li><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Reviewing <strong>distributes across a team</strong> against one canonical model per brain area.</span></li>
+        </ul>
+        <div class="touch">
+          <span class="lbl">Human touchpoints</span>
+          <span class="people" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg class="faint" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg class="faint" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg class="faint" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            <svg class="faint" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          </span>
+          <span class="val">one review &mdash; shrinking each cycle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IMPACT ================= -->
+  <section class="sec">
+    <p class="kicker">By the numbers</p>
+    <h2>What the automation buys you</h2>
+    <div class="tiles">
+      <div class="tile amber reveal" style="--d:.05s">
+        <div class="big">5&#8202;&rarr;&#8202;0</div>
+        <div class="cap"><b>Parameters you set by hand.</b> Estimated per session from the animal and the images.</div>
+      </div>
+      <div class="tile teal reveal" style="--d:.12s">
+        <div class="big">13</div>
+        <div class="cap"><b>Features scored per candidate</b> &mdash; shape, trace quality, motion, correlation&#8209;map fit.</div>
+      </div>
+      <div class="tile teal reveal" style="--d:.19s">
+        <div class="eyebrow">Real&#8209;vs&#8209;junk skill</div>
+        <div class="big">0.88</div>
+        <div class="cap">Hand it one real neuron and one junk candidate; it ranks the real one higher <b>~88% of the time</b>. <span class="note">(AUC &mdash; 1.0 = perfect, 0.5 = a coin flip.)</span></div>
+      </div>
+      <div class="tile amber reveal" style="--d:.26s">
+        <div class="big">~18%</div>
+        <div class="cap"><b>Of the junk, auto&#8209;removed.</b> Roughly a fifth of the candidates you'd have rejected are gone before you look.</div>
+      </div>
+      <div class="tile amber reveal" style="--d:.33s">
+        <div class="big">&lt;1%</div>
+        <div class="cap"><b>Real neurons ever auto&#8209;rejected.</b> The cutoff is tuned to almost never discard a good cell.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="foot">
+    <b>Under the hood:</b> ACORN wraps CNMF&#8209;E (Zhou et&nbsp;al., 2018). The curator is an <b>XGBoost</b> classifier over standardized 13&#8209;feature vectors, with one canonical model per brain area (BLA, vCA1), retrained automatically whenever a new set of human labels lands. Work is staged out to reviewers and pulled back through a shared exchange so the labeling network scales past a single machine.
+    <span class="grow">Like the acorn: a small model goes in, a sharper one comes out &mdash; every cycle.</span>
+  </footer>
+
+</div>
+</main>
