@@ -173,6 +173,27 @@ tic;
 cnmfe_update_BG;
 fprintf('Time cost in estimating the background:        %.2f seconds\n', toc);
 
+% [HEADLESS] Optional diagnostic tap — inert unless the caller defines
+% instrument_dir, which production never does.  Dumps A/C and the ring weights
+% exactly as they stand here, which is the state this script now caches to
+% Ybg_weights.mat.  Comparing that offline against weights fit on the FINAL A/C
+% (what CNMFe_precompute_BG.m used to produce) is the only way to measure what
+% the cached-weights shortcut costs, since the intermediate A/C is not otherwise
+% persisted.  With instrument_stop_after_bg the script returns before anything is
+% written, so an instrumented run cannot disturb a session awaiting review.
+if exist('instrument_dir', 'var') && ~isempty(instrument_dir)
+    if ~exist(instrument_dir, 'dir'); mkdir(instrument_dir); end
+    A_at_bg = neuron.A;  C_at_bg = neuron.C;
+    save(fullfile(instrument_dir, 'bg_tap.mat'), ...
+        'A_at_bg', 'C_at_bg', 'Ybg_weights', '-v7.3');
+    clear A_at_bg C_at_bg;
+    fprintf('[HEADLESS] instrumentation: A/C + Ybg_weights dumped to %s\n', instrument_dir);
+    if exist('instrument_stop_after_bg', 'var') && instrument_stop_after_bg
+        fprintf('[HEADLESS] instrumentation: stopping before any output is written.\n');
+        return;
+    end
+end
+
 tic;
 for m=1:2
     try
@@ -297,6 +318,33 @@ for n = 1:number_of_cells
     spatial_footprints(n,:,:) = reshape(neuron.A(:,n), d1, d2);
 end
 save('spatial_footprints.mat', 'spatial_footprints');
+
+%% [HEADLESS] Cache the background ring-model weights (~100 MB)
+% Ybg_weights holds the LLE coefficients from the last cnmfe_update_BG above.
+% CNMFe_final_save.m replays them with reconstructBG (~30-60 s) instead of
+% refitting localBG, which costs ~45 min on a 12k-frame session.  Without this
+% file CNMFe_precompute_BG.m recomputes the same thing in a separate MATLAB — a
+% third full-resolution localBG pass per session.
+%
+% Deliberately LAST, and in a try-catch: every output the Python agent needs is
+% already on disk by this point.  An unguarded save here would abort the script
+% before spatial_footprints.mat / ROIs_candidates.jpg were written, and a session
+% with neuron.mat but no ROIs_candidates.jpg is invisible to both
+% find_new_sessions and find_curator_retries — i.e. silently orphaned.
+% Skipped in bootstrap mode, like neuron.mat.
+if ~exist('dir_nm_override', 'var') || isempty(dir_nm_override)
+    if exist('Ybg_weights', 'var') && ~isempty(Ybg_weights)
+        try
+            save('Ybg_weights.mat', 'Ybg_weights');
+            fprintf('[HEADLESS] Ybg_weights.mat cached — review starts on the fast path.\n');
+        catch err_ybg
+            fprintf('[HEADLESS] WARNING: could not cache Ybg_weights (%s); review will refit the background.\n', ...
+                err_ybg.message);
+        end
+    else
+        fprintf('[HEADLESS] WARNING: Ybg_weights missing from workspace; review will refit the background.\n');
+    end
+end
 
 fprintf('\n[HEADLESS] Done. %d candidate neurons saved to %s\n', number_of_cells, dir_nm);
 fprintf('[HEADLESS] Review package will be prepared by the Python agent.\n');

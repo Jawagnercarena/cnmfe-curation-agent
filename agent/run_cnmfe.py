@@ -9,6 +9,8 @@ path setup (ca_source_extraction, cvx, deconvolveCa, GUI) the same way
 the interactive pipeline does.
 """
 
+import os
+import re
 import subprocess
 import threading
 import time
@@ -16,6 +18,30 @@ from pathlib import Path
 
 from local_config import MATLAB_EXE, REPO_ROOT as _REPO_ROOT
 REPO_ROOT = str(_REPO_ROOT)
+
+# MATLAB brackets warning text with "[\b ... ]\b" to colour it in the command
+# window. Piped to a log those markers survive as a stray trailing "]".
+_HILITE = re.compile("\\[\x08|\\]\x08")
+
+# Warnings emitted while MATLAB loads the machine's saved path (pathdef.m),
+# before any of our code runs. They report stale entries someone once saved into
+# that path; nothing here can prevent or act on them. See clean_matlab_path.m.
+_PATH_NOISE = re.compile(
+    r"^Warning: (Name is nonexistent or not a directory:"
+    r"|Function \w+ has the same name as a MATLAB built-in)"
+)
+
+# "> In addpath (line 80)" continuation lines that trail a suppressed warning.
+_STACK_LINE = re.compile(r"^\s*(> )?In \S+ \(line \d+\)\s*$")
+
+# Pre-pass budget.  This used to be 0.5 h, which was already marginal — the
+# longest observed .tif -> .mat conversion is 1268 s (21 min), 70% of that
+# ceiling before Cn/pnr are even computed, and one pre-pass has timed out.  It
+# mattered less when a timeout left an orphaned MATLAB that finished the
+# conversion anyway, so the next poll found the .mat ready and succeeded.
+# _kill_matlab_tree removes that accidental safety net, which turns a
+# self-healing failure into a hard one — hence the larger budget.
+_PRE_PASS_TIMEOUT_H = 1.5
 
 # Quick MATLAB pass: compute and save Cn.mat + pnr.mat only.
 # Python reads these to estimate min_corr, min_pnr, bd before the full run.
@@ -51,6 +77,28 @@ run('CNMFe_Biane_headless.m');
 """
 
 
+def _kill_matlab_tree(proc) -> None:
+    """
+    Terminate MATLAB and everything it spawned.
+
+    On Windows MATLAB_EXE is a thin launcher that immediately starts
+    bin\\win64\\MATLAB.exe, so proc.kill() reaps only the launcher and leaves a
+    25-33 GB MATLAB (plus its 24 parpool workers) running.  Those orphans finish
+    the job we already gave up on and write their output — so the log reports a
+    failure for work that actually succeeded minutes later — while competing for
+    cores with whatever the watcher starts next.  taskkill /T walks the tree.
+    """
+    if os.name == "nt":
+        subprocess.run(["taskkill", "/T", "/F", "/PID", str(proc.pid)],
+                       capture_output=True, text=True)
+    else:
+        proc.kill()
+    try:
+        proc.wait(timeout=15)
+    except subprocess.TimeoutExpired:
+        pass
+
+
 def _run_matlab(script: str, log, timeout_hours: float = 3.0) -> bool:
     """
     Run an inline MATLAB script via -batch. Returns True on success.
@@ -75,11 +123,19 @@ def _run_matlab(script: str, log, timeout_hours: float = 3.0) -> bool:
         # Stream stdout in real-time from a background thread
         stdout_lines = []
         def _read_stdout():
+            suppressing = False
             for line in proc.stdout:
-                line = line.rstrip()
-                if line:
-                    log(f"  [MATLAB] {line}")
-                    stdout_lines.append(line)
+                line = _HILITE.sub("", line).rstrip()
+                if not line:
+                    continue
+                if _PATH_NOISE.match(line):
+                    suppressing = True
+                    continue
+                if suppressing and _STACK_LINE.match(line):
+                    continue
+                suppressing = False
+                log(f"  [MATLAB] {line}")
+                stdout_lines.append(line)
 
         reader = threading.Thread(target=_read_stdout, daemon=True)
         reader.start()
@@ -87,7 +143,7 @@ def _run_matlab(script: str, log, timeout_hours: float = 3.0) -> bool:
         try:
             proc.wait(timeout=timeout_hours * 3600)
         except subprocess.TimeoutExpired:
-            proc.kill()
+            _kill_matlab_tree(proc)
             reader.join(timeout=5)
             log(f"  [MATLAB] TIMEOUT after {timeout_hours} hours.")
             return False
@@ -99,7 +155,7 @@ def _run_matlab(script: str, log, timeout_hours: float = 3.0) -> bool:
             log(f"  [MATLAB] Finished successfully in {elapsed/60:.1f} min.")
             return True
         else:
-            stderr = proc.stderr.read()
+            stderr = _HILITE.sub("", proc.stderr.read())
             log(f"  [MATLAB] ERROR (returncode={proc.returncode}) "
                 f"after {elapsed/60:.1f} min.")
             if stderr.strip():
@@ -132,7 +188,7 @@ def run_pre_pass(session_name: str, session_dir: Path, gSig: int, gSiz: int, log
     )
 
     log(f"\n[RUN] Pre-pass: computing Cn and pnr images...")
-    return _run_matlab(script, log, timeout_hours=0.5)
+    return _run_matlab(script, log, timeout_hours=_PRE_PASS_TIMEOUT_H)
 
 
 def run_pre_pass_to_dir(tif_path: Path, save_dir: Path, gSig: int, gSiz: int, log) -> bool:
@@ -153,7 +209,7 @@ def run_pre_pass_to_dir(tif_path: Path, save_dir: Path, gSig: int, gSiz: int, lo
     )
 
     log(f"\n[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...")
-    return _run_matlab(script, log, timeout_hours=0.5)
+    return _run_matlab(script, log, timeout_hours=_PRE_PASS_TIMEOUT_H)
 
 
 def run_full_cnmfe(session_name: str, session_dir: Path, params: dict, log) -> bool:

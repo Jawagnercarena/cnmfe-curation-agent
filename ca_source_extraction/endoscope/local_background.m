@@ -73,6 +73,7 @@ Yconv = bsxfun(@times, imfilter(Y, neigh_kernel), ...
 ind_event = (bsxfun(@times, Y-Yconv, 1./sn)> thresh); % frames with larger signal
 Y(ind_event) = Yconv(ind_event); % remove potential calcium transients
 ind_event = reshape(ind_event, d1s*d2s, []);
+clear Yconv;   % dead from here, and it is the same size as Y (6.2 GB at full res)
 
 % pixels to be approximated
 if exist('ACTIVE_PX', 'var') && ~isempty(ACTIVE_PX)
@@ -105,7 +106,25 @@ warning('off','MATLAB:SingularMatrix');
 Y = reshape(Y, d1s*d2s, []);
 Yest = zeros(size(Y));
 weights = cell(d1s, d2s);
- 
+
+% Y is stored pixel-major, so gathering a pixel's ring neighbours means reading
+% J rows out of d1s*d2s — every element on its own cache line, which turned 17 MB
+% of useful data into ~137 MB of memory traffic per pixel and left this loop
+% running at a few percent of the machine's throughput.  Keeping a time-major copy
+% makes each neighbour's samples contiguous instead, which is where the speedup
+% comes from (measured 1.60x; the transpose itself costs 0.6 s and is offset by
+% the Yconv clear above).
+%
+% Each gather below is assigned to a variable before use, and that is load-bearing,
+% not stylistic: written inline, MATLAB folds a .' into a transpose FLAG on the
+% BLAS call rather than materialising the array, which reorders the summation and
+% shifts results by ~1e-12.  Assigning forces the array to be built, so X*X' is
+% the same call on the same bytes as the pixel-major version.  Verified bit-exact
+% over 1,041,051,648 values (all 65,536 pixels at rr=28, plus boundary-weighted
+% samples at rr=18 and rr=39) — zero differing elements, weights included.
+% See profile_localBG_confirm.m.
+Yt = Y.';
+
 for m=1:length(ind_px)
     px = ind_px(m);
     % Filter NaN neighbors (boundary-adjacent pixels) BEFORE sub2ind.
@@ -121,10 +140,10 @@ for m=1:length(ind_px)
 %     J = length(ind_nhood);
     
     tmp_ind = ~ind_event(px, 2:end);
-    X = Y(ind_nhood, tmp_ind);
-    y = Y(px, tmp_ind);
-    tmpXX = X*X'; 
-    tmpXy = X*y'; 
+    X = Yt(tmp_ind, ind_nhood).';   % contiguous read; .' assigned, never inlined
+    y = Yt(tmp_ind, px).';
+    tmpXX = X*X';
+    tmpXy = X*y';
     if p_cutoff<1
         temp = tmpXy./diag(tmpXX); 
         idx = (temp < quantile(temp, p_cutoff)); 
@@ -133,7 +152,8 @@ for m=1:length(ind_px)
         ind_nhood = ind_nhood(idx); 
     end 
     w = (tmpXX+eye(size(tmpXX))*sum(diag(tmpXX))*(1e-5)) \ tmpXy;
-    Yest(px, :) = w'*Y(ind_nhood, :);
+    M = Yt(:, ind_nhood).';         % likewise assigned, so w'*M is the same call
+    Yest(px, :) = w'*M;
     weights{px} = [ind_nhood; w'];
 end
 results.weights = weights;

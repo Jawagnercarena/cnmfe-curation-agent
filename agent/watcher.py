@@ -310,10 +310,25 @@ def _precompute_bg(session_dir: Path, slog):
     Saves ~10 min from the user's interactive run_final_review session.
     Non-fatal: logs warning on failure; user falls back to slow path.
     """
+    # CNMFe_Biane_headless.m caches Ybg_weights.mat at the end of the run, so for
+    # sessions processed since then there is nothing to do and no reason to pay a
+    # MATLAB launch to find that out.
+    # The size floor guards against a truncated file (e.g. a save interrupted
+    # mid-write): skipping on one of those would leave CNMFe_final_save.m to fail
+    # on load with no way to recover.  Real ones are ~97 MB.
+    ybg = session_dir / "Ybg_weights.mat"
+    if ybg.exists() and ybg.stat().st_size > 1_000_000:
+        slog("[PRECOMPUTE] Ybg_weights.mat already cached by the headless run — skipping.")
+        return
+
+    # 2 h, not 0.5 h: this is a full-resolution localBG pass, which costs ~15 min
+    # at 5k frames and ~45-78 min at 12-17k.  The old ceiling timed out on every
+    # long session; the timeout used to leave an orphaned MATLAB that finished the
+    # job anyway, which masked it.  _kill_matlab_tree now really kills it.
     sd = str(session_dir).replace("\\", "/")
     script = f"session_dir='{sd}'; run('{_PRECOMPUTE_SCRIPT.as_posix()}')"
-    slog("[PRECOMPUTE] Pre-computing background weights (~10-15 min)...")
-    ok = run_cnmfe._run_matlab(script, slog, timeout_hours=0.5)
+    slog("[PRECOMPUTE] Pre-computing background weights (~15-75 min, scales with frame count)...")
+    ok = run_cnmfe._run_matlab(script, slog, timeout_hours=2.0)
     if ok:
         slog("[PRECOMPUTE] Ybg_weights.mat saved — run_final_review will start fast.")
     else:
