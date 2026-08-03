@@ -17,7 +17,12 @@ global d1 d2 numFrame ssub tsub sframe num2read Fs neuron neuron_ds ...
 repo_root = 'C:\code\CNMF_E_LEGACY_BIANE_CLAUDE';
 addpath(genpath(fullfile(repo_root, 'ca_source_extraction')));
 addpath(genpath(fullfile(repo_root, 'cnmfe_scripts')));
-addpath(genpath(fullfile(repo_root, 'cvx')));
+% cvx ships pre-R2013a shims (lib/narginchk_) that shadow MATLAB builtins and
+% warn on every launch; cvx_startup skips them on modern MATLAB, genpath cannot.
+cvx_dirs = strsplit(genpath(fullfile(repo_root, 'cvx')), pathsep);
+cvx_dirs = cvx_dirs(~cellfun(@isempty, cvx_dirs));
+addpath(strjoin(cvx_dirs(~endsWith(cvx_dirs, [filesep 'narginchk_'])), pathsep));
+clear cvx_dirs;
 addpath(genpath(fullfile(repo_root, 'deconvolveCa')));
 
 if ~exist('session_dir', 'var') || isempty(session_dir)
