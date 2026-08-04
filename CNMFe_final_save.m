@@ -40,7 +40,12 @@ MOTION_DELETE_FP = [];
 repo_root = fileparts(mfilename('fullpath'));   % self-locating: this file lives at the repo root
 addpath(genpath(fullfile(repo_root, 'ca_source_extraction')));
 addpath(genpath(fullfile(repo_root, 'cnmfe_scripts')));
-addpath(genpath(fullfile(repo_root, 'cvx')));
+% cvx ships pre-R2013a shims (lib/narginchk_) that shadow MATLAB builtins and
+% warn on every launch; cvx_startup skips them on modern MATLAB, genpath cannot.
+cvx_dirs = strsplit(genpath(fullfile(repo_root, 'cvx')), pathsep);
+cvx_dirs = cvx_dirs(~cellfun(@isempty, cvx_dirs));
+addpath(strjoin(cvx_dirs(~endsWith(cvx_dirs, [filesep 'narginchk_'])), pathsep));
+clear cvx_dirs;
 addpath(genpath(fullfile(repo_root, 'deconvolveCa')));
 
 if ~exist('session_dir', 'var') || isempty(session_dir)
@@ -67,6 +72,83 @@ fprintf('  %d neurons in the review set (agent already removed confident rejects
 A_review_init = full(neuron.A);   % pixels × N_review
 N_review       = size(A_review_init, 2);
 
+%% ========================================================
+%% Resumable review: decide up front whether to resume
+%% ========================================================
+% review_checkpoint.mat lets a killed MATLAB session (forced OS restart, crash,
+% or an accidental window close) resume near where it stopped instead of losing
+% the whole review. We ask the reviewer to resume-or-restart HERE, before the
+% ~20-minute video reload + background reconstruction, so they never sit through
+% that only to discover a checkpoint was (or wasn't) waiting. The heavy preamble
+% below ALWAYS re-runs regardless of the choice: it reloads the video and,
+% critically, rebuilds Ysignal from the ORIGINAL review set so re-estimation is
+% identical to an uninterrupted run. Only the curation state (the mutated neuron,
+% the motion tags, and which step we reached) is swapped in later, AFTER Ysignal
+% is fixed (see "swap in checkpointed curation state" below). A checkpoint is
+% trusted only when its fingerprint matches this exact candidate set; on any
+% mismatch we ignore it and start fresh rather than apply stale decisions to the
+% wrong neurons.
+[~, session_nm] = fileparts(session_dir);
+CHECKPOINT_SCHEMA  = 1;
+checkpoint_file    = fullfile(session_dir, 'review_checkpoint.mat');
+review_fingerprint = struct( ...
+    'session_nm',     session_nm, ...
+    'N_review',       N_review, ...
+    'a_checksum',     full(sum(A_review_init(:))), ...
+    'schema_version', CHECKPOINT_SCHEMA);
+
+resume_stage = 0;   % 0 = fresh start; N > 0 = resume after completing stage N
+do_resume    = false;
+stage_labels = { 'initial neuron review', 'intermediate update', ...
+                 'pre-video merge', 'video inspection', 'manual merge', ...
+                 'final update', 'final review loop' };
+
+if isfile(checkpoint_file)
+    try
+        ckvars  = who('-file', checkpoint_file);
+        has_all = all(ismember({'fingerprint', 'schema_version', 'step', ...
+                                'neuron', 'motion_delete_fp'}, ckvars));
+        if has_all
+            % Read only the light-weight bookkeeping vars here; the 50+ MB neuron
+            % object is loaded later, and only if the reviewer chooses to resume.
+            ckmeta = load(checkpoint_file, 'fingerprint', 'schema_version', 'step');
+            valid  = ckmeta.schema_version == CHECKPOINT_SCHEMA ...
+                && strcmp(ckmeta.fingerprint.session_nm, review_fingerprint.session_nm) ...
+                && ckmeta.fingerprint.N_review == review_fingerprint.N_review ...
+                && abs(ckmeta.fingerprint.a_checksum - review_fingerprint.a_checksum) ...
+                       <= 1e-6 * max(1, abs(review_fingerprint.a_checksum));
+        else
+            valid = false;
+        end
+    catch
+        valid = false;   % unreadable / foreign checkpoint -- start fresh
+    end
+    if valid
+        st  = ckmeta.step;
+        lbl = 'an earlier step';
+        if st >= 1 && st <= numel(stage_labels); lbl = stage_labels{st}; end
+        choice = questdlg( ...
+            sprintf(['A saved checkpoint was found for this session (stopped ' ...
+                     'after: %s).\n\nResume from there, or start the review over ' ...
+                     'from the beginning?\n\nEither way the video data reloads ' ...
+                     'first (~20 min); your choice is applied once it finishes.'], lbl), ...
+            'Resume Review', 'Resume', 'Start over', 'Resume');
+        if strcmp(choice, 'Start over')
+            delete(checkpoint_file);
+            fprintf('  Checkpoint discarded; starting the review from the beginning.\n');
+        else
+            do_resume    = true;
+            resume_stage = st;
+            fprintf(['  Will resume after "%s" (stage %d) once the data finishes ' ...
+                     'reloading -- your curated set is safe.\n'], lbl, st);
+        end
+    else
+        fprintf(['  [INFO] A review_checkpoint.mat exists but does not match this ' ...
+                 'session/candidate set (or its schema changed); ignoring it and ' ...
+                 'starting fresh.\n']);
+    end
+end
+
 % Restore key globals from neuron object
 d1 = neuron.options.d1;
 d2 = neuron.options.d2;
@@ -79,8 +161,7 @@ tsub = 1;
 %% --- Reload raw video data (needed for viewNeuronsVideo and updates) ---
 fprintf('\nReloading raw video data (this may take a moment)...\n');
 
-% Locate the .mat data file
-[~, session_nm] = fileparts(session_dir);
+% Locate the .mat data file (session_nm was computed up front for the checkpoint fingerprint)
 nam_mat = fullfile(session_dir, [session_nm, '.mat']);
 if ~isfile(nam_mat)
     % try .tif -> .mat conversion name pattern
@@ -183,17 +264,46 @@ update_spatial_method = 'hals';
 Nspatial      = 5;
 
 %% ========================================================
+%% Resumable review: swap in checkpointed curation state
+%% ========================================================
+% The resume/start-over decision was already made up front (right after
+% review_neuron.mat loaded). Now that Ysignal has been rebuilt from the ORIGINAL
+% review set, restore the checkpointed curation state on top of it so that
+% re-estimation from here on is identical to an uninterrupted run.
+if do_resume
+    ck = load(checkpoint_file, 'neuron', 'motion_delete_fp');
+    neuron           = ck.neuron;
+    MOTION_DELETE_FP = ck.motion_delete_fp;
+    clear ck;
+    % Keep the restored neuron's data path valid if the session folder moved
+    % since the checkpoint was written (mirrors the load-time sync above).
+    if ~isfile(neuron.options.name)
+        neuron.options.name = nam_mat;
+    end
+    lbl = 'an earlier step';
+    if resume_stage >= 1 && resume_stage <= numel(stage_labels)
+        lbl = stage_labels{resume_stage};
+    end
+    fprintf(['  Resumed after "%s" (stage %d): %d neurons and %d motion tag(s) ' ...
+             'restored.\n'], lbl, resume_stage, size(neuron.A, 2), ...
+             size(MOTION_DELETE_FP, 2));
+end
+
+%% ========================================================
 %% STEP 1: Final viewNeurons — delete anything that looks wrong
 %% ========================================================
-fprintf('\n--- STEP 1: Final neuron inspection (spatial footprints + traces) ---\n');
-fprintf('Delete any remaining bad neurons: (d) to delete, or (m) if the neuron\n');
-fprintf('is a motion artifact (logged as a motion delete). Close when done.\n\n');
+if resume_stage < 1
+    fprintf('\n--- STEP 1: Final neuron inspection (spatial footprints + traces) ---\n');
+    fprintf('Delete any remaining bad neurons: (d) to delete, or (m) if the neuron\n');
+    fprintf('is a motion artifact (logged as a motion delete). Close when done.\n\n');
 
-neuron.orderROIs('mean');
-neuron.viewNeurons([], neuron.C_raw);
+    neuron.orderROIs('mean');
+    neuron.viewNeurons([], neuron.C_raw);
 
-n_after_step1 = size(neuron.C, 1);
-fprintf('Neurons remaining after your review: %d\n', n_after_step1);
+    n_after_step1 = size(neuron.C, 1);
+    fprintf('Neurons remaining after your review: %d\n', n_after_step1);
+    save_review_checkpoint(session_dir, review_fingerprint, 1);
+end
 
 %% ========================================================
 %% STEP 1b: Optional intermediate update (reclaim signal from deleted neighbors)
@@ -202,10 +312,14 @@ fprintf('Neurons remaining after your review: %d\n', n_after_step1);
 % neighbor's trace is stale — signal that was "stolen" by the deleted neuron
 % won't appear until temporal components are re-estimated.
 % Run this before video inspection so you judge corrected traces.
-answer_update = questdlg( ...
-    ['Run intermediate update to reclaim signal from deleted neighbors?' ...
-     ' (recommended if you deleted any overlapping neurons; ~1-2 min)'], ...
-    'Intermediate Update', 'Yes', 'Skip', 'Skip');
+if resume_stage < 2
+    answer_update = questdlg( ...
+        ['Run intermediate update to reclaim signal from deleted neighbors?' ...
+         ' (recommended if you deleted any overlapping neurons; ~1-2 min)'], ...
+        'Intermediate Update', 'Yes', 'Skip', 'Skip');
+else
+    answer_update = 'Skip';   % already past this stage on resume; do not re-run
+end
 if strcmp(answer_update, 'Yes')
     fprintf('\n--- Intermediate update (temporal + spatial, no BG re-estimation) ---\n');
     tic;
@@ -223,12 +337,19 @@ if strcmp(answer_update, 'Yes')
     end
     fprintf('Intermediate update done (%.1f s). Neurons: %d\n', toc, size(neuron.C, 1));
 end
+if resume_stage < 2
+    save_review_checkpoint(session_dir, review_fingerprint, 2);
+end
 
 %% ========================================================
 %% STEP 1c: Optional manual merge before video inspection
 %% ========================================================
-answer_merge1 = questdlg('Do you want to run manual merge before video inspection?', ...
-    'Pre-Video Merge', 'Yes', 'Skip', 'Skip');
+if resume_stage < 3
+    answer_merge1 = questdlg('Do you want to run manual merge before video inspection?', ...
+        'Pre-Video Merge', 'Yes', 'Skip', 'Skip');
+else
+    answer_merge1 = 'Skip';   % already past this stage on resume; do not re-run
+end
 if strcmp(answer_merge1, 'Yes')
     cnmfe_manual_merge;
     waitfor(fig_merge);
@@ -255,31 +376,41 @@ if strcmp(answer_merge1, 'Yes')
         fprintf('Post-merge update done (%.1f s). Neurons: %d\n', toc, size(neuron.C, 1));
     end
 end
+if resume_stage < 3
+    save_review_checkpoint(session_dir, review_fingerprint, 3);
+end
 
 %% ========================================================
 %% STEP 2: viewNeuronsVideo — catch motion artifacts (repeatable)
 %% ========================================================
-video_done = false;
-while ~video_done
-    fprintf('\n--- STEP 2: Video inspection (motion artifact check) ---\n');
-    fprintf('Watch for spikes that coincide with global brain motion.\n');
-    fprintf('Tag motion artifacts with (m) so they are logged as motion deletes.\n');
-    fprintf('Close the window when done.\n\n');
+if resume_stage < 4
+    video_done = false;
+    while ~video_done
+        fprintf('\n--- STEP 2: Video inspection (motion artifact check) ---\n');
+        fprintf('Watch for spikes that coincide with global brain motion.\n');
+        fprintf('Tag motion artifacts with (m) so they are logged as motion deletes.\n');
+        fprintf('Close the window when done.\n\n');
 
-    neuron.viewNeuronsVideo([], neuron.C_raw);
+        neuron.viewNeuronsVideo([], neuron.C_raw);
 
-    fprintf('Neurons remaining: %d\n', size(neuron.C, 1));
+        fprintf('Neurons remaining: %d\n', size(neuron.C, 1));
 
-    answer_video = questdlg('Do you want to do another pass through the video?', ...
-        'Video Review', 'Yes, go again', 'No, continue', 'No, continue');
-    video_done = ~strcmp(answer_video, 'Yes, go again');
+        answer_video = questdlg('Do you want to do another pass through the video?', ...
+            'Video Review', 'Yes, go again', 'No, continue', 'No, continue');
+        video_done = ~strcmp(answer_video, 'Yes, go again');
+    end
+    save_review_checkpoint(session_dir, review_fingerprint, 4);
 end
 
 %% ========================================================
 %% STEP 3: Optional manual merge
 %% ========================================================
-answer = questdlg('Do you want to run manual merge (for split cells)?', ...
-    'Manual Merge', 'Yes', 'Skip', 'Skip');
+if resume_stage < 5
+    answer = questdlg('Do you want to run manual merge (for split cells)?', ...
+        'Manual Merge', 'Yes', 'Skip', 'Skip');
+else
+    answer = 'Skip';   % already past this stage on resume; do not re-run
+end
 if strcmp(answer, 'Yes')
     cnmfe_manual_merge;
     waitfor(fig_merge);   % block until FINISH button closes the figure
@@ -290,26 +421,32 @@ if strcmp(answer, 'Yes')
         fprintf('Merge log saved: %d neurons merged (%s)\n', sum(ind_del), merge_log_file);
     end
 end
+if resume_stage < 5
+    save_review_checkpoint(session_dir, review_fingerprint, 5);
+end
 
 %% ========================================================
 %% STEP 4: Final spatial/temporal update on curated set
 %% ========================================================
-fprintf('\n--- Updating spatial & temporal components on curated set ---\n');
+if resume_stage < 6
+    fprintf('\n--- Updating spatial & temporal components on curated set ---\n');
 
-tic;
-for m = 1:2
-    try
-        neuron.updateTemporal_endoscope(Ysignal);
-    catch err_temporal
-        fprintf('  [WARNING] updateTemporal_endoscope failed -- temporal components for degenerate neurons unchanged, all spatial footprints intact: %s\n', err_temporal.message);
+    tic;
+    for m = 1:2
+        try
+            neuron.updateTemporal_endoscope(Ysignal);
+        catch err_temporal
+            fprintf('  [WARNING] updateTemporal_endoscope failed -- temporal components for degenerate neurons unchanged, all spatial footprints intact: %s\n', err_temporal.message);
+        end
+        cnmfe_quick_merge;
+        neuron.updateSpatial_endoscope(Ysignal, Nspatial, update_spatial_method);
+        neuron.trimSpatial(0.01, 3);
+        neuron.compactSpatial();
+        cnmfe_merge_neighbors;
     end
-    cnmfe_quick_merge;
-    neuron.updateSpatial_endoscope(Ysignal, Nspatial, update_spatial_method);
-    neuron.trimSpatial(0.01, 3);
-    neuron.compactSpatial();
-    cnmfe_merge_neighbors;
+    fprintf('Update done (%.1f s). Final neuron count: %d\n', toc, size(neuron.C, 1));
+    save_review_checkpoint(session_dir, review_fingerprint, 6);
 end
-fprintf('Update done (%.1f s). Final neuron count: %d\n', toc, size(neuron.C, 1));
 
 %% ========================================================
 %% STEP 4b: Final review loop — keep deleting / merging until satisfied
@@ -392,6 +529,12 @@ while ~review_done
 
     else  % 'Save now' or dialog closed
         review_done = true;
+    end
+    if ~review_done
+        % Per-iteration checkpoint: the reviewer lingers in this loop making
+        % deletes/merges, so snapshot after each completed pass. 'Save now' skips
+        % this (we are about to finalize and clear the checkpoint below).
+        save_review_checkpoint(session_dir, review_fingerprint, 7);
     end
 end
 
@@ -528,5 +671,45 @@ neuron.viewNeurons([], neuron.C_raw, dir_neurons);
 warning(ws);
 close(gcf);
 
+% Review finished and every output written -- remove the checkpoint so this
+% completed session can never resume into a stale mid-review state.
+if exist('checkpoint_file', 'var') && isfile(checkpoint_file)
+    delete(checkpoint_file);
+    fprintf('  Checkpoint cleared (session complete).\n');
+end
+
 fprintf('\n=== Done. %d final neurons saved to %s ===\n', number_of_cells, session_dir);
 fprintf('You can now close MATLAB or process the next session.\n');
+
+
+% -----------------------------------------------------------------------
+% Local functions
+% -----------------------------------------------------------------------
+
+function save_review_checkpoint(session_dir, review_fingerprint, stage)
+% Atomically write the resumable-review checkpoint at a step boundary. Reads the
+% live curation state (neuron + motion tags) from the globals set by this script.
+% Writing to a .tmp then renaming means a crash mid-write cannot corrupt an
+% existing good checkpoint. The file is named review_checkpoint.mat so no
+% downstream scanner (watcher.py / ingest_returns / train_classifier) mistakes it
+% for a finished session. A checkpoint save must never abort the review, so any
+% failure is caught and reported rather than raised.
+    global neuron MOTION_DELETE_FP; %#ok<GVMIS>
+    ckpt = struct();
+    ckpt.neuron           = neuron;
+    ckpt.motion_delete_fp = MOTION_DELETE_FP;
+    ckpt.step             = stage;
+    ckpt.fingerprint      = review_fingerprint;
+    ckpt.schema_version   = review_fingerprint.schema_version;
+    tmp_file  = fullfile(session_dir, 'review_checkpoint.mat.tmp');
+    dest_file = fullfile(session_dir, 'review_checkpoint.mat');
+    try
+        save(tmp_file, '-struct', 'ckpt', '-v7');
+        [ok, msg] = movefile(tmp_file, dest_file, 'f');
+        if ~ok; error('movefile failed: %s', msg); end
+        fprintf('  [checkpoint] saved after stage %d (%d neurons).\n', stage, size(neuron.A, 2));
+    catch err_ckpt
+        fprintf(2, '  [checkpoint] WARNING: could not save (%s); review continues.\n', err_ckpt.message);
+        if isfile(tmp_file); delete(tmp_file); end
+    end
+end
