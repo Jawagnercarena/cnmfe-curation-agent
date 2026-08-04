@@ -222,31 +222,118 @@ if isfile(ybg_cache)
     wdata   = load(ybg_cache);
     weights = wdata.Ybg_weights;
     clear wdata;
-    tic;
+    t_all = tic;
     % Inline reconstructBG without parfor.
     % neuron.reconstructBG uses parfor over ~65k pixels; MATLAB tries to serialize Y
     % (~3.5 GB) to each of 24 workers, causing OOM during deserialization.
-    % This for-loop version is identical in result; ~30-60 s single-threaded.
+    % This for-loop version is identical in result.  Each step is timed because the
+    % cost here is badly non-obvious: it is dominated by the ring gather below, not
+    % by the data load or the imresize (measured, see the loop comment).
+    t_step  = tic;
     Yres    = neuron.reshape(Y - neuron.A * neuron.C, 2);   % [d1 × d2 × T]
+    fprintf('  residual Y-A*C          %6.1f s\n', toc(t_step));
     [d1f, d2f, T_bg] = size(Yres);
     dims    = weights.dims;                                   % downsampled size, e.g. [256 256]
+    t_step  = tic;
     b0_bg   = mean(Yres, 3);                                 % [d1 × d2] per-pixel temporal mean
     Yds     = imresize(bsxfun(@minus, Yres, b0_bg), dims);   % demean + downsample → [d1s × d2s × T]
     clear Yres;
     Yds     = reshape(Yds, [], T_bg);                        % [nPix_ds × T]
+    fprintf('  demean + downsample     %6.1f s\n', toc(t_step));
     nPix_ds = size(Yds, 1);
     Ybg_ds  = zeros(nPix_ds, T_bg);
-    for m = 1:nPix_ds
-        w = weights.weights{m};
-        Ybg_ds(m, :) = w(2,:) * Yds(w(1,:), :);
+
+    % Yds is pixel-major, so gathering a pixel's ring neighbours reads J rows out of
+    % nPix_ds — each element on its own cache line.  At 65,536 pixels x ~145
+    % neighbours x T that is ~1.4e11 gathered elements: 1 TB of useful data fetched as
+    % ~4 TB of cache-line traffic, single-threaded.  Measured at ~35 min on a
+    % 15,149-frame session, not the "30-60 s" an earlier comment here guessed.
+    % A time-major copy makes each neighbour's samples contiguous instead.
+    %
+    % The .' is assigned to a variable rather than written inline, and that is
+    % load-bearing: inline, MATLAB folds a .' into a transpose FLAG on the BLAS call
+    % instead of materialising the array, which reorders the summation and shifts
+    % results by ~1e-12.  Assigning forces the array to be built, so the multiply is
+    % the same BLAS call on the same bytes as the pixel-major version.  A transpose
+    % is a pure permutation, so M here is bit-identical to Yds(w(1,:), :).  Same
+    % substitution as local_background.m lines 155-156, verified bit-exact there over
+    % 1,041,051,648 values.
+    t_step  = tic;
+    Ydst    = Yds.';                                         % [T × nPix_ds]
+    clear Yds;
+    fprintf('  transpose to time-major %6.1f s\n', toc(t_step));
+    % Each pixel's row of Ybg_ds is an independent weighted sum over its own ring, so
+    % this parallelises exactly and parfor does not touch the arithmetic inside an
+    % iteration — the result is bit-identical to the serial loop.
+    %
+    % Use a THREAD pool, not the default process pool.  Threads share the parent's
+    % memory, so Ydst (6-8 GB) is not copied per worker.  That copy is exactly what
+    % made the original neuron.reconstructBG parfor blow up across 24 process workers
+    % (~190 GB of broadcast), and it is the only reason this loop was ever serial.
+    % The pool is deleted afterwards so later parfors still get MATLAB's usual
+    % process pool rather than inheriting a thread pool they may not support.
+    Wcell     = weights.weights;    % lift out of the struct for the workers
+    n_thr     = 0;
+    pool_here = false;
+    try
+        p_now = gcp('nocreate');
+        if isempty(p_now)
+            p_now    = parpool('Threads');
+            pool_here = true;
+            n_thr     = p_now.NumWorkers;
+        elseif isa(p_now, 'parallel.ThreadPool')
+            n_thr = p_now.NumWorkers;   % reuse an existing thread pool
+        end                             % a process pool is left alone -> serial
+    catch ME
+        fprintf('  [INFO] thread pool unavailable (%s) — running serially.\n', ME.identifier);
+        n_thr = 0;
     end
-    clear Yds weights;
+
+    % The parfor is wrapped: a thread pool that opens but cannot run this body would
+    % otherwise throw ~30 s into a session the reviewer has already waited on.  On
+    % failure we re-zero (a partial parfor may have written some rows) and fall back
+    % to the serial loop, which is exactly the previous behaviour — so the worst case
+    % of this change is the speed we already had, never a lost session.
+    t_step  = tic;
+    did_par = false;
+    if n_thr > 0
+        fprintf('  ring gather: %d pixels on %d threads (dominant step)...\n', ...
+            nPix_ds, n_thr);
+        try
+            parfor m = 1:nPix_ds
+                w = Wcell{m};
+                M = Ydst(:, w(1,:)).';   % contiguous gather; .' assigned, never inlined
+                Ybg_ds(m, :) = w(2,:) * M;
+            end
+            did_par = true;
+        catch ME
+            fprintf('  [INFO] parallel gather failed (%s) — falling back to serial.\n', ...
+                ME.identifier);
+            Ybg_ds = zeros(nPix_ds, T_bg);   % discard any partial writes
+        end
+    end
+    if ~did_par
+        fprintf('  ring gather: %d pixels, SERIAL — the slow step, ~5-6 min...\n', ...
+            nPix_ds);
+        for m = 1:nPix_ds
+            w = Wcell{m};
+            M = Ydst(:, w(1,:)).';       % contiguous gather; .' assigned, never inlined
+            Ybg_ds(m, :) = w(2,:) * M;
+        end
+    end
+    fprintf('  ring gather             %6.1f s\n', toc(t_step));
+    if pool_here
+        delete(gcp('nocreate'));
+    end
+    clear Ydst weights Wcell;
+    t_step  = tic;
     Ybg_ds  = reshape(Ybg_ds, [dims, T_bg]);
     Ybg     = bsxfun(@plus, imresize(Ybg_ds, [d1f, d2f]), b0_bg);  % upsample + add mean
     clear Ybg_ds b0_bg;
     Ybg     = neuron.reshape(Ybg, 1);                        % [d1*d2 × T]
     Ysignal = Y - Ybg;
-    fprintf('Background reconstructed (%.1f s).\n', toc);
+    fprintf('  upsample + Ysignal      %6.1f s\n', toc(t_step));
+    fprintf('Background reconstructed (%.1f s).\n', toc(t_all));
 else
     fprintf('\nEstimating background (no pre-computed weights — takes ~10 min)...\n');
     spatial_ds_factor = 2;
