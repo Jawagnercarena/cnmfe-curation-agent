@@ -116,10 +116,13 @@
 
             %% full-frame view
             subplot(221); % make title for this view
+            % Set the colour on BOTH branches. This axes is created once, outside the
+            % loop, so its title object persists all pass; title() without a colour
+            % only replaces the String, which left every neuron after a delete red.
             if ind_del(m)
                 title(sprintf('Neuron %d', ind(m)), 'color', 'r');
             else
-                title(sprintf('Neuron %d', ind(m)));
+                title(sprintf('Neuron %d', ind(m)), 'color', 'k');
             end
             %% zoomed-in view of spatial component
             subplot(222);

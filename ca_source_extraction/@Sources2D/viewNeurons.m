@@ -69,10 +69,14 @@ try
         subplot(221);
         obj.image(obj.A(:, ind(m)).*Amask(:, ind(m))); %
         axis equal; axis off;
+        % Set the colour on BOTH branches. Only obj.image() above (which redraws the
+        % axes each iteration) resets the title colour here; drop it and this viewer
+        % inherits viewNeuronsVideo's bug, where a red title stayed red for every
+        % neuron after a delete.
         if ind_del(m)
             title(sprintf('Neuron %d', ind(m)), 'color', 'r');
         else
-            title(sprintf('Neuron %d', ind(m)));
+            title(sprintf('Neuron %d', ind(m)), 'color', 'k');
         end
         %% zoomed-in view
         subplot(222);
