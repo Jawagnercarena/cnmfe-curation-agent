@@ -85,7 +85,7 @@ def load_all_records():
             X, y_full = result
             X = X.astype(float)
             y = (y_full == 1).astype(int)
-            is_bs = (sd / "bootstrap_match_stats.json").exists()
+            is_bs = _tc._is_bootstrap_session(sd)
             records.append({
                 "name": f"{td.name}/{sd.name}",
                 "X": X,

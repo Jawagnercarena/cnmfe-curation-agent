@@ -110,6 +110,49 @@ def find_bootstrap_sessions() -> list[tuple[str, Path, Path]]:
     return sessions
 
 
+def find_missing_stats_sessions() -> list[tuple[str, Path, Path]]:
+    """
+    Already-bootstrapped pre-agent sessions that are MISSING bootstrap_match_stats.json.
+
+    These are legacy sessions matched before that file was written: they have
+    candidate_features.npz + labels.mat + neuron.mat but no stats JSON, so
+    train_classifier's provenance fallback still trains them as bootstrap, but
+    without the recovery rate (bad-session 0.4x) and ambiguous-candidate mask that
+    the JSON supplies.  Reprocessing re-runs the match and regenerates the JSON
+    (and refreshes npz/labels) so they get full, correct bootstrap weighting.
+    Used by --refresh-missing-stats.  Mirrors find_bootstrap_sessions but inverts
+    the "already bootstrapped" test: require npz+labels present and JSON absent.
+    """
+    sessions = []
+    for task_dir in sorted(DATA_ROOT.iterdir()):
+        if not task_dir.is_dir() or task_dir.name.startswith("."):
+            continue
+        for session_dir in sorted(task_dir.iterdir()):
+            if not session_dir.is_dir():
+                continue
+            # Skip agent-pipeline sessions
+            if (session_dir / "ROIs_candidates.jpg").exists():
+                continue
+            # Must already be a labeled bootstrap session (npz + labels present) ...
+            if not ((session_dir / "candidate_features.npz").exists() and
+                    (session_dir / "labels.mat").exists()):
+                continue
+            # ... but MISSING the stats JSON (that's the whole point)
+            if (session_dir / "bootstrap_match_stats.json").exists():
+                continue
+            # Must have curated outputs + a .tif to re-run headless matching
+            has_neuron  = (session_dir / "neuron.mat").exists()
+            has_outputs = ((session_dir / "A.txt").exists() or
+                           (session_dir / "spatial_footprints.mat").exists())
+            if not has_neuron or not has_outputs:
+                continue
+            tifs = list(session_dir.glob("*.tif")) + list(session_dir.glob("*.tiff"))
+            if not tifs:
+                continue
+            sessions.append((task_dir.name, session_dir, tifs[0]))
+    return sessions
+
+
 # ---------------------------------------------------------------------------
 # Step 1 — Extract A_final from curated neuron.mat
 # ---------------------------------------------------------------------------
@@ -413,6 +456,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true",
                         help="List eligible sessions without running anything.")
+    parser.add_argument("--refresh-missing-stats", action="store_true",
+                        help="Reprocess already-bootstrapped pre-agent sessions that are "
+                             "MISSING bootstrap_match_stats.json (legacy sessions matched "
+                             "before that file existed). Regenerates the JSON and refreshes "
+                             "npz/labels so they get proper bootstrap weighting. NOTE: this "
+                             "overwrites those sessions' npz/labels with a fresh match.")
     parser.add_argument("--worker", type=int, default=0,
                         help="Worker index (0-based). Use with --num-workers.")
     parser.add_argument("--num-workers", type=int, default=1,
@@ -425,7 +474,9 @@ def main():
         parser.error(f"--worker must be in [0, num-workers). "
                      f"Got {args.worker} with --num-workers {args.num_workers}.")
 
-    all_sessions = find_bootstrap_sessions()
+    all_sessions = (find_missing_stats_sessions()
+                    if args.refresh_missing_stats
+                    else find_bootstrap_sessions())
     # Interleaved split: worker W takes indices W, W+N, W+2N, ...
     sessions = all_sessions[args.worker::args.num_workers]
 

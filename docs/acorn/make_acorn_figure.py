@@ -220,7 +220,7 @@ ax.add_patch(FancyBboxPatch(
     boxstyle="round,pad=0,rounding_size=0.3", linewidth=0, facecolor=HUMAN, zorder=3))
 ax.text(8.6, BAND_Y + BAND_H - 1.6, "BY THE NUMBERS  ·  HUMAN CURATION BEHIND THE MODEL",
         ha="left", va="center", fontsize=6.4, fontweight="bold", color=AUTO_STR, zorder=4, **MONO)
-ax.text(8.6, BAND_Y + 2.3, "88,000+ human-labeled cells  ·  261 sessions",
+ax.text(8.6, BAND_Y + 2.3, "90,000+ human-labeled cells  ·  285 sessions",
         ha="left", va="center", fontsize=12.5, fontweight="bold",
         color=HUMAN_STR, zorder=4, **MONO)
 _cap = ("Each carries a human keep/delete decision - made directly in ACORN review, "
@@ -232,8 +232,8 @@ ax.text(74, BAND_Y + BAND_H - 1.5, "\n".join(textwrap.wrap(_cap, width=48)),
 tiles = [
     ("5 → 0", "Parameters you set by hand. Estimated per session from the animal and the images.", HUMAN, HUMAN_STR),
     ("13", "Features scored per candidate: shape, trace quality, motion, correlation-map fit.", AUTO, AUTO_STR),
-    ("0.88", "Real-vs-junk skill: ranks a real neuron above a junk one ~88% of the time. (AUC: 1.0 = perfect, 0.5 = a coin flip.)", AUTO, AUTO_STR),
-    ("~18%", "Of the junk, auto-removed before you ever look at it.", HUMAN, HUMAN_STR),
+    ("0.91", "Real-vs-junk skill: ranks a real neuron above a junk one ~91% of the time. (AUC: 1.0 = perfect, 0.5 = a coin flip.)", AUTO, AUTO_STR),
+    ("~27%", "Of the junk, auto-removed before you ever look at it.", HUMAN, HUMAN_STR),
     ("<1%", "Real neurons ever auto-rejected -- tuned to almost never discard a good cell.", HUMAN, HUMAN_STR),
 ]
 NT = len(tiles)

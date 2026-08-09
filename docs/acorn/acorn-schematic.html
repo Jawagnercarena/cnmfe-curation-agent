@@ -239,6 +239,40 @@
   .bf-op{display:flex;align-items:center;justify-content:center;color:var(--human-strong);
     font-weight:700;font-size:1.15rem;flex:none;width:16px}
 
+  /* ---------- Hardening / quality-of-life ---------- */
+  .headline-stat.auto{border-left-color:var(--auto)}
+  .headline-stat.auto .hs-num{color:var(--auto-strong)}
+  .blk{margin-top:32px}
+  .blk-h{font-family:var(--disp);font-size:1.16rem;font-weight:700;letter-spacing:.01em;margin:0;text-wrap:balance}
+  .blk-p{color:var(--muted);margin:7px 0 0;max-width:72ch;text-wrap:pretty;font-size:.94rem}
+  .blk-p b{color:var(--ink);font-weight:600}
+  .ledger{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+  .lg-row{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);
+    border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+  @media (max-width:760px){.lg-row{grid-template-columns:1fr}}
+  .lg-was,.lg-now{display:flex;gap:11px;align-items:flex-start;padding:16px 18px;
+    font-size:.9rem;line-height:1.5}
+  .lg-was{background:var(--surface-2);border-left:3px solid var(--bad);color:var(--ink)}
+  .lg-now{border-left:3px solid var(--good);color:var(--muted)}
+  .lg-row.flag .lg-was{background:var(--bad-tint)}
+  .lg-ic{flex:none;width:19px;height:19px;margin-top:2px}
+  .lg-was .lg-ic{color:var(--bad)}
+  .lg-now .lg-ic{color:var(--good)}
+  .lg-was b,.lg-now b{color:var(--ink);font-weight:600}
+  .lg-was code,.lg-now code{font-family:var(--mono);font-size:.86em;background:var(--surface);
+    border:1px solid var(--line);padding:.5px 4px;border-radius:5px}
+  .lg-row.flag .lg-was code{background:var(--surface)}
+  .lg-flag{display:inline-block;font-family:var(--mono);font-size:.58rem;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;background:var(--bad);color:#fff;
+    padding:2px 7px;border-radius:999px;margin-bottom:7px}
+  .chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:12px;margin-top:20px}
+  .chip{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;font-size:.84rem;color:var(--muted);line-height:1.45}
+  .chip b{color:var(--ink);font-weight:600}
+  .chip > b:first-child{display:block;margin-bottom:3px}
+  .chip code{font-family:var(--mono);font-size:.88em;background:var(--surface);
+    border:1px solid var(--line);padding:.5px 4px;border-radius:5px}
+
   /* ---------- Footer ---------- */
   .foot{
     margin-top:clamp(40px,6vw,64px);padding-top:22px;border-top:1px solid var(--line);
@@ -448,12 +482,12 @@
       </div>
       <div class="tile auto reveal" style="--d:.19s">
         <div class="eyebrow">Real&#8209;vs&#8209;junk skill</div>
-        <div class="big">0.88</div>
-        <div class="cap">Hand it one real neuron and one junk candidate; it ranks the real one higher <b>~88% of the time</b>. <span class="note">(AUC &mdash; 1.0 = perfect, 0.5 = a coin flip.)</span></div>
+        <div class="big">0.91</div>
+        <div class="cap">Hand it one real neuron and one junk candidate; it ranks the real one higher <b>~91% of the time</b>. <span class="note">(AUC &mdash; 1.0 = perfect, 0.5 = a coin flip.)</span></div>
       </div>
       <div class="tile human reveal" style="--d:.26s">
-        <div class="big">~18%</div>
-        <div class="cap"><b>Of the junk, auto&#8209;removed.</b> Roughly a fifth of the candidates you'd have rejected are gone before you look.</div>
+        <div class="big">~27%</div>
+        <div class="cap"><b>Of the junk, auto&#8209;removed.</b> Roughly a quarter of the candidates you'd have rejected are gone before you look.</div>
       </div>
       <div class="tile human reveal" style="--d:.33s">
         <div class="big">&lt;1%</div>
@@ -469,9 +503,9 @@
     <p class="sub">The classifier only ever learns from decisions a person actually made &mdash; and it didn't start from zero. It inherited years of the lab's manual curation.</p>
 
     <div class="headline-stat reveal" style="--d:.05s">
-      <div class="hs-num">88,000<span class="plus">+</span></div>
+      <div class="hs-num">90,000<span class="plus">+</span></div>
       <div class="hs-body">
-        <div class="hs-label">human&#8209;labeled candidate cells, across 261 sessions</div>
+        <div class="hs-label">human&#8209;labeled candidate cells, across 285 sessions</div>
         <div class="hs-desc">Two brain areas (BLA + vCA1). Every candidate carries a keep / delete decision &mdash; made <b>directly in ACORN review</b>, or <b>transferred from the lab's prior hand&#8209;curation</b> by spatial matching.</div>
       </div>
     </div>
@@ -480,7 +514,7 @@
       <div class="src src-direct reveal" style="--d:.12s">
         <div class="src-tag">Direct review</div>
         <h3>Curated inside ACORN</h3>
-        <p>Every session you review turns your keep / delete / merge calls into labeled examples &mdash; about <b>8,400 cells reviewed directly</b> so far, and growing with every session. This is the online&#8209;retraining loop from the pipeline above.</p>
+        <p>Every session you review turns your keep / delete / merge calls into labeled examples &mdash; about <b>10,800 cells reviewed directly</b> so far, and growing with every session. This is the online&#8209;retraining loop from the pipeline above.</p>
       </div>
       <div class="src src-boot reveal" style="--d:.19s">
         <div class="src-tag">Bootstrap</div>
@@ -497,6 +531,67 @@
       <div class="bf-node reveal" style="--d:.36s"><div class="bf-h">Spatial match</div><div class="bf-s">line the new candidates up with the trusted neurons</div></div>
       <div class="bf-op">&rarr;</div>
       <div class="bf-node reveal" style="--d:.42s"><div class="bf-h">Labeled cells</div><div class="bf-s">matched &rarr; real &nbsp;&middot;&nbsp; unmatched &rarr; reject &nbsp;&middot;&nbsp; ambiguous dropped</div></div>
+    </div>
+  </section>
+
+  <!-- ================= HARDENING / QUALITY OF LIFE ================= -->
+  <section class="sec" id="hardening">
+    <p class="kicker">Beyond the model</p>
+    <h2>CNMF&#8209;E itself got faster and harder to break</h2>
+    <p class="sub">The classifier is only half of it. The same work rebuilt the parts of CNMF&#8209;E that made a session slow, and the review loop that could throw away an afternoon of curation. These land whether or not you use the model.</p>
+
+    <div class="blk">
+      <h3 class="blk-h">The waiting got shorter</h3>
+      <p class="blk-p">One step dominated everything: the full&#8209;resolution background estimate. It was the bulk of an automated run, and it was what a reviewer actually sat through when a session opened &mdash; long enough that it read as a hang rather than a step. It turned out to be <b>starved for memory, not short of compute</b>: the inner loop gathered each pixel's ring of neighbours across the grain of how the video is stored, so nearly everything it pulled out of memory went unused. It was also being recomputed from scratch several times per session. Both are fixed, in both of the places that loop appears.</p>
+    </div>
+
+    <div class="headline-stat auto reveal" style="--d:.05s">
+      <div class="hs-num">0</div>
+      <div class="hs-body">
+        <div class="hs-label">differing values out of 836,763,648</div>
+        <div class="hs-desc">The rewrite is <b>bit&#8209;identical, not approximate</b>. The edited code was run against a byte&#8209;for&#8209;byte copy of the original on the same inputs and compared element by element &mdash; exhaustively across the pixel grid, and across the full range of neuron sizes in the cohort. Nothing downstream shifts, so nothing downstream had to be re&#8209;validated.</div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <h3 class="blk-h">Nothing eats your review</h3>
+      <p class="blk-p">A curation pass is hours of irreplaceable human judgment, and the review loop used to treat it as disposable &mdash; decisions were held in memory and only written at the very end, so anything that went wrong in between took all of them with it.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="lg-row reveal" style="--d:.05s">
+        <div class="lg-was"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>A killed MATLAB &mdash; a crash, a forced restart, an accidental close &mdash; lost the <b>entire</b> pass.</span></div>
+        <div class="lg-now"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Progress is checkpointed step by step, written atomically, and fingerprinted so a stale checkpoint can never be applied to a different candidate set. Confirmed on a real session by restoring <b>155 neurons and 3 motion tags</b> after an interruption.</span></div>
+      </div>
+      <div class="lg-row reveal" style="--d:.10s">
+        <div class="lg-was"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Any error inside the loop discarded <b>every decision in the pass</b> and took the save script down with it. It had already cost two reviews.</span></div>
+        <div class="lg-now"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Both review loops are wrapped, so a partial pass is kept and handed back to you. The worst case is redoing part of a session instead of all of it.</span></div>
+      </div>
+      <div class="lg-row reveal" style="--d:.15s">
+        <div class="lg-was"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Two crash classes aborted whole reviews: a degenerate all&#8209;zero footprint, and a stale image handle when jumping between neurons.</span></div>
+        <div class="lg-now"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Contours draw defensively. A graphics glitch degrades to one skipped outline and the review keeps going.</span></div>
+      </div>
+      <div class="lg-row reveal" style="--d:.20s">
+        <div class="lg-was"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Closing the window mid&#8209;pass threw &mdash; while the on&#8209;screen instructions told you to close the window when you were done.</span></div>
+        <div class="lg-now"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>A closed window is read as end&#8209;of&#8209;pass. The check runs before anything is drawn, so a pass can't limp on invisibly in a fresh empty figure.</span></div>
+      </div>
+      <div class="lg-row flag reveal" style="--d:.25s">
+        <div class="lg-was"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span><span class="lg-flag">Silent</span><br><code>jump to (#)</code> was unvalidated, and relative in one viewer but absolute in the other. An out&#8209;of&#8209;range number <b>silently ended the pass</b> &mdash; leaving every neuron you hadn't reached yet at its default of <b>keep</b>.</span></div>
+        <div class="lg-now"><svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg><span>Both viewers resolve the number against the neuron named in the prompt, and refuse anything else. This is the only item here that could quietly change a result rather than just cost you time.</span></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <h3 class="blk-h">Smaller frictions, gone</h3>
+      <p class="blk-p">The rest is the accumulated grit of running a pipeline daily &mdash; individually minor, collectively the difference between a tool you tolerate and one you forget you're using.</p>
+    </div>
+
+    <div class="chips">
+      <div class="chip reveal" style="--d:.05s"><b>A leak in the video viewer</b>Two full copies of the session video stayed resident for as long as the window was open, once per pass &mdash; <b>2,158&nbsp;MB</b> measured still held after the viewer had returned. Released now.</div>
+      <div class="chip reveal" style="--d:.10s"><b>Timeouts that lied</b>Giving up on a run reaped only the MATLAB launcher, so the real job carried on and finished. The log reported failure for work that had succeeded, while the retry loop booked a second copy onto the same machine. The whole process tree comes down now.</div>
+      <div class="chip reveal" style="--d:.15s"><b>A key for motion artifacts</b><code>(m)</code> deletes a neuron and tags it as motion, so motion labels accumulate as a side effect of ordinary review instead of a separate pass over the data.</div>
+      <div class="chip reveal" style="--d:.20s"><b>A progress view that maintains itself</b>Each reviewer's outbox is their to&#8209;do pile and their inbox is their done pile. Returning a session is the only &ldquo;mark done&rdquo; there is.</div>
+      <div class="chip reveal" style="--d:.25s"><b>Colour that means what you think</b>A neuron's title no longer stays red after a delete, so red always tells you about the neuron in front of you.</div>
     </div>
   </section>
 

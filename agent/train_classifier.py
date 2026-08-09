@@ -324,6 +324,26 @@ def load_prospective_session(session_dir: Path) -> tuple[np.ndarray, np.ndarray]
 # Bootstrap weighting helpers
 # ---------------------------------------------------------------------------
 
+def _is_bootstrap_session(session_dir: Path) -> bool:
+    """True if this is a pre-agent (spatial-matched) bootstrap session.
+
+    The definitive marker is bootstrap_match_stats.json, written by
+    bootstrap_preagent.py.  A handful of early pre-agent sessions were matched
+    before that file existed, so they carry candidate_features.npz + labels.mat +
+    a curated neuron.mat but no stats JSON.  Without this fallback they were
+    misread as agent-reviewed and trained at full agent weight (4.0x) instead of
+    base bootstrap weight — they have no agent-review artifacts, so detect them by
+    provenance: a curated neuron.mat present and none of the agent-review files.
+    """
+    if (session_dir / "bootstrap_match_stats.json").exists():
+        return True
+    agent_artifacts = ("ROIs_candidates.jpg", "agent_run.log", "review_report.pdf",
+                       "review_assigned.txt", "review_summary.txt")
+    if any((session_dir / a).exists() for a in agent_artifacts):
+        return False
+    return (session_dir / "neuron.mat").exists()
+
+
 def _get_bootstrap_recovery(session_dir: Path) -> float | None:
     """Return the bootstrap recovery rate for a session, or None if not bootstrap."""
     stats_file = session_dir / "bootstrap_match_stats.json"
@@ -670,7 +690,7 @@ def main():
         result = load_prospective_session(session_dir)
         if result is not None:
             X, y = result
-            is_bs = (session_dir / "bootstrap_match_stats.json").exists()
+            is_bs = _is_bootstrap_session(session_dir)
             log(f"  {'[BS]' if is_bs else '[AG]'} "
                 f"{session_dir.parent.name}/{session_dir.name}: "
                 f"{int(y.sum())} keep, {int((y == 0).sum())} delete  "
@@ -884,7 +904,14 @@ def main():
     # 19.2% garbage caught (vs 21.4% at 0.15) — smooth curve, knee still at 0.18.
     # floor=4.0 / bad_w=0.4 left unchanged (AUC flat across floors 1-8; the false-AR
     # wiggles are noise from a single 5-session, single-animal batch — not re-tuned).
-    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.12, "lightgbm": 0.11}
+    # UPDATE 2026-08-09 (BLA, 64 agent / 91 bootstrap after fixing the pre-agent
+    # bootstrap misclassification: 9 legacy pre-agent sessions lacked
+    # bootstrap_match_stats.json and were mis-trained as agent @4.0x — see
+    # _is_bootstrap_session). The cleaner model (OOF AUC 0.897 -> 0.910) reopened
+    # headroom: 0.12 dropped to 0.68% false-AR. Raised xgboost 0.12 -> 0.13:
+    # 0.85% false-AR (still sub-1%; worst of 8 seeds 1.0%), 27.1% garbage caught
+    # (was 24.4%). 0.14 rejected (0.99% mean, seed tail to 1.5% — too much for BLA).
+    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.13, "lightgbm": 0.11}
     reject_threshold = _THRESHOLD_BY_MODEL.get(best_model, 0.10)
     if args.threshold is not None:
         log(f"\n  Overriding reject_threshold: {reject_threshold:.2f} -> {args.threshold:.2f} (--threshold flag)")
