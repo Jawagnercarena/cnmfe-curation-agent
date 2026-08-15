@@ -10,6 +10,14 @@ sessions that haven't been reviewed in MATLAB yet.
 Usage:
     python recurate_sessions.py                   # processes all pending sessions
     python recurate_sessions.py <session_path> ... # process specific sessions
+    python recurate_sessions.py <session_path> --threshold 0   # review everything
+
+--threshold overrides the model's calibrated cutoff. Use it when the model is
+scoring data outside its training distribution (a new viral strategy, indicator,
+or objective), where the calibrated cutoff is extrapolation rather than
+calibration; 0 auto-rejects nothing so a human labels every candidate.
+
+This module operates on the BLA data root. For vCA1 use recurate_sessions_vCA1.py.
 
 A session is "pending" if it has:
   - candidate_features.npz  (features already extracted by watcher)
@@ -17,6 +25,7 @@ A session is "pending" if it has:
   - NO labels.mat            (not yet reviewed in MATLAB)
   - ROIs_candidates.jpg      (agent pipeline, not bootstrap)
 """
+import argparse
 import sys
 import numpy as np
 from pathlib import Path
@@ -49,11 +58,16 @@ def find_pending_sessions() -> list[Path]:
     return pending
 
 
-def recurate(session_dir: Path):
+def recurate(session_dir: Path, threshold_override: float | None = None):
     """
     Re-score candidates in session_dir with the current model,
     update candidate_features.npz (auto_rejected only),
     regenerate review_neuron.mat via MATLAB, and regenerate the PDF.
+
+    threshold_override replaces the model's calibrated reject_threshold. Use it
+    when the model is scoring data outside its training distribution, where the
+    calibrated cutoff carries no meaning -- 0.0 auto-rejects nothing and sends
+    every candidate to human review.
     """
     session_name = f"{session_dir.parent.name}/{session_dir.name}"
     log(f"\n{'='*60}")
@@ -77,6 +91,11 @@ def recurate(session_dir: Path):
 
     # Score with current model
     scores, model_type, reject_threshold = curator.score_neurons(feature_matrix, log)
+
+    if threshold_override is not None:
+        log(f"  Threshold override: {threshold_override:.3f} "
+            f"(model's calibrated value was {reject_threshold:.3f})")
+        reject_threshold = threshold_override
 
     # New auto-rejected set (use calibrated threshold stored in model metadata)
     new_auto_rejected = [i for i in range(N) if scores[i] < reject_threshold]
@@ -178,8 +197,17 @@ def recurate(session_dir: Path):
 
 
 def main():
-    if len(sys.argv) > 1:
-        sessions = [Path(p) for p in sys.argv[1:]]
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("sessions", nargs="*",
+                    help="session dirs to re-curate (default: all pending sessions)")
+    ap.add_argument("--threshold", type=float, default=None,
+                    help="override the model's calibrated reject threshold; "
+                         "0 auto-rejects nothing and sends every candidate to review")
+    args = ap.parse_args()
+
+    if args.sessions:
+        sessions = [Path(p) for p in args.sessions]
     else:
         sessions = find_pending_sessions()
         if not sessions:
@@ -193,7 +221,7 @@ def main():
         if not session_dir.is_dir():
             log(f"\n[SKIP] Not a directory: {session_dir}")
             continue
-        recurate(session_dir)
+        recurate(session_dir, threshold_override=args.threshold)
 
     log("\nAll done. Open MATLAB and run run_final_review.m for each session.")
 
