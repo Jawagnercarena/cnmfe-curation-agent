@@ -36,6 +36,20 @@ LABELS_DIR.mkdir(exist_ok=True)
 REJECT_THRESHOLD = 0.10   # score below this → auto-reject (high confidence bad)
 REVIEW_THRESHOLD = 0.70   # score above this → tentatively keep, still shown in review
 
+# Per-area override of the reject threshold, set by an area wrapper before
+# watcher.main() (see watcher_DG_AL.py).  None = use the model's calibrated value.
+#
+# A new area starts with no classifier, so score_neurons falls back to an
+# IsolationForest fitted on whatever A.txt files exist under DATA_ROOT.  On a
+# cold start the only A.txt is the session's own *unreviewed* candidates
+# (CNMFe_Biane_headless.m writes it; CNMFe_final_save.m overwrites it with the
+# curated set later), so that model characterises the junk it is meant to
+# exclude, and its min-max-normalised scores put at least one neuron below any
+# positive cutoff.  Setting this to 0.0 auto-rejects nothing and sends every
+# candidate to a human, which is the only defensible behaviour until enough
+# reviewed sessions exist to measure a false-auto-reject rate.
+THRESHOLD_OVERRIDE = None
+
 # Merge candidate thresholds
 MERGE_OVERLAP_MIN  = 0.30   # spatial overlap fraction to flag as possible merge
 MERGE_CORR_MIN     = 0.70   # temporal correlation to flag as possible merge
@@ -523,6 +537,11 @@ def prepare_review_package(session_name: str, session_dir: Path, log):
     # Score neurons
     scores, model_type, reject_threshold = score_neurons(feature_matrix, log)
 
+    if THRESHOLD_OVERRIDE is not None:
+        log(f"  [CURATOR] Threshold override: {THRESHOLD_OVERRIDE:.3f} "
+            f"(model's calibrated value was {reject_threshold:.3f})")
+        reject_threshold = THRESHOLD_OVERRIDE
+
     # Auto-rejected (high confidence bad)
     auto_rejected = [i for i in range(N) if scores[i] < reject_threshold]
     log(f"  [CURATOR] Auto-rejected: {len(auto_rejected)}/{N} "
@@ -569,6 +588,7 @@ def prepare_review_package(session_name: str, session_dir: Path, log):
         session_dir, session_name,
         feature_matrix, feature_names, scores, traces,
         merge_candidates, auto_rejected, motion_flagged, log,
+        reject_threshold=reject_threshold,
     )
 
     # Write review_neuron.mat via MATLAB
@@ -590,7 +610,7 @@ def prepare_review_package(session_name: str, session_dir: Path, log):
         f"{'='*55}\n"
         f"Total candidates:       {N}\n"
         f"Auto-rejected:          {len(auto_rejected)}  "
-        f"(model: {model_type}, threshold: {REJECT_THRESHOLD:.2f})\n"
+        f"(model: {model_type}, threshold: {reject_threshold:.2f})\n"
         f"Motion artifact flags:  {len(motion_flagged)}\n"
         f"  {motion_summary}\n"
         f"Merge candidates:       {len(merge_candidates)} pairs\n"

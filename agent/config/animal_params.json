@@ -410,6 +410,52 @@
       28
     ]
   },
+  "DG6D": {
+    "area": "DG_AL",
+    "gSig": 7,
+    "gSiz": 28,
+    "flag": "ok",
+    "n_sessions": 6,
+    "gSig_all": [
+      7,
+      7,
+      7,
+      7,
+      7,
+      7
+    ],
+    "gSiz_all": [
+      28,
+      28,
+      28,
+      28,
+      28,
+      28
+    ]
+  },
+  "DG6E": {
+    "area": "DG_AL",
+    "gSig": 7,
+    "gSiz": 28,
+    "flag": "ok",
+    "n_sessions": 6,
+    "gSig_all": [
+      7,
+      7,
+      7,
+      7,
+      7,
+      7
+    ],
+    "gSiz_all": [
+      28,
+      28,
+      28,
+      28,
+      28,
+      28
+    ]
+  },
   "bla12": {
     "area": "BLA",
     "gSig": 7,
@@ -659,8 +705,12 @@
     "gSig": 9,
     "gSiz": 36,
     "flag": "ok",
-    "n_sessions": 28,
+    "n_sessions": 32,
     "gSig_all": [
+      9,
+      9,
+      9,
+      9,
       9,
       9,
       9,
@@ -691,6 +741,10 @@
       9
     ],
     "gSiz_all": [
+      36,
+      36,
+      36,
+      36,
       36,
       36,
       36,
@@ -991,31 +1045,51 @@
     ]
   },
   "pnb97": {
-    "area": "BLA",
+    "area": "vCA1",
     "gSig": 9,
     "gSiz": 36,
     "flag": "ok",
-    "n_sessions": 2,
+    "n_sessions": 3,
     "gSig_all": [
+      9,
       9,
       9
     ],
     "gSiz_all": [
       36,
+      36,
       36
     ]
   },
   "pnb98": {
-    "area": "BLA",
+    "area": "vCA1",
     "gSig": 9,
     "gSiz": 36,
     "flag": "ok",
-    "n_sessions": 2,
+    "n_sessions": 11,
     "gSig_all": [
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
+      9,
       9,
       9
     ],
     "gSiz_all": [
+      36,
+      36,
+      36,
+      36,
+      36,
+      36,
+      36,
+      36,
+      36,
       36,
       36
     ]
