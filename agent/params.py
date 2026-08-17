@@ -116,17 +116,55 @@ def estimate_min_corr_min_pnr(session_dir: Path, log,
         # while keeping candidate counts close to the ~400 expert max.
         # Floor 0.55: avoids seeding in pure noise.
         # Ceiling 0.82: prevents over-restriction that misses curated neurons.
-        min_corr = float(np.percentile(cn_nonzero, 65))
-        min_pnr  = float(np.percentile(pnr_nonzero, 65))
-        min_corr = float(np.clip(min_corr, 0.55, 0.82))
-        min_pnr  = float(np.clip(min_pnr,  5.0,  13.0))
+        pctile = 65
+        corr_lo, corr_hi = 0.55, 0.82
+        pnr_lo,  pnr_hi  = 5.0,  13.0
     else:
         # 85th percentile of the distribution (permissive: keeps more seeds)
         # Expert typically uses values near the 90th-95th percentile visually
-        min_corr = float(np.percentile(cn_nonzero, 85))
-        min_pnr  = float(np.percentile(pnr_nonzero, 85))
-        min_corr = float(np.clip(min_corr, 0.6, 0.92))
-        min_pnr  = float(np.clip(min_pnr, 5.0, 15.0))
+        pctile = 85
+        corr_lo, corr_hi = 0.6, 0.92
+        pnr_lo,  pnr_hi  = 5.0, 15.0
+
+    raw_corr = float(np.percentile(cn_nonzero, pctile))
+    raw_pnr  = float(np.percentile(pnr_nonzero, pctile))
+    min_corr = float(np.clip(raw_corr, corr_lo, corr_hi))
+    min_pnr  = float(np.clip(raw_pnr,  pnr_lo,  pnr_hi))
+
+    # Warn loudly when an estimate binds a clamp: a clipped value means the
+    # Cn/pnr statistics are outside the range this heuristic was designed for,
+    # and the clamp -- meant as a sanity clip -- has silently become the binding
+    # detection threshold.  First seen on DG_AL 2026-08-16: an oversized gSig
+    # oversmooths Cn, the 85th percentile rises past the ceiling, and candidate
+    # detection is quietly suppressed with no error anywhere.  A 2026-08-16
+    # audit of 129 logged sessions found zero BLA/vCA1 clamp bindings, so any
+    # firing of this warning is a regime change worth investigating.
+    # Behaviour is unchanged: same clip, same return values.
+    clamp_notes = []
+    for name, raw, clipped, lo, hi in (
+            ("min_corr", raw_corr, min_corr, corr_lo, corr_hi),
+            ("min_pnr",  raw_pnr,  min_pnr,  pnr_lo,  pnr_hi)):
+        if raw > hi or raw < lo:
+            bound = "ceiling" if raw > hi else "floor"
+            note = (f"estimated {name}={raw:.3f} hit the {bound} clamp -> using "
+                    f"{clipped:.3g} (designed range [{lo}, {hi}]). If this is a new "
+                    f"area/prep/objective, check gSig against the true cell scale "
+                    f"before trusting this session's candidate set: an oversized "
+                    f"gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).")
+            log(f"  [PARAMS] WARNING: {note}")
+            clamp_notes.append(note)
+    marker = session_dir / "clamp_warning.txt"
+    try:
+        if clamp_notes:
+            marker.write_text("\n".join(clamp_notes) + "\n", encoding="utf-8")
+            log(f"  [PARAMS] clamp_warning.txt written to {session_dir.name}/.")
+        elif marker.exists():
+            # Estimates back in range (e.g. re-run after a gSig fix): a stale
+            # marker would misreport this run, so this function retires it.
+            marker.unlink()
+            log("  [PARAMS] Stale clamp_warning.txt removed (estimates in range).")
+    except OSError as e:
+        log(f"  [PARAMS] Could not update clamp_warning.txt: {e}")
 
     # Round to 2 decimal places for readability
     min_corr = round(min_corr, 2)
