@@ -78,7 +78,7 @@ def find_new_tifs() -> list[tuple[Path, Path]]:
         return found
 
     for task_dir in DATA_ROOT.iterdir():
-        if not task_dir.is_dir():
+        if not task_dir.is_dir() or task_dir.name.startswith("."):
             continue
         for item in task_dir.iterdir():
             if item.is_file() and item.suffix.lower() in (".tif", ".tiff"):
@@ -384,6 +384,10 @@ def _needs_params_update() -> bool:
         return True
     params_mtime = _PARAMS_JSON.stat().st_mtime
     for neuron_mat in DATA_ROOT.rglob("neuron.mat"):
+        # rglob descends into dot-prefixed folders that every other scan skips,
+        # so parked sessions under .excluded/ would otherwise trigger a refresh.
+        if any(p.startswith(".") for p in neuron_mat.relative_to(DATA_ROOT).parts):
+            continue
         if neuron_mat.stat().st_mtime > params_mtime:
             return True
     return False
@@ -419,7 +423,7 @@ def find_curator_retries() -> list[tuple[Path, Path]]:
     if not DATA_ROOT.exists():
         return found
     for task_dir in DATA_ROOT.iterdir():
-        if not task_dir.is_dir():
+        if not task_dir.is_dir() or task_dir.name.startswith("."):
             continue
         for item in task_dir.iterdir():
             if not item.is_dir():
