@@ -44,16 +44,10 @@ sys.path.insert(0, str(AGENT_DIR))
 import train_classifier as tc
 from config import DATA_ROOT
 
-SESSIONS = [
-    ("6odorDualDiffRew", "AVG5x-TSeries-061226-bla37-213um-37z-000"),
-    ("Block_Valence",    "AVG5x-TSeries-070226-bla37-262um-37z-000"),
-    ("6odorDualDiffRew", "AVG5x-TSeries-061126-bla37-277um-35z-000"),
-    ("6odorDualDiffRew", "AVG5x-TSeries-060426-bla37-275um-35z-000"),
-    ("6odorDualDiffRew", "AVG5x-TSeries-052026-bla36-669um-29z-000"),
-    ("2tones",           "AVG5x-TSeries-101525-bla12-660um-23z-000"),
-    ("6odorDualDiffRew", "AVG5x-TSeries-052826-bla37-216um-37z-000"),
-    ("2tones",           "AVG5x-TSeries-101525-bla16-278um-36z-000"),
-]
+# Sessions are discovered dynamically (any (m)-tagged session whose per-frame
+# motion .mat outputs have been extracted) -- see discover_motion_sessions().
+# FAILING = the 2 sessions the LATERAL-only QC flag scored worse-than-chance on
+# in the original 8; kept as a print marker in the QC self-check.
 FAILING = {"AVG5x-TSeries-101525-bla12-660um-23z-000",
            "AVG5x-TSeries-052826-bla37-216um-37z-000"}
 
@@ -74,6 +68,31 @@ def log(m=""):
 def animal_of(nm):
     m = re.search(r"-[Tt][Ss]eries-[0-9]+-([A-Za-z]*\d+)", nm)
     return m.group(1) if m else "?"
+
+
+def discover_motion_sessions():
+    """Every (m)-tagged session under DATA_ROOT whose per-frame motion outputs
+    (motion_series.mat + motion_vec.mat) have been extracted. Sessions that are
+    tagged but not yet extracted are skipped with a note (run run_motion_all.m
+    first). Returns [(task, name), ...]."""
+    found = []
+    for td in sorted(DATA_ROOT.iterdir()):
+        if not td.is_dir() or td.name.startswith("."):
+            continue
+        for sd in sorted(td.iterdir()):
+            if not (sd.is_dir() and (sd / "labels.mat").exists()):
+                continue
+            try:
+                L = sio.loadmat(str(sd / "labels.mat"))
+            except Exception:
+                continue
+            if "motion_delete" not in L or int((L["motion_delete"].ravel() > 0).sum()) == 0:
+                continue
+            if (sd / "motion_series.mat").exists() and (sd / "motion_vec.mat").exists():
+                found.append((td.name, sd.name))
+            else:
+                log(f"  [skip] {td.name}/{sd.name}: motion .mat not extracted yet")
+    return found
 
 
 def detect_onsets(trace, baseline, sigma):
@@ -311,8 +330,10 @@ def qc_enrichment(recs):
 
 
 def main():
-    log("Loading + computing onset features (circular-shift null) for 8 sessions...")
-    recs = [load_session(t, n) for t, n in SESSIONS]
+    sess = discover_motion_sessions()
+    log(f"Loading + computing onset features (circular-shift null) for "
+        f"{len(sess)} sessions...")
+    recs = [load_session(t, n) for t, n in sess]
     impute(recs, "mv", "mv_imp")
     impute(recs, "onset", "onset_imp")
 
