@@ -66,6 +66,14 @@ import run_cnmfe
 BAD_SESSION_RECOVERY_THRESHOLD = 0.40
 BAD_SESSION_WEIGHT = 0.4
 
+# Floor for the dynamic agent up-weight (max(sqrt(n_bootstrap/n_agent), floor)).
+# Agent labels are unconditionally higher quality than bootstrap labels (~41%
+# noisy negatives), so the floor should not decay below a meaningful minimum
+# regardless of session counts. Empirically validated via 5-fold OOF sweep on
+# 13 BLA agent sessions (2026-03-30): performance plateau at 3–5x; floor=4.0
+# gives 0.5% false-AR vs 0.8% at 3.13x with no AUC cost.
+MIN_AGENT_WEIGHT = 4.0
+
 # Cosine-similarity threshold for matching review candidates to final neurons.
 # Neurons kept by the user will still overlap strongly with their updated
 # footprint after spatial re-estimation; deleted neurons will not match anything.
@@ -733,16 +741,8 @@ def main():
     n_ag_examples = sum(len(r["y"]) for r in records if not r["is_bootstrap"])
 
     # Dynamic agent up-weight: counteracts bootstrap volume dominance.
-    # Formula: max(sqrt(n_bootstrap / n_agent), MIN_AGENT_WEIGHT)
-    # Floor of 4.0 prevents quality dilution as agent sessions accumulate —
-    # agent labels are unconditionally higher quality than bootstrap labels
-    # (~41% noisy negatives), so the floor should not decay below a meaningful
-    # minimum regardless of session counts.
-    # Empirically validated via 5-fold OOF sweep on 13 BLA agent sessions
-    # (2026-03-30): performance plateau at 3–5x; floor=4.0 gives 0.5% false-AR
-    # vs 0.8% at current 3.13x with no AUC cost. Floor activates at ~45+ agent
-    # sessions, future-proofing against dilution.
-    MIN_AGENT_WEIGHT = 4.0
+    # Formula: max(sqrt(n_bootstrap / n_agent), MIN_AGENT_WEIGHT) — see the
+    # module-level MIN_AGENT_WEIGHT for the floor's rationale/validation.
     if n_ag_examples > 0 and n_bs_examples > 0:
         agent_weight = float(max(np.sqrt(n_bs_examples / n_ag_examples), MIN_AGENT_WEIGHT))
     else:
