@@ -911,7 +911,14 @@ def main():
     # headroom: 0.12 dropped to 0.68% false-AR. Raised xgboost 0.12 -> 0.13:
     # 0.85% false-AR (still sub-1%; worst of 8 seeds 1.0%), 27.1% garbage caught
     # (was 24.4%). 0.14 rejected (0.99% mean, seed tail to 1.5% — too much for BLA).
-    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.13, "lightgbm": 0.11}
+    # UPDATE 2026-08-18 (BLA, 75 agent / 91 bootstrap): reverted xgboost 0.13 ->
+    # 0.12. The pre-agreed trigger fired: each returned batch adds a few dim-but-
+    # real cells near the boundary, so fixed-threshold false-AR drifts up while
+    # AUC stays flat (~0.910 since the fix) — 0.13 walked 0.85% -> 0.93% -> 1.02%
+    # across 61 -> 69 -> 75 sessions. 0.12 restores 0.83% false-AR / 27.9%
+    # garbage. The extra ~2.8pts of junk at 0.13 was bought with false-AR, not
+    # skill (at matched false-AR the junk-caught is flat) — not worth it for BLA.
+    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.12, "lightgbm": 0.11}
     reject_threshold = _THRESHOLD_BY_MODEL.get(best_model, 0.10)
     if args.threshold is not None:
         log(f"\n  Overriding reject_threshold: {reject_threshold:.2f} -> {args.threshold:.2f} (--threshold flag)")
