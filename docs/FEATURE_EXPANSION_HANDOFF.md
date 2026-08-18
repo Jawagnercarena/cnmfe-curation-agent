@@ -4,6 +4,20 @@ _Written 2026-08-18. All numbers in this doc were measured 2026-08-09 – 2026-0
 unless dated otherwise; nothing here is carried forward from older notes without
 being re-verified._
 
+> **STATUS 2026-08-18 (same day, later): Steps 0–1 EXECUTED — gate = PROCEED.**
+> Full evidence in `FEATURE_EXPANSION_GATE_2026-08-18.md`. Step 0 PASSED exactly
+> (review_neuron.mat holds the full review set, all eras — the §3 unlock is
+> real). Baseline re-pinned with a corrected harness (a forked ambiguous-mask
+> bug in diagnose_model was found and fixed; effect immaterial, §1 numbers
+> stand: 0.9099 ± 0.0017). Autopsy of all 16 false-AR cells: 2 are early-era
+> model regressions (curation-time scores 0.97/1.00, now 0.06/0.10), ~5 are
+> atypical-temporal-pattern reals, ~9 genuinely marginal — naming per-event
+> shape/stereotypy as the top Step 2 feature. Zero-cost win found:
+> **rank_aug_26 (13 + within-session pct ranks) = +0.0036 AUC, and at matched
+> junk the false-AR falls 0.83% → 0.53%** — carry into Step 2. Per-session
+> *threshold* calibration is a validated dead end (drop). Step 1's §4 plan
+> below remains the reference for methodology.
+
 ## 0. The question
 
 BLA classifier skill has plateaued at **OOF AUC ≈ 0.910** while the training pool
