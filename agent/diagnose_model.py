@@ -27,40 +27,16 @@ MODEL_PATH = MODEL_DIR / "classifier.joblib"
 # size-mismatch by reconstructing auto-rejected candidates as label=0).
 import train_classifier as _tc
 
-# Must match train_classifier.py
-BAD_SESSION_RECOVERY_THRESHOLD = 0.40
-BAD_SESSION_WEIGHT             = 0.4
-# Floor on the agent up-weight (matches train_classifier.py MIN_AGENT_WEIGHT).
-# Without this, diagnose used raw sqrt(n_bs/n_ag) and diverged from the deployed
-# model's weighting whenever sqrt(n_bs/n_ag) < 4.0 (true for BLA today).
-MIN_AGENT_WEIGHT               = 4.0
+# Weighting constants and helpers come straight from train_classifier so this
+# harness can never drift from the deployed weighting. (A previous forked copy
+# of _get_bootstrap_ambiguous_mask read JSON key "ambiguous_candidate_indices",
+# which no producer writes — the mask was silently all-False in every run.)
+BAD_SESSION_RECOVERY_THRESHOLD = _tc.BAD_SESSION_RECOVERY_THRESHOLD
+BAD_SESSION_WEIGHT             = _tc.BAD_SESSION_WEIGHT
+MIN_AGENT_WEIGHT               = _tc.MIN_AGENT_WEIGHT
 
-
-# -----------------------------------------------------------------------
-# Weighting helpers (replicated from train_classifier.py)
-# -----------------------------------------------------------------------
-
-def _get_bootstrap_recovery(session_dir: Path):
-    stats_file = session_dir / "bootstrap_match_stats.json"
-    if not stats_file.exists():
-        return None
-    with open(stats_file) as f:
-        bs = json.load(f)
-    n_curated = bs.get("n_curated", 0)
-    return bs["n_matched"] / n_curated if n_curated > 0 else 0.0
-
-
-def _get_bootstrap_ambiguous_mask(session_dir: Path, n_candidates: int) -> np.ndarray:
-    stats_file = session_dir / "bootstrap_match_stats.json"
-    mask = np.zeros(n_candidates, dtype=bool)
-    if not stats_file.exists():
-        return mask
-    with open(stats_file) as f:
-        bs = json.load(f)
-    for idx in bs.get("ambiguous_candidate_indices", []):
-        if 0 <= idx < n_candidates:
-            mask[idx] = True
-    return mask
+_get_bootstrap_recovery       = _tc._get_bootstrap_recovery
+_get_bootstrap_ambiguous_mask = _tc._get_bootstrap_ambiguous_mask
 
 
 # -----------------------------------------------------------------------
@@ -118,12 +94,9 @@ def load_all_records():
 
 
 def make_clf(mtype, spw=1.0):
-    if mtype == "lr":
-        return LogisticRegression(class_weight="balanced", max_iter=1000, C=1.0, random_state=42)
-    return XGBClassifier(n_estimators=300, learning_rate=0.05, max_depth=4,
-                         subsample=0.8, colsample_bytree=0.8,
-                         scale_pos_weight=spw, eval_metric="auc",
-                         verbosity=0, random_state=42, n_jobs=-1)
+    # Delegate to the trainer's factory so hyperparameters can never diverge.
+    # Historical callers pass "xgb"/"lr"; anything non-"lr" was always XGBoost.
+    return _tc._make_clf("lr" if mtype == "lr" else "xgboost", spw)
 
 
 def compute_spw(y, w):
