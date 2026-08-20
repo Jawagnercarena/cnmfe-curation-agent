@@ -25,6 +25,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 
 import features as feat_module
+import config
 from config import DATA_ROOT, MODEL_DIR
 
 AGENT_DIR     = Path(__file__).parent
@@ -89,6 +90,39 @@ def _save_model(scaler, clf, model_type: str):
                 str(_model_path()))
 
 
+def _load_first_pass():
+    """
+    Companion 13-column first-pass model, stored in the SAME joblib as the
+    final classifier by train_classifier.py under the v2 (35-column) feature
+    contract.  Used only to pick high-confidence neighbors for the nb_corr_max
+    feature before the full 35 columns exist.  Returns (scaler, clf) or None
+    (v1-contract joblibs — vCA1/DG_AL — simply lack the keys).
+    """
+    mp = _model_path()
+    if not mp.exists():
+        return None
+    data = joblib.load(str(mp))
+    if "first_pass_scaler" in data and "first_pass_clf" in data:
+        return data["first_pass_scaler"], data["first_pass_clf"]
+    return None
+
+
+def _check_arity(scaler, feature_matrix: np.ndarray, what: str):
+    """
+    The joblib stores no feature names and scoring is positional, so a feature
+    contract / model mismatch (half-swapped deploy state) would otherwise
+    produce silently wrong scores.  Fail loudly instead.
+    """
+    n_expected = getattr(scaler, "n_features_in_", None)
+    if n_expected is not None and feature_matrix.shape[1] != n_expected:
+        raise ValueError(
+            f"Feature-arity mismatch: matrix has {feature_matrix.shape[1]} "
+            f"columns but the {what} model expects {n_expected}. The feature "
+            f"contract and the deployed model are out of sync — do not trust "
+            f"any score produced in this state; restore a consistent deploy "
+            f"(see the Step 4 rollback) before curating.")
+
+
 # ---- One-class fallback (before labeled data exists) ----
 
 def _build_oneclass_model(log) -> tuple:
@@ -115,6 +149,16 @@ def _build_oneclass_model(log) -> tuple:
                 with warnings.catch_warnings():
                     warnings.simplefilter("ignore")
                     fm, _, _ = feat_module.extract_all(session_dir, lambda m: None)
+                    # Under the v2 contract the fallback must match the
+                    # 35-column session matrix.  There is no model in this
+                    # path, so the high-confidence neighbor set is empty.
+                    if getattr(config, "FEATURE_VERSION", 1) >= 2:
+                        traces = feat_module.load_traces(session_dir)
+                        fps    = feat_module.load_spatial(session_dir)
+                        Cn     = feat_module.load_cn(session_dir)
+                        v2b    = feat_module.compute_v2b_features(
+                            traces, fps, Cn, np.zeros(len(fm), dtype=bool))
+                        fm = feat_module.assemble_v2_matrix(fm, v2b, 1.0)
                 all_features.append(fm)
             except Exception as e:
                 log(f"  [CURATOR] Skipping {session_dir.name} for training: {e}")
@@ -156,6 +200,7 @@ def score_neurons(feature_matrix: np.ndarray, log) -> tuple[np.ndarray, str, flo
         model = (scaler, clf, model_type, REJECT_THRESHOLD)
 
     scaler, clf, model_type, reject_threshold = model
+    _check_arity(scaler, feature_matrix, f"deployed ({model_type})")
     X_scaled = scaler.transform(feature_matrix)
 
     if model_type in ("logistic_regression", "lr", "xgboost", "lightgbm"):
@@ -519,6 +564,48 @@ fprintf('review_neuron.mat written: %d neurons.\\n', length(keep_idx));
                     str(session_dir / "review_neuron.mat"))
 
 
+# ---- v2 (35-column) feature contract ----
+
+def _extend_features_v2(session_dir: Path, X13: np.ndarray, base_names: list,
+                        traces: np.ndarray, log):
+    """
+    Build the 35-column v2 matrix for the FULL candidate set:
+    13 base | 13 within-session percentile ranks | 8 v2b | v2_present=1.
+
+    Two-pass scoring: the nb_corr_max feature needs high-confidence neighbor
+    scores before the 35-column model can run, so pass 1 scores the 13 base
+    columns with the companion first-pass model stored in the same joblib.
+    Without any model (cold one-class fallback) the high-confidence set is
+    empty and nb_corr_max is 0 for every candidate.
+    """
+    assert X13.shape[1] == feat_module.V1_N_FEATURES, \
+        f"v2 extension expects the {feat_module.V1_N_FEATURES}-column base " \
+        f"matrix, got {X13.shape[1]}"
+
+    fp = _load_first_pass()
+    if fp is not None:
+        fp_scaler, fp_clf = fp
+        _check_arity(fp_scaler, X13, "first-pass (13-col)")
+        s1 = fp_clf.predict_proba(fp_scaler.transform(X13))[:, 1]
+        hiconf = s1 >= feat_module.HICONF_SCORE
+        log(f"  [CURATOR] v2 pass 1: {int(hiconf.sum())}/{len(s1)} candidates "
+            f"are high-confidence neighbors (score >= "
+            f"{feat_module.HICONF_SCORE}).")
+    else:
+        hiconf = np.zeros(len(X13), dtype=bool)
+        log("  [CURATOR] v2 pass 1: no first-pass model — high-confidence "
+            "neighbor set empty (nb_corr_max = 0).")
+
+    footprints = feat_module.load_spatial(session_dir)
+    Cn         = feat_module.load_cn(session_dir)
+    v2b = feat_module.compute_v2b_features(traces, footprints, Cn, hiconf)
+    X35 = feat_module.assemble_v2_matrix(X13, v2b, 1.0)
+    names35 = feat_module.v2_feature_names(list(base_names))
+    log(f"  [CURATOR] v2 feature matrix assembled: {X35.shape[1]} columns "
+        f"(flag=1, real v2b for all {len(X35)} candidates).")
+    return X35, names35
+
+
 # ---- Main entry point ----
 
 def prepare_review_package(session_name: str, session_dir: Path, log):
@@ -533,6 +620,12 @@ def prepare_review_package(session_name: str, session_dir: Path, log):
     N = len(feature_matrix)
 
     traces = feat_module.load_traces(session_dir)
+
+    # v2 contract areas: extend to the 35-column matrix before scoring
+    # (pass 2 below then scores all 35 columns with the deployed model).
+    if getattr(config, "FEATURE_VERSION", 1) >= 2:
+        feature_matrix, feature_names = _extend_features_v2(
+            session_dir, feature_matrix, feature_names, traces, log)
 
     # Score neurons
     scores, model_type, reject_threshold = score_neurons(feature_matrix, log)

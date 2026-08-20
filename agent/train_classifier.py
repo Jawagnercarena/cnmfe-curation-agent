@@ -751,6 +751,27 @@ def main():
             "session to generate labels.")
         return
 
+    # Contract-width guard: scoring is positional, so a mixed-width corpus
+    # (candidate_features.npz regeneration interrupted mid-swap) must never
+    # train.  Fail loudly with session names instead.
+    widths = sorted({r["X"].shape[1] for r in records})
+    _fv = getattr(config, "FEATURE_VERSION", 1)
+    expected_width = 35 if _fv >= 2 else None
+    if len(widths) > 1 or (expected_width is not None
+                           and widths != [expected_width]):
+        by_w: dict[int, list[str]] = {}
+        for r in records:
+            by_w.setdefault(r["X"].shape[1], []).append(
+                f"{r['session_dir'].parent.name}/{r['session_dir'].name}")
+        detail = ";  ".join(
+            f"{w} cols: {len(s)} session(s), e.g. {s[0]}"
+            for w, s in sorted(by_w.items()))
+        raise RuntimeError(
+            f"Feature-width mismatch in training corpus (FEATURE_VERSION="
+            f"{_fv}, expected {expected_width or 'uniform'} cols): {detail}. "
+            f"This is a half-swapped corpus — complete or roll back the "
+            f"feature-contract swap before training.")
+
     n_bs_examples = sum(len(r["y"]) for r in records if r["is_bootstrap"])
     n_ag_examples = sum(len(r["y"]) for r in records if not r["is_bootstrap"])
 
@@ -889,6 +910,22 @@ def main():
     # ------------------------------------------------------------------
     scaler, clf = train_model(X_all, y_all, sample_weight=w_all, model_type=best_model)
 
+    # v2 contract: also fit the companion 13-column first-pass model on the
+    # same corpus/weights and store it in the SAME joblib.  curator.py uses it
+    # to pick high-confidence neighbors (nb_corr_max) before the 35 columns
+    # exist; one file keeps the deploy swap atomic.
+    _v2_extra = {}
+    if getattr(config, "FEATURE_VERSION", 1) >= 2:
+        _n_base = feat_module.V1_N_FEATURES
+        fp_scaler, fp_clf = train_model(
+            X_all[:, :_n_base], y_all, sample_weight=w_all,
+            model_type=best_model)
+        _v2_extra = {"first_pass_scaler": fp_scaler,
+                     "first_pass_clf": fp_clf,
+                     "feature_version": 2}
+        log(f"\nCompanion first-pass model fit on the first {_n_base} columns "
+            f"(stored in the same joblib for two-pass curation).")
+
     # Calibrated reject_threshold per model type.
     # Derived via 5-fold grouped OOF sweep on 19 agent sessions with real weights
     # (agent_weight, bad-session 0.4x, ambiguous=0) — see diagnose_model.py Section 3.
@@ -946,10 +983,12 @@ def main():
             "model_type": best_model,
             "reject_threshold": reject_threshold,
             "agent_weight": agent_weight,
+            "n_features": int(X_all.shape[1]),
             "n_sessions": len(records),
             "n_training_active": n_active,
             "n_excluded_ambiguous": n_excluded,
             "cv_results": cv_results,
+            **_v2_extra,
         },
         str(model_path),
     )

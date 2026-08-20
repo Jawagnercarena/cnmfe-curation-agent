@@ -263,6 +263,10 @@ def pairwise_overlap(footprints: np.ndarray) -> np.ndarray:
 
 from scipy.stats import rankdata
 
+# Width of the v1 contract (what extract_all returns).  The v2 contract's
+# first V1_N_FEATURES columns are exactly these, bit-identical, same order.
+V1_N_FEATURES = 13
+
 V2B_NAMES = ["ev_rate", "ev_snr", "ev_template_corr", "ev_asym",
              "ev_frac_plausible", "nb_corr_max", "nb_corr_any", "ring_contrast"]
 
