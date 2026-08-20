@@ -54,6 +54,7 @@ from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.preprocessing import StandardScaler
 
 AGENT_DIR = Path(__file__).parent
+import config
 from config import DATA_ROOT, MODEL_DIR
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -713,6 +714,19 @@ def main():
     retro = find_retro_sessions()
     if args.prospective_only:
         log(f"\nRetrospective sessions skipped (--prospective-only): {len(retro)}")
+        retro = []
+    elif retro and getattr(config, "FEATURE_VERSION", 1) >= 2:
+        # The retro path re-extracts 13-column rows.  Under the 35-column v2
+        # contract that would silently mix widths in the training corpus, so
+        # refuse and leave these sessions out (same effect as --prospective-only)
+        # rather than corrupting the pool.
+        log(f"\nRetrospective sessions found: {len(retro)} — REFUSED, not extracted.")
+        log("  The retro path emits 13-column rows but this area's feature contract")
+        log("  is 35-column v2 (config.FEATURE_VERSION >= 2).  Regenerate these")
+        log("  sessions with the Step 4 backfill tooling (agent/eval/step4_2026-08/)")
+        log("  instead:")
+        for _sd in retro:
+            log(f"    {_sd.parent.name}/{_sd.name}")
         retro = []
     else:
         log(f"\nRetrospective sessions (no labels.mat yet): {len(retro)}")

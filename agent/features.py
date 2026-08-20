@@ -239,6 +239,212 @@ def pairwise_overlap(footprints: np.ndarray) -> np.ndarray:
     return overlap
 
 
+# ===========================================================================
+# v2 (35-column) feature contract — BLA feature expansion Step 4.
+#
+# Everything below is ADDITIVE.  extract_all and every function above are the
+# v1 contract and must stay byte-identical: areas at FEATURE_VERSION 1
+# (vCA1, DG_AL) never enter this section.  The v2 contract is
+#     13 base | 13 within-session percentile ranks | 8 v2b | v2_present
+# assembled positionally in that order (the deployed joblib stores no names).
+#
+# The v2b computation is a port of the evaluated reference implementation
+# (agent/eval/step2_2026-08/compute_v2_features.py + compute_v2b_features.py).
+# Its numerical parity against the pinned evaluation values
+# (D:\Julian_CNMFe\BLA\.feature_expansion\_pinned\step2_v2b_features.npz) is a
+# deploy invariant checked by agent/eval/step4_2026-08/parity_check.py — do
+# not change constants or operation order here without re-running that check.
+#
+# Neighbor high-confidence sets enter ONLY as the hiconf_mask argument; the
+# caller chooses the score source (production: the companion 13-column
+# first-pass model in the deployed joblib at >= HICONF_SCORE; historical
+# backfill: the pinned grouped-OOF scores).
+# ===========================================================================
+
+from scipy.stats import rankdata
+
+V2B_NAMES = ["ev_rate", "ev_snr", "ev_template_corr", "ev_asym",
+             "ev_frac_plausible", "nb_corr_max", "nb_corr_any", "ring_contrast"]
+
+NB_DIST      = 60.0   # px, neighbor search radius (centroid distance)
+HICONF_SCORE = 0.5    # first-pass score for a "high-confidence" neighbor
+
+# v2b transient detector: noise sigma from the differenced trace, detection on
+# a 3-frame smoothed trace at baseline + 3.5 sigma, events must reach peak
+# z >= 5 within 15 frames, decay capped at 60 frames, template needs >= 3
+# qualified events.
+_V2B_REFRACT   = 4
+_V2B_K         = 3.5
+_V2B_PEAK_Z    = 5.0
+_V2B_PEAK_WIN  = 15
+_V2B_DECAY_CAP = 60
+_V2B_SNIP_PRE  = 2
+_V2B_SNIP_POST = 25
+
+
+def v2_feature_names(base_names: list[str]) -> list[str]:
+    """The 35 column names, in contract order."""
+    return (list(base_names)
+            + [f"rank_{n}" for n in base_names]
+            + list(V2B_NAMES)
+            + ["v2_present"])
+
+
+def compute_ranks(X: np.ndarray) -> np.ndarray:
+    """Within-session percentile ranks per column (deploy: the full candidate
+    set of one session).  Matches the Step 2 evaluation exactly."""
+    return rankdata(X, axis=0, method="average") / len(X)
+
+
+def event_features_b(x: np.ndarray) -> list[float]:
+    """[ev_rate, ev_snr, ev_template_corr, ev_asym, ev_frac_plausible] for one
+    trace under the v2b shape-qualified detector."""
+    T = len(x)
+    xs = np.convolve(x, np.ones(3) / 3, mode="same")
+    base_ = float(np.median(xs))
+    dmad = float(np.median(np.abs(np.diff(x))))
+    sig = 1.4826 * dmad / np.sqrt(2)
+    if sig <= 0:
+        sig = float(x.std()) or 1.0
+
+    thr = base_ + _V2B_K * sig
+    above = xs > thr
+    ons = np.where(above[1:] & ~above[:-1])[0] + 1
+    if len(ons):
+        keep = [ons[0]]
+        for o in ons[1:]:
+            if o - keep[-1] >= _V2B_REFRACT:
+                keep.append(o)
+        ons = np.asarray(keep)
+
+    # qualify events by peak height
+    events = []
+    for o in ons:
+        pk_end = min(o + _V2B_PEAK_WIN, T)
+        pk = o + int(np.argmax(xs[o:pk_end]))
+        z = (xs[pk] - base_) / sig
+        if z >= _V2B_PEAK_Z:
+            events.append((o, pk, z))
+
+    n = len(events)
+    ev_rate = n / T * 1000.0
+    if n == 0:
+        return [ev_rate, 0.0, 0.0, 0.0, 0.0]
+
+    snips, peaks_z, asyms, plaus = [], [], [], []
+    for o, pk, z in events:
+        peaks_z.append(z)
+        rise = max(pk - o, 1)
+        half = base_ + 0.5 * (xs[pk] - base_)
+        dec_end = min(pk + _V2B_DECAY_CAP, T)
+        below = np.where(xs[pk:dec_end] < half)[0]
+        decay = int(below[0]) if len(below) else dec_end - pk
+        decay = max(decay, 1)
+        asyms.append(decay / rise)
+        plaus.append(1.0 if (rise <= 6 and decay >= rise) else 0.0)
+        s, e = o - _V2B_SNIP_PRE, o + _V2B_SNIP_POST + 1
+        if s >= 0 and e <= T:
+            snips.append(xs[s:e] - base_)
+
+    tmpl_corr = 0.0
+    if len(snips) >= 3:
+        S = np.array(snips)
+        tmpl = S.mean(axis=0)
+        cs = [np.corrcoef(row, tmpl)[0, 1] for row in S
+              if row.std() > 0 and tmpl.std() > 0]
+        if cs:
+            tmpl_corr = float(np.mean(cs))
+    return [ev_rate, float(np.median(peaks_z)), tmpl_corr,
+            float(np.median(asyms)), float(np.mean(plaus))]
+
+
+def _v2b_centroid_and_mask(img: np.ndarray):
+    """Weight centroid (y, x) and half-max mask of one (H, W) footprint."""
+    w = img.sum()
+    if w <= 0:
+        return (np.nan, np.nan), img > 0
+    d1, d2 = img.shape
+    ys, xs = np.mgrid[0:d1, 0:d2]
+    cent = (float((ys * img).sum() / w), float((xs * img).sum() / w))
+    thr = 0.5 * img.max()
+    return cent, img >= thr
+
+
+def _v2b_ring_contrast(mask: np.ndarray, Cn) -> float:
+    """(mean Cn in footprint) - (mean Cn in 3-8 px ring), in Cn sd units."""
+    if Cn is None or mask.sum() == 0 or not np.isfinite(Cn).any():
+        return 0.0
+    inner = ndi.binary_dilation(mask, iterations=3)
+    outer = ndi.binary_dilation(mask, iterations=8)
+    ring = outer & ~inner
+    if ring.sum() == 0:
+        return 0.0
+    sd = np.nanstd(Cn)
+    if sd == 0 or not np.isfinite(sd):
+        return 0.0
+    return float((np.nanmean(Cn[mask]) - np.nanmean(Cn[ring])) / sd)
+
+
+def compute_v2b_features(traces: np.ndarray, footprints: np.ndarray, Cn,
+                         hiconf_mask: np.ndarray) -> np.ndarray:
+    """
+    The 8 v2b candidate-level features for one session's candidate set.
+
+    traces      : (N, T) raw traces (candidate order)
+    footprints  : (N, H, W) spatial footprints, same order
+    Cn          : (H, W) correlation image, or None (ring_contrast -> 0)
+    hiconf_mask : (N,) bool — which candidates count as high-confidence
+                  neighbors for nb_corr_max (score source is the caller's)
+
+    Returns (N, 8) in V2B_NAMES order.
+    """
+    n = traces.shape[0]
+    cents = np.full((n, 2), np.nan)
+    masks = []
+    for i in range(n):
+        c, m = _v2b_centroid_and_mask(footprints[i])
+        cents[i] = c
+        masks.append(m)
+
+    # z-normalized traces for fast pairwise correlation
+    Cz = traces - traces.mean(axis=1, keepdims=True)
+    sd_ = Cz.std(axis=1, keepdims=True)
+    sd_[sd_ == 0] = 1.0
+    Cz = Cz / sd_
+    corr = (Cz @ Cz.T) / traces.shape[1]
+
+    dist = np.sqrt(((cents[:, None, :] - cents[None, :, :]) ** 2).sum(-1))
+    with np.errstate(invalid="ignore"):
+        near = (dist <= NB_DIST) & ~np.eye(n, dtype=bool)
+    hi = np.asarray(hiconf_mask, dtype=bool)
+
+    X = np.zeros((n, len(V2B_NAMES)))
+    for i in range(n):
+        X[i, :5] = event_features_b(traces[i].astype(float))
+        nb_any = near[i]
+        nb_hi = near[i] & hi
+        X[i, 5] = float(corr[i, nb_hi].max()) if nb_hi.any() else 0.0
+        X[i, 6] = float(corr[i, nb_any].max()) if nb_any.any() else 0.0
+        X[i, 7] = _v2b_ring_contrast(masks[i], Cn)
+    return X
+
+
+def assemble_v2_matrix(X13: np.ndarray, v2b: np.ndarray, flag) -> np.ndarray:
+    """13 | ranks(13) | v2b(8) | v2_present — the 35-column contract.
+    flag: scalar or (N,) — 1 where v2b holds real values, 0 where zero-filled."""
+    flag_col = np.asarray(flag, dtype=float)
+    if flag_col.ndim == 0:
+        flag_col = np.full(len(X13), float(flag_col))
+    return np.hstack([X13, compute_ranks(X13), v2b, flag_col.reshape(-1, 1)])
+
+
+def assemble_v2_bootstrap(X13: np.ndarray) -> np.ndarray:
+    """Bootstrap sessions have no recoverable candidate traces: ranks are real
+    (pure functions of the 13), v2b columns are zeros, v2_present = 0."""
+    zeros = np.zeros((len(X13), len(V2B_NAMES)))
+    return assemble_v2_matrix(X13, zeros, 0.0)
+
+
 # ---- Main entry point ----
 
 def extract_all(session_dir: Path, log) -> tuple[np.ndarray, list[str], np.ndarray]:

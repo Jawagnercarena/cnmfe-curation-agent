@@ -47,6 +47,7 @@ import scipy.io as sio
 from scipy.optimize import linear_sum_assignment
 
 AGENT_DIR = Path(__file__).parent
+import config
 from config import DATA_ROOT
 from local_config import REPO_ROOT as _REPO_ROOT
 REPO_ROOT = str(_REPO_ROOT)
@@ -325,6 +326,14 @@ def _match_and_save(session_dir: Path, bootstrap_dir: Path,
 
     feature_names  = list(rows[0].keys())
     feature_matrix = np.array([[r[k] for k in feature_names] for r in rows])
+
+    # Under the 35-column v2 contract (BLA), bootstrap rows carry real ranks
+    # but zero-filled v2b + v2_present=0: their candidate traces come from a
+    # re-run, not the reviewed recording, so v2b values would not be
+    # label-faithful.  This keeps this writer in lockstep with curator.py.
+    if getattr(config, "FEATURE_VERSION", 1) >= 2:
+        feature_matrix = feat_module.assemble_v2_bootstrap(feature_matrix)
+        feature_names  = feat_module.v2_feature_names(feature_names)
 
     np.savez(
         session_dir / "candidate_features.npz",
