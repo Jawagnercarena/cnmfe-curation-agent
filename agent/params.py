@@ -30,9 +30,25 @@ def load_animal_config() -> dict:
 def parse_animal_id(session_name: str) -> str | None:
     """
     Parse animal ID from session folder name.
-    Format: AVG5x-TSeries-DATE-ANIMALID-depthum-planesz-run
+    Canonical format: AVG5x-TSeries-DATE-ANIMALID-depthum-planesz-run
+
+    The animal is found by CONTENT first -- any hyphen segment that is a known
+    animal in animal_params.json -- because position is fragile: non-averaged
+    exports drop the AVGNx prefix (TSeries-DATE-ANIMALID-...), which shifted
+    every token left and made the positional parse hand '356um' to the config
+    lookup, silently reprocessing 12 DG sessions at fallback gSig=9/36
+    (2026-08-18). Positional parse remains the fallback so a brand-new animal
+    that is not yet in the config still gets a sensible token in the
+    "add this animal" log message.
     """
     parts = session_name.split("-")
+    try:
+        known = set(load_animal_config().keys())
+    except OSError:
+        known = set()
+    for seg in parts:
+        if seg in known:
+            return seg
     if len(parts) >= 4:
         return parts[3]  # e.g. 'bla8', 'bla13', 'pnb88'
     return None
