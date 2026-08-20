@@ -57,8 +57,53 @@ the vCA1/DG_AL wrappers.
   because the model trained on this session; the smoke test therefore checks
   the OOF analog primarily and the deployed in-sample score secondarily.)
 
-## Step 5 — threshold sweep + reference eval on the parallel files
-(pending)
+## Step 5 — threshold sweep + reference eval on the parallel files (this commit)
+
+`threshold_sweep_v2.py` (8 seeds × 5-fold grouped OOF × {b13, rankv2b_35},
+threshold_robustness.py methodology, arm-b corpus from the parallel v2 files;
+OOF pool 12,677 rows / 2,394 real / 75 agent sessions, bootstrap always in
+train):
+
+- **b13 full-pool AUC 0.9099 ± 0.0017** — exact reproduction of the pinned
+  baseline; reviewed 0.8927 ± 0.0020 (red team: 0.8921).
+- **rankv2b_35 reviewed AUC 0.9123 ± 0.0015** — exactly the red team's C10
+  arm-b figure; full-pool 0.9246 ± 0.0014.
+- **Paired delta (reviewed) +0.0197, min +0.0176, positive on all 8 seeds**
+  → reference gate (≥ +0.015, all seeds positive) PASSES.
+- Threshold table (false-AR / junk-full / junk-reviewed, mean over 8 seeds):
+  0.05 → 0.60% / 28.7 / 27.8;  **0.06 → 0.80% / 33.8 / 31.8 (CHOSEN)**;
+  0.07 → 1.06% / 38.2 / 35.2;  0.12 → 2.18% (confirms the red team's "0.12
+  would be 2.2%").  Gate at T=0.06 (far ≤ 1%, junk ≥ 30%): **PASS**.
+  Matches red-team C9 to the decimal.
+
+### Smoke-cell finding (STOP-AND-REPORT before the freeze)
+
+The bla21 autopsy cells do NOT clear the new threshold in the
+deploy-realistic OOF: Neuron 22 **0.064 → 0.065** (a hair above T=0.06),
+Neuron 25 **0.101 → 0.052** (below T). Verified pre-existing in the red
+team's own pinned arm-b OOF (c10_oof_v2b.npz: 0.065 / 0.052 — my pipeline
+reproduces it exactly), i.e. this was a property of the approved result that
+no one had checked at the per-cell model-score level; the brief's "well above
+the new threshold" expectation was untested. Context:
+
+- Under the CURRENT deployment (b13 @ 0.12) both cells' OOF analogs
+  (0.064 / 0.101) are below the deployed threshold — the status quo already
+  auto-rejects both. The new deploy rescues Neuron 22 (barely) and still
+  loses Neuron 25: strictly better on these cells, not the full rescue the
+  autopsy narrative implied.
+- Under v2 (rejected by red-team C8 for the bla16 tie + noise-proxy
+  mechanism): Neuron 25 OOF 0.097, Neuron 22 0.062 — v2 rescues neither at
+  T≈0.06 either (0.097 > 0.06 — one cell better, same structure).
+- The literal Step 7.6 test (deployed model in-sample, retrain-identical
+  simulation `simulate_deployed_smoke.py`): 0.792 / 0.608 — would "pass",
+  but in-sample scores are inflated for training rows; the OOF number is the
+  honest deploy-realistic proxy for how such cells fare in FUTURE sessions.
+
+Deploy paused for a user decision per the stop-and-report rule.
 
 ## Freeze window (Steps 6–8)
-(pending)
+(pending user decision; tooling ready: `swap_v2.py`
+backup/rehearse/swap/rollback with sha256 verification at every move,
+`verify_deploy.py` for the post-retrain gate. Dry-run candidates not out for
+review: CTA 080626/080926/081126, Valence 070326. The 8 3odor pending
+sessions are out with Taylor since 2026-08-03 — untouched.)
