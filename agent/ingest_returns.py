@@ -44,9 +44,22 @@ from local_config import DATA_PARENT, EXCHANGE_ROOT
 
 
 def iter_sessions(inbox: Path):
-    """Yield session dirs under inbox (those holding a curated result)."""
+    """Yield session dirs under inbox (those holding a curated result).
+
+    Dot-prefixed folders are never sessions: a returned folder can carry a
+    parked diagnostic tree from the central machine (first seen 2026-08-20,
+    when returns mirrored from central included .gsig9_wrongparams/, whose
+    parked neuron.mat made ingest treat the park folder itself as a session
+    named '.gsig9_wrongparams' and fail resolution with a confusing
+    "area 'DG AL' is not a known area" skip). The dot prefix means "set
+    aside" everywhere else in this pipeline; honour it here too.
+    """
     for p in inbox.rglob("*"):
-        if p.is_dir() and ((p / "labels.mat").exists() or (p / "neuron.mat").exists()):
+        if not p.is_dir():
+            continue
+        if any(part.startswith(".") for part in p.relative_to(inbox).parts):
+            continue
+        if (p / "labels.mat").exists() or (p / "neuron.mat").exists():
             yield p
 
 
@@ -96,6 +109,39 @@ def resolve_dest(src: Path):
         f"Fix the inbox path to <reviewer>/<area>/<task>/<session> and re-run.")
 
 
+PROVENANCE_NAME = "labels_provenance.txt"
+
+
+def read_provenance(session_dir: Path):
+    """Reviewer whose labels this local session carries, or None if unrecorded."""
+    f = session_dir / PROVENANCE_NAME
+    if not f.exists():
+        return None
+    for line in f.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.startswith("reviewer:"):
+            return line.split(":", 1)[1].strip() or None
+    return None
+
+
+def write_provenance(session_dir: Path, reviewer: str, src: Path):
+    """Record which reviewer's labels the local session now carries.
+
+    Written on every ingest that carries a labels.mat (even when the file was
+    size-skipped as unchanged: identical bytes still mean the local labels are
+    that reviewer's). copy2 preserves the reviewer's mtimes, so without this
+    record there is no way to tell later WHO produced the labels -- which is
+    exactly what made the 2026-08-20 duplicate-review near-miss hard to
+    reconstruct (a session assigned to one reviewer was validly reviewed by
+    another, and a later return from the assignee would have silently
+    overwritten the ingested labels).
+    """
+    from datetime import datetime
+    (session_dir / PROVENANCE_NAME).write_text(
+        f"reviewer: {reviewer}\n"
+        f"ingested: {datetime.now():%Y-%m-%d %H:%M:%S}\n"
+        f"source: {src}\n", encoding="utf-8")
+
+
 def read_label_counts(labels_path: Path):
     """
     Read a returned labels.mat and return (n_keep, n_delete, n_motion).
@@ -121,6 +167,16 @@ def copy_session(src: Path, dst: Path, force: bool, dry: bool):
         if f.is_dir():
             continue
         rel = f.relative_to(src)
+        # Never import dot-prefixed subtrees: those are parked/set-aside data
+        # (e.g. a stale .gsig9_wrongparams/ mirrored back by a reviewer) and
+        # must not be written into the clean local session.
+        if any(part.startswith(".") for part in rel.parts):
+            continue
+        # The provenance record is central-machine metadata (who reviewed this
+        # session, written at ingest). A return that echoes central files back
+        # must not overwrite it with a stale copy.
+        if rel.name == PROVENANCE_NAME:
+            continue
         target = dst / rel
         size = f.stat().st_size
         if not force and target.exists() and target.stat().st_size == size:
@@ -144,6 +200,10 @@ def main():
                     help="exchange root (default: CNMFE_EXCHANGE_ROOT / .env)")
     ap.add_argument("--force", action="store_true",
                     help="copy every file, even if a same-size copy already exists")
+    ap.add_argument("--replace-labels", action="store_true",
+                    help="allow a return to replace labels that a DIFFERENT reviewer "
+                         "already provided for the same session (normally refused; "
+                         "the provenance record is rewritten to the new reviewer)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -173,10 +233,39 @@ def main():
             print(f"  !! {note}")
             skipped_sessions.append((src, note))
             continue
+
+        # Duplicate-review guard: refuse to let one reviewer's return replace
+        # labels a DIFFERENT reviewer already provided for this session.
+        # First case 2026-08-20: a session staged to Alisia had already been
+        # validly reviewed by Taylor and ingested (and trained on); her return
+        # arriving later would have silently overwritten his labels -- and the
+        # rest of her review (neuron.mat, ROIs.jpg, traces) would have replaced
+        # his, leaving a session that mixes two people's decisions. The whole
+        # session is therefore skipped, not just labels.mat. Deliberate
+        # replacement: --replace-labels.
+        try:
+            reviewer = src.relative_to(inbox).parts[0]
+        except ValueError:
+            reviewer = None
+        if reviewer and (src / "labels.mat").exists():
+            prev = read_provenance(dst)
+            if (prev and prev.lower() != reviewer.lower()
+                    and not args.replace_labels):
+                msg = (f"session already carries {prev}'s ingested labels; "
+                       f"refusing {reviewer}'s duplicate review (whole session "
+                       f"skipped). If the replacement is intentional, re-run "
+                       f"with --replace-labels.")
+                print(f"\nSKIP {src.name}")
+                print(f"  !! {msg}")
+                skipped_sessions.append((src, msg))
+                continue
+
         print(f"\nIngest {dst.relative_to(DATA_PARENT)}  ({note})")
         print(f"  {src}  ->  {dst}")
         c, s, b = copy_session(src, dst, args.force, args.dry_run)
         print(f"  copied {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")
+        if reviewer and (src / "labels.mat").exists() and not args.dry_run:
+            write_provenance(dst, reviewer, src)
 
         # Report the reviewer's label breakdown, including motion-delete tags.
         # Read from the source so this works in --dry-run too (nothing copied yet).
@@ -201,7 +290,7 @@ def main():
                 print("  labels.mat present -> watcher will auto-retrain on its next poll.")
 
     if skipped_sessions:
-        print(f"\n{len(skipped_sessions)} session(s) SKIPPED (unresolved destination):")
+        print(f"\n{len(skipped_sessions)} session(s) SKIPPED (not ingested):")
         for src, note in skipped_sessions:
             print(f"  - {src.name}: {note}")
     if sessions_with_field:
