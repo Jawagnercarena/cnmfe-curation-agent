@@ -74,6 +74,16 @@ def recurate(session_dir: Path, threshold_override: float | None = None):
     log(f"Re-curating: {session_name}")
     log(f"{'='*60}")
 
+    # A labeled session's review_neuron.mat is the frozen pre-decision review
+    # set; the classifier's training provenance depends on it never being
+    # rewritten after the review.  Auto-discovery already excludes labeled
+    # sessions, but an explicit path argument used to bypass that check.
+    if (session_dir / "labels.mat").exists():
+        log("  [GUARD] labels.mat exists — session already reviewed. Refusing "
+            "to re-curate: regenerating review_neuron.mat on a labeled session "
+            "would break its pre-decision provenance.")
+        return
+
     feat_file = session_dir / "candidate_features.npz"
     if not feat_file.exists():
         log("  [ERROR] candidate_features.npz not found — run watcher first.")
