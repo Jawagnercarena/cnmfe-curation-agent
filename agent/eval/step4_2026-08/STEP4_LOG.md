@@ -140,8 +140,23 @@ as part of the 0.80% false-AR budget).
   regenerated; freshly re-extracted first 13 columns **bit-identical** to
   the v1 backup (re-extraction determinism).
 
-## Step 8 — restart + first cycle
-(pending: operator restarts the BLA watcher)
+## Step 8 — restart + first cycle (2026-08-20 16:40)
+
+Operator restarted the BLA watcher. First cycle clean: startup banner +
+QuickEdit disabled at 16:40:07, three consecutive clean polls
+(16:40/16:41/16:42), **no spurious retrain** (joblib newer than every
+labels.mat), no errors, REVIEW_QUEUE.md rewritten each cycle and showing the
+re-curated dry-run session (CTA/080626, 106 neurons). vCA1/DG_AL untouched
+throughout.
+
+**DEPLOY COMPLETE.** Old regime b13 xgboost @ 0.12 (false-AR 0.83% / junk
+27.9% full-pool) → new regime rankv2b_35 xgboost @ 0.06 (reviewed AUC
+0.9123 ± 0.0015 vs 0.8927 baseline, paired +0.0197 all-seeds-positive;
+false-AR 0.80% / junk 33.8% full, 31.8% reviewed — roughly 2× the reviewed-
+stratum junk-catch of the old model at equal false-AR per red-team C9).
+Uncommitted fixtures kept on disk in this dir: preswap_scores.npz,
+step5_oof.npz. Rollback stays armed (see above) until one full
+reviewer-return cycle survives.
 
 ## Rollback (kept ready until one full reviewer-return cycle survives)
 `swap_v2.py rollback` (restores 182 npz + joblib byte-exact, sha-verified)
