@@ -101,9 +101,48 @@ the new threshold" expectation was untested. Context:
 
 Deploy paused for a user decision per the stop-and-report rule.
 
-## Freeze window (Steps 6–8)
-(pending user decision; tooling ready: `swap_v2.py`
-backup/rehearse/swap/rollback with sha256 verification at every move,
-`verify_deploy.py` for the post-retrain gate. Dry-run candidates not out for
-review: CTA 080626/080926/081126, Valence 070326. The 8 3odor pending
-sessions are out with Taylor since 2026-08-03 — untouched.)
+## User decision (2026-08-20)
+
+**Proceed, v2b @ 0.06** — all corpus gates pass; the deploy is strictly
+better than the status quo even on the two smoke cells (b13@0.12 already
+rejected both; v2b@0.06 rescues Neuron 22, still loses Neuron 25 — accepted
+as part of the 0.80% false-AR budget).
+
+## Steps 6–7 — freeze window (2026-08-20, this commit)
+
+- Freeze verified: BLA watcher stopped by the operator (watcher.log silent —
+  last write 04:25, confirmed 90 s+ quiet at 16:36), no pipeline MATLAB, no
+  exchange activity. vCA1/DG_AL watchers untouched.
+- `swap_v2.py backup`: 182 v1 npz + the deployed joblib copied to
+  `D:\...\.feature_expansion\_v1_backup\` with sha256 verification; joblib
+  also kept locally as `agent/model/BLA/classifier_v1_2026-08.joblib`.
+- `swap_v2.py rehearse`: **PASS** — scores computed from the backup bytes
+  with the backed-up joblib exactly reproduce the preswap_scores.npz fixture
+  on 3 sessions (incl. the smoke session). Rollback path proven.
+- `config.py` → `FEATURE_VERSION = 2` (the deploy flip).
+- `swap_v2.py swap`: **182/182 replaced**, sha-verified across every
+  `os.replace`, all live at width 35 (swap_report.json).
+- Retrain `--prospective-only --model xgboost --threshold 0.06`: 170
+  sessions / 45,716 candidates / 1,123 ambiguous excluded (== pin), agent
+  weight 4.00, companion first-pass model stored in the same joblib.
+- `verify_deploy.py`: **ALL 14 checks PASS** — joblib contract (xgboost,
+  scaler 35, first-pass 13, T=0.06, feature_version 2, n_sessions 170,
+  ambiguous 1123), corpus identity (182/182 sha == swept corpus, so the
+  Step 5 table and reference eval transfer to the live corpus; 182/182
+  first-13 + auto_rejected + n_candidates identical to the v1 backup),
+  deployed smoke (Neuron 22 = 0.792, Neuron 25 = 0.608 — bit-identical to
+  the pre-freeze simulation, OOF analogs 0.065/0.052 reported alongside),
+  and joblib newer than every labels.mat (no retrain loop).
+- End-to-end curator dry-run on CTA/080626-bla36 (not out for review):
+  full production path — pass 1 via the companion model (37/164 hi-conf),
+  35-col assembly, pass 2 @ T=0.06 → 58/164 auto-rejected (was 47 @ 0.12
+  under the old model), PDF + review_neuron.mat (106 neurons) + summary
+  regenerated; freshly re-extracted first 13 columns **bit-identical** to
+  the v1 backup (re-extraction determinism).
+
+## Step 8 — restart + first cycle
+(pending: operator restarts the BLA watcher)
+
+## Rollback (kept ready until one full reviewer-return cycle survives)
+`swap_v2.py rollback` (restores 182 npz + joblib byte-exact, sha-verified)
++ `git revert` of the config-flip commit + watcher restart. Rehearsed PASS.

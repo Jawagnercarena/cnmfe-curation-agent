@@ -1,0 +1,730 @@
+{
+ "2tones/AVG5x-TSeries-093025-bla12-660um-23z-000": {
+  "width": 35,
+  "sha256": "63719b0fcbdc6db1d58548ee44dd4e69c34b65b2658860421fc6aa6c44b70bc0"
+ },
+ "2tones/AVG5x-TSeries-093025-bla16-319um-36z-000": {
+  "width": 35,
+  "sha256": "c537928565407c6f69256a7d22eb8a8fccd4a32811d04a7ec0f7e268dd3d8d5b"
+ },
+ "2tones/AVG5x-TSeries-093025-bla21-313um-38z-000": {
+  "width": 35,
+  "sha256": "b33850d77f574520143f795df9c41db24cdce213089f88898736d02d694df08b"
+ },
+ "2tones/AVG5x-TSeries-093025-bla8-765um-23z-000": {
+  "width": 35,
+  "sha256": "14e92e811e4e9bdb0167a40555943f4048c0d8b8759075dd4e72091613aefbef"
+ },
+ "2tones/AVG5x-TSeries-100125-bla12-639um-23z-000": {
+  "width": 35,
+  "sha256": "03156174d4732f01c1c949c3b22c9d24604fce6cc453ce070da27db0e40dc06a"
+ },
+ "2tones/AVG5x-TSeries-100125-bla16-345um-36z-000": {
+  "width": 35,
+  "sha256": "88cb58564c546b407a9075eff643feb444ce1d88bae22b758799672fef89501d"
+ },
+ "2tones/AVG5x-TSeries-100125-bla21-327um-38z-000": {
+  "width": 35,
+  "sha256": "b64db175437fba2a9fa9ff25d37c9dd3029c844465b8db69bef40827aabf60b9"
+ },
+ "2tones/AVG5x-TSeries-100125-bla8-735um-23z-000": {
+  "width": 35,
+  "sha256": "020d099fef0f6689aeee042ae1e73ecf019ce1f524f1f3b148b3a46b551d1f61"
+ },
+ "2tones/AVG5x-TSeries-100925-bla12-775um-23z-000": {
+  "width": 35,
+  "sha256": "a2297eae3a4429b896a65100b82c1ec1451ca2ee6e9303638a8fdecf6b7a1c26"
+ },
+ "2tones/AVG5x-TSeries-100925-bla16-270um-36z-000": {
+  "width": 35,
+  "sha256": "95fd72cec220b2aaa2a5fbec047c4fe17ae6145a3bce2dc3e6e3743ec8d7e024"
+ },
+ "2tones/AVG5x-TSeries-100925-bla21-266um-38z-000": {
+  "width": 35,
+  "sha256": "7604fe0f0a44ff6ba1db3bcb291dabb46f98502f9afbc1049286a9f6bf29b895"
+ },
+ "2tones/AVG5x-TSeries-100925-bla8-685um-23z-000": {
+  "width": 35,
+  "sha256": "c548bc3dd5df7f8b92afba8d9bfdf3a26e50af3d6861ac058413e73548baa471"
+ },
+ "2tones/AVG5x-TSeries-101025-bla12-635um-23z-000": {
+  "width": 35,
+  "sha256": "dd3ecb25d35cc569adc28c22b078bcf3896749b54827ed2ebaf703e7a26a7a95"
+ },
+ "2tones/AVG5x-TSeries-101025-bla16-242um-36z-000": {
+  "width": 35,
+  "sha256": "f2eb7de7c64af59ffd72b8326c6494b3144e67031f6cfa105bca6121cb4f9725"
+ },
+ "2tones/AVG5x-TSeries-101025-bla21-310um-38z-000": {
+  "width": 35,
+  "sha256": "b663be66a16146534558d84ab5701ca85cec1aa1d0204667dfd4895e2efaec1d"
+ },
+ "2tones/AVG5x-TSeries-101025-bla8-725um-23z-000": {
+  "width": 35,
+  "sha256": "f8eb8540681b7847d7f63c86c8d6d530d5e06085007c3efbd028cc1b4f12270c"
+ },
+ "2tones/AVG5x-TSeries-101425-bla16-276um-36z-000": {
+  "width": 35,
+  "sha256": "424268f512601742fadc90528fd9e6fc2a679e6af2a86cfc0059d4bb83caf796"
+ },
+ "2tones/AVG5x-TSeries-101525-bla12-660um-23z-000": {
+  "width": 35,
+  "sha256": "0853e785a9d3d0c01c3f7fcbb9e99a992e2f640259e5406e60db1e169e438549"
+ },
+ "2tones/AVG5x-TSeries-101525-bla16-278um-36z-000": {
+  "width": 35,
+  "sha256": "d3524c9e167ec1acca4adcac873206175794e3c4ad79300d72f006e26fe78f09"
+ },
+ "2tones/AVG5x-TSeries-101525-bla8-774um-23z-000": {
+  "width": 35,
+  "sha256": "93be177dee1919dbdedb93fa0fe6b518478960585c89a85b4b46fa7bfd0ea573"
+ },
+ "2tones/AVG5x-TSeries-101625-bla12-660um-23z-001": {
+  "width": 35,
+  "sha256": "54cdf5cb9b06992cc8fa005a49a31dac23dbfc1053949d49f51f23a81e720925"
+ },
+ "2tones/AVG5x-TSeries-101625-bla16-298um-36z-000": {
+  "width": 35,
+  "sha256": "1ff3f7ffe511b9c41c6085faf3931628100a71df131eb114459d6b0692c26e7f"
+ },
+ "2tones/AVG5x-TSeries-101625-bla8-723um-23z-000": {
+  "width": 35,
+  "sha256": "beb80e19a5db22fcef18a2a8e0ed00142d69df40536029dcadb32d5604397d74"
+ },
+ "2tones/AVG5x-TSeries-101725-bla12-667um-23z-000": {
+  "width": 35,
+  "sha256": "d3386321fa74a791f1e03e2cc560f69bee2293b21ce0a94a44f7821dbd170284"
+ },
+ "2tones/AVG5x-TSeries-101725-bla16-283um-36z-000": {
+  "width": 35,
+  "sha256": "cec10d8be7aaea65b1002cfa2cfe97e76d1a60e0ad0c1a1b5d83e93495a5170e"
+ },
+ "2tones/AVG5x-TSeries-101725-bla8-707um-23z-000": {
+  "width": 35,
+  "sha256": "afee59080cdfe35aad053426b1c688714a1de4bdfeaa5dde34cd18070898dc6d"
+ },
+ "2tones/AVG5x-TSeries-102125-bla12-682um-23z-000": {
+  "width": 35,
+  "sha256": "5fcfcec7393b14f41df08ffb5402682321275231c1a9281935117c032041bbbc"
+ },
+ "2tones/AVG5x-TSeries-102125-bla8-777um-23z-000": {
+  "width": 35,
+  "sha256": "066fca02df2629892bb2a4e0779547455c495b175bd64f12bd4b148bb4212711"
+ },
+ "2tones/AVG5x-TSeries-102225-bla12-643um-23z-000": {
+  "width": 35,
+  "sha256": "8f57f24343a50da243c53973a34cf8a0e6527e77b6efd8a44375c8a48d4114e6"
+ },
+ "2tones/AVG5x-TSeries-102225-bla8-734um-23z-000": {
+  "width": 35,
+  "sha256": "1cc93f2445bffc5108321ae85574d217beb9b146482bcd773ca0fcbca1c6c3d1"
+ },
+ "2tones/AVG5x-TSeries-102325-bla12-716um-23z-000": {
+  "width": 35,
+  "sha256": "e8c009799873f065074b6717dcfcca3ad9da6f80e53fe31eeb060f2dfa6e0b4c"
+ },
+ "2tones/AVG5x-TSeries-102325-bla8-731um-23z-000": {
+  "width": 35,
+  "sha256": "1340d194407208ae6810a2a977c78f09090f5d0ce9def86a50fe5f6c56c053c4"
+ },
+ "3odor/AVG5X-TSeries-02282025-bla5-543um-25z-000": {
+  "width": 35,
+  "sha256": "f5a25ec0d64ff35d65294d4289e21c9807ddbd36be5ab96f58ce44f4611efd82"
+ },
+ "3odor/AVG5x-TSeries-02212025-bla2-695um-27z-000": {
+  "width": 35,
+  "sha256": "de18a5d7b3d7013bb6a7dd1adf528086b373a819889abff332a2d21e9943bc1f"
+ },
+ "3odor/AVG5x-TSeries-02212025-bla3-667um-26z-000": {
+  "width": 35,
+  "sha256": "bf517013f52254d8ecaf711409a508aee3f65ec27c3e8063f343bacf7fac9321"
+ },
+ "3odor/AVG5x-TSeries-02212025-bla4-751um-28z-000": {
+  "width": 35,
+  "sha256": "7eb36d9fe30ff18301e8ea2b04d8a91e87c1dcf92b3aadb76344bade809ceddf"
+ },
+ "3odor/AVG5x-TSeries-02212025-bla5-527um-25z-000": {
+  "width": 35,
+  "sha256": "08db802ff65a1c816fa86ad6776039590b6a10bb9884aaa75585e5fbd8de8fab"
+ },
+ "3odor/AVG5x-TSeries-02212025-bla6-734um-3z-000": {
+  "width": 35,
+  "sha256": "2417e14815d1dcda6e063608e664a9bd269839c18dd9db8dcbb0ff52ba26ecef"
+ },
+ "3odor/AVG5x-TSeries-022326-bla8-655um-25z-000": {
+  "width": 35,
+  "sha256": "94aef796b42696d0c166d0b47f2fe1dc197341abea9721781dc7da1f8f56a2a3"
+ },
+ "3odor/AVG5x-TSeries-022426-bla8-666um-25z-000": {
+  "width": 35,
+  "sha256": "fbaeeb21f52b84b3a5f4d15fbcdbd803cc80252bd9ab8f0f393530e5ed8824d7"
+ },
+ "3odor/AVG5x-TSeries-022525-bla3-665um-26z-000": {
+  "width": 35,
+  "sha256": "a1de0c26aa4fb7c59c3173ef337fe09af871578bace605abd6a5f0a463c6a6a0"
+ },
+ "3odor/AVG5x-TSeries-022525-bla4-755um-28z-000": {
+  "width": 35,
+  "sha256": "59ca2feafbb31144796fdfe8b575773531cad645b6be0d2c082fdb4275314e15"
+ },
+ "3odor/AVG5x-TSeries-022525-bla5-512um-25z-000": {
+  "width": 35,
+  "sha256": "04bd9776060efd3e5ba6642bddc961518785c020c274e397af7af9f54d8844c4"
+ },
+ "3odor/AVG5x-TSeries-022525-bla6-730um-3z-000": {
+  "width": 35,
+  "sha256": "7d1d8ff12e704a41a77feb4acc14fd7a5930e454bee5c82726c5f346121703e4"
+ },
+ "3odor/AVG5x-TSeries-02262025-bla2-662um-27z-000": {
+  "width": 35,
+  "sha256": "6775df0c83c6d166e48782c3ae2d05aa796862dec90eb906df1aa1150fe74563"
+ },
+ "3odor/AVG5x-TSeries-02262025-bla3-664um-26z-000": {
+  "width": 35,
+  "sha256": "aa339e8277a2ac608ce19a1a7d3231e0ef5de313aa8600147ce8c162d7f48de6"
+ },
+ "3odor/AVG5x-TSeries-02262025-bla4-724um-28z-000": {
+  "width": 35,
+  "sha256": "3d09f3045eec969976bce59ac60039cfa89ca3fc1137101ced23feff5467c07a"
+ },
+ "3odor/AVG5x-TSeries-02262025-bla5-527um-25z-000": {
+  "width": 35,
+  "sha256": "d7d3cb26e04b48523405f9a7668e7df8baeba9595b290fe2e407517e6865b53c"
+ },
+ "3odor/AVG5x-TSeries-02262025-bla6-732um-3z-000": {
+  "width": 35,
+  "sha256": "2e17fa10783d4d38a06ccfc8101094a14dd34e708cf07aca98db4121debebaf1"
+ },
+ "3odor/AVG5x-TSeries-02282025-bla2-681um-27z-000": {
+  "width": 35,
+  "sha256": "5878e36fb495d9b6092a56e6042fefb879b05dbe59136210160d45faebc2d16a"
+ },
+ "3odor/AVG5x-TSeries-02282025-bla3-648um-26z-000": {
+  "width": 35,
+  "sha256": "dcac80cf6f951ec3d5e4c8a7e820dc4443585557a84fc1cc21930e398298b510"
+ },
+ "3odor/AVG5x-TSeries-02282025-bla4-685um-28z-000": {
+  "width": 35,
+  "sha256": "4dd239065fc8887a0d9752ee41e38722eae314e289d14f116d742862208d39bc"
+ },
+ "3odor/AVG5x-TSeries-02282025-bla6-748um-3z-000": {
+  "width": 35,
+  "sha256": "586b23cdd2a02a6e67f0a26532754c936a700f6ac2f59f9dd7b0abbf02bd4ce3"
+ },
+ "3odor/AVG5x-TSeries-03042025-bla3-667um-26z-000": {
+  "width": 35,
+  "sha256": "ec3a578ecf5cb9fc03206112b0344d146dbfef4c129b48fb65103bcbc81883f4"
+ },
+ "3odor/AVG5x-TSeries-03042025-bla4-680um-28z-000": {
+  "width": 35,
+  "sha256": "b341db4b7b17495adadcdfc52e9a49d8fd0d3ae00c91f5e957619579c569b383"
+ },
+ "3odor/AVG5x-TSeries-03042025-bla5-537um-25z-000": {
+  "width": 35,
+  "sha256": "d71e98fd4a47faea94ee6b6e55e69e5512b2f074e17173410c0a9c5413fb9676"
+ },
+ "3odor/AVG5x-TSeries-03042025-bla6-748um-3z-000": {
+  "width": 35,
+  "sha256": "43fc442fbdb0da337e19e125f13920fdfb9a9dc686626df5252472fc8b61c96d"
+ },
+ "3odor/AVG5x-TSeries-03062025-bla3-667um-26z-000": {
+  "width": 35,
+  "sha256": "66f8eb23303ce389d176eed77ccfa2608fab97f2e3ffe2715834eab0d6153fbe"
+ },
+ "3odor/AVG5x-TSeries-03062025-bla4-694um-28z-000": {
+  "width": 35,
+  "sha256": "2937a9fa0df850c13a0cf42a3102b74c6afcee95a7871c0cf24d56d5ecc01ecb"
+ },
+ "3odor/AVG5x-TSeries-03062025-bla5-525um-25z-000": {
+  "width": 35,
+  "sha256": "afbadf59c7bb7f67b464d0cc607764f53c0b3cfe26546de2b3171b258c7eaeaf"
+ },
+ "3odor/AVG5x-TSeries-03062025-bla6-745um-3z-000": {
+  "width": 35,
+  "sha256": "cd67125f56fc622153dcc3e942e4bc04d0718f273da3ee962e1468d1368fdbaf"
+ },
+ "3odor/AVG5x-TSeries-03072025-bla6-725um-3z-000": {
+  "width": 35,
+  "sha256": "26e1dfabfa01214fcd88de33329d5e356c0b1460c87d1e0fc8b36cbff5549cab"
+ },
+ "3odor/AVG5x-TSeries-031226-bla8-609um-25z-000": {
+  "width": 35,
+  "sha256": "33564bff4f3ca652cd4e810c7ff4dea33a49567b15726ffc67e1e9138676ab1d"
+ },
+ "3odor/AVG5x-TSeries-03132025-bla3-737um-24z-000": {
+  "width": 35,
+  "sha256": "2f296bb8111f2ed93a32b62b9f0eccdf34bdaa3f38638778bc19c541be7ee6ca"
+ },
+ "3odor/AVG5x-TSeries-03132025-bla6-710um-3z-000": {
+  "width": 35,
+  "sha256": "516a269284e7f8f5cbc582fb47879b6468ce7f4e818de894a5066bf1abb9ad8d"
+ },
+ "3odor/AVG5x-TSeries-031326-bla8-664um-23z-000": {
+  "width": 35,
+  "sha256": "ca5806942a015b2ea6d3345e1905cee4e0a186f4e40af170dddfe8bb05dc039e"
+ },
+ "3odor/AVG5x-TSeries-031425-bla3-580um-24z-000": {
+  "width": 35,
+  "sha256": "ececf89101356a10ae809659d462058c6570a3bc396113047945327885662890"
+ },
+ "3odor/AVG5x-TSeries-031425-bla4-745um-28z-000": {
+  "width": 35,
+  "sha256": "425a032dc0d369bc516cd6b9d0138975695a54cb638a08225599ad4e7e732e4f"
+ },
+ "3odor/AVG5x-TSeries-041625-bla13-660um-27z-000": {
+  "width": 35,
+  "sha256": "f8805dc2c408d8fa0e22ecb0a3552078cac88910385bf7f883d22b00769998ed"
+ },
+ "3odor/AVG5x-TSeries-041625-bla14-743um-3z-000": {
+  "width": 35,
+  "sha256": "1aba0d41806044b85b7efadb98daeb0d6d3522ce8665e3844c189e9417ade594"
+ },
+ "3odor/AVG5x-TSeries-041625-bla15-209um-45z-000": {
+  "width": 35,
+  "sha256": "5321bbc4908504b767bccfe9a3afbfaf5fd0020e295d4b733e7b1c7e75a10a86"
+ },
+ "3odor/AVG5x-TSeries-041625-bla7-783um-27z-000": {
+  "width": 35,
+  "sha256": "9d79635ced09f45ca1b30f456bbf198b9d3341a9833bb12a2f83cb4fec9ec841"
+ },
+ "3odor/AVG5x-TSeries-041725-bla13-647um-27z-000": {
+  "width": 35,
+  "sha256": "4737a608721dd65bb060f7ea4b1a697ee79310dc70174d2e0f93daf399d6b687"
+ },
+ "3odor/AVG5x-TSeries-041725-bla14-760um-3z-000": {
+  "width": 35,
+  "sha256": "5445b65eca7dc37abdda4db7c23331483bfae9f09fc5a01e36bc6446f6fa75e4"
+ },
+ "3odor/AVG5x-TSeries-041725-bla15-169um-45z-000": {
+  "width": 35,
+  "sha256": "abd04586cbf178db706d5dc49c22a401800cad505afb59a19e4638a6a7119c5a"
+ },
+ "3odor/AVG5x-TSeries-041725-bla7-793um-27z-000": {
+  "width": 35,
+  "sha256": "ccd3836f8ae7b5d927f3eb76319bc191cc26b74cd54aadef82d821cecd3e4a34"
+ },
+ "3odor/AVG5x-TSeries-042125-bla13-657um-27z-000": {
+  "width": 35,
+  "sha256": "dcb452dde6060eb56bdc236585e99ab3c1e642f3e64cf48ed16e065d548a26e8"
+ },
+ "3odor/AVG5x-TSeries-042125-bla14-763um-3z-000": {
+  "width": 35,
+  "sha256": "914b0beb140a6f4d213ff6e13dcb361e1aa3cf235ccb210f42836514244fcfc1"
+ },
+ "3odor/AVG5x-TSeries-042125-bla15-222um-45z-000": {
+  "width": 35,
+  "sha256": "560a5c7f97e6efc4b4c5c8214928b5058d45b6486bc392d7a0f61567b4cca9d9"
+ },
+ "3odor/AVG5x-TSeries-042125-bla7-778um-27z-000": {
+  "width": 35,
+  "sha256": "52c57242df93da4afd37ba21e6b1fe3cf1db708ced326e06b63506b215299237"
+ },
+ "3odor/AVG5x-TSeries-042225-bla13-653um-27z-000": {
+  "width": 35,
+  "sha256": "0ad852738124e21035476a77c44f068008278b1988b49b97dd402d0f713a5231"
+ },
+ "3odor/AVG5x-TSeries-042225-bla14-763um-3z-000": {
+  "width": 35,
+  "sha256": "3a2d15ac9dfb1de1942d26ee631c9f00040c58b5a2ce340a752a98eb4b9243c7"
+ },
+ "3odor/AVG5x-TSeries-042225-bla15-200um-45z-000": {
+  "width": 35,
+  "sha256": "0fa451bd6155c3c9ee6339f8df0c1fb449b0caea89bd4629375aa97939076140"
+ },
+ "3odor/AVG5x-TSeries-042225-bla7-797um-27z-000": {
+  "width": 35,
+  "sha256": "0c30a0e95e8349183c896f9201948b007b4d9f4f4a8c2e9e6c0854ee0f295f89"
+ },
+ "3odor/AVG5x-TSeries-042525-bla13-655um-27z-000": {
+  "width": 35,
+  "sha256": "5498aea4936e4c2b86ebaf881f0ac5cb96687ddf46a720f8756e6998d7a679a3"
+ },
+ "3odor/AVG5x-TSeries-042525-bla14-776um-3z-000": {
+  "width": 35,
+  "sha256": "589ff08d56178dae7352202b0ce935394c3201cbd5c2ac2ad5da362eddd39c42"
+ },
+ "3odor/AVG5x-TSeries-042525-bla15-183um-45z-000": {
+  "width": 35,
+  "sha256": "7b23690e506385b4f5c17ba4a4616f45e46ef4f57c9a63c1c4be47a823f1d2d5"
+ },
+ "3odor/AVG5x-TSeries-042525-bla7-812um-27z-000": {
+  "width": 35,
+  "sha256": "d7778f4288d8ed910fa1380f7f2605f5e8fd71d270db7b0ae2dfb60a29e44cac"
+ },
+ "3odor/AVG5x-TSeries-043025-bla13-653um-27z-000": {
+  "width": 35,
+  "sha256": "2a93dc985f5168678bd997a4e730a60f06e4200646879bdb79629d4b66962326"
+ },
+ "3odor/AVG5x-TSeries-043025-bla7-807um-27z-000": {
+  "width": 35,
+  "sha256": "fa765d5e6f132070f105f8b2d1f85e9b1b856ac0fe9c6f3d182485570c1c34e9"
+ },
+ "3odor/AVG5x-TSeries-07072026-bla36-827um-25z-000": {
+  "width": 35,
+  "sha256": "5ba317311a0382adc555f3c6ed0a34946ca7c87cf3356afb07e4fa76015b4cde"
+ },
+ "3odor/AVG5x-TSeries-07072026-bla37-250um-37z-000": {
+  "width": 35,
+  "sha256": "78e0930171b2f1acc1014aab888451bdce61fd9925344eb8af2a72929864f587"
+ },
+ "3odor/AVG5x-TSeries-07082026-bla36-810um-25z-000": {
+  "width": 35,
+  "sha256": "135a7060d3c49ca0ce2d49f107c498d255ccfa3ebb914edb0c40866abbeb4295"
+ },
+ "3odor/AVG5x-TSeries-07082026-bla37-230um-37z-000": {
+  "width": 35,
+  "sha256": "c395467dbbc2e146ef2b58cd8edc7de567ab8852710e0f272c36a565fb527e8a"
+ },
+ "3odor/AVG5x-TSeries-071526-bla36-817um-25z-000": {
+  "width": 35,
+  "sha256": "134c7dc0ba34800d1735c97c65e10ede01d8b4acedde88fb9403bcb94a128046"
+ },
+ "3odor/AVG5x-TSeries-071526-bla37-248um-37z-000": {
+  "width": 35,
+  "sha256": "6a1b16210fb39e73e17c45989f262055ce08a023a0bcda564b1878b69611789c"
+ },
+ "3odor/AVG5x-TSeries-071626-bla36-762um-25z-000": {
+  "width": 35,
+  "sha256": "734ecd6c8e61ca2beb7441f42203c4513f2fac2617295660e3aa79a29ffd1172"
+ },
+ "3odor/AVG5x-TSeries-071626-bla37-241um-37z-000": {
+  "width": 35,
+  "sha256": "7802acd892aa15ca8af505bdf291e79f1064b9e21478a46e1b6d06d5e5310bdd"
+ },
+ "3odor/AVG5x-TSeries-071726-bla36-820um-25z-000": {
+  "width": 35,
+  "sha256": "3029866131def38c45babef57f98afdcc27d794eda9bf2a8744ec8ad70ed89c5"
+ },
+ "3odor/AVG5x-TSeries-071726-bla37-249um-37z-000": {
+  "width": 35,
+  "sha256": "68469f4e67dbd8e6a6d89b32d00dd324af4e7931c5debe648f64ef62d535808d"
+ },
+ "3odor/AVG5x-TSeries-07202026-bla36-700um-25z-000": {
+  "width": 35,
+  "sha256": "957f52fc630c73212be2b53d5314df29356fc8a62d1d15ca84a7266633c34478"
+ },
+ "3odor/AVG5x-TSeries-07202026-bla37-230um-37z-000": {
+  "width": 35,
+  "sha256": "06dd2f09b078dc464358407dcac34795a6d5849f34da3954b471426dbaa17de4"
+ },
+ "3odor/AVG5x-TSeries-07222026-bla36-750um-25z-001": {
+  "width": 35,
+  "sha256": "1cbe3d56bd85027b634b18151af1ea78a044f7ab4812081bfd6f08828b43599a"
+ },
+ "3odor/AVG5x-TSeries-072326-bla36-670um-34z-000": {
+  "width": 35,
+  "sha256": "fa55bfa484685ea562395a90d561927214d7066e4d66b11576d43673747498b7"
+ },
+ "3odor/AVG5x-TSeries-072426-bla36-560um-26z-000": {
+  "width": 35,
+  "sha256": "a86196fc593c8f234ab9c9f6371146afd7141a65f6ea09981563a78cb0201a11"
+ },
+ "3odor/AVG5x-TSeries-07292026-bla36-674um-3z-000": {
+  "width": 35,
+  "sha256": "9e16c5c74fba9993252f95d4298c46e937643c43b2b3390260781c361f2dd883"
+ },
+ "3odor/AVG5x-TSeries-07302026-bla36-730um-3z-000": {
+  "width": 35,
+  "sha256": "e50f10d6e907d1f3eaa439a68c24290ba6dae7b0b93626b0109df797b6350a44"
+ },
+ "3odor/AVG5x-TSeries-07312026-bla36-575um-29z-000": {
+  "width": 35,
+  "sha256": "976eac744b376f51139d42a526228e5af1f99e42169a026938888cb1b439c2d8"
+ },
+ "4odorDO/AVG5x-TSeries-02092026-bla12-681um-22z-000": {
+  "width": 35,
+  "sha256": "08e721ef15016e9ce664143e5c8ae0e6665c50b4dd646e7f17139fbfedea2929"
+ },
+ "4odorDO/AVG5x-TSeries-02092026-bla16-314um-36z-000": {
+  "width": 35,
+  "sha256": "e1e3f61e0b907f328a82da662d0a4eadf1f876f43b2f1623d371da0e832d74ee"
+ },
+ "4odorDO/AVG5x-TSeries-02092026-bla8-745um-23z-000": {
+  "width": 35,
+  "sha256": "a1c99997f8f07bdf12bdc9a898558ba7949255a182e6c3794cbd42483b2db840"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-052026-bla36-669um-29z-000": {
+  "width": 35,
+  "sha256": "80c0dcb17b8501ba268f43a4536df5bad00bfdf6622a5374c59c732b3e4e8b0c"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-052126-bla36-730um-26z-000": {
+  "width": 35,
+  "sha256": "6f7683ab8b7861bac6fc820e31506e0753924b674a35464c027be1b69d23be07"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-052626-bla36-816um-24z-000": {
+  "width": 35,
+  "sha256": "2d800248aca45390ed90aa53e44c8159f40952cadf80f5e7395904e2783f9da1"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-052726-bla37-339um-35z-000": {
+  "width": 35,
+  "sha256": "479046c057fa44e31995b8508c37fed51c75e110346f63cdf1f02f82961abc4c"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-052826-bla37-216um-37z-000": {
+  "width": 35,
+  "sha256": "714313ae318a89cf5329207d7cbd7ebaecfaedd6dbcf934b6e2bc79a6cdd370e"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-060326-bla36-742um-26z-000": {
+  "width": 35,
+  "sha256": "382d1ae3f5004d5b45277dbe85dbc32474bc85f00f7ece6bc2548df49a7fde92"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-060426-bla36-649um-29z-000": {
+  "width": 35,
+  "sha256": "fef2b276ef8e8eeeaad63d1bda66646e30d13166555ab9ba26a48aa0c3abb850"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-060426-bla37-275um-35z-000": {
+  "width": 35,
+  "sha256": "83cd295b2d9aed5c2fd55629f6c32e31322e16e2187bbb615a78de0633d5e4da"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-060526-bla36-820um-24z-000": {
+  "width": 35,
+  "sha256": "da2ca5683ffa2eafba961045385535be6a08ebe73c643218e3c6c3df7f481682"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061126-bla36-668um-29z-000": {
+  "width": 35,
+  "sha256": "5d3e77443dd75a79ede25ec0af14ea70b8425f882f4b27ee7fc04fefedd69144"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061126-bla37-277um-35z-000": {
+  "width": 35,
+  "sha256": "7a49d99abc43b75a12cdc7ffd6e1b54e2115eb7c62c33c104b50a1078bcb65f8"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061226-bla36-830um-24z-000": {
+  "width": 35,
+  "sha256": "07c6e79c677585b7f795c534a47495ec36c816caf3dff50fbc9bf99e31559fe1"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061226-bla37-213um-37z-000": {
+  "width": 35,
+  "sha256": "b69f53d09d53d568d2868ee1e6ad985473677b1be976e873ddcc16f6b1714967"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061726-bla36-667um-29z-000": {
+  "width": 35,
+  "sha256": "6ebcbee90b2700bbead022fa48550edda515b829fa8e8f29d83aa2645707207b"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061726-bla37-292um-35z-001": {
+  "width": 35,
+  "sha256": "c9bb7e8b5bac3797010168f8fb72c561e8f8c35e3011960ddb738ef6befecbfb"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061826-bla36-822um-24z-000": {
+  "width": 35,
+  "sha256": "579aa7b145d4e101e616e6a88b3a3e5110ba9fc70236b7fe8c593923ddd58fe8"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061826-bla37-209um-37z-000": {
+  "width": 35,
+  "sha256": "b2f4c55175ece9476e5f643df61b161db87134d9f12319d14f7f5bc0f8ca95ca"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061926-bla36-774um-26z-000": {
+  "width": 35,
+  "sha256": "5e26445b87d3ddec533649757c608b9d8cd82c4b39a70851db4c3fb2881e0da1"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-061926-bla37-226um-35z-000": {
+  "width": 35,
+  "sha256": "c8ecc1b1d38eb304f429b767bac5ccf537e74aceb12e0b16ae802bbbe53b1910"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062226-bla36-678um-29z-000": {
+  "width": 35,
+  "sha256": "9289024233dc942986a7aeb2c47c65c2f0bc6f2f0c130957c396feb70ac78c8b"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062226-bla37-286um-35z-000": {
+  "width": 35,
+  "sha256": "40f63bb287fec562bae285bd376f532cf77bb6223c80525deeab4296c8c72656"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062426-bla36-731um-26z-000": {
+  "width": 35,
+  "sha256": "a61a95b8fb5f9fda967d8093604ff5a678dc2c2f5dc4c7b03c52d0f2acbcfc22"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062426-bla37-256um-35z-000": {
+  "width": 35,
+  "sha256": "d25194af4b148592f26af1f910aa7dc80bb21c2c215fee9c1f7c2f50c8cd091e"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062526-bla36-676um-29z-000": {
+  "width": 35,
+  "sha256": "b39874bf6cdcd39bc3eb51f28b1aa8cd0d31a8e07dcefa16ab0875b94dd2682d"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062526-bla37-280um-35z-000": {
+  "width": 35,
+  "sha256": "4c762fd67bb73784e341f8d4b0609315f7a38fd1c950ebdda4a0ef79a593ccfe"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062626-bla36-807um-24z-000": {
+  "width": 35,
+  "sha256": "3d91c24bd45aede6041067f6e6f8b11b43eae78ca549229467c558ec52be919b"
+ },
+ "6odorDualDiffRew/AVG5x-TSeries-062626-bla37-200um-37z-000": {
+  "width": 35,
+  "sha256": "b2d1bfae0f0c66525e6e98d49ecfaed6ec1ac4cf98705b94e89160d388869c07"
+ },
+ "Block_Valence/AVG5x-TSeries-070226-bla36-812um-25z-000-concatenated": {
+  "width": 35,
+  "sha256": "066abfd7c81057f1e0e934cbf84165b7b88e4aa290c97780d16a93d7e35c468b"
+ },
+ "Block_Valence/AVG5x-TSeries-070226-bla37-262um-37z-000": {
+  "width": 35,
+  "sha256": "b1256320b7a7e1bfd67ef6d4add5e681c25d4f9a1f961ee313340c782fad7664"
+ },
+ "Block_Valence/AVG5x-TSeries-121025-bla16-293um-36z-000": {
+  "width": 35,
+  "sha256": "6b39b2b84272e0922c3fcdf08df4e80a8015c649992e8e4f2d529f59e2d2d1f0"
+ },
+ "Block_Valence/AVG5x-TSeries-121025-bla8-582um-23z-000": {
+  "width": 35,
+  "sha256": "54e2587819fe39caa2688b2ab057c7eea171ac1bca5b6c592954048941d96b9c"
+ },
+ "Block_Valence/AVG5x-TSeries-121125-bla12-700um-23z-000": {
+  "width": 35,
+  "sha256": "2f5d0fbb24ee6e9e01eadd90c13d295f591de02368ab20fe48dcb2cbecbbed95"
+ },
+ "CTA/AVG5x-TSeries-03312025-bla3-655um-26z-000": {
+  "width": 35,
+  "sha256": "bad430985bfcaceee67ea2377939c7382233f1482b2455c145cf472401880ce6"
+ },
+ "CTA/AVG5x-TSeries-03312025-bla4-741um-28z-000-ReMC": {
+  "width": 35,
+  "sha256": "a50e403d60ec251daf0de5f33b71a0f4f381399db7cf25638678fc7275c3e24c"
+ },
+ "CTA/AVG5x-TSeries-03312025-bla5-546um-25z-000": {
+  "width": 35,
+  "sha256": "2c2e010765812c689f2d82a802880a02eb6f195049f0c58101a0af2196acf094"
+ },
+ "CTA/AVG5x-TSeries-03312025-bla6-688um-3z-000": {
+  "width": 35,
+  "sha256": "2ba0dd269edc7e61a7e25849f30748b21ecdcb768902f57bfbba6d5edac3b622"
+ },
+ "CTA/AVG5x-TSeries-04042025-bla4-712um-28z-000-ReMC": {
+  "width": 35,
+  "sha256": "0379dada8337c0790b72a35c29f0a420f7cb1ee1bc3fa5ae9135ba9d494b5017"
+ },
+ "CTA/AVG5x-TSeries-04042025-bla6-686um-3z-000": {
+  "width": 35,
+  "sha256": "f9a20652c4c9cdd60fa24b19c96ed4431747f03dd9f8374ab8f05c2e34b94705"
+ },
+ "CTA/AVG5x-TSeries-04072025-bla3-679um-26z-000": {
+  "width": 35,
+  "sha256": "867c9ce042ddbaab8307e0949843638b08b2e185a40099ecc57c868ed741ef6c"
+ },
+ "CTA/AVG5x-TSeries-04072025-bla5-543um-25z-000": {
+  "width": 35,
+  "sha256": "68270d56d3dd8272342227679d9b0d60bb69aba5c8fe88b8caa6af4a717e780f"
+ },
+ "CTA/AVG5x-TSeries-04082025-bla3-694um-26z-000": {
+  "width": 35,
+  "sha256": "aad59dbe313676d73f61b9b6755bff9c73ba0f664073772f0a2a3379d015a936"
+ },
+ "CTA/AVG5x-TSeries-04082025-bla4-711um-28z-000-ReMC": {
+  "width": 35,
+  "sha256": "cb02feeb6ba741e5728f89ec6eb745010841ee876c915788b34cf0eb56557e69"
+ },
+ "CTA/AVG5x-TSeries-04082025-bla5-552um-25z-000": {
+  "width": 35,
+  "sha256": "dc1e4cbc929c59c621e2ced226c0796c1bb99a5121233c2d7905ef34003e2d6c"
+ },
+ "CTA/AVG5x-TSeries-080626-bla36-637um-3z-000": {
+  "width": 35,
+  "sha256": "39401cefc4fa2eb4951df911df269a3af3356ed8af44c06bca977b64ba763ce8"
+ },
+ "CTA/AVG5x-TSeries-080926-bla36-630um-3z-000": {
+  "width": 35,
+  "sha256": "4083aa622bda169236b9deabc75bcb5f17e71277eb24de28e6252c03d16902bc"
+ },
+ "CTA/AVG5x-TSeries-081126-bla36-665um-3z-000": {
+  "width": 35,
+  "sha256": "70034d536f78a34235e92c99af7de064600c15fd09ca980ea1ebab087e734b8c"
+ },
+ "CTA/AVG5x-TSeries-09232025-bla13-640um-25z-000": {
+  "width": 35,
+  "sha256": "e48d1f1ee258c4c53eca8cbc1176dadc5fb7fa20acf1199f446219aed0ebda33"
+ },
+ "CTA/AVG5x-TSeries-09232025-bla14-570um-28z-000": {
+  "width": 35,
+  "sha256": "47885ab5e1aae317a243affc128f3f6643a006d4f6f7ab37aab32e0c344bd947"
+ },
+ "CTA/AVG5x-TSeries-09232025-bla15-229um-33z-000": {
+  "width": 35,
+  "sha256": "2b1058ffef64992855889cd26570dda76bf6106772f81608a374f3a0b6b6c4d3"
+ },
+ "CTA/AVG5x-TSeries-09262025-bla13-629um-25z-000": {
+  "width": 35,
+  "sha256": "354ce50dca1d8d1c14afde916538db2cd8f21f85b07f35627554e64f98451248"
+ },
+ "CTA/AVG5x-TSeries-09262025-bla14-561um-28z-000": {
+  "width": 35,
+  "sha256": "2800bf4704d490bb7f704d2366bb80ace893a37b25dfe5544a41027bc9bc3e90"
+ },
+ "CTA/AVG5x-TSeries-09262025-bla15-234um-33z-000": {
+  "width": 35,
+  "sha256": "532356e73c0c614bf65d15624ef5cfe71a1890a4cbdb550c5e4ef43103c9ef11"
+ },
+ "Valence/AVG5x-TSeries-02062025-bla5-515um-25z-000": {
+  "width": 35,
+  "sha256": "372e0db9c9fa3cdb61a99f2673f5e7f005709e0aee6bc885e53307697a0bb0ac"
+ },
+ "Valence/AVG5x-TSeries-02072025-bla5-596um-25z-000": {
+  "width": 35,
+  "sha256": "c296e045c74f7194639c2ee6b02bd30a5d826bcabfe1c640a178c4991a890c4e"
+ },
+ "Valence/AVG5x-TSeries-02072025-bla6-745um-3z-000": {
+  "width": 35,
+  "sha256": "3dfea64e0abc1956633655a550d3fa9fbdb0a408dbd99bd03556fc8b1ad0a708"
+ },
+ "Valence/AVG5x-TSeries-070326-bla36-790um-25-000": {
+  "width": 35,
+  "sha256": "d7984ece6ee8d16c4f40da1d9d78e95a98741ae5df4a12b8fd641979c10468a8"
+ },
+ "Valence/AVG5x-TSeries-070326-bla37-255um-37-000": {
+  "width": 35,
+  "sha256": "089df62b1c83df49fa640e7d74c57fd713e69b90017536786535af2850c7260b"
+ },
+ "Valence/AVG5x-TSeries-07152025-bla13-675um-25z-000": {
+  "width": 35,
+  "sha256": "42be5729f72bceb6a6d04feb273801f1fa4176b690fdcac854b2acff61b336eb"
+ },
+ "Valence/AVG5x-TSeries-07152025-bla14-818um-25z-000": {
+  "width": 35,
+  "sha256": "e460704f516277314e5ab00b36ba3f06bd246a5918c08b95929702b61cee83e2"
+ },
+ "Valence/AVG5x-TSeries-07152025-bla15-228um-38z-000": {
+  "width": 35,
+  "sha256": "c2f29200d3a6e8ff8655972bf1503d111eb85fd73f83bda85f4d6c45a60a703d"
+ },
+ "Valence/AVG5x-TSeries-07162025-bla14-837um-25z-000": {
+  "width": 35,
+  "sha256": "e0fd91f84aea3c22ee94c2e08254ef94ec97be48ec2fad098ba02eaa23bbcae1"
+ },
+ "Valence/AVG5x-TSeries-07162025-bla15-246um-38z-000": {
+  "width": 35,
+  "sha256": "446ef9951ef33ac9208dd41df11db10efc2f3f53760ab6fd613b9dcf2f1aa2d5"
+ },
+ "Valence/AVG5x-TSeries-121125-bla16-233um-36z-000": {
+  "width": 35,
+  "sha256": "97c131a04865d6874f5cc924762c868327121bf71705909ab8e4fd64500fa525"
+ },
+ "Valence/AVG5x-TSeries-121125-bla8-652um-25z-000": {
+  "width": 35,
+  "sha256": "815778d4113d16e5b0bc0004ec81b5693c9a1fb543343cad47ae395507a3e108"
+ },
+ "Valence/AVG5x-TSeries-121225-bla12-652um-23z-000": {
+  "width": 35,
+  "sha256": "528aa1156e66e902c586537d72560ce5e13873b5bd731dadcbb9c3e170d3d1ac"
+ },
+ "WSE/AVG5x-TSeries-06072025-bla13-635um-27z-000": {
+  "width": 35,
+  "sha256": "36aa3d7238c3c5156bc4eb28be8fec2cd3785bd2175fc5fd431348a97d7175ba"
+ },
+ "WSE/AVG5x-TSeries-06072025-bla14-795um-28z-000": {
+  "width": 35,
+  "sha256": "120c0b7e6199ed97c857937946c5e06a5d71ae0c9ff7115f592f93411e5dee5c"
+ },
+ "WSE/AVG5x-TSeries-06072025-bla15-199um-45z-000": {
+  "width": 35,
+  "sha256": "2b007483fe395fa97b244c9b5edd742a28c564e4af8efcd3e5493bb7a59e9c23"
+ },
+ "WSE/AVG5x-TSeries-060825-bla13-588um-27z-000": {
+  "width": 35,
+  "sha256": "c61f596bd675c140f21a382303e6cb0c7f8085352d137208a9023aa659f8de3c"
+ },
+ "WSE/AVG5x-TSeries-060825-bla14-775um-28z-000": {
+  "width": 35,
+  "sha256": "7afb3dc8715cd44ff36d76da805bebc9d68c148bac75d1eb042278ac202291e0"
+ },
+ "WSE/AVG5x-TSeries-060825-bla15-175um-45z-000": {
+  "width": 35,
+  "sha256": "57b1583bea8e3efa1cdc507b8d36c3288e1c97334fd189a31f4304df83a98dbb"
+ }
+}
