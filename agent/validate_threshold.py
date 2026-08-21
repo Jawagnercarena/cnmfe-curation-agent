@@ -34,6 +34,7 @@ from config import DATA_ROOT
 sys.path.insert(0, str(AGENT_DIR))
 import params as params_module
 import run_cnmfe
+import bootstrap_preagent as _bp   # _reorder_Fcols_to_C (pixel-order fix)
 
 VALIDATION_SESSIONS = [
     ("Valence",   "AVG5x-TSeries-121225-bla12-652um-23z-000"),
@@ -277,6 +278,14 @@ def validate_session(task: str, session_dir: Path, tif_path: Path,
             return None
         A_review, S_review, d1, d2 = result4
         N_review = A_review.shape[1]
+        # Pixel-order alignment (2026-08 fix): A_review rows are numpy C-order,
+        # A_final rows are MATLAB F-order — reindex A_final so the spatial
+        # cosine compares like-for-like (see bootstrap_preagent._reorder_Fcols_to_C).
+        if A_final.shape[0] != d1 * d2:
+            log(f"  [VALIDATE] ERROR: A_final has {A_final.shape[0]} pixels but "
+                f"candidates are {d1}x{d2}. Skipping session.")
+            return None
+        A_final = _bp._reorder_Fcols_to_C(np.asarray(A_final, dtype=float), d1, d2)
         log(f"  [VALIDATE] A_final:  {A_final.shape}  (pixels x N_kept)")
         log(f"  [VALIDATE] A_review: {A_review.shape}  (pixels x N_candidates)")
 
@@ -380,11 +389,15 @@ def validate_session(task: str, session_dir: Path, tif_path: Path,
         return None
 
     finally:
-        if bootstrap_dir.exists() and not keep_bootstrap:
+        # Never delete a cached dir that --rematch-only just consumed: these
+        # caches are the only surviving candidate footprints in the corpus and
+        # cannot be regenerated without a 30-120 min CNMFe run.
+        if bootstrap_dir.exists() and not keep_bootstrap and not rematch_only:
             shutil.rmtree(str(bootstrap_dir), ignore_errors=True)
             log("  _bootstrap_validate/ cleaned up.")
         elif bootstrap_dir.exists():
-            log("  _bootstrap_validate/ kept (--keep-bootstrap).")
+            log("  _bootstrap_validate/ kept "
+                "(--keep-bootstrap or --rematch-only).")
 
 
 # ---------------------------------------------------------------------------

@@ -24,6 +24,8 @@ After this script completes, retrain the classifier:
 Usage:
     python bootstrap_preagent.py                         # process all eligible sessions
     python bootstrap_preagent.py --dry-run               # list what would be processed
+    python bootstrap_preagent.py --sessions-file f.txt --keep-candidates
+        # explicit re-run list (overwrites npz/labels/JSON) + persist candidates
 
     # Parallel workers — split sessions across N prompts (0-indexed):
     python bootstrap_preagent.py --worker 0 --num-workers 4
@@ -54,6 +56,27 @@ REPO_ROOT = str(_REPO_ROOT)
 
 # Cosine-similarity threshold for matching bootstrap candidates to final neurons.
 SPATIAL_MATCH_THRESHOLD = 0.45
+
+# Threshold sweep recorded in bootstrap_match_stats.json (schema_version 2).
+RECOVERY_SWEEP_THRESHOLDS = [0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70]
+
+
+def _reorder_Fcols_to_C(A: np.ndarray, d1: int, d2: int) -> np.ndarray:
+    """
+    Reindex a MATLAB-linearized (pixels, N) matrix (column-major pixel order,
+    p = row + col*d1, as produced by full(neuron.A)) into numpy C-order pixel
+    rows (p = row*d2 + col) on the same (d1, d2) grid.
+
+    Both sides of a cosine similarity must share one pixel order: candidates
+    loaded from the (N, d1, d2) spatial_footprints.mat stack are flattened
+    C-order, while A_final from neuron.mat is F-order. Comparing them without
+    this reindex scores each candidate against the TRANSPOSED image of the
+    curated footprint — the bug that scrambled all bootstrap labels until
+    2026-08 (see agent/eval/bootstrap_matching_2026-08/AUDIT.md).
+    """
+    return (A.T.reshape(-1, d2, d1)      # (N, d2, d1) = [n, col, row]
+              .transpose(0, 2, 1)        # (N, d1, d2) = [n, row, col]
+              .reshape(-1, d1 * d2).T)   # (pixels, N), C-order rows
 
 # NOTE: temporal confirmation (cross-run Pearson r on S or C_raw) was tested and
 # removed.  CNMFe temporal traces are demixed outputs of a non-convex factorisation —
@@ -158,16 +181,21 @@ def find_missing_stats_sessions() -> list[tuple[str, Path, Path]]:
 # Step 1 — Extract A_final from curated neuron.mat
 # ---------------------------------------------------------------------------
 
-def _extract_final_footprints(session_dir: Path) -> tuple[np.ndarray, int, int] | None:
+def _extract_final_footprints(session_dir: Path,
+                              work_dir: Path | None = None
+                              ) -> tuple[np.ndarray, int, int] | None:
     """
     Call MATLAB to extract A_final and the original gSig/gSiz from neuron.mat.
-    Saves a temp retro_final.mat, loads it in Python, then removes the temp file.
+    Saves a temp retro_final.mat (in work_dir if given, so diagnostic runs can
+    keep session_dir strictly read-only), loads it in Python, then removes it.
     Returns (A_final, gSig, gSiz) or None on failure.
-      A_final : (pixels, N_kept)
+      A_final : (pixels, N_kept)  — MATLAB column-major pixel rows
       gSig    : scalar, Gaussian half-width used in the original run
       gSiz    : scalar, Gaussian full-width used in the original run
     """
+    wd   = work_dir or session_dir
     sd   = str(session_dir).replace("\\", "/")
+    wds  = str(wd).replace("\\", "/")
     repo = REPO_ROOT.replace("\\", "/")
     script = (
         f"cd('{repo}');"
@@ -176,7 +204,7 @@ def _extract_final_footprints(session_dir: Path) -> tuple[np.ndarray, int, int] 
         f" A_final = full(neuron.A);"
         f" gSig_orig = neuron.options.gSig;"
         f" gSiz_orig = neuron.options.gSiz;"
-        f" save('{sd}/retro_final.mat', 'A_final', 'gSig_orig', 'gSiz_orig', '-v7');"
+        f" save('{wds}/retro_final.mat', 'A_final', 'gSig_orig', 'gSiz_orig', '-v7');"
         f" fprintf('Extracted %d final neurons (gSig=%d gSiz=%d)\\n',"
         f" size(A_final, 2), gSig_orig, gSiz_orig);"
     )
@@ -184,7 +212,7 @@ def _extract_final_footprints(session_dir: Path) -> tuple[np.ndarray, int, int] 
     if not ok:
         return None
     try:
-        data = sio.loadmat(str(session_dir / "retro_final.mat"))
+        data = sio.loadmat(str(wd / "retro_final.mat"))
         A_final   = data["A_final"]
         gSig_orig = int(np.asarray(data["gSig_orig"]).flat[0])
         gSiz_orig = int(np.asarray(data["gSiz_orig"]).flat[0])
@@ -193,7 +221,7 @@ def _extract_final_footprints(session_dir: Path) -> tuple[np.ndarray, int, int] 
         log(f"  [BOOTSTRAP] Could not load retro_final.mat: {e}")
         return None
     finally:
-        (session_dir / "retro_final.mat").unlink(missing_ok=True)
+        (wd / "retro_final.mat").unlink(missing_ok=True)
 
 
 # ---------------------------------------------------------------------------
@@ -240,10 +268,34 @@ def _load_candidates(bootstrap_dir: Path) -> tuple[np.ndarray, np.ndarray, int, 
             log("  [BOOTSTRAP] spatial_footprints.mat not found in _bootstrap/.")
             return None
         data = sio.loadmat(str(sf_file))
-        fp3d = data["spatial_footprints"]   # (N, H, W)
-        N, H, W = fp3d.shape
-        A_review = fp3d.reshape(N, H * W).T  # (pixels, N)
-        d1, d2 = H, W
+        if "spatial_footprints" in data:
+            fp3d = data["spatial_footprints"]   # (N, H, W)
+            N, H, W = fp3d.shape
+            A_review = fp3d.reshape(N, H * W).T  # (pixels, N)
+            d1, d2 = H, W
+        else:
+            # MATLAB refuses to save variables >2GB in v7 format (it warns
+            # "not saved" and writes a stub) — happens when a permissive run
+            # yields >~1000 candidates. Rebuild from A.txt, which the headless
+            # run always writes: its columns are MATLAB F-order pixels, so
+            # reindex to the C-order convention this loader promises.
+            a_file = bootstrap_dir / "A.txt"
+            cn_file = bootstrap_dir / "Cn.mat"
+            if not a_file.exists() or not cn_file.exists():
+                log("  [BOOTSTRAP] spatial_footprints.mat is a >2GB save stub "
+                    "and A.txt/Cn.mat fallback is unavailable.")
+                return None
+            log("  [BOOTSTRAP] spatial_footprints.mat is a >2GB save stub — "
+                "rebuilding candidates from A.txt (slow, ~minutes)...")
+            d1, d2 = sio.loadmat(str(cn_file))["Cn"].shape
+            A_txt = np.loadtxt(str(a_file))          # (pixels, N), F-order rows
+            if A_txt.ndim == 1:
+                A_txt = A_txt[:, np.newaxis]
+            if A_txt.shape[0] != d1 * d2:
+                log(f"  [BOOTSTRAP] A.txt has {A_txt.shape[0]} pixel rows, "
+                    f"expected {d1}x{d2}={d1 * d2}.")
+                return None
+            A_review = _reorder_Fcols_to_C(A_txt, d1, d2)
 
         c_raw_file = bootstrap_dir / "C_raw.txt"
         if not c_raw_file.exists():
@@ -262,17 +314,33 @@ def _load_candidates(bootstrap_dir: Path) -> tuple[np.ndarray, np.ndarray, int, 
 
 
 def _match_and_save(session_dir: Path, bootstrap_dir: Path,
-                    A_final: np.ndarray) -> bool:
+                    A_final: np.ndarray, out_dir: Path | None = None,
+                    keep_candidates: bool = False,
+                    run_params: dict | None = None) -> bool:
     """
     Load candidates from bootstrap_dir, Hungarian-match against A_final,
-    extract features, and save candidate_features.npz + labels.mat to session_dir.
+    extract features, and save candidate_features.npz + labels.mat +
+    bootstrap_match_stats.json (schema_version 2) to out_dir (defaults to
+    session_dir). With keep_candidates, additionally persists the candidate
+    footprints, traces and the full similarity matrix as
+    bootstrap_candidates.npz so matching can be redone offline forever after.
     """
+    out = out_dir or session_dir
     result = _load_candidates(bootstrap_dir)
     if result is None:
         return False
     A_review, C_raw, d1, d2 = result
     N_review = A_review.shape[1]
-    N_kept   = A_final.shape[1]
+
+    if A_final.shape[0] != d1 * d2:
+        log(f"  [BOOTSTRAP] ERROR: A_final has {A_final.shape[0]} pixels but "
+            f"candidates are {d1}x{d2}={d1 * d2}. Cannot match.")
+        return False
+    # Pixel-order alignment (2026-08 fix): A_review rows are C-order, A_final
+    # rows are MATLAB F-order. Reindex A_final so the cosine compares
+    # like-for-like; see _reorder_Fcols_to_C.
+    A_final = _reorder_Fcols_to_C(np.asarray(A_final, dtype=float), d1, d2)
+    N_kept  = A_final.shape[1]
 
     # Diagnostic: log shapes so mismatches are immediately visible
     log(f"  [BOOTSTRAP] A_final:  {A_final.shape}  (pixels x N_kept)")
@@ -336,14 +404,14 @@ def _match_and_save(session_dir: Path, bootstrap_dir: Path,
         feature_names  = feat_module.v2_feature_names(feature_names)
 
     np.savez(
-        session_dir / "candidate_features.npz",
+        out / "candidate_features.npz",
         feature_matrix=feature_matrix,
         feature_names=np.array(feature_names),
         auto_rejected=np.array([], dtype=int),   # bootstrap always shows all candidates
         n_candidates=np.array([N_review]),
     )
     sio.savemat(
-        str(session_dir / "labels.mat"),
+        str(out / "labels.mat"),
         {"labels": labels.reshape(-1, 1)},
     )
 
@@ -353,6 +421,20 @@ def _match_and_save(session_dir: Path, bootstrap_dir: Path,
     # best-first, with the threshold used.
     # candidate_indices: row index into the N_review candidate array
     # curated_indices:   column index into the N_kept curated array
+    #
+    # schema_version 2 additions (legacy keys and their semantics unchanged):
+    #   ambiguous_candidate_indices — the Hungarian partner of each UNMATCHED
+    #     curated neuron (pair at/below threshold): true label unknown, mask
+    #     from training. Previously only derivable as candidate_indices[n_matched:].
+    #   duplicate_candidate_indices — unassigned candidates whose best
+    #     similarity to ANY curated neuron clears the threshold: same-cell
+    #     re-detections that would otherwise be full-weight negatives.
+    ambiguous  = [int(r) for s, r, c in pair_sims if s <= SPATIAL_MATCH_THRESHOLD]
+    assigned   = {int(r) for _, r, _ in pair_sims}
+    best_per_cand = corr_mat.max(axis=1)
+    duplicates = [int(j) for j in range(N_review)
+                  if j not in assigned
+                  and best_per_cand[j] > SPATIAL_MATCH_THRESHOLD]
     match_stats = {
         "threshold": SPATIAL_MATCH_THRESHOLD,
         "n_candidates": N_review,
@@ -361,11 +443,42 @@ def _match_and_save(session_dir: Path, bootstrap_dir: Path,
         "pair_similarities": [round(float(s), 4) for s, _, _ in pair_sims],
         "candidate_indices": [int(r) for s, r, c in pair_sims],
         "curated_indices":   [int(c) for s, r, c in pair_sims],
+        "schema_version": 2,
+        "matcher": "hungarian_cosine_pixelorder_fixed",
+        "session": session_dir.name,
+        "d1": d1,
+        "d2": d2,
+        "cnmfe_params": {k: float(v) for k, v in (run_params or {}).items()
+                         if isinstance(v, (int, float, np.integer, np.floating))},
+        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "recovery_by_threshold": {
+            f"{t:.2f}": int(sum(1 for s, _, _ in pair_sims if s > t))
+            for t in RECOVERY_SWEEP_THRESHOLDS},
+        "ambiguous_candidate_indices": ambiguous,
+        "duplicate_candidate_indices": duplicates,
+        "per_curated_best_similarity": [round(float(s), 4)
+                                        for s in corr_mat.max(axis=0)],
     }
-    with open(session_dir / "bootstrap_match_stats.json", "w") as f:
+    with open(out / "bootstrap_match_stats.json", "w") as f:
         json.dump(match_stats, f, indent=2)
 
+    if keep_candidates:
+        from scipy import sparse
+        A_csr = sparse.csr_matrix(np.asarray(A_review.T, dtype=np.float32))
+        np.savez_compressed(
+            out / "bootstrap_candidates.npz",
+            # candidate footprints, (N_review, d1*d2) CSR, C-order pixel columns
+            A_data=A_csr.data, A_indices=A_csr.indices,
+            A_indptr=A_csr.indptr, A_shape=np.array(A_csr.shape),
+            C_raw=C_raw.astype(np.float32),
+            sim_matrix=corr_mat.astype(np.float32),
+            d1=np.array([d1]), d2=np.array([d2]),
+        )
+        log(f"  [BOOTSTRAP] Saved bootstrap_candidates.npz "
+            f"({A_csr.nnz} nonzero footprint px, full sim matrix).")
+
     log(f"  [BOOTSTRAP] Saved: {N_review} candidates, {n_keep} kept, "
+        f"{len(ambiguous)} ambiguous, {len(duplicates)} duplicates, "
         f"{feature_matrix.shape[1]} features.")
     return True
 
@@ -374,23 +487,38 @@ def _match_and_save(session_dir: Path, bootstrap_dir: Path,
 # Main per-session pipeline
 # ---------------------------------------------------------------------------
 
-def bootstrap_session(task_name: str, session_dir: Path, tif_path: Path) -> bool:
+def bootstrap_session(task_name: str, session_dir: Path, tif_path: Path,
+                      out_dir: Path | None = None,
+                      keep_candidates: bool = False,
+                      params_override: dict | None = None) -> bool:
     """
     Full bootstrap pipeline for one session.
     Returns True if candidate_features.npz + labels.mat were successfully saved.
+
+    out_dir (diagnostic mode): redirect ALL outputs — _bootstrap/, npz, labels,
+    JSON, temp files, clamp_warning.txt — to out_dir, leaving session_dir
+    strictly read-only. _bootstrap/ is kept for inspection in this mode.
+    keep_candidates: also persist bootstrap_candidates.npz (footprints, traces,
+    full similarity matrix).
+    params_override: dict merged over the estimated params (after the
+    gSig/gSiz restore), e.g. {"min_corr": 0.30} for permissive re-runs.
     """
-    bootstrap_dir = session_dir / "_bootstrap"
+    target = out_dir or session_dir
+    if out_dir is not None:
+        out_dir.mkdir(parents=True, exist_ok=True)
+    bootstrap_dir = target / "_bootstrap"
     bootstrap_dir.mkdir(exist_ok=True)
     _succeeded = False
 
     try:
         log(f"\n{'=' * 65}")
-        log(f"  {task_name}/{session_dir.name}")
+        log(f"  {task_name}/{session_dir.name}"
+            + ("  [diag mode]" if out_dir is not None else ""))
         log(f"{'=' * 65}")
 
         # Step 1: extract A_final + original gSig/gSiz from curated neuron.mat
         log("  Step 1: Extracting curated neuron footprints (MATLAB ~15s)...")
-        result1 = _extract_final_footprints(session_dir)
+        result1 = _extract_final_footprints(session_dir, work_dir=target)
         if result1 is None:
             log("  FAILED at step 1.")
             return False
@@ -408,8 +536,17 @@ def bootstrap_session(task_name: str, session_dir: Path, tif_path: Path) -> bool
         # computed with the correct kernel size.
         log("  Step 2: Estimating CNMFe parameters...")
         session_name = session_dir.name
-        image_dir = session_dir
-        if not (session_dir / "pnr.mat").exists():
+        params_dir = session_dir
+        if out_dir is not None:
+            # Diag mode: estimation reads (and clamp_warning.txt writes) happen
+            # in the shadow dir; seed it with copies of the session's Cn/pnr.
+            for fname in ("Cn.mat", "pnr.mat"):
+                src = session_dir / fname
+                if src.exists() and not (out_dir / fname).exists():
+                    shutil.copy2(str(src), str(out_dir / fname))
+            params_dir = out_dir
+        image_dir = params_dir
+        if not (params_dir / "pnr.mat").exists():
             log(f"  Step 2a: No pnr.mat found — running pre-pass "
                 f"(gSig={gSig_orig}, gSiz={gSiz_orig} from original run)...")
             pre_ok = run_cnmfe.run_pre_pass_to_dir(
@@ -418,12 +555,15 @@ def bootstrap_session(task_name: str, session_dir: Path, tif_path: Path) -> bool
                 image_dir = bootstrap_dir
             else:
                 log("  Step 2a: Pre-pass failed — will use defaults for min_corr/min_pnr.")
-        p = params_module.estimate_all_params(session_name, session_dir, log,
+        p = params_module.estimate_all_params(session_name, params_dir, log,
                                               image_dir=image_dir,
                                               bootstrap_mode=True)
         # Override gSig/gSiz with values from the original run
         p["gSig"] = gSig_orig
         p["gSiz"] = gSiz_orig
+        if params_override:
+            p.update(params_override)
+            log(f"  Step 2: params_override applied: {params_override}")
         log(f"  Step 2 done: {p}")
 
         # Step 3: run headless CNMFe, all outputs go to _bootstrap/
@@ -435,7 +575,10 @@ def bootstrap_session(task_name: str, session_dir: Path, tif_path: Path) -> bool
 
         # Steps 4-6: match candidates, extract features, save labels
         log("  Step 4: Matching candidates to ground truth, extracting features...")
-        success = _match_and_save(session_dir, bootstrap_dir, A_final)
+        success = _match_and_save(session_dir, bootstrap_dir, A_final,
+                                  out_dir=out_dir,
+                                  keep_candidates=keep_candidates,
+                                  run_params=p)
         if not success:
             log("  FAILED at step 4.")
             return False
@@ -449,7 +592,9 @@ def bootstrap_session(task_name: str, session_dir: Path, tif_path: Path) -> bool
         return False
 
     finally:
-        if bootstrap_dir.exists():
+        if out_dir is not None:
+            log(f"  Diag mode: all outputs (incl. _bootstrap/) kept in {target}")
+        elif bootstrap_dir.exists():
             if _succeeded:
                 shutil.rmtree(str(bootstrap_dir), ignore_errors=True)
                 log("  _bootstrap/ cleaned up.")
@@ -471,6 +616,17 @@ def main():
                              "before that file existed). Regenerates the JSON and refreshes "
                              "npz/labels so they get proper bootstrap weighting. NOTE: this "
                              "overwrites those sessions' npz/labels with a fresh match.")
+    parser.add_argument("--sessions-file", type=Path, default=None,
+                        help="Text file of explicit session dir paths (one per "
+                             "line, # comments allowed). Processes exactly these "
+                             "sessions even if already bootstrapped — i.e. a "
+                             "re-run that OVERWRITES their npz/labels/JSON. "
+                             "Used for the post-fix corpus re-runs.")
+    parser.add_argument("--keep-candidates", action="store_true",
+                        help="Persist bootstrap_candidates.npz (candidate "
+                             "footprints, traces, full similarity matrix) so "
+                             "matching can be redone offline. Recommended for "
+                             "all re-runs.")
     parser.add_argument("--worker", type=int, default=0,
                         help="Worker index (0-based). Use with --num-workers.")
     parser.add_argument("--num-workers", type=int, default=1,
@@ -482,10 +638,29 @@ def main():
     if args.worker < 0 or args.worker >= args.num_workers:
         parser.error(f"--worker must be in [0, num-workers). "
                      f"Got {args.worker} with --num-workers {args.num_workers}.")
+    if args.sessions_file and args.refresh_missing_stats:
+        parser.error("--sessions-file and --refresh-missing-stats are mutually "
+                     "exclusive.")
 
-    all_sessions = (find_missing_stats_sessions()
-                    if args.refresh_missing_stats
-                    else find_bootstrap_sessions())
+    if args.sessions_file:
+        all_sessions = []
+        for line in args.sessions_file.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            sd = Path(line)
+            if not sd.is_dir():
+                parser.error(f"--sessions-file entry is not a directory: {sd}")
+            if not (sd / "neuron.mat").exists():
+                parser.error(f"--sessions-file entry has no neuron.mat: {sd}")
+            tifs = list(sd.glob("*.tif")) + list(sd.glob("*.tiff"))
+            if not tifs:
+                parser.error(f"--sessions-file entry has no .tif: {sd}")
+            all_sessions.append((sd.parent.name, sd, tifs[0]))
+    else:
+        all_sessions = (find_missing_stats_sessions()
+                        if args.refresh_missing_stats
+                        else find_bootstrap_sessions())
     # Interleaved split: worker W takes indices W, W+N, W+2N, ...
     sessions = all_sessions[args.worker::args.num_workers]
 
@@ -507,7 +682,8 @@ def main():
 
     n_ok = n_fail = 0
     for i, (task_name, session_dir, tif_path) in enumerate(sessions, 1):
-        ok = bootstrap_session(task_name, session_dir, tif_path)
+        ok = bootstrap_session(task_name, session_dir, tif_path,
+                               keep_candidates=args.keep_candidates)
         if ok:
             n_ok += 1
         else:
