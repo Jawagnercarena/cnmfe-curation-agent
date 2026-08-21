@@ -366,20 +366,24 @@ def _get_bootstrap_recovery(session_dir: Path) -> float | None:
 
 def _get_bootstrap_ambiguous_mask(session_dir: Path, n_candidates: int) -> np.ndarray:
     """
-    Return a boolean mask (length n_candidates) marking bootstrap candidates that
-    were the Hungarian best-match to an UNMATCHED curated neuron (similarity < threshold).
+    Return a boolean mask (length n_candidates) marking bootstrap candidates whose
+    label-0 is NOT trustworthy and which are therefore excluded from training
+    (weight=0):
 
-    These are excluded from training (weight=0) because their true label is unknown:
-    they are likely merged/distorted versions of real neurons that CNMFe failed to
-    cleanly re-detect, so treating them as confident negatives introduces false-negative
-    label noise.
+    * ambiguous — the Hungarian partner of an UNMATCHED curated neuron (pair below
+      threshold): its true label is unknown.
+    * duplicate — an unassigned candidate whose best similarity to some curated
+      neuron clears the threshold (same-cell re-detection / strong overlap): a
+      real-looking cell that Hungarian 1:1 could not label 1.
 
-    Candidates NOT in this mask that are still labeled 0 are genuine hard negatives —
-    they were never the closest match to any real neuron in the Hungarian assignment.
+    Candidates NOT in this mask that are labeled 0 are genuine hard negatives.
 
-    How: bootstrap_match_stats.json stores candidate_indices sorted descending by
-    similarity.  The first n_matched entries are the positive pairs (above threshold).
-    Everything after that is a candidate matched to a real neuron but below threshold.
+    Schema v2 JSONs (2026-08 matching fix) store both sets explicitly as
+    ambiguous_candidate_indices / duplicate_candidate_indices. Legacy v1 JSONs
+    only support the ambiguous set, recovered by the rank-slice rule: pairs are
+    sorted best-first, so candidate_indices[n_matched:] are the sub-threshold
+    partners. (Legacy JSONs predate the pixel-order fix, so their content is
+    scrambled anyway — they exist only until the corpus re-run replaces them.)
     """
     stats_file = session_dir / "bootstrap_match_stats.json"
     if not stats_file.exists():
@@ -388,14 +392,16 @@ def _get_bootstrap_ambiguous_mask(session_dir: Path, n_candidates: int) -> np.nd
     with open(stats_file) as f:
         bs = json.load(f)
 
-    n_matched    = bs.get("n_matched", 0)
-    cand_indices = bs.get("candidate_indices", [])
-
-    # Pairs are sorted best-first; everything after n_matched is an unmatched pair.
-    unmatched_cand_idxs = cand_indices[n_matched:]
+    if bs.get("schema_version", 1) >= 2:
+        excluded = (list(bs.get("ambiguous_candidate_indices", []))
+                    + list(bs.get("duplicate_candidate_indices", [])))
+    else:
+        n_matched    = bs.get("n_matched", 0)
+        cand_indices = bs.get("candidate_indices", [])
+        excluded     = cand_indices[n_matched:]
 
     mask = np.zeros(n_candidates, dtype=bool)
-    for idx in unmatched_cand_idxs:
+    for idx in excluded:
         if 0 <= idx < n_candidates:
             mask[idx] = True
 
