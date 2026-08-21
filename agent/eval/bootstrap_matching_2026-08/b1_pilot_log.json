@@ -1,0 +1,146 @@
+[
+ {
+  "session": "vCA1/CTA/AVG2x-TSeries-10232023-961-420-335um-22z-A",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 4.2,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "vCA1/CTA/AVG2x-TSeries-10232023-921-880-780um-25z-A",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 7.6,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "vCA1/CTA/AVG2x-TSeries-10232023-921-880-780um-25z-B",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 7.8,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "vCA1/AA/AVG8x-TSeries-07012022-96-172um-35z-000",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 25.9,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "BLA/3odor/AVG5x-TSeries-042525-bla7-812um-27z-000",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 67.8,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "BLA/3odor/AVG5x-TSeries-042125-bla7-778um-27z-000",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 64.3,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "vCA1/Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000B",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 21.0,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "vCA1/CTA/AVG2x-TSeries-12012023-962-525um-485um-23z-000A",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 11.0,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "BLA/3odor/AVG5x-TSeries-02212025-bla3-667um-26z-000",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 75.4,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "BLA/3odor/AVG5x-TSeries-042525-bla15-183um-45z-000",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 65.2,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "vCA1/4CS/AVG8x-TSeries-05172022-100-300um-33z-000",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 26.8,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "BLA/2tones/AVG5x-TSeries-093025-bla21-313um-38z-000",
+  "runtag": "fixed",
+  "override": {},
+  "runtime_min": 20.7,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "vCA1/AA/AVG8x-TSeries-07012022-96-172um-35z-000",
+  "runtag": "permissive",
+  "override": {
+   "min_corr": 0.3,
+   "min_pnr": 4.0
+  },
+  "runtime_min": 53.3,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ },
+ {
+  "session": "BLA/3odor/AVG5x-TSeries-042125-bla7-778um-27z-000",
+  "runtag": "permissive",
+  "override": {
+   "min_corr": 0.3,
+   "min_pnr": 4.0
+  },
+  "runtime_min": 145.9,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "FAILED"
+ },
+ {
+  "session": "vCA1/CTA/AVG2x-TSeries-10232023-921-880-780um-25z-A",
+  "runtag": "permissive",
+  "override": {
+   "min_corr": 0.3,
+   "min_pnr": 4.0
+  },
+  "runtime_min": 12.6,
+  "session_dir_untouched": true,
+  "session_dir_changes": [],
+  "status": "OK"
+ }
+]
