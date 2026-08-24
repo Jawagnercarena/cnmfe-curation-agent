@@ -784,7 +784,15 @@ def main():
     # Dynamic agent up-weight: counteracts bootstrap volume dominance.
     # Formula: max(sqrt(n_bootstrap / n_agent), MIN_AGENT_WEIGHT) — see the
     # module-level MIN_AGENT_WEIGHT for the floor's rationale/validation.
-    if n_ag_examples > 0 and n_bs_examples > 0:
+    # An area config may pin a FIXED value instead via AGENT_WEIGHT_OVERRIDE:
+    # the sqrt term was calibrated against pre-2026-08 bootstrap label noise,
+    # and after the pixel-order fix a 3-seed sweep showed vCA1's sqrt value
+    # (7.01x) doubles false-AR at the deployed threshold vs a fixed 5.0
+    # (agent/eval/bootstrap_matching_2026-08/c3_vca1_weight_sweep.log).
+    _aw_override = getattr(config, "AGENT_WEIGHT_OVERRIDE", None)
+    if _aw_override is not None:
+        agent_weight = float(_aw_override)
+    elif n_ag_examples > 0 and n_bs_examples > 0:
         agent_weight = float(max(np.sqrt(n_bs_examples / n_ag_examples), MIN_AGENT_WEIGHT))
     else:
         agent_weight = MIN_AGENT_WEIGHT
@@ -793,7 +801,10 @@ def main():
     log(f"Sessions: {len(records)} total  "
         f"({sum(1 for r in records if not r['is_bootstrap'])} agent, "
         f"{sum(1 for r in records if r['is_bootstrap'])} bootstrap)")
-    log(f"Agent up-weight: max(sqrt({n_bs_examples}/{n_ag_examples}), {MIN_AGENT_WEIGHT}) = {agent_weight:.2f}x")
+    if _aw_override is not None:
+        log(f"Agent up-weight: {agent_weight:.2f}x (AGENT_WEIGHT_OVERRIDE from config)")
+    else:
+        log(f"Agent up-weight: max(sqrt({n_bs_examples}/{n_ag_examples}), {MIN_AGENT_WEIGHT}) = {agent_weight:.2f}x")
     log(f"Bad-session down-weight: {BAD_SESSION_WEIGHT}x  "
         f"(recovery < {BAD_SESSION_RECOVERY_THRESHOLD:.0%})")
 
