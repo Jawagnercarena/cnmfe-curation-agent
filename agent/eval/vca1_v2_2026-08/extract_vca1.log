@@ -1,0 +1,25 @@
+extracting 23 sessions -> D:\Julian_CNMFe\vCA1\.feature_expansion
+OK 2tones/AVG5x-TSeries-100925-pnb88-153um-33z-000: N=44 T=7520
+OK 2tones/AVG5x-TSeries-101025-pnb88-120um-35z-000: N=43 T=7520
+OK 2tones/AVG5x-TSeries-101325-pnb88-121um-22z-000: N=42 T=7520
+OK 2tones/AVG5x-TSeries-101425-pnb88-115um-35z-000: N=34 T=7520
+OK 2tones/AVG5x-TSeries-101525-pnb88-122um-35z-000: N=33 T=7520
+OK 2tones/AVG5x-TSeries-101625-pnb88-109um-35z-000: N=29 T=7520
+OK 2tones/AVG5x-TSeries-101725-pnb88-174um-35z-000: N=35 T=11280
+OK 3odor/AVG5x-TSeries-022326-pnb88-145um-35z-000: N=20 T=4788
+OK 3odor/AVG5x-TSeries-022426-pnb88-175um-35z-000: N=27 T=12761
+OK 3odor/AVG5x-TSeries-022726-pnb88-225um-35z-000: N=27 T=12768
+OK 3odor/AVG5x-TSeries-022826-pnb88-130um-35z-000: N=14 T=12771
+OK 3odor/AVG5x-TSeries-030226-pnb88-173um-35z-000: N=25 T=12771
+OK 3odor/AVG5x-TSeries-030326-pnb88-139um-35z-000: N=21 T=12768
+OK 3odor/AVG5x-TSeries-030526-pnb88-122um-36z-000: N=17 T=17066
+OK 3odor/AVG5x-TSeries-031226-pnb88-124um-36z-000: N=19 T=17065
+OK 3odor/AVG5x-TSeries-031326-pnb88-143um-36z-000: N=20 T=17060
+OK 3odor/AVG5x-TSeries-031726-pnb88-139um-36z-000: N=16 T=17084
+OK 3odor/AVG5x-TSeries-031826-pnb88-145um-36z-000: N=25 T=17052
+OK 6odorDualDiffRew/AVG5x-TSeries-061126-pnb97-561um-3z-000: N=138 T=16860
+OK 6odorDualDiffRew/AVG5x-TSeries-061226-pnb97-679um-24z-000: N=122 T=16860
+OK 6odorDualDiffRew/AVG5x-TSeries-061726-pnb97-558um-3z-000: N=115 T=16869
+OK 6odorDualDiffRew/AVG5x-TSeries-061826-pnb97-679um-24z-000: N=135 T=16860
+OK 6odorDualDiffRew/AVG5x-TSeries-061926-pnb97-610um-24z-000: N=107 T=16860
+done: 23 ok, 0 skipped, 0 failed

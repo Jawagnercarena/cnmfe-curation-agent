@@ -81,3 +81,52 @@ Two consequences recorded for the deploy step:
 Both new sessions are finalized (`ROIs.jpg` present, `C_raw.txt` down to 17 and
 21 rows), so like the other 21 they need MATLAB extraction from
 `review_neuron.mat` — extraction list is **23**.
+
+## Step 3a — pin, provenance gate, MATLAB extraction (commit C1)
+
+`vca1_common.py` is the shared module every script here imports first: it injects
+`config_vCA1` as `config` before any pipeline import, holds the area constants,
+and `configure()` re-points the Step 4 modules (which are never modified).
+Two traps it exists to close, both verified by its self-test:
+
+- `swap_v2.MANIFEST` is import-bound as `BK / "backup_manifest.json"`
+  (swap_v2.py:44). Overriding only `BK` would leave it addressing
+  `D:\Julian_CNMFe\BLA\...\_v1_backup\backup_manifest.json` — the sole index of
+  BLA's still-armed rollback, which `do_backup()` writes (:106). `configure()`
+  sets it explicitly, and `assert_no_bla()` walks every module global and refuses
+  if any `Path` still mentions BLA (self-test: guard fires on an injected BLA
+  path, clears when removed).
+- `backfill_v2` does `from parity_check import EXT, PIN, DATA_ROOT`, binding the
+  *values*; re-pointing `parity_check` alone would not move them, so `configure()`
+  sets the names on both modules.
+
+`bootstrap_footprints()` reshapes **order='C'** (bootstrap_preagent.py:274/470),
+the opposite of `parity_check.footprints_from_sparse`'s order='F' for
+review_neuron extractions. Self-test on 4CS/05172022-100: stored `area` and
+`circularity` reproduce at reldiff 0, `max_weight` at 3.2e-08 (the npz stores
+footprints as float32). `load_cn_any()` adds an eval-only h5py fallback;
+`features.load_cn` is untouched.
+
+### `repin_vca1.py` (first run creates the pin)
+- pool **134 labeled sessions (23 agent / 111 bootstrap)**; 030426 asserted absent.
+- provenance gate: **23 need extraction, 0 failures** (every labeled session has
+  `review_neuron.mat` older than `labels.mat`, and review set == labels length).
+- pending: **29 sessions / 3,415 rows, 0 missing a candidate file**.
+- bootstrap Cn inventory: **71 same-resolution** (59 v5 + 12 v7.3), 26 wrong-res
+  (256x256 vs 512x512 candidates), 14 missing. So arm b1 gets real
+  `ring_contrast` on 71 and zero on 40; arm b0 gets zero on all 111.
+
+### Extraction + verification
+`extract_vca1.m` (port of `extract_step2.m`, base/outdir/list changed, resumable,
+never writes into session dirs) via `matlab -batch`:
+**23 ok, 0 skipped, 0 failed** into `D:\Julian_CNMFe\vCA1\.feature_expansion\`.
+N ranges 14–138, T 4,788–17,084, all dims 512x512.
+
+`check_extract_vca1.m` (port of the red team's `c1_matlab_full79.m`) reopens each
+`review_neuron.mat` and diffs it against the extraction — the one check Python
+cannot do, since `review_neuron.mat` holds an opaque MCOS Sources2D object:
+**23 pass, 0 fail; max|C_raw diff| = 0 and max|A diff| = 0 on every session.**
+
+`repin_vca1.py --check-extract` (Python N-parity): **23/23 pass** — `C_raw` rows
+== review set == labels length, `A` cols == `C_raw` rows, `A` rows == d1*d2, all
+finite.
