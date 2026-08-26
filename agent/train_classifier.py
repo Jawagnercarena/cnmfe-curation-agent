@@ -986,7 +986,14 @@ def main():
     # across 61 -> 69 -> 75 sessions. 0.12 restores 0.83% false-AR / 27.9%
     # garbage. The extra ~2.8pts of junk at 0.13 was bought with false-AR, not
     # skill (at matched false-AR the junk-caught is flat) — not worth it for BLA.
-    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.12, "lightgbm": 0.11}
+    # 2026-08-26 (BLA, 35-col, bootstrap pixel-order fix + corpus re-run): xgboost
+    # 0.12 -> 0.04. Step 4 deployed 0.06 via --threshold only, leaving this default
+    # at 0.12 -- the watcher auto-retrain passes no --threshold, so the next
+    # reviewer return would have silently re-deployed at 0.12 (~2.8% false-AR on
+    # the fixed corpus). 0.04 = Step-5 rule on 8 seeds: 0.64% false-AR (worst
+    # 0.96%), 43.2% junk caught (docs/BOOTSTRAP_MATCHING_BUG_2026-08.md s5b).
+    # vCA1 always injects its own --threshold (train_classifier_vCA1.py).
+    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.04, "lightgbm": 0.11}
     reject_threshold = _THRESHOLD_BY_MODEL.get(best_model, 0.10)
     if args.threshold is not None:
         log(f"\n  Overriding reject_threshold: {reject_threshold:.2f} -> {args.threshold:.2f} (--threshold flag)")
