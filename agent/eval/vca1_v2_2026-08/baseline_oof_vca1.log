@@ -1,0 +1,31 @@
+pool: 134 labeled (23 agent, 111 bootstrap)
+  CV folds (>= 5 positives): 16   train-only agent: 7
+  bootstrap masked rows: 6662  (deployed joblib: 6662)
+  OOF pool: 1002 rows, 208 real, 794 junk (737 reviewed junk)
+  agent weight: 5.0  (fixed override, not the sqrt recipe)
+    seed 42 AUC 0.8810
+    seed 1 AUC 0.8860
+    seed 7 AUC 0.8902
+    seed 13 AUC 0.8869
+    seed 100 AUC 0.8782
+    seed 2024 AUC 0.8878
+    seed 31337 AUC 0.8871
+    seed 9 AUC 0.8846
+
+AUC [    full]: 0.8852 +/- 0.0037 (min 0.8782, max 0.8902)
+
+AUC [reviewed]: 0.8786 +/- 0.0037 (min 0.8714, max 0.8837)
+
+    T            false-AR %    junk full %  junk reviewed %
+ 0.03    0.18 +/- 0.33 (max  0.96)    37.2 +/-  0.7     34.7
+ 0.04    0.36 +/- 0.47 (max  1.44)    41.1 +/-  0.9     38.5
+ 0.05    0.84 +/- 0.75 (max  2.40)    44.9 +/-  0.8     42.3  <- deployed
+ 0.06    1.38 +/- 1.00 (max  3.37)    47.4 +/-  0.6     44.8
+ 0.07    1.98 +/- 0.91 (max  3.85)    49.8 +/-  0.6     47.3
+ 0.08    2.52 +/- 0.82 (max  3.85)    52.0 +/-  0.6     49.6
+ 0.09    3.12 +/- 1.02 (max  4.81)    53.8 +/-  0.6     51.4
+ 0.10    3.55 +/- 0.68 (max  4.81)    55.1 +/-  0.8     52.8
+ 0.12    4.33 +/- 0.96 (max  6.25)    57.5 +/-  0.7     55.3
+
+saved D:\Julian_CNMFe\vCA1\.feature_expansion\_pinned\baseline_oof.npz
+saved baseline_repin_vca1.json

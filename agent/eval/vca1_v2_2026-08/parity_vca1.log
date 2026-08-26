@@ -1,0 +1,24 @@
+Phase 1: shipping features.compute_v2b_features vs the vendored reference (rtol=1e-06)
+  ok    23/23 sessions reproduce the reference
+        worst relative diff 0.00e+00 (-, -)
+
+Phase 2: loader-orientation check on 2 pending session(s)
+  3odor/AVG5x-TSeries-030126-pnb88-183um-35z-000: N=36, rel diff order-F=5.69e-06 vs order-C=1.00e+00, C_raw rows=36 -> OK
+  3odor/AVG5x-TSeries-07072026-pnb98-450um-3z-000: N=98, rel diff order-F=7.08e-06 vs order-C=1.00e+00, C_raw rows=98 -> OK
+  ok    loader orientation (order-F)
+
+Phase 3: bootstrap candidate npz -- faithfulness and orientation
+  ok    4CS/AVG8x-TSeries-05182022-100-316um-33z-0 spatial reproduce (max rel 4.3e-08, float32 npz)
+  ok    4CS/AVG8x-TSeries-05182022-100-316um-33z-0 temporal reproduce (max rel 5.7e-08) -> persisted traces ARE the labelled run's
+  ok    4CS/AVG8x-TSeries-05182022-100-316um-33z-0 order-C beats order-F on cn_correlation (0.0000 vs 0.3157, v5 Cn)
+  ok    4CS/AVG8x-TSeries-05212022-96-267um-35z-00 spatial reproduce (max rel 4.3e-08, float32 npz)
+  ok    4CS/AVG8x-TSeries-05212022-96-267um-35z-00 temporal reproduce (max rel 3.7e-08) -> persisted traces ARE the labelled run's
+  ok    4CS/AVG8x-TSeries-05212022-96-267um-35z-00 order-C beats order-F on cn_correlation (0.0000 vs 0.4002, v7.3 Cn)
+  ok    4CS/AVG8x-TSeries-05172022-100-300um-33z-0 spatial reproduce (max rel 4.5e-08, float32 npz)
+  ok    4CS/AVG8x-TSeries-05172022-100-300um-33z-0 temporal reproduce (max rel 4.3e-08) -> persisted traces ARE the labelled run's
+  --    4CS/AVG8x-TSeries-05172022-100-300um-33z-0 Cn wrong_res [256, 256] vs [512, 512] -> ring_contrast 0 in both arms
+
+Pending pre-check: production loaders on EVERY pending session
+  ok    all 29 pending sessions load with the production loaders
+
+PARITY: ALL PASS

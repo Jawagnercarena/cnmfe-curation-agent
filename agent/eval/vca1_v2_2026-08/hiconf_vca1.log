@@ -1,0 +1,32 @@
+pool hash 267d1c9e0a37c7cc: 16 CV agent / 7 train-only agent / 111 bootstrap
+  CV agent: 16 sessions from the 8-seed OOF pin
+    loso  2tones/AVG5x-TSeries-101625-pnb88-109um-35z-000  (N=36)
+    loso  2tones/AVG5x-TSeries-101725-pnb88-174um-35z-000  (N=47)
+    loso  3odor/AVG5x-TSeries-022726-pnb88-225um-35z-000  (N=35)
+    loso  3odor/AVG5x-TSeries-022826-pnb88-130um-35z-000  (N=20)
+    loso  3odor/AVG5x-TSeries-030226-pnb88-173um-35z-000  (N=41)
+    loso  3odor/AVG5x-TSeries-030526-pnb88-122um-36z-000  (N=22)
+    loso  3odor/AVG5x-TSeries-031726-pnb88-139um-36z-000  (N=19)
+  bootstrap leave-session-out: 111 to fit (0 cached)
+    [10/111] 4CS/AVG8x-TSeries-05262022-100-317um-33z-000
+    [20/111] 4CS/AVG8x-TSeries-06222022-98-451um-3z-000
+    [30/111] AA/AVG8x-TSeries-07012022-96-172um-35z-000
+    [40/111] AA/AVG8x-TSeries-07152022-98-374um-33z-000
+    [50/111] CTA/AVG2x-TSeries-10272023-921-831-731um-25z-000B
+    [60/111] CTA/AVG2x-TSeries-11282023-965-475um-430um-32z-000B
+    [70/111] CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000B
+    [80/111] LH/AVG8x-TSeries-07182022-99-um-35z-000
+    [90/111] Valence/AVG2x-TSeries-11282023-921-800um-720um-27z-000A
+    [100/111] Valence/AVG2x-TSeries-120723-964-505um-445um-31z-000A
+    [110/111] VSA/AVG8x-TSeries-08282022-98-431um-33z-000
+    [111/111] VSA/AVG8x-TSeries-08282022-99-293um-35z-000
+  pending: 29 sessions from the deployed 13-col joblib
+
+wrote D:\Julian_CNMFe\vCA1\.feature_expansion\_pinned\hiconf_scores.npz
+  163 sessions, sources {'oof8': 16, 'loso': 7, 'lsobs': 111, 'deployed': 29}
+  rows scored: 55007
+  high-confidence (>= 0.5) rows: 13397 (24.4%)
+    oof8       16 sessions,    314/1002   hi-conf (31.3%)
+    loso        7 sessions,     75/220    hi-conf (34.1%)
+    lsobs     111 sessions,  11774/50370  hi-conf (23.4%)
+    deployed   29 sessions,   1234/3415   hi-conf (36.1%)

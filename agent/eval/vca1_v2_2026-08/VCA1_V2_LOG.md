@@ -130,3 +130,78 @@ cannot do, since `review_neuron.mat` holds an opaque MCOS Sources2D object:
 `repin_vca1.py --check-extract` (Python N-parity): **23/23 pass** — `C_raw` rows
 == review set == labels length, `A` cols == `C_raw` rows, `A` rows == d1*d2, all
 finite.
+
+## Step 3b — the vCA1 pin (commit C2)
+
+### Baseline (`baseline_oof_vca1.py` -> `PIN/baseline_oof.npz`, `baseline_repin_vca1.json`)
+8 seeds x StratifiedGroupKFold(5), bootstrap always in train at the deployed
+weighting, agent rows at the **fixed 5.0** override (not the sqrt/4.0 recipe
+`threshold_sweep_v2.run_oof:104` hard-codes, which resolves to ~7x here).
+Pool identity asserted against the deployed joblib: **masked rows 6,662 == the
+joblib's `n_excluded_ambiguous`**.
+
+OOF pool 1,002 rows / 208 real / 794 junk (737 reviewed junk), 16 CV sessions.
+
+- **13-col AUC full 0.8852 +/- 0.0037**, reviewed **0.8786 +/- 0.0037**.
+
+| T | false-AR % (mean +/- sd, max seed) | junk full % | junk reviewed % |
+|---|---|---|---|
+| 0.03 | 0.18 +/- 0.33 (max 0.96) | 37.2 | 34.7 |
+| 0.04 | 0.36 +/- 0.47 (max 1.44) | 41.1 | 38.5 |
+| **0.05 (deployed)** | **0.84 +/- 0.75 (max 2.40)** | 44.9 | 42.3 |
+| 0.06 | 1.38 +/- 1.00 (max 3.37) | 47.4 | 44.8 |
+| 0.07 | 1.98 +/- 0.91 (max 3.85) | 49.8 | 47.3 |
+| 0.12 | 4.33 +/- 0.96 (max 6.25) | 57.5 | 55.3 |
+
+**Finding worth flagging:** applying the Step 4 threshold rule (mean FAR <= 0.85%
+AND worst-seed <= 1.0%) to *today's deployed 13-column model* selects **T = 0.03**,
+not the deployed 0.05 — 0.05 passes on the mean (0.84%) but fails badly on the
+worst seed (2.40%). With 208 reals one false-AR cell is 0.48%, so per-seed
+variance is inherently coarse. This says the rule is satisfiable on vCA1 (the
+plan's "STOP is likely" was pessimistic), but that the deployed 0.05 is already
+outside the posture the rule encodes. Recorded for the threshold decision; not
+acted on here.
+
+### Hi-confidence neighbour scores (`hiconf_vca1.py` -> `PIN/hiconf_scores.npz`)
+`nb_corr_max` needs neighbour scores before a 35-col model exists. Step 2's first
+attempt used the deployed model's in-sample scores — the leak the red team caught.
+vCA1 has no OOF pin at all, so one source per row class, **none in-sample on that
+row's own labels**: 163 sessions, 54,787 rows, 13,397 hi-conf (24.4%).
+
+| source | sessions | hi-conf | note |
+|---|---|---|---|
+| `oof8` | 16 | 314/1,002 (31.3%) | 8-seed grouped OOF from the pin |
+| `loso` | 7 | 75/220 (34.1%) | leave-session-out (train-only agent sessions) |
+| `lsobs` | 111 | 11,774/50,370 (23.4%) | leave-session-out over bootstrap, 111 fits |
+| `deployed` | 29 | 1,234/3,415 (36.1%) | pending; unlabelled, so nothing to leak |
+
+Resume is keyed on a hash of the pool manifest, so a reviewer return discards
+stale partials rather than mixing regimes. Second-order exposure stated plainly
+in the script: leave-session-out models see other sessions' labels — the same
+bounded path Step 4 accepted for its 4 non-OOF sessions, not the in-sample leak.
+
+### Parity (`ref_v2b_vca1.py` + `parity_vca1.py --pending-all`): **ALL PASS**
+`ref_v2b_vca1.py` vendors the Step 2 reference functions verbatim (copied, not
+imported — `compute_v2_features.py` loads a BLA joblib at module scope, and a
+shared object would make the check vacuous).
+
+- **Phase 1: 23/23 sessions, worst relative diff 0.00e+00.** The shipping
+  `features.compute_v2b_features` and the independent reference agree bit-for-bit,
+  the same result BLA got.
+- **Phase 2:** order-F rel diff 5.7e-06 / 7.1e-06 (A.txt text precision) vs
+  order-C 1.00 on 2 pending sessions — clean rejection of the wrong geometry.
+- **Phase 3 (new, vCA1-specific).** Redesigned after noticing the planned control
+  was vacuous: all 111 vCA1 bootstrap frames are 512x512, so order-F of a C-order
+  vector is exactly the transpose, and every spatial feature is
+  transpose-invariant. The control therefore runs on `cn_correlation`, which is
+  not transpose-symmetric: **order-C error 0.0000 vs order-F 0.3157 / 0.4002**.
+  Faithfulness: spatial and temporal columns recompute from the persisted npz to
+  max rel **4e-08** — i.e. **the persisted bootstrap traces and footprints ARE the
+  ones the labels were matched against**, which is the premise arm (b) rests on.
+- **Bonus finding for arm b1:** recomputing `cn_correlation` from the *session*
+  `Cn.mat` reproduces the stored column to ~5e-09 (float32 footprint round-off) on
+  8/8 sampled same-res sessions. So for those 71 sessions the session Cn.mat is
+  the very image the bootstrap run used — b1's `ring_contrast` is not an
+  approximation there.
+- Pending pre-check: all 29 load with the production loaders, so the backfill
+  cannot fail mid-write.

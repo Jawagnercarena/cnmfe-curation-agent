@@ -250,3 +250,81 @@ def classify_sessions():
     assert not any(sd.name == PARKED for sd in labeled_agent + bootstrap + pending), \
         f"{PARKED} is back in the pool -- it was parked in Step 0b"
     return labeled_agent, bootstrap, pending, skipped
+
+
+ANIMAL_RE = r"-(pnb\d+)-"        # vCA1 agent animals; bootstrap use numeric ids
+
+
+def animal_of(sd: Path) -> str:
+    """Animal id from a session name, or '?' if it does not match the pnb form."""
+    import re
+    m = re.search(ANIMAL_RE, sd.name)
+    return m.group(1) if m else "?"
+
+
+def load_pool(v2: bool = False, arm: str = ARM_A, require_width=None):
+    """
+    The labeled pool as records, used identically by the baseline and the gates
+    so their b13 numbers are directly comparable.
+
+    v2=False : the live 13-column candidate_features.npz.
+    v2=True  : the parallel candidate_features_v2.npz; for BOOTSTRAP sessions,
+               arm 'b0'/'b1' instead reads ARMS/{key}__{arm}.npz.  Agent and
+               pending rows are identical across arms by construction.
+
+    Per record: name, X, y (full-length, auto-rejected reconstructed as 0),
+    reviewed mask, is_bootstrap, w (deployed bootstrap weighting), animal.
+
+    Label reconstruction mirrors train_classifier.load_prospective_session:299-325
+    (labels.mat covers only the review set unless sizes already match).
+    """
+    import train_classifier as tc
+    labeled_agent, bootstrap, _, _ = classify_sessions()
+    records = []
+    for sd in labeled_agent + bootstrap:
+        is_bs = sd in bootstrap
+        if v2 and is_bs and arm in (ARM_B0, ARM_B1):
+            f = ARMS / f"{key(rel(sd))}__{arm}.npz"
+        else:
+            f = sd / (V2 if v2 else V1)
+        if not f.exists():
+            raise FileNotFoundError(f"{rel(sd)}: missing {f.name}")
+        npz = np.load(f, allow_pickle=True)
+        X = npz["feature_matrix"].astype(float)
+        if require_width is not None and X.shape[1] != require_width:
+            raise ValueError(f"{rel(sd)}: width {X.shape[1]} != {require_width}")
+        auto = npz["auto_rejected"].flatten().astype(int)
+        reviewed = np.ones(len(X), dtype=bool)
+        reviewed[auto] = False
+        y_rev = sio.loadmat(str(sd / "labels.mat"))["labels"].flatten().astype(float)
+        if len(y_rev) == len(X):
+            y = y_rev
+        else:
+            assert len(y_rev) == int(reviewed.sum()), \
+                f"{rel(sd)}: labels {len(y_rev)} != review set {int(reviewed.sum())}"
+            y = np.zeros(len(X))
+            y[reviewed] = y_rev
+        records.append({
+            "name": rel(sd), "session_dir": sd, "X": X,
+            "y": (y == 1).astype(int), "reviewed": reviewed,
+            "is_bootstrap": is_bs, "animal": animal_of(sd),
+            "w": bootstrap_weights(sd, len(X)) if is_bs else np.ones(len(X)),
+        })
+    return records
+
+
+def split_pool(records):
+    """(cv_agent, train_only_agent, bootstrap) -- CV folds need >= MIN_POS positives."""
+    ag = [r for r in records if not r["is_bootstrap"]]
+    bs = [r for r in records if r["is_bootstrap"]]
+    cv = [r for r in ag if r["y"].sum() >= MIN_POS]
+    rest = [r for r in ag if r["y"].sum() < MIN_POS]
+    return cv, rest, bs
+
+
+def stack(recs, keys=("X", "y")):
+    """Concatenate records into pooled arrays plus a group vector."""
+    out = [np.vstack([r[k] for r in recs]) if recs[0][k].ndim > 1
+           else np.concatenate([r[k] for r in recs]) for k in keys]
+    groups = np.concatenate([[i] * len(r["y"]) for i, r in enumerate(recs)])
+    return (*out, groups)
