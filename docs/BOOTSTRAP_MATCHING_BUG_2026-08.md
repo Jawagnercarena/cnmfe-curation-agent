@@ -123,6 +123,26 @@ T = 0.04 (module default 0.12 -> 0.04 so watcher auto-retrains preserve it).
 Joblib verified: xgboost, T=0.04, agent_weight 4.0, 170 sessions, 35 features,
 4,494 masked rows, companion first-pass model present.
 
+## 5c. Global (cross-area) model re-evaluation (2026-08-26, `c5_global_model.py`)
+
+Shared first-13 columns (bit-identical across contracts); target agent sessions as test
+folds, target's own bootstrap + deployed weighting in both conditions; Cond B appends all
+other areas' rows at a neutral weight. 3 seeds, paired.
+
+| target | own-only AUC | + other areas (w=1.0) | + other areas (w=0.3) | verdict |
+|---|---|---|---|---|
+| vCA1 (14 test sessions) | 0.8823 | 0.8800 (-0.0023) | 0.8786 (-0.0038) | no benefit; pooled scores also miscalibrate vCA1's T=0.05 (junk 41% -> 30%) |
+| BLA (75 test sessions, 13-col) | 0.9164 | 0.9154 (-0.0011, all seeds <0) | 0.9167 (+0.0003) | null; deployed 35-col model is 0.928 anyway |
+| DG_AL (9 sessions, 955 rows) | 0.8719 | 0.8828 (+0.0110, min +0.0082) | **0.8863 (+0.0145, min +0.0123)** | **helps** the data-starved area, every seed |
+
+Reading: with clean labels the 2026-06 verdict holds for the mature areas (pooling
+adds nothing; each has enough in-distribution data), and the combined-model heuristic
+holds for the new area — BLA+vCA1 rows at ~0.3 weight are a useful prior for DG_AL
+(+0.011..0.015 AUC). Caveat: a pooled model's score scale differs (junk-caught at a
+fixed T collapses), so any DG threshold must be re-derived on the pooled model; DG
+currently runs THRESHOLD_OVERRIDE=0 (no auto-reject), so ranking is what matters there.
+Not implemented — proposal for the DG trainer.
+
 ## 6. Open follow-ups
 
 - Retro `cn_correlation` transpose (train_classifier retro feature path) and the
@@ -130,8 +150,8 @@ Joblib verified: xgboost, T=0.04, agent_weight 4.0, 170 sessions, 35 features,
   refresh for retro-labeled sessions.
 - `diagnose_model.py` / `sweep_weights.py` replicate the pre-override weight formula;
   update to honor `AGENT_WEIGHT_OVERRIDE` so their absolute numbers match the trainer.
-- Global (cross-area) GRIN-lens model re-evaluation: the 2026-06 "no benefit" verdict
-  was measured with scrambled bootstrap labels.
+- DG_AL pooled prior (see 5c): append BLA+vCA1 rows at ~0.3 weight in the DG trainer;
+  re-derive DG's threshold on the pooled model before enabling auto-reject.
 - vCA1 v2 feature contract: `docs/VCA1_V2_BRIEF.md`.
 - March-2026 matching-study conclusions (incl. temporal-matching tests, which compared
   mirror-cell pairs) are void; memory updated accordingly.
