@@ -189,6 +189,22 @@ def do_swap():
 
 def do_rollback():
     man = json.loads(MANIFEST.read_text())
+    # RETIRED 2026-08-26: the backup is a historical snapshot, not a restore
+    # point.  The bootstrap-matching fix rewrote labels.mat + candidate sets
+    # of all 91 bootstrap sessions after the 08-20 backup (65 with different
+    # row counts), so restoring the 13-col features would pair them with
+    # labels they do not correspond to.  Refuse if any labels.mat postdates
+    # the backup manifest; this branch is expected to fire forever.
+    t_bk = MANIFEST.stat().st_mtime
+    stale = [rel for rel in man["sessions"]
+             if (DATA_ROOT / rel / "labels.mat").exists()
+             and (DATA_ROOT / rel / "labels.mat").stat().st_mtime > t_bk]
+    if stale:
+        print(f"REFUSED: {len(stale)} session(s) have labels.mat newer than the "
+              f"backup — restoring the v1 features would mismatch them. The BLA "
+              f"rollback was retired 2026-08-26 (see STEP4_LOG.md); _v1_backup "
+              f"is historical only.")
+        return 1
     n = 0
     for rel, e in sorted(man["sessions"].items()):
         sd = DATA_ROOT / rel

@@ -158,6 +158,24 @@ Uncommitted fixtures kept on disk in this dir: preswap_scores.npz,
 step5_oof.npz. Rollback stays armed (see above) until one full
 reviewer-return cycle survives.
 
-## Rollback (kept ready until one full reviewer-return cycle survives)
-`swap_v2.py rollback` (restores 182 npz + joblib byte-exact, sha-verified)
-+ `git revert` of the config-flip commit + watcher restart. Rehearsed PASS.
+## Rollback — RETIRED 2026-08-26
+
+The 08-20 rollback (`swap_v2.py rollback` + revert of the config flip) is
+no longer a valid restore and has been disarmed. Verified 2026-08-26: the
+bootstrap-matching fix (separate work) rewrote `labels.mat` and the
+candidate sets of all **91 bootstrap sessions** after the backup; **65 of
+them now have a different candidate count** than the backed-up 13-col
+features, so a "restore" would pair old features with labels they do not
+correspond to (trainer skips 65, mis-pairs 26) — a third, never-evaluated
+state, not an undo. There is also no longer a 13-col state to return to:
+BLA was retrained + redeployed on 08-26 (T=0.04) on top of the 35-col
+contract with the corrected bootstrap, which is now the baseline.
+
+Live state verified consistent the same day: 182/182 npz at width 35,
+0 feature/label row mismatches, joblib 35-col + companion first-pass,
+newer than every labels.mat.
+
+`swap_v2.py rollback` now refuses when any labels.mat postdates the backup
+manifest (i.e. always). `_v1_backup\` is kept as a historical artifact
+(STALE_README.txt inside) — it holds the only copy of the Aug-18 13-col
+model. The user chose to retire rather than re-baseline.
