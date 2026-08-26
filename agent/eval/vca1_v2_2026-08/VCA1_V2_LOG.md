@@ -205,3 +205,53 @@ shared object would make the check vacuous).
   approximation there.
 - Pending pre-check: all 29 load with the production loaders, so the backfill
   cannot fail mid-write.
+
+## Step 3c — backfill of the parallel files (commit C3)
+
+`backfill_vca1.py`. Nothing deployed reads any of these; the swap (deferred)
+renames the winning arm into place.
+
+**163 `candidate_features_v2.npz` + 222 arm files, 55,007 rows** — exactly the
+totals the re-baselined plan predicted (the 12:16 ingest moved 242 rows from the
+pending policy to the labeled policy, and the parked session removed 46, so the
+totals were unchanged by both events).
+
+| class | n | policy | hiconf source |
+|---|---|---|---|
+| labeled agent | 23 | reviewed rows real v2b (order='F' extraction), flag=1; auto-rejected zeros + flag=0 | `oof8` / `loso` |
+| bootstrap arm (a) | 111 | `assemble_v2_bootstrap`: real ranks, zero v2b, flag=0 — what `bootstrap_preagent.py:402-404` writes today | n/a |
+| bootstrap arm (b0) | 111 | real v2b from `bootstrap_candidates.npz` (order='C'), `Cn=None` so ring 0 everywhere, flag=1 | `lsobs` |
+| bootstrap arm (b1) | 111 | as b0 but with the session Cn where same-resolution — **real ring on 71, zero on 40** | `lsobs` |
+| pending | 29 | real v2b all rows via the production loaders, flag=1, `auto_rejected` VERBATIM | `deployed` |
+
+Arm files live in `EXT/_arms/{key}__b0.npz` / `__b1.npz`, never in session dirs:
+they are intermediates, and only the winning arm is ever materialized into a
+session. That also keeps the deployed corpus free of orphan files.
+
+Hard checks, all passed on every file: width 13 in / 35 out, row count unchanged,
+**first 13 columns bit-identical to v1**, ranks deterministic on recompute, flag
+and zero patterns, the three bootstrap arms identical in columns 0-25, b0 vs b1
+differing **only** in the ring column, ring provably 0 wherever no usable Cn
+exists, and `auto_rejected` re-read after writing on every pending session.
+All 23 labeled sessions were additionally re-verified against the vendored
+reference *from the written values* (rtol 1e-6).
+
+`backfill_report_vca1.json` carries a sha256 per file; the swap kit and
+`verify_vca1.py` compare against it.
+
+## Step 3d — gate harness (commit C3)
+
+`gate_vca1.py --arm {a,b0,b1} --agent-weight W` runs b13 and rankv2b_35 through
+one OOF harness so deltas are paired per seed, and asserts b13 reproduces the pin
+(the arm only touches bootstrap columns 26-34, which b13 never sees). Reports the
+reference eval, false-AR at matched junk, the threshold table with the Step 4
+rule, per-prep pnb88 vs pnb97, and a 2-animal LOAO (informational — 2 animals is
+not a gate). LOAO calls `clf.set_params(random_state=seed)` because the factory
+hard-codes 42 and the seeds would otherwise be identical fits.
+
+`decide_vca1.py` holds the pre-registered rules and their constants, fixed before
+any gate ran. **Self-test passes: the threshold rule reproduces Step 4's published
+choice of 0.06 from `step5_results.json`.** Decision order is arm -> adopt-v2 on
+the winning arm -> weight -> threshold, and an arm-(b) win sets
+`production_followon_required` (bootstrap_preagent zero-fills unconditionally,
+and the leave-session-out hiconf has no production analogue).

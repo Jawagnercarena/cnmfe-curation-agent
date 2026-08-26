@@ -1,0 +1,7 @@
+sessions: 23 labeled agent, 111 bootstrap, 29 pending, 0 skipped
+labeled agent: 23 written, 23 re-verified against the vendored reference
+bootstrap: 111 x 3 arms written (real ring_contrast on 71, zero on 40)
+pending: 29 written, auto_rejected preserved verbatim
+
+ALL WRITTEN: 163 candidate_features_v2.npz + 222 arm files, 55007 rows total
+wrote backfill_report_vca1.json
