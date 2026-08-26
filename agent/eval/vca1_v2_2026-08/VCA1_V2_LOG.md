@@ -318,3 +318,42 @@ bootstrap run would write arm-(a) rows into an arm-(b) corpus, and the
 leave-session-out hiconf used in the gate has no production analogue.
 
 **Deploy was already deferred (D1); this decision is now referred to the user.**
+
+## Step 3e — swap kit built and rehearsed (commit C4)
+
+`swap_vca1.py` implements the WRITE paths (`materialize`/`backup`/`swap`/
+`rollback`) locally against `vca1_common`'s constants instead of calling
+`swap_v2`'s functions with patched module globals. `swap_v2.MANIFEST` is
+import-bound to the BLA backup dir and `do_backup()` writes it, and BLA's
+rollback manifest is live — `configure()` re-points it correctly, but for the
+functions that actually write, a local implementation removes the failure mode
+rather than guarding it. Only `sha256` is reused.
+
+- `record_preswap_vca1.py`: deployed 13-col scores for **163 sessions / 55,007
+  rows** -> `preswap_scores.npz`.
+- `swap_vca1.py backup`: **163 v1 npz + the joblib** into `_v1_backup/`,
+  sha-verified, plus a local `classifier_v1_2026-08-24.joblib`.
+- `swap_vca1.py rehearse`: **PASS** — scores recomputed from the BACKUP BYTES
+  with the BACKED-UP joblib reproduce the preswap fixture **exactly** on the 3
+  widest sessions (N = 1387 / 1003 / 930). The rollback path is proven.
+- `swap_vca1.py preflight`: correctly **NOT READY**, and for the right reason —
+  the only failing check is the absent bootstrap red-team report, which is the
+  deferred gate. Everything else passes: session set matches the manifest, no
+  live npz drifted, joblib unchanged, every session has a v2 sibling.
+
+### Two self-inflicted bugs found and fixed in the preflight's watcher check
+Worth recording because both would have mattered on deploy day:
+1. `wmic` no longer ships on Windows 11 (raises `FileNotFoundError`), so the
+   original check silently fell through to a fallback that tested for **any**
+   `python.exe` — and the preflight *is* a python.exe, so it reported the watcher
+   running forever and would have blocked every legitimate swap.
+2. Fixing that, I dropped the process-name filter, so the query matched **all**
+   processes — including the shell invoking it, whose command line can contain
+   the literal string `watcher_vCA1` (a grep, this script's own source). Same
+   false positive by a different route.
+
+Now filtered to python processes, excluding the current PID, and verified in both
+directions: `False` with nothing running, `True` against a decoy process whose
+command line carries the name, `False` again once it exits. `running` is `None`
+when it cannot be determined, and the caller must treat that as unknown, never as
+stopped.

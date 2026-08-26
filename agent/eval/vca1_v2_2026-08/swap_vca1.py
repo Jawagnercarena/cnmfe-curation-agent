@@ -157,22 +157,38 @@ def do_rehearse(n=3):
 
 
 def _watcher_state():
-    """(running, last_log_age_seconds) for watcher_vCA1."""
+    """
+    (running, last_log_age_seconds) for watcher_vCA1.
+
+    `running` is True/False when it could be determined and None when it could
+    not -- the caller must treat None as "unknown", never as "stopped".
+
+    Detection is by COMMAND LINE, excluding this process.  Two earlier attempts
+    were wrong: `wmic` no longer ships on Windows 11 (FileNotFoundError here),
+    and the tasklist fallback tested for any `python.exe`, which this preflight
+    itself is -- so it reported the watcher running forever and would have
+    blocked every legitimate swap.
+    """
+    import os
     import subprocess
     import time
-    running = False
+    running = None
+    # Restrict to python processes: the watcher runs as `python.exe watcher_vCA1.py`.
+    # Matching every process instead is wrong -- the shell that invokes this
+    # preflight can itself carry the string "watcher_vCA1" in its command line
+    # (a grep, an editor, this very script's source), which reads as a running
+    # watcher and blocks the swap forever.
+    ps = ("Get-CimInstance Win32_Process | "
+          "Where-Object { $_.Name -like '*python*' -and "
+          f"$_.ProcessId -ne {os.getpid()} }} | "
+          "Select-Object -ExpandProperty CommandLine")
     try:
-        out = subprocess.run(
-            ["wmic", "process", "where", "name='python.exe'", "get", "commandline"],
-            capture_output=True, text=True, timeout=30).stdout
-        running = "watcher_vCA1" in out
+        r = subprocess.run(["powershell", "-NoProfile", "-NonInteractive", "-Command", ps],
+                           capture_output=True, text=True, timeout=60)
+        if r.returncode == 0:
+            running = "watcher_vCA1" in (r.stdout or "")
     except Exception:
-        try:
-            out = subprocess.run(["tasklist"], capture_output=True, text=True,
-                                 timeout=30).stdout
-            running = "python.exe" in out
-        except Exception:
-            running = None
+        running = None
     log = vc.AGENT / "logs" / "watcher_vCA1.log"
     age = (time.time() - log.stat().st_mtime) if log.exists() else None
     return running, age
@@ -200,7 +216,8 @@ def do_preflight(strict=True):
         chk(not strict, "gate_decision.json missing (gates not decided yet)")
 
     running, age = _watcher_state()
-    chk(running is False, f"watcher_vCA1 not running (detected: {running})")
+    chk(running is False, f"watcher_vCA1 not running "
+                          f"({'UNKNOWN - check by hand' if running is None else running})")
     chk(age is None or age > 120, f"watcher_vCA1.log quiet "
                                   f"({'no log' if age is None else f'{age / 60:.0f} min'})")
 
