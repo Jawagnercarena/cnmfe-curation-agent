@@ -357,3 +357,16 @@ directions: `False` with nothing running, `True` against a decoy process whose
 command line carries the name, `False` again once it exits. `running` is `None`
 when it cannot be determined, and the caller must treat that as unknown, never as
 stopped.
+
+### Rollback guard adopted from the BLA retirement (2026-08-26)
+While this project ran, the operator retired BLA's Step 4 rollback (commit
+d4b3185): its 08-20 backup stopped being a restore point once the
+bootstrap-matching fix rewrote 91 sessions' `labels.mat`, so putting the 13-col
+features back would have paired them with labels they no longer match.
+`swap_v2.do_rollback` now refuses whenever any `labels.mat` postdates the backup.
+
+The same hazard applies here, so `swap_vca1.do_rollback` carries the same guard.
+Checked today: backup manifest 2026-08-26 16:41, **0 sessions with newer labels
+-> the vCA1 rollback is currently VALID**. It will refuse itself the moment a
+reviewer return lands, which is the correct behaviour: at that point the backup
+is historical and the pool must be re-backed-up.

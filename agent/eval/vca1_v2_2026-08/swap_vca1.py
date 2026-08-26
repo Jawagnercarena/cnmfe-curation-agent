@@ -280,6 +280,27 @@ def do_swap(freeze):
 
 def do_rollback():
     man = json.loads(MANIFEST.read_text())
+    # A backup is only a restore point while the labels it was paired with still
+    # hold.  If any labels.mat has been rewritten since, putting the v1 features
+    # back would pair them with labels they do not correspond to -- a new,
+    # never-evaluated state rather than an undo.  This is exactly how BLA's
+    # 08-20 rollback went stale (the bootstrap fix rewrote 91 sessions' labels),
+    # retired 2026-08-26 in swap_v2.do_rollback; the same guard belongs here
+    # before vCA1 can repeat it.
+    t_bk = MANIFEST.stat().st_mtime
+    stale = [rel for rel in man["sessions"]
+             if (vc.DATA_ROOT / rel / "labels.mat").exists()
+             and (vc.DATA_ROOT / rel / "labels.mat").stat().st_mtime > t_bk]
+    if stale:
+        print(f"REFUSED: {len(stale)} session(s) have a labels.mat newer than the "
+              f"backup manifest -- restoring the v1 features would mismatch them.")
+        for rel in stale[:5]:
+            print(f"    {rel}")
+        if len(stale) > 5:
+            print(f"    ... and {len(stale) - 5} more")
+        print("  Re-run `backup` against the current pool, or accept that this "
+              "backup is historical only.")
+        return 1
     n = 0
     for rel, e in sorted(man["sessions"].items()):
         sd = vc.DATA_ROOT / rel
