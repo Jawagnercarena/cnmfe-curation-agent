@@ -1,0 +1,11 @@
+reference: the deployed 13-column model at its deployed T=0.05
+
+arm    b13 FAR  b13 junk |  v35 FAR  v35 junk | safety gain yield gain
+a        0.84%     44.9% |    0.60%     43.7% |      +0.24pp      -1.2pp
+b0       0.84%     44.9% |    0.36%     52.1% |      +0.48pp      +7.3pp
+b1       0.84%     44.9% |    0.30%     53.4% |      +0.54pp      +8.5pp
+
+  safety gain = false-AR reduction at the SAME junk-caught
+  yield  gain = extra junk caught at the SAME false-AR
+
+wrote operating_point_vca1.json

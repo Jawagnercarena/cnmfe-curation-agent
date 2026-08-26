@@ -1,0 +1,30 @@
+=== STAGE: bootstrap arm ===
+  arm a   reviewed AUC b13 0.8786 -> v35 0.8965  (paired +0.0179); chosen T 0.03; bootstrap flagged rows 0
+  arm b0  reviewed AUC b13 0.8786 -> v35 0.9013  (paired +0.0227); chosen T 0.05; bootstrap flagged rows 50370
+  arm b1  reviewed AUC b13 0.8786 -> v35 0.9018  (paired +0.0232); chosen T 0.05; bootstrap flagged rows 50370
+
+  b0 vs a : mean +0.0047, bar 0.0050, 8/8 seeds positive -> no (tie -> arm a)
+  b1 vs b0: mean +0.0005, bar 0.0050, 5/8 seeds positive -> no
+  b1 vs a : mean +0.0052 -> beats
+
+  ARM WINNER: a
+
+=== STAGE: agent weight (arm a) ===
+  w=5     reviewed v35 AUC 0.8965  FAR@0.05  1.68%  junk@0.05 52.5%  chosen T 0.03
+  WEIGHT: 5  (deployed value kept)
+
+=== STAGE: adopt the 35-column contract? (arm a, weight 5) ===
+  reviewed paired delta +0.0179 (bar +0.010) -> True
+  all 8 seeds positive -> True (min +0.0120)
+  false-AR at matched junk: b13 0.00% -> v35 0.00% -> not worse: True
+  ADOPT v2: YES
+
+=== STAGE: threshold (arm a, weight 5) ===
+  chosen T = 0.03: false-AR 0.60% (worst seed 0.96%), junk full 45.3%, junk reviewed 43.5%
+  junk >= 30% gate: PASS
+
+==============================================================
+ARM a   WEIGHT 5.0   T 0.03   ADOPT True
+deploy_ok = True
+==============================================================
+wrote gate_decision.json

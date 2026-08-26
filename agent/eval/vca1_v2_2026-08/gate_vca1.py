@@ -42,18 +42,30 @@ def matched_junk_far(oof_ref, oof_new, y, t_ref):
     false-AR of the new model at the threshold where it catches as much junk as
     the reference does at t_ref.  Calibration-fair: the two models' score scales
     differ, so comparing FAR at a shared threshold would be meaningless.
+
+    Computed PER SEED and then averaged.  Doing it on the seed-mean OOF vector
+    (as this function first did) smooths away the individual seed dips: b13's
+    false-AR at T=0.05 evaluates to 0.00% on the mean vector versus an honest
+    per-seed mean of 0.84%, which made both sides print 0.00% and rendered the
+    comparison vacuous.  See operating_point_vca1.py, which also reports the
+    inverse and more operationally meaningful direction (junk caught at matched
+    false-AR).
     """
     pos, neg = y == 1, y == 0
-    j_ref = float((oof_ref[neg] < t_ref).sum() / neg.sum())
-    grid = np.arange(0.001, 0.501, 0.001)
-    best = None
-    for t in grid:
-        if float((oof_new[neg] < t).sum() / neg.sum()) >= j_ref:
-            best = t
-            break
-    if best is None:
-        return None, j_ref, None
-    return (float((oof_new[pos] < best).sum() / pos.sum() * 100), j_ref, float(best))
+    grid = np.arange(0.001, 0.5005, 0.001)
+    fars, junks, ts = [], [], []
+    for r, n in zip(np.atleast_2d(oof_ref), np.atleast_2d(oof_new)):
+        j_ref = float((r[neg] < t_ref).sum() / neg.sum())
+        junks.append(j_ref)
+        t = next((t for t in grid
+                  if float((n[neg] < t).sum() / neg.sum()) >= j_ref), None)
+        if t is None:
+            continue
+        fars.append(float((n[pos] < t).sum() / pos.sum() * 100))
+        ts.append(float(t))
+    if not fars:
+        return None, float(np.mean(junks)), None
+    return float(np.mean(fars)), float(np.mean(junks)), float(np.mean(ts))
 
 
 def loao(records, bs, animal, X_slice, weight, seeds):
@@ -157,10 +169,10 @@ def main():
         print(f"\nb13 vs pin: skipped (weight {W:g} != pinned {vc.AGENT_WEIGHT:g})")
 
     # ---- 3. false-AR at matched junk ----
-    m13 = oof["b13"].mean(axis=0)
-    m35 = oof["rankv2b_35"].mean(axis=0)
-    far_ref = float((m13[pos] < vc.DEPLOYED_T).sum() / pos.sum() * 100)
-    far_new, j_ref, t_new = matched_junk_far(m13, m35, y_ag, vc.DEPLOYED_T)
+    far_ref = float(np.mean([(o[pos] < vc.DEPLOYED_T).sum() / pos.sum() * 100
+                             for o in oof["b13"]]))
+    far_new, j_ref, t_new = matched_junk_far(oof["b13"], oof["rankv2b_35"],
+                                             y_ag, vc.DEPLOYED_T)
     res["matched_junk"] = {"t_ref": vc.DEPLOYED_T, "junk_ref": j_ref,
                            "far_b13": far_ref, "far_v35": far_new, "t_v35": t_new}
     print(f"\nAt matched junk-caught ({100 * j_ref:.1f}%, b13 @ T={vc.DEPLOYED_T}): "

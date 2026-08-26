@@ -255,3 +255,66 @@ choice of 0.06 from `step5_results.json`.** Decision order is arm -> adopt-v2 on
 the winning arm -> weight -> threshold, and an arm-(b) win sets
 `production_followon_required` (bootstrap_preagent zero-fills unconditionally,
 and the leave-session-out hiconf has no production analogue).
+
+## Step 3d results — STOP AND REPORT
+
+All three arms ran at weight 5.0, 8 seeds. In every arm **b13 reproduced the pin
+exactly (max|score diff| 0.00e+00)**, so the arms are strictly comparable.
+
+| arm | bootstrap rows flagged | reviewed AUC b13 -> v35 | paired delta | rule T | junk @ rule T |
+|---|---|---|---|---|---|
+| a (zero-fill) | 0 / 50,370 | 0.8786 -> 0.8965 | **+0.0179** (min +0.0120, 8/8) | 0.03 | 45.3% |
+| b0 (real v2b, ring 0) | 50,370 | 0.8786 -> 0.9013 | **+0.0227** (min +0.0177, 8/8) | 0.05 | 51.6% |
+| b1 (real v2b + ring on 71) | 50,370 | 0.8786 -> 0.9018 | **+0.0232** (min +0.0191, 8/8) | 0.05 | 52.0% |
+
+Per-prep and LOAO improve in every arm and on both animals (arm b0: pnb88
++0.0199, pnb97 +0.0258; LOAO pnb88 +0.0264, pnb97 +0.0408).
+
+### The pre-registered rule selects arm (a) — and that is the wrong answer
+
+`decide_vca1.py` applied literally: **arm a, weight 5.0, T=0.03, adopt=True,
+deploy_ok=True**. But three things make that outcome untrustworthy, and none of
+them is a reason to retune the rule after the fact:
+
+1. **b0 misses the bar by 0.0003.** b0 vs a is +0.0047 with se 0.0009 (a ~5-sigma
+   effect) and **8/8 seeds positive**; the bar is `max(0.005, 2*se) = 0.005`, the
+   absolute floor. It fails only that floor.
+2. **The rule contradicts itself.** b1 vs a is +0.0052, which *clears* the same
+   bar (7/8 seeds). So "b1 beats a" and "b0 does not beat a" are both true, while
+   b1 vs b0 is +0.0005 (5/8, nothing). The winner therefore depends on the
+   comparison ORDER, not on the evidence — an artifact of the sequential
+   b0-vs-a-then-b1-vs-b0 structure I wrote into the plan.
+3. **The decisive metric was broken, and it is mine.** `gate_vca1.matched_junk_far`
+   computed on the seed-MEAN OOF vector, which smooths away individual seed dips:
+   b13's false-AR at T=0.05 evaluated to 0.00% on the mean vector against an
+   honest per-seed mean of 0.84%. Both sides printed 0.00%, so the ship criterion's
+   "false-AR not worse" check was **vacuous**. Fixed to compute per seed;
+   `operating_point_vca1.py` re-derives the numbers from the stored OOF fixtures.
+
+### The honest operating point (per seed, vs the deployed 13-col model at T=0.05)
+
+| arm | false-AR at matched junk | junk at matched false-AR | safety gain | **yield gain** |
+|---|---|---|---|---|
+| b13 (today) | 0.84% | 44.9% | — | — |
+| **a** | 0.60% | **43.7%** | +0.24pp | **-1.2pp** |
+| **b0** | 0.36% | **52.1%** | +0.48pp | **+7.3pp** |
+| **b1** | 0.30% | **53.4%** | +0.54pp | **+8.5pp** |
+
+**Arm (a) — the rule's winner — catches 1.2 points LESS junk than the model
+already in production, at matched false-AR.** Its +0.018 AUC does not reach the
+operating region that matters. Arms b0/b1 move the operating point substantially
+(+7.3 / +8.5 points of junk auto-caught at today's false-AR).
+
+So the evidence says: **ship arm b0, or ship nothing.** Shipping arm (a) would
+spend a freeze, a swap and a rollback window to make production slightly worse
+where it counts.
+
+b1 adds nothing over b0 (+0.0005, 5/8 seeds), so **the Cn-regeneration follow-on
+for the 40 sessions is NOT warranted** — that question is now answered.
+
+Arm b0 requires the production follow-on before any deploy:
+`bootstrap_preagent.py:402-404` zero-fills unconditionally, so a future vCA1
+bootstrap run would write arm-(a) rows into an arm-(b) corpus, and the
+leave-session-out hiconf used in the gate has no production analogue.
+
+**Deploy was already deferred (D1); this decision is now referred to the user.**

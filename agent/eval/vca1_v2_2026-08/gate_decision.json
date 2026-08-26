@@ -1,0 +1,62 @@
+{
+ "rules": {
+  "min_effect": 0.005,
+  "ship_delta": 0.01,
+  "min_seeds_positive": 7,
+  "far_tolerance_pp": 0.2,
+  "threshold_rule": "largest T in [0.03,0.10] with mean far<=0.85 and max far<=1.0; junk_full>=30"
+ },
+ "arm_detail": {
+  "b0_vs_a": {
+   "mean": 0.004736751122012328,
+   "min": 0.0008871725289635313,
+   "se": 0.0008984417786515634,
+   "bar": 0.005,
+   "n_positive": 8,
+   "n_seeds": 8,
+   "beats": false
+  },
+  "b1_vs_b0": {
+   "mean": 0.0004961805917963052,
+   "min": -0.0019178582611417694,
+   "se": 0.0005146310743469094,
+   "bar": 0.005,
+   "n_positive": 5,
+   "n_seeds": 8,
+   "beats": false
+  },
+  "b1_vs_a": {
+   "mean": 0.005232931713808633,
+   "min": -0.0010306857321782381,
+   "se": 0.0013302970350988908,
+   "bar": 0.005,
+   "n_positive": 7,
+   "n_seeds": 8,
+   "beats": true
+  }
+ },
+ "arm": "a",
+ "weight_detail": {},
+ "agent_weight": 5.0,
+ "ship_detail": {
+  "delta_mean": 0.01792773457885398,
+  "delta_min": 0.011970305813589377,
+  "all_seeds_positive": true,
+  "meets_bar": true,
+  "far_not_worse": true,
+  "far_b13": 0.0,
+  "far_v35": 0.0
+ },
+ "adopt_v2": true,
+ "threshold_detail": {
+  "stop": false,
+  "junk_gate_pass": true,
+  "far_mean": 0.6009615384615384,
+  "far_max": 0.9615384615384616,
+  "junk_full": 45.30856423173804,
+  "junk_reviewed": 43.52103120759837
+ },
+ "chosen_T": 0.03,
+ "production_followon_required": false,
+ "deploy_ok": true
+}
