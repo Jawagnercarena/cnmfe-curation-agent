@@ -111,6 +111,25 @@ def resolve_dest(src: Path):
 
 PROVENANCE_NAME = "labels_provenance.txt"
 
+# Files that only the central machine may write, and that a return must never
+# carry back over the local copy.  A reviewer bundle does not contain them
+# (push_review_bundle stages review_neuron.mat + Cn/pnr/Ybg_weights/pdf/summary
+# and nothing else), but a reviewer who mirrors whole central folders can, and
+# copy_session copies any file whose size differs.
+#
+#   labels_provenance.txt   -- central metadata (who reviewed this session);
+#                              a stale echo would overwrite the real record.
+#   candidate_features.npz  -- the feature matrix curator.py wrote at curation
+#                              time.  Scoring is positional and areas differ in
+#                              feature-contract width (BLA runs the 35-column v2
+#                              contract, vCA1/DG_AL 13), so a mirrored-back copy
+#                              from before a contract swap would silently
+#                              downgrade the session's row width and either
+#                              corrupt the training corpus or trip the trainer's
+#                              width guard.  Sizes differ across contracts, so
+#                              the same-size skip below would NOT catch it.
+CENTRAL_ONLY = {PROVENANCE_NAME, "candidate_features.npz"}
+
 
 def read_provenance(session_dir: Path):
     """Reviewer whose labels this local session carries, or None if unrecorded."""
@@ -172,10 +191,9 @@ def copy_session(src: Path, dst: Path, force: bool, dry: bool):
         # must not be written into the clean local session.
         if any(part.startswith(".") for part in rel.parts):
             continue
-        # The provenance record is central-machine metadata (who reviewed this
-        # session, written at ingest). A return that echoes central files back
-        # must not overwrite it with a stale copy.
-        if rel.name == PROVENANCE_NAME:
+        # Central-machine-only files (see CENTRAL_ONLY): a return that echoes
+        # them back must never overwrite the local copy.
+        if rel.name in CENTRAL_ONLY:
             continue
         target = dst / rel
         size = f.stat().st_size
