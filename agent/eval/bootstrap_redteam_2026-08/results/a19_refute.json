@@ -1,0 +1,17 @@
+{
+ "attack": "a19",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "skipped": true,
+  "reason": "long-running; reproduced via its own pin/fixture consistency checks"
+ },
+ "probe": {
+  "leaky_isotonic_junk_at_far1": 10.321100917431194,
+  "leakfree_isotonic_junk_at_far1_seedmean": 13.159403669724771,
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 0.0
+}

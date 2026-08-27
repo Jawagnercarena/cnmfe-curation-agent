@@ -1,0 +1,27 @@
+{
+ "attack": "a11",
+ "standing_verdict": "FAIL",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "skipped": true,
+  "reason": "long-running; reproduced via its own pin/fixture consistency checks"
+ },
+ "probe": {
+  "bla21_v2b_delta": -0.003760991023997129,
+  "bla21_b13_delta": 0.014505861879465079,
+  "bla21_n_pos": 106,
+  "bla21_reviewed_delta": {
+   "mean": -0.004042288557213919,
+   "min": -0.009574767671078455,
+   "max": 0.007885102787946963,
+   "se": 0.0018848800005801477,
+   "n_positive": 1,
+   "n": 8,
+   "all_positive": false
+  },
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 0.0
+}

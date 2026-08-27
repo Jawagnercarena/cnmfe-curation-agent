@@ -1,0 +1,34 @@
+{
+ "attack": "a08",
+ "standing_verdict": "FAIL",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "skipped": true,
+  "reason": "long-running; reproduced via its own pin/fixture consistency checks"
+ },
+ "probe": {
+  "animals_in_fixture": [
+   "bla12",
+   "bla16",
+   "bla21",
+   "bla36",
+   "bla37",
+   "bla8"
+  ],
+  "loao_6fold_far_at_0.04": 0.7518796992481203,
+  "loao_6fold_junk_at_0.04": 42.312554701935234,
+  "loao_6fold_auc": 0.9175273551313208,
+  "per_animal_far": {
+   "bla12": 0.7393715341959335,
+   "bla16": 1.183431952662722,
+   "bla21": 1.8867924528301887,
+   "bla36": 0.4291845493562232,
+   "bla37": 0.8939974457215836,
+   "bla8": 0.303951367781155
+  },
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 2.7
+}

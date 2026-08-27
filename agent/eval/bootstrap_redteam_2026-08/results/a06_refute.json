@@ -1,0 +1,30 @@
+{
+ "attack": "a06",
+ "standing_verdict": "INCONCLUSIVE",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 68,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "vCA1": {
+   "same_cell_loose_frac": 0.6222255775328401,
+   "distinct_loose_frac": 0.35527706477427146,
+   "dup_rows_not_label0_weight0_in_10_sessions": 0
+  },
+  "BLA": {
+   "same_cell_loose_frac": 0.6285077951002227,
+   "distinct_loose_frac": 0.355902004454343,
+   "dup_rows_not_label0_weight0_in_10_sessions": 0
+  },
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 20.3
+}

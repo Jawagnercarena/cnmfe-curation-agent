@@ -1,0 +1,24 @@
+{
+ "attack": "a10",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": false,
+ "reproduce": {
+  "n_common_numeric": 2447,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "step5_oof": 0.06,
+  "c3_oof": 0.04,
+  "vca1_13col_pin": 0.035,
+  "vca1_v2_b0": 0.05,
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 1.4
+}

@@ -1,0 +1,26 @@
+{
+ "attack": "a14",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 1088,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "arm_a_reproduces_fixture": {
+   "max_abs_score_diff": 0.0,
+   "pass": true
+  },
+  "b0_lso_reviewed_delta": 0.0011220875724430174,
+  "b0_lso_junk_gain_pp": 2.094476320140032,
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 105.7
+}

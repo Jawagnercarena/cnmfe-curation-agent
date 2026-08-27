@@ -1,0 +1,23 @@
+{
+ "attack": "a04",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 251,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "retro_set_matches_prep": true,
+  "session_cn_vs_extraction_cn_max_diff": 0.0,
+  "gain_on_retro_sessions": 0.009615566215909907,
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 81.3
+}

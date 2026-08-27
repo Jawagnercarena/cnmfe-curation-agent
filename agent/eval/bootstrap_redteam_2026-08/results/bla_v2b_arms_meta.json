@@ -1,0 +1,925 @@
+{
+ "sessions": [
+  {
+   "rel": "3odor/AVG5x-TSeries-02212025-bla2-695um-27z-000",
+   "n": 723,
+   "cn_same_res": false,
+   "hiconf_lso": 52,
+   "hiconf_prod": 52,
+   "hiconf_agreement": 0.9944674965421854,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02212025-bla3-667um-26z-000",
+   "n": 322,
+   "cn_same_res": true,
+   "hiconf_lso": 74,
+   "hiconf_prod": 79,
+   "hiconf_agreement": 0.9782608695652174,
+   "ring_nonzero_b1": 322
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02212025-bla4-751um-28z-000",
+   "n": 304,
+   "cn_same_res": false,
+   "hiconf_lso": 33,
+   "hiconf_prod": 33,
+   "hiconf_agreement": 0.993421052631579,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02212025-bla5-527um-25z-000",
+   "n": 152,
+   "cn_same_res": true,
+   "hiconf_lso": 50,
+   "hiconf_prod": 50,
+   "hiconf_agreement": 1.0,
+   "ring_nonzero_b1": 152
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02212025-bla6-734um-3z-000",
+   "n": 269,
+   "cn_same_res": false,
+   "hiconf_lso": 26,
+   "hiconf_prod": 25,
+   "hiconf_agreement": 0.9962825278810409,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-022326-bla8-655um-25z-000",
+   "n": 233,
+   "cn_same_res": false,
+   "hiconf_lso": 4,
+   "hiconf_prod": 5,
+   "hiconf_agreement": 0.9957081545064378,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-022525-bla3-665um-26z-000",
+   "n": 390,
+   "cn_same_res": true,
+   "hiconf_lso": 87,
+   "hiconf_prod": 88,
+   "hiconf_agreement": 0.9871794871794872,
+   "ring_nonzero_b1": 390
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-022525-bla4-755um-28z-000",
+   "n": 332,
+   "cn_same_res": false,
+   "hiconf_lso": 38,
+   "hiconf_prod": 40,
+   "hiconf_agreement": 0.9939759036144579,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-022525-bla5-512um-25z-000",
+   "n": 172,
+   "cn_same_res": true,
+   "hiconf_lso": 53,
+   "hiconf_prod": 56,
+   "hiconf_agreement": 0.9709302325581395,
+   "ring_nonzero_b1": 172
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-022525-bla6-730um-3z-000",
+   "n": 292,
+   "cn_same_res": true,
+   "hiconf_lso": 13,
+   "hiconf_prod": 11,
+   "hiconf_agreement": 0.9931506849315068,
+   "ring_nonzero_b1": 292
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02262025-bla2-662um-27z-000",
+   "n": 662,
+   "cn_same_res": true,
+   "hiconf_lso": 62,
+   "hiconf_prod": 62,
+   "hiconf_agreement": 0.9879154078549849,
+   "ring_nonzero_b1": 662
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02262025-bla3-664um-26z-000",
+   "n": 385,
+   "cn_same_res": true,
+   "hiconf_lso": 79,
+   "hiconf_prod": 80,
+   "hiconf_agreement": 0.987012987012987,
+   "ring_nonzero_b1": 385
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02262025-bla4-724um-28z-000",
+   "n": 311,
+   "cn_same_res": false,
+   "hiconf_lso": 51,
+   "hiconf_prod": 52,
+   "hiconf_agreement": 0.9839228295819936,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02262025-bla5-527um-25z-000",
+   "n": 162,
+   "cn_same_res": true,
+   "hiconf_lso": 63,
+   "hiconf_prod": 66,
+   "hiconf_agreement": 0.9691358024691358,
+   "ring_nonzero_b1": 162
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02262025-bla6-732um-3z-000",
+   "n": 230,
+   "cn_same_res": true,
+   "hiconf_lso": 17,
+   "hiconf_prod": 16,
+   "hiconf_agreement": 0.9956521739130435,
+   "ring_nonzero_b1": 230
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02282025-bla2-681um-27z-000",
+   "n": 692,
+   "cn_same_res": true,
+   "hiconf_lso": 68,
+   "hiconf_prod": 66,
+   "hiconf_agreement": 0.9855491329479769,
+   "ring_nonzero_b1": 692
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02282025-bla3-648um-26z-000",
+   "n": 457,
+   "cn_same_res": true,
+   "hiconf_lso": 86,
+   "hiconf_prod": 87,
+   "hiconf_agreement": 0.9890590809628009,
+   "ring_nonzero_b1": 457
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02282025-bla4-685um-28z-000",
+   "n": 299,
+   "cn_same_res": false,
+   "hiconf_lso": 47,
+   "hiconf_prod": 46,
+   "hiconf_agreement": 0.9899665551839465,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5X-TSeries-02282025-bla5-543um-25z-000",
+   "n": 188,
+   "cn_same_res": true,
+   "hiconf_lso": 71,
+   "hiconf_prod": 73,
+   "hiconf_agreement": 0.9787234042553191,
+   "ring_nonzero_b1": 188
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-02282025-bla6-748um-3z-000",
+   "n": 451,
+   "cn_same_res": true,
+   "hiconf_lso": 6,
+   "hiconf_prod": 6,
+   "hiconf_agreement": 0.9955654101995566,
+   "ring_nonzero_b1": 451
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03042025-bla3-667um-26z-000",
+   "n": 567,
+   "cn_same_res": false,
+   "hiconf_lso": 105,
+   "hiconf_prod": 106,
+   "hiconf_agreement": 0.9841269841269841,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03042025-bla4-680um-28z-000",
+   "n": 374,
+   "cn_same_res": false,
+   "hiconf_lso": 60,
+   "hiconf_prod": 62,
+   "hiconf_agreement": 0.983957219251337,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03042025-bla5-537um-25z-000",
+   "n": 184,
+   "cn_same_res": true,
+   "hiconf_lso": 70,
+   "hiconf_prod": 73,
+   "hiconf_agreement": 0.9728260869565217,
+   "ring_nonzero_b1": 184
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03042025-bla6-748um-3z-000",
+   "n": 320,
+   "cn_same_res": true,
+   "hiconf_lso": 9,
+   "hiconf_prod": 10,
+   "hiconf_agreement": 0.996875,
+   "ring_nonzero_b1": 320
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03062025-bla3-667um-26z-000",
+   "n": 404,
+   "cn_same_res": false,
+   "hiconf_lso": 110,
+   "hiconf_prod": 108,
+   "hiconf_agreement": 0.9801980198019802,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03062025-bla4-694um-28z-000",
+   "n": 435,
+   "cn_same_res": false,
+   "hiconf_lso": 57,
+   "hiconf_prod": 55,
+   "hiconf_agreement": 0.9908045977011494,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03062025-bla5-525um-25z-000",
+   "n": 194,
+   "cn_same_res": true,
+   "hiconf_lso": 64,
+   "hiconf_prod": 73,
+   "hiconf_agreement": 0.9536082474226805,
+   "ring_nonzero_b1": 194
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03062025-bla6-745um-3z-000",
+   "n": 359,
+   "cn_same_res": true,
+   "hiconf_lso": 13,
+   "hiconf_prod": 14,
+   "hiconf_agreement": 0.9972144846796658,
+   "ring_nonzero_b1": 359
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03072025-bla6-725um-3z-000",
+   "n": 337,
+   "cn_same_res": true,
+   "hiconf_lso": 20,
+   "hiconf_prod": 20,
+   "hiconf_agreement": 0.9940652818991098,
+   "ring_nonzero_b1": 337
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03132025-bla3-737um-24z-000",
+   "n": 413,
+   "cn_same_res": true,
+   "hiconf_lso": 79,
+   "hiconf_prod": 76,
+   "hiconf_agreement": 0.9830508474576272,
+   "ring_nonzero_b1": 413
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-03132025-bla6-710um-3z-000",
+   "n": 383,
+   "cn_same_res": true,
+   "hiconf_lso": 17,
+   "hiconf_prod": 18,
+   "hiconf_agreement": 0.9973890339425587,
+   "ring_nonzero_b1": 383
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-031425-bla3-580um-24z-000",
+   "n": 348,
+   "cn_same_res": true,
+   "hiconf_lso": 75,
+   "hiconf_prod": 76,
+   "hiconf_agreement": 0.9971264367816092,
+   "ring_nonzero_b1": 348
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-031425-bla4-745um-28z-000",
+   "n": 395,
+   "cn_same_res": true,
+   "hiconf_lso": 49,
+   "hiconf_prod": 49,
+   "hiconf_agreement": 0.9898734177215189,
+   "ring_nonzero_b1": 395
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041625-bla13-660um-27z-000",
+   "n": 354,
+   "cn_same_res": true,
+   "hiconf_lso": 39,
+   "hiconf_prod": 37,
+   "hiconf_agreement": 0.9887005649717514,
+   "ring_nonzero_b1": 354
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041625-bla14-743um-3z-000",
+   "n": 243,
+   "cn_same_res": true,
+   "hiconf_lso": 68,
+   "hiconf_prod": 65,
+   "hiconf_agreement": 0.9711934156378601,
+   "ring_nonzero_b1": 243
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041625-bla15-209um-45z-000",
+   "n": 403,
+   "cn_same_res": true,
+   "hiconf_lso": 51,
+   "hiconf_prod": 50,
+   "hiconf_agreement": 0.9826302729528535,
+   "ring_nonzero_b1": 403
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041625-bla7-783um-27z-000",
+   "n": 322,
+   "cn_same_res": true,
+   "hiconf_lso": 24,
+   "hiconf_prod": 23,
+   "hiconf_agreement": 0.9906832298136646,
+   "ring_nonzero_b1": 322
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041725-bla13-647um-27z-000",
+   "n": 375,
+   "cn_same_res": true,
+   "hiconf_lso": 75,
+   "hiconf_prod": 78,
+   "hiconf_agreement": 0.9813333333333333,
+   "ring_nonzero_b1": 375
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041725-bla14-760um-3z-000",
+   "n": 178,
+   "cn_same_res": true,
+   "hiconf_lso": 65,
+   "hiconf_prod": 69,
+   "hiconf_agreement": 0.9775280898876404,
+   "ring_nonzero_b1": 178
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041725-bla15-169um-45z-000",
+   "n": 378,
+   "cn_same_res": true,
+   "hiconf_lso": 96,
+   "hiconf_prod": 96,
+   "hiconf_agreement": 0.9894179894179894,
+   "ring_nonzero_b1": 378
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-041725-bla7-793um-27z-000",
+   "n": 365,
+   "cn_same_res": true,
+   "hiconf_lso": 37,
+   "hiconf_prod": 38,
+   "hiconf_agreement": 0.9917808219178083,
+   "ring_nonzero_b1": 365
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042125-bla13-657um-27z-000",
+   "n": 331,
+   "cn_same_res": true,
+   "hiconf_lso": 81,
+   "hiconf_prod": 80,
+   "hiconf_agreement": 0.9909365558912386,
+   "ring_nonzero_b1": 331
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042125-bla14-763um-3z-000",
+   "n": 187,
+   "cn_same_res": true,
+   "hiconf_lso": 52,
+   "hiconf_prod": 51,
+   "hiconf_agreement": 0.983957219251337,
+   "ring_nonzero_b1": 187
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042125-bla15-222um-45z-000",
+   "n": 362,
+   "cn_same_res": true,
+   "hiconf_lso": 64,
+   "hiconf_prod": 64,
+   "hiconf_agreement": 0.988950276243094,
+   "ring_nonzero_b1": 362
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042125-bla7-778um-27z-000",
+   "n": 262,
+   "cn_same_res": true,
+   "hiconf_lso": 40,
+   "hiconf_prod": 42,
+   "hiconf_agreement": 0.9923664122137404,
+   "ring_nonzero_b1": 262
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042225-bla13-653um-27z-000",
+   "n": 336,
+   "cn_same_res": true,
+   "hiconf_lso": 79,
+   "hiconf_prod": 75,
+   "hiconf_agreement": 0.9821428571428571,
+   "ring_nonzero_b1": 336
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042225-bla14-763um-3z-000",
+   "n": 218,
+   "cn_same_res": true,
+   "hiconf_lso": 56,
+   "hiconf_prod": 56,
+   "hiconf_agreement": 0.9724770642201835,
+   "ring_nonzero_b1": 218
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042225-bla15-200um-45z-000",
+   "n": 350,
+   "cn_same_res": true,
+   "hiconf_lso": 66,
+   "hiconf_prod": 65,
+   "hiconf_agreement": 0.9857142857142858,
+   "ring_nonzero_b1": 350
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042225-bla7-797um-27z-000",
+   "n": 311,
+   "cn_same_res": true,
+   "hiconf_lso": 38,
+   "hiconf_prod": 39,
+   "hiconf_agreement": 0.9903536977491961,
+   "ring_nonzero_b1": 311
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042525-bla13-655um-27z-000",
+   "n": 414,
+   "cn_same_res": true,
+   "hiconf_lso": 82,
+   "hiconf_prod": 83,
+   "hiconf_agreement": 0.9782608695652174,
+   "ring_nonzero_b1": 414
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042525-bla14-776um-3z-000",
+   "n": 178,
+   "cn_same_res": true,
+   "hiconf_lso": 54,
+   "hiconf_prod": 53,
+   "hiconf_agreement": 0.9831460674157303,
+   "ring_nonzero_b1": 178
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042525-bla15-183um-45z-000",
+   "n": 325,
+   "cn_same_res": true,
+   "hiconf_lso": 67,
+   "hiconf_prod": 66,
+   "hiconf_agreement": 0.9784615384615385,
+   "ring_nonzero_b1": 325
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-042525-bla7-812um-27z-000",
+   "n": 348,
+   "cn_same_res": true,
+   "hiconf_lso": 23,
+   "hiconf_prod": 23,
+   "hiconf_agreement": 0.9942528735632183,
+   "ring_nonzero_b1": 348
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-043025-bla13-653um-27z-000",
+   "n": 414,
+   "cn_same_res": true,
+   "hiconf_lso": 77,
+   "hiconf_prod": 82,
+   "hiconf_agreement": 0.9830917874396136,
+   "ring_nonzero_b1": 414
+  },
+  {
+   "rel": "3odor/AVG5x-TSeries-043025-bla7-807um-27z-000",
+   "n": 683,
+   "cn_same_res": false,
+   "hiconf_lso": 26,
+   "hiconf_prod": 28,
+   "hiconf_agreement": 0.9970717423133236,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "Block_Valence/AVG5x-TSeries-121025-bla16-293um-36z-000",
+   "n": 617,
+   "cn_same_res": true,
+   "hiconf_lso": 68,
+   "hiconf_prod": 68,
+   "hiconf_agreement": 0.9870340356564019,
+   "ring_nonzero_b1": 617
+  },
+  {
+   "rel": "Block_Valence/AVG5x-TSeries-121025-bla8-582um-23z-000",
+   "n": 505,
+   "cn_same_res": true,
+   "hiconf_lso": 74,
+   "hiconf_prod": 85,
+   "hiconf_agreement": 0.9782178217821782,
+   "ring_nonzero_b1": 505
+  },
+  {
+   "rel": "Block_Valence/AVG5x-TSeries-121125-bla12-700um-23z-000",
+   "n": 607,
+   "cn_same_res": true,
+   "hiconf_lso": 86,
+   "hiconf_prod": 90,
+   "hiconf_agreement": 0.9802306425041186,
+   "ring_nonzero_b1": 607
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-03312025-bla3-655um-26z-000",
+   "n": 394,
+   "cn_same_res": true,
+   "hiconf_lso": 52,
+   "hiconf_prod": 53,
+   "hiconf_agreement": 0.9873096446700508,
+   "ring_nonzero_b1": 394
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-03312025-bla4-741um-28z-000-ReMC",
+   "n": 416,
+   "cn_same_res": false,
+   "hiconf_lso": 44,
+   "hiconf_prod": 43,
+   "hiconf_agreement": 0.9879807692307693,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-03312025-bla5-546um-25z-000",
+   "n": 285,
+   "cn_same_res": false,
+   "hiconf_lso": 68,
+   "hiconf_prod": 69,
+   "hiconf_agreement": 0.9894736842105263,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-03312025-bla6-688um-3z-000",
+   "n": 678,
+   "cn_same_res": false,
+   "hiconf_lso": 12,
+   "hiconf_prod": 12,
+   "hiconf_agreement": 0.9970501474926253,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-04042025-bla4-712um-28z-000-ReMC",
+   "n": 433,
+   "cn_same_res": true,
+   "hiconf_lso": 25,
+   "hiconf_prod": 25,
+   "hiconf_agreement": 0.9861431870669746,
+   "ring_nonzero_b1": 433
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-04042025-bla6-686um-3z-000",
+   "n": 686,
+   "cn_same_res": false,
+   "hiconf_lso": 26,
+   "hiconf_prod": 25,
+   "hiconf_agreement": 0.9956268221574344,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-04072025-bla3-679um-26z-000",
+   "n": 325,
+   "cn_same_res": false,
+   "hiconf_lso": 72,
+   "hiconf_prod": 74,
+   "hiconf_agreement": 0.9876923076923076,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-04072025-bla5-543um-25z-000",
+   "n": 315,
+   "cn_same_res": false,
+   "hiconf_lso": 61,
+   "hiconf_prod": 64,
+   "hiconf_agreement": 0.9841269841269841,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-04082025-bla3-694um-26z-000",
+   "n": 287,
+   "cn_same_res": true,
+   "hiconf_lso": 73,
+   "hiconf_prod": 73,
+   "hiconf_agreement": 0.9860627177700348,
+   "ring_nonzero_b1": 287
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-04082025-bla4-711um-28z-000-ReMC",
+   "n": 384,
+   "cn_same_res": true,
+   "hiconf_lso": 57,
+   "hiconf_prod": 53,
+   "hiconf_agreement": 0.9791666666666666,
+   "ring_nonzero_b1": 384
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-04082025-bla5-552um-25z-000",
+   "n": 271,
+   "cn_same_res": true,
+   "hiconf_lso": 56,
+   "hiconf_prod": 57,
+   "hiconf_agreement": 0.981549815498155,
+   "ring_nonzero_b1": 271
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-09232025-bla13-640um-25z-000",
+   "n": 416,
+   "cn_same_res": true,
+   "hiconf_lso": 28,
+   "hiconf_prod": 27,
+   "hiconf_agreement": 0.9879807692307693,
+   "ring_nonzero_b1": 416
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-09232025-bla14-570um-28z-000",
+   "n": 146,
+   "cn_same_res": true,
+   "hiconf_lso": 20,
+   "hiconf_prod": 23,
+   "hiconf_agreement": 0.9794520547945206,
+   "ring_nonzero_b1": 146
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-09232025-bla15-229um-33z-000",
+   "n": 419,
+   "cn_same_res": true,
+   "hiconf_lso": 74,
+   "hiconf_prod": 70,
+   "hiconf_agreement": 0.9761336515513126,
+   "ring_nonzero_b1": 419
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-09262025-bla13-629um-25z-000",
+   "n": 428,
+   "cn_same_res": true,
+   "hiconf_lso": 18,
+   "hiconf_prod": 19,
+   "hiconf_agreement": 0.9929906542056075,
+   "ring_nonzero_b1": 428
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-09262025-bla14-561um-28z-000",
+   "n": 171,
+   "cn_same_res": true,
+   "hiconf_lso": 19,
+   "hiconf_prod": 24,
+   "hiconf_agreement": 0.9707602339181286,
+   "ring_nonzero_b1": 171
+  },
+  {
+   "rel": "CTA/AVG5x-TSeries-09262025-bla15-234um-33z-000",
+   "n": 510,
+   "cn_same_res": true,
+   "hiconf_lso": 117,
+   "hiconf_prod": 118,
+   "hiconf_agreement": 0.9784313725490196,
+   "ring_nonzero_b1": 510
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-02062025-bla5-515um-25z-000",
+   "n": 242,
+   "cn_same_res": true,
+   "hiconf_lso": 86,
+   "hiconf_prod": 85,
+   "hiconf_agreement": 0.987603305785124,
+   "ring_nonzero_b1": 242
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-02072025-bla5-596um-25z-000",
+   "n": 244,
+   "cn_same_res": true,
+   "hiconf_lso": 76,
+   "hiconf_prod": 78,
+   "hiconf_agreement": 0.9754098360655737,
+   "ring_nonzero_b1": 244
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-02072025-bla6-745um-3z-000",
+   "n": 207,
+   "cn_same_res": true,
+   "hiconf_lso": 26,
+   "hiconf_prod": 26,
+   "hiconf_agreement": 0.9903381642512077,
+   "ring_nonzero_b1": 207
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-07152025-bla13-675um-25z-000",
+   "n": 224,
+   "cn_same_res": true,
+   "hiconf_lso": 45,
+   "hiconf_prod": 46,
+   "hiconf_agreement": 0.9955357142857143,
+   "ring_nonzero_b1": 224
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-07152025-bla14-818um-25z-000",
+   "n": 140,
+   "cn_same_res": false,
+   "hiconf_lso": 54,
+   "hiconf_prod": 55,
+   "hiconf_agreement": 0.9928571428571429,
+   "ring_nonzero_b1": 0
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-07152025-bla15-228um-38z-000",
+   "n": 456,
+   "cn_same_res": true,
+   "hiconf_lso": 95,
+   "hiconf_prod": 97,
+   "hiconf_agreement": 0.9868421052631579,
+   "ring_nonzero_b1": 456
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-07162025-bla14-837um-25z-000",
+   "n": 158,
+   "cn_same_res": true,
+   "hiconf_lso": 52,
+   "hiconf_prod": 53,
+   "hiconf_agreement": 0.9936708860759493,
+   "ring_nonzero_b1": 158
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-07162025-bla15-246um-38z-000",
+   "n": 333,
+   "cn_same_res": true,
+   "hiconf_lso": 88,
+   "hiconf_prod": 88,
+   "hiconf_agreement": 0.987987987987988,
+   "ring_nonzero_b1": 333
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-121125-bla16-233um-36z-000",
+   "n": 351,
+   "cn_same_res": true,
+   "hiconf_lso": 23,
+   "hiconf_prod": 25,
+   "hiconf_agreement": 0.9943019943019943,
+   "ring_nonzero_b1": 351
+  },
+  {
+   "rel": "Valence/AVG5x-TSeries-121125-bla8-652um-25z-000",
+   "n": 393,
+   "cn_same_res": true,
+   "hiconf_lso": 45,
+   "hiconf_prod": 48,
+   "hiconf_agreement": 0.9821882951653944,
+   "ring_nonzero_b1": 393
+  },
+  {
+   "rel": "WSE/AVG5x-TSeries-06072025-bla13-635um-27z-000",
+   "n": 385,
+   "cn_same_res": true,
+   "hiconf_lso": 64,
+   "hiconf_prod": 66,
+   "hiconf_agreement": 0.9844155844155844,
+   "ring_nonzero_b1": 385
+  },
+  {
+   "rel": "WSE/AVG5x-TSeries-06072025-bla14-795um-28z-000",
+   "n": 104,
+   "cn_same_res": true,
+   "hiconf_lso": 39,
+   "hiconf_prod": 38,
+   "hiconf_agreement": 0.9519230769230769,
+   "ring_nonzero_b1": 104
+  },
+  {
+   "rel": "WSE/AVG5x-TSeries-06072025-bla15-199um-45z-000",
+   "n": 911,
+   "cn_same_res": true,
+   "hiconf_lso": 76,
+   "hiconf_prod": 79,
+   "hiconf_agreement": 0.9923161361141603,
+   "ring_nonzero_b1": 911
+  },
+  {
+   "rel": "WSE/AVG5x-TSeries-060825-bla13-588um-27z-000",
+   "n": 651,
+   "cn_same_res": true,
+   "hiconf_lso": 80,
+   "hiconf_prod": 79,
+   "hiconf_agreement": 0.9923195084485407,
+   "ring_nonzero_b1": 651
+  },
+  {
+   "rel": "WSE/AVG5x-TSeries-060825-bla14-775um-28z-000",
+   "n": 173,
+   "cn_same_res": true,
+   "hiconf_lso": 63,
+   "hiconf_prod": 64,
+   "hiconf_agreement": 0.9942196531791907,
+   "ring_nonzero_b1": 173
+  },
+  {
+   "rel": "WSE/AVG5x-TSeries-060825-bla15-175um-45z-000",
+   "n": 1107,
+   "cn_same_res": true,
+   "hiconf_lso": 73,
+   "hiconf_prod": 74,
+   "hiconf_agreement": 0.993676603432701,
+   "ring_nonzero_b1": 1107
+  }
+ ],
+ "n_cn_same_res": 72,
+ "hiconf_agreement": [
+  0.9944674965421854,
+  0.9782608695652174,
+  0.993421052631579,
+  1.0,
+  0.9962825278810409,
+  0.9957081545064378,
+  0.9871794871794872,
+  0.9939759036144579,
+  0.9709302325581395,
+  0.9931506849315068,
+  0.9879154078549849,
+  0.987012987012987,
+  0.9839228295819936,
+  0.9691358024691358,
+  0.9956521739130435,
+  0.9855491329479769,
+  0.9890590809628009,
+  0.9899665551839465,
+  0.9787234042553191,
+  0.9955654101995566,
+  0.9841269841269841,
+  0.983957219251337,
+  0.9728260869565217,
+  0.996875,
+  0.9801980198019802,
+  0.9908045977011494,
+  0.9536082474226805,
+  0.9972144846796658,
+  0.9940652818991098,
+  0.9830508474576272,
+  0.9973890339425587,
+  0.9971264367816092,
+  0.9898734177215189,
+  0.9887005649717514,
+  0.9711934156378601,
+  0.9826302729528535,
+  0.9906832298136646,
+  0.9813333333333333,
+  0.9775280898876404,
+  0.9894179894179894,
+  0.9917808219178083,
+  0.9909365558912386,
+  0.983957219251337,
+  0.988950276243094,
+  0.9923664122137404,
+  0.9821428571428571,
+  0.9724770642201835,
+  0.9857142857142858,
+  0.9903536977491961,
+  0.9782608695652174,
+  0.9831460674157303,
+  0.9784615384615385,
+  0.9942528735632183,
+  0.9830917874396136,
+  0.9970717423133236,
+  0.9870340356564019,
+  0.9782178217821782,
+  0.9802306425041186,
+  0.9873096446700508,
+  0.9879807692307693,
+  0.9894736842105263,
+  0.9970501474926253,
+  0.9861431870669746,
+  0.9956268221574344,
+  0.9876923076923076,
+  0.9841269841269841,
+  0.9860627177700348,
+  0.9791666666666666,
+  0.981549815498155,
+  0.9879807692307693,
+  0.9794520547945206,
+  0.9761336515513126,
+  0.9929906542056075,
+  0.9707602339181286,
+  0.9784313725490196,
+  0.987603305785124,
+  0.9754098360655737,
+  0.9903381642512077,
+  0.9955357142857143,
+  0.9928571428571429,
+  0.9868421052631579,
+  0.9936708860759493,
+  0.987987987987988,
+  0.9943019943019943,
+  0.9821882951653944,
+  0.9844155844155844,
+  0.9519230769230769,
+  0.9923161361141603,
+  0.9923195084485407,
+  0.9942196531791907,
+  0.993676603432701
+ ],
+ "hiconf_agreement_mean": 0.9862688548788913,
+ "hiconf_agreement_min": 0.9519230769230769,
+ "attack": "bla_v2b_arms_meta",
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f",
+ "script": "prep_bla_v2b_arms.py",
+ "script_sha256": "d08a421de5f44e48e1ea7ae8e9a3d5dab78b91a614610ed278a9f98825c8e9d7",
+ "written_at": "2026-08-26T19:03:31",
+ "runtime_s": 694.3
+}

@@ -1,0 +1,23 @@
+{
+ "attack": "a17",
+ "standing_verdict": "INCONCLUSIVE",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 78,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "inbox_files_scanned": 0,
+  "overlaps": 0,
+  "note": "no different-reviewer return exists on the server; the DG AVG4x/TSeries same-FOV pairs are two CNMFe runs, not two reviews of one candidate set",
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 2.3
+}

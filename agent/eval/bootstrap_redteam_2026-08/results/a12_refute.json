@@ -1,0 +1,19 @@
+{
+ "attack": "a12",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "skipped": true,
+  "reason": "long-running; reproduced via its own pin/fixture consistency checks"
+ },
+ "probe": {
+  "eval_A_diff": 0.004273428139035751,
+  "eval_B_diff": 0.0008357224486702508,
+  "loo_ag_diff": 0.0015289105387656932,
+  "loo_bs_diff": 0.01056255401125017,
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 0.0
+}

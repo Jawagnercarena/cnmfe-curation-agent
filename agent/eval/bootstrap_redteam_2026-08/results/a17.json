@@ -1,0 +1,159 @@
+{
+ "inbox": {
+  "inbox_reachable": true,
+  "candidates": [],
+  "overlaps": []
+ },
+ "proxies": {
+  "BLA": {
+   "n_sessions": 75,
+   "confident_wrong_total": 5,
+   "sessions_with_confident_wrong": 4,
+   "top_sessions": [
+    {
+     "session": "3odor/AVG5x-TSeries-071526-bla36-817um-25z-000",
+     "n_pos": 32,
+     "far_at_T": 6.25,
+     "confident_wrong_lt_0.02": 2,
+     "mean_oof_on_reals": 0.7229140306371846
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-100925-bla16-270um-36z-000",
+     "n_pos": 20,
+     "far_at_T": 5.0,
+     "confident_wrong_lt_0.02": 1,
+     "mean_oof_on_reals": 0.7109444772009738
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-101025-bla12-635um-23z-000",
+     "n_pos": 59,
+     "far_at_T": 1.694915254237288,
+     "confident_wrong_lt_0.02": 1,
+     "mean_oof_on_reals": 0.7808121384626602
+    },
+    {
+     "session": "3odor/AVG5x-TSeries-071726-bla37-249um-37z-000",
+     "n_pos": 20,
+     "far_at_T": 5.0,
+     "confident_wrong_lt_0.02": 1,
+     "mean_oof_on_reals": 0.570356361544691
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-093025-bla12-660um-23z-000",
+     "n_pos": 21,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7294726080394217
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-093025-bla16-319um-36z-000",
+     "n_pos": 31,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7318137433950699
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-093025-bla21-313um-38z-000",
+     "n_pos": 50,
+     "far_at_T": 2.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.5621585169294849
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-093025-bla8-765um-23z-000",
+     "n_pos": 33,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7911230758058302
+    }
+   ],
+   "reals_below_0.02_frac": 0.0020885547201336674,
+   "reals_below_T_frac": 0.005430242272347535
+  },
+  "vCA1": {
+   "n_sessions": 16,
+   "confident_wrong_total": 0,
+   "sessions_with_confident_wrong": 0,
+   "top_sessions": [
+    {
+     "session": "2tones/AVG5x-TSeries-100925-pnb88-153um-33z-000",
+     "n_pos": 15,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7551489159464836
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-101025-pnb88-120um-35z-000",
+     "n_pos": 7,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.8435993971569198
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-101325-pnb88-121um-22z-000",
+     "n_pos": 22,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7237792964601382
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-101425-pnb88-115um-35z-000",
+     "n_pos": 19,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7031776711442753
+    },
+    {
+     "session": "2tones/AVG5x-TSeries-101525-pnb88-122um-35z-000",
+     "n_pos": 6,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7824143261338273
+    },
+    {
+     "session": "3odor/AVG5x-TSeries-022326-pnb88-145um-35z-000",
+     "n_pos": 9,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7934733343621095
+    },
+    {
+     "session": "3odor/AVG5x-TSeries-022426-pnb88-175um-35z-000",
+     "n_pos": 10,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.5094698696862906
+    },
+    {
+     "session": "3odor/AVG5x-TSeries-030326-pnb88-139um-35z-000",
+     "n_pos": 5,
+     "far_at_T": 0.0,
+     "confident_wrong_lt_0.02": 0,
+     "mean_oof_on_reals": 0.7208430625498294
+    }
+   ],
+   "reals_below_0.02_frac": 0.0,
+   "reals_below_T_frac": 0.0
+  }
+ },
+ "a2_self_consistency": {
+  "kept": 207,
+  "deleted": 2,
+  "unknown": 15,
+  "note": "same reviewer's final set vs a re-run's candidates on 4 sandboxes; a self-consistency bound, not inter-rater"
+ },
+ "overlap_rows": 0,
+ "disagreement": {
+  "keep_rate_pos": null,
+  "keep_rate_neg": null
+ },
+ "ceiling": null,
+ "verdict": "INCONCLUSIVE",
+ "criterion": "a two-reviewer overlap with >= 100 aligned reviewed rows exists -> measured agreement / kappa and a flip-injected ceiling; otherwise INCONCLUSIVE with proxies",
+ "attack": "a17",
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f",
+ "script": "a17_reviewer_ceiling.py",
+ "script_sha256": "33882f229b4fd829c1aa0fab00654e92425033aa3f57dac36b3ba2856ded6032",
+ "written_at": "2026-08-26T22:04:32",
+ "runtime_s": 1.6
+}

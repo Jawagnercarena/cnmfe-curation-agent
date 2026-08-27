@@ -1,0 +1,36 @@
+{
+ "attack": "a07",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 470,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "vCA1": {
+   "curated": 5187,
+   "matched": 5148,
+   "ambiguous": 39,
+   "duplicates": 6623,
+   "below_040": 0,
+   "tail_equals_ambiguous": true
+  },
+  "BLA": {
+   "curated": 2741,
+   "matched": 2737,
+   "ambiguous": 4,
+   "duplicates": 4490,
+   "below_040": 0,
+   "tail_equals_ambiguous": true
+  },
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 10.9
+}
