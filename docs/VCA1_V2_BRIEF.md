@@ -1,5 +1,36 @@
 # Brief: bringing vCA1 onto the 35-column (v2) feature contract
 
+> **STATUS 2026-08-26 — prep and gates COMPLETE; deploy deferred.**
+> Executed on branch `vca1-v2-2026-08`; full record in
+> `agent/eval/vca1_v2_2026-08/VCA1_V2_LOG.md`, decision in `gate_decision.json`.
+>
+> **Decided: ship arm b0** — real v2b on bootstrap rows (`v2_present=1`) with
+> `ring_contrast` forced to 0. Reviewed AUC 0.8786 → 0.9013 (+0.0227, 8/8 seeds),
+> T stays at the deployed **0.05**, and junk auto-caught rises **+7.3pp at
+> matched false-AR**. The §"What is different" option (a) zero-fill arm was
+> measured and *rejected*: it gains +0.018 AUC but is **-1.2pp at matched
+> false-AR, i.e. operationally worse than the 13-column model in production**.
+> Real `ring_contrast` (arm b1) adds +0.0005 on 5/8 seeds — nothing — so the
+> Cn-regeneration question this brief raised is **answered: not worth doing**.
+>
+> Production follow-on is DONE: `config.BOOTSTRAP_V2B` is area-scoped and
+> `bootstrap_preagent` writes matching rows (BLA/DG_AL untouched).
+>
+> **Three blockers remain before the swap:** the bootstrap red-team report, one
+> clean reviewer-return watcher cycle since the 2026-08-24 redeploy, and the
+> deploy commit (`FEATURE_VERSION = 2`, `BOOTSTRAP_V2B = "b0"`,
+> `_VALIDATED_THRESHOLD = 0.05`). Deploy day starts with a mandatory re-run of
+> extract → pin → hiconf → backfill → gate, because that second blocker
+> guarantees the pool has moved.
+>
+> Two corrections to this brief, both measured:
+> - the agent pool is **23 sessions / 16 CV folds** (an operator ingest landed two
+>   pnb97 returns on 08-26 and one aborted-save session was parked), not 22/14;
+> - the §"Definition of done" per-prep breakdown "pnb vs 2022–23 animals" is **not
+>   measurable** — every 2022–23 animal is bootstrap-only and therefore train-only,
+>   so no agent test fold exists for it. The real split is pnb88 (11 sessions) vs
+>   pnb97 (5), both of which improve, plus a 2-animal LOAO.
+
 Written 2026-08-25 at the end of the bootstrap-matching fix. For a fresh session (or
 the feature-expansion chat, which holds the Step 4 context). Read
 `docs/FEATURE_EXPANSION_STEP4_BRIEF.md` and `agent/eval/step4_2026-08/STEP4_LOG.md`
