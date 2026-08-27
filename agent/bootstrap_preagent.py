@@ -313,6 +313,44 @@ def _load_candidates(bootstrap_dir: Path) -> tuple[np.ndarray, np.ndarray, int, 
         return None
 
 
+def _bootstrap_hiconf(X13: np.ndarray) -> np.ndarray:
+    """
+    High-confidence neighbour mask for a bootstrap session's candidates, for
+    nb_corr_max under BOOTSTRAP_V2B="b0".
+
+    Uses the companion 13-column first-pass model stored in this area's deployed
+    joblib -- the same source curator.py uses for agent sessions
+    (curator.py:585-601), so a bootstrap session and a curated session get their
+    neighbour sets the same way.  A session being bootstrapped now is by
+    definition not in that model's training corpus, so this is out-of-sample.
+
+    Returns an all-False mask (nb_corr_max = 0 everywhere) when no companion
+    model exists yet -- the cold-start case, matching curator's behaviour at
+    curator.py:594-597.
+    """
+    model_path = config.MODEL_DIR / "classifier.joblib"
+    if not model_path.exists():
+        log("  [BOOTSTRAP] no classifier yet -- nb_corr_max = 0 (cold start).")
+        return np.zeros(len(X13), dtype=bool)
+    try:
+        import joblib
+        data = joblib.load(str(model_path))
+        if "first_pass_scaler" not in data or "first_pass_clf" not in data:
+            log("  [BOOTSTRAP] deployed joblib has no companion first-pass model "
+                "-- nb_corr_max = 0.")
+            return np.zeros(len(X13), dtype=bool)
+        sc, clf = data["first_pass_scaler"], data["first_pass_clf"]
+        n_exp = getattr(sc, "n_features_in_", None)
+        if n_exp is not None and X13.shape[1] != n_exp:
+            raise ValueError(
+                f"first-pass model expects {n_exp} columns, got {X13.shape[1]}")
+        scores = clf.predict_proba(sc.transform(X13))[:, 1]
+        return scores >= feat_module.HICONF_SCORE
+    except Exception as e:
+        log(f"  [BOOTSTRAP] first-pass scoring failed ({e}) -- nb_corr_max = 0.")
+        return np.zeros(len(X13), dtype=bool)
+
+
 def _match_and_save(session_dir: Path, bootstrap_dir: Path,
                     A_final: np.ndarray, out_dir: Path | None = None,
                     keep_candidates: bool = False,
@@ -395,13 +433,45 @@ def _match_and_save(session_dir: Path, bootstrap_dir: Path,
     feature_names  = list(rows[0].keys())
     feature_matrix = np.array([[r[k] for k in feature_names] for r in rows])
 
-    # Under the 35-column v2 contract (BLA), bootstrap rows carry real ranks
-    # but zero-filled v2b + v2_present=0: their candidate traces come from a
-    # re-run, not the reviewed recording, so v2b values would not be
-    # label-faithful.  This keeps this writer in lockstep with curator.py.
-    if getattr(config, "FEATURE_VERSION", 1) >= 2:
-        feature_matrix = feat_module.assemble_v2_bootstrap(feature_matrix)
-        feature_names  = feat_module.v2_feature_names(feature_names)
+    # Under the 35-column v2 contract, how bootstrap rows carry v2b is
+    # area-scoped (config.BOOTSTRAP_V2B):
+    #
+    #   unset / falsy  -> zero-filled v2b + v2_present=0 (BLA, and the original
+    #     Step 4 behaviour).  Written when the candidate traces cannot be trusted
+    #     to be the ones the labels were matched against.
+    #
+    #   "b0"           -> REAL v2b + v2_present=1, with ring_contrast forced to 0.
+    #     Enabled for vCA1 2026-08-26 after the bootstrap pixel-order fix, which
+    #     made the persisted candidate traces label-faithful (proved by
+    #     agent/eval/vca1_v2_2026-08/parity_vca1.py phase 3: spatial and temporal
+    #     columns recompute from bootstrap_candidates.npz to ~4e-08).  Gated at
+    #     +0.0227 reviewed AUC and +7.3pp junk-at-matched-false-AR over the
+    #     zero-fill arm; see VCA1_V2_LOG.md.
+    #
+    #     ring_contrast is deliberately zeroed even though Cn is available here.
+    #     The arm that ADDED real ring (b1) beat b0 by +0.0005 AUC on 5 of 8
+    #     seeds -- nothing -- so zeroing it costs no measurable accuracy and buys
+    #     an exact match between the feature that was evaluated and the feature
+    #     that ships.  40 of the 111 historical vCA1 bootstrap sessions have no
+    #     usable Cn, so computing it here would also make new sessions
+    #     systematically unlike the backfilled corpus.
+    _fv = getattr(config, "FEATURE_VERSION", 1)
+    if _fv >= 2:
+        _mode = getattr(config, "BOOTSTRAP_V2B", None)
+        if _mode == "b0":
+            hiconf = _bootstrap_hiconf(feature_matrix)
+            v2b = feat_module.compute_v2b_features(
+                C_raw, footprints, None, hiconf)      # Cn=None -> ring_contrast 0
+            feature_matrix = feat_module.assemble_v2_matrix(feature_matrix, v2b, 1.0)
+            log(f"  [BOOTSTRAP] v2b computed for all {N_review} candidates "
+                f"(mode b0, ring_contrast=0, {int(hiconf.sum())} hi-conf neighbours).")
+        elif _mode:
+            raise ValueError(
+                f"config.BOOTSTRAP_V2B={_mode!r} is not a known mode "
+                f"(expected 'b0' or unset).")
+        else:
+            feature_matrix = feat_module.assemble_v2_bootstrap(feature_matrix)
+        feature_names = feat_module.v2_feature_names(feature_names)
 
     np.savez(
         out / "candidate_features.npz",

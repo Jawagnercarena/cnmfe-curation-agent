@@ -55,7 +55,7 @@ def main():
     print(f"reference: the deployed 13-column model at its deployed T={T_REF}\n")
     print(f"{'arm':<5} {'b13 FAR':>8} {'b13 junk':>9} | {'v35 FAR':>8} {'v35 junk':>9} | "
           f"{'safety gain':>11} {'yield gain':>10}")
-    for arm in (vc.ARM_A, vc.ARM_B0, vc.ARM_B1):
+    for arm in (vc.ARM_A, vc.ARM_B0, vc.ARM_B1, vc.ARM_B0P):
         z = np.load(vc.SP / f"gate_{arm}_w{vc.AGENT_WEIGHT:g}_oof.npz", allow_pickle=True)
         y = z["y"]
         fr, jr, fn, jn = per_seed(z["oof_b13"], z["oof_v35"], y, T_REF)

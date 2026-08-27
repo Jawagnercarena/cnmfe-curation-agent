@@ -1,0 +1,40 @@
+=== gate: arm b0prod, agent weight 5, 8 seeds ===
+pool: 16 CV agent sessions, 111 bootstrap; OOF 1002 rows / 208 real / 794 junk (737 reviewed junk)
+bootstrap v2_present: 50370/50370 rows flagged; ring_contrast nonzero on 0 rows
+  seed 42: b13 0.8810  v35 0.9008
+  seed 1: b13 0.8860  v35 0.9037
+  seed 7: b13 0.8902  v35 0.9059
+  seed 13: b13 0.8869  v35 0.9132
+  seed 100: b13 0.8782  v35 0.9071
+  seed 2024: b13 0.8878  v35 0.9103
+  seed 31337: b13 0.8871  v35 0.9100
+  seed 9: b13 0.8846  v35 0.9035
+
+AUC [    full]  b13 0.8852+/-0.0037   v35 0.9068+/-0.0039   paired +0.0216 (min +0.0157, all>0 True)
+
+AUC [reviewed]  b13 0.8786+/-0.0037   v35 0.8999+/-0.0042   paired +0.0213 (min +0.0153, all>0 True)
+
+b13 vs pin: max|score diff| 0.00e+00, max|AUC diff| 0.00e+00 -> consistent
+
+At matched junk-caught (44.9%, b13 @ T=0.05): false-AR b13 0.84% -> v35 0.48% (v35 T=0.031625)
+
+    T              false-AR %   junk full %   junk rev %
+ 0.03    0.36 +/- 0.21 (max  0.48)     44.3        40.7
+ 0.04    0.66 +/- 0.33 (max  0.96)     48.7        45.4
+ 0.05    0.84 +/- 0.32 (max  1.44)     52.2        49.0
+ 0.06    1.08 +/- 0.21 (max  1.44)     54.4        51.4
+ 0.07    1.44 +/- 0.48 (max  2.40)     56.2        53.3
+ 0.08    1.86 +/- 0.56 (max  2.88)     57.7        54.8
+ 0.09    2.10 +/- 0.63 (max  2.88)     59.1        56.3
+ 0.10    2.58 +/- 0.79 (max  3.37)     60.7        58.0
+ 0.12    3.12 +/- 1.02 (max  4.81)     63.3        60.7
+
+CHOSEN T = 0.04: false-AR 0.66% (max 0.96), junk full 48.7%, reviewed 45.4% -> gate(far<=1%, junk>=30%): PASS
+
+per-prep [pnb88]  328 reviewed rows, 110 real: b13 0.8524 -> v35 0.8714  (+0.0190, min +0.0042)
+per-prep [pnb97]  617 reviewed rows,  98 real: b13 0.8868 -> v35 0.9107  (+0.0239, min +0.0153)
+  (2022-23 animals are bootstrap-only, hence train-only: no agent test folds exist for them, so a pnb-vs-2022/23 split is not measurable.)
+LOAO [pnb88] 18 sessions, 129 real: b13 0.8452 -> v35 0.8730 (+0.0278)   [informational]
+LOAO [pnb97] 5 sessions, 98 real: b13 0.8640 -> v35 0.9047 (+0.0407)   [informational]
+
+saved gate_b0prod_w5.json + gate_b0prod_w5_oof.npz

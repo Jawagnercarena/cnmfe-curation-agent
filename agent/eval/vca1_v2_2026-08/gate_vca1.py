@@ -101,7 +101,7 @@ def loao(records, bs, animal, X_slice, weight, seeds):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--arm", choices=[vc.ARM_A, vc.ARM_B0, vc.ARM_B1], required=True)
+    ap.add_argument("--arm", choices=[vc.ARM_A, vc.ARM_B0, vc.ARM_B1, vc.ARM_B0P], required=True)
     ap.add_argument("--agent-weight", type=float, default=None)
     ap.add_argument("--skip-loao", action="store_true")
     args = ap.parse_args()

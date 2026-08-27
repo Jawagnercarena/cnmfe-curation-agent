@@ -370,3 +370,85 @@ Checked today: backup manifest 2026-08-26 16:41, **0 sessions with newer labels
 -> the vCA1 rollback is currently VALID**. It will refuse itself the moment a
 reviewer return lands, which is the correct behaviour: at that point the backup
 is historical and the pool must be re-backed-up.
+
+## User decision (2026-08-26): **ship arm b0**
+
+Chosen over the rule's literal winner because arm (a) is operationally worse than
+the deployed model (-1.2pp junk at matched false-AR) while b0 is +7.3pp. b1
+rejected: +0.0005 AUC on 5/8 seeds over b0 is nothing, and it would make
+`ring_contrast` a permanent dependency on Cn files that 40 of 111 sessions lack.
+**The Cn-regeneration follow-on is therefore NOT warranted.**
+
+Also recorded per the user: the Step 4 rule applied to the *current 13-column*
+deployed model would pick T=0.03 rather than the deployed 0.05. Left alone — 0.05
+was set under an explicit 1.8%-false-AR posture to protect scarce cells, which is
+a deliberate choice, and the v2 deploy re-derives T anyway.
+
+## Production follow-on — DONE (commit C5)
+
+Arm b required this before any deploy, because `bootstrap_preagent.py:402-404`
+zero-filled unconditionally: a future vCA1 bootstrap run would have written
+arm-(a) rows into an arm-(b) corpus.
+
+`config.BOOTSTRAP_V2B` (area-scoped, unset for BLA/DG_AL so they are untouched):
+- unset/falsy -> `assemble_v2_bootstrap`, exactly as before;
+- `"b0"` -> real v2b + `v2_present=1`, **`ring_contrast` forced to 0**, hiconf from
+  the companion 13-col first-pass model (the same source `curator.py:585-601`
+  uses), all-False on cold start.
+
+`ring_contrast` is zeroed deliberately even though Cn is available at bootstrap
+time: b1 showed real ring buys +0.0005 (nothing), so zeroing costs no measurable
+accuracy and makes the shipped feature **exactly** the evaluated one. It also
+stops new sessions being systematically unlike the 40 backfilled sessions that
+have no usable Cn.
+
+Unit-checked: cold start -> all-False; companion present -> mask == scores >= 0.5;
+wrong-width input -> refuses rather than silently scoring; BLA/DG_AL keep the
+old branch.
+
+### Sensitivity: does the b0 win depend on the hiconf source? **No.**
+The backfill used leave-session-out fits; production uses the companion model.
+Built a third arm `b0prod` with hiconf from the *deployed* model — for these 111
+historical sessions that is **in-sample**, deliberately the opposite extreme.
+
+- masks agree on **98.0%** of rows (min 94.7% per session); 966/50,370 differ.
+- reviewed AUC `b0prod - b0` = **-0.0014** (|max| 0.0034 over 8 seeds, se 0.0005).
+- both still beat arm (a) on **8/8 seeds** (+0.0047 and +0.0034).
+- operating point: b0 +7.3pp, b0prod +4.6pp junk at matched false-AR — the exact
+  magnitude carries roughly +/-3pp depending on the source, but both are far above
+  arm (a)'s **-1.2pp**. The conclusion is robust; the headline number is not
+  precise to better than a few points.
+
+## Materialization and end-to-end rehearsal (commit C5)
+
+- `swap_vca1.py materialize --arm b0`: 111 bootstrap v2 files replaced; verified
+  **111/111 with `v2_present`=1 on every row and `ring_contrast`=0 everywhere**,
+  and all **163 v2 files at width 35**.
+- `simulate_retrain_vca1.py`: retrain-identical 35-col + companion 13-col joblib
+  into `_rehearsal/model/` (never `agent/model/vCA1`). 134 sessions, 51,592 rows,
+  6,662 masked, 44,930 active.
+- `dryrun_curate_vca1.py`: **ALL PASS** on a copy of a real pending session —
+  two-pass scoring ran via the companion model, 35-col npz written, **first 13
+  columns bit-identical to the live npz** (re-extraction is deterministic),
+  `v2_present`=1 on all rows, and review_report.pdf + review_neuron.mat +
+  review_summary.txt all produced. This is the end-to-end proof that 35-column
+  curation works for vCA1.
+- `verify_vca1.py --rehearsal`: **ALL PASS** — the deploy-day verifier's own logic
+  is proven before the freeze. It computes `n_excluded_ambiguous` from the pool
+  (6,662) instead of hard-coding BLA's 1123, and on deploy day additionally checks
+  `FEATURE_VERSION`, `BOOTSTRAP_V2B`, and — the check that catches a silent
+  un-deploy — that `train_classifier_vCA1._VALIDATED_THRESHOLD` equals the decided
+  T, since the watcher's auto-retrain passes no `--threshold`.
+
+## Where this project stands
+
+**Prep and gates COMPLETE. Deploy still deferred**, blocked on exactly three
+things (`gate_decision.json.deploy_blockers_remaining`):
+1. the bootstrap red-team report (absent);
+2. a clean reviewer-return watcher cycle since the 2026-08-24 vCA1 redeploy;
+3. the deploy commit itself: `config_vCA1.FEATURE_VERSION = 2`,
+   `BOOTSTRAP_V2B = "b0"`, `_VALIDATED_THRESHOLD = 0.05`.
+
+Deploy-day procedure is the plan's 3f, and it **begins with a mandatory re-run**
+of extract -> pin -> hiconf -> backfill -> gate for the winning arm, because
+precondition 2 guarantees the pool has moved.

@@ -24,6 +24,14 @@
    "junk_v35_at_matched_far": 53.353274559193956,
    "safety_gain_pp": 0.5408653846153848,
    "yield_gain_pp": 8.501259445843829
+  },
+  "b0prod": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.4807692307692308,
+   "junk_v35_at_matched_far": 49.43324937027708,
+   "safety_gain_pp": 0.3605769230769232,
+   "yield_gain_pp": 4.581234256926955
   }
  }
 }

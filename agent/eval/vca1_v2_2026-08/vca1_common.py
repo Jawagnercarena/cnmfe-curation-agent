@@ -62,6 +62,7 @@ V2     = "candidate_features_v2.npz"
 ARM_A  = "a"
 ARM_B0 = "b0"
 ARM_B1 = "b1"
+ARM_B0P = "b0prod"   # b0 with production-style hiconf (sensitivity check)
 
 # Fixed agent up-weight for this area (config_vCA1.py:25).  The trainer honours
 # AGENT_WEIGHT_OVERRIDE in main() (train_classifier.py:792-794) but the eval
@@ -283,7 +284,7 @@ def load_pool(v2: bool = False, arm: str = ARM_A, require_width=None):
     records = []
     for sd in labeled_agent + bootstrap:
         is_bs = sd in bootstrap
-        if v2 and is_bs and arm in (ARM_B0, ARM_B1):
+        if v2 and is_bs and arm in (ARM_B0, ARM_B1, ARM_B0P):
             f = ARMS / f"{key(rel(sd))}__{arm}.npz"
         else:
             f = sd / (V2 if v2 else V1)

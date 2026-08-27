@@ -35,7 +35,7 @@
    "beats": true
   }
  },
- "arm": "a",
+ "arm": "b0",
  "weight_detail": {},
  "agent_weight": 5.0,
  "ship_detail": {
@@ -56,7 +56,71 @@
   "junk_full": 45.30856423173804,
   "junk_reviewed": 43.52103120759837
  },
- "chosen_T": 0.03,
+ "chosen_T": 0.05,
  "production_followon_required": false,
- "deploy_ok": true
+ "deploy_ok": true,
+ "rule_outcome": {
+  "arm": "a",
+  "chosen_T": 0.03,
+  "note": "the pre-registered rule's literal winner; NOT retuned after seeing results"
+ },
+ "user_decision": {
+  "date": "2026-08-26",
+  "arm": "b0",
+  "decided_by": "user",
+  "why": "arm (a) wins the AUC rule but is operationally WORSE than the deployed 13-col model (-1.2pp junk at matched false-AR); b0 is +7.3pp. The rule also contradicted itself (b1-vs-a clears the bar b0-vs-a misses, so the winner depended on comparison order) and its safety metric was computed on the seed-mean OOF, which made it vacuous.",
+  "b1_rejected": "adds +0.0005 AUC on 5/8 seeds over b0 -- nothing; and it would make ring_contrast a permanent dependency on Cn files 40/111 sessions lack",
+  "cn_regeneration_followon": "NOT warranted (b1 == b0)"
+ },
+ "production_followon": {
+  "status": "DONE",
+  "change": "bootstrap_preagent.py: area-scoped config.BOOTSTRAP_V2B='b0' computes real v2b for bootstrap rows with ring_contrast forced to 0; hiconf from the companion 13-col first-pass model (the same source curator uses), all-False on cold start. BLA/DG_AL never set the key, so they keep assemble_v2_bootstrap unchanged.",
+  "sensitivity": {
+   "question": "does the b0 win depend on the hiconf source?",
+   "lso_vs_deployed_mask_agreement_pct": 98.0,
+   "b0prod_minus_b0_reviewed_auc_mean": -0.0014,
+   "b0prod_minus_b0_reviewed_auc_absmax": 0.0034,
+   "both_beat_arm_a_seeds": "8/8",
+   "verdict": "NO -- within seed noise across the full range from strictly out-of-sample (LSO) to in-sample (deployed)"
+  }
+ },
+ "operating_point": {
+  "a": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.6009615384615384,
+   "junk_v35_at_matched_far": 43.68702770780857,
+   "safety_gain_pp": 0.24038461538461553,
+   "yield_gain_pp": -1.1649874055415594
+  },
+  "b0": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.3605769230769231,
+   "junk_v35_at_matched_far": 52.141057934508815,
+   "safety_gain_pp": 0.4807692307692309,
+   "yield_gain_pp": 7.289042821158688
+  },
+  "b1": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.3004807692307692,
+   "junk_v35_at_matched_far": 53.353274559193956,
+   "safety_gain_pp": 0.5408653846153848,
+   "yield_gain_pp": 8.501259445843829
+  },
+  "b0prod": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.4807692307692308,
+   "junk_v35_at_matched_far": 49.43324937027708,
+   "safety_gain_pp": 0.3605769230769232,
+   "yield_gain_pp": 4.581234256926955
+  }
+ },
+ "deploy_blockers_remaining": [
+  "bootstrap red-team report absent (agent/eval/bootstrap_redteam_2026-08/redteam_report.md)",
+  "no clean reviewer-return watcher cycle since the 2026-08-24 vCA1 redeploy",
+  "config_vCA1.FEATURE_VERSION=2 + BOOTSTRAP_V2B='b0' + _VALIDATED_THRESHOLD flip (deploy commit)"
+ ]
 }

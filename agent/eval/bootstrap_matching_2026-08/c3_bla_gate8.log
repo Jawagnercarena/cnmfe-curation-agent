@@ -1,0 +1,39 @@
+pool: 79 agent (75 with >= 5 positives) + 91 bootstrap;  13138 agent rows, 33448 bootstrap rows
+OOF pool: 12677 rows, 2394 real, 10283 junk (8590 reviewed junk)
+  seed 42 done
+  seed 1 done
+  seed 7 done
+  seed 13 done
+  seed 100 done
+  seed 2024 done
+  seed 31337 done
+  seed 9 done
+
+AUC [full]: b13 0.9159+/-0.0016  rankv2b_35 0.9283+/-0.0014  paired delta +0.0124 (min +0.0118, all>0: True)
+
+AUC [reviewed]: b13 0.8998+/-0.0019  rankv2b_35 0.9149+/-0.0016  paired delta +0.0151 (min +0.0144, all>0: True)
+
+    T          false-AR %     junk full %   junk reviewed %
+ 0.03    0.46 +/- 0.06 (max 0.58)    38.7 +/- 0.5     29.9 +/- 0.5
+ 0.04    0.64 +/- 0.13 (max 0.96)    43.2 +/- 0.5     34.5 +/- 0.6
+ 0.05    0.91 +/- 0.21 (max 1.46)    46.8 +/- 0.5     38.2 +/- 0.6
+ 0.06    1.11 +/- 0.25 (max 1.75)    49.7 +/- 0.5     41.3 +/- 0.5
+ 0.07    1.41 +/- 0.26 (max 2.01)    52.3 +/- 0.4     44.0 +/- 0.4
+ 0.08    1.75 +/- 0.28 (max 2.42)    54.5 +/- 0.4     46.5 +/- 0.4
+ 0.09    2.01 +/- 0.30 (max 2.72)    56.3 +/- 0.4     48.5 +/- 0.5
+ 0.10    2.33 +/- 0.30 (max 3.01)    57.9 +/- 0.4     50.3 +/- 0.5
+ 0.12    2.82 +/- 0.24 (max 3.30)    60.8 +/- 0.3     53.6 +/- 0.4
+
+CHOSEN T = 0.04: false-AR 0.64%, junk full 43.2%, junk reviewed 34.5%  -> gate (far<=1%, junk>=30%): PASS
+
+smoke bla21 'Neuron 22': b13 OOF 0.083 (pinned 0.064/0.101) -> rankv2b_35 OOF 0.046
+smoke bla21 'Neuron 25': b13 OOF 0.109 (pinned 0.064/0.101) -> rankv2b_35 OOF 0.048
+
+saved c3_bla_gate8_results.json + c3_bla_gate8_oof.npz
+
+=== PAIRED vs pinned post-Step-4 baseline (rankv2b_35, same seeds) ===
+pool rows: pinned 12677 vs now 12677 (real 2394 vs 2394)
+G1 AUC [full]: pinned 0.9246+/-0.0014 -> now 0.9283+/-0.0014  paired delta +0.0037 (min +0.0031, max +0.0043, all>=0: True)
+G1 AUC [reviewed]: pinned 0.9123+/-0.0015 -> now 0.9149+/-0.0016  paired delta +0.0026 (min +0.0021, max +0.0032, all>=0: True)
+G2 T=0.06: false-AR pinned 0.80% -> now 1.11% (worst seed 1.75%) | junk full 33.8% -> 49.7% | junk reviewed 31.8% -> 41.3%
+G2 T=0.08: false-AR pinned 1.32% -> now 1.75% (worst seed 2.42%) | junk full 42.1% -> 54.5% | junk reviewed 38.3% -> 46.5%
