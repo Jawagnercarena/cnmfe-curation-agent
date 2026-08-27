@@ -56,7 +56,14 @@
   "junk_full": 45.30856423173804,
   "junk_reviewed": 43.52103120759837
  },
- "chosen_T": 0.05,
+ "chosen_T": 0.04,
+ "rule_T_for_arm_b0": 0.05,
+ "user_decision_T": {
+  "date": "2026-08-26",
+  "T": 0.04,
+  "decided_by": "user",
+  "why": "the rule's 0.05 sits on the 1% worst-seed ceiling (0.66% mean / 0.96% max, 51.6% junk) and flips to 0.04 under a different xgboost thread count (16 threads: 0.84% / 1.44%); 0.04 keeps a margin (0.48% / 0.96%, 48.4% junk) and still beats the deployed 13-col at 0.05 (0.84% / 2.40%, 44.9%) on both axes. Red team 2026-08-26: agent/eval/bootstrap_redteam_2026-08/results/a08.json, a10.json. Under 2-animal LOAO every T in [0.03, 0.10] runs at 3-7% false-AR: thresholds are calibrated to known animals; new animals keep the threshold-0 first pass."
+ },
  "production_followon_required": false,
  "deploy_ok": true,
  "rule_outcome": {
@@ -118,9 +125,10 @@
    "yield_gain_pp": 4.581234256926955
   }
  },
- "deploy_blockers_remaining": [
-  "bootstrap red-team report absent (agent/eval/bootstrap_redteam_2026-08/redteam_report.md)",
-  "no clean reviewer-return watcher cycle since the 2026-08-24 vCA1 redeploy",
-  "config_vCA1.FEATURE_VERSION=2 + BOOTSTRAP_V2B='b0' + _VALIDATED_THRESHOLD flip (deploy commit)"
- ]
+ "deploy_blockers_remaining": [],
+ "deploy_blockers_resolved_2026-08-26": {
+  "red_team_report": "present: agent/eval/bootstrap_redteam_2026-08/redteam_report.md (no veto; caveats recorded in user_decision_T)",
+  "watcher_cycle": "waived by the user (watchers down since 08-21, inbox fully ingested, red team found nothing a cycle would change)",
+  "flip_commit": "config_vCA1.FEATURE_VERSION=2 + BOOTSTRAP_V2B='b0' + _VALIDATED_THRESHOLD=0.04"
+ }
 }

@@ -1,9 +1,11 @@
 # vCA1 v2 (35-column contract) — project log
 
-**DEFERRED: the swap is NOT executed in this project.** Scope is prep + gates +
-a rehearsed swap kit; the freeze/swap/retrain/flip/watcher-restart waits on the
-bootstrap red-team report and a clean reviewer-return watcher cycle. Deploy-day
-procedure is in the plan's §3f.
+**DEPLOYED 2026-08-26 (evening) — see "Deploy" at the end of this log.** The banner
+below is the state the prep project left behind; it is kept for the record.
+
+**DEFERRED (superseded): the swap was NOT executed in the prep project.** Scope was
+prep + gates + a rehearsed swap kit; the freeze/swap/retrain/flip/watcher-restart
+waited on the bootstrap red-team report and a clean reviewer-return watcher cycle.
 
 Branch `vca1-v2-2026-08` off `feature-expansion-step4` (da0a22a).
 All numbers below computed fresh; nothing carried from the brief.
@@ -452,3 +454,61 @@ things (`gate_decision.json.deploy_blockers_remaining`):
 Deploy-day procedure is the plan's 3f, and it **begins with a mandatory re-run**
 of extract -> pin -> hiconf -> backfill -> gate for the winning arm, because
 precondition 2 guarantees the pool has moved.
+
+## Deploy — 2026-08-26 (evening)
+
+**Preconditions as met.** (1) The bootstrap red-team report exists
+(`agent/eval/bootstrap_redteam_2026-08/redteam_report.md`) and does not veto: arm b0's
+ranking gain survives 2-animal leave-one-animal-out (0.8679 vs 0.8625 for b13), with two
+caveats recorded — the rule's T = 0.05 sits on the 1% worst-seed ceiling (0.66% mean /
+0.96% max) and flips to 0.04 under a different xgboost thread count, and under LOAO every T
+runs at 3–7% false-AR (thresholds are calibrated to animals already in training; a new
+animal keeps the threshold-0 first pass). (2) The reviewer-return watcher cycle was **waived
+by the user**: watchers down since 08-21, the server inbox fully ingested (64/64), and the
+red team found nothing a cycle would change. (3) The flip commit, below.
+
+**Pool did not move**, so the §3f re-run driver reduced to the drift check: the red team's
+corpus pin (taken 2026-08-26 after the vCA1 pin; every labels.mat, JSON sha and joblib md5)
+`rt_pin.py --check` = unchanged, and `swap_vca1.py preflight` PASS on every check (session
+set == backup manifest, 0 live v1 npz drifted, joblib unchanged, 163 v2 siblings matching
+`materialize_report.json`).
+
+**Threshold: T = 0.04, the user's decision over the rule's 0.05** (recorded in
+`gate_decision.json.user_decision_T`). 8-seed session-grouped operating points of arm b0
+(`agent/eval/bootstrap_redteam_2026-08/results/a10.json`, unrestricted threads): 0.04 →
+false-AR 0.48% mean / 0.96% worst seed, 48.4% junk auto-caught; 0.05 → 0.66% / 0.96%,
+51.6%; today's 13-col at 0.05 → 0.84% / 2.40%, 44.9%. 0.04 keeps a margin under the 1%
+worst-seed ceiling that 0.05 lacks and still beats the previous deploy on both axes.
+
+**Sequence executed** (all watchers down, no pipeline MATLAB, exchange idle):
+1. `swap_vca1.py swap --freeze` — **163/163** sessions replaced by their v2 sibling,
+   sha-verified against `materialize_report.json`, all width 35 (`swap_report.json`).
+2. Flip commit: `config_vCA1.FEATURE_VERSION = 2`, `config_vCA1.BOOTSTRAP_V2B = "b0"`,
+   `train_classifier_vCA1._VALIDATED_THRESHOLD = 0.04`; the wrapper's `--threshold` guard
+   now also catches the `--threshold=` form (latent bug found by the red team).
+3. `train_classifier_vCA1.py --prospective-only --model xgboost --threshold 0.04`
+   (`deploy_retrain.log`): **134 sessions (23 agent / 111 bootstrap), agent weight 5.00x
+   from the override, 6,662 masked, CV AUC 0.939, companion 13-col first-pass model fit,
+   reject_threshold 0.04**, joblib 992,975 B (was 491,628 B at 13 columns).
+4. `verify_vca1.py` — **ALL PASS** (`deploy_verify.log`): scaler width 35, companion at
+   width 13, reject_threshold 0.04, feature_version 2, n_features 35, agent_weight 5.0,
+   n_sessions 134 == manifest, n_excluded_ambiguous 6,662 == computed from the pool; the
+   three source flips; corpus identity 163/163 sha == what the gate evaluated and
+   first-13 / auto_rejected / n_candidates preserved 163/163; joblib newer than every
+   labels.mat.
+5. `dryrun_curate_vca1.py --live` — **ALL PASS** (`deploy_dryrun.log`) on a COPY of the
+   smallest pending session (`3odor/…030126-pnb88-183um-35z-000`, 36 candidates): pass 1
+   via the companion model (6/36 high-confidence neighbours), 35-col npz written, first 13
+   columns bit-identical to the live file's base columns, `v2_present` = 1 on all rows,
+   review_report.pdf / review_neuron.mat / review_summary.txt produced; 15 candidates to
+   review, 21 auto-rejected at 0.04 on that copy (the real pending session's review set is
+   untouched — the swap preserved `auto_rejected` verbatim).
+
+**Rollback stays armed**: `_v1_backup` (163 v1 npz + the 08-24 joblib, rehearsal PASS)
+is a valid restore point until a reviewer return lands, at which point
+`swap_vca1.py rollback` refuses by design. Any session curated under v2 before then
+cannot be un-curated by a rollback — none has been, as of this entry.
+
+**Operator: restart `watcher_vCA1.py` and watch three polls.** Its first poll must NOT
+retrain (the joblib is newer than every labels.mat); the next reviewer return will
+retrain at 35 columns and T = 0.04 via the flipped wrapper.

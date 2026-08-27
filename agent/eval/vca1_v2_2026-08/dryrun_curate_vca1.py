@@ -14,6 +14,9 @@ never touched.
 
   python dryrun_curate_vca1.py            picks a pending session automatically
   python dryrun_curate_vca1.py --session 3odor/AVG5x-...
+  python dryrun_curate_vca1.py --live     deploy-day mode: score the COPY with the
+                                          LIVE joblib (config_vCA1 already flipped);
+                                          the pending session dir is still untouched
 """
 import argparse
 import shutil
@@ -31,6 +34,8 @@ COPY_FILES = ["A.txt", "C_raw.txt", "C.txt", "S.txt", "Cn.mat", "pnr.mat",
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--session")
+    ap.add_argument("--live", action="store_true",
+                    help="use the LIVE joblib and the flipped config (deploy day); still runs on a copy")
     args = ap.parse_args()
     vc.configure()
 
@@ -50,21 +55,29 @@ def main():
     for f in COPY_FILES:
         if (sd / f).exists():
             shutil.copy2(str(sd / f), str(dst / f))
-    live13 = np.load(sd / vc.V1, allow_pickle=True)["feature_matrix"]
+    live = np.load(sd / vc.V1, allow_pickle=True)["feature_matrix"]
+    live13 = live[:, :13]          # after the swap the live file is 35 wide; the first 13 are the base contract
     print(f"  copied {len(list(dst.iterdir()))} files; live npz is "
-          f"{live13.shape[0]}x{live13.shape[1]}")
+          f"{live.shape[0]}x{live.shape[1]}")
 
     # patch BEFORE importing curator -- it binds MODEL_DIR at import time
     import config_vCA1
-    config_vCA1.FEATURE_VERSION = 2
-    config_vCA1.MODEL_DIR = vc.REHEARSAL / "model"
+    if args.live:
+        assert getattr(config_vCA1, "FEATURE_VERSION", 1) == 2, \
+            "--live needs the flipped config (config_vCA1.FEATURE_VERSION == 2)"
+        expected_model_dir = config_vCA1.MODEL_DIR
+    else:
+        config_vCA1.FEATURE_VERSION = 2
+        config_vCA1.MODEL_DIR = vc.REHEARSAL / "model"
+        expected_model_dir = vc.REHEARSAL / "model"
     import curator
 
-    assert curator.MODEL_DIR == vc.REHEARSAL / "model", \
-        f"curator bound MODEL_DIR = {curator.MODEL_DIR}, not the rehearsal dir"
+    assert curator.MODEL_DIR == expected_model_dir, \
+        f"curator bound MODEL_DIR = {curator.MODEL_DIR}, not {expected_model_dir}"
     assert str(vc.REHEARSAL) in str(dst), "refusing: session copy is not under the rehearsal dir"
     assert getattr(curator.config, "FEATURE_VERSION", 1) == 2, "FEATURE_VERSION patch did not take"
-    print(f"  curator.MODEL_DIR -> {curator.MODEL_DIR}  (production model untouched)")
+    print(f"  curator.MODEL_DIR -> {curator.MODEL_DIR}  "
+          f"({'LIVE joblib, read-only' if args.live else 'production model untouched'})")
 
     log_lines = []
 
@@ -85,7 +98,7 @@ def main():
         d = np.abs(X[:, :13] - live13).max()
         print(f"  FAIL  first 13 columns differ from the live npz (max {d:.3e})"); ok = False
     else:
-        print("  ok    first 13 columns bit-identical to the live 13-col npz "
+        print("  ok    first 13 columns bit-identical to the live npz's base columns "
               "(re-extraction is deterministic)")
     if not (X[:, 34] == 1).all():
         print("  FAIL  v2_present is not 1 on every row"); ok = False

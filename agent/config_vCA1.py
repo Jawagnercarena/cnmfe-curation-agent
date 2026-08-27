@@ -19,7 +19,19 @@ MODEL_DIR = Path(__file__).parent / "model" / AREA
 
 # Fixed agent up-weight (replaces the dynamic sqrt formula in
 # train_classifier). Decided 2026-08-24 after the bootstrap pixel-order fix:
-# the sqrt term resolves to 7.01x here and doubles false-AR at the deployed
-# 0.05 threshold vs this value (3-seed sweep, AUC 0.886±0.004 vs 0.884±0.007;
-# see agent/eval/bootstrap_matching_2026-08/c3_vca1_weight_sweep.log).
+# the sqrt term resolves to 7.01x here; the red team (2026-08-26, attack #9)
+# found the "doubles false-AR" rationale was 3-seed noise but kept 5.0 as the
+# best operating point by junk caught at matched false-AR
+# (agent/eval/bootstrap_redteam_2026-08/results/a09.json).
 AGENT_WEIGHT_OVERRIDE = 5.0
+
+# Feature-contract version: 2 = the 35-column contract (13 base | 13 ranks |
+# 8 v2b | v2_present), deployed for vCA1 2026-08-26 (arm b0, see
+# agent/eval/vca1_v2_2026-08/VCA1_V2_LOG.md).  Shared code reads it with
+# getattr(config, "FEATURE_VERSION", 1).
+FEATURE_VERSION = 2
+
+# Bootstrap rows under v2: "b0" = real v2b from the persisted candidate traces
+# with ring_contrast forced to 0 and hiconf from the companion 13-col model
+# (bootstrap_preagent honours this; BLA/DG_AL leave it unset = zero-fill).
+BOOTSTRAP_V2B = "b0"

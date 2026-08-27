@@ -38,23 +38,33 @@ _n_agent = sum(
 #
 #   < 10 agent sessions  -> 0.04  (bootstrap-only, uncalibrated: 0.11 would
 #                                   auto-reject too many borderline real neurons)
-#   >= 10 agent sessions -> 0.05  (VALIDATED 2026-06-23 via diagnose_model_vCA1.py
-#                                   OOF Pareto sweep; agent-only AUC 0.881).
+#   >= 10 agent sessions -> 0.04  (35-col contract, arm b0, deployed 2026-08-26:
+#                                   8-seed OOF false-AR 0.48% mean / 0.96% worst
+#                                   seed, 48.4% junk auto-caught; chosen over the
+#                                   rule's 0.05 (0.66% / 0.96%, 51.6%) because
+#                                   0.05's worst seed sits on the 1% ceiling and
+#                                   flips with xgboost's thread count -- red team
+#                                   2026-08-26, results/a08.json + a10.json).
 #
-# Why 0.05 and not the per-model standard 0.11: vCA1's false-auto-reject rate at
-# 0.11 is 3.6% (vs BLA's 0.8%) because these are low-yield "handful of cells"
-# experiments where real-vs-garbage separation is weaker in the low-score region.
-# 0.05 keeps false-AR at 1.8% (catches 27% garbage) to protect precious cells.
-# Re-run diagnose_model_vCA1.py after ~10 more agent sessions to re-confirm.
+# History: 0.05 was the 13-col value (validated 2026-06-23, kept 2026-08-24 as a
+# deliberate 1.8%-false-AR posture).  Every threshold here is calibrated to
+# animals already in the training set: for a held-out animal the same models run
+# at ~4-5% false-AR (red team, attack #8), so a NEW animal/prep still gets the
+# manual threshold-0 first pass before any auto-reject.
+# The watcher's auto-retrain passes no --threshold, so this constant IS the
+# deployed threshold; verify_vca1.py checks it against gate_decision.json.
 _BOOTSTRAP_THRESHOLD      = 0.04
-_VALIDATED_THRESHOLD      = 0.05
+_VALIDATED_THRESHOLD      = 0.04
 _AGENT_THRESHOLD_SESSIONS = 10
 
-if "--threshold" not in sys.argv:
+# Exact-token match only: `--threshold=0.07` (equals form) would slip past a
+# substring test, get a second `--threshold` appended, and argparse would take
+# the last one -- silently discarding the operator's value.
+if not any(a == "--threshold" or a.startswith("--threshold=") for a in sys.argv):
     if _n_agent < _AGENT_THRESHOLD_SESSIONS:
         _t, _why = _BOOTSTRAP_THRESHOLD, "bootstrap-only, uncalibrated"
     else:
-        _t, _why = _VALIDATED_THRESHOLD, "validated OOF sweep 2026-06-23"
+        _t, _why = _VALIDATED_THRESHOLD, "35-col arm b0, red-teamed 2026-08-26"
     print(f"[vCA1] {_n_agent} agent sessions -> using threshold {_t} ({_why}).")
     sys.argv.extend(["--threshold", str(_t)])
 

@@ -1,6 +1,13 @@
 # Brief: bringing vCA1 onto the 35-column (v2) feature contract
 
-> **STATUS 2026-08-26 — prep and gates COMPLETE; deploy deferred.**
+> **STATUS 2026-08-26 (evening) — DEPLOYED: vCA1 runs the 35-col contract (arm b0) at T = 0.04.**
+> Swap 163/163, retrain 134 sessions (w = 5.0, 6,662 masked, CV AUC 0.939, companion
+> model present), `verify_vca1.py` ALL PASS, live dry-run curation PASS; the watcher-cycle
+> precondition was waived by the user after the red team. T = 0.04 rather than the
+> rule's 0.05: see `gate_decision.json.user_decision_T`. Rollback (`swap_vca1.py rollback`)
+> stays armed until a reviewer return lands. Earlier status kept below for the record.
+>
+> **STATUS 2026-08-26 (afternoon) — prep and gates COMPLETE; deploy deferred.**
 > Executed on branch `retire-bla-rollback` (the `vca1-v2-2026-08` branch is an ancestor;
 > the substantive commits are here); full record in
 > `agent/eval/vca1_v2_2026-08/VCA1_V2_LOG.md`, decision in `gate_decision.json`.
