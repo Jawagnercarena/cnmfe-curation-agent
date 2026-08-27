@@ -1,0 +1,27 @@
+verifying C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\model\vCA1\classifier.joblib
+decision: arm b0, weight 5, T 0.04
+
+1. joblib contract
+  ok    model_type = xgboost
+  ok    scaler width = 35
+  ok    companion first-pass model present at width 13
+  ok    reject_threshold = 0.04 (decided 0.04)
+  ok    feature_version = 2
+  ok    n_features = 35
+  ok    agent_weight = 5.0 (decided 5)
+  ok    n_sessions = 134 (pinned manifest 134)
+  ok    n_excluded_ambiguous = 6662 (computed from the pool: 6662)
+
+2. source flips
+  ok    config_vCA1.FEATURE_VERSION = 2
+  ok    config_vCA1.BOOTSTRAP_V2B = 'b0' (decided 'b0')
+  ok    train_classifier_vCA1._VALIDATED_THRESHOLD = 0.04 (must be 0.04, else the first watcher auto-retrain silently reverts)
+
+3. corpus identity
+  ok    sha256 matches the evaluated corpus: 163/163
+  ok    first-13 + auto_rejected + n_candidates preserved: 163/163
+
+4. watcher retrain trigger
+  ok    joblib newer than every labels.mat (+40892 s)
+
+VERIFY: ALL PASS

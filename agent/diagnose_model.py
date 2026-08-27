@@ -38,6 +38,29 @@ MIN_AGENT_WEIGHT               = _tc.MIN_AGENT_WEIGHT
 _get_bootstrap_recovery       = _tc._get_bootstrap_recovery
 _get_bootstrap_ambiguous_mask = _tc._get_bootstrap_ambiguous_mask
 
+# An area config may pin the agent up-weight (config_vCA1.AGENT_WEIGHT_OVERRIDE = 5.0);
+# the trainer honours it (train_classifier.py:792-798).  Until 2026-08-26 this
+# harness replicated only the sqrt/floor recipe, so its absolute numbers for
+# vCA1 were computed at 7.01x while the deployed model trained at 5.0x.
+import config as _config
+_AGENT_WEIGHT_OVERRIDE = getattr(_config, "AGENT_WEIGHT_OVERRIDE", None)
+
+
+def agent_weight_for(n_bs: int, n_ag: int) -> float:
+    """The trainer's per-fit agent up-weight: the area's fixed override if set,
+    else max(sqrt(n_bootstrap_rows / n_agent_rows), MIN_AGENT_WEIGHT)."""
+    if _AGENT_WEIGHT_OVERRIDE is not None:
+        return float(_AGENT_WEIGHT_OVERRIDE)
+    if n_ag > 0 and n_bs > 0:
+        return float(max(np.sqrt(n_bs / n_ag), MIN_AGENT_WEIGHT))
+    return MIN_AGENT_WEIGHT
+
+
+def agent_weight_recipe() -> str:
+    return (f"AGENT_WEIGHT_OVERRIDE={_AGENT_WEIGHT_OVERRIDE} (fixed, from config)"
+            if _AGENT_WEIGHT_OVERRIDE is not None
+            else f"max(sqrt(n_bootstrap/n_agent), {MIN_AGENT_WEIGHT}) per fit")
+
 
 # -----------------------------------------------------------------------
 # Data loading (using all 105 sessions, same logic as train_classifier.py)
@@ -70,11 +93,10 @@ def load_all_records():
                 "session_dir": sd,
             })
 
-    # Compute agent_weight exactly as train_classifier.py does
+    # Compute agent_weight exactly as train_classifier.py does (override-aware)
     n_bs = sum(len(r["y"]) for r in records if r["is_bootstrap"])
     n_ag = sum(len(r["y"]) for r in records if not r["is_bootstrap"])
-    agent_weight = (float(max(np.sqrt(n_bs / n_ag), MIN_AGENT_WEIGHT))
-                    if n_ag > 0 and n_bs > 0 else MIN_AGENT_WEIGHT)
+    agent_weight = agent_weight_for(n_bs, n_ag)
 
     # Attach per-sample weights
     for r in records:
@@ -179,7 +201,7 @@ def run_loo_analysis(records):
             # Recompute agent_weight for this fold's training set
             n_ag_tr = len(X_tr)
             n_bs_tr = len(X_bs)
-            ag_w_C  = float(max(np.sqrt(n_bs_tr / n_ag_tr), MIN_AGENT_WEIGHT)) if n_ag_tr > 0 else MIN_AGENT_WEIGHT
+            ag_w_C  = agent_weight_for(n_bs_tr, n_ag_tr)
             w_ag_C  = np.ones(n_ag_tr) * ag_w_C
             X_tr_C  = np.vstack([X_tr, X_bs])
             y_tr_C  = np.concatenate([y_tr, y_bs])
@@ -336,7 +358,7 @@ def run_threshold_sweep_real_weights(records):
         if X_bs is not None:
             n_ag_tr  = len(tr_idx)
             n_bs_tr  = len(y_bs)
-            ag_w_f   = float(max(np.sqrt(n_bs_tr / n_ag_tr), MIN_AGENT_WEIGHT)) if n_ag_tr > 0 else MIN_AGENT_WEIGHT
+            ag_w_f   = agent_weight_for(n_bs_tr, n_ag_tr)
             w_ag_f   = np.ones(n_ag_tr) * ag_w_f
 
             X_tr_C   = np.vstack([X_tr, X_bs])
@@ -502,6 +524,7 @@ def run_threshold_sweep_real_weights(records):
 def main():
     print("Loading training data with real weights...")
     records, agent_weight = load_all_records()
+    print(f"  agent up-weight recipe: {agent_weight_recipe()} -> {agent_weight:.2f}x")
     ag = sum(1 for r in records if not r["is_bootstrap"])
     bs = sum(1 for r in records if r["is_bootstrap"])
     print(f"  {len(records)} sessions ({ag} agent, {bs} bootstrap), "
