@@ -1,7 +1,8 @@
 # Brief: bringing vCA1 onto the 35-column (v2) feature contract
 
 > **STATUS 2026-08-26 — prep and gates COMPLETE; deploy deferred.**
-> Executed on branch `vca1-v2-2026-08`; full record in
+> Executed on branch `retire-bla-rollback` (the `vca1-v2-2026-08` branch is an ancestor;
+> the substantive commits are here); full record in
 > `agent/eval/vca1_v2_2026-08/VCA1_V2_LOG.md`, decision in `gate_decision.json`.
 >
 > **Decided: ship arm b0** — real v2b on bootstrap rows (`v2_present=1`) with
@@ -16,8 +17,15 @@
 > Production follow-on is DONE: `config.BOOTSTRAP_V2B` is area-scoped and
 > `bootstrap_preagent` writes matching rows (BLA/DG_AL untouched).
 >
-> **Three blockers remain before the swap:** the bootstrap red-team report, one
-> clean reviewer-return watcher cycle since the 2026-08-24 redeploy, and the
+> **Red-team report delivered 2026-08-26** (`agent/eval/bootstrap_redteam_2026-08/redteam_report.md`):
+> arm b0's ranking gain is real and survives 2-animal leave-one-animal-out (0.8679 vs
+> 0.8625 for b13); the rule's T = 0.05 sits at the 1% worst-seed ceiling (0.60% mean /
+> 0.96% max) and flips to 0.04 under a different xgboost thread count; for a held-out
+> animal 0.05 runs at ~5% false-AR (as does the deployed 13-col model). Re-derive T on
+> deploy day with the thread count pinned and quote 0.04 vs 0.05 side by side.
+>
+> **Two blockers remain before the swap:** one
+> clean reviewer-return watcher cycle since the 2026-08-24 redeploy (user's call), and the
 > deploy commit (`FEATURE_VERSION = 2`, `BOOTSTRAP_V2B = "b0"`,
 > `_VALIDATED_THRESHOLD = 0.05`). Deploy day starts with a mandatory re-run of
 > extract → pin → hiconf → backfill → gate, because that second blocker

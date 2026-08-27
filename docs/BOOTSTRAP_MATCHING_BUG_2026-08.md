@@ -49,7 +49,8 @@ retro-labeled sessions; `features.load_spatial` A.txt fallback has the same C/F 
 - `bootstrap_match_stats.json` **schema_version 2**: legacy keys unchanged; adds
   `ambiguous_candidate_indices` (Hungarian partner of each unmatched curated neuron),
   `duplicate_candidate_indices` (unassigned candidates above threshold to a matched
-  curated neuron — same-cell re-detections), `per_curated_best_similarity`,
+  curated neuron — spatially overlapping components; the red team measured that only
+  ~30% are temporally the same cell, trace r p50 ≈ 0.4 — see §7), `per_curated_best_similarity`,
   `recovery_by_threshold`, CNMFe params, dims, timestamp, matcher tag.
 - `--keep-candidates` persists `bootstrap_candidates.npz` (sparse footprints, traces,
   full similarity matrix) so matching is redoable offline forever after.
@@ -73,6 +74,9 @@ problem exists. Permissive min_corr=0.30 recovered +2 neurons on one session onl
 
 All 202 sessions (111 vCA1 → 91 BLA), `--keep-candidates`, default params, up to two
 parallel MATLAB workers (255 GB box; one BLA run ≈ 78 GB main + pool), **zero failures**.
+
+Backing artifact (red team, §7): `agent/eval/bootstrap_redteam_2026-08/results/corpus_table.json`,
+recomputed from the 202 schema-2 JSONs.
 
 | Area | sessions | curated | matched before | matched after | sessions < 0.40 recovery | masked (ambig + dup) |
 |---|---|---|---|---|---|---|
@@ -109,14 +113,16 @@ identical OOF pool (12,677 rows, 2,394 real, 8,590 reviewed junk) so deltas are 
 | G4 weight sweep (3 seeds, T=0.06) | floor 4.0 | AUC flat 0.926-0.9285 across w=1..7; FAR 0.6% (w=1) -> 1.4% (w=7) | keep 4.0 floor |
 | smoke cells bla21 N22/N25 | b13 OOF 0.064/0.101, auto-rejected at 0.06 | rankv2b_35 OOF 0.046/0.048 | survive at T=0.04 |
 
-G5 (per-animal / early-era LOAO) was not re-run: the red-team harness pins the pre-swap
-parallel files; the paired all-seeds-positive G1 is the accepted substitute.
+G5 (per-animal / early-era LOAO) was run by the red team (§7, attack #11): the fix improves
+5 of 6 animals and both eras (early era +0.0018, 8/8); bla21 (4 sessions / 106 reals) is
+−0.0038 (1/8 seeds).
 
 Pre-deploy assumption audit (`c3_assumption_checks.py`, 3 seeds): junk-caught at
 matched false-AR is 43-46% for every agent weight 1-7 (weight = score rescaling for
 BLA; keep 4.0); duplicates masked ~= labeled-0 (43.2% vs 46.1% junk, within noise),
 labeled-1 clearly worse (-0.007 AUC); XGBoost still wins the 3-way CV (0.942 vs
-LightGBM 0.941 vs LR 0.919); T=0.045 already fails the worst-seed rule at 8 seeds.
+LightGBM 0.941 vs LR 0.919); T=0.045 fails the worst-seed rule at 8 seeds (red team,
+`results/a10.json`: false-AR 0.80% mean, 1.29% worst seed).
 
 **DEPLOYED 2026-08-26**: retrained on the clean corpus, unchanged 4.0x recipe,
 T = 0.04 (module default 0.12 -> 0.04 so watcher auto-retrains preserve it).
@@ -147,7 +153,9 @@ Not implemented — proposal for the DG trainer.
 
 - Retro `cn_correlation` transpose (train_classifier retro feature path) and the
   `features.load_spatial` A.txt fallback: fix as one gated change; needs a feature
-  refresh for retro-labeled sessions.
+  refresh for retro-labeled sessions. **Sized by the red team (§7, #4): exactly 6 BLA
+  sessions (705 rows / 217 reals) carry the transposed column; correcting it is
+  +0.008-0.010 AUC on those sessions, +0.0007 (35-col) / +0.0024 (b13) on the pool.**
 - `diagnose_model.py` / `sweep_weights.py` replicate the pre-override weight formula;
   update to honor `AGENT_WEIGHT_OVERRIDE` so their absolute numbers match the trainer.
 - DG_AL pooled prior (see 5c): append BLA+vCA1 rows at ~0.3 weight in the DG trainer;
@@ -155,3 +163,37 @@ Not implemented — proposal for the DG trainer.
 - vCA1 v2 feature contract: `docs/VCA1_V2_BRIEF.md`.
 - March-2026 matching-study conclusions (incl. temporal-matching tests, which compared
   mirror-cell pairs) are void; memory updated accordingly.
+
+## 7. Red-team review (2026-08-26)
+
+`docs/BOOTSTRAP_REDTEAM_BRIEF.md` was executed by a fresh session with an independent
+evaluator: `agent/eval/bootstrap_redteam_2026-08/redteam_report.md` (19 attacks, per-attack
+refuters, corpus pinned, closing read-only check PASS). What it changes here:
+
+- The bug, the fix and the labels hold: the mixed-order metric reproduces the stored March
+  numbers on 4/4 sandboxes (matches sit 5-7 px from the mirror position, 69-216 px from the
+  truth); the consistent metric recovers every final neuron within 1 px; all 202 live
+  sessions are consistent with the fixed metric; 102/102 agent sessions' labels reproduce
+  from footprints alone; no 11th orientation site.
+- The section-4 table reproduces exactly (`results/corpus_table.json`); all 43 unrecovered
+  neurons have their partner in the ambiguous set.
+- Ranking decisions survive animal-level grouping; the thresholds' 1% worst-seed guarantee
+  does not: BLA FAR@0.04 is 0.92% mean / 1.09% worst seed under animal grouping (rule -> 0.03),
+  vCA1's 0.05 runs at ~4.5% for a held-out animal. New animals should keep starting at
+  threshold 0.
+- The vCA1 weight choice (5.0) stands on junk-at-matched-false-AR; the "7.01 doubles false-AR"
+  rationale is a 3-seed, thread-count-sensitive number (+0.3-0.5 pp at 8 seeds).
+- Why the gains were modest: the old positives were mostly cell-like blobs (D13: 64-76% of
+  simulated old positives score as cells out of sample; ~25% were even the right cell, so the
+  a3 "~94% wrong" estimate was overstated - 74-81%), and with clean labels the bootstrap corpus
+  supplies score calibration rather than ranking information on the agent test distribution
+  (D15: AUC flat from 0% to 100% bootstrap; false-AR at fixed T 8.35% -> 0.96% for vCA1).
+  Real v2b on BLA bootstrap rows is a small lever (+0.0011 reviewed AUC, D14); bootstrap
+  positives are not easier than agent positives (D16); the reviewer ceiling is unmeasurable
+  without a double review (D17).
+- xgboost's thread count changes individual OOF scores by up to 0.37 and can flip a rule pick
+  (vCA1 arm b0 0.05 <-> 0.04): pin it in every gate script.
+- The global model: null for BLA under every grouping; DG_AL +0.079 under leave-one-animal-out
+  and +0.010 under FOV grouping, and pooling helps a held-out vCA1 animal (+0.007-0.013) -
+  but the pooled score scale collapses at a fixed T and 9 sessions cannot support a
+  calibration layer; a ranking prior, not a threshold-ready model.

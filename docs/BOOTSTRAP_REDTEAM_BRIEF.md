@@ -3,6 +3,16 @@
 _Written 2026-08-26 for a fresh session on this machine. You were not part of the
 work you are reviewing. That is the point._
 
+> **REPORT DELIVERED 2026-08-26 — `agent/eval/bootstrap_redteam_2026-08/redteam_report.md`**
+> (19 attacks, independent evaluator `rt_lib.py`, per-attack refuters, corpus pinned,
+> closing read-only check PASS). Headline: bug real, fix complete, labels right, ranking
+> decisions survive; the thresholds' 1% worst-seed guarantee does not hold under
+> animal-level grouping (#8), the "5.0 vs 7.01 doubles false-AR" claim is not seed-robust
+> (#9), bla21 is -0.004 after the fix (#11); D13 and D15 supported, D14 and D16 not, D17
+> unmeasurable. Corrections to this brief found on the way: there are 4 real
+> `_bootstrap_validate/` dirs plus 1 empty shell, and the listed commits live on
+> `retire-bla-rollback` (which contains `feature-expansion-step4`).
+
 ## Your mandate
 
 One session (2026-08-20 → 26) claims to have found a pixel-ordering bug that scrambled

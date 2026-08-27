@@ -73,7 +73,7 @@ finally pull its weight.
    (`bootstrap_candidates.npz`, sparse float16), JSON v2 with legacy keys + params/dims +
    `ambiguous_candidate_indices` + `duplicate_candidate_indices` + per-curated best sims;
    `--redo`/`--sessions-file` to allow re-running bootstrapped sessions.
-3. **Pilot re-runs** (serial, outputs to `D:\Julian_CNMFe\_bootstrap_diag\`, session dirs
+3. **Pilot re-runs** (serial, outputs to `D:\Julian_CNMFe\.bootstrap_diag\`, session dirs
    untouched): ~12 sessions = catastrophic cluster (vCA1 961-420 0/17 — regen its missing
    Cn via pre-pass; 921-880-A/B; 96-172um AA; bla7 042125/042525), top-damage (962
    12082023 Valence, 962 CTA), 2 median controls, 1 sandbox parent (bla21, to verify the
