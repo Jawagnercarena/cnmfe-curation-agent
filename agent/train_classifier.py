@@ -232,7 +232,13 @@ def _retro_label_session(session_dir: Path) -> tuple[np.ndarray, np.ndarray] | N
                 f"Check that review_neuron.mat and neuron.mat are from the same session.")
 
         # --- Feature extraction from review candidates ---
-        footprints = A_review.T.reshape(N_review, d1, d2)   # (N, H, W)
+        # A_review columns are MATLAB-linearized (column-major).  The former
+        # `A_review.T.reshape(N_review, d1, d2)` reshaped them row-major, i.e.
+        # every footprint image was transposed; the 12 shape features are
+        # transpose-invariant but cn_correlation (footprint vs the Cn image)
+        # was corrupted on every retro-labeled session (6 BLA sessions, fixed
+        # and refreshed 2026-08-26; red team attack #4).
+        footprints = feat_module.fcols_to_images(A_review, d1, d2)   # (N, H, W)
         bg_signal  = feat_module.load_background(session_dir)
         Cn         = feat_module.load_cn(session_dir)
 

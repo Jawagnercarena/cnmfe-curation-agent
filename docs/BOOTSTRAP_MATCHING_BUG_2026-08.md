@@ -156,8 +156,14 @@ Not implemented — proposal for the DG trainer.
   refresh for retro-labeled sessions. **Sized by the red team (§7, #4): exactly 6 BLA
   sessions (705 rows / 217 reals) carry the transposed column; correcting it is
   +0.008-0.010 AUC on those sessions, +0.0007 (35-col) / +0.0024 (b13) on the pool.**
+  **DONE 2026-08-26 (evening):** `features.fcols_to_images` + regression test
+  (`agent/test_orientation.py`, 4/4); the six sessions refreshed and BLA retrained at
+  T = 0.04 (170 sessions, CV AUC 0.942, verify ALL PASS) — record in
+  `agent/eval/cnfix_2026-08/CNFIX_LOG.md`.
 - `diagnose_model.py` / `sweep_weights.py` replicate the pre-override weight formula;
   update to honor `AGENT_WEIGHT_OVERRIDE` so their absolute numbers match the trainer.
+  **DONE 2026-08-26:** both honour the override (`diagnose_model.agent_weight_for`, and
+  `sweep_weights` sweeps fixed multipliers when an override is set).
 - DG_AL pooled prior (see 5c): append BLA+vCA1 rows at ~0.3 weight in the DG trainer;
   re-derive DG's threshold on the pooled model before enabling auto-reject.
 - vCA1 v2 feature contract: `docs/VCA1_V2_BRIEF.md`.

@@ -17,6 +17,27 @@ from pathlib import Path
 
 # ---- Loaders ----
 
+def fcols_to_images(A, d1: int, d2: int) -> np.ndarray:
+    """
+    (pixels, N) MATLAB-linearized footprint columns -> (N, d1, d2) images.
+
+    MATLAB's `full(neuron.A)` (and A.txt, A_review from review_neuron.mat)
+    stores each footprint column-major: pixel p = row + col*d1.  numpy's
+    default reshape is row-major, so `A[:, i].reshape(d1, d2)` yields the
+    TRANSPOSED image -- the bug that corrupted `cn_correlation` on the
+    retro-labeled sessions (train_classifier retro path) and that scrambled
+    every bootstrap label until 2026-08 (bootstrap_preagent, since fixed).
+    Use order='F' whenever a MATLAB column meets a numpy image.
+    """
+    A = np.asarray(A.todense()) if hasattr(A, "todense") else np.asarray(A)
+    if A.ndim == 1:
+        A = A[:, None]
+    if A.shape[0] != d1 * d2:
+        raise ValueError(f"A has {A.shape[0]} pixel rows, expected d1*d2 = {d1}*{d2} = {d1 * d2}")
+    # (pixels, N) -> (N, pixels); each row reshaped column-major back to (d1, d2)
+    return np.ascontiguousarray(A.T.reshape(A.shape[1], d2, d1).transpose(0, 2, 1))
+
+
 def load_spatial(session_dir: Path):
     """
     Load spatial footprints.
@@ -27,16 +48,18 @@ def load_spatial(session_dir: Path):
         data = sio.loadmat(str(sf_file))
         return data["spatial_footprints"]   # (N, H, W)
 
-    # Fall back to A.txt if spatial_footprints.mat is missing
+    # Fall back to A.txt if spatial_footprints.mat is missing.  A.txt columns
+    # are MATLAB-linearized (column-major) and the frame need not be square, so
+    # the dimensions come from Cn.mat and the reshape is order='F'.
     a_file = session_dir / "A.txt"
-    A = np.loadtxt(str(a_file))             # (pixels, N)
-    n_neurons = A.shape[1]
-    n_pixels  = A.shape[0]
-    side = int(np.sqrt(n_pixels))
-    footprints = np.zeros((n_neurons, side, side))
-    for i in range(n_neurons):
-        footprints[i] = A[:, i].reshape(side, side)
-    return footprints
+    cn_file = session_dir / "Cn.mat"
+    if not cn_file.exists():
+        raise FileNotFoundError(
+            f"{session_dir.name}: spatial_footprints.mat missing and Cn.mat absent, so the "
+            f"A.txt fallback cannot know the frame dimensions -- refusing to guess a square frame")
+    d1, d2 = sio.loadmat(str(cn_file))["Cn"].shape
+    A = np.loadtxt(str(a_file))             # (pixels, N), F-order pixel rows
+    return fcols_to_images(A, int(d1), int(d2))
 
 
 def load_traces(session_dir: Path) -> np.ndarray:
