@@ -25,7 +25,7 @@ per brain area.
 
 - **[SETUP.md](SETUP.md)** — set up the repo on a new machine and run the pipeline (central machine: heavy compute + the single canonical model).
 - **[REVIEW_SETUP.md](REVIEW_SETUP.md)** — the reviewer role: MATLAB-only, no Python. Pull a bundle, run the review, push it back.
-- **[CLAUDE_RULES.md](CLAUDE_RULES.md)** — standing constraints for anyone running Claude (or any coding agent) against this pipeline or the lab server. Copy it to `CLAUDE.md` on a collaborator's machine.
+- **[../CLAUDE.md](../CLAUDE.md)** — standing constraints for anyone running Claude (or any coding agent) against this pipeline or the lab server. Loaded automatically from the repo root; `CLAUDE_RULES.md` is now a pointer to it.
 - **[SETUP_INSTRUCTIONS.txt](SETUP_INSTRUCTIONS.txt)** — legacy setup notes, superseded by `SETUP.md` (kept for reference).
 
 ## Developer notes
