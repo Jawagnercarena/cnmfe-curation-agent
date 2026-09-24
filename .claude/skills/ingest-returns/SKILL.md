@@ -61,9 +61,15 @@ trips the check. For each `NEW` session that carried labels:
 "<PYTHON_EXE>" -c "import sys,os; j=os.path.getmtime(sys.argv[1]); [print(('OLDER than model' if os.path.getmtime(p)<j else 'newer: watcher will retrain'), p) for p in sys.argv[2:]]" agent/model/{AREA}/classifier.joblib "<session>/labels.mat" ...
 ```
 
-If any line says `OLDER than model`, or no watcher is running for that area
-(`Get-CimInstance Win32_Process | ? { $_.Name -match 'python' -and $_.CommandLine -match 'watcher' }`),
-run `/retrain-area <AREA>`. Otherwise watch the area's `agent/logs/watcher*.log`
+If any line says `OLDER than model`, or the area's watcher is not alive (its log's
+last line is older than two minutes; `watcher.log` is BLA; process listings are
+blind to the elevated watchers, see /retrain-area step 1):
+
+```bash
+for a in watcher watcher_vCA1 watcher_DG_AL; do printf "%-16s " $a; tail -1 agent/logs/$a.log | cut -c1-19; done; date "+now:             %Y-%m-%d %H:%M:%S"
+```
+
+then run `/retrain-area <AREA>`. Otherwise watch the area's `agent/logs/watcher*.log`
 for the `[CLASSIFIER] ... Classifier updated successfully.` line and confirm
 `n_sessions` in the joblib went up.
 

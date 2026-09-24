@@ -31,11 +31,15 @@ There is no lock file. Each watcher polls every cycle with
 `[PYTHON, _TRAIN_SCRIPT, "--prospective-only", "--model", "xgboost"]`
 (`agent/watcher.py:509-522`) with **no `--threshold`**.
 
-```powershell
-Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'python' -and $_.CommandLine -match 'watcher' } | Select-Object ProcessId, CommandLine
+```bash
+for a in watcher watcher_vCA1 watcher_DG_AL; do printf "%-16s " $a; tail -1 agent/logs/$a.log | cut -c1-19; done; date "+now:             %Y-%m-%d %H:%M:%S"
 ```
 
-(The `Name` filter keeps your own shell, which also contains the word, out of the list.)
+`watcher.log` is BLA. A last line within the past two minutes means that watcher is
+alive (it logs every 60 s poll). Do not rely on a process listing: the watchers
+are normally started from an elevated console, and from a non-elevated shell
+their command lines read as NULL, so a name/command filter shows nothing
+(verified 2026-09-23 with all three running).
 If a watcher for this area is running: report it and let the operator decide. Do
 not kill it (long-running-job rule). The only real hazard is both processes
 writing the joblib at once; a manual retrain that finishes first makes the joblib
