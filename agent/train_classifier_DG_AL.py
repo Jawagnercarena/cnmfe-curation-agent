@@ -50,7 +50,11 @@ _n_agent = sum(
 _COLD_START_THRESHOLD     = 0.0
 _AGENT_THRESHOLD_SESSIONS = 10
 
-if "--threshold" not in sys.argv:
+# Exact-token match on both spellings: list membership alone misses the
+# `--threshold=0.07` form, a second `--threshold` would be appended, and
+# argparse would keep the wrapper's value -- silently discarding the
+# operator's (same guard as train_classifier_vCA1.py).
+if not any(a == "--threshold" or a.startswith("--threshold=") for a in sys.argv):
     if _n_agent < _AGENT_THRESHOLD_SESSIONS:
         print(f"[DG_AL] {_n_agent} agent session(s) -> using threshold "
               f"{_COLD_START_THRESHOLD} (cold start, uncalibrated: nothing is "

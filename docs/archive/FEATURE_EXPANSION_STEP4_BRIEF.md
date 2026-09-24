@@ -1,5 +1,7 @@
 # Step 4 execution brief: deploy the 35-column BLA feature contract
 
+> **EXECUTED 2026-08-20. This brief was carried out; the log is [STEP4_LOG.md](../../agent/eval/step4_2026-08/STEP4_LOG.md) and the rollback it describes was retired 2026-08-26. Record only.**
+
 _Written 2026-08-18 for a fresh session on this machine. Prerequisites: the
 Step 2 result (docs/FEATURE_EXPANSION_STEP2_2026-08-18.md) survived a
 full adversarial review (agent/eval/redteam_2026-08/redteam_report.md) —

@@ -1,5 +1,7 @@
 # ACORN figure — stats refresh handoff (2026-08-06)
 
+> **SUPERSEDED 2026-09-23. Numbers are from the 2026-08-06 pool at threshold 0.12; BLA has since moved to the 35-column contract at 0.04 (2026-08-26). The ACORN figure refresh itself is still open.**
+
 Refreshed BLA model numbers after a batch of reviewer returns landed. The BLA
 training pool grew **49 → 58 agent sessions** (140 BLA sessions total, incl. 82
 bootstrap). Re-swept with 8 CV seeds. Numbers below are the ones to update in the

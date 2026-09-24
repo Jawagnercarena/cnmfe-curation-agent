@@ -997,7 +997,7 @@ def main():
     # at 0.12 -- the watcher auto-retrain passes no --threshold, so the next
     # reviewer return would have silently re-deployed at 0.12 (~2.8% false-AR on
     # the fixed corpus). 0.04 = Step-5 rule on 8 seeds: 0.64% false-AR (worst
-    # 0.96%), 43.2% junk caught (docs/BOOTSTRAP_MATCHING_BUG_2026-08.md s5b).
+    # 0.96%), 43.2% junk caught (docs/archive/BOOTSTRAP_MATCHING_BUG_2026-08.md s5b).
     # vCA1 always injects its own --threshold (train_classifier_vCA1.py).
     _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.04, "lightgbm": 0.11}
     reject_threshold = _THRESHOLD_BY_MODEL.get(best_model, 0.10)

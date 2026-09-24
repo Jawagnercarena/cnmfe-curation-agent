@@ -26,13 +26,16 @@ from config import DATA_ROOT
 
 # Count agent-reviewed sessions (have labels.mat AND ROIs_candidates.jpg,
 # meaning they went through the full agent pipeline with human review).
+# Dot-prefixed task dirs (.excluded/, .feature_expansion/, ...) are parked and
+# skipped by every other scanner; skip them here too so a parked session cannot
+# nudge the count that picks the threshold branch (matches train_classifier_DG_AL.py).
 _n_agent = sum(
-    1 for td in DATA_ROOT.iterdir() if td.is_dir()
+    1 for td in DATA_ROOT.iterdir() if td.is_dir() and not td.name.startswith(".")
     for sd in td.iterdir()
     if sd.is_dir()
     and (sd / "ROIs_candidates.jpg").exists()
     and (sd / "labels.mat").exists()
-)
+) if DATA_ROOT.exists() else 0
 
 # vCA1 reject_threshold policy (auto-injected unless --threshold is given).
 #

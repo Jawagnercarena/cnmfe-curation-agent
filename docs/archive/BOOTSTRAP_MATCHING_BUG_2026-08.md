@@ -1,5 +1,7 @@
 # Bootstrap label transfer: the pixel-order bug, the fix, and the corpus re-run (2026-08)
 
+> **DONE. The fix described here was deployed: vCA1 2026-08-24, BLA 2026-08-26, and it passed a red team ([redteam_report.md](../../agent/eval/bootstrap_redteam_2026-08/redteam_report.md)). Record only.**
+
 Companion material: `agent/eval/bootstrap_matching_2026-08/` (AUDIT.md, REPORT.md,
 GATE_B_REPORT.md, scripts, per-run JSON), memory `project_bootstrap_transpose_bug`.
 

@@ -1,7 +1,7 @@
 # Red-team report: Step 2 feature-expansion result (rankv2_35)
 
 _2026-08-18, fresh-session adversarial review per
-docs/FEATURE_EXPANSION_REDTEAM_BRIEF.md. All numbers below were computed this
+docs/archive/FEATURE_EXPANSION_REDTEAM_BRIEF.md. All numbers below were computed this
 session by an independent from-scratch evaluator
 (scratchpad redteam/redteam_lib.py) unless explicitly marked "claimed". Pinned
 pool only (170 sessions; no live rescan used for any model number)._

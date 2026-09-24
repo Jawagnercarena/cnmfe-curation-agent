@@ -1,5 +1,7 @@
 # Feature-expansion gate report — Steps 0–1 complete (2026-08-18)
 
+> **SUPERSEDED 2026-09-23. Gate report for a project that has since shipped (BLA 35-col deploy 2026-08-20). Numbers are the 13-col era's; record only. See [STEP4_LOG.md](../../agent/eval/step4_2026-08/STEP4_LOG.md).**
+
 Recommendation up front: **PROCEED to Step 2 planning**, with the feature list
 re-ranked by autopsy evidence (temporal event-shape features first), and with
 **per-session rank augmentation carried forward as a zero-extraction candidate**

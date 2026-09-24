@@ -1,6 +1,6 @@
 """
 Step 4 backfill-parity invariant (deploy gate; see the Step 4 plan and
-docs/FEATURE_EXPANSION_STEP4_BRIEF.md).
+docs/archive/FEATURE_EXPANSION_STEP4_BRIEF.md).
 
 Phase 1 — v2b parity: run the SHIPPING features.compute_v2b_features against
 every `.feature_expansion` extraction and compare to the pinned evaluation

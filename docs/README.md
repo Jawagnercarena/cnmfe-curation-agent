@@ -15,7 +15,7 @@ _Click the figure for the print-resolution PDF, or open the [interactive version
 - **[acorn/make_acorn_figure.py](acorn/make_acorn_figure.py)** — regenerates the PDF/PNG (run in the `valence` env).
 
 ACORN wraps CNMF-E with: automatic per-session parameter estimation, headless
-extraction, a 13-feature XGBoost curator that pre-rejects confident junk and flags
+extraction, a per-area XGBoost curator that pre-rejects confident junk and flags
 motion / split-cell candidates, a short human review of the survivors, and
 **online retraining** — every review sharpens the model, so the next session needs
 less work. Reviewing distributes across a network of machines, one canonical model
@@ -28,11 +28,14 @@ per brain area.
 - **[../CLAUDE.md](../CLAUDE.md)** — standing constraints for anyone running Claude (or any coding agent) against this pipeline or the lab server. Loaded automatically from the repo root; `CLAUDE_RULES.md` is now a pointer to it.
 - **[SETUP_INSTRUCTIONS.txt](SETUP_INSTRUCTIONS.txt)** — legacy setup notes, superseded by `SETUP.md` (kept for reference).
 
-## Developer notes
+## Records
 
-- **[CURATOR_UPGRADE_2026-03.md](CURATOR_UPGRADE_2026-03.md)** — curator upgrade notes.
-- **[MOTION_DETECTION_HANDOFF.md](MOTION_DETECTION_HANDOFF.md)** — motion-artifact detection R&D status.
-- **[MOTION_AND_RESUMABLE_REVIEW_HANDOFF.md](MOTION_AND_RESUMABLE_REVIEW_HANDOFF.md)** — plans for wiring motion labels into the model and for resumable review.
+Completed work, kept for its evidence and reasoning. Each file opens with a status
+banner saying what superseded it; do not take numbers from these files as current.
+
+- **[VCA1_V2_BRIEF.md](VCA1_V2_BRIEF.md)** — vCA1 35-column contract: gates, arm decision, deploy record (2026-08-26).
+- **[CNN_BLEND_STAGE3_BRIEF.md](CNN_BLEND_STAGE3_BRIEF.md)** — CNN/XGBoost blend, stage 3 decision brief (open).
+- **[archive/](archive/)** — feature-expansion set (handoff, gate, step 2, step 4 brief, red-team brief), motion handoffs, the March 2026 curator upgrade note, the bootstrap-matching bug write-up and its red-team brief, and the 2026-08 ACORN stats refresh. Superseded; banners at the top of each.
 
 > Links in these files that point at code (e.g. `../agent/...`) are written relative to
 > this `docs/` folder.

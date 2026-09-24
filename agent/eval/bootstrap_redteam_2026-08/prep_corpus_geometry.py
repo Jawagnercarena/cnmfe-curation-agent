@@ -5,7 +5,7 @@ For every bootstrap session (202): per matched pair, per duplicate candidate
 and per unrecovered curated neuron, the geometry the label-correctness attacks
 (#5, #6, #7) need -- computed from bootstrap_candidates.npz (candidate rows,
 C-order pixels), the curated spatial_footprints.mat stack and Cn.mat.  Also
-the corpus recovery table (docs/BOOTSTRAP_MATCHING_BUG_2026-08.md section 4
+the corpus recovery table (docs/archive/BOOTSTRAP_MATCHING_BUG_2026-08.md section 4
 has no backing artifact; this is it).  Read-only.
 
 Per pair: sim, centroid distance (px), MIRROR distance (candidate centroid vs

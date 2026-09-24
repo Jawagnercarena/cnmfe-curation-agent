@@ -1,6 +1,6 @@
 """
 rt_lib.py -- independent evaluator for the bootstrap-fix red team
-(docs/BOOTSTRAP_REDTEAM_BRIEF.md).  Written from the spec, not from the harness.
+(docs/archive/BOOTSTRAP_REDTEAM_BRIEF.md).  Written from the spec, not from the harness.
 
 Deliberately does NOT import train_classifier, diagnose_model, sweep_weights,
 bmlib, vca1_common, threshold_sweep_v2, gate_vca1, backfill_v2, parity_check,

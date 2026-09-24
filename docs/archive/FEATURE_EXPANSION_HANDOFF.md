@@ -1,5 +1,7 @@
 # Feature-expansion handoff — can new features lift the BLA classifier past 0.91?
 
+> **SUPERSEDED 2026-09-23. The investigation ran to completion: the 35-column `rankv2b_35` contract was deployed to BLA on 2026-08-20 and its rollback retired on 2026-08-26. Record only; the deploy log is [STEP4_LOG.md](../../agent/eval/step4_2026-08/STEP4_LOG.md). Current column count and threshold: read the joblib, not this file.**
+
 _Written 2026-08-18. All numbers in this doc were measured 2026-08-09 – 2026-08-18
 unless dated otherwise; nothing here is carried forward from older notes without
 being re-verified._

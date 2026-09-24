@@ -1,5 +1,7 @@
 # Red-team brief: attack the bootstrap-label fix and the three model decisions
 
+> **EXECUTED 2026-08-26. Report at [redteam_report.md](../../agent/eval/bootstrap_redteam_2026-08/redteam_report.md). Record only.**
+
 _Written 2026-08-26 for a fresh session on this machine. You were not part of the
 work you are reviewing. That is the point._
 

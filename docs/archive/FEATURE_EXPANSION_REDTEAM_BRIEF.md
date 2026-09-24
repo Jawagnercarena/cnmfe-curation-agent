@@ -1,5 +1,7 @@
 # Red-team brief: attack the Step 2 feature-expansion result
 
+> **EXECUTED 2026-08-18. The red team ran; its report is [redteam_report.md](../../agent/eval/redteam_2026-08/redteam_report.md). Record only.**
+
 _Written 2026-08-18 for a fresh session on this machine. You were not part of
 the work you are reviewing. That is the point._
 

@@ -1,5 +1,7 @@
 # Feature expansion Step 2 — results (2026-08-18)
 
+> **SUPERSEDED 2026-09-23. Step 2 result for a project that has since shipped; the red team chose `rankv2b_35` over `rankv2_35` and it was deployed 2026-08-20. Record only. See [STEP4_LOG.md](../../agent/eval/step4_2026-08/STEP4_LOG.md).**
+
 **Outcome: the trace-feature hypothesis is CONFIRMED. Every promotion gate
 passes.** Recommended candidate: `rankv2_35` = the deployed 13 + within-session
 percentile ranks + 8 candidate-level trace/footprint features + a

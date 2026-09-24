@@ -1,7 +1,7 @@
 # Bootstrap-fix red team (2026-08)
 
 Adversarial review of the bootstrap pixel-order fix and the three model decisions,
-per `docs/BOOTSTRAP_REDTEAM_BRIEF.md`.  Everything here is **read-only toward the
+per `docs/archive/BOOTSTRAP_REDTEAM_BRIEF.md`.  Everything here is **read-only toward the
 pipeline**: no session dir, npz, labels.mat, JSON, joblib, watcher, server or git
 state is touched.  Outputs live only in this directory (`results/` committed;
 `fixtures/`, `contact_sheets/`, `*.log` gitignored and regenerable).

@@ -1,6 +1,6 @@
 # Red-team report: the bootstrap pixel-order fix and the BLA / vCA1 / global-model decisions
 
-_2026-08-26, fresh-session adversarial review per `docs/BOOTSTRAP_REDTEAM_BRIEF.md`.
+_2026-08-26, fresh-session adversarial review per `docs/archive/BOOTSTRAP_REDTEAM_BRIEF.md`.
 Every number below was computed this session by an independent evaluator
 (`rt_lib.py`: own discovery, labels, weights, CV, metrics, loaders, matchers; it imports
 only the feature MATH from `agent/features.py` and never the harnesses it checks) unless
