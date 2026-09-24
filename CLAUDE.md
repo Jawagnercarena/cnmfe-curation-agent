@@ -124,4 +124,6 @@ MATLAB reads `getenv('CNMFE_DATA_PARENT')`.
 ## 7. Skills
 
 Operator procedures with side effects live under `.claude/skills/` and are
-manual-only. Start with `/retrain-area`.
+manual-only (type the slash command; Claude is not shown them otherwise):
+`/ingest-returns`, `/retrain-area`, `/recurate-sessions`, `/push-review-bundle`,
+`/retire-session`. `/skills` lists them.

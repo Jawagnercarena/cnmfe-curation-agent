@@ -2,7 +2,7 @@
 name: ingest-returns
 description: Bring reviewers' finished sessions back from the lab-server inbox into the local data tree - dry run first, read every SKIP reason, then make sure the area's classifier actually retrains.
 disable-model-invocation: true
-argument-hint: "[<reviewer>\<area>\<task>\<session>] [--force] [--replace-labels] [--dry-run]"
+argument-hint: "[<reviewer>/<area>/<task>/<session>] [--force] [--replace-labels] [--dry-run]"
 ---
 
 # Ingest reviewer returns
