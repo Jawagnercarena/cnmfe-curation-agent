@@ -1,0 +1,321 @@
+[
+ {
+  "rel": "3odor/AVG5x-TSeries-030126-pnb88-183um-35z-000",
+  "n_candidates": 36,
+  "n_auto_rejected": 17,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-07072026-pnb98-450um-3z-000",
+  "n_candidates": 98,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-07082026-pnb98-454um-3z-real-000",
+  "n_candidates": 88,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-071526-pnb98-471um-3z-000",
+  "n_candidates": 123,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-071626-pnb98-442um-3z-000",
+  "n_candidates": 124,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-071726-pnb98-535um-3z-000",
+  "n_candidates": 153,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-07202026-pnb98-460um-3z-000",
+  "n_candidates": 140,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-07222026-pnb98-532um-3z-000",
+  "n_candidates": 157,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-072326-pnb98-419um-3z-000",
+  "n_candidates": 99,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-072426-pnb98-551um-3z-000",
+  "n_candidates": 156,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-07292026-pnb98-470um-3z-000",
+  "n_candidates": 106,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-07302026-pnb98-400um-3z-000",
+  "n_candidates": 109,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "3odor/AVG5x-TSeries-07312026-pnb98-335um-3z-000",
+  "n_candidates": 102,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG2x-TSeries-052126-pnb98-408um-3z-000",
+  "n_candidates": 120,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-061126-pnb98-340um-24z-000",
+  "n_candidates": 83,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-061226-pnb98-511um-3z-000",
+  "n_candidates": 152,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-061726-pnb98-341um-34z-000",
+  "n_candidates": 67,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-061826-pnb98-506um-3z-000",
+  "n_candidates": 125,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-061926-pnb98-457um-3z-000",
+  "n_candidates": 137,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062226-pnb97-510um-3z-000",
+  "n_candidates": 152,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062226-pnb98-349um-34z-000",
+  "n_candidates": 79,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062426-pnb97-612um-24z-000",
+  "n_candidates": 167,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062426-pnb98-428um-3z-000",
+  "n_candidates": 134,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062526-pnb97-580um-3z-000",
+  "n_candidates": 157,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062526-pnb98-351um-34z-000",
+  "n_candidates": 94,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062626-pnb97-630um-24z-000",
+  "n_candidates": 107,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "6odorDualDiffRew/AVG5x-TSeries-062626-pnb98-501um-3z-000",
+  "n_candidates": 128,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "CTA/AVG5x-TSeries-080626-pnb98-480um-3z-000",
+  "n_candidates": 114,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ },
+ {
+  "rel": "CTA/AVG5x-TSeries-080926-pnb98-473um-3z-000",
+  "n_candidates": 108,
+  "n_auto_rejected": 0,
+  "candidate_files": {
+   "C_raw.txt": true,
+   "spatial_footprints.mat": true,
+   "Cn.mat": true,
+   "A.txt": true
+  }
+ }
+]

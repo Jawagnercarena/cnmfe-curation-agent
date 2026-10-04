@@ -1,0 +1,24 @@
+{
+ "attack": "a09",
+ "standing_verdict": "FAIL",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "skipped": true,
+  "reason": "long-running; reproduced via its own pin/fixture consistency checks"
+ },
+ "probe": {
+  "harness_far_7_minus_5": {
+   "mean": 0.48076923076923067,
+   "min": -0.48076923076923106,
+   "max": 0.9615384615384616,
+   "se": 0.18171368894674386,
+   "n_positive": 6,
+   "n": 8,
+   "all_positive": false
+  },
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 0.0
+}

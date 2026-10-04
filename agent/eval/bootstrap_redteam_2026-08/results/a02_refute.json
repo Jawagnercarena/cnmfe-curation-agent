@@ -1,0 +1,21 @@
+{
+ "attack": "a02",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 21,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "uncovered_reshape_sites": [],
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 4.8
+}

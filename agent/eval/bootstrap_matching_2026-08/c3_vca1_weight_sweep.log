@@ -1,0 +1,25 @@
+  [INFO] AVG5x-TSeries-100925-pnb88-153um-33z-000: reconstructed full labels (3 auto-rejected assigned label=0, 15 kept by user of 44 reviewed)
+  [INFO] AVG5x-TSeries-101025-pnb88-120um-35z-000: reconstructed full labels (4 auto-rejected assigned label=0, 7 kept by user of 43 reviewed)
+  [INFO] AVG5x-TSeries-101325-pnb88-121um-22z-000: reconstructed full labels (2 auto-rejected assigned label=0, 22 kept by user of 42 reviewed)
+  [INFO] AVG5x-TSeries-101525-pnb88-122um-35z-000: reconstructed full labels (3 auto-rejected assigned label=0, 6 kept by user of 33 reviewed)
+  [INFO] AVG5x-TSeries-101625-pnb88-109um-35z-000: reconstructed full labels (7 auto-rejected assigned label=0, 2 kept by user of 29 reviewed)
+  [INFO] AVG5x-TSeries-101725-pnb88-174um-35z-000: reconstructed full labels (12 auto-rejected assigned label=0, 4 kept by user of 35 reviewed)
+  [INFO] AVG5x-TSeries-022326-pnb88-145um-35z-000: reconstructed full labels (9 auto-rejected assigned label=0, 9 kept by user of 20 reviewed)
+  [INFO] AVG5x-TSeries-022426-pnb88-175um-35z-000: reconstructed full labels (9 auto-rejected assigned label=0, 10 kept by user of 27 reviewed)
+  [INFO] AVG5x-TSeries-022726-pnb88-225um-35z-000: reconstructed full labels (8 auto-rejected assigned label=0, 4 kept by user of 27 reviewed)
+  [INFO] AVG5x-TSeries-022826-pnb88-130um-35z-000: reconstructed full labels (6 auto-rejected assigned label=0, 3 kept by user of 14 reviewed)
+  [INFO] AVG5x-TSeries-030226-pnb88-173um-35z-000: reconstructed full labels (16 auto-rejected assigned label=0, 2 kept by user of 25 reviewed)
+  [INFO] AVG5x-TSeries-030326-pnb88-139um-35z-000: reconstructed full labels (12 auto-rejected assigned label=0, 5 kept by user of 21 reviewed)
+  [INFO] AVG5x-TSeries-030426-pnb88-187um-35z-000: reconstructed full labels (17 auto-rejected assigned label=0, 1 kept by user of 29 reviewed)
+  [INFO] AVG5x-TSeries-030526-pnb88-122um-36z-000: reconstructed full labels (5 auto-rejected assigned label=0, 2 kept by user of 17 reviewed)
+  [INFO] AVG5x-TSeries-031226-pnb88-124um-36z-000: reconstructed full labels (11 auto-rejected assigned label=0, 6 kept by user of 19 reviewed)
+  [INFO] AVG5x-TSeries-031326-pnb88-143um-36z-000: reconstructed full labels (2 auto-rejected assigned label=0, 5 kept by user of 20 reviewed)
+  [INFO] AVG5x-TSeries-031726-pnb88-139um-36z-000: reconstructed full labels (3 auto-rejected assigned label=0, 2 kept by user of 16 reviewed)
+  [INFO] AVG5x-TSeries-031826-pnb88-145um-36z-000: reconstructed full labels (2 auto-rejected assigned label=0, 6 kept by user of 25 reviewed)
+pool: 133 sessions (22 agent, 111 bootstrap)
+agent sessions usable as test folds: 14
+agent_w= 1.00  AUC=0.8679±0.0045 | T=0.05: FAR 1.0% gc 35.8% | T=0.07: FAR 2.0% gc 40.3%
+agent_w= 2.00  AUC=0.8777±0.0032 | T=0.05: FAR 0.8% gc 38.2% | T=0.07: FAR 1.8% gc 42.8%
+agent_w= 3.50  AUC=0.8818±0.0031 | T=0.05: FAR 1.0% gc 41.6% | T=0.07: FAR 1.8% gc 47.3%
+agent_w= 5.00  AUC=0.8857±0.0035 | T=0.05: FAR 1.2% gc 43.7% | T=0.07: FAR 2.5% gc 49.5%
+agent_w= 7.01  AUC=0.8843±0.0070 | T=0.05: FAR 2.5% gc 47.7% | T=0.07: FAR 3.5% gc 53.0%

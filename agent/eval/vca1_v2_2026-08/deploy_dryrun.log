@@ -1,0 +1,33 @@
+dry-run curation on a COPY of 3odor/AVG5x-TSeries-030126-pnb88-183um-35z-000
+  copied 11 files; live npz is 36x35
+  curator.MODEL_DIR -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\model\vCA1  (LIVE joblib, read-only)
+    
+[CURATOR] Preparing review package for 3odor__AVG5x-TSeries-030126-pnb88-183um-35z-000...
+      [FEATURES] Loading data from 3odor__AVG5x-TSeries-030126-pnb88-183um-35z-000...
+      [FEATURES] Computing features for 36 neurons...
+      [FEATURES] Computing pairwise spatial overlap...
+      [FEATURES] Done. Feature matrix: (36, 13)  (13 features × 36 neurons)
+      [CURATOR] v2 pass 1: 6/36 candidates are high-confidence neighbors (score >= 0.5).
+      [CURATOR] v2 feature matrix assembled: 35 columns (flag=1, real v2b for all 36 candidates).
+      [CURATOR] Scored 36 neurons with model 'xgboost' (reject threshold: 0.04). Score range: [0.00, 0.84]
+      [CURATOR] Auto-rejected: 21/36 (score < 0.04)
+      [CURATOR] candidate_features.npz saved (36 candidates, 35 features).
+      [CURATOR] Motion artifact suspects: 0
+      [CURATOR] No merge candidates detected.
+      [CURATOR] PDF report saved: review_report.pdf
+      [MATLAB] Starting MATLAB...
+      [MATLAB] review_neuron.mat written: 15 neurons.
+      [MATLAB] Finished successfully in 0.1 min.
+      [CURATOR] review_neuron.mat written with 15 neurons.
+      [CURATOR] review_summary.txt written.
+    [CURATOR] Review package complete: 15 neurons to review (from 36 candidates).
+
+  RESULT: npz written 36x35, 21 auto-rejected
+  ok    first 13 columns bit-identical to the live npz's base columns (re-extraction is deterministic)
+  ok    v2_present = 1 on all rows (full candidate set has real v2b)
+  ok    two-pass scoring ran (pass 1 via the companion first-pass model)
+  ok    review_report.pdf produced
+  ok    review_neuron.mat produced
+  ok    review_summary.txt produced
+
+DRY RUN: ALL PASS

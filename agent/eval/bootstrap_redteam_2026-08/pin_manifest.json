@@ -1,0 +1,3771 @@
+{
+ "areas": {
+  "BLA": {
+   "sessions": [
+    {
+     "rel": "2tones/AVG5x-TSeries-093025-bla12-660um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 54402,
+     "npz_mtime": 1787226986.1560364,
+     "labels_mtime": 1772855646.1893473,
+     "labels_size": 1624,
+     "labels_sha256": "d98b990cf70422eeabdf45029165bc8e57927e298a75b6a4d7c0d7e28e09894f"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-093025-bla16-319um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 32258,
+     "npz_mtime": 1787226986.8356936,
+     "labels_mtime": 1773092397.7284977,
+     "labels_size": 201,
+     "labels_sha256": "363f25d105e7df445aaef86679c908b968c0d5943539a93a8ff1589f453d4dc0"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-093025-bla21-313um-38z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 31722,
+     "npz_mtime": 1787226987.8362374,
+     "labels_mtime": 1773102477.2815402,
+     "labels_size": 204,
+     "labels_sha256": "2c758319cf104589703c3cc61affa98e82526cc5be6226c81313035743443933"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-093025-bla8-765um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 42082,
+     "npz_mtime": 1787226989.1203136,
+     "labels_mtime": 1772855654.0916693,
+     "labels_size": 1272,
+     "labels_sha256": "08a918cfd46f828f86564eed313c2852cb4d79031cfc231364a8e463721495ff"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100125-bla12-639um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 50930,
+     "npz_mtime": 1787226990.632158,
+     "labels_mtime": 1773436862.0632033,
+     "labels_size": 213,
+     "labels_sha256": "f8548fe31e6a40a225a4b4db64e095039e426fbbfaab850dd3b7ae569ca694fc"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100125-bla16-345um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 30650,
+     "npz_mtime": 1787226991.613392,
+     "labels_mtime": 1773448853.8891697,
+     "labels_size": 202,
+     "labels_sha256": "8b6c869b865d71dbbfb2f4229ce7117126acf287d8e938c7b9602bde850e9f8f"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100125-bla21-327um-38z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 22210,
+     "npz_mtime": 1787226992.3080478,
+     "labels_mtime": 1773787565.9423854,
+     "labels_size": 197,
+     "labels_sha256": "f5e909a952ddc0055fd00142eac5704771f0a8aa894dcaaee7c8eee42325afb2"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100125-bla8-735um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 39674,
+     "npz_mtime": 1787226993.5975022,
+     "labels_mtime": 1773444908.261968,
+     "labels_size": 203,
+     "labels_sha256": "b83bd79e5d93f60f6045bfe6e8982ad78fa0a2f0e3517d5cd7346a4603371b81"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100925-bla12-775um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 47186,
+     "npz_mtime": 1787226995.1536932,
+     "labels_mtime": 1774911499.1467347,
+     "labels_size": 215,
+     "labels_sha256": "b7b01de6579bba379a087137b640cfa988e2663303487fc242a2abac4987e8bd"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100925-bla16-270um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 42282,
+     "npz_mtime": 1787226996.3322268,
+     "labels_mtime": 1775597588.6611032,
+     "labels_size": 202,
+     "labels_sha256": "148458796213413d4b0f5f8715b9219095e7740561b11f3e19228ca9ca441971"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100925-bla21-266um-38z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 27546,
+     "npz_mtime": 1787226997.2613194,
+     "labels_mtime": 1778020796.9836123,
+     "labels_size": 189,
+     "labels_sha256": "1dec5539bb7dc3ebcdaa4cc5e25a4ab6c87f5f649dbef9454d0e519d953165f8"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-100925-bla8-685um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 58034,
+     "npz_mtime": 1787226998.9082165,
+     "labels_mtime": 1773962475.6527474,
+     "labels_size": 216,
+     "labels_sha256": "a62c3719ae8ff812c2ae670cef56a3aba610873ae147d1773be73b0e68552d5c"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101025-bla12-635um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 50002,
+     "npz_mtime": 1787227000.5263019,
+     "labels_mtime": 1780527915.7107012,
+     "labels_size": 222,
+     "labels_sha256": "03a70c99698428d34aa2acbf48d850fb768f88a06470cbdc3258c55bdba24f5c"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101025-bla16-242um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 55594,
+     "npz_mtime": 1787227002.2893863,
+     "labels_mtime": 1781134674.3935208,
+     "labels_size": 200,
+     "labels_sha256": "08c3efd4390d7e71b4eaf5b2e7b5c7ac057fdb8a7401cba7fa3adfb6a1ea4a44"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101025-bla21-310um-38z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 23050,
+     "npz_mtime": 1787227003.045771,
+     "labels_mtime": 1781287040.1229222,
+     "labels_size": 196,
+     "labels_sha256": "890fe05b8dc5a8a9670a2a5c8dc00d800c585d5af88e9a62b9255ea4bdd2c2b0"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101025-bla8-725um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 69418,
+     "npz_mtime": 1787227005.304577,
+     "labels_mtime": 1781044194.9462626,
+     "labels_size": 221,
+     "labels_sha256": "c5f7cf4780997a2297618f69ae07a240b09f9fc81df0ee6267bea80f750e276d"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101425-bla16-276um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 50898,
+     "npz_mtime": 1787227006.4801648,
+     "labels_mtime": 1782408283.7241871,
+     "labels_size": 197,
+     "labels_sha256": "ee3a0e999eead3b12a80f174dc3bb9f723d2db35161e3974295a83e0b5eb3d86"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101525-bla12-660um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 60258,
+     "npz_mtime": 1787227008.2173462,
+     "labels_mtime": 1784072334.0164235,
+     "labels_size": 302,
+     "labels_sha256": "54b997b89fa93fa059509a9cb270e4bc613c2435601735d30011eaa8af383890"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101525-bla16-278um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 40474,
+     "npz_mtime": 1787227009.1523507,
+     "labels_mtime": 1785177150.9244726,
+     "labels_size": 258,
+     "labels_sha256": "e3c6faf06f4b9637e25c27d1427ec4ed6ab7f93cccae02bedda8201095a0c37d"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101525-bla8-774um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 63858,
+     "npz_mtime": 1787227010.7318494,
+     "labels_mtime": 1786648502.4022503,
+     "labels_size": 266,
+     "labels_sha256": "ef9a0ba2888cbed69fcc9d752dada18f14675ea85d560bea0074817a5c5def10"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101625-bla12-660um-23z-001",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 59154,
+     "npz_mtime": 1787227012.4799075,
+     "labels_mtime": 1783725584.6668582,
+     "labels_size": 221,
+     "labels_sha256": "f1c3679f84245ba4282da4cb50d5d0203dcba59a85e16049a9014529c5533262"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101625-bla16-298um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 27362,
+     "npz_mtime": 1787227013.1871293,
+     "labels_mtime": 1785186867.1482325,
+     "labels_size": 261,
+     "labels_sha256": "fbf08889d5456de76773ed887f88d66152e1953538a07090149ee76ef415bbc6"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101625-bla8-723um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 70802,
+     "npz_mtime": 1787227015.098768,
+     "labels_mtime": 1786389861.9657865,
+     "labels_size": 266,
+     "labels_sha256": "e9b728130b8da5cc62490dc8422feeb6210cd5cf153bc027d57312a4ccb021d7"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101725-bla12-667um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 63490,
+     "npz_mtime": 1787227016.7722192,
+     "labels_mtime": 1783642296.3737888,
+     "labels_size": 208,
+     "labels_sha256": "34128bc3acd65f2a4f450841692e56dbbeacc5335bbd476be3bdffb1d249e6f0"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101725-bla16-283um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 35066,
+     "npz_mtime": 1787227017.6713433,
+     "labels_mtime": 1785269084.5443,
+     "labels_size": 266,
+     "labels_sha256": "920855c8ce0ed72c1a2f15a155bb989fbf2d50ab8e9096de3fed544edde99c88"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101725-bla8-707um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 68106,
+     "npz_mtime": 1787227019.321364,
+     "labels_mtime": 1786400613.0979428,
+     "labels_size": 261,
+     "labels_sha256": "12030b3a847e5088f1b0030e9e88440f7e43dfc31f8067742a7f27177d8fb562"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-102125-bla12-682um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 46978,
+     "npz_mtime": 1787227020.7967403,
+     "labels_mtime": 1783556692.2250915,
+     "labels_size": 214,
+     "labels_sha256": "e61b6a841ed363cc0a15fe066fe2a51f80cd9c991c446fc0ffb5ff50a56e1081"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-102125-bla8-777um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 60530,
+     "npz_mtime": 1787227022.5938127,
+     "labels_mtime": 1785971038.518811,
+     "labels_size": 280,
+     "labels_sha256": "9729d7f8600591495281345e0d49a287ce4a8721ca9a61ad93384146dd2dc64e"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-102225-bla12-643um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 50314,
+     "npz_mtime": 1787227024.2091324,
+     "labels_mtime": 1783554828.003153,
+     "labels_size": 216,
+     "labels_sha256": "65ac4938c5dbf03bf6cc9fdbb45d2d16eba6243b2ea87274b890054c736e0690"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-102225-bla8-734um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 56298,
+     "npz_mtime": 1787227025.9164643,
+     "labels_mtime": 1786560773.6085527,
+     "labels_size": 270,
+     "labels_sha256": "24924ca3fb41cbaa81c28e9eb9176fbd7b8419dfad2625b525231f48da144e5d"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-102325-bla12-716um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 66722,
+     "npz_mtime": 1787227028.0790296,
+     "labels_mtime": 1783463403.3958972,
+     "labels_size": 222,
+     "labels_sha256": "5b1b99f13135840a0e677d3883f46436c0a439620075c7bea0fec6af9ff8643d"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-102325-bla8-731um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 86474,
+     "npz_mtime": 1787227030.8657455,
+     "labels_mtime": 1783966506.9314864,
+     "labels_size": 218,
+     "labels_sha256": "c1e38006dc003f16f5286577d0a2894ef6b35510d4c2846d08cb90d451e0eea2"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla2-695um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 206722,
+     "npz_mtime": 1787618867.6687393,
+     "labels_mtime": 1787618867.6703188,
+     "labels_size": 5976,
+     "labels_sha256": "00c5c18fc2c8e575eeb613113b84e92fa519442d8de018be439cf4e859711a15",
+     "json_sha256": "dcf15aa04ed44bf7d85d198d9275ab23104d821cb94b81dd6e48c0e80a32bcdc"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla3-667um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 94442,
+     "npz_mtime": 1787563790.4610157,
+     "labels_mtime": 1787563790.471951,
+     "labels_size": 2768,
+     "labels_sha256": "8615c0d91f0235e20dc7265b4b6ffa238921779c1833108079491708920e31db",
+     "json_sha256": "8bc17fa02f3fe267adced844611e999b1995b6f896e072728c42a626bf667426"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla4-751um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 89402,
+     "npz_mtime": 1787689555.3054805,
+     "labels_mtime": 1787689555.318679,
+     "labels_size": 2624,
+     "labels_sha256": "eb35edf2ac25aab0655b2e6f433cc7927e90ef047bf3869738d2a0b5c6ec347d",
+     "json_sha256": "4544fb61779d031a22ef5d831e62455a2faf02ac9fa52059b5df1b2d69ac2845"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla5-527um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 46842,
+     "npz_mtime": 1787528995.9817393,
+     "labels_mtime": 1787528995.983281,
+     "labels_size": 1408,
+     "labels_sha256": "9af6ff14afded1686cdeb49d7a135268cb2862636a5733536f64b94ce85ab491",
+     "json_sha256": "210c99f6d56589e6775d8ec1273f06cb803a88721295744ea03e481f71839ba7"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla6-734um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 79602,
+     "npz_mtime": 1787641367.989719,
+     "labels_mtime": 1787641367.9912367,
+     "labels_size": 2344,
+     "labels_sha256": "4ba179b33c077fff1d834e91daf8474f980157a22e0e21f215e121db34fc5cd9",
+     "json_sha256": "10f68669d06ea8c7a24af8e3a071e1cb168191a6f91ad4407c2f0cd707a7ac0f"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022326-bla8-655um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 69522,
+     "npz_mtime": 1787673332.16774,
+     "labels_mtime": 1787673332.16774,
+     "labels_size": 2056,
+     "labels_sha256": "eb45a0eefb00c15a674f0290a23aa1d19a9f969bc8f308d45337e567b015137e",
+     "json_sha256": "cc4281885d729ace1ba7cbe81a0f8bd3822b74a3a3cdf27a78df4b9494530808"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022426-bla8-666um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 38666,
+     "npz_mtime": 1787227032.0012653,
+     "labels_mtime": 1781299318.798199,
+     "labels_size": 183,
+     "labels_sha256": "dc59b955df9d5761765340c22961edd8d3bad33d969e1d48bc3cdbb17a710afe"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla3-665um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 113482,
+     "npz_mtime": 1787652843.3464758,
+     "labels_mtime": 1787652843.3469837,
+     "labels_size": 3312,
+     "labels_sha256": "28c994ca16d65543d75165223d990f6fa3cf75d07eafbcc3182ed6c8b7ca46f8",
+     "json_sha256": "42000b8bb051acddce227c8a9fae61901708be13f3bd60a22ad9dc6f14e229ec"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla4-755um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 97242,
+     "npz_mtime": 1787625417.9343631,
+     "labels_mtime": 1787625417.9343631,
+     "labels_size": 2848,
+     "labels_sha256": "7a9d75641cc7be9f8b98d3e7191ba493663311be2f8d107b8cf5d63f30b23d37",
+     "json_sha256": "8fa8879b11ae22cfb011f87dff68ee7c3f374418812f96eed723c22d78ce5dd3"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla5-512um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 52442,
+     "npz_mtime": 1787592156.1936586,
+     "labels_mtime": 1787592156.2075005,
+     "labels_size": 1568,
+     "labels_sha256": "cc0a04fbc508b672879ec344dd97c0f703ad6ef8d4b9d6c53da9b3c9ea78e7fa",
+     "json_sha256": "ac9961878b998d583a74a330d2cc38db6643387e693dba85a6acf9d6e49361ef"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla6-730um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 86042,
+     "npz_mtime": 1787666733.289587,
+     "labels_mtime": 1787666733.289587,
+     "labels_size": 2528,
+     "labels_sha256": "7913dd19f6c9824c8e8e45b0d340f9924fb1f612dfaf82d71d57f23429911d10",
+     "json_sha256": "5f0caf2a7f47c3b846d6a49c9e37cb18e46c84fca6c9539bae721a7db406be06"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla2-662um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 189642,
+     "npz_mtime": 1787690058.3369267,
+     "labels_mtime": 1787690058.3369267,
+     "labels_size": 5488,
+     "labels_sha256": "26a1e2ef56c15e5f3e2d5ad2779cecfda5174d1cbce2b9a1212783cae94869ab",
+     "json_sha256": "26c34dc82371fb5510dab3a01e38cdde58177422650c41d75c8e4b74b263b0a9"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla3-664um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 112082,
+     "npz_mtime": 1787600646.8231897,
+     "labels_mtime": 1787600646.8231897,
+     "labels_size": 3272,
+     "labels_sha256": "ba5f84aba42d8f7f47a7b837387f9c622470bf8fcacafdcf6c4430c75801e961",
+     "json_sha256": "5292f03efda670d85a8774c44ad3fa1f68c1f87d117282a729e2e092f147a716"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla4-724um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 91362,
+     "npz_mtime": 1787695614.4363883,
+     "labels_mtime": 1787695614.4368992,
+     "labels_size": 2680,
+     "labels_sha256": "2546ba2ff73c13a566192eb7dc1930302a894184b176a8530f2139be3ddd6ad9",
+     "json_sha256": "a54be41b7781902bfdb5cda5b5acd52399b06d547350d79bfd1df4b4b1ce838c"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla5-527um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 49642,
+     "npz_mtime": 1787461682.4324355,
+     "labels_mtime": 1787461682.4339526,
+     "labels_size": 1488,
+     "labels_sha256": "117a4353b1db7e4379457aef7d3517425d35379616292222ec959cd30da51cba",
+     "json_sha256": "02f7ba2d4ff718dee8b246fef32026282d8c846bae0619f5417ad2d04e565afe"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla6-732um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 68682,
+     "npz_mtime": 1787653095.2731752,
+     "labels_mtime": 1787653095.2731752,
+     "labels_size": 2032,
+     "labels_sha256": "6558df68ef56caaefee63277e867a5c9d532a1497c18c020aada855df9e52db7",
+     "json_sha256": "04b599bf50e5806e20b118163fde758b8211aa67904d341af9fc3c4e4557a700"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla2-681um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 198042,
+     "npz_mtime": 1787696732.1975052,
+     "labels_mtime": 1787696732.209779,
+     "labels_size": 5728,
+     "labels_sha256": "427657485e46883474bac0c318124e24226851266e04f654576fe9bf5e2b89f4",
+     "json_sha256": "15d879725066d30d725e7e1e566ed6fa70935c6237266316d38734725298aa8d"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla3-648um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 132242,
+     "npz_mtime": 1787559709.9311392,
+     "labels_mtime": 1787559709.932693,
+     "labels_size": 3848,
+     "labels_sha256": "eb82d50b6b1637ffa93a0917bed196042b443ce5c972591983f5ae0b57a79c36",
+     "json_sha256": "f0917928546bb64b49e6b250048244fef8e0fcbd56d9b92f172d1806644a7dda"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla4-685um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 88002,
+     "npz_mtime": 1787612685.2205517,
+     "labels_mtime": 1787612685.2312698,
+     "labels_size": 2584,
+     "labels_sha256": "25a4e2ed5162149be99ca02e88f5450e0d3af2c7b3446f7c80f1d1c7ef9d1e5e",
+     "json_sha256": "e891847c23b51d832bd19254b0f6594d44dcb49116b189105959c2f5331b9868"
+    },
+    {
+     "rel": "3odor/AVG5X-TSeries-02282025-bla5-543um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 56922,
+     "npz_mtime": 1787470861.009965,
+     "labels_mtime": 1787470861.009965,
+     "labels_size": 1696,
+     "labels_sha256": "a18fd242fec31a3c9ecd6216bae265d880391646ec349630a9df987ee314d9fb",
+     "json_sha256": "2d821a881c1582cf962f457259cce8238da3b2a4b0a93533736cece634f8d955"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla6-748um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 130562,
+     "npz_mtime": 1787700654.7906773,
+     "labels_mtime": 1787700654.7921925,
+     "labels_size": 3800,
+     "labels_sha256": "3b1b5cc63387e8bdf55e640292f36bcb71ff57f809755db02100ba268952edfc",
+     "json_sha256": "6d59a9020d6f2c99873e5c68b8338689d6c42afc74a4ea41c05da23c3d272bd4"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla3-667um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 163042,
+     "npz_mtime": 1787504988.2499523,
+     "labels_mtime": 1787504988.2607758,
+     "labels_size": 4728,
+     "labels_sha256": "80c358659b7224f282ad506cdc4f97cddf6918896db7e4d3a7f204d47b9f2499",
+     "json_sha256": "97aa97d49351c0005ccbf3a7f44985986fc9dc7da5d5757d49030c3e66234527"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla4-680um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 109002,
+     "npz_mtime": 1787631695.880395,
+     "labels_mtime": 1787631695.880395,
+     "labels_size": 3184,
+     "labels_sha256": "aebf469fefa74f59b7201d981b3262f0b1ee121be289dcea651385e68a8f8e4d",
+     "json_sha256": "fd84537272e3fcfaed3f4e557059d7a669dee77aa78caa32a3398cf41982ef71"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla5-537um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 55802,
+     "npz_mtime": 1787570592.1786783,
+     "labels_mtime": 1787570592.1786783,
+     "labels_size": 1664,
+     "labels_sha256": "0af3ad24261ca20020857d8f6239469a245db6d2cdbfd3b01ef3f756d54e8126",
+     "json_sha256": "ad36eee8be3984c4fcb2eceb7915e105b80e0f61755e791f775663590cef1b9f"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla6-748um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 93882,
+     "npz_mtime": 1787671741.8907454,
+     "labels_mtime": 1787671741.8907454,
+     "labels_size": 2752,
+     "labels_sha256": "3f288ce858b924b7c304f5b4d315b14ff40709d3fec9380b4238beadabb43745",
+     "json_sha256": "bbde1eec90763d2b1745618c89f508a5e1e5c496c9ec33251b33ce68197e3baa"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla3-667um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 117402,
+     "npz_mtime": 1787599545.7775178,
+     "labels_mtime": 1787599545.778024,
+     "labels_size": 3424,
+     "labels_sha256": "469fa5b87a0d24b8d1bfd96bdf998d013e773bcc5518cca1c529841ef529e8d0",
+     "json_sha256": "c4bbe932f90997196cb314d4d6af997b82957e8e0d2c60856d445c1dcb05db75"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla4-694um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 126082,
+     "npz_mtime": 1787588214.1927233,
+     "labels_mtime": 1787588214.1942794,
+     "labels_size": 3672,
+     "labels_sha256": "ab812046ef805c430a3f1ccd0955de01b2e6cadade40a3348e51ae01bd443fd2",
+     "json_sha256": "23a46f8c24b831667b5468c233a924f1f567d23566ad323deb6ed440dbcefe1c"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla5-525um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 58602,
+     "npz_mtime": 1787482970.652629,
+     "labels_mtime": 1787482970.6679895,
+     "labels_size": 1744,
+     "labels_sha256": "966673a3209459bc948868f23de2b99e7e43331090acb4f48fa5f1b610c9cf01",
+     "json_sha256": "a5e6bc2e6c43e0d84520ffdccbef7c61661476cd39627cc965275a015564ea04"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla6-745um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 104802,
+     "npz_mtime": 1787660362.2528908,
+     "labels_mtime": 1787660362.2544148,
+     "labels_size": 3064,
+     "labels_sha256": "c7d4a761ae4eacd56fd8d58ddf06c508d9b0db59f54caea4a360cd0a0f80b684",
+     "json_sha256": "46b9b96a4ad9b4a6e4bd1e746c2a9791a2b1e1454d19ccf81a2ef423550406ee"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03072025-bla6-725um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 98642,
+     "npz_mtime": 1787648479.4602976,
+     "labels_mtime": 1787648479.4618385,
+     "labels_size": 2888,
+     "labels_sha256": "dce086a87c6c1622c480c903ba3223e9f2ba6e67d130e686659ba7438bf5cbec",
+     "json_sha256": "c23fd28c0cd69f44fb281cbf12b93b27bde2484f32195ecdbe64d84d4c2289a9"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031226-bla8-609um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 20090,
+     "npz_mtime": 1787227032.498171,
+     "labels_mtime": 1773965414.698829,
+     "labels_size": 183,
+     "labels_sha256": "d24f9ea40e3efb81ad5398ba67583142f78c733b94bb743173af1343125ab070"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03132025-bla3-737um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 119922,
+     "npz_mtime": 1787511719.6576128,
+     "labels_mtime": 1787511719.6708937,
+     "labels_size": 3496,
+     "labels_sha256": "5acbb54979aa997aaf53f58a7f909c636466ea1cc955745b13e4c72010414e13",
+     "json_sha256": "565bae3ea5f9d7c7fca9c86599660cf517d5f8980cf1351260c6c42ebadd8f5e"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03132025-bla6-710um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 111522,
+     "npz_mtime": 1787703933.5025368,
+     "labels_mtime": 1787703933.515782,
+     "labels_size": 3256,
+     "labels_sha256": "667c5dccbfeea20826f747ddf1cd71838a561f10d2cfdb09fba894ecb9067760",
+     "json_sha256": "bcda948b9ab53ad3936614554550cca1476261a827ad8bcdf567b82931994241"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031326-bla8-664um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 38170,
+     "npz_mtime": 1787227033.5667262,
+     "labels_mtime": 1781303493.5013373,
+     "labels_size": 186,
+     "labels_sha256": "f247433a8e5229fc845f6aacef6b9797e457310eb88d7def6c082324894d2cf5"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031425-bla3-580um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 101722,
+     "npz_mtime": 1787641121.8915756,
+     "labels_mtime": 1787641121.8915756,
+     "labels_size": 2976,
+     "labels_sha256": "22b5f3011ddd3ea3894be26c5c777ee4a8219e79fea43eb5b703153764f140a9",
+     "json_sha256": "b2a5613b6d32519c4fa408fd7fb4f31fff5dacbac4b2440280ab08b6eccfd935"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031425-bla4-745um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 114882,
+     "npz_mtime": 1787708528.8738873,
+     "labels_mtime": 1787708528.8738873,
+     "labels_size": 3352,
+     "labels_sha256": "889f758b512eb88eae5815c36abb8f61127f1a581215290bd00e0875d4eb86e2",
+     "json_sha256": "9843d2a3952bde8c5947b18d32b6ae2763d5a3e5fd97df9539221f01ce47458f"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla13-660um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 103402,
+     "npz_mtime": 1787706340.7873056,
+     "labels_mtime": 1787706340.8042388,
+     "labels_size": 3024,
+     "labels_sha256": "698f7ac8e75f07cf7e894bae36b8436a82def86a407b01af4487ae9920cccae3",
+     "json_sha256": "86287ae50d4795238f56f7dd3272dfa28fd69f983f8ab521b9c37f9f142b6f6d"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla14-743um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 72322,
+     "npz_mtime": 1787664969.5233092,
+     "labels_mtime": 1787664969.524832,
+     "labels_size": 2136,
+     "labels_sha256": "e0d28499f660f64e5c4c9a0977286661c744100d63827c39a34d20268402c187",
+     "json_sha256": "955f3f826c1bffa09798c8d76484e87c1f357c53f9a583fe115b42362b5fdfea"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla15-209um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 117122,
+     "npz_mtime": 1787710581.486313,
+     "labels_mtime": 1787710581.4878497,
+     "labels_size": 3416,
+     "labels_sha256": "bbf0eda50d09dbf2bb0f7867395c4eb8f9404615277d9727d180d25310386c25",
+     "json_sha256": "86147d60ae9a3a976876774a09d4163159a324e0491016144be1acc7d1046015"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla7-783um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 94442,
+     "npz_mtime": 1787708363.115952,
+     "labels_mtime": 1787708363.1246462,
+     "labels_size": 2768,
+     "labels_sha256": "2854bb4aca71a7566020dd657e7b05ad33fc9e950b63a310e9ba71b3be1cb2ab",
+     "json_sha256": "54456963d3c5a8f27b7df81dae437ebafaf53dfc0e8d63095e70120f11cf5c80"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla13-647um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 109282,
+     "npz_mtime": 1787646995.4410303,
+     "labels_mtime": 1787646995.4425528,
+     "labels_size": 3192,
+     "labels_sha256": "1d159bca274ddb0fb24214f37e504f531c2d48f20880ccc9753d9e2ec7f9040c",
+     "json_sha256": "dbb8c07d89930343b0655010d087264d7c62a8e380a44c703609fafe0b6168cd"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla14-760um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 54122,
+     "npz_mtime": 1787628800.6176713,
+     "labels_mtime": 1787628800.61869,
+     "labels_size": 1616,
+     "labels_sha256": "8b2d32a96862f8d773698274f845b297db74d407e6da32d34871c31ec9d45d85",
+     "json_sha256": "1d553a4cfaa2cc2f27ae6367e6172d506400155f374ddb5201c783824167c55e"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla15-169um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 110122,
+     "npz_mtime": 1787633697.530138,
+     "labels_mtime": 1787633697.530138,
+     "labels_size": 3216,
+     "labels_sha256": "9075aca9eb74d441f80778312eb0134a660d1e705057763eab3f40106d4d041f",
+     "json_sha256": "ef27ffaf7307019bbfc10f749765c8d09b316b17b231a164abea6870cd2c8809"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla7-793um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 106482,
+     "npz_mtime": 1787671504.7928076,
+     "labels_mtime": 1787671504.7943342,
+     "labels_size": 3112,
+     "labels_sha256": "43b44baba0125ec620358b0db0b0ab449e01768c0bf17cc7ab52a0c1e0219f22",
+     "json_sha256": "08a1bd6dbf23d88ae4508f69c8f85d385728965798981186ee3c779de3efe28c"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla13-657um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 96962,
+     "npz_mtime": 1787576216.888455,
+     "labels_mtime": 1787576216.9037318,
+     "labels_size": 2840,
+     "labels_sha256": "541e5fc419fa6217128f0982af076b441305bf2f23d2cd4d88ae2c88e628f93d",
+     "json_sha256": "b879f2725f18415f643f5cf5009c3944fb9d412490e40307cb048b1e574f2363"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla14-763um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 56642,
+     "npz_mtime": 1787566466.648919,
+     "labels_mtime": 1787566466.65045,
+     "labels_size": 1688,
+     "labels_sha256": "510bb37451faf4c306cde0f37fb7d6b9366bcdff415a9724c461ad530c09d40e",
+     "json_sha256": "30a76900f23e5f6862beae3c2119dc13fbabb9db8dd2c6a17c6c9b77b2de2f10"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla15-222um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 105642,
+     "npz_mtime": 1787580633.0082402,
+     "labels_mtime": 1787580633.0250173,
+     "labels_size": 3088,
+     "labels_sha256": "6d440266f4142fefd59d03a64867c983765846c03215e3d986fbe2f4d07a26d0",
+     "json_sha256": "858b3c65ab8991ec4c94861ba2d5c1ad822dd3095669abace162e8752959b424"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla7-778um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 77642,
+     "npz_mtime": 1787606588.8798146,
+     "labels_mtime": 1787606588.8936522,
+     "labels_size": 2288,
+     "labels_sha256": "6386e4b6907e8d38658f40bc98018058d67af4f41762d970e14473cdbf9aac40",
+     "json_sha256": "283e3824c30516d9039492c1b2c280047afc5b8f9aa2eec6d001dd6e634e6e2a"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla13-653um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 98362,
+     "npz_mtime": 1787553797.2926414,
+     "labels_mtime": 1787553797.31302,
+     "labels_size": 2880,
+     "labels_sha256": "6f520cbf644be1b2fd959d3153ef54dbcdbb30d9d878e958c06a6f6365625897",
+     "json_sha256": "35d4a597765d58b736016cdcc75551f933dc051b14df0fd70325afdc7e071513"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla14-763um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 65322,
+     "npz_mtime": 1787572488.8299384,
+     "labels_mtime": 1787572488.8442478,
+     "labels_size": 1936,
+     "labels_sha256": "c6c54044794f2f37cab7a283ab085ec1466d1f2a7ea29dcad2072a1ae3f6c8dd",
+     "json_sha256": "30663d155f0864fcb55430d66fee50396ac58f301ceb5c934be906697d7295df"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla15-200um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 102282,
+     "npz_mtime": 1787593201.9168847,
+     "labels_mtime": 1787593201.972446,
+     "labels_size": 2992,
+     "labels_sha256": "0c0d9d75232e192df996da15da233b98cd29a6b8ecc3bad4c874dc2e576388fe",
+     "json_sha256": "f4bbb23a1f54594ef3f61c6efc4a1c06d0b439211671ee85f88226073bd6a80e"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla7-797um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 91362,
+     "npz_mtime": 1787636499.3989036,
+     "labels_mtime": 1787636499.3989036,
+     "labels_size": 2680,
+     "labels_sha256": "cd8a19a4ecf111d4df98cd80237aea2a6d71d9b1903cccc85ef17516bb876893",
+     "json_sha256": "aa511ca94e2dc25433fda3f9c37b79a38574975df2880ba9c3bf722c06ce3ea1"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla13-655um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 120202,
+     "npz_mtime": 1787517370.4405458,
+     "labels_mtime": 1787517370.4405458,
+     "labels_size": 3504,
+     "labels_sha256": "ff3a5745a66de92eecb9d1f2157f8fbaee2b898c0d10e9559ed631180a18ba0f",
+     "json_sha256": "1461e87aafb7b10fc97f198d59f02fb4d3570eb9b028120bfc2ccae2d2afc8b8"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla14-776um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 54122,
+     "npz_mtime": 1787662693.8270867,
+     "labels_mtime": 1787662693.8286068,
+     "labels_size": 1616,
+     "labels_sha256": "5e7593031e4915d094983db5c0eba24fc37fd3dedc8dd601aeb3d950372ecb96",
+     "json_sha256": "767064065484d9a02663723dcd32a309771c144d623cd31daaabdf31b6cc5435"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla15-183um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 95282,
+     "npz_mtime": 1787682423.0094063,
+     "labels_mtime": 1787682423.0094063,
+     "labels_size": 2792,
+     "labels_sha256": "6d5705d5ac4d6f21bbe5f6448864a345a8aa05fd4b02ca77aacb5134c3ba9fba",
+     "json_sha256": "f6ce56a1bae4c8cd70fab27ab78d20922209e3e998630a644003667721fece27"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla7-812um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 101722,
+     "npz_mtime": 1787715253.0698476,
+     "labels_mtime": 1787715253.0713646,
+     "labels_size": 2976,
+     "labels_sha256": "467a0443af8aa1f56b68f2bd62f368c32a3337c04749b9854a37d2e6ff89dd0c",
+     "json_sha256": "2e5f18d0b524879896140bc8c2102700af63a29c65080c98a99199deeb5159e3"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-043025-bla13-653um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 120202,
+     "npz_mtime": 1787615858.6297996,
+     "labels_mtime": 1787615858.6389785,
+     "labels_size": 3504,
+     "labels_sha256": "8b6818e2bd58fa936cca67998584a51928081661e3c1d812b949b5f5f27eae9f",
+     "json_sha256": "ecdd0c0cd7a8143e6165431548c517eb0a9a51f72a7d629889d4aeb4f08b5b72"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-043025-bla7-807um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 195522,
+     "npz_mtime": 1787714604.112603,
+     "labels_mtime": 1787714604.1324751,
+     "labels_size": 5656,
+     "labels_sha256": "4706e2c09fae285b2b789cd5257ced3fef26102872e4df119c8e57c4e09a92e4",
+     "json_sha256": "0d99290ed3cf49ad039b9413cdf672b1851b25f360d281d29e48c405db2802eb"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07072026-bla36-827um-25z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 54842,
+     "npz_mtime": 1787227124.9436631
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07072026-bla37-250um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 51538,
+     "npz_mtime": 1787227035.098818,
+     "labels_mtime": 1786665536.71681,
+     "labels_size": 283,
+     "labels_sha256": "078addc8d65c9b9d46ba83c944dba632e238274f69f338a786e7f97bd85c7812"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07082026-bla36-810um-25z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 67778,
+     "npz_mtime": 1787227129.1527007
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07082026-bla37-230um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 82866,
+     "npz_mtime": 1787227038.1729825,
+     "labels_mtime": 1786561938.0113604,
+     "labels_size": 304,
+     "labels_sha256": "6502ff964753a069231b43756372f5528d83273c0f71332a08c1005d4b4708cf"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071526-bla36-817um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 58210,
+     "npz_mtime": 1787227040.455096,
+     "labels_mtime": 1786657387.2770753,
+     "labels_size": 273,
+     "labels_sha256": "3245dee80689ded6d434ccd97f5e0d42089a072bca824528c51703def68b64be"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071526-bla37-248um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 56322,
+     "npz_mtime": 1787227042.383435,
+     "labels_mtime": 1786397861.828341,
+     "labels_size": 284,
+     "labels_sha256": "22588226035efee1a58612ddc8eb6d9f31df2240f4e32afa5cce97c070922eb9"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071626-bla36-762um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 57426,
+     "npz_mtime": 1787227044.3587406,
+     "labels_mtime": 1786666798.9333744,
+     "labels_size": 273,
+     "labels_sha256": "41e7f176d27fc6e28d262996b691b00051b74900b6d2d1eb415f992f404e6091"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071626-bla37-241um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 56394,
+     "npz_mtime": 1787227046.1455967,
+     "labels_mtime": 1786471163.6073546,
+     "labels_size": 289,
+     "labels_sha256": "f6c3445a3b91b92c6f9f19df1c0ae052cf078910647276e36ca493e063932501"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071726-bla36-820um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 59890,
+     "npz_mtime": 1787227048.3136878,
+     "labels_mtime": 1786729235.265586,
+     "labels_size": 273,
+     "labels_sha256": "842c997719d2eb5fe60e0cb52ac679767e8bfa550af46030abfc95e459d72896"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071726-bla37-249um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 78162,
+     "npz_mtime": 1787227050.7496495,
+     "labels_mtime": 1786568496.1501305,
+     "labels_size": 287,
+     "labels_sha256": "fa96d311681b3fa4eec17e5f7908dc4e30c507e0b6b360b81494434a094c2db0"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07202026-bla36-700um-25z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 58402,
+     "npz_mtime": 1787227133.45186
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07202026-bla37-230um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 60834,
+     "npz_mtime": 1787227052.7305326,
+     "labels_mtime": 1786997793.8573978,
+     "labels_size": 299,
+     "labels_sha256": "90313ebfb82a437cb1093a40119b908b0da437f01590e8e546db7ab3240d851f"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07222026-bla36-750um-25z-001",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 70666,
+     "npz_mtime": 1787227137.8386576
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-072326-bla36-670um-34z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 50218,
+     "npz_mtime": 1787227054.3108032,
+     "labels_mtime": 1786731711.731138,
+     "labels_size": 244,
+     "labels_sha256": "0db21b4cd4ccee7b83f74536d9059021426d72e40560c97eba003f1c59bb601d"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-072426-bla36-560um-26z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 44274,
+     "npz_mtime": 1787227140.3532138
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07292026-bla36-674um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 56842,
+     "npz_mtime": 1787227143.9707665
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07302026-bla36-730um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 66946,
+     "npz_mtime": 1787227148.385378
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07312026-bla36-575um-29z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 32698,
+     "npz_mtime": 1787227150.3528636
+    },
+    {
+     "rel": "4odorDO/AVG5x-TSeries-02092026-bla12-681um-22z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 39562,
+     "npz_mtime": 1787227055.6480887,
+     "labels_mtime": 1772855662.2512226,
+     "labels_size": 1200,
+     "labels_sha256": "ffb21d56caf020761c8564cf24a95a007f3e5785374f92bd76f5b10a91d71013"
+    },
+    {
+     "rel": "4odorDO/AVG5x-TSeries-02092026-bla16-314um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 21362,
+     "npz_mtime": 1787227056.298674,
+     "labels_mtime": 1772855669.091284,
+     "labels_size": 680,
+     "labels_sha256": "ac0a2eafb0c06f2e4401d136a697645e535da7aee52a0c3cf6cca6bd2e47c0a3"
+    },
+    {
+     "rel": "4odorDO/AVG5x-TSeries-02092026-bla8-745um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 19402,
+     "npz_mtime": 1787227056.9309585,
+     "labels_mtime": 1772855675.767861,
+     "labels_size": 624,
+     "labels_sha256": "c4afab31e7c701810aa6cd50598455f1803173c361609a5e33f209de97218bfe"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-052026-bla36-669um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 51234,
+     "npz_mtime": 1787227058.789466,
+     "labels_mtime": 1784595526.7400205,
+     "labels_size": 291,
+     "labels_sha256": "4ade318c39c921af0d11621a6f769608a6c33fba978621397be1a4f23e05b754"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-052126-bla36-730um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 55578,
+     "npz_mtime": 1787227061.284068,
+     "labels_mtime": 1784849877.337032,
+     "labels_size": 266,
+     "labels_sha256": "4492dec3e0234a71f576c1176b0fe6328e523e7602b529824001e8dbf58000b1"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-052626-bla36-816um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 47786,
+     "npz_mtime": 1787227063.2886157,
+     "labels_mtime": 1784932626.2444673,
+     "labels_size": 265,
+     "labels_sha256": "1aca78cdb4169bea8a3e6281507565dff354746deb3d91377341f815a3ec413d"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-052726-bla37-339um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 57178,
+     "npz_mtime": 1787227065.3401294,
+     "labels_mtime": 1783551890.6341076,
+     "labels_size": 215,
+     "labels_sha256": "23d95a4ff13d27d55bd897629ff1d3bb0f68fbc67bc28dd2ba797ddb84f68c6c"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-052826-bla37-216um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 59642,
+     "npz_mtime": 1787227067.7063105,
+     "labels_mtime": 1784675378.3167703,
+     "labels_size": 300,
+     "labels_sha256": "d9098e26ad401845b22a62c33b3cb9e0137b5a20962ba06bbddb66747cf085d5"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-060326-bla36-742um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 79970,
+     "npz_mtime": 1787227070.5292816,
+     "labels_mtime": 1785782600.326263,
+     "labels_size": 274,
+     "labels_sha256": "21c9bd615bcbc763432b45d0ea95b4768738fd1450aa6e01550f27cac227991b"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-060426-bla36-649um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 45898,
+     "npz_mtime": 1787227072.1602743,
+     "labels_mtime": 1785800101.0473108,
+     "labels_size": 263,
+     "labels_sha256": "f69675c8a56f1dd08d5786bec4d003b511929e59ad5ae033f717c2cb49e673c6"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-060426-bla37-275um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 41082,
+     "npz_mtime": 1787227073.732079,
+     "labels_mtime": 1784832989.9613817,
+     "labels_size": 291,
+     "labels_sha256": "98e4096d0d372f2320d67dc8d72a8d6efdab90fc560749cb4d80f19ab6fb77a5"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-060526-bla36-820um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 40778,
+     "npz_mtime": 1787227075.251881,
+     "labels_mtime": 1785869799.6220877,
+     "labels_size": 279,
+     "labels_sha256": "dd32c3156c9107fe96c2e48c3162f73d64550a2cecca895ba73a6d58f6f8a719"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061126-bla36-668um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 64498,
+     "npz_mtime": 1787227077.7533665,
+     "labels_mtime": 1785887673.1892583,
+     "labels_size": 277,
+     "labels_sha256": "5f523ba23b51c392d586451dbc7c51742bea06ab7ed1d595c1a64de20e871e64"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061126-bla37-277um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 43346,
+     "npz_mtime": 1787227079.4035976,
+     "labels_mtime": 1784846680.9661152,
+     "labels_size": 294,
+     "labels_sha256": "75c5b2306b7ce144beece4fdf56f5de117c5dd698e9b805b73b0e3fd3664fcbe"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061226-bla36-830um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 48938,
+     "npz_mtime": 1787227081.2235904,
+     "labels_mtime": 1785973399.165831,
+     "labels_size": 271,
+     "labels_sha256": "4deb77a0e1455383dafd1a70c84682f6c30ad731d47ba6b5d5615939689376a5"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061226-bla37-213um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 43506,
+     "npz_mtime": 1787227083.1306157,
+     "labels_mtime": 1785108934.6308594,
+     "labels_size": 296,
+     "labels_sha256": "6abce19a3a42c73d99c7788a7ba4590b4c1df548a34c33a76cac1ee190b3cc91"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061726-bla36-667um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 60226,
+     "npz_mtime": 1787227085.4538746,
+     "labels_mtime": 1786044543.7658434,
+     "labels_size": 270,
+     "labels_sha256": "3f41be32a508497eadac10576124cf650c739bcf2fdd6c825aaaa8bf40e63f69"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061726-bla37-292um-35z-001",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 28690,
+     "npz_mtime": 1787227086.5928495,
+     "labels_mtime": 1786175900.6507404,
+     "labels_size": 258,
+     "labels_sha256": "6be0339d7056a022acf6d8c1b22aa4664761bdb925639d0069cb74f01c52dd13"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061826-bla36-822um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 61554,
+     "npz_mtime": 1787227089.0234923,
+     "labels_mtime": 1786054844.6294117,
+     "labels_size": 265,
+     "labels_sha256": "1205daff97ad1576c353826127df98b8bf9d8ab98719c5bea30ba39625c2d2cd"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061826-bla37-209um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 44954,
+     "npz_mtime": 1787227090.9736917,
+     "labels_mtime": 1785781635.2026327,
+     "labels_size": 289,
+     "labels_sha256": "057d72de702d5af98d16a7415cda46631578b9c01cecba098670bf58fe707c29"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061926-bla36-774um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 62378,
+     "npz_mtime": 1787227093.4611611,
+     "labels_mtime": 1786064579.7830448,
+     "labels_size": 281,
+     "labels_sha256": "cc99d4c83cefea7b10d6991e848fceb5aa506e291a1ea70dd8c48e2044733ea7"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061926-bla37-226um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 60378,
+     "npz_mtime": 1787227095.9244435,
+     "labels_mtime": 1785995847.7864032,
+     "labels_size": 315,
+     "labels_sha256": "84cc31856c37f714311b0d46caaf3c6f3c6fa60aaa5dec5085cd942efc6e8e21"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062226-bla36-678um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 71682,
+     "npz_mtime": 1787227098.7335582,
+     "labels_mtime": 1786130630.1822836,
+     "labels_size": 291,
+     "labels_sha256": "99d95880c643367c5739fbaecfe8dc33f0cba392c749261e107a82bd300a7d49"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062226-bla37-286um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 33154,
+     "npz_mtime": 1787227100.079413,
+     "labels_mtime": 1785955301.8834102,
+     "labels_size": 263,
+     "labels_sha256": "dad57e88c579995e29ad0c430efce013ed9614f614c132974662ba44a355c1d2"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062426-bla36-731um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 68594,
+     "npz_mtime": 1787227102.6854613,
+     "labels_mtime": 1786141273.8396342,
+     "labels_size": 292,
+     "labels_sha256": "5c6c8064dc374384bee10d798a328030cfc66558970ecac7a48bffddc8dda179"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062426-bla37-256um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 43578,
+     "npz_mtime": 1787227104.60369,
+     "labels_mtime": 1786055650.3740616,
+     "labels_size": 275,
+     "labels_sha256": "eebefe0ff580c5e76e9c37c538100769d2e461dda33787aff225a8b206c893b8"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062526-bla36-676um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 56538,
+     "npz_mtime": 1787227106.760737,
+     "labels_mtime": 1786145836.9542272,
+     "labels_size": 288,
+     "labels_sha256": "b9d3daf56ea9b10583c55943989657cc00f5289265581da705c05935a8fa193e"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062526-bla37-280um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 44946,
+     "npz_mtime": 1787227108.5250175,
+     "labels_mtime": 1786040964.7826965,
+     "labels_size": 282,
+     "labels_sha256": "437ea56a0b4ca5177c834c085d0f964b2da89694b81c7829223426107e68041e"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062626-bla36-807um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 49442,
+     "npz_mtime": 1787227110.5126681,
+     "labels_mtime": 1786148979.116616,
+     "labels_size": 276,
+     "labels_sha256": "dd0ed0101bc4475db9a8d9900e3a0411f26fafa7197d72759ce591bbcd16bd5e"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062626-bla37-200um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 55034,
+     "npz_mtime": 1787227112.9754963,
+     "labels_mtime": 1786052433.8973792,
+     "labels_size": 290,
+     "labels_sha256": "664c77e268086a760874bec2bba9827eab74f17357c4e9581286d1e2946a44bc"
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-070226-bla36-812um-25z-000-concatenated",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 61850,
+     "npz_mtime": 1787227115.219231,
+     "labels_mtime": 1785820692.5076213,
+     "labels_size": 309,
+     "labels_sha256": "55defdcf3de4e81211bc68206367e260417f712d547da46a1fc0af395d91423c"
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-070226-bla37-262um-37z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 58826,
+     "npz_mtime": 1787227117.4759758,
+     "labels_mtime": 1785182439.2235284,
+     "labels_size": 303,
+     "labels_sha256": "d369933aeb6a56e0dafb62bdf90f7f453fb0b3f62a0aa51bcafc2c9f3c6da31d"
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-121025-bla16-293um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 177042,
+     "npz_mtime": 1787720892.515204,
+     "labels_mtime": 1787720892.527491,
+     "labels_size": 5128,
+     "labels_sha256": "c2bc0e53aaab0b884873f7e708c08fd83139b0d45dd28d7c34c9a812a1c5b9d3",
+     "json_sha256": "4ba71ec7ea5bc5095eb0326362ac35d2a77010bb2fff93f8baeecdb2b13e4261"
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-121025-bla8-582um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 145682,
+     "npz_mtime": 1787587345.458295,
+     "labels_mtime": 1787587345.459306,
+     "labels_size": 4232,
+     "labels_sha256": "7e8a7cfd0a0ab79104111c8373884757aaff2137323000c3f34c025e30a69bb8",
+     "json_sha256": "7cd5473a3dd2fbfa4fd2f71dee8530016d0ec86be6735d38684caa5e37b5a5a7"
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-121125-bla12-700um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 174242,
+     "npz_mtime": 1787476464.9166987,
+     "labels_mtime": 1787476464.9166987,
+     "labels_size": 5048,
+     "labels_sha256": "443f3bb337ddc75931ea489b9517888c330f01630b4f2230ad5488f7a772aeff",
+     "json_sha256": "cf4b93ab9443a52b1865dba4c7773790fda779eeece9f799fde1f24e67e3d753"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla3-655um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 114602,
+     "npz_mtime": 1787716036.4616199,
+     "labels_mtime": 1787716036.481433,
+     "labels_size": 3344,
+     "labels_sha256": "c8c2de2cb44d551d3fcde8f5e507ceebfbde66dd0bc58df9f16d1b2f76a30a8e",
+     "json_sha256": "b0c959ef7e970d86335fd9d69554d52328531789a539ce45f906db4494525f7a"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla4-741um-28z-000-ReMC",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 120762,
+     "npz_mtime": 1787722470.0784469,
+     "labels_mtime": 1787722470.0906367,
+     "labels_size": 3520,
+     "labels_sha256": "1aa437e73dd9a7888b33823ae639e80334d6778b0c2a0d35e689e6d12cef5e43",
+     "json_sha256": "910f19aba7bb2e22570ccf0997c8d171de47d7cd7c5b06a960104fa1d7a4c3ce"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla5-546um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 84082,
+     "npz_mtime": 1787561394.0816278,
+     "labels_mtime": 1787561394.0980904,
+     "labels_size": 2472,
+     "labels_sha256": "95ce9daf193542d36388f3f8f9e4d9deedc63d4f1256721d9faf25126d5a20aa",
+     "json_sha256": "dac04fccefabff1ddbe739a768b09bc2d3cce238f9eefd566067ea9634c65d33"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla6-688um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 194122,
+     "npz_mtime": 1787662164.3824084,
+     "labels_mtime": 1787662164.3824084,
+     "labels_size": 5616,
+     "labels_sha256": "ed985990b54614e1ffc7f2d73a157cb3037393d08bec3f40cbaea9f9d70df824",
+     "json_sha256": "2dccb5eadbe7520b66f4c9a3800118d6039f6cf8db7f5a76d4cefd1659cbd49d"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04042025-bla4-712um-28z-000-ReMC",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 125522,
+     "npz_mtime": 1787717577.3799508,
+     "labels_mtime": 1787717577.3814697,
+     "labels_size": 3656,
+     "labels_sha256": "58a0b6ab654db4efb780780906cc5fb4698c9af0ec036147591b908f5a431e5d",
+     "json_sha256": "f6e790b50bb56f4cc3e61369db74bfdbc58478b474c168c98ba1fc108b9bea23"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04042025-bla6-686um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 196362,
+     "npz_mtime": 1787724048.2723217,
+     "labels_mtime": 1787724048.273851,
+     "labels_size": 5680,
+     "labels_sha256": "95d7c75af56907fe30b326b76e6c4d62001db93fa58d6d89d7fdbc45c6d5c5b7",
+     "json_sha256": "ed6cb9333ee53c6f3147a390a60162cfb34bd413885abf7d32601511c3aedf03"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04072025-bla3-679um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 95282,
+     "npz_mtime": 1787574200.4777768,
+     "labels_mtime": 1787574200.4777768,
+     "labels_size": 2792,
+     "labels_sha256": "bc0b5e87738a354833b8add9ce2a6b3113a77d024e9a1c2d9ed7985d90ce8357",
+     "json_sha256": "97d768ce579e1917785367b45f18e61c55e486207ae1e50274a656cc591edf1c"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04072025-bla5-543um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 92482,
+     "npz_mtime": 1787666490.3094707,
+     "labels_mtime": 1787666490.3110347,
+     "labels_size": 2712,
+     "labels_sha256": "5f967339838bb7d3d46787845ebd654a8ebecab38d7e79b48368b1469e49407e",
+     "json_sha256": "103652221cebd7c9591a6068f201ea52842592981386ebbb08060889ec6ef5c4"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04082025-bla3-694um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 84642,
+     "npz_mtime": 1787499905.2361538,
+     "labels_mtime": 1787499905.23767,
+     "labels_size": 2488,
+     "labels_sha256": "6c669e8d8635778550b6a0a798cfaaef30d008f39e141c5f4ddde735ffb0d0e9",
+     "json_sha256": "68ef4109853ea68dce291efb49c5fa34718ff0d86a467ba0ca113f3c09067e27"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04082025-bla4-711um-28z-000-ReMC",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 111802,
+     "npz_mtime": 1787719288.9510791,
+     "labels_mtime": 1787719288.9664924,
+     "labels_size": 3264,
+     "labels_sha256": "0c03ed1b4b7637926343a4eece79eb32321098d0669d415d20f769565849e9fe",
+     "json_sha256": "d1462b9219b1df1814f6972ca3b7dba06ae8ee103ed38599797a449495f5c39e"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04082025-bla5-552um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 80162,
+     "npz_mtime": 1787624000.2746398,
+     "labels_mtime": 1787624000.2746398,
+     "labels_size": 2360,
+     "labels_sha256": "39cfe3bf86d4beba94e079e15913a336246d106f18331d8f25dee87077e26412",
+     "json_sha256": "bdae723381b885e378c84724748dd4377a1c51692d2969ebf7f15ad5f8a045fa"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-080626-bla36-637um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 50666,
+     "npz_mtime": 1787269073.8388462
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-080926-bla36-630um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 46810,
+     "npz_mtime": 1787227155.721098
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-081126-bla36-665um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 43474,
+     "npz_mtime": 1787227158.0249856
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09232025-bla13-640um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 120762,
+     "npz_mtime": 1787575633.0469816,
+     "labels_mtime": 1787575633.0469816,
+     "labels_size": 3520,
+     "labels_sha256": "4f809e330f5b80761d9648dd97ea8a47a30c2cc698f2ce858de4d708492bc977",
+     "json_sha256": "a8a21b20f3a8f4e2c3fb24608d0568ff2de77a93c72e17812b44946b7b48979b"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09232025-bla14-570um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 45162,
+     "npz_mtime": 1787601895.2228303,
+     "labels_mtime": 1787601895.248816,
+     "labels_size": 1360,
+     "labels_sha256": "c41d22eba2139fa7d67a6d3c2300348a4e514a1616880ee8bec8e51ec69109ae",
+     "json_sha256": "a17716ca54c7a1e8327b552c711858aca0ddf7b79e9255a60b5bbac31672929c"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09232025-bla15-229um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 121602,
+     "npz_mtime": 1787548206.1685076,
+     "labels_mtime": 1787548206.174797,
+     "labels_size": 3544,
+     "labels_sha256": "ca3ef26d219a08d09cd3c539789ce74565453cddda00130ffb92246ec8cb4670",
+     "json_sha256": "4e447a7de5055bd988545b963ec46683317076bd83fde8c07421fa84269abdf7"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09262025-bla13-629um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 124122,
+     "npz_mtime": 1787594801.176819,
+     "labels_mtime": 1787594801.178354,
+     "labels_size": 3616,
+     "labels_sha256": "7a90850860d0de352a30831c1764bcebcd84a5a3fc26625de5435e3b23edef8d",
+     "json_sha256": "bdf101c32cf4e99abf73d6d4a724a234ad02c72533ec9e9244e2b9ccf9c779f8"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09262025-bla14-561um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 52162,
+     "npz_mtime": 1787683432.5100508,
+     "labels_mtime": 1787683432.5100508,
+     "labels_size": 1560,
+     "labels_sha256": "406a6b21da66a6c36b42bba030914a25d9627a5ed101c0ebbd1b22f05a4414cc",
+     "json_sha256": "f7e4a2951ab8820ca4210cfa7a26bf62a2de27d080382068d2300007a86bb220"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09262025-bla15-234um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 147082,
+     "npz_mtime": 1787565429.2020934,
+     "labels_mtime": 1787565429.2020934,
+     "labels_size": 4272,
+     "labels_sha256": "7d5bd9ec5dbce74ee8514f4422429a6f7d7258353a6399dde00673a775a2686e",
+     "json_sha256": "28e102a26f6cbf801d27d24e9f5c802aef001f3ae328e5dfe988b8e04c22b876"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-02062025-bla5-515um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 72042,
+     "npz_mtime": 1787487484.048942,
+     "labels_mtime": 1787487484.048942,
+     "labels_size": 2128,
+     "labels_sha256": "5e29d248c90d3a036607db501d84abe64f390176d062e6471cc9c7406ed948e5",
+     "json_sha256": "12d79481e8f8d94190b71d27dc8c739549cb672deef52446ed81b803a1298e89"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-02072025-bla5-596um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 72602,
+     "npz_mtime": 1787465842.0471232,
+     "labels_mtime": 1787465842.047631,
+     "labels_size": 2144,
+     "labels_sha256": "38bb342287b8e699d8cf9c48af09247b48a3b4a5a1acf823203491734cd8d44f",
+     "json_sha256": "0f5b8fe7c584e8ceac9acaa7505b7cc42048701a79d912cfe0493ea35b935918"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-02072025-bla6-745um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 62242,
+     "npz_mtime": 1787726996.320476,
+     "labels_mtime": 1787726996.3358033,
+     "labels_size": 1848,
+     "labels_sha256": "3a5fd5075e64c4bd8ef57a0eb5ad5d462787cfc16e04ed7dd1faa1456e260eff",
+     "json_sha256": "782f8d3609b93bdcba44d04717a203459dbe95e6a9fdd2a521609dfe06636a13"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-070326-bla36-790um-25-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 68610,
+     "npz_mtime": 1787227162.2727468
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-070326-bla37-255um-37-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 70922,
+     "npz_mtime": 1787227120.110744,
+     "labels_mtime": 1786153482.3224273,
+     "labels_size": 334,
+     "labels_sha256": "71894c3bacfbd0ee9f0e7fda1b1c06482510f6d607e355963db90040cbd6a943"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07152025-bla13-675um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 67002,
+     "npz_mtime": 1787657815.8283832,
+     "labels_mtime": 1787657815.8283832,
+     "labels_size": 1984,
+     "labels_sha256": "6aa7619762395c9c5025f455f8d55574bf2d5b2b69e106dfcdb169274888f98b",
+     "json_sha256": "256f8e7e60f93a375313f826d9cdc1138ac86520fe042aa3ac1138ade3e7894e"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07152025-bla14-818um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 43482,
+     "npz_mtime": 1787604669.8359976,
+     "labels_mtime": 1787604669.8359976,
+     "labels_size": 1312,
+     "labels_sha256": "8b4fd805f5a3517a223ea66ef8e3f0f1954918d97db855fcd6e1ca3226e94313",
+     "json_sha256": "bb060e737a0067561c4bfddb4126d72030fff04b4badf73834782e79ec9ce878"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07152025-bla15-228um-38z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 131962,
+     "npz_mtime": 1787581849.1768517,
+     "labels_mtime": 1787581849.178375,
+     "labels_size": 3840,
+     "labels_sha256": "1510f2c8e32680db094ac6e228ae47a90a389736945eca39527f4a213578b040",
+     "json_sha256": "c4120157ed0708553104459574c9f3d08685b2c426fbb1ad3e6f8166cbed850f"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07162025-bla14-837um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 48522,
+     "npz_mtime": 1787546635.489216,
+     "labels_mtime": 1787546635.5044866,
+     "labels_size": 1456,
+     "labels_sha256": "1ba1cb63650269353d4d66ad248a9740a4f43ae67917d577b5dadf49655ede08",
+     "json_sha256": "a10dab0e63aefc5530ce5d39d47a3d7849d09a25fa75e67f739fa250bd0306d4"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07162025-bla15-246um-38z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 97522,
+     "npz_mtime": 1787492743.6530683,
+     "labels_mtime": 1787492743.6653638,
+     "labels_size": 2856,
+     "labels_sha256": "d7a647f2355d2622a5b055d4ecb807b6e06492afc3b87bc4a5fd386c94690db7",
+     "json_sha256": "0866d55f17a23c4852d1944b51534c8d372373b148a7205f11b9b42df8a60c91"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-121125-bla16-233um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 102562,
+     "npz_mtime": 1787723776.0261803,
+     "labels_mtime": 1787723776.0414836,
+     "labels_size": 3000,
+     "labels_sha256": "a52c9874304c7302f820320ea7213106f33cbfae533ad19652b6437eefe1d906",
+     "json_sha256": "d34deaf4067eecbf14cbf148740d919d8e6dcb17e34f5359022874e52990d51c"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-121125-bla8-652um-25z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 114322,
+     "npz_mtime": 1787609338.920824,
+     "labels_mtime": 1787609338.9342146,
+     "labels_size": 3336,
+     "labels_sha256": "5df25a9cfa31a37e67663fd9b9001cae6fe661ab3ea2e224bd50ab9a6a0e8a1c",
+     "json_sha256": "529068690f932c76e8f6127a9c96ab79e9910ec40e4d0b4dddd513770fea61b0"
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-121225-bla12-652um-23z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 46282,
+     "npz_mtime": 1787227121.8549144,
+     "labels_mtime": 1772855684.9281795,
+     "labels_size": 1392,
+     "labels_sha256": "bf366b939005098bfbfce6eaf195487002ace4c10c1ea2585f1b2d301f225028"
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-06072025-bla13-635um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 112082,
+     "npz_mtime": 1787622356.417399,
+     "labels_mtime": 1787622356.417399,
+     "labels_size": 3272,
+     "labels_sha256": "0e9e7621d6b8d390959bce405fc1cbc8fe703664574e3d085c52a3aada6321c7",
+     "json_sha256": "80c7b86b2573bc79f8eab1bd9101e75433397b7a7047ccfc9e25a544b2ec7c43"
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-06072025-bla14-795um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 33402,
+     "npz_mtime": 1787541979.4891632,
+     "labels_mtime": 1787541979.5025995,
+     "labels_size": 1024,
+     "labels_sha256": "9f045321aa0a20a017f9c05ea84b67e17e0b6471268230cec7eb55725907461a",
+     "json_sha256": "468cb0fd16898a59c135cbe002922f436c010524fb8afc2aa9bb1126f2a31030"
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-06072025-bla15-199um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 259362,
+     "npz_mtime": 1787535926.601239,
+     "labels_mtime": 1787535926.6022468,
+     "labels_size": 7480,
+     "labels_sha256": "03327c5f8cab3b242a86d8171666bbe5cce6b16b461f923a945f715778f4a3d2",
+     "json_sha256": "11d8aba10b30720fbd929d99815ab2310aa83a14bf869485194ac816b8b02fa5"
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-060825-bla13-588um-27z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 186562,
+     "npz_mtime": 1787498094.8026884,
+     "labels_mtime": 1787498094.8041964,
+     "labels_size": 5400,
+     "labels_sha256": "ed51bed7fe1d09747a700e98fbd8305d890567d40b608aa2905f00435f64154f",
+     "json_sha256": "8a19f65c02ac1225d9f0ff306f00a82d1cf5f69cd6fc954ffcaa29198e6da172"
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-060825-bla14-775um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 52722,
+     "npz_mtime": 1787523488.5518367,
+     "labels_mtime": 1787523488.5518367,
+     "labels_size": 1576,
+     "labels_sha256": "5b199e1c7c997dcc33f4b130e28bad8e102231d9d6994ebfba6e54fa99c10181",
+     "json_sha256": "cc796eab18f226785a33917892af4441d394849d3c9d6968f32ed441d78476ec"
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-060825-bla15-175um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 314242,
+     "npz_mtime": 1787678126.3538058,
+     "labels_mtime": 1787678126.3538058,
+     "labels_size": 9048,
+     "labels_sha256": "fd42adfd3e4c1690a19213088b98a1e835cedc88281d54745a1a64a5c3af16ea",
+     "json_sha256": "83b5856d51eb260584fb697989e21f855e8a94ef58f7c7962b65b6d55bd795fd"
+    }
+   ],
+   "n_labeled": 170,
+   "n_agent": 79,
+   "n_bootstrap": 91,
+   "n_pending": 12,
+   "joblib": {
+    "path": "C:\\code\\CNMF_E_LEGACY_BIANE_CLAUDE\\agent\\model\\BLA\\classifier.joblib",
+    "md5": "be42080f823921b1433ac45fd9099916",
+    "size": 994267,
+    "mtime": 1787765183.8359885
+   }
+  },
+  "vCA1": {
+   "sessions": [
+    {
+     "rel": "2tones/AVG5x-TSeries-100925-pnb88-153um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 6910,
+     "npz_mtime": 1774981691.0111787,
+     "labels_mtime": 1775507480.6212795,
+     "labels_size": 192,
+     "labels_sha256": "e58a17d37b8fc46bf2440751152ae118c732af949c505a38420a3c3d04efe801"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101025-pnb88-120um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 6918,
+     "npz_mtime": 1774981703.073572,
+     "labels_mtime": 1775512409.4703715,
+     "labels_size": 191,
+     "labels_sha256": "5226d986fade263469c72ea43333fe24b3ab9c302dba63aaa38812166c331b6c"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101325-pnb88-121um-22z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 6590,
+     "npz_mtime": 1774981713.8746574,
+     "labels_mtime": 1775518479.4129183,
+     "labels_size": 194,
+     "labels_sha256": "4380e1bf7c098b2f24a47eb47263c093bba3414f13aa9a356bd9c48a36ceea53"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101425-pnb88-115um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5534,
+     "npz_mtime": 1774981724.7058887,
+     "labels_mtime": 1775586031.5705535,
+     "labels_size": 191,
+     "labels_sha256": "a8d814fe0e489a1969a1f0e6ded7f66e6f1e9d020e74bc69b52818458f8ac884"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101525-pnb88-122um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5766,
+     "npz_mtime": 1775601249.5856469,
+     "labels_mtime": 1781307644.659657,
+     "labels_size": 184,
+     "labels_sha256": "14b59518e854cd8d1241be087f906a16f7bc29273c2c28b82dc86155b37d79af"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101625-pnb88-109um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5798,
+     "npz_mtime": 1775605203.470554,
+     "labels_mtime": 1781546244.2295904,
+     "labels_size": 184,
+     "labels_sha256": "f8c8f3b6203b2ef8fa06638b7c119bc3fb1db9747af86371d3ab0f1edf44cfe9"
+    },
+    {
+     "rel": "2tones/AVG5x-TSeries-101725-pnb88-174um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 6982,
+     "npz_mtime": 1775609749.6490803,
+     "labels_mtime": 1781549602.3703382,
+     "labels_size": 185,
+     "labels_sha256": "0e0cb17ee716d00c30ed2741e1dc5ff5b0a96feb81896f55969ecdede8c276cc"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022326-pnb88-145um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5086,
+     "npz_mtime": 1775612931.24007,
+     "labels_mtime": 1775769013.2840707,
+     "labels_size": 186,
+     "labels_sha256": "f9626715f5a961755933e61e2d48a95612a080763809460c3a0360381d757f4a"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022426-pnb88-175um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5814,
+     "npz_mtime": 1775617781.5908701,
+     "labels_mtime": 1775774514.0480864,
+     "labels_size": 188,
+     "labels_sha256": "784eb1ee7eb5e089620c84f40f6de5d8b1ae7ee954698aad68677cd94386d631"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022726-pnb88-225um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5702,
+     "npz_mtime": 1775623598.3316016,
+     "labels_mtime": 1775777318.984089,
+     "labels_size": 186,
+     "labels_sha256": "abe5297cf9445efdec5b6cc9bddee2ed440b69eeb1b6c388d46fc2c45db8d1bd"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022826-pnb88-130um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 4126,
+     "npz_mtime": 1775629482.059213,
+     "labels_mtime": 1781551609.156282,
+     "labels_size": 181,
+     "labels_sha256": "6e00696befa8f2274cf251e83a5e812a62165fec5425078bdd462e964ed7ba4b"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-030126-pnb88-183um-35z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 5878,
+     "npz_mtime": 1775635502.1567204
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-030226-pnb88-173um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 6390,
+     "npz_mtime": 1775641549.3453157,
+     "labels_mtime": 1781564111.3224118,
+     "labels_size": 183,
+     "labels_sha256": "e66d89ae76beea6ca5bb8aba28e2eaccdca04898f0cf7c4f930f9208d83f2960"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-030326-pnb88-139um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5526,
+     "npz_mtime": 1775647349.9176018,
+     "labels_mtime": 1781900638.7335827,
+     "labels_size": 183,
+     "labels_sha256": "d00dc50d811df63836de182994503015874780c7610901077533141ef12cacf2"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-030526-pnb88-122um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 4326,
+     "npz_mtime": 1775660524.9469275,
+     "labels_mtime": 1781644530.1244576,
+     "labels_size": 183,
+     "labels_sha256": "7e561a54dd95acb0cdc42bd593e83de1d57946aab8283b5d521cf3320e9528f8"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031226-pnb88-124um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 5206,
+     "npz_mtime": 1775668022.692178,
+     "labels_mtime": 1781650026.8645618,
+     "labels_size": 185,
+     "labels_sha256": "30c36791443f242ee8e89cbab9dbcca2c2cdbb52b37d692bbf87ebde38456837"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031326-pnb88-143um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 4302,
+     "npz_mtime": 1775675275.9608827,
+     "labels_mtime": 1781653357.025292,
+     "labels_size": 185,
+     "labels_sha256": "ee710e36adf9974d9f5e3c4bd36dc8dcaf62655ec87a27148c90b0acd91577e1"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031726-pnb88-139um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 3998,
+     "npz_mtime": 1775688456.5289562,
+     "labels_mtime": 1781632437.3472645,
+     "labels_size": 181,
+     "labels_sha256": "b0fdcdbfaf19c161795c3cd87bea7c5b81cfa4f65c94a5fbfd8ef1644a3e5adc"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031826-pnb88-145um-36z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 4822,
+     "npz_mtime": 1775698023.1889806,
+     "labels_mtime": 1781890596.482787,
+     "labels_size": 186,
+     "labels_sha256": "a8da0f3515ab8c54f031a5d62ebecfa46a6e6e4d6a923f2d4c8e18dbf64dc0ea"
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07072026-pnb98-450um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 12190,
+     "npz_mtime": 1787040439.5215003
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07082026-pnb98-454um-3z-real-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 11150,
+     "npz_mtime": 1787040459.609059
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071526-pnb98-471um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 14790,
+     "npz_mtime": 1787040478.9195704
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071626-pnb98-442um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 14894,
+     "npz_mtime": 1787040503.5633562
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-071726-pnb98-535um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 17910,
+     "npz_mtime": 1787040527.940209
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07202026-pnb98-460um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 16558,
+     "npz_mtime": 1787040557.1706429
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07222026-pnb98-532um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 18326,
+     "npz_mtime": 1787040584.0022433
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-072326-pnb98-419um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 12294,
+     "npz_mtime": 1787040613.9783921
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-072426-pnb98-551um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 18222,
+     "npz_mtime": 1787040636.1051047
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07292026-pnb98-470um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 13022,
+     "npz_mtime": 1787040665.4877245
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07302026-pnb98-400um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 13334,
+     "npz_mtime": 1787040687.6749377
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-07312026-pnb98-335um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 12606,
+     "npz_mtime": 1787040710.668136
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05172022-100-300um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 31846,
+     "npz_mtime": 1787364704.47231,
+     "labels_mtime": 1787364704.473826,
+     "labels_size": 2488,
+     "labels_sha256": "5f3835db74f595b7ff71e611f9423f60c808a3543bd2c949dacfefc5f5ebee3f",
+     "json_sha256": "682f03301518788225e9dd189aff32d8ee4eaa0483373b42ec6697a9de351087"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05182022-100-316um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 37046,
+     "npz_mtime": 1787339967.7406733,
+     "labels_mtime": 1787339967.7416856,
+     "labels_size": 2888,
+     "labels_sha256": "981ea81f3e6506e79d10d06848b5aa0c03c3a6e900183b3abe7c3e5eab46fac6",
+     "json_sha256": "16e1526e9a2e737beeab9748d62ee2885db562ccb8dcf105e5fe43e68f0ebeee"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05182022-94-473um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 56702,
+     "npz_mtime": 1787530758.6045039,
+     "labels_mtime": 1787530758.6045039,
+     "labels_size": 4400,
+     "labels_sha256": "5353e3b2a657630ce45ba604a86083699feb6791d11be8b5bad63abdab11db0d",
+     "json_sha256": "72580decec1335d3fd58896994e6bc478052aa8fb397ce8ca3677cedd0f70dd2"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05182022-96-215um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 50462,
+     "npz_mtime": 1787381370.3096218,
+     "labels_mtime": 1787381370.3111458,
+     "labels_size": 3920,
+     "labels_sha256": "7aabcd5fff5ddedb883d9ec26b3c42fedd2a27cafdb5f59e3181d6b205dc41dc",
+     "json_sha256": "af496a20b4e7510c14bb7395637bcfd001cc58b4ab2167285c8774beb3ac9b18"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05212022-100-255um-45z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 44326,
+     "npz_mtime": 1787400958.9491744,
+     "labels_mtime": 1787400958.9491744,
+     "labels_size": 3448,
+     "labels_sha256": "2a73b0d45ff22ab7ca0f506a42ab603599e7994b371af47afaa047031eefe813",
+     "json_sha256": "f67182464d1892ebf60ca1ff3ca2775562348e522a5485da79ab8ddc0814e4f6"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05212022-96-267um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 61382,
+     "npz_mtime": 1787367404.555493,
+     "labels_mtime": 1787367404.555493,
+     "labels_size": 4760,
+     "labels_sha256": "680364c8d26d64b5f13bdd85afac13ba95a8a5005245a98494fe521d7bbb4a26",
+     "json_sha256": "a6a95a53615f23590790703be7903d54511c8090edbf37c711efea41af6f8ddf"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05222022-100-um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 29974,
+     "npz_mtime": 1787465474.8649938,
+     "labels_mtime": 1787465474.8649938,
+     "labels_size": 2344,
+     "labels_sha256": "8ee16f88e7ed4707663ba252893d0b314d7a3510fe24762805d13ed536dc30e7",
+     "json_sha256": "7d46addb3382d2f596d6b1fbb1300b50e86a5fefce346212af26c37d392a920e"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05222022-94-476um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 49942,
+     "npz_mtime": 1787535207.4699767,
+     "labels_mtime": 1787535207.4699767,
+     "labels_size": 3880,
+     "labels_sha256": "291a3d31eecb393e94d5e58df065d936b236398743da6353d952bb6a67f94057",
+     "json_sha256": "f9d71a609aa6208445e29419e62481e08ca4aa10d2fe529da488feefd7a2b084"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05222022-96-223um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 68974,
+     "npz_mtime": 1787391913.874724,
+     "labels_mtime": 1787391913.874724,
+     "labels_size": 5344,
+     "labels_sha256": "79dda0502f989763941c57f474ef5d508e4a06c3b165ca8d533568e049d6e3de",
+     "json_sha256": "35cfbdc5c543c038f39f3bb1e2de62d5b53705518664031b0cc2330dad93a3d5"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05262022-100-317um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 32470,
+     "npz_mtime": 1787447792.707288,
+     "labels_mtime": 1787447792.7088149,
+     "labels_size": 2536,
+     "labels_sha256": "e72f7c4097a06358b069cbefdea1f92913f53cbf5eaf4ad81cae62915ddf9819",
+     "json_sha256": "deb3064f04611dcfe0469b0d2984f570fea1381b1ad93645a55036fcf3b174d7"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05262022-94-485um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 35902,
+     "npz_mtime": 1787515044.2277083,
+     "labels_mtime": 1787515044.2277083,
+     "labels_size": 2800,
+     "labels_sha256": "d290cbe5ba3b7e6b7c49796b98d3045924ed814744aef6a19dced5f84262621e",
+     "json_sha256": "81fab8c6d7ffcefc7cb0714a074cf29450f3da83970b8e4ad5e5a6b88de9a562"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05262022-96-um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 68142,
+     "npz_mtime": 1787410215.085896,
+     "labels_mtime": 1787410215.085896,
+     "labels_size": 5280,
+     "labels_sha256": "7652225c4c78eb078893f20823b1a42286317912e95c7a8c6ed8292e7b4e12c5",
+     "json_sha256": "faf221279dbe3dcb38edbc093f6f8b6e58ef382d0b7e18c5a9ca8b917c7e78ba"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05272022-96-245um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 46406,
+     "npz_mtime": 1787523818.2494068,
+     "labels_mtime": 1787523818.249915,
+     "labels_size": 3608,
+     "labels_sha256": "222f46586205ff5102fc709017ad4f7f5a2854bbb59686b811088570a5c0f26f",
+     "json_sha256": "e0dc3b147ce06d14d4b8eb2acecfd351e04db085ee826bb26a2f32a729fb1480"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06132022-98-447um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 43598,
+     "npz_mtime": 1787361406.2749667,
+     "labels_mtime": 1787361406.2764976,
+     "labels_size": 3392,
+     "labels_sha256": "fdb040f6fd203f896d2cef07bead38113083545acba5b445a8654188667f8a93",
+     "json_sha256": "c26e756232aa521cfebbcdd7488c6bd611201eb00aea262cf0add71a3e295fe0"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06132022-99-295um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 36318,
+     "npz_mtime": 1787415432.4369812,
+     "labels_mtime": 1787415432.4369812,
+     "labels_size": 2832,
+     "labels_sha256": "e2679ed4a6f8bbb37a434c244227e1b35fae0a21e27515aae41298ee58ad8262",
+     "json_sha256": "55f1df8f6d3cd41a6fa37fcc70dabe551a15595f1d9731ed36219897691192c4"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06142022-98-444um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 34134,
+     "npz_mtime": 1787431880.576979,
+     "labels_mtime": 1787431880.576979,
+     "labels_size": 2664,
+     "labels_sha256": "15cf07ecd2971a12f5e7f825425faaefda2bc5dd80a79ad249b187fcb31a4ad2",
+     "json_sha256": "1128c778233c817558e3b6a509acfb25f0d55222e52a25ffa8c6dfeb73bc3a3a"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06142022-99-305um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 53062,
+     "npz_mtime": 1787407077.2512183,
+     "labels_mtime": 1787407077.2512183,
+     "labels_size": 4120,
+     "labels_sha256": "4f11277cf5d928e72d88ef6366fb17908842535e1e5be6dfb62331efd1384f1d",
+     "json_sha256": "eb676a09b18f0731cb66cc90d1587c8dfc08ef469684e70a82db55c61356e372"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06182022-98-445um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 50878,
+     "npz_mtime": 1787418912.833822,
+     "labels_mtime": 1787418912.833822,
+     "labels_size": 3952,
+     "labels_sha256": "1899b595d3681ef8d0e738e827ac70dfa0e17a49af15e870bcc7a354890ab33b",
+     "json_sha256": "36f90748defc6e6a8e6dd66634a0d6ff5008ccbccc0731a2736b4b41b2c1ffc8"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06182022-99-299um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 42350,
+     "npz_mtime": 1787358703.7359784,
+     "labels_mtime": 1787358703.7359784,
+     "labels_size": 3296,
+     "labels_sha256": "cb54b1ef6ef221ad73f61458f3c6acaadd79b5646bcc3de13365bac99b39739e",
+     "json_sha256": "f42b6ee434d2026586f1f6d4fb9999d2a052f7d78c0b5a82c59ec4e0e33f6658"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06222022-98-451um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 48694,
+     "npz_mtime": 1787355546.5892692,
+     "labels_mtime": 1787355546.590789,
+     "labels_size": 3784,
+     "labels_sha256": "c7d4ca14de8212835275fe41cdbb5748b20e4f41edd60896b76f57f333bd9483",
+     "json_sha256": "dbf60cb72d3dc8e33dd7655dc752d87416c9442ec7008a08f133825a8bd73d81"
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06222022-99-303um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 64190,
+     "npz_mtime": 1787370678.9581141,
+     "labels_mtime": 1787370678.9586387,
+     "labels_size": 4976,
+     "labels_sha256": "9f9a1a1cb97f23d4295f9f000b95564b478f3ed3e9a98d340d77e5f686b52e80",
+     "json_sha256": "81928e4c0c34394b43482a7d17bfde9201901972722f6fcbc624317fcecc162a"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG2x-TSeries-052126-pnb98-408um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 14478,
+     "npz_mtime": 1785958575.8731449
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061126-pnb97-561um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 16350,
+     "npz_mtime": 1785956593.0733347,
+     "labels_mtime": 1786571088.5497012,
+     "labels_size": 278,
+     "labels_sha256": "3adfd03e574d2094c7340abde53febb33472f59ea34c843446dd973eb4517c1c"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061126-pnb98-340um-24z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 10630,
+     "npz_mtime": 1787040732.4110773
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061226-pnb97-679um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 14686,
+     "npz_mtime": 1785958487.5456417,
+     "labels_mtime": 1786487660.0953414,
+     "labels_size": 282,
+     "labels_sha256": "2b550cedf8230114982311e3a945117888a8e6286996ea1ce6cd4101c75983fd"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061226-pnb98-511um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 17806,
+     "npz_mtime": 1785958529.4648938
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061726-pnb97-558um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 13958,
+     "npz_mtime": 1787040751.2582834,
+     "labels_mtime": 1787091290.7029488,
+     "labels_size": 284,
+     "labels_sha256": "974a07cf840e96bec87125bb2e0e0b0533e61382355cd5a4f6271f131878227c"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061726-pnb98-341um-34z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 8966,
+     "npz_mtime": 1787040775.196677
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061826-pnb97-679um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 16038,
+     "npz_mtime": 1787040791.6024654,
+     "labels_mtime": 1787695676.267216,
+     "labels_size": 284,
+     "labels_sha256": "478d8a7808db45a1a60c950ab9798e05675b6a11646f853da03a27d1edf105bc"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061826-pnb98-506um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 14998,
+     "npz_mtime": 1787040818.3659704
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061926-pnb97-610um-24z-000",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 13126,
+     "npz_mtime": 1787040843.7105198,
+     "labels_mtime": 1787769037.6405475,
+     "labels_size": 281,
+     "labels_sha256": "fee7a4889fcb617a1ca0b7d480b778fc53313f0e356211cbeb34d05ddba1bf0f"
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-061926-pnb98-457um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 16246,
+     "npz_mtime": 1787040866.214882
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062226-pnb97-510um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 17806,
+     "npz_mtime": 1787040893.0802755
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062226-pnb98-349um-34z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 10214,
+     "npz_mtime": 1787040922.581786
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062426-pnb97-612um-24z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 19366,
+     "npz_mtime": 1787040940.7393804
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062426-pnb98-428um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 15934,
+     "npz_mtime": 1787040973.4239223
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062526-pnb97-580um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 18326,
+     "npz_mtime": 1787040999.9020941
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062526-pnb98-351um-34z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 11774,
+     "npz_mtime": 1787041030.5905907
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062626-pnb97-630um-24z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 13126,
+     "npz_mtime": 1787041051.0208797
+    },
+    {
+     "rel": "6odorDualDiffRew/AVG5x-TSeries-062626-pnb98-501um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 15310,
+     "npz_mtime": 1787041073.366497
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06222022-99-303um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 64190,
+     "npz_mtime": 1787373965.0661376,
+     "labels_mtime": 1787373965.0661376,
+     "labels_size": 4976,
+     "labels_sha256": "556406bf13d2e05a6e7c546c382557f715e5f09273c34b3ab8d0549ec4d56d6d",
+     "json_sha256": "66b0ae09030afd0bd7552796be5f38236a8f70ce6d74c2f8ced17357503b2244"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06272022-100-317um-38z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 50150,
+     "npz_mtime": 1787451372.6623619,
+     "labels_mtime": 1787451372.6623619,
+     "labels_size": 3896,
+     "labels_sha256": "b5b2ed869310ad99f70eb24d2ec98d3739fa9b074c9f9b1bc3a6e40a3792beb8",
+     "json_sha256": "de8540b2934bb938552c8cee21155ef833bc0fd6d0dbf7aff5d387695db0fde7"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06272022-94-440um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 44638,
+     "npz_mtime": 1787526100.4473517,
+     "labels_mtime": 1787526100.4488735,
+     "labels_size": 3472,
+     "labels_sha256": "12748fbaa46fef59d7fa5739b7787e56ed26b3e28f8eef7bdd072c46a3b8e20f",
+     "json_sha256": "e88cf004639bfdbde7445480f7be8a2cc647b8adfe733711f9cc488d46d1bda8"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06282022-100-297um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 49630,
+     "npz_mtime": 1787425475.3342993,
+     "labels_mtime": 1787425475.3342993,
+     "labels_size": 3856,
+     "labels_sha256": "a89d3dd556cb376648866587d07b52281809e42121f432eeedd0752538fd3139",
+     "json_sha256": "3398e51a7e351c737ea6dc415b0554799360b3d7d077f8cbadb9aceb3d542ef6"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06282022-94-452um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 40062,
+     "npz_mtime": 1787502476.3952599,
+     "labels_mtime": 1787502476.3963895,
+     "labels_size": 3120,
+     "labels_sha256": "fcc8913aa3875af561a4db2e98e3f95e5a8d7dd108807137b58892faa6a7e455",
+     "json_sha256": "442f00e87f4c60995a06280b4af106ff5da22f5ee545c28eaecef30d066de54e"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06292022-94-448um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 38710,
+     "npz_mtime": 1787486724.903414,
+     "labels_mtime": 1787486724.903414,
+     "labels_size": 3016,
+     "labels_sha256": "7507ef1581ccec2b8159b1bbf8cf8e6ceada5de57ca0b5b511383f2f21c1cb5c",
+     "json_sha256": "a09979bc00c77f2395d1e2499214eef9eb5861975cfb95e074ad3aaee325f7b8"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06302022-94-456um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 44118,
+     "npz_mtime": 1787493862.3400588,
+     "labels_mtime": 1787493862.3415842,
+     "labels_size": 3432,
+     "labels_sha256": "3b0fcf1013fdf1307fbbb44e3ffd5e0e71fbac3ae14f3f7501a65e4e9fb55e2c",
+     "json_sha256": "f85bcf5ab354780b49171597b85131eb409793a3d782838639f36c6c1f7f13a8"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07012022-94-600um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 43494,
+     "npz_mtime": 1787497975.612997,
+     "labels_mtime": 1787497975.612997,
+     "labels_size": 3384,
+     "labels_sha256": "40b08c352690a52b111c40a0013907240fd54503963008a7e0df013f60f1b6da",
+     "json_sha256": "6afc4af27d75b148a74e48a9861e699148fff48b50de213922eb42d37f22902c"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07012022-96-172um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 18638,
+     "npz_mtime": 1787467423.6703112,
+     "labels_mtime": 1787467423.6703112,
+     "labels_size": 1472,
+     "labels_sha256": "b1d61b1baf612e0305d18a01661cb383484a95e9fa07d3caa61e52bed9499597",
+     "json_sha256": "5b5fe02f7e197f544071ecec15a051780a67b0824bcd783764bef5e7ffd21a4e"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07022022-100-299um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 52542,
+     "npz_mtime": 1787397743.955709,
+     "labels_mtime": 1787397743.9572337,
+     "labels_size": 4080,
+     "labels_sha256": "64c953e6b6d7ab3ddab537fca1c260c927607da27cdd7b8134bca0ad833e758a",
+     "json_sha256": "f30d201848f4efe7d16327de01761a35965b8f1aa9f9f70ab4a879b91c99b103"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07022022-94-440um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 42974,
+     "npz_mtime": 1787518656.5963416,
+     "labels_mtime": 1787518656.5963416,
+     "labels_size": 3344,
+     "labels_sha256": "485a87bd0c35f09781d966a08c5ca9da09b6a178ca59b97b01f22bc5dd6be7f8",
+     "json_sha256": "8423c3a930e955bbe0c6d4bc1a3ecab7c1b3bc20e26218c938dcb25cb3a23591"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07102022-104-350um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 44118,
+     "npz_mtime": 1787454272.5608418,
+     "labels_mtime": 1787454272.5608418,
+     "labels_size": 3432,
+     "labels_sha256": "a0bc8b8700eb525b11d73b9589db6001e07a58150af6a04e8657d62b0709d77a",
+     "json_sha256": "2535e1040cbbc75631eddcec225fbead5f31628a48f61fe8c112494d6b3c3bb6"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07102022-98-369um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 42038,
+     "npz_mtime": 1787362897.2156105,
+     "labels_mtime": 1787362897.2156105,
+     "labels_size": 3272,
+     "labels_sha256": "746922bf01d19980f85d68e56761cf43214c805d3c5ec1cf739ee7f302a2694d",
+     "json_sha256": "69320ffe90bfbd73311f173d30e80c604121628ab7ead7eee0ee04d6be2afda4"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07102022-99-300um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 29766,
+     "npz_mtime": 1787437472.1854198,
+     "labels_mtime": 1787437472.1854198,
+     "labels_size": 2328,
+     "labels_sha256": "c72f49f7957c4e69abf48c00b66d84792b536a77f638372987dd48273cf10f16",
+     "json_sha256": "6143ab98aa0d9d2ec3393013bdc6dc5b1878ce491957e9632a557481b3e682a1"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07142022-104-420um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 73238,
+     "npz_mtime": 1787404191.8753126,
+     "labels_mtime": 1787404191.8753126,
+     "labels_size": 5672,
+     "labels_sha256": "928b7e2ed6d05640309423ab20e694b9f58f2f9df47f80e98da7221c9779dc06",
+     "json_sha256": "e1b5d500ea004fb6f2317501b10a59299c96fed55b355a099f395b3775c3e4ad"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07142022-98-450um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 50774,
+     "npz_mtime": 1787388721.9286168,
+     "labels_mtime": 1787388721.9286168,
+     "labels_size": 3944,
+     "labels_sha256": "9b2e1ba56af96e77cf9ee5bbfd02c8258c10bbfc86b9ed8230015591c4f84845",
+     "json_sha256": "fa1f5fe905b7d63010ae58cec2e621565e76bc12fc467d89a1620f976cc075b0"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07142022-99-365um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 56182,
+     "npz_mtime": 1787421881.3310623,
+     "labels_mtime": 1787421881.3325808,
+     "labels_size": 4360,
+     "labels_sha256": "ecc58c2794e01013e796d97b7d3b8cee4fb77e3d30a3a86bf58ce0ca5095ecfb",
+     "json_sha256": "0adfb4e8a852ef05e2182832373d7a52301138e3c555df60eef4bc2da6e74f5d"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07152022-104-365um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 72406,
+     "npz_mtime": 1787329840.0415258,
+     "labels_mtime": 1787329840.0415258,
+     "labels_size": 5608,
+     "labels_sha256": "fb182f1fc6e2e4164e0b0e8e54d775293c74ee0d2c72e0c5b396cb37567adc6f",
+     "json_sha256": "cd47d921d9ba2d7aa9e79d69fe3a7d1131f2d05b74c0d20d60a700964721cb0c"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07152022-98-374um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 89670,
+     "npz_mtime": 1787333131.3970826,
+     "labels_mtime": 1787333131.3986795,
+     "labels_size": 6936,
+     "labels_sha256": "77d226a54e22955046feba247d2e0ebc7a0151abdb68b826fc0a75e12d67160a",
+     "json_sha256": "6450106c32dfcbf0e8c9f7126129e9d85be9cff62478423c74902a7406792b49"
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07152022-99-297um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 48798,
+     "npz_mtime": 1787428257.002626,
+     "labels_mtime": 1787428257.002626,
+     "labels_size": 3792,
+     "labels_sha256": "73b5b54aa35458174b4e331a61776a502ef2ac621c2f7d460d7e012e5c3f2d9d",
+     "json_sha256": "5f2f83743fb5191501bf85d2302f886707fc80cf1845c75973a69943f5dd2e1d"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-921-880-780um-25z-A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 22382,
+     "npz_mtime": 1787374492.126328,
+     "labels_mtime": 1787374492.126328,
+     "labels_size": 1760,
+     "labels_sha256": "0636523d0ccb56d560bf4bab151a15f6d7ea32b2575ab4cda447240aae49bf50",
+     "json_sha256": "99280bf8bff3f75f2b2d2c200cc4a1a7a5f78c6023dab5f350f32141774825fd"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-921-880-780um-25z-B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 26646,
+     "npz_mtime": 1787335241.0868962,
+     "labels_mtime": 1787335241.0868962,
+     "labels_size": 2088,
+     "labels_sha256": "887f40caa6ed00bafe1065e0ce4fd12a26924bc2eac8452ab297ff3fb3e8da5a",
+     "json_sha256": "8cb29008cbe0f5510678ce6040587f1c5d2cd27d6a208f03f2f9397d40441870"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-924-720-620um-28z-A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 29246,
+     "npz_mtime": 1787448262.2923806,
+     "labels_mtime": 1787448262.2923806,
+     "labels_size": 2288,
+     "labels_sha256": "a02d16851b615c5f981c683c96deae41b7b215ad4143fc696fd3592c3b234bde",
+     "json_sha256": "c2ca16a8a854c56c27e0a90e5fac15763e7e0879deef681f15d92e038d1f1590"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-924-720-620um-28z-B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 26230,
+     "npz_mtime": 1787461962.2685008,
+     "labels_mtime": 1787461962.27003,
+     "labels_size": 2056,
+     "labels_sha256": "5ba130900d95f892a905d24155935c37f2e4b22f8053a2cb3c1020e3b163793a",
+     "json_sha256": "990f9ba10a4ce1a24cdb99674657cce5a30f360d029fe762468ee5a9d7ed384c"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-961-420-335um-22z-A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 11358,
+     "npz_mtime": 1787550725.4168224,
+     "labels_mtime": 1787550725.4168224,
+     "labels_size": 912,
+     "labels_sha256": "48def80bfa39b82be7b895762307837501c729b006874aaabbce61601afb9b8a",
+     "json_sha256": "e032bfaf3a5c5c95a14c7c91055f890442060c4470283a45cda53406c792f3e2"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-920-810-670um-25z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 20510,
+     "npz_mtime": 1787555556.9434338,
+     "labels_mtime": 1787555556.943956,
+     "labels_size": 1616,
+     "labels_sha256": "6c0d880d4c59a9e90986c4840a4d278b0d17bd70b0b1649ea329daa7a00882ab",
+     "json_sha256": "f88015f40d05b5d41f4af2a39245304d35046fe593a2caafeef3ba0afa105ffa"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-920-810-670um-25z-A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 19470,
+     "npz_mtime": 1787556212.8237102,
+     "labels_mtime": 1787556212.8254826,
+     "labels_size": 1536,
+     "labels_sha256": "86a4629f64e9b6809938b244fc4a081face44e37d1cf2efe25c6b1e40112c7be",
+     "json_sha256": "88aee59ccf203d41d0edab7841ab42218ad61a0703218031dca617c83f075f51"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-921-831-731um-25z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 19574,
+     "npz_mtime": 1787381865.608394,
+     "labels_mtime": 1787381865.608394,
+     "labels_size": 1544,
+     "labels_sha256": "5434d151ed84bca92ba2f9ff0fd4d79ef63ebf72e582ddf02dcd2a325a30d054",
+     "json_sha256": "e0b2bb4bdc8fe56a95e2dd57db5698989a2f82a958c28af9e7901c67ca665279"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-921-831-731um-25z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 21550,
+     "npz_mtime": 1787382362.7525513,
+     "labels_mtime": 1787382362.7525513,
+     "labels_size": 1696,
+     "labels_sha256": "6335cf4e8f66dce312b06a3e724fb5c251713de81e870319edac30760a77048e",
+     "json_sha256": "1896cab20e26c18f849467a85635d8c825286e27bf38cd7a36c88084ca423f1b"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-924-um-28z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 28102,
+     "npz_mtime": 1787448740.8243158,
+     "labels_mtime": 1787448740.8243158,
+     "labels_size": 2200,
+     "labels_sha256": "9bde7bddcd8e18ac94e266e93a942d312ed4afd33b8e81779dbb843f3b75226f",
+     "json_sha256": "8633945b46b9c59fc0fe2135069e6c2c32fc48a30a602e25f971a2a80667b83c"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-924-um-28z-B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 22798,
+     "npz_mtime": 1787467948.247149,
+     "labels_mtime": 1787467948.2486877,
+     "labels_size": 1792,
+     "labels_sha256": "cfad4151d66367c4e4ad4ff9524357fe21bf15fe16e73830385002e0180a9743",
+     "json_sha256": "aeba2c83d14e0cc2df184e09aac55735384a8fd409555898fa348b240e681cb4"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-962-517um-477um-23z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 74902,
+     "npz_mtime": 1787326261.0210192,
+     "labels_mtime": 1787326261.0210192,
+     "labels_size": 5800,
+     "labels_sha256": "84e5a13028d17cb492e67f4578b4f6bad41f1f2aae1c0508b147296a2ed9dc92",
+     "json_sha256": "b9da6d9623a9746f3fa8a99d2c23ed0f04685871c8b0b534da90a5b2e5949f11"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-962-517um-477um-23z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 94038,
+     "npz_mtime": 1787323319.9227433,
+     "labels_mtime": 1787323319.9227433,
+     "labels_size": 7272,
+     "labels_sha256": "d9b979cb9ba8f86cba3aea300447f6372cdbd46efebae98e3e727fee3c6ee2ba",
+     "json_sha256": "9150cc83c856c2d0ab6ce515e144284f5f184c94e4c33d6ceaa45166c936926e"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-963-508um-453um-3z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 31014,
+     "npz_mtime": 1787422437.5101607,
+     "labels_mtime": 1787422437.5116844,
+     "labels_size": 2424,
+     "labels_sha256": "a4186ba8f6e0ad1a519c36cd1aebadd389eaff96519aff39621817d959c521aa",
+     "json_sha256": "20661a5d39893b797a9e8b47eb0bcf6586509b6acc9335acc718a496f7b1ccb4"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-963-508um-453um-3z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 48174,
+     "npz_mtime": 1787432554.2853093,
+     "labels_mtime": 1787432554.2853093,
+     "labels_size": 3744,
+     "labels_sha256": "b6d3b2c0fd71b3a2e8a4fc238baaa29d0c6de7e477af9488496bc94df8c3cee4",
+     "json_sha256": "38820c811003e4de9ca78627c0649bfc9d624d953b3e9e83efad5f35285d42e6"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-964-510um-450um-31z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 33302,
+     "npz_mtime": 1787468596.6389,
+     "labels_mtime": 1787468596.6389,
+     "labels_size": 2600,
+     "labels_sha256": "b858494df320a94134fa45af81b3a7d3d064290324661947983d1d3746e3704a",
+     "json_sha256": "8a871782f66819646665b16ff43ac63d10f8a0cbf228c0c208c5ec27827b30d0"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-964-510um-450um-31z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 34446,
+     "npz_mtime": 1787478711.8132515,
+     "labels_mtime": 1787478711.8132515,
+     "labels_size": 2688,
+     "labels_sha256": "2385caf946f731530e2484045534d37f52aa0a75598e1bfa9fe043c3da26cef3",
+     "json_sha256": "e63dd5362bbf15bac7d471d0830588c5d7042e07306967086d751b7cfeb81ab0"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-965-475um-430um-32z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 70950,
+     "npz_mtime": 1787334728.3940563,
+     "labels_mtime": 1787334728.3940563,
+     "labels_size": 5496,
+     "labels_sha256": "0c2636961e0d6ab29a15f09380c54f1300a3477b815ed331319813f513a1fe74",
+     "json_sha256": "952eb9ce1d78594bf8ef0fca4d9d6da30f9e3f5dd30e00ac39d2f5da28b86da0"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-965-475um-430um-32z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 72926,
+     "npz_mtime": 1787336075.360793,
+     "labels_mtime": 1787336075.360793,
+     "labels_size": 5648,
+     "labels_sha256": "66224ce7e4bdf78cd979a8c46e4770509259e49c18cf8da70ebcf00f3f68a6dc",
+     "json_sha256": "298c7b0f570b7080ce77b051f768d2789b8bbae2489d73af3d610d9af921966d"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-962-525um-485um-23z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 69702,
+     "npz_mtime": 1787324858.8786051,
+     "labels_mtime": 1787324858.8786051,
+     "labels_size": 5400,
+     "labels_sha256": "b2d989816f35e31b99db78b27fc6344a1d38e8eb0546e58de89b5059898f44ce",
+     "json_sha256": "9957c2eb88c2572583ef25ac5f4a0a29a1e41ac60d10c55edacfc9a0657fbf56"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-962-525um-485um-23z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 74486,
+     "npz_mtime": 1787322433.745343,
+     "labels_mtime": 1787322433.7468665,
+     "labels_size": 5768,
+     "labels_sha256": "a9fa5f288d09992d1faec054293603b6c8a716a80ba2b853635a2a3c802ffaca",
+     "json_sha256": "c75d699ed0d2bded427b19013eee72ba4a7a897c404a25f1d1ff1b8d8da671fa"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-963-462um-407um-3z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 31430,
+     "npz_mtime": 1787451878.0871193,
+     "labels_mtime": 1787451878.0871193,
+     "labels_size": 2456,
+     "labels_sha256": "de2d504f71994f75865febb42460af626f04724f7bf13974816640cefff3130c",
+     "json_sha256": "3c707ef3794df141b34aa2aa1776a579c8b427027e76992dd5258f2fa3b3809b"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-963-462um-407um-3z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 45886,
+     "npz_mtime": 1787410867.0425224,
+     "labels_mtime": 1787410867.0441875,
+     "labels_size": 3568,
+     "labels_sha256": "e2749691807eb40560d202fc853947c0cd2dc79801e103ec4bf05a9f6d08179a",
+     "json_sha256": "38d031f637bb64a112914c33a02c0c710b8a43eff6ba7ed6c76b3acd2de19279"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-964-516um-456um-31z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 29350,
+     "npz_mtime": 1787498556.9546218,
+     "labels_mtime": 1787498556.9546218,
+     "labels_size": 2296,
+     "labels_sha256": "99b1a4058ab126ce8b3dd748f55857bc41b559b302bb7e8e6158688bf77c258e",
+     "json_sha256": "7ff9d0a2a1fa6a8884c3d7e207ac16e5b81691e10e870147c2f8a4a99278a7bf"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-964-516um-456um-31z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 32574,
+     "npz_mtime": 1787469300.4650867,
+     "labels_mtime": 1787469300.4650867,
+     "labels_size": 2544,
+     "labels_sha256": "c4109f8cf024e4ac019ae91bef4079b546747b6717a1164ef3d514c1eb5d785d",
+     "json_sha256": "27450fb5ed6e836e9087a60d28e7f1684afa63b51afa895d0b2449ad61be25ac"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-965-468um-423um-32z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 42038,
+     "npz_mtime": 1787343278.6740685,
+     "labels_mtime": 1787343278.6755874,
+     "labels_size": 3272,
+     "labels_sha256": "a99533ed9f4e7695b017f9ceaaf83ae762bde30784b053316eac6a15580c6662",
+     "json_sha256": "a6b3bc249ec5d06a422196526e006bbaf413a4bc4677339035f1fb8f2a0aa5c8"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-965-468um-423um-32z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 68350,
+     "npz_mtime": 1787333920.998327,
+     "labels_mtime": 1787333920.9998498,
+     "labels_size": 5296,
+     "labels_sha256": "c86ea91475d466562858571d9dc35cda6d6ead6cd9bf8a11f819c95162f08198",
+     "json_sha256": "0874a4c961ff05010bc3cbc6e13312cd9b29a1bcdc05c27989665e33546b306f"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 85302,
+     "npz_mtime": 1787324147.7094753,
+     "labels_mtime": 1787324147.7105212,
+     "labels_size": 6600,
+     "labels_sha256": "0276c6b45b99d90efcf944f7f5a4f53683ca90188185f7def6150bb096385287",
+     "json_sha256": "8cba93299501dee293f2061fd5f15212c51ac42bc49b4d2e6bd49495f7c9078a"
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 54206,
+     "npz_mtime": 1787325483.8948576,
+     "labels_mtime": 1787325483.8958652,
+     "labels_size": 4208,
+     "labels_sha256": "3396a076d983ab574a2701a09f9c617c63a961a6eb037c4bcc6d8dc0c292db56",
+     "json_sha256": "dc3336a037a0c42647f92114650e3f99c06c9077611f68b58f5280572d1466fa"
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-080626-pnb98-480um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 13854,
+     "npz_mtime": 1787041099.636925
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-080926-pnb98-473um-3z-000",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 13230,
+     "npz_mtime": 1787041121.4840322
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07032022-100-371um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 38814,
+     "npz_mtime": 1787435841.1993747,
+     "labels_mtime": 1787435841.1993747,
+     "labels_size": 3024,
+     "labels_sha256": "5e31073028f2182428d5f7b214259e23a10fea707e621a1a19b1534b2488905f",
+     "json_sha256": "d79070179bd332ac3aac8924246b16e9c2b111ef7343148b41214771e8edbe8e"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07032022-94-455um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 41414,
+     "npz_mtime": 1787482770.8531919,
+     "labels_mtime": 1787482770.8547254,
+     "labels_size": 3224,
+     "labels_sha256": "a93656d2c230832f144e2c7d6b76ca8371754dafae5247a4114267b4eb7bdd2c",
+     "json_sha256": "8e83d7e20d98175744e05c32779986e259911acc627792960669b14756cce525"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07082022-100-292um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 57846,
+     "npz_mtime": 1787461441.452211,
+     "labels_mtime": 1787461441.452211,
+     "labels_size": 4488,
+     "labels_sha256": "2952d2043b1e3dc2089a97cebb06b0eb72a4f5ad98e77e7306d8cddc7341e703",
+     "json_sha256": "4cbc08dbff7c0d7d834724a0502991e6f9ba12263a976aac0967c750b2224bd9"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07082022-94-447um-29z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 48174,
+     "npz_mtime": 1787546476.1311355,
+     "labels_mtime": 1787546476.1311355,
+     "labels_size": 3744,
+     "labels_sha256": "fc98ee91749dc311dd139c14484252a6d6be749db748ca8caeeb6a10fd2138fe",
+     "json_sha256": "67314c16232e2ad8827695b6f2cf5a39e4534ae37db29f05f5ba6118ef388d8b"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07102022-94-564um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 32470,
+     "npz_mtime": 1787550385.7581804,
+     "labels_mtime": 1787550385.7581804,
+     "labels_size": 2536,
+     "labels_sha256": "ddaaaf0b34cd1b22d8bf27e5cd9b1312b2d3b87467089e5464a28b2b41008932",
+     "json_sha256": "d3a89dd9cc4cc9804f0b8279626a66dc39c858c903f9c9806f1326e19e2b9554"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07122022-94-627um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 35486,
+     "npz_mtime": 1787506554.3244505,
+     "labels_mtime": 1787506554.3244505,
+     "labels_size": 2768,
+     "labels_sha256": "4f1ea2c65bfbc1170c335eeb853c57e4e2fef85ee21ed85f6d7c171f0e4faf73",
+     "json_sha256": "5ff1f1a69effe49b1e5f26a7d8a2f222fa4d94e16eda991502e66a17167cd897"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07132022-94-545um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 37254,
+     "npz_mtime": 1787554942.4359736,
+     "labels_mtime": 1787554942.4374907,
+     "labels_size": 2904,
+     "labels_sha256": "12bc319811c481ab7ae7fa33ebad1fe20be73d5d48bac9eb16cd3706900b0e14",
+     "json_sha256": "a498bf189bae245e5b281ce37048e32494aa2baf1648a5e8696e4a90ab2294a0"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07162022-104-358um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 64814,
+     "npz_mtime": 1787394758.2453825,
+     "labels_mtime": 1787394758.2453825,
+     "labels_size": 5024,
+     "labels_sha256": "b637efa337894d251bf7dd0ff7ba3b4039e89eb9707bb48e214bbbf1cb1214c8",
+     "json_sha256": "3af7250f3d3b7a4dcec8a3fd4bc8e3bae580ff179a9d0ce5c55cc5935bbfe4fe"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07162022-99-295um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 45782,
+     "npz_mtime": 1787413932.8861668,
+     "labels_mtime": 1787413932.8861668,
+     "labels_size": 3560,
+     "labels_sha256": "01622760e2368ffe583ec6de4c3a504d7f62e113ca89e2a8b760cebcc540cea1",
+     "json_sha256": "6ebe7e1623b3671d86d91114b81337012f00061cb75f25b59db69054ae55267c"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07182022-99-um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 47862,
+     "npz_mtime": 1787441154.271191,
+     "labels_mtime": 1787441154.271191,
+     "labels_size": 3720,
+     "labels_sha256": "a5e89f848aecf44b6aecab3bf01ce86b57316aceaa9f7887e18dc4d99ecab165",
+     "json_sha256": "b2c79d7a5ff818c4445d9077553dd467fa9bc587b6bee1f99355dea10bc0b6f7"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07202022-104-375um-3z-001",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 60342,
+     "npz_mtime": 1787385167.5884156,
+     "labels_mtime": 1787385167.5884156,
+     "labels_size": 4680,
+     "labels_sha256": "fa51486baf14d9fd545a663c876068ecb813a379569e9267d0575b21ca935993",
+     "json_sha256": "15a2fc2b3f79c8391dbcf7e629f8bf513bc3e1ff91106bdede62af2759d7d05a"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07212022-104-460um-28z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 66270,
+     "npz_mtime": 1787444449.7352736,
+     "labels_mtime": 1787444449.736827,
+     "labels_size": 5136,
+     "labels_sha256": "c00adcf479f0d509e9ed214c2994b3898f88ab1dd46019fc6f494f856643cf59",
+     "json_sha256": "d14762edd9bc4cac947ef1581493accc67308ed83a5ff88610710b852ed72887"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07212022-98-450um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 62838,
+     "npz_mtime": 1787377998.6445596,
+     "labels_mtime": 1787377998.6445596,
+     "labels_size": 4872,
+     "labels_sha256": "1adb20087d39cf1719451590bad84bc0baf86bab71fae82e582b116de45de49a",
+     "json_sha256": "d495be0429f285ad502d0c5c0036c49ad81a86d1eb1d9d404e807b0cb253b097"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07212022-99-395um-3z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 60758,
+     "npz_mtime": 1787350132.6657698,
+     "labels_mtime": 1787350132.6657698,
+     "labels_size": 4712,
+     "labels_sha256": "72d78e9851747172d91773938e3ee442f9997746d9c433ef1b40b056d9687057",
+     "json_sha256": "640fc5ec49654f7608b33e9b977eebee33caf5cb66bc4fac81471bfe50509681"
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07222022-98-380um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 50670,
+     "npz_mtime": 1787347135.7071085,
+     "labels_mtime": 1787347135.7071085,
+     "labels_size": 3936,
+     "labels_sha256": "064f37f87d1b869689dbed55f8b910bdb162b600fe01794df35964d00bcbbe73",
+     "json_sha256": "0d75b3ca5bb5bce10be1047f299d61f855e613692ab1d7aa7346f12c6a06060f"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-964-495um-425um-22z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 65126,
+     "npz_mtime": 1787452862.2123475,
+     "labels_mtime": 1787452862.2123475,
+     "labels_size": 5048,
+     "labels_sha256": "43cef7c166d5517f72e60de7b29f013f5e9c15059a0092fa11e43abde462217b",
+     "json_sha256": "2345407b4700a5abcf948cca774eea13ec73dfa819ab9e982f6a9379048f7284"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-964-495um-425um-22z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 90606,
+     "npz_mtime": 1787351326.769742,
+     "labels_mtime": 1787351326.769742,
+     "labels_size": 7008,
+     "labels_sha256": "5fd4525e711cd8504e6b1a8f22fcfcba194984929048bd1ff4820946aa490fce",
+     "json_sha256": "559eb480b1eed730e77b7480900ad0b8a715bbe5f3b91612c47db06aa957291e"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-965-466um-426um-33z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 52854,
+     "npz_mtime": 1787340929.8478382,
+     "labels_mtime": 1787340929.8478382,
+     "labels_size": 4104,
+     "labels_sha256": "88efb085c72fadbde636ffc13c2b5464345c857d5bc787a3f0e1971be199934f",
+     "json_sha256": "589c80341553a5d349bcd94891d1228e292eecc368f5d228659cc2991d6fcc96"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-965-466um-426um-33z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 51190,
+     "npz_mtime": 1787327183.7522635,
+     "labels_mtime": 1787327183.7537813,
+     "labels_size": 3976,
+     "labels_sha256": "e43c7c8c4cdb3d07742a6d91f5cb2a35d12debd019f9d38f21a0c4c220c9ce76",
+     "json_sha256": "dbfc809a931f49934a58e67bed0568682af9d273fd0e4c8506d3af905bf165bc"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-921-800um-720um-27z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 26750,
+     "npz_mtime": 1787344168.49497,
+     "labels_mtime": 1787344168.49497,
+     "labels_size": 2096,
+     "labels_sha256": "0591ac919943737b83f279b43a2ae06eab6444aeb52e108383c3ab46eeaf5d75",
+     "json_sha256": "51c5afb21155868a9d8cfa895365b03eb9c3e366e07ca7c5da531f029a33d605"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-921-800um-720um-27z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 35382,
+     "npz_mtime": 1787342732.08286,
+     "labels_mtime": 1787342732.08286,
+     "labels_size": 2760,
+     "labels_sha256": "a684dc4fd253f8f60163afa8abffc10c9889a556ce7fb7187c300f247efc7b01",
+     "json_sha256": "1d1f1d17698c150fa45f7bb93287c2666cee09164927dd77a952e2a9169b3e0a"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-963-505um-450um-3z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 39230,
+     "npz_mtime": 1787359649.9062467,
+     "labels_mtime": 1787359649.9062467,
+     "labels_size": 3056,
+     "labels_sha256": "cb5cf9288e0d6c24bcafbae693419629f45e42fe54a92e1eb483cd1de08a0214",
+     "json_sha256": "70cd31a1b20880b512c7f2f33b59d2becc5e3d0db5a3819ba80ab2970df4bc72"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-963-505um-450um-3z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 39542,
+     "npz_mtime": 1787352236.9851203,
+     "labels_mtime": 1787352236.9851203,
+     "labels_size": 3080,
+     "labels_sha256": "1781c1e13979c949d2e484716fca5ee9028beecaf702a404fcc5b0fef5994824",
+     "json_sha256": "e2e1cd3571c8483d5487a831522ba38c8332ddd264b68841eb007c3eb018374d"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11302023-931-403um-343um-32z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 50462,
+     "npz_mtime": 1787519934.3825202,
+     "labels_mtime": 1787519934.3840425,
+     "labels_size": 3920,
+     "labels_sha256": "cc9799432e8ac9707f84f13d9be4ab1d2e5e2b7d09995d7c42214d7b8c9e664b",
+     "json_sha256": "e2a60cb9e12fdafbf7573eb97f5b072ef2e511c5acd9857f12648f3556cb9f52"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11302023-931-403um-343um-32z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 45158,
+     "npz_mtime": 1787542279.7356784,
+     "labels_mtime": 1787542279.7366867,
+     "labels_size": 3512,
+     "labels_sha256": "71039205171c1b0a4905ea12e089ba51668fc015c18548050f1d959041b8f606",
+     "json_sha256": "d96cb3a645cf18a96922cf74dcfa872c78dbf488fb6aae84e26ef89b93990458"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-920-633um-570um-27z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 40894,
+     "npz_mtime": 1787470568.4477098,
+     "labels_mtime": 1787470568.4477098,
+     "labels_size": 3184,
+     "labels_sha256": "532a65dcef8a86fa096e9b1ad4e2d48e4ac83da1ef66392979ae6325a00abc00",
+     "json_sha256": "7584f84b1c17015c76239e21d5de0e49f735a5e21a99ccac92369d01e0d42f0e"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-920-633um-570um-27z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 48694,
+     "npz_mtime": 1787536391.1274364,
+     "labels_mtime": 1787536391.1274364,
+     "labels_size": 3784,
+     "labels_sha256": "ad8330082f9b173f2ce087977a25eb2de48ed5e0135f497581dfdde559dd764a",
+     "json_sha256": "5035734a81b7ffe7ddbbb1260dd472890f7cc4ac579edd6062a74b9586ba34b5"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-961-410um-350um-32z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 55974,
+     "npz_mtime": 1787449788.919472,
+     "labels_mtime": 1787449788.919472,
+     "labels_size": 4344,
+     "labels_sha256": "9b19ba1e23d8b92728fca801ade318cabaced5d95288638d146bb7bf2712368c",
+     "json_sha256": "d929b30def2f27165d1400f5cbde07201082d2d1217aa05499cc9007318c270c"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-961-410um-350um-32z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 106310,
+     "npz_mtime": 1787558214.713629,
+     "labels_mtime": 1787558214.713629,
+     "labels_size": 8216,
+     "labels_sha256": "22744fb1f910ed9dccb03a27e779fb3bc3ea445bac3cbfe3bbe4891e5f02f4f9",
+     "json_sha256": "89ddbcce0e3e8436e09e835bef817ca86ad05f1d7200f97f7d4e61658879314d"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-964-505um-445um-31z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 41310,
+     "npz_mtime": 1787438372.041706,
+     "labels_mtime": 1787438372.041706,
+     "labels_size": 3216,
+     "labels_sha256": "d293a2e974a9db34db1f6f45bf0635f7a3c88354ef11a416463ff0571b8d15ef",
+     "json_sha256": "2467c5fc16c31a90bdb7c6dff03ecac72f7da4cdb0b7943d719300e621001759"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-964-505um-445um-31z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 35278,
+     "npz_mtime": 1787455135.9706063,
+     "labels_mtime": 1787455135.9721718,
+     "labels_size": 2752,
+     "labels_sha256": "468307934d44f88fe11c8657c18d58896d0302182478a51ec204cc30ee726bc3",
+     "json_sha256": "c0df5c9e48edc4f942f775cd270a96c684800fcf31d19a133a5cd77d1dc777ae"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 93310,
+     "npz_mtime": 1787321698.6517894,
+     "labels_mtime": 1787321698.6533067,
+     "labels_size": 7216,
+     "labels_sha256": "3cb864bbee554fe1113f17d88bc067a616e26b95ac0a09f05e80686492f80f00",
+     "json_sha256": "9e7577662e8c3aaed4c9ea1111b30bea977f3c83fa767794f2b08cc8f6b3f7f5"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 98718,
+     "npz_mtime": 1787320388.1200545,
+     "labels_mtime": 1787320388.121574,
+     "labels_size": 7632,
+     "labels_sha256": "e2c761003cb712734bfd9f9fb0cfac3243d7e39682bb1c1f399dd79a7fe9f62a",
+     "json_sha256": "d70bfa47fa10377ac7227da8e927a061b976eada24cc616c3a3afa4eb9a1a664"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-963-520um-470um-27z-000A",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 44118,
+     "npz_mtime": 1787341858.3629217,
+     "labels_mtime": 1787341858.3629217,
+     "labels_size": 3432,
+     "labels_sha256": "16232458e0acf099ae9f04db6019af9e2a753c0687875853620dbb6e4b5c063e",
+     "json_sha256": "521bd81fc6a91fbd0bc93ad281a9307e72316b598075d8c2e53da81e0cc75ab2"
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-963-520um-470um-27z-000B",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 41206,
+     "npz_mtime": 1787336967.2359533,
+     "labels_mtime": 1787336967.2359533,
+     "labels_size": 3208,
+     "labels_sha256": "237d295a961d24bf25204393d15bf0192a94e4afaac73a8dfd0a99b6b826d0d0",
+     "json_sha256": "c53f08a85252b6b87aee0a7526e8336457fd3e3a951760dbed6ab96e54ed5d83"
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08092022-94-510um-3z-002",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 43598,
+     "npz_mtime": 1787474750.6779635,
+     "labels_mtime": 1787474750.6779635,
+     "labels_size": 3392,
+     "labels_sha256": "8bb65490a4234726d91e1ea4260f2d028e6358c6b50cb46b3a8e4c877840ff83",
+     "json_sha256": "9424c35d8820d3e7b0d33477b9f692399c3c9ac0b6a7d199519e0f7c7f709890"
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08152022-100-375-3z-003",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 146246,
+     "npz_mtime": 1787541054.568017,
+     "labels_mtime": 1787541054.5690246,
+     "labels_size": 11288,
+     "labels_sha256": "7a6523ad8aa553e2abb4a48aebdddd85a267f1e0cb874c2ebd184038d5b6b3e7",
+     "json_sha256": "3c81be802578472cbf43a8b4bdf5b81130ac2cf5381256fe221828ff8f8c8438"
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08162022-94-500-3z-006",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 42558,
+     "npz_mtime": 1787510879.8162906,
+     "labels_mtime": 1787510879.8178153,
+     "labels_size": 3312,
+     "labels_sha256": "6cacdbeff4167dc69e08f3d38eb368e82d7658a24a4775832fe57f0abe96a08e",
+     "json_sha256": "5213df80d17f6fb0ee193788ae232b14299ab7f2df9414a79b7dca6d9397f0bd"
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08282022-104-387um-26z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 56182,
+     "npz_mtime": 1787489847.26061,
+     "labels_mtime": 1787489847.2611177,
+     "labels_size": 4360,
+     "labels_sha256": "190697431af352ea87eedae9e4b6955518625023fbc699b4701a2d708c56825a",
+     "json_sha256": "56968af86759cded612f5c1fdf165637c13f05e28de088cd6cff0c9172430d2e"
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08282022-98-431um-33z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 53478,
+     "npz_mtime": 1787478044.4579697,
+     "labels_mtime": 1787478044.4579697,
+     "labels_size": 4152,
+     "labels_sha256": "c4cc0c2acaf7947341f84f2554ef83e38f10555f108e75847dd6545c74bd762c",
+     "json_sha256": "8f838bffbe6e183c7f2483412a3104fb757b54ae22b9170361f008421845646a"
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08282022-99-293um-35z-000",
+     "has_labels": true,
+     "is_bootstrap": true,
+     "npz_size": 41414,
+     "npz_mtime": 1787458019.1114626,
+     "labels_mtime": 1787458019.111969,
+     "labels_size": 3224,
+     "labels_sha256": "19f447d72b3b70907b8877bd34dad308e02d50855e7aae2fef81cf1f1e51de32",
+     "json_sha256": "45f28294a2fc3709fd554a16494cb889b812657d3715b5f0f5413b024123d681"
+    }
+   ],
+   "n_labeled": 134,
+   "n_agent": 23,
+   "n_bootstrap": 111,
+   "n_pending": 29,
+   "joblib": {
+    "path": "C:\\code\\CNMF_E_LEGACY_BIANE_CLAUDE\\agent\\model\\vCA1\\classifier.joblib",
+    "md5": "0076866761cdedf9f46117eebfd27543",
+    "size": 491628,
+    "mtime": 1787567883.7082207
+   }
+  },
+  "DG_AL": {
+   "sessions": [
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040623-DG6D-356um-406um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 15206,
+     "npz_mtime": 1786936617.334391
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040623-DG6D-356um-406um-2z-000B",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 18430,
+     "npz_mtime": 1786938455.913372
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040623-DG6E-283um-233um-2z-000A",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 15830,
+     "npz_mtime": 1786937386.043299,
+     "labels_mtime": 1787160949.08434,
+     "labels_size": 276,
+     "labels_sha256": "bc1bbea4268af0e5858730b03834e564cbb711e41793e07693eb78e61a68ec0b"
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040623-DG6E-283um-233um-2z-000B",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 13230,
+     "npz_mtime": 1786939199.877172,
+     "labels_mtime": 1787006410.1809642,
+     "labels_size": 257,
+     "labels_sha256": "58ddf0a896a9b01378371e579a47ec79da72edb92107bd2fa838d06f448e292f"
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040723-DG6D-349um-299um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 17078,
+     "npz_mtime": 1786940442.5311098
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040723-DG6D-349um-299um-2z-000B",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 19574,
+     "npz_mtime": 1786941739.189837
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040723-DG6E-295um-245um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 16454,
+     "npz_mtime": 1786943002.8612318
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-040723-DG6E-295um-245um-2z-000B",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 15310,
+     "npz_mtime": 1786944257.9433775,
+     "labels_mtime": 1787073366.326551,
+     "labels_size": 263,
+     "labels_sha256": "d48aeca21d4e4efd62f6aa579f0a6a797389fc38ab9d40acf80ebbfa11d80433"
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-041523-DG6D-382um-332um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 15726,
+     "npz_mtime": 1786945471.2784944
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-041523-DG6D-382um-332um-2z-000B",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 18014,
+     "npz_mtime": 1786946756.0816495
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-041523-DG6E-284um-234um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 16558,
+     "npz_mtime": 1786948031.9563694
+    },
+    {
+     "rel": "odor_encoding/AVG4x-TSeries-041523-DG6E-284um-234um-2z-000B",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 15830,
+     "npz_mtime": 1786949281.3763444
+    },
+    {
+     "rel": "odor_encoding/TSeries-040623-DG6D-356um-406um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 12502,
+     "npz_mtime": 1787125724.3101678
+    },
+    {
+     "rel": "odor_encoding/TSeries-040623-DG6D-356um-406um-2z-000B",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 16350,
+     "npz_mtime": 1787127546.1136732
+    },
+    {
+     "rel": "odor_encoding/TSeries-040623-DG6E-283um-233um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 14478,
+     "npz_mtime": 1787129254.645516
+    },
+    {
+     "rel": "odor_encoding/TSeries-040623-DG6E-283um-233um-2z-000B",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 11254,
+     "npz_mtime": 1787131068.7160556,
+     "labels_mtime": 1787471943.9455533,
+     "labels_size": 259,
+     "labels_sha256": "47dd6076d5a97a537dbe63f3dc7f8d79e6ae8ffef32172e42de966d75262e70d"
+    },
+    {
+     "rel": "odor_encoding/TSeries-040723-DG6D-349um-299um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 13022,
+     "npz_mtime": 1787134233.4087486
+    },
+    {
+     "rel": "odor_encoding/TSeries-040723-DG6D-349um-299um-2z-000B",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 15102,
+     "npz_mtime": 1787137111.0240357
+    },
+    {
+     "rel": "odor_encoding/TSeries-040723-DG6E-295um-245um-2z-000A",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 13750,
+     "npz_mtime": 1787140083.0683694,
+     "labels_mtime": 1787161170.409788,
+     "labels_size": 266,
+     "labels_sha256": "fb22aaeca0c7b77f3a162f910305793f86513bb737c5fc25d7cf80fb5424d60d"
+    },
+    {
+     "rel": "odor_encoding/TSeries-040723-DG6E-295um-245um-2z-000B",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 11670,
+     "npz_mtime": 1787142887.7710824,
+     "labels_mtime": 1787271345.976578,
+     "labels_size": 251,
+     "labels_sha256": "dc32f5906ca3abd15ef482f53794b3cade0aae47de5763e0b449728db62777a6"
+    },
+    {
+     "rel": "odor_encoding/TSeries-041523-DG6D-382um-332um-2z-000A",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 12190,
+     "npz_mtime": 1787145932.8846648,
+     "labels_mtime": 1787183008.7977765,
+     "labels_size": 266,
+     "labels_sha256": "80461bbc3ce7acb3fe015933625e23f707e6a7df35e1238a87ce06e5fdabd55e"
+    },
+    {
+     "rel": "odor_encoding/TSeries-041523-DG6D-382um-332um-2z-000B",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 13230,
+     "npz_mtime": 1787148947.4963193,
+     "labels_mtime": 1787186497.179198,
+     "labels_size": 267,
+     "labels_sha256": "6a0f06639ff4883b57bf8d00fff414832bcd6781db84af1710d609afea58c63c"
+    },
+    {
+     "rel": "odor_encoding/TSeries-041523-DG6E-284um-234um-2z-000A",
+     "has_labels": false,
+     "is_bootstrap": null,
+     "npz_size": 14062,
+     "npz_mtime": 1787151905.6745844
+    },
+    {
+     "rel": "odor_encoding/TSeries-041523-DG6E-284um-234um-2z-000B",
+     "has_labels": true,
+     "is_bootstrap": false,
+     "npz_size": 10838,
+     "npz_mtime": 1787154814.6995685,
+     "labels_mtime": 1787259917.9575624,
+     "labels_size": 257,
+     "labels_sha256": "1edbb2242622ed8fcf9a72ad4ea6aa9c57ace7265232ff778d5216c75bb9937b"
+    }
+   ],
+   "n_labeled": 9,
+   "n_agent": 9,
+   "n_bootstrap": 0,
+   "n_pending": 15,
+   "joblib": {
+    "path": "C:\\code\\CNMF_E_LEGACY_BIANE_CLAUDE\\agent\\model\\DG_AL\\classifier.joblib",
+    "md5": "b9c15a73432a56bd6da40eda217d6bbe",
+    "size": 419930,
+    "mtime": 1787186617.9537249
+   }
+  }
+ },
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f"
+}

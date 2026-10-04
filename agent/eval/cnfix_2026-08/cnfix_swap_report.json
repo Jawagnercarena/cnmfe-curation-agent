@@ -1,0 +1,20 @@
+{
+ "2tones/AVG5x-TSeries-093025-bla12-660um-23z-000": {
+  "sha256": "02325541c26140636cbb8478c8c28d7b2f4b7177bb7a011f721649b0a789aa59"
+ },
+ "2tones/AVG5x-TSeries-093025-bla8-765um-23z-000": {
+  "sha256": "99efea5eb37ce65e4f64af3731d69ef6264d9188138f6f27c74e4653eea9e6f7"
+ },
+ "4odorDO/AVG5x-TSeries-02092026-bla12-681um-22z-000": {
+  "sha256": "af1ac31027d162b37ad689a44c981541b001cdc065f7456a51f17d65c99755d9"
+ },
+ "4odorDO/AVG5x-TSeries-02092026-bla16-314um-36z-000": {
+  "sha256": "7ca1b022fc4038f62f7761fc122fe8f9a09d0a326c1a9ff6c16216cabdf202f2"
+ },
+ "4odorDO/AVG5x-TSeries-02092026-bla8-745um-23z-000": {
+  "sha256": "16c189e757b6b794ea69f506258245dddfcd0a46e92666996c58aad384f23233"
+ },
+ "Valence/AVG5x-TSeries-121225-bla12-652um-23z-000": {
+  "sha256": "39cd9547b8a0c01b277467d4dcc8fda2cc5fe7de6c069bf322477e6d123cdc4e"
+ }
+}

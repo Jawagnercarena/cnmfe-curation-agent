@@ -1,5 +1,7 @@
 # Handoff: catching motion artifacts — findings, the QC flag, and the frame-precise-coincidence R&D
 
+> **SUPERSEDED 2026-09-23. Re-evaluated 2026-08-08 on 31 BLA sessions: leave-one-animal-out Q2 reached 0.74 from better data alone, the onset-locked structure channel was flat, and no classifier change was made; the QC flag stays advisory. Record only; details in memory `project_motion_features`.**
+
 _Status date: 2026-07-28. Companion to memory `project_motion_features`. Supersedes the motion parts of `MOTION_AND_RESUMABLE_REVIEW_HANDOFF.md` (the "collect labels then add coherence/kinetics" plan there is now answered — see below)._
 
 ## Why this matters (the ceiling)

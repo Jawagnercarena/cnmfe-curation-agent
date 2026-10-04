@@ -46,8 +46,8 @@ from config import AREA, DATA_ROOT
 
 # Mirror train_classifier.main (MIN_AGENT_WEIGHT is a local there, not importable).
 MIN_AGENT_WEIGHT = 4.0
-DEPLOYED_THRESHOLD = 0.14           # BLA reject_threshold
-THRESHOLDS = [0.10, 0.14, 0.20]
+DEPLOYED_THRESHOLD = 0.12           # BLA reject_threshold (lowered 0.14->0.12, addff7f)
+THRESHOLDS = [0.10, 0.12, 0.20]
 W_MOTION_SWEEP = [1, 2, 3, 5, 10, 20]
 
 

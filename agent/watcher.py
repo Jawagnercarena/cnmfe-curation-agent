@@ -16,6 +16,7 @@ Logs are written to agent/logs/watcher.log and printed to the console.
 """
 
 import logging
+import os
 import shutil
 import sys
 import time
@@ -78,7 +79,7 @@ def find_new_tifs() -> list[tuple[Path, Path]]:
         return found
 
     for task_dir in DATA_ROOT.iterdir():
-        if not task_dir.is_dir():
+        if not task_dir.is_dir() or task_dir.name.startswith("."):
             continue
         for item in task_dir.iterdir():
             if item.is_file() and item.suffix.lower() in (".tif", ".tiff"):
@@ -384,6 +385,10 @@ def _needs_params_update() -> bool:
         return True
     params_mtime = _PARAMS_JSON.stat().st_mtime
     for neuron_mat in DATA_ROOT.rglob("neuron.mat"):
+        # rglob descends into dot-prefixed folders that every other scan skips,
+        # so parked sessions under .excluded/ would otherwise trigger a refresh.
+        if any(p.startswith(".") for p in neuron_mat.relative_to(DATA_ROOT).parts):
+            continue
         if neuron_mat.stat().st_mtime > params_mtime:
             return True
     return False
@@ -419,7 +424,7 @@ def find_curator_retries() -> list[tuple[Path, Path]]:
     if not DATA_ROOT.exists():
         return found
     for task_dir in DATA_ROOT.iterdir():
-        if not task_dir.is_dir():
+        if not task_dir.is_dir() or task_dir.name.startswith("."):
             continue
         for item in task_dir.iterdir():
             if not item.is_dir():
@@ -689,9 +694,51 @@ def _write_review_queue():
         log(f"[QUEUE] WARNING: Could not write REVIEW_QUEUE.md: {e}")
 
 
+# ---- Console safety ----
+
+def _disable_quickedit():
+    """
+    Turn off QuickEdit mode on this console so a stray click cannot freeze the
+    watcher.
+
+    With QuickEdit on (the Windows default), any click in the console window
+    enters selection mode, which blocks every write to that console.  The
+    watcher then stalls inside a log call, MATLAB's stdout pipe fills, and the
+    whole pipeline sleeps -- alive but doing nothing -- until someone presses
+    Esc in that window (observed 2026-08-06 and again 2026-08-16, both times
+    losing hours).  Clearing the flag removes the failure mode entirely.
+
+    Cost: click-drag text selection in the watcher console stops working
+    (copy via the title-bar menu, Edit > Mark, still works).  A watcher
+    console is write-only in practice, so that trade is free.
+
+    No-ops gracefully when there is no attached console (stdin redirected,
+    service context) or on non-Windows.
+    """
+    if os.name != "nt":
+        return
+    import ctypes
+    kernel32 = ctypes.windll.kernel32
+    STD_INPUT_HANDLE       = -10
+    ENABLE_QUICK_EDIT_MODE = 0x0040
+    ENABLE_EXTENDED_FLAGS  = 0x0080   # required for QUICK_EDIT changes to take
+    handle = kernel32.GetStdHandle(STD_INPUT_HANDLE)
+    mode = ctypes.c_uint32()
+    if not kernel32.GetConsoleMode(handle, ctypes.byref(mode)):
+        return  # no attached console -- nothing to protect
+    new_mode = (mode.value | ENABLE_EXTENDED_FLAGS) & ~ENABLE_QUICK_EDIT_MODE
+    if kernel32.SetConsoleMode(handle, new_mode):
+        log("[AGENT] Console QuickEdit disabled -- a stray click can no longer "
+            "freeze this watcher.")
+    else:
+        log("[AGENT] NOTE: could not disable console QuickEdit; a click in this "
+            "window can still freeze logging (press Esc in the window to resume).")
+
+
 # ---- Main loop ----
 
 def main():
+    _disable_quickedit()
     log("=" * 60)
     log("[AGENT] CNMFe Agent started.")
     log(f"[AGENT] Watching: {DATA_ROOT}")

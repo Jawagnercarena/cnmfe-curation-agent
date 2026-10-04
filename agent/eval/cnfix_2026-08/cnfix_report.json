@@ -1,0 +1,65 @@
+{
+ "sessions": {
+  "2tones/AVG5x-TSeries-093025-bla12-660um-23z-000": {
+   "built": "2tones__AVG5x-TSeries-093025-bla12-660um-23z-000.npz",
+   "sha256": "02325541c26140636cbb8478c8c28d7b2f4b7177bb7a011f721649b0a789aa59",
+   "live_sha256_at_build": "63719b0fcbdc6db1d58548ee44dd4e69c34b65b2658860421fc6aa6c44b70bc0",
+   "n_rows": 179,
+   "frac_cn_moved_gt_0.1": 0.9273743016759777,
+   "cn_p50_before": 0.026095935571687105,
+   "cn_p50_after": 0.5539287658368768,
+   "rank_rows_changed_frac": 1.0
+  },
+  "2tones/AVG5x-TSeries-093025-bla8-765um-23z-000": {
+   "built": "2tones__AVG5x-TSeries-093025-bla8-765um-23z-000.npz",
+   "sha256": "99efea5eb37ce65e4f64af3731d69ef6264d9188138f6f27c74e4653eea9e6f7",
+   "live_sha256_at_build": "14e92e811e4e9bdb0167a40555943f4048c0d8b8759075dd4e72091613aefbef",
+   "n_rows": 135,
+   "frac_cn_moved_gt_0.1": 0.8814814814814815,
+   "cn_p50_before": 0.01445457666022172,
+   "cn_p50_after": 0.5694652587024079,
+   "rank_rows_changed_frac": 0.9925925925925926
+  },
+  "4odorDO/AVG5x-TSeries-02092026-bla12-681um-22z-000": {
+   "built": "4odorDO__AVG5x-TSeries-02092026-bla12-681um-22z-000.npz",
+   "sha256": "af1ac31027d162b37ad689a44c981541b001cdc065f7456a51f17d65c99755d9",
+   "live_sha256_at_build": "08e721ef15016e9ce664143e5c8ae0e6665c50b4dd646e7f17139fbfedea2929",
+   "n_rows": 126,
+   "frac_cn_moved_gt_0.1": 0.9444444444444444,
+   "cn_p50_before": -0.031052219491240495,
+   "cn_p50_after": 0.6401819074087076,
+   "rank_rows_changed_frac": 1.0
+  },
+  "4odorDO/AVG5x-TSeries-02092026-bla16-314um-36z-000": {
+   "built": "4odorDO__AVG5x-TSeries-02092026-bla16-314um-36z-000.npz",
+   "sha256": "7ca1b022fc4038f62f7761fc122fe8f9a09d0a326c1a9ff6c16216cabdf202f2",
+   "live_sha256_at_build": "e1e3f61e0b907f328a82da662d0a4eadf1f876f43b2f1623d371da0e832d74ee",
+   "n_rows": 61,
+   "frac_cn_moved_gt_0.1": 0.8852459016393442,
+   "cn_p50_before": -0.014527014066960288,
+   "cn_p50_after": 0.4726891930593318,
+   "rank_rows_changed_frac": 1.0
+  },
+  "4odorDO/AVG5x-TSeries-02092026-bla8-745um-23z-000": {
+   "built": "4odorDO__AVG5x-TSeries-02092026-bla8-745um-23z-000.npz",
+   "sha256": "16c189e757b6b794ea69f506258245dddfcd0a46e92666996c58aad384f23233",
+   "live_sha256_at_build": "a1c99997f8f07bdf12bdc9a898558ba7949255a182e6c3794cbd42483b2db840",
+   "n_rows": 54,
+   "frac_cn_moved_gt_0.1": 1.0,
+   "cn_p50_before": -0.04692604899320511,
+   "cn_p50_after": 0.6847166507716832,
+   "rank_rows_changed_frac": 0.9629629629629629
+  },
+  "Valence/AVG5x-TSeries-121225-bla12-652um-23z-000": {
+   "built": "Valence__AVG5x-TSeries-121225-bla12-652um-23z-000.npz",
+   "sha256": "39cd9547b8a0c01b277467d4dcc8fda2cc5fe7de6c069bf322477e6d123cdc4e",
+   "live_sha256_at_build": "528aa1156e66e902c586537d72560ce5e13873b5bd731dadcbb9c3e170d3d1ac",
+   "n_rows": 150,
+   "frac_cn_moved_gt_0.1": 0.9533333333333334,
+   "cn_p50_before": -0.0034987033417508053,
+   "cn_p50_after": 0.6533079230081424,
+   "rank_rows_changed_frac": 0.98
+  }
+ },
+ "n": 6
+}

@@ -44,10 +44,27 @@ from local_config import DATA_PARENT, EXCHANGE_ROOT
 
 
 def iter_sessions(inbox: Path):
-    """Yield session dirs under inbox (those holding a curated result)."""
+    """Yield session dirs under inbox (those holding a curated result).
+
+    Dot-prefixed folders are never sessions: a returned folder can carry a
+    parked diagnostic tree from the central machine (first seen 2026-08-20,
+    when returns mirrored from central included .gsig9_wrongparams/, whose
+    parked neuron.mat made ingest treat the park folder itself as a session
+    named '.gsig9_wrongparams' and fail resolution with a confusing
+    "area 'DG AL' is not a known area" skip). The dot prefix means "set
+    aside" everywhere else in this pipeline; honour it here too.
+    """
     for p in inbox.rglob("*"):
-        if p.is_dir() and ((p / "labels.mat").exists() or (p / "neuron.mat").exists()):
-            yield p
+        if not p.is_dir():
+            continue
+        if any(part.startswith(".") for part in p.relative_to(inbox).parts):
+            continue
+        if not ((p / "labels.mat").exists() or (p / "neuron.mat").exists()):
+            continue
+        if is_training_sandbox(p, inbox):
+            print(f"SKIP (training sandbox, never ingested): {p.relative_to(inbox)}")
+            continue
+        yield p
 
 
 def _is_real_session(d: Path) -> bool:
@@ -96,6 +113,79 @@ def resolve_dest(src: Path):
         f"Fix the inbox path to <reviewer>/<area>/<task>/<session> and re-run.")
 
 
+PROVENANCE_NAME = "labels_provenance.txt"
+
+# A folder carrying this marker is a reviewer-TRAINING sandbox (see
+# agent/push_training_bundle.py and docs/TRAINING.md).  Its labels.mat is a
+# trainee's practice result on a session that already has real labels, and
+# resolve_dest matches returns by session NAME, so a training folder dropped
+# into inbox/ would otherwise land on the real session.  Never ingested.
+TRAINING_MARKER = "TRAINING_SESSION.txt"
+
+
+def is_training_sandbox(p: Path, root: Path) -> bool:
+    """True if p or any ancestor between root and p carries TRAINING_SESSION.txt."""
+    cur = root
+    try:
+        parts = p.relative_to(root).parts
+    except ValueError:
+        parts = ()
+    for part in parts:
+        cur = cur / part
+        if (cur / TRAINING_MARKER).exists():
+            return True
+    return False
+
+# Files that only the central machine may write, and that a return must never
+# carry back over the local copy.  A reviewer bundle does not contain them
+# (push_review_bundle stages review_neuron.mat + Cn/pnr/Ybg_weights/pdf/summary
+# and nothing else), but a reviewer who mirrors whole central folders can, and
+# copy_session copies any file whose size differs.
+#
+#   labels_provenance.txt   -- central metadata (who reviewed this session);
+#                              a stale echo would overwrite the real record.
+#   candidate_features.npz  -- the feature matrix curator.py wrote at curation
+#                              time.  Scoring is positional and areas differ in
+#                              feature-contract width (BLA runs the 35-column v2
+#                              contract, vCA1/DG_AL 13), so a mirrored-back copy
+#                              from before a contract swap would silently
+#                              downgrade the session's row width and either
+#                              corrupt the training corpus or trip the trainer's
+#                              width guard.  Sizes differ across contracts, so
+#                              the same-size skip below would NOT catch it.
+CENTRAL_ONLY = {PROVENANCE_NAME, "candidate_features.npz"}
+
+
+def read_provenance(session_dir: Path):
+    """Reviewer whose labels this local session carries, or None if unrecorded."""
+    f = session_dir / PROVENANCE_NAME
+    if not f.exists():
+        return None
+    for line in f.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.startswith("reviewer:"):
+            return line.split(":", 1)[1].strip() or None
+    return None
+
+
+def write_provenance(session_dir: Path, reviewer: str, src: Path):
+    """Record which reviewer's labels the local session now carries.
+
+    Written on every ingest that carries a labels.mat (even when the file was
+    size-skipped as unchanged: identical bytes still mean the local labels are
+    that reviewer's). copy2 preserves the reviewer's mtimes, so without this
+    record there is no way to tell later WHO produced the labels -- which is
+    exactly what made the 2026-08-20 duplicate-review near-miss hard to
+    reconstruct (a session assigned to one reviewer was validly reviewed by
+    another, and a later return from the assignee would have silently
+    overwritten the ingested labels).
+    """
+    from datetime import datetime
+    (session_dir / PROVENANCE_NAME).write_text(
+        f"reviewer: {reviewer}\n"
+        f"ingested: {datetime.now():%Y-%m-%d %H:%M:%S}\n"
+        f"source: {src}\n", encoding="utf-8")
+
+
 def read_label_counts(labels_path: Path):
     """
     Read a returned labels.mat and return (n_keep, n_delete, n_motion).
@@ -114,18 +204,32 @@ def read_label_counts(labels_path: Path):
         return None
 
 
-def copy_session(src: Path, dst: Path, force: bool, dry: bool):
+def copy_session(src: Path, dst: Path, force: bool, dry: bool, on_first_copy=None):
+    """on_first_copy, if given, is called once just before the first file is
+    copied (or would be, in a dry run) -- main() uses it to print the session
+    header only for sessions that actually bring something new."""
     copied = skipped = 0
     bytes_copied = 0
     for f in src.rglob("*"):
         if f.is_dir():
             continue
         rel = f.relative_to(src)
+        # Never import dot-prefixed subtrees: those are parked/set-aside data
+        # (e.g. a stale .gsig9_wrongparams/ mirrored back by a reviewer) and
+        # must not be written into the clean local session.
+        if any(part.startswith(".") for part in rel.parts):
+            continue
+        # Central-machine-only files (see CENTRAL_ONLY): a return that echoes
+        # them back must never overwrite the local copy.
+        if rel.name in CENTRAL_ONLY:
+            continue
         target = dst / rel
         size = f.stat().st_size
         if not force and target.exists() and target.stat().st_size == size:
             skipped += 1
             continue
+        if copied == 0 and on_first_copy is not None:
+            on_first_copy()
         if dry:
             print(f"    would copy {rel} ({size/1e6:.1f} MB)")
         else:
@@ -136,6 +240,29 @@ def copy_session(src: Path, dst: Path, force: bool, dry: bool):
     return copied, skipped, bytes_copied
 
 
+def print_summary_table(rows, dry: bool):
+    """One line per session seen in the inbox: NEW ones first, then the rest.
+    rows = (reviewer, session, status, n_files, n_bytes, labels_cell)."""
+    if not rows:
+        return
+    order = {"NEW": 0, "SKIPPED": 1, "NOT FOUND": 2, "unchanged": 3}
+    rows = sorted(rows, key=lambda r: (order.get(r[2], 9), r[0].lower(), r[1].lower()))
+    head = ("status", "reviewer", "session", "files", "MB", "keep/del/motion")
+    body = [(st, rv, se, str(n) if n else "-", f"{b/1e6:.1f}" if n else "-", lab)
+            for rv, se, st, n, b, lab in rows]
+    w = [max(len(x[i]) for x in [head] + body) for i in range(len(head))]
+    fmt = "  ".join(f"{{:<{w[i]}}}" if i < 3 or i == 5 else f"{{:>{w[i]}}}"
+                    for i in range(len(head)))
+    n_new = sum(1 for r in rows if r[2] == "NEW")
+    n_skip = sum(1 for r in rows if r[2] in ("SKIPPED", "NOT FOUND"))
+    print(f"\nSummary{' (dry run)' if dry else ''}: {len(rows)} session(s) in inbox -- "
+          f"{n_new} new, {len(rows) - n_new - n_skip} unchanged, {n_skip} skipped")
+    print(fmt.format(*head))
+    print("  ".join("-" * x for x in w))
+    for line in body:
+        print(fmt.format(*line))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("session", nargs="?",
@@ -144,6 +271,10 @@ def main():
                     help="exchange root (default: CNMFE_EXCHANGE_ROOT / .env)")
     ap.add_argument("--force", action="store_true",
                     help="copy every file, even if a same-size copy already exists")
+    ap.add_argument("--replace-labels", action="store_true",
+                    help="allow a return to replace labels that a DIFFERENT reviewer "
+                         "already provided for the same session (normally refused; "
+                         "the provenance record is rewritten to the new reviewer)")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
@@ -160,48 +291,108 @@ def main():
         return
 
     skipped_sessions = []
+    rows = []                    # one summary-table row per session seen
     total_motion_tags = 0        # motion-tagged deletes across this ingest
     sessions_with_motion = 0     # sessions that carried >=1 motion tag
     sessions_with_field = 0      # sessions whose labels.mat has the motion_delete field
     for src in sessions:
+        try:
+            reviewer = src.relative_to(inbox).parts[0]
+        except ValueError:
+            reviewer = None
         if not src.is_dir():
             print(f"SKIP (not found): {src}")
+            rows.append((reviewer or "-", src.name, "NOT FOUND", 0, 0, "-"))
+            continue
+        if is_training_sandbox(src, inbox):
+            print(f"\nSKIP {src.name}")
+            print("  !! training sandbox (TRAINING_SESSION.txt present): a trainee's practice "
+                  "result, never ingested. Ask the trainee to return it to "
+                  "training/<name>/returns/ instead.")
+            skipped_sessions.append((src, "training sandbox"))
+            rows.append((reviewer or "-", src.name, "SKIPPED", 0, 0, "-"))
             continue
         dst, note = resolve_dest(src)
         if dst is None:
             print(f"\nSKIP {src.name}")
             print(f"  !! {note}")
             skipped_sessions.append((src, note))
+            rows.append((reviewer or "-", src.name, "SKIPPED", 0, 0, "-"))
             continue
-        print(f"\nIngest {dst.relative_to(DATA_PARENT)}  ({note})")
-        print(f"  {src}  ->  {dst}")
-        c, s, b = copy_session(src, dst, args.force, args.dry_run)
-        print(f"  copied {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")
+
+        # Duplicate-review guard: refuse to let one reviewer's return replace
+        # labels a DIFFERENT reviewer already provided for this session.
+        # First case 2026-08-20: a session staged to Alisia had already been
+        # validly reviewed by Taylor and ingested (and trained on); her return
+        # arriving later would have silently overwritten his labels -- and the
+        # rest of her review (neuron.mat, ROIs.jpg, traces) would have replaced
+        # his, leaving a session that mixes two people's decisions. The whole
+        # session is therefore skipped, not just labels.mat. Deliberate
+        # replacement: --replace-labels.
+        if reviewer and (src / "labels.mat").exists():
+            prev = read_provenance(dst)
+            if (prev and prev.lower() != reviewer.lower()
+                    and not args.replace_labels):
+                msg = (f"session already carries {prev}'s ingested labels; "
+                       f"refusing {reviewer}'s duplicate review (whole session "
+                       f"skipped). If the replacement is intentional, re-run "
+                       f"with --replace-labels.")
+                print(f"\nSKIP {src.name}")
+                print(f"  !! {msg}")
+                skipped_sessions.append((src, msg))
+                rows.append((reviewer, str(dst.relative_to(DATA_PARENT)),
+                             "SKIPPED", 0, 0, "-"))
+                continue
+
+        # Only sessions that bring something new get a detailed block; the
+        # header is printed lazily, just before the first file is copied, so a
+        # long multi-GB copy still announces itself up front. Sessions with
+        # nothing to copy stay silent here and appear in the summary table.
+        def _header(dst=dst, note=note, src=src):
+            print(f"\nIngest {dst.relative_to(DATA_PARENT)}  ({note})")
+            print(f"  {src}  ->  {dst}")
+        c, s, b = copy_session(src, dst, args.force, args.dry_run, on_first_copy=_header)
+        is_new = c > 0
+        if is_new:
+            verb = "would copy" if args.dry_run else "copied"
+            print(f"  {verb} {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")
+        if reviewer and (src / "labels.mat").exists() and not args.dry_run:
+            write_provenance(dst, reviewer, src)
 
         # Report the reviewer's label breakdown, including motion-delete tags.
         # Read from the source so this works in --dry-run too (nothing copied yet).
         labels_src = src / "labels.mat"
+        labels_cell = "-"
         if labels_src.exists():
             counts = read_label_counts(labels_src)
             if counts is None:
-                print("  labels.mat present but could not be read for a summary.")
+                labels_cell = "unreadable"
+                if is_new:
+                    print("  labels.mat present but could not be read for a summary.")
             else:
                 n_keep, n_delete, n_motion = counts
                 if n_motion is None:
-                    print(f"  labels: {n_keep} keep / {n_delete} delete "
-                          f"(no motion tags -- reviewed before the (m) option)")
+                    labels_cell = f"{n_keep}/{n_delete}/-"
+                    if is_new:
+                        print(f"  labels: {n_keep} keep / {n_delete} delete "
+                              f"(no motion tags -- reviewed before the (m) option)")
                 else:
+                    labels_cell = f"{n_keep}/{n_delete}/{n_motion}"
                     sessions_with_field += 1
                     total_motion_tags += n_motion
                     if n_motion > 0:
                         sessions_with_motion += 1
-                    print(f"  labels: {n_keep} keep / {n_delete} delete, "
-                          f"of which {n_motion} tagged as motion deletes")
-            if not args.dry_run:
+                    if is_new:
+                        print(f"  labels: {n_keep} keep / {n_delete} delete, "
+                              f"of which {n_motion} tagged as motion deletes")
+            if is_new and not args.dry_run:
                 print("  labels.mat present -> watcher will auto-retrain on its next poll.")
+        rows.append((reviewer or "-", str(dst.relative_to(DATA_PARENT)),
+                     "NEW" if is_new else "unchanged", c, b, labels_cell))
 
+    print_summary_table(rows, args.dry_run)
     if skipped_sessions:
-        print(f"\n{len(skipped_sessions)} session(s) SKIPPED (unresolved destination):")
+        print(f"\n{len(skipped_sessions)} session(s) SKIPPED (not ingested):")
         for src, note in skipped_sessions:
             print(f"  - {src.name}: {note}")
     if sessions_with_field:

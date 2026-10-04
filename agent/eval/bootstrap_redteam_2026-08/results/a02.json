@@ -1,0 +1,168 @@
+{
+ "sites": {
+  "S1_feature_expansion_A_orientation": {
+   "evidence": {
+    "BLA": {
+     "F-match": 73,
+     "C-match": 6,
+     "neither": 0,
+     "N_mismatch": 0,
+     "no_extraction": 0,
+     "C_match_rows": 705,
+     "C_match_pos": 217,
+     "C_match_cv_eligible": 6,
+     "C_match_sessions": [
+      "2tones/AVG5x-TSeries-093025-bla12-660um-23z-000",
+      "2tones/AVG5x-TSeries-093025-bla8-765um-23z-000",
+      "4odorDO/AVG5x-TSeries-02092026-bla12-681um-22z-000",
+      "4odorDO/AVG5x-TSeries-02092026-bla16-314um-36z-000",
+      "4odorDO/AVG5x-TSeries-02092026-bla8-745um-23z-000",
+      "Valence/AVG5x-TSeries-121225-bla12-652um-23z-000"
+     ]
+    },
+    "vCA1": {
+     "F-match": 23,
+     "C-match": 0,
+     "neither": 0,
+     "N_mismatch": 0,
+     "no_extraction": 0,
+     "C_match_rows": 0,
+     "C_match_pos": 0,
+     "C_match_cv_eligible": 0,
+     "C_match_sessions": []
+    }
+   },
+   "verdict": "F-order PROVEN: stored cn_correlation reproduces from order-F images (96/102) or order-C (6 retro); 0 'neither'",
+   "status": "OK"
+  },
+  "S2_features_load_spatial_A_txt_fallback": {
+   "code": [
+    "features.py:35: side = int(np.sqrt(n_pixels))",
+    "features.py:38: footprints[i] = A[:, i].reshape(side, side)"
+   ],
+   "fallback_fires_on": [],
+   "n_scanned": 369,
+   "frame_shapes": {
+    "(512, 512)": 310,
+    "(256, 256)": 44
+   },
+   "n_nonsquare_frames": 0,
+   "verdict": "LATENT (2 defects: transposed + square-only); fires on 0 sessions",
+   "status": "LATENT"
+  },
+  "S3_bootstrap_preagent_A_txt_fallback": {
+   "code": [
+    "bootstrap_preagent.py:64: def _reorder_Fcols_to_C(A: np.ndarray, d1: int, d2: int) -> np.ndarray:",
+    "bootstrap_preagent.py:298: A_review = _reorder_Fcols_to_C(A_txt, d1, d2)",
+    "bootstrap_preagent.py:380: A_final = _reorder_Fcols_to_C(np.asarray(A_final, dtype=float), d1, d2)",
+    "validate_threshold.py:288: A_final = _bp._reorder_Fcols_to_C(np.asarray(A_final, dtype=float), d1, d2)"
+   ],
+   "synthetic": {
+    "reorder_equals_primary": true,
+    "reorder_equals_rt_fcols": true,
+    "mixed_self_cosine": 1.2104449271806463e-07
+   },
+   "status": "OK",
+   "verdict": "OK: fallback reindexes F->C and equals the primary path"
+  },
+  "S4_validate_threshold": {
+   "code": [
+    "validate_threshold.py:37: import bootstrap_preagent as _bp   # _reorder_Fcols_to_C (pixel-order fix)",
+    "validate_threshold.py:73: f\" A_final = full(neuron.A);\"",
+    "validate_threshold.py:132: A_review = fp3d.reshape(N, H * W).T  # (pixels, N)",
+    "validate_threshold.py:283: # cosine compares like-for-like (see bootstrap_preagent._reorder_Fcols_to_C).",
+    "validate_threshold.py:288: A_final = _bp._reorder_Fcols_to_C(np.asarray(A_final, dtype=float), d1, d2)"
+   ],
+   "verdict": "OK: candidates C-order (fp3d.reshape) and A_final reindexed before the cosine",
+   "status": "OK"
+  },
+  "S5_decision_margins_sweep_gsig": {
+   "code": [
+    "decision_margins.py:83: A = sf.reshape(N, -1).T                    # (pixels, N), matching neuron.A",
+    "sweep_gsig.py:99: A = fps.reshape(N, -1).T.astype(np.float64)          # (pixels, N)"
+   ],
+   "verdict": "OK: C-order flatten of an (N,H,W) stack used column-wise (trim margins) or against another stack flattened the same way (gSig arms); the 'matching neuron.A' comment in decision_margins.py:83 is misleading (it is C-order, not MATLAB order) but nothing compares it to neuron.A",
+   "status": "OK (comment misleading)"
+  },
+  "S6_curator_pdf_and_one_class": {
+   "code": [
+    "curator.py:151: fm, _, _ = feat_module.extract_all(session_dir, lambda m: None)",
+    "curator.py:157: fps    = feat_module.load_spatial(session_dir)",
+    "curator.py:290: footprints = feat_module.load_spatial(session_dir)",
+    "curator.py:599: footprints = feat_module.load_spatial(session_dir)",
+    "curator.py:619: feature_matrix, feature_names, overlap_matrix = feat_module.extract_all(session_dir, log)"
+   ],
+   "verdict": "OK via the primary load_spatial path; under the A.txt fallback the PDF would render transposed and the one-class cold start would see transposed footprints (display / cold-start only, and the fallback fires on 0 sessions)",
+   "status": "OK (inherits S2 latent)"
+  },
+  "S7_Coor_mat": {
+   "code": [],
+   "verdict": "no Python consumer (MATLAB get_contours only)",
+   "status": "OK"
+  },
+  "S8_h5py_readers": {
+   "readers": [
+    {
+     "file": "eval\\bootstrap_matching_2026-08\\bmlib.py",
+     "transposes": true
+    },
+    {
+     "file": "eval\\bootstrap_redteam_2026-08\\a02_sites.py",
+     "transposes": true
+    },
+    {
+     "file": "eval\\bootstrap_redteam_2026-08\\rt_lib.py",
+     "transposes": true
+    },
+    {
+     "file": "eval\\vca1_v2_2026-08\\vca1_common.py",
+     "transposes": true
+    }
+   ],
+   "verdict": "all transpose",
+   "status": "OK"
+  },
+  "S9_matlab_writers": {
+   "code": [
+    "CNMFe_Biane_headless.m:318: spatial_footprints(n,:,:) = reshape(neuron.A(:,n), d1, d2);",
+    "CNMFe_final_save.m:170: exclude = {'neuron','Cn','Coor','pnr','Ybg','Ybg_mean','spatial_footprints','review_neuron'};",
+    "CNMFe_final_save.m:728: spatial_footprints(n,:,:) = reshape(neuron.A(:,n), d1, d2);"
+   ],
+   "verdict": "both writers build [n, row, col] stacks (a01 step 1 proves the stack == A.txt column-major)",
+   "status": "OK"
+  },
+  "S10_extract_cand_traces_motion_qc": {
+   "verdict": "MATLAB-side consumers of neuron.A only (no numpy reshape); motion features use the mean background trace, not footprints",
+   "status": "OK"
+  },
+  "S11_v2b_centroid_neighbor": {
+   "verdict": "features._v2b_centroid_and_mask works in image coordinates on both sides of the neighbour distance; the bootstrap arm feeds C-order images and the agent path feeds order-F extraction images -- each internally consistent",
+   "status": "OK"
+  },
+  "S12_run_cnmfe_matlab_reshape": {
+   "code": [
+    "run_cnmfe.py:61: Y = neuron.reshape(Y, 1);"
+   ],
+   "verdict": "MATLAB statement inside a Python string: CNMFe's own reshape of the movie tensor Y (d1 x d2 x T -> pixels x T) executed by MATLAB; no numpy pixel-order step, no footprint involved",
+   "status": "OK"
+  }
+ },
+ "known_defects_confirmed": {
+  "train_classifier.py:235 retro path": "C-match on 6 BLA sessions (prep_retro_ids)",
+  "features.py:32-38 A.txt fallback": "transposed + square-only, fires on 0 sessions"
+ },
+ "checks": {
+  "no_new_live_production_defect": true,
+  "s3_reorder_consistent": true,
+  "s4_validate_call_site_fixed": true,
+  "h5py_all_transpose": true
+ },
+ "verdict": "PASS",
+ "criterion": "no live production-path orientation defect beyond the two already known; every eval-tool site order-invariant or self-consistent",
+ "attack": "a02",
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f",
+ "script": "a02_sites.py",
+ "script_sha256": "8d762bbaceb291d9e8b1bb17f3a736b1ebf85b85ae1f95110252eae98af6f3f0",
+ "written_at": "2026-08-26T22:15:50",
+ "runtime_s": 3.0
+}

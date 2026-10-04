@@ -74,6 +74,14 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
    > motion — use `m` whenever the reason you're deleting is motion, and plain
    > `d` for everything else. No extra steps; it's saved automatically.
 
+   > **Watching a transient (video pass):** each neuron opens on the frame of
+   > its biggest transient. Press **`n`** to step to the next-biggest transient;
+   > the movie lands about 2 s *before* it starts so you can scrub forward
+   > through the rise with the slider. Press **`p`** to play from there through
+   > the peak and its decay (twice). A real cell brightens in place; a motion
+   > artefact is the whole neighbourhood shifting at that moment. `n` cycles
+   > back round to the biggest transient. (`t` is still trim.)
+
 3. **Push the finished folder back** to **your own** inbox folder (whole folder
    is fine) - same name as your outbox folder:
    ```

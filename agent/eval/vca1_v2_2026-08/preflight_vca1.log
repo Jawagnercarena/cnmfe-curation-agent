@@ -1,0 +1,12 @@
+preflight
+  ok    gate_decision.deploy_ok = True (arm a, T 0.03)
+  ok    no production follow-on outstanding (required = False)
+  ok    watcher_vCA1 not running (False)
+  ok    watcher_vCA1.log quiet (7816 min)
+  FAIL  bootstrap red-team report present (redteam_report.md)
+  ok    session set matches the backup manifest
+  ok    no live v1 npz changed since backup (0 drifted)
+  ok    live joblib unchanged since backup
+  ok    every session has a v2 sibling (0 missing)
+  ok    materialize_report.json missing (run `materialize`)
+PREFLIGHT: NOT READY

@@ -1,0 +1,21 @@
+# BLA sessions still on legacy JSON after worker A stop
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02212025-bla4-751um-28z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02262025-bla2-662um-27z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02262025-bla4-724um-28z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02282025-bla2-681um-27z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02282025-bla6-748um-3z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-03132025-bla6-710um-3z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-031425-bla4-745um-28z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-041625-bla13-660um-27z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-041625-bla15-209um-45z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-041625-bla7-783um-27z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-042525-bla7-812um-27z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-043025-bla7-807um-27z-000
+D:\Julian_CNMFe\BLA\Block_Valence\AVG5x-TSeries-121025-bla16-293um-36z-000
+D:\Julian_CNMFe\BLA\CTA\AVG5x-TSeries-03312025-bla3-655um-26z-000
+D:\Julian_CNMFe\BLA\CTA\AVG5x-TSeries-03312025-bla4-741um-28z-000-ReMC
+D:\Julian_CNMFe\BLA\CTA\AVG5x-TSeries-04042025-bla4-712um-28z-000-ReMC
+D:\Julian_CNMFe\BLA\CTA\AVG5x-TSeries-04042025-bla6-686um-3z-000
+D:\Julian_CNMFe\BLA\CTA\AVG5x-TSeries-04082025-bla4-711um-28z-000-ReMC
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02072025-bla6-745um-3z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-121125-bla16-233um-36z-000

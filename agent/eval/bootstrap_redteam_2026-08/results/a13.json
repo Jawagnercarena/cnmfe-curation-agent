@@ -1,0 +1,1525 @@
+{
+ "part_a": {
+  "2tones/AVG5x-TSeries-093025-bla21-313um-38z-000": {
+   "n_candidates": 397,
+   "n_final": 50,
+   "old_positives": {
+    "n": 37,
+    "score_p50": 0.2861974537372589,
+    "frac_ge_T": 0.7297297297297297,
+    "frac_ge_0.5": 0.35135135135135137,
+    "human_kept": 11,
+    "human_deleted": 4,
+    "unknown": 22
+   },
+   "true_positives": {
+    "n": 50,
+    "score_p50": 0.6540391445159912,
+    "frac_ge_T": 0.98,
+    "frac_ge_0.5": 0.76,
+    "human_kept": 45,
+    "human_deleted": 1,
+    "unknown": 4
+   },
+   "old_pos_that_are_true_pos": 10,
+   "all_other_candidates": {
+    "n": 347,
+    "score_p50": 0.036193083971738815,
+    "frac_ge_T": 0.484149855907781,
+    "frac_ge_0.5": 0.10951008645533142,
+    "human_kept": 5,
+    "human_deleted": 44,
+    "unknown": 298
+   }
+  },
+  "2tones/AVG5x-TSeries-100125-bla12-639um-23z-000": {
+   "n_candidates": 501,
+   "n_final": 45,
+   "old_positives": {
+    "n": 19,
+    "score_p50": 0.10266576707363129,
+    "frac_ge_T": 0.6842105263157895,
+    "frac_ge_0.5": 0.2631578947368421,
+    "human_kept": 2,
+    "human_deleted": 7,
+    "unknown": 10
+   },
+   "true_positives": {
+    "n": 45,
+    "score_p50": 0.7795302867889404,
+    "frac_ge_T": 1.0,
+    "frac_ge_0.5": 0.6222222222222222,
+    "human_kept": 42,
+    "human_deleted": 1,
+    "unknown": 2
+   },
+   "old_pos_that_are_true_pos": 2,
+   "all_other_candidates": {
+    "n": 456,
+    "score_p50": 0.01712934300303459,
+    "frac_ge_T": 0.35964912280701755,
+    "frac_ge_0.5": 0.05701754385964912,
+    "human_kept": 2,
+    "human_deleted": 97,
+    "unknown": 357
+   }
+  },
+  "4odorDO/AVG5x-TSeries-02092026-bla12-681um-22z-000": {
+   "n_candidates": 518,
+   "n_final": 63,
+   "old_positives": {
+    "n": 25,
+    "score_p50": 0.054512858390808105,
+    "frac_ge_T": 0.52,
+    "frac_ge_0.5": 0.12,
+    "human_kept": 7,
+    "human_deleted": 2,
+    "unknown": 16
+   },
+   "true_positives": {
+    "n": 63,
+    "score_p50": 0.5406700968742371,
+    "frac_ge_T": 0.9841269841269841,
+    "frac_ge_0.5": 0.5714285714285714,
+    "human_kept": 58,
+    "human_deleted": 0,
+    "unknown": 5
+   },
+   "old_pos_that_are_true_pos": 8,
+   "all_other_candidates": {
+    "n": 455,
+    "score_p50": 0.011867807246744633,
+    "frac_ge_T": 0.3054945054945055,
+    "frac_ge_0.5": 0.03076923076923077,
+    "human_kept": 4,
+    "human_deleted": 61,
+    "unknown": 390
+   }
+  },
+  "Valence/AVG5x-TSeries-121225-bla12-652um-23z-000": {
+   "n_candidates": 462,
+   "n_final": 66,
+   "old_positives": {
+    "n": 34,
+    "score_p50": 0.1154828816652298,
+    "frac_ge_T": 0.7058823529411765,
+    "frac_ge_0.5": 0.2647058823529412,
+    "human_kept": 9,
+    "human_deleted": 4,
+    "unknown": 21
+   },
+   "true_positives": {
+    "n": 66,
+    "score_p50": 0.6925795078277588,
+    "frac_ge_T": 0.9696969696969697,
+    "frac_ge_0.5": 0.7121212121212122,
+    "human_kept": 62,
+    "human_deleted": 0,
+    "unknown": 4
+   },
+   "old_pos_that_are_true_pos": 10,
+   "all_other_candidates": {
+    "n": 396,
+    "score_p50": 0.022396789863705635,
+    "frac_ge_T": 0.38636363636363635,
+    "frac_ge_0.5": 0.09090909090909091,
+    "human_kept": 4,
+    "human_deleted": 79,
+    "unknown": 313
+   }
+  }
+ },
+ "part_b": {
+  "vCA1": {
+   "n_old_positives": 2579,
+   "class_counts": {
+    "true_positive": 660,
+    "duplicate": 380,
+    "ambiguous": 3,
+    "plain_negative": 1536
+   },
+   "class_frac": {
+    "true_positive": 0.25591314462970144,
+    "duplicate": 0.14734393175649477,
+    "ambiguous": 0.0011632415664986429,
+    "plain_negative": 0.5955796820473052
+   },
+   "oos": {
+    "score_p50": 0.3040674924850464,
+    "frac_ge_T": 0.7646374563784413,
+    "frac_ge_0.5": 0.4067468010856921,
+    "frac_hard_0.02_0.10": 0.18844513377278016,
+    "by_class": {
+     "true_positive": {
+      "n": 660,
+      "score_p50": 0.9341658353805542,
+      "frac_ge_T": 0.996969696969697
+     },
+     "duplicate": {
+      "n": 380,
+      "score_p50": 0.3589975833892822,
+      "frac_ge_T": 0.8894736842105263
+     },
+     "ambiguous": {
+      "n": 3,
+      "score_p50": 0.3010563552379608,
+      "frac_ge_T": 1.0
+     },
+     "plain_negative": {
+      "n": 1536,
+      "score_p50": 0.10450422391295433,
+      "frac_ge_T": 0.6334635416666666
+     }
+    }
+   },
+   "in_sample": {
+    "score_p50": 0.311857670545578,
+    "frac_ge_T": 0.762310973245444,
+    "frac_ge_0.5": 0.41488949205118264,
+    "frac_hard_0.02_0.10": 0.18766963939511438,
+    "by_class": {
+     "true_positive": {
+      "n": 660,
+      "score_p50": 0.9392149150371552,
+      "frac_ge_T": 0.9984848484848485
+     },
+     "duplicate": {
+      "n": 380,
+      "score_p50": 0.36222484707832336,
+      "frac_ge_T": 0.8894736842105263
+     },
+     "ambiguous": {
+      "n": 3,
+      "score_p50": 0.318057656288147,
+      "frac_ge_T": 1.0
+     },
+     "plain_negative": {
+      "n": 1536,
+      "score_p50": 0.10114454478025436,
+      "frac_ge_T": 0.62890625
+     }
+    }
+   },
+   "reference_oos": {
+    "true_pos_frac_ge_T": 0.9875679875679876,
+    "true_pos_p50": 0.9135652184486389,
+    "unmasked_neg_frac_ge_T": 0.49113070539419085,
+    "unmasked_neg_p50": 0.04766749031841755,
+    "junk_caught_unmasked_neg_at_T": 0.5088692946058091
+   },
+   "supported": true,
+   "per_session": [
+    {
+     "rel": "4CS/AVG8x-TSeries-05172022-100-300um-33z-000",
+     "n_old_pos": 27,
+     "n_curated": 49,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05182022-100-316um-33z-000",
+     "n_old_pos": 39,
+     "n_curated": 72,
+     "old_pos_true": 18
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05182022-94-473um-3z-000",
+     "n_old_pos": 10,
+     "n_curated": 12,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05182022-96-215um-35z-000",
+     "n_old_pos": 28,
+     "n_curated": 45,
+     "old_pos_true": 10
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05212022-100-255um-45z-000",
+     "n_old_pos": 22,
+     "n_curated": 42,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05212022-96-267um-35z-000",
+     "n_old_pos": 25,
+     "n_curated": 50,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05222022-100-um-29z-000",
+     "n_old_pos": 10,
+     "n_curated": 21,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05222022-94-476um-3z-000",
+     "n_old_pos": 7,
+     "n_curated": 14,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05222022-96-223um-35z-000",
+     "n_old_pos": 31,
+     "n_curated": 43,
+     "old_pos_true": 10
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05262022-100-317um-33z-000",
+     "n_old_pos": 21,
+     "n_curated": 27,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05262022-94-485um-3z-000",
+     "n_old_pos": 11,
+     "n_curated": 14,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05262022-96-um-35z-000",
+     "n_old_pos": 27,
+     "n_curated": 37,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-05272022-96-245um-35z-000",
+     "n_old_pos": 3,
+     "n_curated": 18,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06132022-98-447um-3z-000",
+     "n_old_pos": 27,
+     "n_curated": 53,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06132022-99-295um-35z-000",
+     "n_old_pos": 18,
+     "n_curated": 39,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06142022-98-444um-3z-000",
+     "n_old_pos": 18,
+     "n_curated": 33,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06142022-99-305um-35z-000",
+     "n_old_pos": 24,
+     "n_curated": 40,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06182022-98-445um-3z-000",
+     "n_old_pos": 20,
+     "n_curated": 36,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06182022-99-299um-35z-000",
+     "n_old_pos": 32,
+     "n_curated": 52,
+     "old_pos_true": 10
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06222022-98-451um-3z-000",
+     "n_old_pos": 30,
+     "n_curated": 56,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "4CS/AVG8x-TSeries-06222022-99-303um-35z-000",
+     "n_old_pos": 32,
+     "n_curated": 45,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06222022-99-303um-35z-000",
+     "n_old_pos": 32,
+     "n_curated": 45,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06272022-100-317um-38z-000",
+     "n_old_pos": 19,
+     "n_curated": 23,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06272022-94-440um-29z-000",
+     "n_old_pos": 9,
+     "n_curated": 14,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06282022-100-297um-35z-000",
+     "n_old_pos": 22,
+     "n_curated": 32,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06282022-94-452um-29z-000",
+     "n_old_pos": 11,
+     "n_curated": 15,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06292022-94-448um-29z-000",
+     "n_old_pos": 15,
+     "n_curated": 16,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-06302022-94-456um-29z-000",
+     "n_old_pos": 13,
+     "n_curated": 17,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07012022-94-600um-28z-000",
+     "n_old_pos": 8,
+     "n_curated": 16,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07012022-96-172um-35z-000",
+     "n_old_pos": 1,
+     "n_curated": 30,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07022022-100-299um-35z-000",
+     "n_old_pos": 28,
+     "n_curated": 36,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07022022-94-440um-29z-000",
+     "n_old_pos": 9,
+     "n_curated": 15,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07102022-104-350um-3z-000",
+     "n_old_pos": 10,
+     "n_curated": 28,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07102022-98-369um-33z-000",
+     "n_old_pos": 25,
+     "n_curated": 56,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07102022-99-300um-35z-000",
+     "n_old_pos": 10,
+     "n_curated": 34,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07142022-104-420um-3z-000",
+     "n_old_pos": 24,
+     "n_curated": 33,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07142022-98-450um-33z-000",
+     "n_old_pos": 28,
+     "n_curated": 43,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07142022-99-365um-3z-000",
+     "n_old_pos": 14,
+     "n_curated": 35,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07152022-104-365um-3z-000",
+     "n_old_pos": 55,
+     "n_curated": 84,
+     "old_pos_true": 11
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07152022-98-374um-33z-000",
+     "n_old_pos": 51,
+     "n_curated": 87,
+     "old_pos_true": 11
+    },
+    {
+     "rel": "AA/AVG8x-TSeries-07152022-99-297um-35z-000",
+     "n_old_pos": 22,
+     "n_curated": 36,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-921-880-780um-25z-A",
+     "n_old_pos": 5,
+     "n_curated": 69,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-921-880-780um-25z-B",
+     "n_old_pos": 21,
+     "n_curated": 89,
+     "old_pos_true": 12
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-924-720-620um-28z-A",
+     "n_old_pos": 8,
+     "n_curated": 39,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-924-720-620um-28z-B",
+     "n_old_pos": 9,
+     "n_curated": 29,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10232023-961-420-335um-22z-A",
+     "n_old_pos": 0,
+     "n_curated": 17,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-920-810-670um-25z-000B",
+     "n_old_pos": 3,
+     "n_curated": 11,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-920-810-670um-25z-A",
+     "n_old_pos": 2,
+     "n_curated": 8,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-921-831-731um-25z-000A",
+     "n_old_pos": 10,
+     "n_curated": 66,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-921-831-731um-25z-000B",
+     "n_old_pos": 8,
+     "n_curated": 64,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-924-um-28z-000A",
+     "n_old_pos": 11,
+     "n_curated": 36,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-10272023-924-um-28z-B",
+     "n_old_pos": 5,
+     "n_curated": 28,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-962-517um-477um-23z-000A",
+     "n_old_pos": 41,
+     "n_curated": 119,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-962-517um-477um-23z-000B",
+     "n_old_pos": 71,
+     "n_curated": 136,
+     "old_pos_true": 21
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-963-508um-453um-3z-000A",
+     "n_old_pos": 11,
+     "n_curated": 42,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-963-508um-453um-3z-000B",
+     "n_old_pos": 17,
+     "n_curated": 35,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-964-510um-450um-31z-000A",
+     "n_old_pos": 10,
+     "n_curated": 24,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-964-510um-450um-31z-000B",
+     "n_old_pos": 7,
+     "n_curated": 20,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-965-475um-430um-32z-000A",
+     "n_old_pos": 47,
+     "n_curated": 77,
+     "old_pos_true": 17
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-11282023-965-475um-430um-32z-000B",
+     "n_old_pos": 40,
+     "n_curated": 74,
+     "old_pos_true": 10
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-962-525um-485um-23z-000A",
+     "n_old_pos": 55,
+     "n_curated": 139,
+     "old_pos_true": 24
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-962-525um-485um-23z-000B",
+     "n_old_pos": 81,
+     "n_curated": 175,
+     "old_pos_true": 27
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-963-462um-407um-3z-000A",
+     "n_old_pos": 11,
+     "n_curated": 31,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-963-462um-407um-3z-000B",
+     "n_old_pos": 16,
+     "n_curated": 42,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-964-516um-456um-31z-000A",
+     "n_old_pos": 5,
+     "n_curated": 20,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-964-516um-456um-31z-000B",
+     "n_old_pos": 8,
+     "n_curated": 25,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-965-468um-423um-32z-000A",
+     "n_old_pos": 29,
+     "n_curated": 69,
+     "old_pos_true": 13
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12012023-965-468um-423um-32z-000B",
+     "n_old_pos": 45,
+     "n_curated": 79,
+     "old_pos_true": 12
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000A",
+     "n_old_pos": 69,
+     "n_curated": 135,
+     "old_pos_true": 11
+    },
+    {
+     "rel": "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000B",
+     "n_old_pos": 51,
+     "n_curated": 121,
+     "old_pos_true": 11
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07032022-100-371um-35z-000",
+     "n_old_pos": 23,
+     "n_curated": 27,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07032022-94-455um-29z-000",
+     "n_old_pos": 10,
+     "n_curated": 15,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07082022-100-292um-35z-000",
+     "n_old_pos": 17,
+     "n_curated": 20,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07082022-94-447um-29z-000",
+     "n_old_pos": 9,
+     "n_curated": 12,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07102022-94-564um-28z-000",
+     "n_old_pos": 10,
+     "n_curated": 12,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07122022-94-627um-3z-000",
+     "n_old_pos": 9,
+     "n_curated": 14,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07132022-94-545um-28z-000",
+     "n_old_pos": 9,
+     "n_curated": 12,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07162022-104-358um-3z-000",
+     "n_old_pos": 22,
+     "n_curated": 39,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07162022-99-295um-35z-000",
+     "n_old_pos": 16,
+     "n_curated": 37,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07182022-99-um-35z-000",
+     "n_old_pos": 14,
+     "n_curated": 33,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07202022-104-375um-3z-001",
+     "n_old_pos": 23,
+     "n_curated": 49,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07212022-104-460um-28z-000",
+     "n_old_pos": 17,
+     "n_curated": 26,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07212022-98-450um-33z-000",
+     "n_old_pos": 36,
+     "n_curated": 47,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07212022-99-395um-3z-000",
+     "n_old_pos": 29,
+     "n_curated": 55,
+     "old_pos_true": 11
+    },
+    {
+     "rel": "LH/AVG8x-TSeries-07222022-98-380um-33z-000",
+     "n_old_pos": 37,
+     "n_curated": 56,
+     "old_pos_true": 16
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-964-495um-425um-22z-000A",
+     "n_old_pos": 9,
+     "n_curated": 32,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-964-495um-425um-22z-000B",
+     "n_old_pos": 27,
+     "n_curated": 60,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-965-466um-426um-33z-000A",
+     "n_old_pos": 40,
+     "n_curated": 65,
+     "old_pos_true": 13
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11272023-965-466um-426um-33z-000B",
+     "n_old_pos": 44,
+     "n_curated": 102,
+     "old_pos_true": 13
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-921-800um-720um-27z-000A",
+     "n_old_pos": 30,
+     "n_curated": 67,
+     "old_pos_true": 11
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-921-800um-720um-27z-000B",
+     "n_old_pos": 34,
+     "n_curated": 67,
+     "old_pos_true": 15
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-963-505um-450um-3z-000A",
+     "n_old_pos": 26,
+     "n_curated": 51,
+     "old_pos_true": 7
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11282023-963-505um-450um-3z-000B",
+     "n_old_pos": 25,
+     "n_curated": 57,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11302023-931-403um-343um-32z-000A",
+     "n_old_pos": 10,
+     "n_curated": 16,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-11302023-931-403um-343um-32z-000B",
+     "n_old_pos": 10,
+     "n_curated": 12,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-920-633um-570um-27z-000A",
+     "n_old_pos": 10,
+     "n_curated": 23,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-920-633um-570um-27z-000B",
+     "n_old_pos": 8,
+     "n_curated": 15,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-961-410um-350um-32z-000A",
+     "n_old_pos": 16,
+     "n_curated": 30,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-961-410um-350um-32z-000B",
+     "n_old_pos": 3,
+     "n_curated": 5,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-964-505um-445um-31z-000A",
+     "n_old_pos": 13,
+     "n_curated": 34,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-120723-964-505um-445um-31z-000B",
+     "n_old_pos": 14,
+     "n_curated": 26,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000A",
+     "n_old_pos": 114,
+     "n_curated": 213,
+     "old_pos_true": 39
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000B",
+     "n_old_pos": 175,
+     "n_curated": 282,
+     "old_pos_true": 61
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-963-520um-470um-27z-000A",
+     "n_old_pos": 36,
+     "n_curated": 72,
+     "old_pos_true": 12
+    },
+    {
+     "rel": "Valence/AVG2x-TSeries-12082023-963-520um-470um-27z-000B",
+     "n_old_pos": 32,
+     "n_curated": 70,
+     "old_pos_true": 12
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08092022-94-510um-3z-002",
+     "n_old_pos": 11,
+     "n_curated": 21,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08152022-100-375-3z-003",
+     "n_old_pos": 13,
+     "n_curated": 14,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08162022-94-500-3z-006",
+     "n_old_pos": 9,
+     "n_curated": 17,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08282022-104-387um-26z-000",
+     "n_old_pos": 7,
+     "n_curated": 21,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08282022-98-431um-33z-000",
+     "n_old_pos": 8,
+     "n_curated": 21,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "VSA/AVG8x-TSeries-08282022-99-293um-35z-000",
+     "n_old_pos": 10,
+     "n_curated": 28,
+     "old_pos_true": 0
+    }
+   ]
+  },
+  "BLA": {
+   "n_old_positives": 1639,
+   "class_counts": {
+    "true_positive": 318,
+    "duplicate": 285,
+    "ambiguous": 0,
+    "plain_negative": 1036
+   },
+   "class_frac": {
+    "true_positive": 0.19402074435631483,
+    "duplicate": 0.17388651616839537,
+    "ambiguous": 0.0,
+    "plain_negative": 0.6320927394752898
+   },
+   "oos": {
+    "score_p50": 0.1305629163980484,
+    "frac_ge_T": 0.6449054301403294,
+    "frac_ge_0.5": 0.29713239780353873,
+    "frac_hard_0.02_0.10": 0.20439292251372787,
+    "by_class": {
+     "true_positive": {
+      "n": 318,
+      "score_p50": 0.8835721909999847,
+      "frac_ge_T": 0.9874213836477987
+     },
+     "duplicate": {
+      "n": 285,
+      "score_p50": 0.24380935728549957,
+      "frac_ge_T": 0.7543859649122807
+     },
+     "ambiguous": {
+      "n": 0,
+      "score_p50": null,
+      "frac_ge_T": null
+     },
+     "plain_negative": {
+      "n": 1036,
+      "score_p50": 0.04336247593164444,
+      "frac_ge_T": 0.5096525096525096
+     }
+    }
+   },
+   "in_sample": {
+    "score_p50": 0.12884801626205444,
+    "frac_ge_T": 0.6485661989017694,
+    "frac_ge_0.5": 0.300183038438072,
+    "frac_hard_0.02_0.10": 0.20256253813300792,
+    "by_class": {
+     "true_positive": {
+      "n": 318,
+      "score_p50": 0.8936045467853546,
+      "frac_ge_T": 0.9968553459119497
+     },
+     "duplicate": {
+      "n": 285,
+      "score_p50": 0.28234216570854187,
+      "frac_ge_T": 0.7508771929824561
+     },
+     "ambiguous": {
+      "n": 0,
+      "score_p50": null,
+      "frac_ge_T": null
+     },
+     "plain_negative": {
+      "n": 1036,
+      "score_p50": 0.042496681213378906,
+      "frac_ge_T": 0.5135135135135135
+     }
+    }
+   },
+   "reference_oos": {
+    "true_pos_frac_ge_T": 0.9912312751187432,
+    "true_pos_p50": 0.8896921277046204,
+    "unmasked_neg_frac_ge_T": 0.40542396155166494,
+    "unmasked_neg_p50": 0.022301962599158287,
+    "junk_caught_unmasked_neg_at_T": 0.5945760384483351
+   },
+   "supported": true,
+   "per_session": [
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla2-695um-27z-000",
+     "n_old_pos": 12,
+     "n_curated": 14,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla3-667um-26z-000",
+     "n_old_pos": 44,
+     "n_curated": 69,
+     "old_pos_true": 13
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla4-751um-28z-000",
+     "n_old_pos": 10,
+     "n_curated": 16,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla5-527um-25z-000",
+     "n_old_pos": 23,
+     "n_curated": 38,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02212025-bla6-734um-3z-000",
+     "n_old_pos": 8,
+     "n_curated": 13,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022326-bla8-655um-25z-000",
+     "n_old_pos": 1,
+     "n_curated": 5,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla3-665um-26z-000",
+     "n_old_pos": 25,
+     "n_curated": 29,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla4-755um-28z-000",
+     "n_old_pos": 7,
+     "n_curated": 16,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla5-512um-25z-000",
+     "n_old_pos": 30,
+     "n_curated": 56,
+     "old_pos_true": 17
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-022525-bla6-730um-3z-000",
+     "n_old_pos": 3,
+     "n_curated": 6,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla2-662um-27z-000",
+     "n_old_pos": 15,
+     "n_curated": 15,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla3-664um-26z-000",
+     "n_old_pos": 12,
+     "n_curated": 20,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla4-724um-28z-000",
+     "n_old_pos": 8,
+     "n_curated": 12,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla5-527um-25z-000",
+     "n_old_pos": 43,
+     "n_curated": 71,
+     "old_pos_true": 21
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02262025-bla6-732um-3z-000",
+     "n_old_pos": 3,
+     "n_curated": 12,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla2-681um-27z-000",
+     "n_old_pos": 13,
+     "n_curated": 14,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla3-648um-26z-000",
+     "n_old_pos": 21,
+     "n_curated": 30,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla4-685um-28z-000",
+     "n_old_pos": 8,
+     "n_curated": 16,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5X-TSeries-02282025-bla5-543um-25z-000",
+     "n_old_pos": 28,
+     "n_curated": 72,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-02282025-bla6-748um-3z-000",
+     "n_old_pos": 4,
+     "n_curated": 5,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla3-667um-26z-000",
+     "n_old_pos": 31,
+     "n_curated": 41,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla4-680um-28z-000",
+     "n_old_pos": 11,
+     "n_curated": 14,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla5-537um-25z-000",
+     "n_old_pos": 34,
+     "n_curated": 68,
+     "old_pos_true": 13
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03042025-bla6-748um-3z-000",
+     "n_old_pos": 2,
+     "n_curated": 6,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla3-667um-26z-000",
+     "n_old_pos": 35,
+     "n_curated": 44,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla4-694um-28z-000",
+     "n_old_pos": 16,
+     "n_curated": 19,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla5-525um-25z-000",
+     "n_old_pos": 36,
+     "n_curated": 58,
+     "old_pos_true": 15
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03062025-bla6-745um-3z-000",
+     "n_old_pos": 2,
+     "n_curated": 9,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03072025-bla6-725um-3z-000",
+     "n_old_pos": 6,
+     "n_curated": 11,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03132025-bla3-737um-24z-000",
+     "n_old_pos": 27,
+     "n_curated": 37,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-03132025-bla6-710um-3z-000",
+     "n_old_pos": 2,
+     "n_curated": 6,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031425-bla3-580um-24z-000",
+     "n_old_pos": 24,
+     "n_curated": 32,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-031425-bla4-745um-28z-000",
+     "n_old_pos": 11,
+     "n_curated": 15,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla13-660um-27z-000",
+     "n_old_pos": 12,
+     "n_curated": 20,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla14-743um-3z-000",
+     "n_old_pos": 18,
+     "n_curated": 35,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla15-209um-45z-000",
+     "n_old_pos": 11,
+     "n_curated": 14,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041625-bla7-783um-27z-000",
+     "n_old_pos": 10,
+     "n_curated": 16,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla13-647um-27z-000",
+     "n_old_pos": 26,
+     "n_curated": 32,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla14-760um-3z-000",
+     "n_old_pos": 20,
+     "n_curated": 42,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla15-169um-45z-000",
+     "n_old_pos": 27,
+     "n_curated": 34,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-041725-bla7-793um-27z-000",
+     "n_old_pos": 14,
+     "n_curated": 28,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla13-657um-27z-000",
+     "n_old_pos": 42,
+     "n_curated": 55,
+     "old_pos_true": 13
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla14-763um-3z-000",
+     "n_old_pos": 13,
+     "n_curated": 34,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla15-222um-45z-000",
+     "n_old_pos": 15,
+     "n_curated": 22,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042125-bla7-778um-27z-000",
+     "n_old_pos": 3,
+     "n_curated": 24,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla13-653um-27z-000",
+     "n_old_pos": 22,
+     "n_curated": 26,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla14-763um-3z-000",
+     "n_old_pos": 12,
+     "n_curated": 30,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla15-200um-45z-000",
+     "n_old_pos": 16,
+     "n_curated": 20,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042225-bla7-797um-27z-000",
+     "n_old_pos": 5,
+     "n_curated": 16,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla13-655um-27z-000",
+     "n_old_pos": 30,
+     "n_curated": 34,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla14-776um-3z-000",
+     "n_old_pos": 14,
+     "n_curated": 36,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla15-183um-45z-000",
+     "n_old_pos": 14,
+     "n_curated": 25,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-042525-bla7-812um-27z-000",
+     "n_old_pos": 2,
+     "n_curated": 11,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-043025-bla13-653um-27z-000",
+     "n_old_pos": 31,
+     "n_curated": 39,
+     "old_pos_true": 7
+    },
+    {
+     "rel": "3odor/AVG5x-TSeries-043025-bla7-807um-27z-000",
+     "n_old_pos": 10,
+     "n_curated": 14,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-121025-bla16-293um-36z-000",
+     "n_old_pos": 13,
+     "n_curated": 18,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-121025-bla8-582um-23z-000",
+     "n_old_pos": 33,
+     "n_curated": 59,
+     "old_pos_true": 7
+    },
+    {
+     "rel": "Block_Valence/AVG5x-TSeries-121125-bla12-700um-23z-000",
+     "n_old_pos": 44,
+     "n_curated": 62,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla3-655um-26z-000",
+     "n_old_pos": 15,
+     "n_curated": 20,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla4-741um-28z-000-ReMC",
+     "n_old_pos": 5,
+     "n_curated": 6,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla5-546um-25z-000",
+     "n_old_pos": 17,
+     "n_curated": 29,
+     "old_pos_true": 3
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-03312025-bla6-688um-3z-000",
+     "n_old_pos": 5,
+     "n_curated": 5,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04042025-bla4-712um-28z-000-ReMC",
+     "n_old_pos": 4,
+     "n_curated": 6,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04042025-bla6-686um-3z-000",
+     "n_old_pos": 7,
+     "n_curated": 10,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04072025-bla3-679um-26z-000",
+     "n_old_pos": 15,
+     "n_curated": 25,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04072025-bla5-543um-25z-000",
+     "n_old_pos": 21,
+     "n_curated": 30,
+     "old_pos_true": 7
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04082025-bla3-694um-26z-000",
+     "n_old_pos": 31,
+     "n_curated": 41,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04082025-bla4-711um-28z-000-ReMC",
+     "n_old_pos": 2,
+     "n_curated": 3,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-04082025-bla5-552um-25z-000",
+     "n_old_pos": 23,
+     "n_curated": 39,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09232025-bla13-640um-25z-000",
+     "n_old_pos": 14,
+     "n_curated": 27,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09232025-bla14-570um-28z-000",
+     "n_old_pos": 8,
+     "n_curated": 24,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09232025-bla15-229um-33z-000",
+     "n_old_pos": 22,
+     "n_curated": 37,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09262025-bla13-629um-25z-000",
+     "n_old_pos": 10,
+     "n_curated": 23,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09262025-bla14-561um-28z-000",
+     "n_old_pos": 12,
+     "n_curated": 31,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "CTA/AVG5x-TSeries-09262025-bla15-234um-33z-000",
+     "n_old_pos": 45,
+     "n_curated": 64,
+     "old_pos_true": 10
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-02062025-bla5-515um-25z-000",
+     "n_old_pos": 39,
+     "n_curated": 50,
+     "old_pos_true": 12
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-02072025-bla5-596um-25z-000",
+     "n_old_pos": 38,
+     "n_curated": 61,
+     "old_pos_true": 11
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-02072025-bla6-745um-3z-000",
+     "n_old_pos": 6,
+     "n_curated": 18,
+     "old_pos_true": 1
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07152025-bla13-675um-25z-000",
+     "n_old_pos": 16,
+     "n_curated": 39,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07152025-bla14-818um-25z-000",
+     "n_old_pos": 14,
+     "n_curated": 61,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07152025-bla15-228um-38z-000",
+     "n_old_pos": 39,
+     "n_curated": 56,
+     "old_pos_true": 6
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07162025-bla14-837um-25z-000",
+     "n_old_pos": 12,
+     "n_curated": 41,
+     "old_pos_true": 4
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-07162025-bla15-246um-38z-000",
+     "n_old_pos": 35,
+     "n_curated": 55,
+     "old_pos_true": 12
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-121125-bla16-233um-36z-000",
+     "n_old_pos": 12,
+     "n_curated": 20,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "Valence/AVG5x-TSeries-121125-bla8-652um-25z-000",
+     "n_old_pos": 13,
+     "n_curated": 52,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-06072025-bla13-635um-27z-000",
+     "n_old_pos": 29,
+     "n_curated": 38,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-06072025-bla14-795um-28z-000",
+     "n_old_pos": 14,
+     "n_curated": 43,
+     "old_pos_true": 5
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-06072025-bla15-199um-45z-000",
+     "n_old_pos": 27,
+     "n_curated": 40,
+     "old_pos_true": 0
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-060825-bla13-588um-27z-000",
+     "n_old_pos": 35,
+     "n_curated": 44,
+     "old_pos_true": 2
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-060825-bla14-775um-28z-000",
+     "n_old_pos": 20,
+     "n_curated": 44,
+     "old_pos_true": 8
+    },
+    {
+     "rel": "WSE/AVG5x-TSeries-060825-bla15-175um-45z-000",
+     "n_old_pos": 22,
+     "n_curated": 24,
+     "old_pos_true": 0
+    }
+   ]
+  }
+ },
+ "hypothesis_D13_supported": {
+  "vCA1": true,
+  "BLA": true
+ },
+ "signature": {
+  "measured_bla_auc_delta": 0.0037,
+  "measured_bla_junk_delta_pp": 9.4,
+  "reading": "if most old positives score as cells out-of-sample, the fix's main effect was on the negative pool (the ~7,900 true cells that sat at label 0), which predicts a small AUC move and a larger operating-point move"
+ },
+ "verdict": "PASS",
+ "criterion": "D13 supported for an area if > 50% of the simulated old positives score >= the deployed T out-of-sample",
+ "attack": "a13",
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f",
+ "script": "a13_old_positives.py",
+ "script_sha256": "4f2e7aa0a1d90bb16101032b73dce5e3ad14282e266de4de14f5e4e3a77d262d",
+ "written_at": "2026-08-26T22:04:29",
+ "runtime_s": 118.3
+}

@@ -1,0 +1,32 @@
+{
+ "vCA1_13": {
+  "agent_weight": 5.0,
+  "n_rows": 50370,
+  "n_pos": 5148,
+  "n_masked": 6662,
+  "auc_all_rows": 0.9281454004155344,
+  "auc_unmasked": 0.9452584212698322
+ },
+ "BLA_35": {
+  "agent_weight": 4.0,
+  "n_rows": 33448,
+  "n_pos": 2737,
+  "n_masked": 4494,
+  "auc_all_rows": 0.9448882755042123,
+  "auc_unmasked": 0.9566758866713299
+ },
+ "BLA_13": {
+  "agent_weight": 4.0,
+  "n_rows": 33448,
+  "n_pos": 2737,
+  "n_masked": 4494,
+  "auc_all_rows": 0.940131018833669,
+  "auc_unmasked": 0.9516936990670138
+ },
+ "attack": "boot_oos_meta",
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f",
+ "script": "prep_bootstrap_oos_scores.py",
+ "script_sha256": "7df1fd0152d1a76cc637ab30bad0c5e14cdcbd91553fe30fd4cb4a733f7dd79f",
+ "written_at": "2026-08-26T18:50:28",
+ "runtime_s": 111.5
+}

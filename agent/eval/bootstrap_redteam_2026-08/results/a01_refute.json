@@ -1,0 +1,23 @@
+{
+ "attack": "a01",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 1537,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "consistent_metric_max_abs_diff_vs_stored": 0.6137402602415268,
+  "Atxt_candidates_mixed_max_abs_diff_vs_stored": 4.992346367188594e-05,
+  "transposed_metric_vs_stored_sim_matrix_max_diff_5_sessions": 0.9995397329330444,
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 136.1
+}

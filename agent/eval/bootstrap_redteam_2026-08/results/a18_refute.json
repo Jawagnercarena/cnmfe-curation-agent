@@ -1,0 +1,19 @@
+{
+ "attack": "a18",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "skipped": true,
+  "reason": "long-running; reproduced via its own pin/fixture consistency checks"
+ },
+ "probe": {
+  "dg_fov_groups": 4,
+  "dg_loao_delta_w1": 0.07810290387300911,
+  "dg_loao_delta_w03": 0.07941375660674194,
+  "dg_fov_delta_w03": 0.009704618974386126,
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 0.0
+}

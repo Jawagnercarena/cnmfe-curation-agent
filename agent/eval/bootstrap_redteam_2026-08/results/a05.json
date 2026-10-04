@@ -1,0 +1,151 @@
+{
+ "areas": {
+  "vCA1": {
+   "n_pairs": 5148,
+   "n_sessions": 111,
+   "dist_px": {
+    "p50": 0.6881242559100555,
+    "p95": 4.423690916741878,
+    "max": 16.387431786993478
+   },
+   "dist_over_gsig": {
+    "p50": 0.08417422787245513,
+    "p95": 0.5166136276625534
+   },
+   "mirror_dist_px": {
+    "p05": 15.657354883257529,
+    "p50": 154.92437182986384
+   },
+   "iou20": {
+    "p05": 0.5390335784127946,
+    "p50": 0.8520453635999854
+   },
+   "iou50": {
+    "p05": 0.46694852004223253,
+    "p50": 0.8563660477453581
+   },
+   "area_ratio": {
+    "p05": 0.6866885744009776,
+    "p50": 0.9533020481464062,
+    "p95": 1.092245317496573
+   },
+   "sim": {
+    "p05": 0.824805,
+    "p50": 0.9782
+   },
+   "n_flag_dist_gt_gsiz": 0,
+   "n_flag_iou20_lt_0.2": 1,
+   "n_mirror_closer": 0,
+   "n_diagonal_ambiguous": 14,
+   "n_flagged": 1,
+   "flagged_pct": 0.019425019425019424,
+   "sessions_with_mirror_closer": [],
+   "flagged_by_session": {
+    "4CS/AVG8x-TSeries-05182022-100-316um-33z-000": [
+     {
+      "cand": 185,
+      "cur": 54,
+      "sim": 0.4925,
+      "dist": 2.063020045722779,
+      "mirror_dist": 11.217071824619032,
+      "iou20": 0.12690951821386603,
+      "gSiz": 32.0
+     }
+    ]
+   }
+  },
+  "BLA": {
+   "n_pairs": 2737,
+   "n_sessions": 91,
+   "dist_px": {
+    "p50": 0.7516072493136007,
+    "p95": 4.375905185426311,
+    "max": 12.951567033093308
+   },
+   "dist_over_gsig": {
+    "p50": 0.07990764020962622,
+    "p95": 0.4685203972483993
+   },
+   "mirror_dist_px": {
+    "p05": 14.299534048236909,
+    "p50": 152.77431439651167
+   },
+   "iou20": {
+    "p05": 0.621607486925406,
+    "p50": 0.9030837004405287
+   },
+   "iou50": {
+    "p05": 0.5424459145360271,
+    "p50": 0.8938356164383562
+   },
+   "area_ratio": {
+    "p05": 0.6985669312394404,
+    "p50": 0.9501312335958005,
+    "p95": 1.0256534068109466
+   },
+   "sim": {
+    "p05": 0.88408,
+    "p50": 0.9886
+   },
+   "n_flag_dist_gt_gsiz": 0,
+   "n_flag_iou20_lt_0.2": 0,
+   "n_mirror_closer": 0,
+   "n_diagonal_ambiguous": 5,
+   "n_flagged": 0,
+   "flagged_pct": 0.0,
+   "sessions_with_mirror_closer": [],
+   "flagged_by_session": {}
+  }
+ },
+ "contact_sheets": {
+  "vCA1": [
+   "contact_sheets\\a05_vCA1_VSA__AVG8x-TSeries-08152022-100-375-3z-003.png",
+   "contact_sheets\\a05_vCA1_AA__AVG8x-TSeries-06272022-100-317um-38z-000.png",
+   "contact_sheets\\a05_vCA1_4CS__AVG8x-TSeries-05212022-100-255um-45z-000.png",
+   "contact_sheets\\a05_vCA1_CTA__AVG2x-TSeries-10272023-924-um-28z-B.png",
+   "contact_sheets\\a05_vCA1_CTA__AVG2x-TSeries-10272023-921-831-731um-25z-000B.png",
+   "contact_sheets\\a05_vCA1_CTA__AVG2x-TSeries-10232023-921-880-780um-25z-A.png",
+   "contact_sheets\\a05_vCA1_LH__AVG8x-TSeries-07162022-104-358um-3z-000.png",
+   "contact_sheets\\a05_vCA1_CTA__AVG2x-TSeries-10272023-921-831-731um-25z-000A.png",
+   "contact_sheets\\a05_vCA1_Valence__AVG2x-TSeries-11272023-964-495um-425um-22z-000B.png",
+   "contact_sheets\\a05_vCA1_Valence__AVG2x-TSeries-11282023-921-800um-720um-27z-000A.png",
+   "contact_sheets\\a05_vCA1_4CS__AVG8x-TSeries-06182022-99-299um-35z-000.png",
+   "contact_sheets\\a05_vCA1_4CS__AVG8x-TSeries-05212022-96-267um-35z-000.png",
+   "contact_sheets\\a05_vCA1_CTA__AVG2x-TSeries-12012023-963-462um-407um-3z-000B.png",
+   "contact_sheets\\a05_vCA1_4CS__AVG8x-TSeries-06222022-99-303um-35z-000.png",
+   "contact_sheets\\a05_vCA1_4CS__AVG8x-TSeries-06142022-99-305um-35z-000.png"
+  ],
+  "BLA": [
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-043025-bla7-807um-27z-000.png",
+   "contact_sheets\\a05_BLA_WSE__AVG5x-TSeries-06072025-bla15-199um-45z-000.png",
+   "contact_sheets\\a05_BLA_Block_Valence__AVG5x-TSeries-121025-bla16-293um-36z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-02262025-bla2-662um-27z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-02212025-bla2-695um-27z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-042225-bla14-763um-3z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-042125-bla15-222um-45z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-041725-bla15-169um-45z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-03062025-bla5-525um-25z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-043025-bla13-653um-27z-000.png",
+   "contact_sheets\\a05_BLA_Valence__AVG5x-TSeries-02062025-bla5-515um-25z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-02262025-bla3-664um-26z-000.png",
+   "contact_sheets\\a05_BLA_Valence__AVG5x-TSeries-121125-bla8-652um-25z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-03042025-bla3-667um-26z-000.png",
+   "contact_sheets\\a05_BLA_3odor__AVG5x-TSeries-022525-bla3-665um-26z-000.png"
+  ]
+ },
+ "checks": {
+  "vCA1_flagged_lt_1pct": true,
+  "BLA_flagged_lt_1pct": true,
+  "vCA1_zero_mirror_closer": true,
+  "BLA_zero_mirror_closer": true
+ },
+ "verdict": "PASS",
+ "human_check": "PENDING (user): contact_sheets/a05_*.png, 15 sessions x 5 pairs per area",
+ "criterion": "flagged pairs (dist > gSiz or IoU20 < 0.2 or residual-transpose: mirror closer AND true dist > gSig AND mirror < half the true dist) < 1% per area; 0 residual-transpose pairs. Cells on the image diagonal (mirror == true within noise) are counted separately, not flagged",
+ "attack": "a05",
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f",
+ "script": "a05_pairs.py",
+ "script_sha256": "21ec0f231a10544c6ba87a6a6e010a6e428aaf01a42efaa9c5171090aeb57914",
+ "written_at": "2026-08-26T21:59:32",
+ "runtime_s": 22.7
+}

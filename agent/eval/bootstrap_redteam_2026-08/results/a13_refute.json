@@ -1,0 +1,39 @@
+{
+ "attack": "a13",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 792,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "vCA1": {
+   "simulated_old_pos": 2579,
+   "of_which_true_cell": 660,
+   "frac_right_cell": 0.25591314462970144,
+   "a3_wrong_positives_est": 2433,
+   "a3_n_matched_old": 2587,
+   "a3_frac_wrong": 0.9404715887127948,
+   "simulated_frac_wrong": 0.7440868553702986
+  },
+  "BLA": {
+   "simulated_old_pos": 1639,
+   "of_which_true_cell": 318,
+   "frac_right_cell": 0.19402074435631483,
+   "a3_wrong_positives_est": 1517,
+   "a3_n_matched_old": 1618,
+   "a3_frac_wrong": 0.9375772558714462,
+   "simulated_frac_wrong": 0.8059792556436851
+  },
+  "agree": true,
+  "note": "a3's ~94% 'wrong cell' estimate vs the simulated mixed-metric outcome (~74-81% wrong): the damage was real but overstated"
+ },
+ "signoff": "agrees",
+ "runtime_s": 94.4
+}

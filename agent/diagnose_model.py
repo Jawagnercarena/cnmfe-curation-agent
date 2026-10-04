@@ -27,40 +27,39 @@ MODEL_PATH = MODEL_DIR / "classifier.joblib"
 # size-mismatch by reconstructing auto-rejected candidates as label=0).
 import train_classifier as _tc
 
-# Must match train_classifier.py
-BAD_SESSION_RECOVERY_THRESHOLD = 0.40
-BAD_SESSION_WEIGHT             = 0.4
-# Floor on the agent up-weight (matches train_classifier.py MIN_AGENT_WEIGHT).
-# Without this, diagnose used raw sqrt(n_bs/n_ag) and diverged from the deployed
-# model's weighting whenever sqrt(n_bs/n_ag) < 4.0 (true for BLA today).
-MIN_AGENT_WEIGHT               = 4.0
+# Weighting constants and helpers come straight from train_classifier so this
+# harness can never drift from the deployed weighting. (A previous forked copy
+# of _get_bootstrap_ambiguous_mask read JSON key "ambiguous_candidate_indices",
+# which no producer writes — the mask was silently all-False in every run.)
+BAD_SESSION_RECOVERY_THRESHOLD = _tc.BAD_SESSION_RECOVERY_THRESHOLD
+BAD_SESSION_WEIGHT             = _tc.BAD_SESSION_WEIGHT
+MIN_AGENT_WEIGHT               = _tc.MIN_AGENT_WEIGHT
+
+_get_bootstrap_recovery       = _tc._get_bootstrap_recovery
+_get_bootstrap_ambiguous_mask = _tc._get_bootstrap_ambiguous_mask
+
+# An area config may pin the agent up-weight (config_vCA1.AGENT_WEIGHT_OVERRIDE = 5.0);
+# the trainer honours it (train_classifier.py:792-798).  Until 2026-08-26 this
+# harness replicated only the sqrt/floor recipe, so its absolute numbers for
+# vCA1 were computed at 7.01x while the deployed model trained at 5.0x.
+import config as _config
+_AGENT_WEIGHT_OVERRIDE = getattr(_config, "AGENT_WEIGHT_OVERRIDE", None)
 
 
-# -----------------------------------------------------------------------
-# Weighting helpers (replicated from train_classifier.py)
-# -----------------------------------------------------------------------
-
-def _get_bootstrap_recovery(session_dir: Path):
-    stats_file = session_dir / "bootstrap_match_stats.json"
-    if not stats_file.exists():
-        return None
-    with open(stats_file) as f:
-        bs = json.load(f)
-    n_curated = bs.get("n_curated", 0)
-    return bs["n_matched"] / n_curated if n_curated > 0 else 0.0
+def agent_weight_for(n_bs: int, n_ag: int) -> float:
+    """The trainer's per-fit agent up-weight: the area's fixed override if set,
+    else max(sqrt(n_bootstrap_rows / n_agent_rows), MIN_AGENT_WEIGHT)."""
+    if _AGENT_WEIGHT_OVERRIDE is not None:
+        return float(_AGENT_WEIGHT_OVERRIDE)
+    if n_ag > 0 and n_bs > 0:
+        return float(max(np.sqrt(n_bs / n_ag), MIN_AGENT_WEIGHT))
+    return MIN_AGENT_WEIGHT
 
 
-def _get_bootstrap_ambiguous_mask(session_dir: Path, n_candidates: int) -> np.ndarray:
-    stats_file = session_dir / "bootstrap_match_stats.json"
-    mask = np.zeros(n_candidates, dtype=bool)
-    if not stats_file.exists():
-        return mask
-    with open(stats_file) as f:
-        bs = json.load(f)
-    for idx in bs.get("ambiguous_candidate_indices", []):
-        if 0 <= idx < n_candidates:
-            mask[idx] = True
-    return mask
+def agent_weight_recipe() -> str:
+    return (f"AGENT_WEIGHT_OVERRIDE={_AGENT_WEIGHT_OVERRIDE} (fixed, from config)"
+            if _AGENT_WEIGHT_OVERRIDE is not None
+            else f"max(sqrt(n_bootstrap/n_agent), {MIN_AGENT_WEIGHT}) per fit")
 
 
 # -----------------------------------------------------------------------
@@ -94,11 +93,10 @@ def load_all_records():
                 "session_dir": sd,
             })
 
-    # Compute agent_weight exactly as train_classifier.py does
+    # Compute agent_weight exactly as train_classifier.py does (override-aware)
     n_bs = sum(len(r["y"]) for r in records if r["is_bootstrap"])
     n_ag = sum(len(r["y"]) for r in records if not r["is_bootstrap"])
-    agent_weight = (float(max(np.sqrt(n_bs / n_ag), MIN_AGENT_WEIGHT))
-                    if n_ag > 0 and n_bs > 0 else MIN_AGENT_WEIGHT)
+    agent_weight = agent_weight_for(n_bs, n_ag)
 
     # Attach per-sample weights
     for r in records:
@@ -118,12 +116,9 @@ def load_all_records():
 
 
 def make_clf(mtype, spw=1.0):
-    if mtype == "lr":
-        return LogisticRegression(class_weight="balanced", max_iter=1000, C=1.0, random_state=42)
-    return XGBClassifier(n_estimators=300, learning_rate=0.05, max_depth=4,
-                         subsample=0.8, colsample_bytree=0.8,
-                         scale_pos_weight=spw, eval_metric="auc",
-                         verbosity=0, random_state=42, n_jobs=-1)
+    # Delegate to the trainer's factory so hyperparameters can never diverge.
+    # Historical callers pass "xgb"/"lr"; anything non-"lr" was always XGBoost.
+    return _tc._make_clf("lr" if mtype == "lr" else "xgboost", spw)
 
 
 def compute_spw(y, w):
@@ -206,7 +201,7 @@ def run_loo_analysis(records):
             # Recompute agent_weight for this fold's training set
             n_ag_tr = len(X_tr)
             n_bs_tr = len(X_bs)
-            ag_w_C  = float(max(np.sqrt(n_bs_tr / n_ag_tr), MIN_AGENT_WEIGHT)) if n_ag_tr > 0 else MIN_AGENT_WEIGHT
+            ag_w_C  = agent_weight_for(n_bs_tr, n_ag_tr)
             w_ag_C  = np.ones(n_ag_tr) * ag_w_C
             X_tr_C  = np.vstack([X_tr, X_bs])
             y_tr_C  = np.concatenate([y_tr, y_bs])
@@ -363,7 +358,7 @@ def run_threshold_sweep_real_weights(records):
         if X_bs is not None:
             n_ag_tr  = len(tr_idx)
             n_bs_tr  = len(y_bs)
-            ag_w_f   = float(max(np.sqrt(n_bs_tr / n_ag_tr), MIN_AGENT_WEIGHT)) if n_ag_tr > 0 else MIN_AGENT_WEIGHT
+            ag_w_f   = agent_weight_for(n_bs_tr, n_ag_tr)
             w_ag_f   = np.ones(n_ag_tr) * ag_w_f
 
             X_tr_C   = np.vstack([X_tr, X_bs])
@@ -529,6 +524,7 @@ def run_threshold_sweep_real_weights(records):
 def main():
     print("Loading training data with real weights...")
     records, agent_weight = load_all_records()
+    print(f"  agent up-weight recipe: {agent_weight_recipe()} -> {agent_weight:.2f}x")
     ag = sum(1 for r in records if not r["is_bootstrap"])
     bs = sum(1 for r in records if r["is_bootstrap"])
     print(f"  {len(records)} sessions ({ag} agent, {bs} bootstrap), "

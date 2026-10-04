@@ -54,6 +54,7 @@ from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.preprocessing import StandardScaler
 
 AGENT_DIR = Path(__file__).parent
+import config
 from config import DATA_ROOT, MODEL_DIR
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -65,6 +66,14 @@ import run_cnmfe
 # (extreme CNMFe merging) and their candidates are down-weighted in training.
 BAD_SESSION_RECOVERY_THRESHOLD = 0.40
 BAD_SESSION_WEIGHT = 0.4
+
+# Floor for the dynamic agent up-weight (max(sqrt(n_bootstrap/n_agent), floor)).
+# Agent labels are unconditionally higher quality than bootstrap labels (~41%
+# noisy negatives), so the floor should not decay below a meaningful minimum
+# regardless of session counts. Empirically validated via 5-fold OOF sweep on
+# 13 BLA agent sessions (2026-03-30): performance plateau at 3–5x; floor=4.0
+# gives 0.5% false-AR vs 0.8% at 3.13x with no AUC cost.
+MIN_AGENT_WEIGHT = 4.0
 
 # Cosine-similarity threshold for matching review candidates to final neurons.
 # Neurons kept by the user will still overlap strongly with their updated
@@ -223,7 +232,13 @@ def _retro_label_session(session_dir: Path) -> tuple[np.ndarray, np.ndarray] | N
                 f"Check that review_neuron.mat and neuron.mat are from the same session.")
 
         # --- Feature extraction from review candidates ---
-        footprints = A_review.T.reshape(N_review, d1, d2)   # (N, H, W)
+        # A_review columns are MATLAB-linearized (column-major).  The former
+        # `A_review.T.reshape(N_review, d1, d2)` reshaped them row-major, i.e.
+        # every footprint image was transposed; the 12 shape features are
+        # transpose-invariant but cn_correlation (footprint vs the Cn image)
+        # was corrupted on every retro-labeled session (6 BLA sessions, fixed
+        # and refreshed 2026-08-26; red team attack #4).
+        footprints = feat_module.fcols_to_images(A_review, d1, d2)   # (N, H, W)
         bg_signal  = feat_module.load_background(session_dir)
         Cn         = feat_module.load_cn(session_dir)
 
@@ -357,20 +372,24 @@ def _get_bootstrap_recovery(session_dir: Path) -> float | None:
 
 def _get_bootstrap_ambiguous_mask(session_dir: Path, n_candidates: int) -> np.ndarray:
     """
-    Return a boolean mask (length n_candidates) marking bootstrap candidates that
-    were the Hungarian best-match to an UNMATCHED curated neuron (similarity < threshold).
+    Return a boolean mask (length n_candidates) marking bootstrap candidates whose
+    label-0 is NOT trustworthy and which are therefore excluded from training
+    (weight=0):
 
-    These are excluded from training (weight=0) because their true label is unknown:
-    they are likely merged/distorted versions of real neurons that CNMFe failed to
-    cleanly re-detect, so treating them as confident negatives introduces false-negative
-    label noise.
+    * ambiguous — the Hungarian partner of an UNMATCHED curated neuron (pair below
+      threshold): its true label is unknown.
+    * duplicate — an unassigned candidate whose best similarity to some curated
+      neuron clears the threshold (same-cell re-detection / strong overlap): a
+      real-looking cell that Hungarian 1:1 could not label 1.
 
-    Candidates NOT in this mask that are still labeled 0 are genuine hard negatives —
-    they were never the closest match to any real neuron in the Hungarian assignment.
+    Candidates NOT in this mask that are labeled 0 are genuine hard negatives.
 
-    How: bootstrap_match_stats.json stores candidate_indices sorted descending by
-    similarity.  The first n_matched entries are the positive pairs (above threshold).
-    Everything after that is a candidate matched to a real neuron but below threshold.
+    Schema v2 JSONs (2026-08 matching fix) store both sets explicitly as
+    ambiguous_candidate_indices / duplicate_candidate_indices. Legacy v1 JSONs
+    only support the ambiguous set, recovered by the rank-slice rule: pairs are
+    sorted best-first, so candidate_indices[n_matched:] are the sub-threshold
+    partners. (Legacy JSONs predate the pixel-order fix, so their content is
+    scrambled anyway — they exist only until the corpus re-run replaces them.)
     """
     stats_file = session_dir / "bootstrap_match_stats.json"
     if not stats_file.exists():
@@ -379,14 +398,16 @@ def _get_bootstrap_ambiguous_mask(session_dir: Path, n_candidates: int) -> np.nd
     with open(stats_file) as f:
         bs = json.load(f)
 
-    n_matched    = bs.get("n_matched", 0)
-    cand_indices = bs.get("candidate_indices", [])
-
-    # Pairs are sorted best-first; everything after n_matched is an unmatched pair.
-    unmatched_cand_idxs = cand_indices[n_matched:]
+    if bs.get("schema_version", 1) >= 2:
+        excluded = (list(bs.get("ambiguous_candidate_indices", []))
+                    + list(bs.get("duplicate_candidate_indices", [])))
+    else:
+        n_matched    = bs.get("n_matched", 0)
+        cand_indices = bs.get("candidate_indices", [])
+        excluded     = cand_indices[n_matched:]
 
     mask = np.zeros(n_candidates, dtype=bool)
-    for idx in unmatched_cand_idxs:
+    for idx in excluded:
         if 0 <= idx < n_candidates:
             mask[idx] = True
 
@@ -706,6 +727,19 @@ def main():
     if args.prospective_only:
         log(f"\nRetrospective sessions skipped (--prospective-only): {len(retro)}")
         retro = []
+    elif retro and getattr(config, "FEATURE_VERSION", 1) >= 2:
+        # The retro path re-extracts 13-column rows.  Under the 35-column v2
+        # contract that would silently mix widths in the training corpus, so
+        # refuse and leave these sessions out (same effect as --prospective-only)
+        # rather than corrupting the pool.
+        log(f"\nRetrospective sessions found: {len(retro)} — REFUSED, not extracted.")
+        log("  The retro path emits 13-column rows but this area's feature contract")
+        log("  is 35-column v2 (config.FEATURE_VERSION >= 2).  Regenerate these")
+        log("  sessions with the Step 4 backfill tooling (agent/eval/step4_2026-08/)")
+        log("  instead:")
+        for _sd in retro:
+            log(f"    {_sd.parent.name}/{_sd.name}")
+        retro = []
     else:
         log(f"\nRetrospective sessions (no labels.mat yet): {len(retro)}")
     for session_dir in retro:
@@ -729,21 +763,42 @@ def main():
             "session to generate labels.")
         return
 
+    # Contract-width guard: scoring is positional, so a mixed-width corpus
+    # (candidate_features.npz regeneration interrupted mid-swap) must never
+    # train.  Fail loudly with session names instead.
+    widths = sorted({r["X"].shape[1] for r in records})
+    _fv = getattr(config, "FEATURE_VERSION", 1)
+    expected_width = 35 if _fv >= 2 else None
+    if len(widths) > 1 or (expected_width is not None
+                           and widths != [expected_width]):
+        by_w: dict[int, list[str]] = {}
+        for r in records:
+            by_w.setdefault(r["X"].shape[1], []).append(
+                f"{r['session_dir'].parent.name}/{r['session_dir'].name}")
+        detail = ";  ".join(
+            f"{w} cols: {len(s)} session(s), e.g. {s[0]}"
+            for w, s in sorted(by_w.items()))
+        raise RuntimeError(
+            f"Feature-width mismatch in training corpus (FEATURE_VERSION="
+            f"{_fv}, expected {expected_width or 'uniform'} cols): {detail}. "
+            f"This is a half-swapped corpus — complete or roll back the "
+            f"feature-contract swap before training.")
+
     n_bs_examples = sum(len(r["y"]) for r in records if r["is_bootstrap"])
     n_ag_examples = sum(len(r["y"]) for r in records if not r["is_bootstrap"])
 
     # Dynamic agent up-weight: counteracts bootstrap volume dominance.
-    # Formula: max(sqrt(n_bootstrap / n_agent), MIN_AGENT_WEIGHT)
-    # Floor of 4.0 prevents quality dilution as agent sessions accumulate —
-    # agent labels are unconditionally higher quality than bootstrap labels
-    # (~41% noisy negatives), so the floor should not decay below a meaningful
-    # minimum regardless of session counts.
-    # Empirically validated via 5-fold OOF sweep on 13 BLA agent sessions
-    # (2026-03-30): performance plateau at 3–5x; floor=4.0 gives 0.5% false-AR
-    # vs 0.8% at current 3.13x with no AUC cost. Floor activates at ~45+ agent
-    # sessions, future-proofing against dilution.
-    MIN_AGENT_WEIGHT = 4.0
-    if n_ag_examples > 0 and n_bs_examples > 0:
+    # Formula: max(sqrt(n_bootstrap / n_agent), MIN_AGENT_WEIGHT) — see the
+    # module-level MIN_AGENT_WEIGHT for the floor's rationale/validation.
+    # An area config may pin a FIXED value instead via AGENT_WEIGHT_OVERRIDE:
+    # the sqrt term was calibrated against pre-2026-08 bootstrap label noise,
+    # and after the pixel-order fix a 3-seed sweep showed vCA1's sqrt value
+    # (7.01x) doubles false-AR at the deployed threshold vs a fixed 5.0
+    # (agent/eval/bootstrap_matching_2026-08/c3_vca1_weight_sweep.log).
+    _aw_override = getattr(config, "AGENT_WEIGHT_OVERRIDE", None)
+    if _aw_override is not None:
+        agent_weight = float(_aw_override)
+    elif n_ag_examples > 0 and n_bs_examples > 0:
         agent_weight = float(max(np.sqrt(n_bs_examples / n_ag_examples), MIN_AGENT_WEIGHT))
     else:
         agent_weight = MIN_AGENT_WEIGHT
@@ -752,7 +807,10 @@ def main():
     log(f"Sessions: {len(records)} total  "
         f"({sum(1 for r in records if not r['is_bootstrap'])} agent, "
         f"{sum(1 for r in records if r['is_bootstrap'])} bootstrap)")
-    log(f"Agent up-weight: max(sqrt({n_bs_examples}/{n_ag_examples}), {MIN_AGENT_WEIGHT}) = {agent_weight:.2f}x")
+    if _aw_override is not None:
+        log(f"Agent up-weight: {agent_weight:.2f}x (AGENT_WEIGHT_OVERRIDE from config)")
+    else:
+        log(f"Agent up-weight: max(sqrt({n_bs_examples}/{n_ag_examples}), {MIN_AGENT_WEIGHT}) = {agent_weight:.2f}x")
     log(f"Bad-session down-weight: {BAD_SESSION_WEIGHT}x  "
         f"(recovery < {BAD_SESSION_RECOVERY_THRESHOLD:.0%})")
 
@@ -875,6 +933,22 @@ def main():
     # ------------------------------------------------------------------
     scaler, clf = train_model(X_all, y_all, sample_weight=w_all, model_type=best_model)
 
+    # v2 contract: also fit the companion 13-column first-pass model on the
+    # same corpus/weights and store it in the SAME joblib.  curator.py uses it
+    # to pick high-confidence neighbors (nb_corr_max) before the 35 columns
+    # exist; one file keeps the deploy swap atomic.
+    _v2_extra = {}
+    if getattr(config, "FEATURE_VERSION", 1) >= 2:
+        _n_base = feat_module.V1_N_FEATURES
+        fp_scaler, fp_clf = train_model(
+            X_all[:, :_n_base], y_all, sample_weight=w_all,
+            model_type=best_model)
+        _v2_extra = {"first_pass_scaler": fp_scaler,
+                     "first_pass_clf": fp_clf,
+                     "feature_version": 2}
+        log(f"\nCompanion first-pass model fit on the first {_n_base} columns "
+            f"(stored in the same joblib for two-pass curation).")
+
     # Calibrated reject_threshold per model type.
     # Derived via 5-fold grouped OOF sweep on 19 agent sessions with real weights
     # (agent_weight, bad-session 0.4x, ambiguous=0) — see diagnose_model.py Section 3.
@@ -911,7 +985,21 @@ def main():
     # headroom: 0.12 dropped to 0.68% false-AR. Raised xgboost 0.12 -> 0.13:
     # 0.85% false-AR (still sub-1%; worst of 8 seeds 1.0%), 27.1% garbage caught
     # (was 24.4%). 0.14 rejected (0.99% mean, seed tail to 1.5% — too much for BLA).
-    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.13, "lightgbm": 0.11}
+    # UPDATE 2026-08-18 (BLA, 75 agent / 91 bootstrap): reverted xgboost 0.13 ->
+    # 0.12. The pre-agreed trigger fired: each returned batch adds a few dim-but-
+    # real cells near the boundary, so fixed-threshold false-AR drifts up while
+    # AUC stays flat (~0.910 since the fix) — 0.13 walked 0.85% -> 0.93% -> 1.02%
+    # across 61 -> 69 -> 75 sessions. 0.12 restores 0.83% false-AR / 27.9%
+    # garbage. The extra ~2.8pts of junk at 0.13 was bought with false-AR, not
+    # skill (at matched false-AR the junk-caught is flat) — not worth it for BLA.
+    # 2026-08-26 (BLA, 35-col, bootstrap pixel-order fix + corpus re-run): xgboost
+    # 0.12 -> 0.04. Step 4 deployed 0.06 via --threshold only, leaving this default
+    # at 0.12 -- the watcher auto-retrain passes no --threshold, so the next
+    # reviewer return would have silently re-deployed at 0.12 (~2.8% false-AR on
+    # the fixed corpus). 0.04 = Step-5 rule on 8 seeds: 0.64% false-AR (worst
+    # 0.96%), 43.2% junk caught (docs/archive/BOOTSTRAP_MATCHING_BUG_2026-08.md s5b).
+    # vCA1 always injects its own --threshold (train_classifier_vCA1.py).
+    _THRESHOLD_BY_MODEL = {"lr": 0.10, "xgboost": 0.04, "lightgbm": 0.11}
     reject_threshold = _THRESHOLD_BY_MODEL.get(best_model, 0.10)
     if args.threshold is not None:
         log(f"\n  Overriding reject_threshold: {reject_threshold:.2f} -> {args.threshold:.2f} (--threshold flag)")
@@ -925,10 +1013,12 @@ def main():
             "model_type": best_model,
             "reject_threshold": reject_threshold,
             "agent_weight": agent_weight,
+            "n_features": int(X_all.shape[1]),
             "n_sessions": len(records),
             "n_training_active": n_active,
             "n_excluded_ambiguous": n_excluded,
             "cv_results": cv_results,
+            **_v2_extra,
         },
         str(model_path),
     )

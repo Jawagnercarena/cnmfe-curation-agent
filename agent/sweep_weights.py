@@ -63,8 +63,18 @@ def load_records():
     return recs
 
 
-def oof_eval(recs, floor, bad_w, threshold):
-    """5-fold grouped OOF on agent sessions. Returns (auc, false_ar%, garbage%)."""
+# An area config may pin the agent up-weight (config_vCA1.AGENT_WEIGHT_OVERRIDE = 5.0).
+# The trainer honours it; before 2026-08-26 this sweep replicated only the sqrt/floor
+# recipe, so on vCA1 every "floor" below 7 silently resolved to 7.01x and the sweep
+# was inert.  With an override set, sweep 1 iterates FIXED multipliers instead.
+import config as _config
+AGENT_WEIGHT_OVERRIDE = getattr(_config, "AGENT_WEIGHT_OVERRIDE", None)
+FIXED_WEIGHTS = [1.0, 2.0, 3.5, 5.0, 7.01]
+
+
+def oof_eval(recs, floor, bad_w, threshold, fixed_agent_weight=None):
+    """5-fold grouped OOF on agent sessions. Returns (auc, false_ar%, garbage%).
+    fixed_agent_weight: use this constant per fold instead of max(sqrt(n_bs/n_ag_tr), floor)."""
     ag = [r for r in recs if not r["is_bootstrap"] and int(r["y"].sum()) >= MIN_POS]
     bs = [r for r in recs if r["is_bootstrap"]]
 
@@ -87,7 +97,8 @@ def oof_eval(recs, floor, bad_w, threshold):
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         for tr, te in cv.split(Xs_ag, y_ag, g_ag):
-            agw = float(max(np.sqrt(n_bs / len(tr)), floor))
+            agw = (float(fixed_agent_weight) if fixed_agent_weight is not None
+                   else float(max(np.sqrt(n_bs / len(tr)), floor)))
             w_ag = np.ones(len(tr)) * agw
             Xtr = np.vstack([Xs_ag[tr], Xs_bs])
             ytr = np.concatenate([y_ag[tr], y_bs])
@@ -124,22 +135,36 @@ def main():
     print(f"  Metrics at reference threshold = {args.threshold}\n")
 
     print("=" * 64)
-    print(f"SWEEP 1: agent_weight floor  (bad_session_weight fixed at 0.4)")
-    print("=" * 64)
-    print(f"  {'floor':>6}  {'OOF AUC':>8}  {'false-AR':>9}  {'garbage':>8}")
-    print(f"  {'-'*6}  {'-'*8}  {'-'*9}  {'-'*8}")
-    for floor in [1.0, 3.0, 4.0, 5.0, 8.0]:
-        auc, far, gc = oof_eval(recs, floor, 0.4, args.threshold)
-        star = "  <- current" if floor == 4.0 else ""
-        print(f"  {floor:>6.1f}  {auc:>8.3f}  {far:>8.1f}%  {gc:>7.1f}%{star}")
+    if AGENT_WEIGHT_OVERRIDE is not None:
+        print(f"SWEEP 1: FIXED agent_weight  (AGENT_WEIGHT_OVERRIDE={AGENT_WEIGHT_OVERRIDE} is the "
+              f"deployed recipe for {AREA}; bad_session_weight fixed at 0.4)")
+        print("=" * 64)
+        print(f"  {'weight':>6}  {'OOF AUC':>8}  {'false-AR':>9}  {'garbage':>8}")
+        print(f"  {'-'*6}  {'-'*8}  {'-'*9}  {'-'*8}")
+        for w in sorted(set(FIXED_WEIGHTS + [float(AGENT_WEIGHT_OVERRIDE)])):
+            auc, far, gc = oof_eval(recs, None, 0.4, args.threshold, fixed_agent_weight=w)
+            star = "  <- current" if abs(w - float(AGENT_WEIGHT_OVERRIDE)) < 1e-9 else ""
+            print(f"  {w:>6.2f}  {auc:>8.3f}  {far:>8.1f}%  {gc:>7.1f}%{star}")
+        current_fixed = float(AGENT_WEIGHT_OVERRIDE)
+    else:
+        print(f"SWEEP 1: agent_weight floor  (bad_session_weight fixed at 0.4)")
+        print("=" * 64)
+        print(f"  {'floor':>6}  {'OOF AUC':>8}  {'false-AR':>9}  {'garbage':>8}")
+        print(f"  {'-'*6}  {'-'*8}  {'-'*9}  {'-'*8}")
+        for floor in [1.0, 3.0, 4.0, 5.0, 8.0]:
+            auc, far, gc = oof_eval(recs, floor, 0.4, args.threshold)
+            star = "  <- current" if floor == 4.0 else ""
+            print(f"  {floor:>6.1f}  {auc:>8.3f}  {far:>8.1f}%  {gc:>7.1f}%{star}")
+        current_fixed = None
 
     print("\n" + "=" * 64)
-    print(f"SWEEP 2: bad_session_weight  (agent_weight floor fixed at 4.0)")
+    print(f"SWEEP 2: bad_session_weight  (agent weight fixed at "
+          f"{'the override ' + str(current_fixed) if current_fixed is not None else 'floor 4.0'})")
     print("=" * 64)
     print(f"  {'bad_w':>6}  {'OOF AUC':>8}  {'false-AR':>9}  {'garbage':>8}")
     print(f"  {'-'*6}  {'-'*8}  {'-'*9}  {'-'*8}")
     for bad_w in [0.0, 0.2, 0.4, 0.6, 1.0]:
-        auc, far, gc = oof_eval(recs, 4.0, bad_w, args.threshold)
+        auc, far, gc = oof_eval(recs, 4.0, bad_w, args.threshold, fixed_agent_weight=current_fixed)
         star = "  <- current" if bad_w == 0.4 else ""
         print(f"  {bad_w:>6.1f}  {auc:>8.3f}  {far:>8.1f}%  {gc:>7.1f}%{star}")
 

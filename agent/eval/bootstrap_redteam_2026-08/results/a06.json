@@ -1,0 +1,201 @@
+{
+ "areas": {
+  "vCA1": {
+   "n_dups": 6623,
+   "counts": {
+    "same_cell": 1812,
+    "fragment": 97,
+    "distinct": 517,
+    "other": 4197,
+    "no_matched_candidate": 0
+   },
+   "pct": {
+    "same_cell": 27.35920277819719,
+    "fragment": 1.4645930847048165,
+    "distinct": 7.806130152498867,
+    "other": 63.370073984599124,
+    "no_matched_candidate": 0.0
+   },
+   "trace_corr": {
+    "p10": 0.23983895962027088,
+    "p50": 0.3911844582049052,
+    "p90": 0.5680778424105785,
+    "frac_ge_0.7": 0.01147516231315114
+   },
+   "iou50_vs_matched": {
+    "p10": 0.08227211539760218,
+    "p50": 0.30097087378640774
+   },
+   "offset_vs_matched_px": {
+    "p50": 5.303924882765482,
+    "p90": 11.995179411680681
+   },
+   "best_sim": {
+    "p10": 0.5133850455284119,
+    "p50": 0.759917676448822
+   },
+   "distinct_per_session_top": [
+    [
+     "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000B",
+     36
+    ],
+    [
+     "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000A",
+     34
+    ],
+    [
+     "4CS/AVG8x-TSeries-06222022-99-303um-35z-000",
+     31
+    ],
+    [
+     "AA/AVG8x-TSeries-06222022-99-303um-35z-000",
+     31
+    ],
+    [
+     "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000B",
+     16
+    ],
+    [
+     "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000A",
+     15
+    ],
+    [
+     "Valence/AVG2x-TSeries-11272023-965-466um-426um-33z-000A",
+     15
+    ],
+    [
+     "4CS/AVG8x-TSeries-06142022-99-305um-35z-000",
+     13
+    ],
+    [
+     "AA/AVG8x-TSeries-07152022-104-365um-3z-000",
+     13
+    ],
+    [
+     "CTA/AVG2x-TSeries-12012023-965-468um-423um-32z-000A",
+     13
+    ]
+   ],
+   "n_sessions_with_distinct": 89,
+   "loose_thresholds": {
+    "same_cell_pct": 62.222557753284015,
+    "distinct_pct": 35.527706477427145
+   },
+   "contact_sheet": "contact_sheets\\a06_vCA1_duplicates.png"
+  },
+  "BLA": {
+   "n_dups": 4490,
+   "counts": {
+    "same_cell": 1337,
+    "fragment": 69,
+    "distinct": 446,
+    "other": 2638,
+    "no_matched_candidate": 0
+   },
+   "pct": {
+    "same_cell": 29.77728285077951,
+    "fragment": 1.5367483296213809,
+    "distinct": 9.933184855233852,
+    "other": 58.75278396436526,
+    "no_matched_candidate": 0.0
+   },
+   "trace_corr": {
+    "p10": 0.23049458007565554,
+    "p50": 0.3970921808937822,
+    "p90": 0.5863325821088751,
+    "frac_ge_0.7": 0.017594654788418707
+   },
+   "iou50_vs_matched": {
+    "p10": 0.08986966917222734,
+    "p50": 0.310015197568389
+   },
+   "offset_vs_matched_px": {
+    "p50": 6.718827868699476,
+    "p90": 14.225235095137691
+   },
+   "best_sim": {
+    "p10": 0.5139140069484711,
+    "p50": 0.7611673474311829
+   },
+   "distinct_per_session_top": [
+    [
+     "WSE/AVG5x-TSeries-060825-bla13-588um-27z-000",
+     19
+    ],
+    [
+     "3odor/AVG5x-TSeries-03042025-bla3-667um-26z-000",
+     18
+    ],
+    [
+     "3odor/AVG5x-TSeries-02282025-bla2-681um-27z-000",
+     16
+    ],
+    [
+     "CTA/AVG5x-TSeries-09262025-bla15-234um-33z-000",
+     15
+    ],
+    [
+     "3odor/AVG5x-TSeries-02262025-bla2-662um-27z-000",
+     14
+    ],
+    [
+     "3odor/AVG5x-TSeries-02212025-bla2-695um-27z-000",
+     13
+    ],
+    [
+     "3odor/AVG5x-TSeries-02212025-bla3-667um-26z-000",
+     13
+    ],
+    [
+     "Valence/AVG5x-TSeries-07152025-bla15-228um-38z-000",
+     13
+    ],
+    [
+     "WSE/AVG5x-TSeries-06072025-bla15-199um-45z-000",
+     13
+    ],
+    [
+     "3odor/AVG5x-TSeries-043025-bla13-653um-27z-000",
+     11
+    ]
+   ],
+   "n_sessions_with_distinct": 82,
+   "loose_thresholds": {
+    "same_cell_pct": 62.85077951002227,
+    "distinct_pct": 35.5902004454343
+   },
+   "contact_sheet": "contact_sheets\\a06_BLA_duplicates.png"
+  }
+ },
+ "sandbox_transfer": {
+  "2tones/AVG5x-TSeries-093025-bla21-313um-38z-000": {
+   "status": "not_a_bootstrap_session_now"
+  },
+  "2tones/AVG5x-TSeries-100125-bla12-639um-23z-000": {
+   "status": "not_a_bootstrap_session_now"
+  },
+  "4odorDO/AVG5x-TSeries-02092026-bla12-681um-22z-000": {
+   "status": "not_a_bootstrap_session_now"
+  },
+  "Valence/AVG5x-TSeries-121225-bla12-652um-23z-000": {
+   "status": "not_a_bootstrap_session_now"
+  }
+ },
+ "checks": {
+  "vCA1_distinct_lt_10pct_strict": true,
+  "BLA_distinct_lt_10pct_strict": true,
+  "vCA1_distinct_lt_10pct_loose": false,
+  "BLA_distinct_lt_10pct_loose": false,
+  "vCA1_same_cell_majority_strict": false,
+  "BLA_same_cell_majority_strict": false
+ },
+ "verdict": "INCONCLUSIVE",
+ "criterion": "composition of the masked rows by geometry + trace correlation; reported under strict and loose class thresholds; the masking decision is judged in attack #9",
+ "human_check": "PENDING (user): contact_sheets/a06_*_duplicates.png",
+ "attack": "a06",
+ "pin_hash": "cf761cafdcc0b7ab64fe1724b36ae03c85dccb7c0fcdde304e44379773f3ea9f",
+ "script": "a06_duplicates.py",
+ "script_sha256": "85f6e9db264f77ad45f427542f7726ae0a10f814e0ce382168f4368bd992ba1f",
+ "written_at": "2026-08-26T22:23:44",
+ "runtime_s": 18.5
+}

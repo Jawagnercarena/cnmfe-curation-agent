@@ -1,4 +1,6 @@
 # CNMFe Neuron Curator: Pre- vs Post-Bootstrap Upgrade Summary
+
+> **HISTORICAL. Describes the March 2026 state (13 columns, XGBoost at 0.11). Both areas have since moved to a 35-column contract with different thresholds; read the joblib for current values.**
 *March 2026*
 
 ---

@@ -1,0 +1,134 @@
+{
+ "rules": {
+  "min_effect": 0.005,
+  "ship_delta": 0.01,
+  "min_seeds_positive": 7,
+  "far_tolerance_pp": 0.2,
+  "threshold_rule": "largest T in [0.03,0.10] with mean far<=0.85 and max far<=1.0; junk_full>=30"
+ },
+ "arm_detail": {
+  "b0_vs_a": {
+   "mean": 0.004736751122012328,
+   "min": 0.0008871725289635313,
+   "se": 0.0008984417786515634,
+   "bar": 0.005,
+   "n_positive": 8,
+   "n_seeds": 8,
+   "beats": false
+  },
+  "b1_vs_b0": {
+   "mean": 0.0004961805917963052,
+   "min": -0.0019178582611417694,
+   "se": 0.0005146310743469094,
+   "bar": 0.005,
+   "n_positive": 5,
+   "n_seeds": 8,
+   "beats": false
+  },
+  "b1_vs_a": {
+   "mean": 0.005232931713808633,
+   "min": -0.0010306857321782381,
+   "se": 0.0013302970350988908,
+   "bar": 0.005,
+   "n_positive": 7,
+   "n_seeds": 8,
+   "beats": true
+  }
+ },
+ "arm": "b0",
+ "weight_detail": {},
+ "agent_weight": 5.0,
+ "ship_detail": {
+  "delta_mean": 0.01792773457885398,
+  "delta_min": 0.011970305813589377,
+  "all_seeds_positive": true,
+  "meets_bar": true,
+  "far_not_worse": true,
+  "far_b13": 0.0,
+  "far_v35": 0.0
+ },
+ "adopt_v2": true,
+ "threshold_detail": {
+  "stop": false,
+  "junk_gate_pass": true,
+  "far_mean": 0.6009615384615384,
+  "far_max": 0.9615384615384616,
+  "junk_full": 45.30856423173804,
+  "junk_reviewed": 43.52103120759837
+ },
+ "chosen_T": 0.04,
+ "rule_T_for_arm_b0": 0.05,
+ "user_decision_T": {
+  "date": "2026-08-26",
+  "T": 0.04,
+  "decided_by": "user",
+  "why": "the rule's 0.05 sits on the 1% worst-seed ceiling (0.66% mean / 0.96% max, 51.6% junk) and flips to 0.04 under a different xgboost thread count (16 threads: 0.84% / 1.44%); 0.04 keeps a margin (0.48% / 0.96%, 48.4% junk) and still beats the deployed 13-col at 0.05 (0.84% / 2.40%, 44.9%) on both axes. Red team 2026-08-26: agent/eval/bootstrap_redteam_2026-08/results/a08.json, a10.json. Under 2-animal LOAO every T in [0.03, 0.10] runs at 3-7% false-AR: thresholds are calibrated to known animals; new animals keep the threshold-0 first pass."
+ },
+ "production_followon_required": false,
+ "deploy_ok": true,
+ "rule_outcome": {
+  "arm": "a",
+  "chosen_T": 0.03,
+  "note": "the pre-registered rule's literal winner; NOT retuned after seeing results"
+ },
+ "user_decision": {
+  "date": "2026-08-26",
+  "arm": "b0",
+  "decided_by": "user",
+  "why": "arm (a) wins the AUC rule but is operationally WORSE than the deployed 13-col model (-1.2pp junk at matched false-AR); b0 is +7.3pp. The rule also contradicted itself (b1-vs-a clears the bar b0-vs-a misses, so the winner depended on comparison order) and its safety metric was computed on the seed-mean OOF, which made it vacuous.",
+  "b1_rejected": "adds +0.0005 AUC on 5/8 seeds over b0 -- nothing; and it would make ring_contrast a permanent dependency on Cn files 40/111 sessions lack",
+  "cn_regeneration_followon": "NOT warranted (b1 == b0)"
+ },
+ "production_followon": {
+  "status": "DONE",
+  "change": "bootstrap_preagent.py: area-scoped config.BOOTSTRAP_V2B='b0' computes real v2b for bootstrap rows with ring_contrast forced to 0; hiconf from the companion 13-col first-pass model (the same source curator uses), all-False on cold start. BLA/DG_AL never set the key, so they keep assemble_v2_bootstrap unchanged.",
+  "sensitivity": {
+   "question": "does the b0 win depend on the hiconf source?",
+   "lso_vs_deployed_mask_agreement_pct": 98.0,
+   "b0prod_minus_b0_reviewed_auc_mean": -0.0014,
+   "b0prod_minus_b0_reviewed_auc_absmax": 0.0034,
+   "both_beat_arm_a_seeds": "8/8",
+   "verdict": "NO -- within seed noise across the full range from strictly out-of-sample (LSO) to in-sample (deployed)"
+  }
+ },
+ "operating_point": {
+  "a": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.6009615384615384,
+   "junk_v35_at_matched_far": 43.68702770780857,
+   "safety_gain_pp": 0.24038461538461553,
+   "yield_gain_pp": -1.1649874055415594
+  },
+  "b0": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.3605769230769231,
+   "junk_v35_at_matched_far": 52.141057934508815,
+   "safety_gain_pp": 0.4807692307692309,
+   "yield_gain_pp": 7.289042821158688
+  },
+  "b1": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.3004807692307692,
+   "junk_v35_at_matched_far": 53.353274559193956,
+   "safety_gain_pp": 0.5408653846153848,
+   "yield_gain_pp": 8.501259445843829
+  },
+  "b0prod": {
+   "far_b13": 0.841346153846154,
+   "junk_b13": 44.85201511335013,
+   "far_v35_at_matched_junk": 0.4807692307692308,
+   "junk_v35_at_matched_far": 49.43324937027708,
+   "safety_gain_pp": 0.3605769230769232,
+   "yield_gain_pp": 4.581234256926955
+  }
+ },
+ "deploy_blockers_remaining": [],
+ "deploy_blockers_resolved_2026-08-26": {
+  "red_team_report": "present: agent/eval/bootstrap_redteam_2026-08/redteam_report.md (no veto; caveats recorded in user_decision_T)",
+  "watcher_cycle": "waived by the user (watchers down since 08-21, inbox fully ingested, red team found nothing a cycle would change)",
+  "flip_commit": "config_vCA1.FEATURE_VERSION=2 + BOOTSTRAP_V2B='b0' + _VALIDATED_THRESHOLD=0.04"
+ }
+}

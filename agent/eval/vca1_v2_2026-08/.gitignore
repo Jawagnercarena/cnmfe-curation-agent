@@ -1,0 +1,6 @@
+# Large regenerable fixtures stay out of git, matching the Step 4 convention
+# (its preswap_scores.npz / step5_oof.npz are uncommitted too).  Everything
+# needed to rebuild them is committed: the scripts, the pin manifest and the
+# gate JSONs.
+*_oof.npz
+preswap_scores.npz

@@ -1,0 +1,34 @@
+{
+ "attack": "a03",
+ "standing_verdict": "PASS",
+ "pin_matches": true,
+ "states_n": true,
+ "reproduce": {
+  "n_common_numeric": 1131,
+  "n_differing": 0,
+  "max_rel_diff": 0.0,
+  "worst": [],
+  "skipped": false,
+  "ok": true,
+  "verdict_same": true
+ },
+ "probe": {
+  "per_thr": {
+   "0.5": {
+    "exact_of_10": 10,
+    "exact_of_10_Atxt_final": 10
+   },
+   "0.6": {
+    "exact_of_10": 10,
+    "exact_of_10_Atxt_final": 10
+   },
+   "0.7": {
+    "exact_of_10": 9,
+    "exact_of_10_Atxt_final": 9
+   }
+  },
+  "agree": true
+ },
+ "signoff": "agrees",
+ "runtime_s": 155.1
+}
