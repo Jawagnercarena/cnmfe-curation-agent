@@ -179,7 +179,10 @@ def read_label_counts(labels_path: Path):
         return None
 
 
-def copy_session(src: Path, dst: Path, force: bool, dry: bool):
+def copy_session(src: Path, dst: Path, force: bool, dry: bool, on_first_copy=None):
+    """on_first_copy, if given, is called once just before the first file is
+    copied (or would be, in a dry run) -- main() uses it to print the session
+    header only for sessions that actually bring something new."""
     copied = skipped = 0
     bytes_copied = 0
     for f in src.rglob("*"):
@@ -200,6 +203,8 @@ def copy_session(src: Path, dst: Path, force: bool, dry: bool):
         if not force and target.exists() and target.stat().st_size == size:
             skipped += 1
             continue
+        if copied == 0 and on_first_copy is not None:
+            on_first_copy()
         if dry:
             print(f"    would copy {rel} ({size/1e6:.1f} MB)")
         else:
@@ -208,6 +213,29 @@ def copy_session(src: Path, dst: Path, force: bool, dry: bool):
         copied += 1
         bytes_copied += size
     return copied, skipped, bytes_copied
+
+
+def print_summary_table(rows, dry: bool):
+    """One line per session seen in the inbox: NEW ones first, then the rest.
+    rows = (reviewer, session, status, n_files, n_bytes, labels_cell)."""
+    if not rows:
+        return
+    order = {"NEW": 0, "SKIPPED": 1, "NOT FOUND": 2, "unchanged": 3}
+    rows = sorted(rows, key=lambda r: (order.get(r[2], 9), r[0].lower(), r[1].lower()))
+    head = ("status", "reviewer", "session", "files", "MB", "keep/del/motion")
+    body = [(st, rv, se, str(n) if n else "-", f"{b/1e6:.1f}" if n else "-", lab)
+            for rv, se, st, n, b, lab in rows]
+    w = [max(len(x[i]) for x in [head] + body) for i in range(len(head))]
+    fmt = "  ".join(f"{{:<{w[i]}}}" if i < 3 or i == 5 else f"{{:>{w[i]}}}"
+                    for i in range(len(head)))
+    n_new = sum(1 for r in rows if r[2] == "NEW")
+    n_skip = sum(1 for r in rows if r[2] in ("SKIPPED", "NOT FOUND"))
+    print(f"\nSummary{' (dry run)' if dry else ''}: {len(rows)} session(s) in inbox -- "
+          f"{n_new} new, {len(rows) - n_new - n_skip} unchanged, {n_skip} skipped")
+    print(fmt.format(*head))
+    print("  ".join("-" * x for x in w))
+    for line in body:
+        print(fmt.format(*line))
 
 
 def main():
@@ -238,18 +266,25 @@ def main():
         return
 
     skipped_sessions = []
+    rows = []                    # one summary-table row per session seen
     total_motion_tags = 0        # motion-tagged deletes across this ingest
     sessions_with_motion = 0     # sessions that carried >=1 motion tag
     sessions_with_field = 0      # sessions whose labels.mat has the motion_delete field
     for src in sessions:
+        try:
+            reviewer = src.relative_to(inbox).parts[0]
+        except ValueError:
+            reviewer = None
         if not src.is_dir():
             print(f"SKIP (not found): {src}")
+            rows.append((reviewer or "-", src.name, "NOT FOUND", 0, 0, "-"))
             continue
         dst, note = resolve_dest(src)
         if dst is None:
             print(f"\nSKIP {src.name}")
             print(f"  !! {note}")
             skipped_sessions.append((src, note))
+            rows.append((reviewer or "-", src.name, "SKIPPED", 0, 0, "-"))
             continue
 
         # Duplicate-review guard: refuse to let one reviewer's return replace
@@ -261,10 +296,6 @@ def main():
         # his, leaving a session that mixes two people's decisions. The whole
         # session is therefore skipped, not just labels.mat. Deliberate
         # replacement: --replace-labels.
-        try:
-            reviewer = src.relative_to(inbox).parts[0]
-        except ValueError:
-            reviewer = None
         if reviewer and (src / "labels.mat").exists():
             prev = read_provenance(dst)
             if (prev and prev.lower() != reviewer.lower()
@@ -276,37 +307,57 @@ def main():
                 print(f"\nSKIP {src.name}")
                 print(f"  !! {msg}")
                 skipped_sessions.append((src, msg))
+                rows.append((reviewer, str(dst.relative_to(DATA_PARENT)),
+                             "SKIPPED", 0, 0, "-"))
                 continue
 
-        print(f"\nIngest {dst.relative_to(DATA_PARENT)}  ({note})")
-        print(f"  {src}  ->  {dst}")
-        c, s, b = copy_session(src, dst, args.force, args.dry_run)
-        print(f"  copied {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")
+        # Only sessions that bring something new get a detailed block; the
+        # header is printed lazily, just before the first file is copied, so a
+        # long multi-GB copy still announces itself up front. Sessions with
+        # nothing to copy stay silent here and appear in the summary table.
+        def _header(dst=dst, note=note, src=src):
+            print(f"\nIngest {dst.relative_to(DATA_PARENT)}  ({note})")
+            print(f"  {src}  ->  {dst}")
+        c, s, b = copy_session(src, dst, args.force, args.dry_run, on_first_copy=_header)
+        is_new = c > 0
+        if is_new:
+            verb = "would copy" if args.dry_run else "copied"
+            print(f"  {verb} {c} files ({b/1e6:.1f} MB), skipped {s} unchanged")
         if reviewer and (src / "labels.mat").exists() and not args.dry_run:
             write_provenance(dst, reviewer, src)
 
         # Report the reviewer's label breakdown, including motion-delete tags.
         # Read from the source so this works in --dry-run too (nothing copied yet).
         labels_src = src / "labels.mat"
+        labels_cell = "-"
         if labels_src.exists():
             counts = read_label_counts(labels_src)
             if counts is None:
-                print("  labels.mat present but could not be read for a summary.")
+                labels_cell = "unreadable"
+                if is_new:
+                    print("  labels.mat present but could not be read for a summary.")
             else:
                 n_keep, n_delete, n_motion = counts
                 if n_motion is None:
-                    print(f"  labels: {n_keep} keep / {n_delete} delete "
-                          f"(no motion tags -- reviewed before the (m) option)")
+                    labels_cell = f"{n_keep}/{n_delete}/-"
+                    if is_new:
+                        print(f"  labels: {n_keep} keep / {n_delete} delete "
+                              f"(no motion tags -- reviewed before the (m) option)")
                 else:
+                    labels_cell = f"{n_keep}/{n_delete}/{n_motion}"
                     sessions_with_field += 1
                     total_motion_tags += n_motion
                     if n_motion > 0:
                         sessions_with_motion += 1
-                    print(f"  labels: {n_keep} keep / {n_delete} delete, "
-                          f"of which {n_motion} tagged as motion deletes")
-            if not args.dry_run:
+                    if is_new:
+                        print(f"  labels: {n_keep} keep / {n_delete} delete, "
+                              f"of which {n_motion} tagged as motion deletes")
+            if is_new and not args.dry_run:
                 print("  labels.mat present -> watcher will auto-retrain on its next poll.")
+        rows.append((reviewer or "-", str(dst.relative_to(DATA_PARENT)),
+                     "NEW" if is_new else "unchanged", c, b, labels_cell))
 
+    print_summary_table(rows, args.dry_run)
     if skipped_sessions:
         print(f"\n{len(skipped_sessions)} session(s) SKIPPED (not ingested):")
         for src, note in skipped_sessions:
