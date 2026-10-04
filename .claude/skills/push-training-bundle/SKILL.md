@@ -2,7 +2,7 @@
 name: push-training-bundle
 description: Stage reviewer-TRAINING bundles (answer key + candidates, optional video, gallery) on the lab-server training folder for a named trainee - build the key first, dry run, never inbox/outbox, never marks a session out for review.
 disable-model-invocation: true
-argument-hint: "<area>\\<task>\\<session> [...] --trainee <name> [--stage N] [--no-video] [--gallery] [--dry-run]"
+argument-hint: "(--from-plan | <area>\\<task>\\<session> [...]) --trainee <name> [--stage N] [--no-video] [--gallery] [--dry-run]"
 ---
 
 # Push training bundles
@@ -72,8 +72,12 @@ procedure (one-time setup, per-trainee cycle, parameters) in
 6. **Dry run always:**
 
 ```bash
+"<PYTHON_EXE>" agent/push_training_bundle.py --from-plan --trainee <Name> [--gallery] --dry-run
 "<PYTHON_EXE>" agent/push_training_bundle.py <AREA>\<TASK>\<SESSION> --trainee <Name> --stage <N> [--gallery] --dry-run
 ```
+
+   `--from-plan` takes every `pick` row of `.training\curriculum_plan.csv`
+   (three per area) with the stage from its tier (easy 1, medium 2, hard 3).
 
    Read the list: right trainee folder, right files, `WARNING: raw video ...
    not found` only when `--no-video` was intended.
