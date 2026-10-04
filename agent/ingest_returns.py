@@ -59,8 +59,12 @@ def iter_sessions(inbox: Path):
             continue
         if any(part.startswith(".") for part in p.relative_to(inbox).parts):
             continue
-        if (p / "labels.mat").exists() or (p / "neuron.mat").exists():
-            yield p
+        if not ((p / "labels.mat").exists() or (p / "neuron.mat").exists()):
+            continue
+        if is_training_sandbox(p, inbox):
+            print(f"SKIP (training sandbox, never ingested): {p.relative_to(inbox)}")
+            continue
+        yield p
 
 
 def _is_real_session(d: Path) -> bool:
@@ -110,6 +114,27 @@ def resolve_dest(src: Path):
 
 
 PROVENANCE_NAME = "labels_provenance.txt"
+
+# A folder carrying this marker is a reviewer-TRAINING sandbox (see
+# agent/push_training_bundle.py and docs/TRAINING.md).  Its labels.mat is a
+# trainee's practice result on a session that already has real labels, and
+# resolve_dest matches returns by session NAME, so a training folder dropped
+# into inbox/ would otherwise land on the real session.  Never ingested.
+TRAINING_MARKER = "TRAINING_SESSION.txt"
+
+
+def is_training_sandbox(p: Path, root: Path) -> bool:
+    """True if p or any ancestor between root and p carries TRAINING_SESSION.txt."""
+    cur = root
+    try:
+        parts = p.relative_to(root).parts
+    except ValueError:
+        parts = ()
+    for part in parts:
+        cur = cur / part
+        if (cur / TRAINING_MARKER).exists():
+            return True
+    return False
 
 # Files that only the central machine may write, and that a return must never
 # carry back over the local copy.  A reviewer bundle does not contain them
@@ -278,6 +303,14 @@ def main():
         if not src.is_dir():
             print(f"SKIP (not found): {src}")
             rows.append((reviewer or "-", src.name, "NOT FOUND", 0, 0, "-"))
+            continue
+        if is_training_sandbox(src, inbox):
+            print(f"\nSKIP {src.name}")
+            print("  !! training sandbox (TRAINING_SESSION.txt present): a trainee's practice "
+                  "result, never ingested. Ask the trainee to return it to "
+                  "training/<name>/returns/ instead.")
+            skipped_sessions.append((src, "training sandbox"))
+            rows.append((reviewer or "-", src.name, "SKIPPED", 0, 0, "-"))
             continue
         dst, note = resolve_dest(src)
         if dst is None:

@@ -13,14 +13,21 @@ fine. A human operator performs every server write; Claude may propose the
 command, clearly labelled as operator-run. A missing server folder is not a
 problem to solve by creating it: exit and say so.
 
-The two exchange scripts have a fixed contract:
+The exchange scripts have a fixed contract:
 - `agent/push_review_bundle.py`: copy-only into `outbox/<assignee>/...`. Its only
   server writes are `shutil.copy2` and the generated `run_final_review.m`; the
   `review_assigned.txt` marker it writes is local.
 - `agent/ingest_returns.py`: read-only on the server; writes only under
   `DATA_PARENT`. Exits gracefully when the inbox is absent.
-If you edit either, or add exchange tooling, grep it for delete/move verbs before
-calling the work done.
+- `agent/push_training_bundle.py` [2026-10-01]: copy-only into
+  `training/<trainee>/...` and `training/_shared/gallery/`, plus the generated
+  `run_training.m` and `TRAINING_SESSION.txt` there. Never writes
+  `review_assigned.txt`, never touches `inbox/`, `outbox/` or a production
+  session folder; exits when `training/` is absent (the operator creates it).
+- `agent/summarize_training.py` [2026-10-01]: read-only on the server; writes
+  only under `DATA_PARENT/.training`.
+If you edit any of these, or add exchange tooling, grep it for delete/move verbs
+before calling the work done.
 
 ## 2. Test path-touching logic against temp directories first  [explicit]
 
@@ -71,6 +78,13 @@ against the real data root on its first outing.
 - **Ingest matches by name, so a reviewer rename forks the session.** [derived,
   2026-08-07] Before concluding "new session", check for an existing one under a
   new name.
+- **Ingest never imports a training sandbox.** [explicit, 2026-10-01] A folder
+  carrying `TRAINING_SESSION.txt` is a trainee's practice copy of an already
+  labelled session (`docs/TRAINING.md`); `iter_sessions` and the explicit-path
+  branch skip it, because name matching would otherwise land practice labels on
+  the real session. Trainee results go to `training/<name>/returns/`, never
+  `inbox/`; everything central for training lives under `DATA_PARENT/.training/`
+  (dot folder, skipped by every scanner). The program covers BLA and vCA1 only.
 - **A new imaging prep is a new regime.** [derived, 2026-08-05] Do not assume the
   area's model transfers. Start at threshold 0 (a human sees everything) and only
   tighten once a false auto-reject rate has been measured on reviewed sessions.
@@ -119,11 +133,14 @@ MATLAB reads `getenv('CNMFE_DATA_PARENT')`.
 - **Data are motion-corrected, averaged 2-photon recordings**, despite CNMF-E's
   usual 1-photon association.
 - Docs: `docs/SETUP.md` (central role), `docs/REVIEW_SETUP.md` (reviewer role,
-  MATLAB only), `agent/eval/README.md` (evaluation harness contract).
+  MATLAB only), `docs/TRAINING.md` (trainee role, MATLAB only),
+  `docs/TRAINING_SETUP.md` (operator side of the training program),
+  `agent/eval/README.md` (evaluation harness contract).
 
 ## 7. Skills
 
 Operator procedures with side effects live under `.claude/skills/` and are
 manual-only (type the slash command; Claude is not shown them otherwise):
 `/ingest-returns`, `/retrain-area`, `/recurate-sessions`, `/push-review-bundle`,
-`/retire-session`. `/skills` lists them.
+`/retire-session`, `/push-training-bundle`, `/summarize-training`. `/skills`
+lists them.

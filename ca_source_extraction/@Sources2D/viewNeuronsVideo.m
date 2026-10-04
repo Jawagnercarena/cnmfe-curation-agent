@@ -75,7 +75,7 @@
             end
         end
         if neuronClicked
-            fprintf('\nNeuron %d, keep(k, default)/delete(d)/MOTION delete(m)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
+            fprintf('\nNeuron %d, keep(k, default)/delete(d)/MOTION delete(m)/next transient(n)/play(p)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
         end
     end
     video_struct = load(obj.options.name); % load video from the .mat file
@@ -96,6 +96,20 @@
     scroll_pos = [axes.Position(1),axes.Position(2)+0.37,axes.Position(3),0.04]; % position of scroll bar
     scrollbar = uicontrol('Style','slider','Units','normalized','Callback',{@scrollCallback,im,video,num_frames},'Position',scroll_pos,'SliderStep',[1/num_frames,0.01]);
     scrollbar.Value = 0; % start scrollbar at zero
+
+    % Transient navigation. Each neuron opens on the peak of its biggest
+    % transient (as before). 'n' steps to the next-biggest transient and lands
+    % PRE_FRAMES before its onset, so the rise can be scrubbed or played; 'p'
+    % plays from there to POST_FRAMES after the peak, twice. A cell brightens in
+    % place over a few frames; a motion artefact is the whole neighbourhood
+    % shifting at that moment -- the lead-in is what makes the difference visible.
+    if ~isnan(obj.Fs) && obj.Fs > 0
+        pre_frames = max(2, round(2 * obj.Fs));    % ~2 s before the onset
+        post_frames = max(2, round(3 * obj.Fs));   % ~3 s after the peak
+    else
+        pre_frames = 8; post_frames = 11;
+    end
+    tr_neuron = 0; tr_idx = 1; tr_peaks = 1; tr_onsets = 1; frame_to_show = 1;
     
     % A whole pass has been lost here before (see the contour note below): every
     % decision the reviewer makes lives in ind_del/ind_motion/ind_trim and is only
@@ -169,8 +183,13 @@
                 fprintf(2, 'Contour draw skipped for neuron %d (%s); review continues.\n', ind(m), ME.message);
             end
 
-            %% move scrollbar to time of max value
-            [maxVal, maxInd] = max(obj.C(ind(m),:));
+            %% move scrollbar to time of max value (or to the transient chosen with 'n')
+            if tr_neuron ~= ind(m)
+                [tr_peaks, tr_onsets] = find_trace_transients(full(obj.C(ind(m),:)), 5, 10);
+                tr_neuron = ind(m); tr_idx = 1;
+                frame_to_show = tr_peaks(1);
+            end
+            maxInd = max(1, min(num_frames, frame_to_show));
             scrollbar.Value = (maxInd-1)/(num_frames-1);
             im.CData = video(:,:,maxInd);
             t_index = scrollbar.Value*t(end);
@@ -182,7 +201,7 @@
                 saveas(gcf, sprintf('neuron_%d.png', ind(m)));
                 m = m+1;
             else
-                fprintf('Neuron %d, keep(k, default)/delete(d)/MOTION delete(m)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
+                fprintf('Neuron %d, keep(k, default)/delete(d)/MOTION delete(m)/next transient(n)/play(p)/split(s)/trim(t)/trim cancel(tc)/delete all(da)/backward(b)/end(e)/jump to(#):    ', ind(m));
                 temp = input('', 's');
                 if temp=='d'
                     ind_del(m) = true;
@@ -192,6 +211,26 @@
                     ind_del(m) = true;
                     ind_motion(m) = true;
                     m = m+1;
+                elseif strcmpi(temp, 'n')
+                    % next-biggest transient, shown from before its onset (m unchanged)
+                    tr_idx = mod(tr_idx, numel(tr_peaks)) + 1;
+                    frame_to_show = max(1, tr_onsets(tr_idx) - pre_frames);
+                    fprintf('transient %d of %d: onset frame %d, peak frame %d; showing %d frames before the onset (p plays it)\n', ...
+                        tr_idx, numel(tr_peaks), tr_onsets(tr_idx), tr_peaks(tr_idx), tr_peaks(tr_idx) - frame_to_show);
+                elseif strcmpi(temp, 'p')
+                    % play from before the onset through the peak and its decay, twice
+                    f0 = max(1, tr_onsets(tr_idx) - pre_frames);
+                    f1 = min(num_frames, tr_peaks(tr_idx) + post_frames);
+                    for rep = 1:2
+                        for f = f0:f1
+                            if ~isvalid(im); break; end
+                            im.CData = video(:,:,f);
+                            if isvalid(l); delete(l); end
+                            l = plot([t(f), t(f)], get(gca, 'ylim'), 'y');
+                            drawnow; pause(0.12);
+                        end
+                    end
+                    frame_to_show = tr_peaks(tr_idx);
                 elseif strcmpi(temp, 'b')
                     m = m-1;
                 elseif strcmpi(temp, 'da')

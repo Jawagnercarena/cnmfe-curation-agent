@@ -25,6 +25,8 @@ per brain area.
 
 - **[SETUP.md](SETUP.md)** — set up the repo on a new machine and run the pipeline (central machine: heavy compute + the single canonical model).
 - **[REVIEW_SETUP.md](REVIEW_SETUP.md)** — the reviewer role: MATLAB-only, no Python. Pull a bundle, run the review, push it back.
+- **[TRAINING.md](TRAINING.md)** -- the trainee role: re-review already-labelled sessions against an answer key, MATLAB-only; stages, keys, how to read the report.
+- **[TRAINING_SETUP.md](TRAINING_SETUP.md)** -- the operator side of the training program: one-time setup (server folders, keys, curriculum, gallery), per-trainee push / collect / read, parameters, safety contract, tests.
 - **[../CLAUDE.md](../CLAUDE.md)** — standing constraints for anyone running Claude (or any coding agent) against this pipeline or the lab server. Loaded automatically from the repo root; `CLAUDE_RULES.md` is now a pointer to it.
 - **[SETUP_INSTRUCTIONS.txt](SETUP_INSTRUCTIONS.txt)** — legacy setup notes, superseded by `SETUP.md` (kept for reference).
 
