@@ -67,3 +67,86 @@ def read_assignment(session_dir):
     except Exception:
         pass
     return info or {"assigned": "?", "to": "-"}
+
+
+# ---------------------------------------------------------------------------
+# Re-review: a second, independent review of an already labelled session
+# ---------------------------------------------------------------------------
+# All state lives in <session>/.rereview/ -- a dot folder, so every scanner
+# that looks at session-level files (watcher, push, recurate, trainer, ingest's
+# copy loop, the params refresh) ignores it.  agent/rereview.py owns the
+# lifecycle (request -> parked return -> adopt / keep-current);
+# ingest_returns.py parks returns here; the watcher's REVIEW_QUEUE.md reads the
+# state through rereview_state() below.  Nothing here deletes anything.
+REREVIEW_DIRNAME = ".rereview"
+REREVIEW_MARKER = "REREVIEW_SESSION.txt"    # travels in the bundle and the return
+REREVIEW_REQUEST = "request.txt"            # the open request, in .rereview/
+REREVIEW_RETURNED = "returned.txt"          # ingest writes it into a parked version
+REREVIEW_DECISION = "decision.txt"          # rereview.py adopt / keep-current
+REREVIEW_ARCHIVE_PREFIX = "archive_"        # superseded live versions
+
+
+def read_kv(path) -> dict:
+    """'key: value' lines -> dict; empty on any problem (missing, unreadable)."""
+    p = Path(path)
+    info = {}
+    try:
+        for line in p.read_text(encoding="utf-8", errors="replace").splitlines():
+            if ":" in line and not line.startswith("#"):
+                k, _, v = line.partition(":")
+                info[k.strip()] = v.strip()
+    except Exception:
+        return {}
+    return info
+
+
+def write_kv(path, fields: dict) -> Path:
+    """Write 'key: value' lines (ASCII; values are str()'d)."""
+    p = Path(path)
+    p.write_text("".join(f"{k}: {v}\n" for k, v in fields.items()), encoding="ascii",
+                 errors="replace")
+    return p
+
+
+def rereview_dir(session_dir) -> Path:
+    return Path(session_dir) / REREVIEW_DIRNAME
+
+
+def parked_versions(session_dir) -> list:
+    """Parked returns under .rereview/ (never the archive_* folders), oldest
+    first, as [(name, path, info)] where info is returned.txt + decision.txt."""
+    rd = rereview_dir(session_dir)
+    out = []
+    if not rd.is_dir():
+        return out
+    for d in sorted(rd.iterdir()):
+        if not d.is_dir() or d.name.startswith(REREVIEW_ARCHIVE_PREFIX):
+            continue
+        ret = read_kv(d / REREVIEW_RETURNED)
+        if not ret:
+            continue
+        info = dict(ret)
+        info["decision"] = read_kv(d / REREVIEW_DECISION)
+        out.append((d.name, d, info))
+    return out
+
+
+def rereview_state(session_dir):
+    """None when the session has no open re-review; otherwise a dict with
+    'state' ('out' | 'returned'), the open request (if any), the undecided
+    parked versions, and a one-line ASCII 'summary' for REVIEW_QUEUE.md."""
+    req = read_kv(rereview_dir(session_dir) / REREVIEW_REQUEST)
+    undecided = [(n, p, i) for n, p, i in parked_versions(session_dir) if not i["decision"]]
+    if undecided:
+        n, _, i = undecided[-1]
+        who = i.get("reviewer", "?")
+        when = i.get("parked_at", "?")[:10]
+        extra = f" (+{len(undecided) - 1} more)" if len(undecided) > 1 else ""
+        return {"state": "returned", "request": req, "versions": undecided,
+                "summary": (f"re-review RETURNED by {who} on {when}{extra} -- "
+                            f"awaiting decision: rereview.py compare / adopt / keep-current")}
+    if req:
+        return {"state": "out", "request": req, "versions": [],
+                "summary": (f"re-review out to {req.get('assignee', '?')} since "
+                            f"{req.get('requested', '?')[:10]}")}
+    return None

@@ -654,8 +654,23 @@ def _write_review_queue():
     # Agent-reviewed complete sessions — most recent first
     complete_agent.sort(key=lambda x: (x[1] / "ROIs.jpg").stat().st_mtime, reverse=True)
     lines += [f"## Complete — agent pipeline  ({len(complete_agent)} session(s))", ""]
+    # A completed session can be under re-review (agent/rereview.py): the live
+    # files are untouched until an operator adopts a parked second review, so
+    # the session stays "complete" here and only gets a note.
+    from review_prep import rereview_state
+    rr_notes = {}
     for task_name, sd in complete_agent:
-        lines.append(f"- {sd.name}  ({task_name})")
+        try:
+            st = rereview_state(sd)
+        except Exception:
+            st = None
+        if st:
+            rr_notes[sd] = st["summary"]
+    if rr_notes:
+        lines += [f"_{len(rr_notes)} session(s) under re-review (noted on their lines)._", ""]
+    for task_name, sd in complete_agent:
+        note = f"  -- {rr_notes[sd]}" if sd in rr_notes else ""
+        lines.append(f"- {sd.name}  ({task_name}){note}")
     if not complete_agent:
         lines.append("_None yet._")
     lines.append("")

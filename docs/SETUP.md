@@ -115,6 +115,10 @@ This auto-discovers each reviewer's `…\cnmfe_review\inbox\{REVIEWER}\{AREA}\{T
 
 *Manual alternative:* copy the returned folder (`neuron.mat`, `labels.mat`, `A.txt`, traces, `spatial_footprints.mat`, `ROIs.jpg`, `{SESSION}_neurons/`, …) into your local data tree by hand.
 
+**Second review of a labelled session** (`/rereview`, `agent/rereview.py`): a return for a session that already has `labels.mat` is never written over the live files. Ingest parks it under `{SESSION}\.rereview\`, `rereview.py compare` shows the two reviewers candidate by candidate, and `rereview.py adopt` (or `keep-current`) decides, archiving the previous version and logging the reason in `labels_provenance.txt`, `REVIEW_VERSION.txt` and `{AREA}\REREVIEW_LOG.md`. The bundle for a second review is blind (no earlier outputs, no reason).
+
+**Session quality table** (`/session-quality`, `agent/session_quality_report.py`): one row per labelled session under `{AREA}\.quality\sessions.csv` with reviewer-vs-model, label-coherence, field-of-view, recording and process columns, plus `summary.md` with per-reviewer rows and a flagged list. Operator only; it picks sessions to look at, it does not adjudicate.
+
 ---
 
 ## 7. Reviewer machines

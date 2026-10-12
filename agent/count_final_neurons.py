@@ -65,6 +65,15 @@ def find_sessions(root: Path):
     seen = set()
     for name in ("C_raw.txt", "labels.mat"):
         for hit in root.rglob(name):
+            # Dot-prefixed folders are set-aside data (.excluded/, .training/,
+            # and a session's .rereview/ archive of superseded reviews); counting
+            # them would double-count a session's cells.
+            try:
+                rel_parts = hit.relative_to(root).parts
+            except ValueError:
+                rel_parts = hit.parts
+            if any(p.startswith(".") for p in rel_parts[:-1]):
+                continue
             sd = hit.parent
             if sd not in seen:
                 seen.add(sd)
