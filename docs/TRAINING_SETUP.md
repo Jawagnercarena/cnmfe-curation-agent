@@ -79,17 +79,23 @@ Areas: BLA and vCA1 only (both on the 35-column feature contract).
 
 ## 2. Per trainee
 
-1. **Push bundles** (dry run first; each bundle is 1.5-4.5 GB because it
-   carries the raw video, which every drill uses):
+1. **Push the bundle set** (dry run first). The planned set is the sessions
+   marked `pick` in `.training\curriculum_plan.csv`, three per area; the stage
+   hint comes from the tier (easy 1, medium 2, hard 3). Each session carries
+   its raw video, which every drill uses, so a full set is roughly 18 GB:
    ```
-   <PYTHON_EXE> agent/push_training_bundle.py BLA\<task>\<easy session> --trainee <Name> --stage 1 --dry-run
-   <PYTHON_EXE> agent/push_training_bundle.py BLA\<task>\<easy session> --trainee <Name> --stage 1
+   <PYTHON_EXE> agent/push_training_bundle.py --from-plan --trainee <Name> --gallery --dry-run
+   <PYTHON_EXE> agent/push_training_bundle.py --from-plan --trainee <Name> --gallery
    ```
-   Repeat per session with the stage you intend (1 easy, 2 medium, 3 hard,
-   4 rehearsal). The stage is only a hint shown in the trainee's menu. The
-   script writes `run_training.m` and `TRAINING_SESSION.txt` into the bundle,
-   logs to `.training\<Name>\pushed.csv`, never writes `review_assigned.txt`,
-   never touches the production session folder, `inbox\` or `outbox\`.
+   Single sessions work too (`<area>\<task>\<session> --stage N`); `--stage`
+   with `--from-plan` overrides every tier-derived stage (for example to re-use
+   the same sessions at stage 4). The stage is only a hint shown in the
+   trainee's menu. The script writes `run_training.m` and
+   `TRAINING_SESSION.txt` into each bundle, logs to `.training\<Name>\pushed.csv`,
+   never writes `review_assigned.txt`, never touches the production session
+   folder, `inbox\` or `outbox\`. Same-size files already on the server are
+   skipped, so a second trainee's push of the same sessions still copies the
+   full set (different folder) but an interrupted push resumes.
 2. **Tell the trainee** (template):
    > Your training bundles are under `X:\Julian\cnmfe_review\training\<Name>\`.
    > Copy a session folder to a local disk, open `run_training.m` in MATLAB

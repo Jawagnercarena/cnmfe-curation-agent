@@ -20,6 +20,9 @@ or outbox/, delete or move anything.  <exchange>/training/ must already exist --
 the operator creates it by hand once; this script exits if it is missing.
 
 Usage (central machine):
+  python agent/push_training_bundle.py --from-plan --trainee Alice --gallery --dry-run
+      (every session picked in .training/curriculum_plan.csv, stage from its tier:
+       easy 1, medium 2, hard 3; --stage overrides all)
   python agent/push_training_bundle.py BLA\\<task>\\<session> --trainee Alice --stage 1 --dry-run
   python agent/push_training_bundle.py BLA\\<task>\\<session> vCA1\\<task>\\<session> --trainee Alice --stage 3
   python agent/push_training_bundle.py --gallery --trainee Alice     (gallery only)
@@ -37,6 +40,23 @@ import training_common as tc
 
 REQUIRED = ["review_neuron.mat"]
 OPTIONAL = ["Cn.mat", "pnr.mat", "Ybg_weights.mat"]
+TIER_STAGE = {"easy": 1, "medium": 2, "hard": 3}   # curriculum tier -> stage hint
+
+
+def planned_sessions(plan_csv: Path, data_parent: Path) -> list[tuple[Path, int, str]]:
+    """(session_dir, stage, label) for every row of curriculum_plan.csv with a
+    non-empty 'pick', ordered by area then pick number."""
+    rows = [r for r in tc.read_csv_rows(plan_csv) if (r.get("pick") or "").strip()]
+    if not rows:
+        raise ValueError(f"no picked sessions in {plan_csv}; run plan_training_curriculum.py first")
+    rows.sort(key=lambda r: (r["area"], int(r["pick"])))
+    out = []
+    for r in rows:
+        tier = (r.get("tier") or "").strip().lower()
+        stage = TIER_STAGE.get(tier, 2)
+        sd = data_parent / r["area"] / r["task"] / r["session"]
+        out.append((sd, stage, f"{r['area']} pick {r['pick']} ({tier or '?'})"))
+    return out
 
 
 def parts_of(sd: Path, data_parent: Path):
@@ -161,7 +181,11 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("sessions", nargs="*", help="area\\task\\session (relative to DATA_PARENT) or absolute")
     ap.add_argument("--trainee", required=True, help="trainee name -> training/<name>/")
-    ap.add_argument("--stage", type=int, help="stage hint written into TRAINING_SESSION.txt (1-4)")
+    ap.add_argument("--stage", type=int, help="stage hint written into TRAINING_SESSION.txt (1-4); "
+                                              "with --from-plan it overrides the tier-derived stage")
+    ap.add_argument("--from-plan", action="store_true",
+                    help="push every session picked in .training/curriculum_plan.csv (stage from tier)")
+    ap.add_argument("--plan", default=None, help="plan csv (default .training/curriculum_plan.csv)")
     ap.add_argument("--no-video", action="store_true", help="omit the raw {session}.mat")
     ap.add_argument("--gallery", action="store_true", help="also push .training/gallery to training/_shared/gallery/")
     ap.add_argument("--exchange", default=EXCHANGE_ROOT, help="exchange root (default CNMFE_EXCHANGE_ROOT / .env)")
@@ -184,23 +208,37 @@ def main(argv=None):
         sys.exit("ERROR: --trainee must be a usable folder name")
     training_root = Path(args.training_root) if args.training_root else tc.training_root()
     data_parent = Path(args.data_parent) if args.data_parent else DATA_PARENT
-    if not args.sessions and not args.gallery:
-        sys.exit("ERROR: give at least one session, or --gallery")
+    jobs = [(tc.resolve_session(s, data_parent), args.stage, s) for s in args.sessions]
+    if args.from_plan:
+        plan = Path(args.plan) if args.plan else training_root / "curriculum_plan.csv"
+        if not plan.exists():
+            sys.exit(f"ERROR: {plan} not found; run agent/plan_training_curriculum.py first")
+        try:
+            planned = planned_sessions(plan, data_parent)
+        except ValueError as e:
+            sys.exit(f"ERROR: {e}")
+        print(f"plan: {plan} -> {len(planned)} picked session(s)")
+        for sd, stage, label in planned:
+            if args.stage is not None:
+                stage = args.stage
+            print(f"  [plan] {label}: {sd.parent.name}\\{sd.name} -> stage {stage}")
+            jobs.append((sd, stage, label))
+    if not jobs and not args.gallery:
+        sys.exit("ERROR: give at least one session, --from-plan, or --gallery")
 
     print(f"{'DRY RUN: ' if args.dry_run else ''}trainee {trainee}; exchange {exchange}")
     failures = []
-    for s in args.sessions:
-        sd = tc.resolve_session(s, data_parent)
+    for sd, stage, label in jobs:
         if not sd.is_dir():
-            failures.append((s, "session folder not found"))
-            print(f"[{s}]\n  ERROR: session folder not found: {sd}")
+            failures.append((label, "session folder not found"))
+            print(f"[{label}]\n  ERROR: session folder not found: {sd}")
             continue
-        print(f"[{s}]")
+        print(f"[{label}]")
         try:
-            stage_one(sd, exchange, trainee, args.stage, not args.no_video, args.dry_run,
+            stage_one(sd, exchange, trainee, stage, not args.no_video, args.dry_run,
                       training_root, data_parent, REPO_ROOT)
         except Exception as e:
-            failures.append((s, str(e)))
+            failures.append((label, str(e)))
             print(f"  ERROR: {e}")
         print()
     if args.gallery:

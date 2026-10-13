@@ -1,0 +1,23 @@
+{
+  "_comment": "Imaging sheets per area and CNMFe task folder, read by agent/session_quality_report.py to group sessions by field of view (FOV letters live in the Notes column; see agent/plan_fov_assignment.py for the resolution rules). Mapping checked against D:/Analysis on 2026-10-12; tasks without a sheet fall back to a depth proxy. DG_AL: no sheet naming DG6D/DG6E was found under D:/Analysis -- add its path here when known.",
+  "BLA": {
+    "2tones": ["D:/Analysis/2tones/2p imaging parameters BLA - 2tones.csv"],
+    "3odor": ["D:/Analysis/3odor/2p imaging parameters BLA - 3odor.csv"],
+    "6odorDualDiffRew": ["D:/Analysis/6odor dual DR/2p imaging parameters BLA - 4_6odorDR.csv"],
+    "4odorDO": ["D:/Analysis/6odor_diff_outcomes/2p imaging parameters BLA - 6odor diff outcome.csv"],
+    "CTA": ["D:/Analysis/CTA/2p imaging parameters BLA - CTA.csv"],
+    "Valence": ["D:/Analysis/valence_battery/2p imaging parameters BLA - valence.csv",
+                "D:/Analysis/ptn_valence_battery/2p imaging parameters BLA - valence.csv"],
+    "Block_Valence": ["D:/Analysis/valence_battery/2p imaging parameters BLA - valence.csv",
+                      "D:/Analysis/ptn_valence_battery/2p imaging parameters BLA - valence.csv"]
+  },
+  "vCA1": {
+    "2tones": ["D:/Analysis/2tones/2p imaging parameters 4.0 (retro) - 2tones.csv"],
+    "3odor": ["D:/Analysis/3odor/2p imaging parameters 4.0 (retro) - 3odor.csv"],
+    "6odorDualDiffRew": ["D:/Analysis/6odor dual DR/2p imaging parameters 4.0 (retro) - 4_6odor DR.csv"],
+    "CTA": ["D:/Analysis/CTA/2p imaging parameters 4.0 (retro) - CTA.csv"],
+    "Valence": ["D:/Analysis/valence_battery/2p imaging parameters 4.0 (retro) - valence.csv",
+                "D:/Analysis/ptn_valence_battery/2p imaging parameters 4.0 (retro) - valence.csv"]
+  },
+  "DG_AL": {}
+}

@@ -36,6 +36,14 @@ warning('off', 'MATLAB:illConditionedMatrix');
 global MOTION_DELETE_FP; %#ok<GVMIS>
 MOTION_DELETE_FP = [];
 
+% Review metadata counters, written to review_meta.txt next to labels.mat at
+% the end (who ran the review, on which machine and code, how long it took,
+% how many video passes and merges).  On a checkpoint resume they restart at
+% zero; resumed_from_stage in the record says so.
+review_t0      = now;
+n_video_passes = 0;
+n_merge_logs   = 0;
+
 %% --- Setup paths ---
 repo_root = fileparts(mfilename('fullpath'));   % self-locating: this file lives at the repo root
 addpath(genpath(fullfile(repo_root, 'ca_source_extraction')));
@@ -51,6 +59,24 @@ addpath(genpath(fullfile(repo_root, 'deconvolveCa')));
 if ~exist('session_dir', 'var') || isempty(session_dir)
     error(['session_dir is not set. Either run the session-specific ' ...
            'run_final_review.m, or set session_dir manually before running this script.']);
+end
+
+% Guard against overwriting a finished review by accident: this script rewrites
+% labels.mat, neuron.mat, ROIs.jpg, the trace files and the per-neuron images
+% with no backup.  A second review of a session belongs in a FRESH folder
+% (central: agent/rereview.py); to redo it here on purpose, confirm.
+if isfile(fullfile(session_dir, 'labels.mat'))
+    answer_existing = questdlg( ...
+        sprintf(['This folder already holds a finished review (labels.mat).\n\n' ...
+                 'Running again OVERWRITES its labels, neuron.mat, ROIs.jpg and traces ' ...
+                 'with no backup. A second review belongs in a fresh folder.\n\n' ...
+                 'Continue and overwrite?']), ...
+        'Existing review found', 'Overwrite', 'Cancel', 'Cancel');
+    if ~strcmp(answer_existing, 'Overwrite')
+        error('CNMFe_final_save:existingReview', ...
+              'Cancelled: the existing review in %s was left untouched.', session_dir);
+    end
+    fprintf('  [WARNING] Overwriting the existing review in this folder at your request.\n');
 end
 
 %% --- Load review_neuron.mat prepared by the agent ---
@@ -443,7 +469,7 @@ if strcmp(answer_merge1, 'Yes')
     % Log merge decisions for pairwise merge classifier training
     if exist('ind_del', 'var') && any(ind_del)
         merge_log_file = fullfile(session_dir, sprintf('merge_log_%s.mat', datestr(now, 'HHMMSS')));
-        save(merge_log_file, 'neuron_bk', 'ind_del');
+        save(merge_log_file, 'neuron_bk', 'ind_del'); n_merge_logs = n_merge_logs + 1;
         fprintf('Merge log saved: %d neurons merged (%s)\n', sum(ind_del), merge_log_file);
         % Re-estimate traces so video inspection sees the corrected merged traces.
         fprintf('\n--- Post-merge update (re-estimating temporal & spatial components) ---\n');
@@ -478,7 +504,7 @@ if resume_stage < 4
         fprintf('Tag motion artifacts with (m) so they are logged as motion deletes.\n');
         fprintf('Close the window when done.\n\n');
 
-        neuron.viewNeuronsVideo([], neuron.C_raw);
+        neuron.viewNeuronsVideo([], neuron.C_raw); n_video_passes = n_video_passes + 1;
 
         fprintf('Neurons remaining: %d\n', size(neuron.C, 1));
 
@@ -504,7 +530,7 @@ if strcmp(answer, 'Yes')
     % Log merge decisions for pairwise merge classifier training
     if exist('ind_del', 'var') && any(ind_del)
         merge_log_file = fullfile(session_dir, sprintf('merge_log_%s.mat', datestr(now, 'HHMMSS')));
-        save(merge_log_file, 'neuron_bk', 'ind_del');
+        save(merge_log_file, 'neuron_bk', 'ind_del'); n_merge_logs = n_merge_logs + 1;
         fprintf('Merge log saved: %d neurons merged (%s)\n', sum(ind_del), merge_log_file);
     end
 end
@@ -569,7 +595,7 @@ while ~review_done
             vid_done = false;
             while ~vid_done
                 fprintf('\n--- Video inspection (post-deletion) ---\n');
-                neuron.viewNeuronsVideo([], neuron.C_raw);
+                neuron.viewNeuronsVideo([], neuron.C_raw); n_video_passes = n_video_passes + 1;
                 fprintf('Neurons remaining: %d\n', size(neuron.C, 1));
                 ans_vid2 = questdlg('Another video pass?', 'Video Review', ...
                     'Yes, go again', 'No, continue', 'No, continue');
@@ -582,7 +608,7 @@ while ~review_done
         waitfor(fig_merge);
         if exist('ind_del', 'var') && any(ind_del)
             merge_log_file = fullfile(session_dir, sprintf('merge_log_%s.mat', datestr(now, 'HHMMSS')));
-            save(merge_log_file, 'neuron_bk', 'ind_del');
+            save(merge_log_file, 'neuron_bk', 'ind_del'); n_merge_logs = n_merge_logs + 1;
             fprintf('Merge log saved: %d neurons merged (%s)\n', sum(ind_del), merge_log_file);
             fprintf('Updating components after merge...\n'); tic;
             for m = 1:2
@@ -605,7 +631,7 @@ while ~review_done
                 vid_done = false;
                 while ~vid_done
                     fprintf('\n--- Video inspection (post-merge) ---\n');
-                    neuron.viewNeuronsVideo([], neuron.C_raw);
+                    neuron.viewNeuronsVideo([], neuron.C_raw); n_video_passes = n_video_passes + 1;
                     fprintf('Neurons remaining: %d\n', size(neuron.C, 1));
                     ans_vid2 = questdlg('Another video pass?', 'Video Review', ...
                         'Yes, go again', 'No, continue', 'No, continue');
@@ -685,6 +711,29 @@ fprintf('  Motion deletes: %d tagged, %d matched to review candidates.\n', ...
 
 save(fullfile(session_dir, 'labels.mat'), 'labels', 'motion_delete', '-v7');
 fprintf('  labels.mat saved.\n');
+
+% Review metadata record (who / where / how long / which passes), read on the
+% central machine by agent/session_quality_report.py and agent/rereview.py.
+% A failed write is a warning, never an abort.
+review_meta = struct();
+review_meta.schema             = 1;
+review_meta.session            = session_nm;
+review_meta.reviewer_os_user   = getenv('USERNAME');
+review_meta.machine            = getenv('COMPUTERNAME');
+review_meta.matlab             = version('-release');
+review_meta.repo_hash          = review_repo_hash(repo_root);
+review_meta.started            = datestr(review_t0, 'yyyy-mm-dd HH:MM:SS');
+review_meta.finished           = datestr(now, 'yyyy-mm-dd HH:MM:SS');
+review_meta.duration_min       = sprintf('%.1f', (now - review_t0) * 24 * 60);
+review_meta.n_review           = N_review;
+review_meta.n_keep             = sum(labels);
+review_meta.n_final            = size(neuron.A, 2);
+review_meta.n_motion_tags      = sum(motion_delete);
+review_meta.video_passes       = n_video_passes;
+review_meta.merges_logged      = n_merge_logs;
+review_meta.resumed_from_stage = resume_stage;
+review_meta.rereview           = double(isfile(fullfile(session_dir, 'REREVIEW_SESSION.txt')));
+write_review_meta(session_dir, review_meta);
 clear A_review_init A_final corr_mat nr nf used N_final motion_delete mcorr nmf ncr;
 MOTION_DELETE_FP = [];
 
@@ -799,4 +848,38 @@ function save_review_checkpoint(session_dir, review_fingerprint, stage)
         fprintf(2, '  [checkpoint] WARNING: could not save (%s); review continues.\n', err_ckpt.message);
         if isfile(tmp_file); delete(tmp_file); end
     end
+end
+
+function write_review_meta(session_dir, meta)
+% Write review_meta.txt ('key: value' lines, ASCII) next to labels.mat.  Read
+% by agent/session_quality_report.py (process columns) and agent/rereview.py.
+% Must never abort a finished review: any failure is reported and ignored.
+    fid = -1;
+    try
+        fid = fopen(fullfile(session_dir, 'review_meta.txt'), 'w');
+        if fid < 0; error('fopen failed'); end
+        keys = fieldnames(meta);
+        for i = 1:numel(keys)
+            v = meta.(keys{i});
+            if isnumeric(v) || islogical(v); v = num2str(v); end
+            fprintf(fid, '%s: %s\n', keys{i}, char(v));
+        end
+        fclose(fid);
+        fprintf('  review_meta.txt written.\n');
+    catch err_meta
+        fprintf(2, '  [meta] WARNING: could not write review_meta.txt (%s); review continues.\n', err_meta.message);
+        if fid >= 0; try; fclose(fid); catch; end; end
+    end
+end
+
+function h = review_repo_hash(repo_root)
+% Short git hash of the checkout running this review ('unknown' without git).
+    h = 'unknown';
+    try
+        [stat, out] = system(sprintf('git -C "%s" rev-parse --short HEAD', repo_root));
+        if stat == 0 && ~isempty(strtrim(out)); h = strtrim(out); end
+    catch
+    end
+    h = regexprep(h, '[^0-9a-f]', '');
+    if isempty(h); h = 'unknown'; end
 end

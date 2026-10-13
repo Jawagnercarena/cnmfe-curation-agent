@@ -116,6 +116,23 @@ automatic retrain.
 
 ---
 
+## 3b. If a bundle contains `REREVIEW_SESSION.txt`
+
+That folder is a **second, independent review** of a session. Treat it exactly
+like any other bundle, with two rules:
+
+- Pull it into a **new** local folder. Never run it on top of an earlier copy of
+  the same session: `run_final_review.m` overwrites a finished review's outputs
+  with no backup, and it now asks before doing so.
+- Do not look up or reuse earlier decisions for that session (yours or anyone's).
+  The point is a fresh pair of eyes.
+
+Return it as usual to `inbox\<your name>\{area}\{task}\{session}\` with the
+marker file still inside. The central side keeps both reviews.
+
+Every review now also writes a small `review_meta.txt` (who ran it, on which
+machine, how long, how many video passes); it travels back with the folder.
+
 ## 4. Troubleshooting
 
 - **Error about a missing `review_neuron.mat`, or `session_dir` pointing at `D:\...`** - your `run_final_review.m` is an old hardcoded launcher. Quick fix: in MATLAB, `cd` to the local session folder and run `session_dir = pwd; CNMFe_final_save`. Freshly staged bundles already self-locate, so re-pulling the session also fixes it.

@@ -37,9 +37,25 @@ status `NEW` / `unchanged` / `SKIPPED` / `NOT FOUND`, files, MB, and a
 | `AMBIGUOUS: N existing folders named ...` | two local sessions share the name | tell the operator which two; do not pick |
 | `session already carries <X>'s ingested labels; refusing <Y>'s duplicate review` | another reviewer's labels are already in and trained on | only the operator decides to replace; if they do, re-run with `--replace-labels` and tell the first reviewer |
 | `NOT FOUND` | explicit path typo | fix the path |
+| `labels.mat has N entries but the live review set expects M` | the reviewer worked from a stale bundle (session re-run since the push); the labels cannot line up with `candidate_features.npz` and the trainer would skip the session silently | nothing was written; the operator moves the return aside on the server and re-pushes the current bundle for a fresh review |
+| `re-review return, but no live session with candidate_features.npz` | a marked re-review return for a session that has no review set locally | tell the operator |
+
+`PARKED` rows (2026-10-12) are returns for sessions that already carry
+`labels.mat`: nothing live changed, the return sits under
+`<session>/.rereview/<stamp>_<reviewer>/`, and `/rereview` decides (compare,
+adopt, keep-current). A return whose `labels.mat` is byte-identical to the live
+one is `unchanged`, never parked. `--replace-labels` still takes the old
+overwrite path for UNMARKED returns only.
+
+The `pre-ingest snapshot` column says what the first ingest of a session saved
+into `<session>/.pre_ingest/` before overwriting it (headless `neuron.mat`,
+footprints, traces, PNGs; about 4% of a session). `kept` means a snapshot
+already existed and was left alone; it is write-once, `--force` included.
 
 `unchanged` rows are fine: the multi-GB video is matched by size and not
-re-copied; `--force` copies everything regardless.
+re-copied; `--force` copies everything regardless. The reviewer of record is
+the inbox folder the return came from (CLAUDE.md rule 4); the skill never
+compares it with the assignee.
 
 ## 2. Real run
 

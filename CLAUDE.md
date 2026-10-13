@@ -26,6 +26,15 @@ The exchange scripts have a fixed contract:
   session folder; exits when `training/` is absent (the operator creates it).
 - `agent/summarize_training.py` [2026-10-01]: read-only on the server; writes
   only under `DATA_PARENT/.training`.
+- `agent/rereview.py` [2026-10-12]: `request` is copy-only into
+  `outbox/<assignee>/...` plus the generated `run_final_review.m` and
+  `REREVIEW_SESSION.txt`; it never writes `review_assigned.txt`. `adopt` renames
+  files only inside the local session folder (archive under
+  `<session>/.rereview/`); nothing in it deletes. Ingest parks any return for a
+  labelled session under `<session>/.rereview/` instead of overwriting it, and
+  never overwrites an existing bundle input (`review_neuron.mat`, summary,
+  report, Cn/pnr/Ybg) with a reviewer's copy, even with `--force` [derived,
+  2026-10-12: a stale return overwrote two re-run review sets].
 If you edit any of these, or add exchange tooling, grep it for delete/move verbs
 before calling the work done.
 
@@ -88,6 +97,17 @@ against the real data root on its first outing.
 - **A new imaging prep is a new regime.** [derived, 2026-08-05] Do not assume the
   area's model transfers. Start at threshold 0 (a human sees everything) and only
   tighten once a false auto-reject rate has been measured on reviewed sessions.
+- **The reviewer of record is the inbox folder a return was ingested from.**
+  [explicit, 2026-10-12] `review_assigned.txt` is routing only and
+  `review_meta.txt`'s OS user is informational; no script compares them with the
+  inbox folder, and none should. A return dropped in the wrong person's folder is
+  that person's review until the operator edits `labels_provenance.txt`.
+- **Ingest never overwrites what it cannot get back.** [derived, 2026-10-12] A
+  return never replaces an existing bundle input (`review_neuron.mat`, summary,
+  report, Cn/pnr/Ybg); the first ingest snapshots the headless outputs it is
+  about to overwrite into `<session>/.pre_ingest/` (write-once); a first-review
+  `labels.mat` whose length does not match the live review set is skipped; a
+  return for a labelled session is parked under `<session>/.rereview/`.
 - **Report faithfully.** [explicit] A zero exit code is not success; a timed-out
   MATLAB job has more than once kept running and finished while the log said
   "failed". If a step was skipped, say so.
@@ -142,5 +162,5 @@ MATLAB reads `getenv('CNMFE_DATA_PARENT')`.
 Operator procedures with side effects live under `.claude/skills/` and are
 manual-only (type the slash command; Claude is not shown them otherwise):
 `/ingest-returns`, `/retrain-area`, `/recurate-sessions`, `/push-review-bundle`,
-`/retire-session`, `/push-training-bundle`, `/summarize-training`. `/skills`
-lists them.
+`/retire-session`, `/push-training-bundle`, `/summarize-training`, `/rereview`,
+`/session-quality`. `/skills` lists them.

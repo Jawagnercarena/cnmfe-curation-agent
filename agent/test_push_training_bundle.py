@@ -117,6 +117,26 @@ try:
     rc, out = run(pb, [str(sd3), "--trainee", "Alice", "--exchange", str(exchange), "--training-root", str(troot)])
     check(rc == 1 and "not part of the training program" in out, "DG_AL session refused")
 
+    # 8. --from-plan: picked rows only, stage from tier, --stage overrides
+    plan = troot / "curriculum_plan.csv"
+    tc.write_csv_rows(plan, ["area", "task", "session", "tier", "pick"], [
+        {"area": "BLA", "task": "task1", "session": "sessA", "tier": "hard", "pick": "3"},
+        {"area": "BLA", "task": "task1", "session": "sessNotPicked", "tier": "easy", "pick": ""}])
+    rc, out = run(pb, ["--from-plan", "--trainee", "Carol", "--dry-run", "--data-parent", str(data),
+                       "--exchange", str(exchange), "--training-root", str(troot)])
+    check(rc == 0 and "1 picked session(s)" in out and "-> stage 3" in out and "sessNotPicked" not in out,
+          "--from-plan dry run lists only picked sessions with the tier's stage")
+    rc, out = run(pb, ["--from-plan", "--trainee", "Carol", "--data-parent", str(data),
+                       "--exchange", str(exchange), "--training-root", str(troot)])
+    mk = tc.read_training_marker(exchange / "training" / "Carol" / "BLA" / "task1" / "sessA" / tc.TRAINING_MARKER)
+    check(rc == 0 and mk.get("stage_hint") == "3" and mk.get("trainee") == "Carol", "--from-plan pushes with stage 3 from the hard tier")
+    rc, out = run(pb, ["--from-plan", "--stage", "1", "--trainee", "Carol", "--dry-run", "--data-parent", str(data),
+                       "--exchange", str(exchange), "--training-root", str(troot)])
+    check(rc == 0 and "-> stage 1" in out, "--stage overrides the tier-derived stage")
+    rc, out = run(pb, ["--from-plan", "--plan", str(troot / "missing.csv"), "--trainee", "Carol", "--dry-run",
+                       "--exchange", str(exchange), "--training-root", str(troot)])
+    check(rc == 1 and "not found" in out, "missing plan -> error")
+
     # ---- summariser ----
     cols = tc.PROGRESS_COLUMNS
     def prow(**kw):
