@@ -10,6 +10,8 @@ all agree:
 2. The "out for review" assignment marker (review_assigned.txt), written into the
    local session folder when a session is staged out, so REVIEW_QUEUE.md can show
    it as taken and the same file is never handed to two machines.
+3. final_review_state(): whether a folder's ROIs.jpg really is the final review
+   of its current neuron.mat, or a leftover from before a later run.
 """
 from datetime import datetime
 from pathlib import Path
@@ -67,6 +69,31 @@ def read_assignment(session_dir):
     except Exception:
         pass
     return info or {"assigned": "?", "to": "-"}
+
+
+# ---------------------------------------------------------------------------
+# Is the final review in this folder the one that produced its neuron.mat?
+# ---------------------------------------------------------------------------
+# CNMFe_final_save.m writes neuron.mat and then ROIs.jpg, seconds apart
+# (2026-11-05: over 390 reviewed sessions neuron.mat was never more than 5 s
+# newer than ROIs.jpg).  A neuron.mat clearly newer than ROIs.jpg came from a
+# later pipeline run that replaced the reviewed outputs -- the ROIs.jpg is a
+# leftover and the folder is NOT reviewed.  Seen once: 022525-bla2 (BLA 3odor),
+# re-run headless 2026-03-19 over a 2025 curation and then listed as
+# "Complete" for eight months.
+STALE_REVIEW_TOLERANCE_S = 600
+
+
+def final_review_state(session_dir) -> str:
+    """'none' (no ROIs.jpg), 'done', or 'stale' (ROIs.jpg predates neuron.mat)."""
+    sd = Path(session_dir)
+    roi = sd / "ROIs.jpg"
+    if not roi.exists():
+        return "none"
+    nm = sd / "neuron.mat"
+    if nm.exists() and nm.stat().st_mtime - roi.stat().st_mtime > STALE_REVIEW_TOLERANCE_S:
+        return "stale"
+    return "done"
 
 
 # ---------------------------------------------------------------------------
