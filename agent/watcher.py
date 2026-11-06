@@ -58,6 +58,27 @@ log = logger.info
 # Key: Path, Value: {"size": int, "first_seen": float, "last_size_change": float}
 _pending: dict[Path, dict] = {}
 
+# Session folders the watcher refused to run headless because a final review
+# (ROIs.jpg) is in them.  Logged once per watcher run, not on every poll.
+_blocked_logged: set = set()
+
+
+def _review_blocks_headless(task_dir: Path, session_dir: Path, tif_name: str) -> bool:
+    """True when session_dir holds a final review (ROIs.jpg): a headless run
+    there would overwrite neuron.mat and bury the review (022525-bla2, BLA
+    3odor: re-run 2026-03-19 over a 2025 curation whose neuron.mat had gone
+    missing).  The operator restores the review or moves it aside to re-run."""
+    if not (session_dir / "ROIs.jpg").exists():
+        return False
+    if session_dir not in _blocked_logged:
+        _blocked_logged.add(session_dir)
+        nm = "present" if (session_dir / "neuron.mat").exists() else "MISSING"
+        log(f"[WATCH] SKIP {task_dir.name}/{session_dir.name}: ROIs.jpg present "
+            f"(neuron.mat {nm}) -- a final review is in this folder, so {tif_name} "
+            f"is NOT run headless over it. Restore the review or move it aside "
+            f"to re-run (operator decision).")
+    return True
+
 
 def find_new_tifs() -> list[tuple[Path, Path]]:
     """
@@ -70,6 +91,9 @@ def find_new_tifs() -> list[tuple[Path, Path]]:
        incomplete/failed session that needs to be retried.
        These skip the stability check (file was already fully transferred
        and moved on a previous run).
+
+    Neither case is returned when the session folder holds a final review
+    (ROIs.jpg): see _review_blocks_headless().
 
     Returns (task_dir, tif_path) for every .tif found in either case.
     """
@@ -84,6 +108,9 @@ def find_new_tifs() -> list[tuple[Path, Path]]:
         for item in task_dir.iterdir():
             if item.is_file() and item.suffix.lower() in (".tif", ".tiff"):
                 # Case 1: loose file in task folder
+                target = task_dir / session_name_from_tif(item)
+                if _review_blocks_headless(task_dir, target, item.name):
+                    continue
                 found.append((task_dir, item))
             elif item.is_dir():
                 # Case 2: session folder that was started but not finished
@@ -93,7 +120,8 @@ def find_new_tifs() -> list[tuple[Path, Path]]:
                 # Look for a .tif inside matching the session name
                 for sub in session_dir.iterdir():
                     if sub.is_file() and sub.suffix.lower() in (".tif", ".tiff"):
-                        found.append((task_dir, sub))
+                        if not _review_blocks_headless(task_dir, session_dir, sub.name):
+                            found.append((task_dir, sub))
                         break
     return found
 
@@ -568,10 +596,14 @@ def _write_review_queue():
     """
     from datetime import datetime
 
+    from review_prep import final_review_state
+
     pending         = []   # review_neuron.mat exists, ROIs.jpg absent
     complete_agent  = []   # ROIs.jpg + ROIs_candidates.jpg (watcher-reviewed)
     complete_manual = []   # ROIs.jpg only, no ROIs_candidates.jpg (pre-agent)
     running         = []   # headless or curator still in progress
+    stale           = []   # ROIs.jpg older than neuron.mat: review was replaced
+    blocked         = []   # ROIs.jpg but no neuron.mat: never run headless
 
     if not DATA_ROOT.exists():
         return
@@ -582,8 +614,20 @@ def _write_review_queue():
         for session_dir in sorted(task_dir.iterdir()):
             if not session_dir.is_dir():
                 continue
+            # ROIs.jpg with no neuron.mat: the review's outputs are gone and the
+            # watcher will not run the folder headless (_review_blocks_headless).
+            if (session_dir / "ROIs.jpg").exists() and \
+                    not (session_dir / "neuron.mat").exists():
+                blocked.append((task_dir.name, session_dir))
+                continue
+            # A leftover ROIs.jpg from before a later run is not a review; such a
+            # folder is never "complete" (review_prep.final_review_state).
+            review = final_review_state(session_dir)
+            if review == "stale":
+                stale.append((task_dir.name, session_dir))
+                continue
             is_watcher = (session_dir / "ROIs_candidates.jpg").exists()
-            is_done    = (session_dir / "ROIs.jpg").exists() and \
+            is_done    = review == "done" and \
                          (session_dir / "neuron.mat").exists()
             if is_done and is_watcher:
                 complete_agent.append((task_dir.name, session_dir))
@@ -612,6 +656,36 @@ def _write_review_queue():
         f"_Last updated: {datetime.now():%Y-%m-%d %H:%M:%S}_",
         "",
     ]
+
+    if stale:
+        lines += [
+            f"## STALE final review -- not complete  ({len(stale)} session(s))",
+            "",
+            "_ROIs.jpg is older than neuron.mat: a later pipeline run replaced the "
+            "reviewed outputs, so this folder holds unreviewed results. Nothing "
+            "automatic curates, pushes or trains on it; an operator must restore "
+            "the review or decide what to do._",
+            "",
+        ]
+        for task_name, sd in stale:
+            r_day = datetime.fromtimestamp((sd / "ROIs.jpg").stat().st_mtime)
+            n_day = datetime.fromtimestamp((sd / "neuron.mat").stat().st_mtime)
+            lines.append(f"- {sd.name}  ({task_name})  -- ROIs.jpg {r_day:%Y-%m-%d}, "
+                         f"neuron.mat {n_day:%Y-%m-%d}")
+        lines.append("")
+
+    if blocked:
+        lines += [
+            f"## BLOCKED -- ROIs.jpg without neuron.mat  ({len(blocked)} session(s))",
+            "",
+            "_A final review was in this folder but its neuron.mat is gone. The "
+            "watcher will not run it headless (that would bury the review); an "
+            "operator restores the review outputs or moves them aside to re-run._",
+            "",
+        ]
+        for task_name, sd in blocked:
+            lines.append(f"- {sd.name}  ({task_name})")
+        lines.append("")
 
     if running:
         lines += [f"## Pipeline running  ({len(running)})", ""]

@@ -61,6 +61,7 @@ MODEL_DIR.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(AGENT_DIR))
 import features as feat_module
 import run_cnmfe
+from review_prep import final_review_state
 
 # Bootstrap sessions with recovery below this are treated as severely noisy
 # (extreme CNMFe merging) and their candidates are down-weighted in training.
@@ -128,7 +129,8 @@ def find_retro_sessions() -> list[Path]:
             if not session_dir.is_dir():
                 continue
             is_agent   = (session_dir / "ROIs_candidates.jpg").exists()
-            is_done    = (session_dir / "ROIs.jpg").exists()
+            review     = final_review_state(session_dir)
+            is_done    = review == "done"
             has_revnm  = (session_dir / "review_neuron.mat").exists()
             has_neuron = (session_dir / "neuron.mat").exists()
             has_labels   = (session_dir / "labels.mat").exists()
@@ -137,6 +139,12 @@ def find_retro_sessions() -> list[Path]:
             if is_agent and is_done and has_revnm and has_neuron \
                     and not (has_labels and has_features):
                 sessions.append(session_dir)
+            elif is_agent and review == "stale" and has_revnm and has_neuron \
+                    and not (has_labels and has_features):
+                # neuron.mat is a later run's candidates, not the kept set:
+                # labelling it would mark every candidate "keep".
+                log(f"  [RETRO] SKIP {task_dir.name}/{session_dir.name}: ROIs.jpg "
+                    f"is older than neuron.mat (stale final review) -- not labelled.")
     return sessions
 
 
