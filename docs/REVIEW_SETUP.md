@@ -60,7 +60,19 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
    empty, nothing is assigned to you yet; ask the central operator to stage some.)
    The bundle contains: `{session}.mat` (raw video), `review_neuron.mat`,
    `Cn.mat`, `pnr.mat`, `Ybg_weights.mat`, `run_final_review.m`, and
-   `review_report.pdf` / `review_summary.txt` (the agent's guidance).
+   `review_report.pdf` / `review_summary.txt` (the agent's guidance), and for
+   retro-labelled animals `red_guide.png`.
+
+   > **Red guide (retro-labelled animals only).** Some bundles contain
+   > `red_guide.png`: the tdTomato (red) image of the same field, with your review
+   > candidates outlined (white in the middle panel, yellow on the GCaMP image on
+   > the right). Open it next to MATLAB to check edge cases and to make sure you do
+   > not delete a red cell by accident. It is a guide, not a label: keep or delete
+   > on the usual criteria. The outlines are unnumbered because the on-screen
+   > neuron numbers are re-sorted. The cyan outlines are an automatic detection
+   > and can be wrong. Gray areas had no red image, so a candidate there tells you
+   > nothing about red. If you pulled the session before the guide arrived, copy
+   > `red_guide.png` from your outbox folder into your local copy.
 
 2. **Run the review.** In MATLAB, open the session's `run_final_review.m` and
    run it (it self-locates to its own folder and launches `CNMFe_final_save`).
@@ -149,6 +161,7 @@ machine, how long, how many video passes); it travels back with the folder.
 - Stage a bundle to a reviewer:  `python agent/push_review_bundle.py {area}\{task}\{session} --assignee <name>`
 - Stage a whole batch, split across reviewers:  `python agent/push_review_bundle.py --all --assignee Alisia,Julian`
 - `--assignee` is required: it routes the bundle into `outbox\<name>\` so each session lands in exactly one reviewer's folder.
+- Red guide (pnb* animals): the push builds or refreshes it (`retro_align guide-for-push`, run from the retro project; about 2.5 s when the guide is current; the one first build timed took 48 s). X: must be mapped in the window running the push, because the single images come from there. The push prints the hook's result (`red guide ok`, `NOT MADE: <reason>`, or with `--dry-run` `would be built at push`) and then `red guide: included` or `STALE, NOT included`. A failed guide never blocks the push: the session goes without one. `CNMFE_RETRO_GUIDE_BUILD=0` skips building and only adds a guide that already exists and matches. Re-review bundles only add an existing guide. Ingest never copies a returned guide back.
 - Bring results home + retrain:  `python agent/ingest_returns.py` (auto-discovers every `inbox\<name>\` folder; the reviewer-name prefix is dropped into the canonical tree)
 - Set the server path once via `CNMFE_EXCHANGE_ROOT` (see `agent/.env.example`).
 - **Server safety:** these scripts never delete anything from the server. `push`

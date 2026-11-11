@@ -162,10 +162,10 @@ def is_training_sandbox(p: Path, root: Path) -> bool:
     return False
 
 # Files that only the central machine may write, and that a return must never
-# carry back over the local copy.  A reviewer bundle does not contain them
-# (push_review_bundle stages review_neuron.mat + Cn/pnr/Ybg_weights/pdf/summary
-# and nothing else), but a reviewer who mirrors whole central folders can, and
-# copy_session copies any file whose size differs.
+# carry back over the local copy.  A reviewer bundle does not contain the first
+# two (push_review_bundle stages review_neuron.mat + Cn/pnr/Ybg_weights/pdf/
+# summary, plus red_guide.png for retro animals), but a reviewer who mirrors
+# whole central folders can, and copy_session copies any file whose size differs.
 #
 #   labels_provenance.txt   -- central metadata (who reviewed this session);
 #                              a stale echo would overwrite the real record.
@@ -178,7 +178,12 @@ def is_training_sandbox(p: Path, root: Path) -> bool:
 #                              corrupt the training corpus or trip the trainer's
 #                              width guard.  Sizes differ across contracts, so
 #                              the same-size skip below would NOT catch it.
-CENTRAL_ONLY = {PROVENANCE_NAME, "candidate_features.npz"}
+#   red_guide.png           -- the tdTomato guide push_review_bundle adds for
+#                              retro-labelled animals.  Its authoritative copy
+#                              is the retro project's results tree; the session
+#                              folder (the watcher's tree) never holds one.
+RED_GUIDE_NAME = "red_guide.png"
+CENTRAL_ONLY = {PROVENANCE_NAME, "candidate_features.npz", RED_GUIDE_NAME}
 
 
 def read_provenance(session_dir: Path):
@@ -474,15 +479,17 @@ def park_return(src: Path, dst: Path, reviewer: str, force: bool, dry: bool):
 
 def print_summary_table(rows, dry: bool):
     """One line per session seen in the inbox: NEW ones first, then the rest.
-    rows = (reviewer, session, status, n_files, n_bytes, labels_cell)."""
+    rows = (reviewer, session, status, n_files, n_bytes, labels_cell
+            [, snapshot_cell [, red_guide_cell]])."""
     if not rows:
         return
     order = {"NEW": 0, "PARKED": 0, "SKIPPED": 1, "NOT FOUND": 2, "unchanged": 3,
              "parked already": 3}
     rows = sorted(rows, key=lambda r: (order.get(r[2], 9), r[0].lower(), r[1].lower()))
-    head = ("status", "reviewer", "session", "files", "MB", "keep/del/motion", "pre-ingest snapshot")
+    head = ("status", "reviewer", "session", "files", "MB", "keep/del/motion", "pre-ingest snapshot",
+            "red guide in return")
     body = [(r[2], r[0], r[1], str(r[3]) if r[3] else "-", f"{r[4]/1e6:.1f}" if r[3] else "-",
-             r[5], r[6] if len(r) > 6 else "-")
+             r[5], r[6] if len(r) > 6 else "-", r[7] if len(r) > 7 else "-")
             for r in rows]
     w = [max(len(x[i]) for x in [head] + body) for i in range(len(head))]
     fmt = "  ".join(f"{{:<{w[i]}}}" if i < 3 or i >= 5 else f"{{:>{w[i]}}}"
@@ -617,7 +624,8 @@ def main():
                     lab = f"{k}/{d}/{'-' if m is None else m}"
                     print(f"  labels: {k} keep / {d} delete"
                           + ("" if m is None else f", {m} motion tags"))
-            rows.append((who, str(dst.relative_to(DATA_PARENT)), st_cell, c, b, lab))
+            rows.append((who, str(dst.relative_to(DATA_PARENT)), st_cell, c, b, lab, "-",
+                         "yes" if (src / RED_GUIDE_NAME).exists() else "no"))
             continue
 
         # Duplicate-review guard: refuse to let one reviewer's return replace
@@ -717,7 +725,8 @@ def main():
             if is_new and not args.dry_run:
                 print("  labels.mat present -> watcher will auto-retrain on its next poll.")
         rows.append((reviewer or "-", str(dst.relative_to(DATA_PARENT)),
-                     "NEW" if is_new else "unchanged", c, b, labels_cell, snap_cell))
+                     "NEW" if is_new else "unchanged", c, b, labels_cell, snap_cell,
+                     "yes" if (src / RED_GUIDE_NAME).exists() else "no"))
 
     print_summary_table(rows, args.dry_run)
     if skipped_sessions:

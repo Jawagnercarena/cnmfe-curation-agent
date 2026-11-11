@@ -264,10 +264,11 @@ def cmd_request(args):
         target = dest / f.name
         if args.dry_run:
             log(f"  would copy {f.name} ({size/1e6:.1f} MB)")
-        elif target.exists() and target.stat().st_size == size:
+        elif P.same_contents(f, target):
             log(f"  skip (already staged): {f.name}")
         else:
-            log(f"  copy {f.name} ({size/1e6:.1f} MB) ...")
+            note = " -- replaces a different copy" if target.exists() else ""
+            log(f"  copy {f.name} ({size/1e6:.1f} MB){note} ...")
             shutil.copy2(str(f), str(target))
         total += size
     marker = {

@@ -34,6 +34,15 @@ Outbound bundle = the minimal set CNMFe_final_save.m needs:
   review_report.pdf, review_summary.txt, plus a freshly generated, self-locating
   run_final_review.m (so it works on any machine regardless of the original path).
 
+Red guide (retro-labelled animals): for a pnb* session the push first runs the
+retro project's hook (python -m retro_align guide-for-push <session> [--dry-run],
+from the retro project folder), which reuses the session's tdTomato
+red_guide.png if it is current and rebuilds it otherwise. The guide is then
+looked up (CNMFE_RETRO_RESULTS, see local_config.py) and added only when it
+covers the live review set. Never required: a hook that fails, times out or
+cannot start leaves the session pushed without a guide. CNMFE_RETRO_GUIDE_BUILD=0
+skips the hook. Re-review bundles (rereview.py) only look the guide up.
+
 Set CNMFE_EXCHANGE_ROOT (or agent/.env), or pass --exchange.
 
 SAFETY: this script only COPIES files to the server outbox and WRITES a local
@@ -41,14 +50,17 @@ assignment marker / launcher. It never deletes or removes anything, on the serve
 or locally. There is no delete/move call anywhere in this file.
 """
 import argparse
+import os
 import re
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
 AGENT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(AGENT_DIR))
-from local_config import DATA_PARENT, EXCHANGE_ROOT, REPO_ROOT
+from local_config import (DATA_PARENT, EXCHANGE_ROOT, PYTHON_EXE, REPO_ROOT,
+                          RETRO_GUIDE_BUILD, RETRO_RESULTS)
 from review_prep import write_launcher, write_assignment, read_assignment
 
 REQUIRED = ["review_neuron.mat"]
@@ -56,6 +68,11 @@ OPTIONAL = ["Cn.mat", "pnr.mat", "Ybg_weights.mat",
             "review_report.pdf", "review_summary.txt"]
 # {SESSION}.mat (raw video) is handled separately; run_final_review.m is generated
 # fresh into the bundle (never copied from the session, which may be stale).
+RED_GUIDE = "red_guide.png"
+# The red guide is not a session file: it lives in the retro project's results
+# tree (read-only here) and find_red_guide() adds it.
+GUIDE_HOOK_TIMEOUT = 900        # s; a first build took 48 s, a current guide ~2.5 s
+COMPARE_CHUNK = 8 << 20
 
 
 def safe_name(name: str) -> str:
@@ -112,8 +129,10 @@ def find_awaiting(data_parent: Path, area=None, task=None):
                     yield sd
 
 
-def collect_files(session_dir: Path):
-    """List the existing bundle files. Raises ValueError if a required file is missing."""
+def collect_files(session_dir: Path, dry_run=False, build_red_guide=False):
+    """List the existing bundle files. Raises ValueError if a required file is missing.
+    build_red_guide=True (the push) runs the retro guide hook first; the default
+    (rereview.py) only looks an existing guide up."""
     files = []
     video = session_dir / f"{session_dir.name}.mat"
     if video.exists():
@@ -131,13 +150,142 @@ def collect_files(session_dir: Path):
             files.append(f)
         else:
             print(f"  (optional) missing: {name}")
+    guide = find_red_guide(session_dir, build=build_red_guide, dry_run=dry_run)
+    if guide is not None:
+        files.append(guide)
     return files
+
+
+def find_red_guide(session_dir: Path, root=None, build=False, dry_run=False):
+    """The retro project's red_guide.png for this session, or None.
+
+    With build (the push, pnb* sessions, RETRO_GUIDE_BUILD on) the retro hook runs
+    first and must report the guide ready (exit 0); any other outcome means no
+    guide this time.  The lookup below stays the gate either way.
+
+    Matched by exact session-folder name at <root>/<animal>/<MMDDYY>/<session>/
+    red_guide/ (the MMDDYY level is 6 digits even where the session name uses 8,
+    so the path is never rebuilt from the name).  Added only if the guide's
+    candidates_shown.npz covers the live review set (same N, same auto-rejected
+    indices): on 2026-11-02 090526-pnb99 was re-run (30 -> 76 candidates) after
+    its guide was drawn, and a stale guide outlines the wrong candidates.
+    Never required; raises ValueError only when more than one guide matches."""
+    name = session_dir.name
+    retro = (animal_of(name) or "").startswith("pnb")
+    root = RETRO_RESULTS if root is None else root
+    if not root or not Path(root).is_dir():
+        if retro:
+            print(f"  red guide: not found (retro results root '{root}' missing)")
+        return None
+    if build and retro and RETRO_GUIDE_BUILD:
+        code, line = run_guide_hook(session_dir, Path(root).parent, dry_run)
+        if code == 3:
+            why = line.split("would be made", 2)[-1].strip(" :") or line
+            print(f"  red guide: would be built at push {why}")
+            return None
+        print(f"  {line}")
+        if code != 0:
+            return None
+    hits = []
+    for animal_dir in sorted(Path(root).iterdir()):
+        if not animal_dir.is_dir() or animal_dir.name.startswith("."):
+            continue
+        for date_dir in sorted(animal_dir.iterdir()):
+            if not date_dir.is_dir() or date_dir.name.startswith("."):
+                continue
+            f = date_dir / name / "red_guide" / RED_GUIDE
+            if f.is_file():
+                hits.append(f)
+    if not hits:
+        if retro:
+            print("  red guide: not found (run retro guide-for-push first)")
+        return None
+    if len(hits) > 1:
+        raise ValueError(f"{len(hits)} red guides match {name}, refusing to pick one: "
+                         + ", ".join(str(h) for h in hits))
+    problem = red_guide_mismatch(hits[0].parent / "candidates_shown.npz", session_dir)
+    if problem:
+        print(f"  red guide: STALE, NOT included -- {problem}. Run retro "
+              f"guide-for-push on this session, then push it again.")
+        return None
+    print(f"  red guide: included ({hits[0]})")
+    return hits[0]
+
+
+def run_guide_hook(session_dir: Path, project: Path, dry_run: bool):
+    """Run the retro project's guide-for-push hook for one session.  Returns
+    (exit code, one ASCII line to print).  Codes: 0 guide ready, 1 not made,
+    2 not applicable, 3 (dry run) would be made; -1 = the hook did not finish
+    (timeout, or it could not start).  Never raises: the push goes on."""
+    cmd = [PYTHON_EXE, "-m", "retro_align", "guide-for-push", str(session_dir)]
+    if dry_run:
+        cmd.append("--dry-run")
+    print("  red guide: running retro guide-for-push ...", flush=True)
+    try:
+        r = subprocess.run(cmd, cwd=str(project), capture_output=True, encoding="utf-8",
+                           errors="replace", timeout=GUIDE_HOOK_TIMEOUT,
+                           env=dict(os.environ, PYTHONIOENCODING="utf-8"))
+    except subprocess.TimeoutExpired:
+        return -1, (f"red guide: hook timed out after {GUIDE_HOOK_TIMEOUT} s; "
+                    f"pushing without a guide")
+    except OSError as e:
+        return -1, (f"red guide: hook could not start ({type(e).__name__}: {e}); "
+                    f"pushing without a guide")
+    out = (r.stdout or "").strip().splitlines()
+    line = out[-1] if out else ""
+    if not line.startswith("red guide"):         # crashed, or not the hook at all
+        err = (r.stderr or "").strip().splitlines()
+        code = -1
+        line = (f"red guide: hook exited {r.returncode} without a result line "
+                f"({err[-1] if err else line or 'no output'}); pushing without a guide")
+    else:
+        code = r.returncode
+    return code, line.encode("ascii", "replace").decode("ascii")
+
+
+def red_guide_mismatch(shown: Path, session_dir: Path):
+    """Why the guide's candidates_shown.npz does not match the session's live
+    review set (candidate_features.npz), or None if it does."""
+    try:
+        import numpy as np
+        g = np.load(str(shown), allow_pickle=False)
+        live = np.load(str(session_dir / "candidate_features.npz"), allow_pickle=True)
+        g_n = int(g["n_candidates"].ravel()[0])
+        n = (int(live["n_candidates"].ravel()[0]) if "n_candidates" in live.files
+             else int(len(live["feature_matrix"])))
+        g_auto = set(g["auto_rejected"].ravel().astype(int).tolist())
+        auto = set(live["auto_rejected"].ravel().astype(int).tolist())
+    except Exception as e:
+        return f"cannot check it against the live review set ({type(e).__name__}: {e})"
+    if g_n != n or len(g_auto) != len(auto):
+        return (f"drawn for {g_n} candidates / {len(g_auto)} auto-rejected, "
+                f"the live set is {n} / {len(auto)}")
+    if g_auto != auto:
+        return f"same counts ({n} / {len(auto)}) but different auto-rejected candidates"
+    return None
+
+
+def same_contents(src: Path, target: Path) -> bool:
+    """True if target exists and is byte-identical to src.  Size alone is not
+    enough: a regenerated file can keep its size (a red guide redrawn after a
+    re-run, a re-saved Cn.mat), and a size-only skip would leave the old copy in
+    the bundle.  Reads both files, so an identical raw video is read back from
+    the server in full."""
+    if not target.is_file() or target.stat().st_size != src.stat().st_size:
+        return False
+    with open(src, "rb") as a, open(target, "rb") as b:
+        while True:
+            ca, cb = a.read(COMPARE_CHUNK), b.read(COMPARE_CHUNK)
+            if ca != cb:
+                return False
+            if not ca:
+                return True
 
 
 def stage_one(session_dir: Path, exchange: str, dry_run: bool, assignee: str):
     """Stage one session's bundle into outbox/<assignee>/. Returns total bytes."""
     dest = Path(exchange) / "outbox" / assignee / session_rel(session_dir)
-    files = collect_files(session_dir)
+    files = collect_files(session_dir, dry_run=dry_run, build_red_guide=True)
     print(f"  assignee: {assignee}")
     if not dry_run:
         dest.mkdir(parents=True, exist_ok=True)
@@ -149,10 +297,11 @@ def stage_one(session_dir: Path, exchange: str, dry_run: bool, assignee: str):
             total += size
             continue
         target = dest / f.name
-        if target.exists() and target.stat().st_size == size:
+        if same_contents(f, target):
             print(f"  skip (already staged): {f.name}")
             continue
-        print(f"  copy {f.name} ({size/1e6:.1f} MB) ...")
+        note = " -- replaces a different copy" if target.exists() else ""
+        print(f"  copy {f.name} ({size/1e6:.1f} MB){note} ...")
         shutil.copy2(str(f), str(target))
         total += size
     if dry_run:
