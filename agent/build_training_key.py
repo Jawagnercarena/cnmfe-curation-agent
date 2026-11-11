@@ -42,6 +42,7 @@ from local_config import DATA_PARENT, REPO_ROOT, PYTHON_EXE  # noqa: F401
 import training_common as tc
 import features as feat_module
 from ingest_returns import read_provenance
+import movie_mat
 
 KEY_SCHEMA_VERSION = 1
 EXPECTED_NAMES = feat_module.v2_feature_names(tc.BASE13)   # the 35-column contract
@@ -401,7 +402,8 @@ def curriculum_row(key: dict, sd: Path, kpath: Path) -> dict:
         "frac_contested": f"{float(key['contested'].mean()):.4f}",
         "frac_clear": f"{float(key['clear_cut'].mean()):.4f}",
         "frac_near_boundary": f"{near:.4f}",
-        "has_video": int((sd / f"{sd.name}.mat").exists()),
+        # video available to a push: the movie .mat, or the .tif it is rebuilt from
+        "has_video": int(movie_mat.movie_mat(sd).exists() or movie_mat.movie_tif(sd) is not None),
         "score_kind": key["score_kind"],
         "spatial_ok": int(key.get("spatial_ok", 0)) if "spatial_ok" in key else "",
         "key_path": str(kpath), "built_at": key["key_built_at"],

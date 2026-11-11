@@ -47,7 +47,9 @@ Set CNMFE_EXCHANGE_ROOT (or agent/.env), or pass --exchange.
 
 SAFETY: this script only COPIES files to the server outbox and WRITES a local
 assignment marker / launcher. It never deletes or removes anything, on the server
-or locally. There is no delete/move call anywhere in this file.
+or locally. There is no delete/move call anywhere in this file. The one other
+local write: a finished session whose movie .mat was pruned gets it rebuilt from
+its .tif first (movie_mat.py, via MATLAB), inside the local session folder.
 """
 import argparse
 import os
@@ -62,6 +64,7 @@ sys.path.insert(0, str(AGENT_DIR))
 from local_config import (DATA_PARENT, EXCHANGE_ROOT, PYTHON_EXE, REPO_ROOT,
                           RETRO_GUIDE_BUILD, RETRO_RESULTS)
 from review_prep import write_launcher, write_assignment, read_assignment
+import movie_mat
 
 REQUIRED = ["review_neuron.mat"]
 OPTIONAL = ["Cn.mat", "pnr.mat", "Ybg_weights.mat",
@@ -134,16 +137,20 @@ def collect_files(session_dir: Path, dry_run=False, build_red_guide=False):
     build_red_guide=True (the push) runs the retro guide hook first; the default
     (rereview.py) only looks an existing guide up."""
     files = []
-    video = session_dir / f"{session_dir.name}.mat"
-    if video.exists():
-        files.append(video)
-    else:
-        print(f"  WARNING: raw video {video.name} not found - reviewer needs it for the video pass.")
     for name in REQUIRED:
         f = session_dir / name
         if not f.exists():
             raise ValueError(f"required file missing: {f}")
         files.append(f)
+    # The raw video goes first.  A finished session's movie may have been pruned
+    # (prune_movie_mats.py); it is then rebuilt from the session .tif, and a
+    # rebuild that fails raises rather than ship a bundle with no video.
+    video = movie_mat.ensure(session_dir, dry_run=dry_run)
+    if video is not None:
+        files.insert(0, video)
+    elif not (dry_run and movie_mat.movie_tif(session_dir) is not None):
+        print(f"  WARNING: raw video {movie_mat.movie_mat(session_dir).name} not found - "
+              f"reviewer needs it for the video pass.")
     for name in OPTIONAL:
         f = session_dir / name
         if f.exists():

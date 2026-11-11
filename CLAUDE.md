@@ -129,6 +129,16 @@ against the real data root on its first outing.
   about to overwrite into `<session>/.pre_ingest/` (write-once); a first-review
   `labels.mat` whose length does not match the live review set is skipped; a
   return for a labelled session is parked under `<session>/.rereview/`.
+- **A finished session's movie .mat is pruned; whatever needs it rebuilds it.**
+  [explicit, 2026-11-11] `<session>/<session>.mat` is a frame-exact copy of
+  `<session>.tif`. `agent/prune_movie_mats.py` (dry run unless `--apply`; manifest
+  in `DATA_PARENT/.movie_prune/`) deletes it only for finished sessions whose .tif
+  reproduces it. Retro-tracked animals are exempt until the user decides
+  (`--include-retro`), as are sessions the watcher still pre-computes from.
+  `CNMFe_final_save.m`, the push and `rereview.py request` rebuild it into the
+  session folder; `push_training_bundle.py` rebuilds into `.training/movies/`.
+  All rebuilds go through `rebuild_movie_mat.m` (never overwrites; moves into
+  place only when complete). A missing movie in a finished session is expected.
 - **Report faithfully.** [explicit] A zero exit code is not success; a timed-out
   MATLAB job has more than once kept running and finished while the log said
   "failed". If a step was skipped, say so.

@@ -247,7 +247,8 @@ def cmd_request(args):
             f"holds {len(rows)}; the live version itself is misaligned.")
     dest = Path(exchange) / "outbox" / assignee / area / task / session
 
-    files = P.collect_files(sd)              # inputs only (+ the raw video)
+    files = P.collect_files(sd, dry_run=args.dry_run)   # inputs only (+ the raw video,
+                                                        # rebuilt from the .tif if pruned)
     leaked = [f.name for f in files if f.name in REVIEW_OUTPUT_FILES]
     if leaked:
         sys.exit(f"ERROR: bundle would carry review outputs {leaked}; refusing (blind).")
