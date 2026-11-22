@@ -13,15 +13,20 @@ Julian decided on 2026-11-21 (record: `agent/eval/cohort5_2026-09/LOG.md`, entry
 that date):
 
 1. **Not run**: 092926-pnb105-430um, 092926-pnb109-133um-001, 093026-pnb109-90um (the
-   three redone days). 68 of the 71 are run. 092926-pnb102 is run: its field was
-   imaged again on 10/9 and 10/15, but at later behavioural stages.
+   three redone days). 092926-pnb102 is run: its field was imaged again on 10/9 and
+   10/15, but at later behavioural stages. **2026-11-22: 100826-pnb106-258um dropped
+   too** (user decision; its field drifts through the session and re-registration
+   cannot fix it, see `docs/HANDOFF_2026-11-20_MOTION_CORRECTION.md`). 67 of the 71
+   are run; the stager refuses all four.
 2. **Labelled dim run approved** on the three sessions of section 5, at min_corr 0.575,
    every candidate reviewed.
 3. **The other dim sessions** (pnb99 x6, seed 0.60) are reviewed at threshold 0:
    `recurate_sessions_vCA1.py --threshold 0 <session>` before the push.
 4. **Staged so far: only the three labelled-run sessions** (11-21 11:51-11:53, with
    `agent/eval/cohort5_2026-09/stage_3odor_2026-11-21.py`, which refuses the three
-   not-run sessions). The remaining 65 (59 at 0.70, 6 at 0.60) wait for his order.
+   not-run sessions). The remaining 65 (59 at 0.70, 6 at 0.60) wait for his order;
+   64 (58 at 0.70, 6 at 0.60) since 100826-pnb106 was dropped on 2026-11-22.
+   093026-pnb102 and 100926-pnb102 are among them with re-registered movies (11-22).
 
 5. **The labelled run is done and ready to push (11-21 15:29), not pushed.** All three
    ran at min_corr 0.575 (about 68 min each, no error) and were re-curated at threshold

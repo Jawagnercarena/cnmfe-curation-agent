@@ -1194,3 +1194,14 @@ Total to review at threshold 0: 451 candidates (164 + 183 + 104); the deployed 0
   (`agent/logs/rerun_cohort5_mc_new_movie.log`, GO 15:07:55, 090826-pnb104 then 090826-pnb102 in
   6odorDualDiffRew) was started elsewhere and overlapped the third headless run from about 15:10 to 15:26
   (two heavy MATLAB jobs; commit charge 87.4 of 431.2 GB at 15:27). The vCA1 watcher is idle since 15:26:28.
+
+## 2026-11-22: 3odor -- two pnb102 movies re-registered; USER DECISION: drop 100826-pnb106
+
+- 093026-pnb102-600um and 100926-pnb102-452um: re-made from raw with the installed motion-correction rule
+  and swapped into `D:\2p data\3odor` (old tifs in `.prev_maxregshift01_2026-11-22\` there); bad frames
+  5.23% -> 0.01% and 7.71% -> 0.09%. Record: `docs/HANDOFF_2026-11-20_MOTION_CORRECTION.md`. Not staged.
+- 100826-pnb106-258um DROPPED (user, 2026-11-22): the raw-sample test showed the field drifting through the
+  whole session (bad from cycle ~77, 100% bad there under both registrations), not fixable by registration.
+  Added to `NOT_RUN` in `stage_3odor_2026-11-21.py`. With the three redone days (092926-pnb105-430um,
+  092926-pnb109-133um-001, 093026-pnb109-90um; dropped 11-21) 4 of 71 are not run; 64 remain to stage
+  (58 at 0.70, 6 at 0.60). Its tif stays in `D:\2p data\3odor`; nothing moved or deleted.

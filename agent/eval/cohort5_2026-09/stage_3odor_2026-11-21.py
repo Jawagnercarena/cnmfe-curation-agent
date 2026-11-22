@@ -14,8 +14,9 @@ Sessions are named explicitly on the command line (session name, with or
 without the AVG5x-TSeries- prefix and the .tif suffix).  There is no "all".
 
 Refused:
-  - a session in NOT_RUN (superseded by a redo after the lens cleaning; user
-    decision 2026-11-21);
+  - a session in NOT_RUN (three superseded by a redo after the lens cleaning,
+    user decision 2026-11-21; 100826-pnb106, field drift, user decision
+    2026-11-22);
   - a session whose folder or tif already exists in any task folder of the area;
   - a session with a leftover .part in the destination (look at it first);
   - with --expect-min-corr X: a session whose min_corr in
@@ -45,6 +46,8 @@ NOT_RUN = {
     "AVG5x-TSeries-092926-pnb105-430um-35z-000": "redone as 100226-pnb105-373um",
     "AVG5x-TSeries-092926-pnb109-133um-25z-001": "redone as 100126-pnb109-440um",
     "AVG5x-TSeries-093026-pnb109-90um-25z-000": "redone as 100226-pnb109-310um",
+    "AVG5x-TSeries-100826-pnb106-258um-4z-000": "field drifts through the session, not fixable "
+                                                "by registration (user decision 2026-11-22)",
 }
 
 
