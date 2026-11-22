@@ -14,6 +14,13 @@ from pathlib import Path
 
 CONFIG_PATH = Path(__file__).parent / "config" / "animal_params.json"
 
+# Manual overrides live in their own file: extract_params.m rewrites
+# animal_params.json from scratch after every completed session, so anything
+# added to that file by hand (including the documented "session_overrides"
+# block) is silently dropped at the next refresh.  This file is never written
+# by the pipeline.
+OVERRIDES_PATH = Path(__file__).parent / "config" / "param_overrides.json"
+
 # Safe fallback values (permissive / larger, per user preference)
 DEFAULT_GSIZ = 36
 DEFAULT_GSIG = 9
@@ -24,6 +31,22 @@ DEFAULT_BD = 20
 
 def load_animal_config() -> dict:
     with open(CONFIG_PATH) as f:
+        return json.load(f)
+
+
+def load_param_overrides() -> dict:
+    """
+    Manual CNMFe parameter overrides from config/param_overrides.json.
+
+    Layout: {"<animal_id>": {"min_corr": 0.75, ...,
+                             "sessions": {"<session_name>": {"min_pnr": 6.0, ...}}}}
+    Animal-level keys apply to every session of that animal; "sessions" entries
+    apply to one session and win over the animal level.  Keys starting with "_"
+    are comments.  Missing file = no overrides.
+    """
+    if not OVERRIDES_PATH.exists():
+        return {}
+    with open(OVERRIDES_PATH) as f:
         return json.load(f)
 
 
@@ -306,5 +329,24 @@ def estimate_all_params(session_name: str, session_dir: Path, log,
         "min_pnr": min_pnr,
         "bd": bd,
     }
+
+    # Manual overrides from config/param_overrides.json (see load_param_overrides):
+    # animal level first, then the session entry.  Applied last so they win over
+    # the estimate and over animal_params.json.
+    if animal_id:
+        manual = load_param_overrides().get(animal_id, {})
+        animal_level = {k: v for k, v in manual.items()
+                        if k != "sessions" and not k.startswith("_")}
+        session_level = {k: v for k, v in manual.get("sessions", {}).get(session_name, {}).items()
+                         if not k.startswith("_")}
+        for label, ov in (("Animal override", animal_level), ("Session override", session_level)):
+            for key, val in ov.items():
+                if key not in params:
+                    log(f"  [PARAMS] WARNING: unknown override key '{key}' in "
+                        f"param_overrides.json for {animal_id} -- ignored.")
+                    continue
+                log(f"  [PARAMS] {label} ({animal_id}): {key}={val} (was {params[key]}).")
+                params[key] = val
+
     log(f"  [PARAMS] Final parameters: {params}")
     return params
