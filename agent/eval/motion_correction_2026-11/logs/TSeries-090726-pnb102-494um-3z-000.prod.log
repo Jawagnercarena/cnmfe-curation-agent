@@ -1,0 +1,3 @@
+TSeries-090726-pnb102-494um-3z-000: 12 trials, 6756 raw frames, mean 874, max 8191
+[prod          ]   152s  raw motion px p50 11.05 p95 34.90 p99 46.07 max 77.0  frame-to-frame p95 10.00  corrXY p50 0.0057 p05 0.0033 | nonrigid blocks 288: |off| p50 3.96 p99 10.19  within-frame spread p50 3.71 p95 8.62  frame-to-frame p50 4.85 p95 11.51
+                 crisp 25.139  AVG5x residual: d p50 0.14 p95 0.33 p99 0.47  r p50 0.768 p05 0.612  rAl p50 0.768 p05 0.611  nonrigid remainder p50 0.60 p95 1.26 p99 1.75

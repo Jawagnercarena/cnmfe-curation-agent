@@ -1,0 +1,6 @@
+﻿TSeries-081126-bla36-665um-3z-000: 12 trials, 4008 raw frames; reference from 300 full-session frames
+variant               sec | raw: |off-med| p50   p95   p99  f2f95  cXY50  cXY05 clip% med(y,x) >51px% | AVG5x: bad<.5 bad<.75  d>2px nr>2px   r50   r05  crisp
+prod                  135 |               12.0  41.5  48.5   15.1 0.0265 0.0131   1.5  (+0,+4)    0.0 |         0.003   0.005  0.000  0.000 0.968 0.851  80.87
+mrs20                 135 |               11.7  43.6  57.5   13.3 0.0265 0.0134   0.0  (+0,+4)    2.2 |         0.000   0.003  0.000  0.000 0.968 0.855  81.28
+mrs20_recenter        133 |               12.0  43.7  57.1   13.3 0.0256 0.0130   0.0  (-2,+1)    1.8 |         0.000   0.003  0.000  0.000 0.968 0.855  80.84
+    recenter: modal offset of the 300 reference frames vs suite2p's reference = (y +2, x +4); new reference from 62 frames within 5 px

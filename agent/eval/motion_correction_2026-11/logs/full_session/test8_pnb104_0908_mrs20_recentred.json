@@ -1,0 +1,80 @@
+{
+ "label": "test8_pnb104_0908_mrs20_recentred",
+ "nframes": 4499,
+ "n_offsets": 4499,
+ "n_files": 8,
+ "maxregshift": 0.2,
+ "smooth_sigma": 1.15,
+ "nonrigid": true,
+ "force_refImg": true,
+ "limit_px": 102,
+ "at_limit": 0.0002222716159146477,
+ "beyond_51px": 0.011335852411647033,
+ "med_y": 1.0,
+ "med_x": 8.0,
+ "dev_p50": 11.40175425099138,
+ "dev_p95": 50.00099990001999,
+ "dev_p99": 61.68533034203799,
+ "max_abs_y": 87.0,
+ "max_abs_x": 101.0,
+ "corrXY_p50": 0.00518695916980505,
+ "corrXY_p05": 0.003133115731179714,
+ "corrXY_p01": 0.002432720744982362,
+ "s2p_badframes": 0.0002222716159146477,
+ "yrange": [
+  57,
+  455
+ ],
+ "xrange": [
+  95,
+  417
+ ],
+ "at_limit_quarters": [
+  0.0008888888888888889,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "beyond_51px_quarters": [
+  0.015111111111111112,
+  0.018666666666666668,
+  0.005333333333333333,
+  0.006227758007117438
+ ],
+ "med_y_quarters": [
+  -3.0,
+  3.0,
+  3.0,
+  1.0
+ ],
+ "med_x_quarters": [
+  4.0,
+  16.0,
+  9.0,
+  5.0
+ ],
+ "forced_ref_used": true,
+ "frames_per_file_match": true,
+ "ref_rebuilt_from_binary_equal": false,
+ "tif": "D:\\2p data\\mc_rerun_2026-11\\test\\AVG5x-TSeries-090826-pnb104-425um-3z-000.tif",
+ "avg_frames": 899,
+ "quiet_r": 0.8655478954315186,
+ "bad": 0.0,
+ "degraded": 0.06451612903225806,
+ "r_p50": 0.8356805443763733,
+ "r_p05": 0.6208614706993103,
+ "resid_gt2px": 0.0,
+ "resid_p95": 0.3946191072463989,
+ "bad_quarters": [
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "degraded_quarters": [
+  0.1111111111111111,
+  0.04888888888888889,
+  0.05333333333333334,
+  0.044642857142857144
+ ]
+}

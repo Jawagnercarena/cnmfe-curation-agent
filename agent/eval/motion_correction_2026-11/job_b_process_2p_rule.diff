@@ -1,0 +1,552 @@
+diff --git a/scripts_proposed/mc_rule.py b/scripts_proposed/mc_rule.py
+new file mode 100644
+index 0000000..d844dc5
+--- /dev/null
++++ b/scripts_proposed/mc_rule.py
+@@ -0,0 +1,362 @@
++#!/usr/bin/env python
++"""
++Motion-correction rule for the 2p pipeline: a reference image at the field's
++usual position, a kept record of the shifts, and a QC line that can hold back
++the delete step. Driven by process_2p.py; nothing here runs on its own.
++
++Why (measured 2026-11 on pnb102 / pnb104, 6odorDualDiffRew):
++
++  - suite2p builds its reference image from 300 frames spread over the session.
++    In every session tested that reference sat 27-50 px away from where the
++    field usually is. Frames then need a shift larger than the search range
++    (maxregshift) and come out unregistered, and because suite2p shifts with
++    np.roll every large shift wraps a strip of image to the opposite edge.
++  - ops.npy, which holds the per-frame shifts, was deleted together with the
++    TSeries folder, so a bad session could not be diagnosed afterwards.
++
++What this module adds:
++
++  recentred_reference()  the reference rebuilt at the modal field position;
++                         process_2p.py hands it to suite2p (force_refImg).
++  save_record()          xoff / yoff / corrXY, reference, mean image and the
++                         settings, saved under <task dir>/mc_record/ BEFORE
++                         the TSeries folder is deleted.
++  qc()                   one row per session in <task dir>/mc_qc.csv; a session
++                         over the limits keeps its TSeries folder.
++
++The search range itself (maxregshift) is set in run_suite2p.REG_OVERRIDES.
++"""
++
++from __future__ import annotations
++
++import contextlib
++import csv
++import io
++import time
++from pathlib import Path
++
++RECORD_DIR = "mc_record"
++QC_CSV = "mc_qc.csv"
++
++# Recentre only when the reference frames sit further than this from suite2p's
++# own reference; below it suite2p's reference is used unchanged.
++REF_MIN_OFFSET_PX = 5
++REF_DONE_PX = 2             # once recentring has started, stop within this
++REF_MAX_PASSES = 4
++REF_DROP_WORST_PCT = 10     # worst-correlated frames left out of the median
++REF_TOL_PX = (5, 10)        # frames this close to the median position are averaged
++REF_MIN_FRAMES = 15
++
++# QC limits. Starting values from 17 scored movies of which reviewers rejected
++# two (10.2% and 16.6% bad) and accepted the rest (up to 4.6% bad).
++QC_MAX_BAD = 0.05           # share of averaged frames far below the quiet level
++QC_MAX_AT_LIMIT = 0.01      # share of raw frames at the rigid search limit
++
++FFT_WORKERS = 8
++
++
++# --------------------------------------------------------------------------- #
++# reference image
++# --------------------------------------------------------------------------- #
++
++def reference_frames(session: Path, ops: dict):
++    """The frames suite2p takes for its reference, read straight from the tifs.
++
++    Same file order (natsorted), same frame indices (register.py:
++    linspace(0, n_frames, 1 + nimg_init)[:-1]) and same conversion
++    (io/tiff.py: uint16 -> // 2 -> int16) as suite2p, so the result is on the
++    scale of suite2p's binary. Returns (frames, indices, pages per file).
++    """
++    import numpy as np
++    import tifffile
++    from natsort import natsorted
++
++    files = natsorted(str(p) for p in session.glob("*.tif"))
++    npages = np.zeros(len(files), np.int64)
++    for i, name in enumerate(files):
++        with tifffile.TiffFile(name, is_ome=False) as tif:
++            npages[i] = len(tif.pages)
++    n_frames = int(npages.sum())
++    nimg = int(min(ops["nimg_init"], n_frames))
++    idx = np.linspace(0, n_frames, 1 + nimg, dtype=int)[:-1]
++    edges = np.concatenate([[0], np.cumsum(npages)])
++    file_of = np.searchsorted(edges, idx, side="right") - 1
++    page_of = idx - edges[file_of]
++    frames = None
++    for fi in np.unique(file_of):
++        with tifffile.TiffFile(files[fi], is_ome=False) as tif:
++            for k in np.where(file_of == fi)[0]:
++                im = tif.pages[int(page_of[k])].asarray()
++                if im.dtype.type == np.uint16:
++                    im = im // 2
++                if frames is None:
++                    frames = np.zeros((nimg,) + im.shape, np.int16)
++                frames[k] = im.astype(np.int16)
++    return frames, idx, npages
++
++
++def recentred_reference(session: Path, ops: dict) -> tuple[object, dict]:
++    """(refImg or None, info). None means: let suite2p build its own reference.
++
++    suite2p's reference from the reference frames -> rigid offsets of those
++    frames against it -> their median offset (where the field usually is) ->
++    average of the frames within a few px of that position, each rolled onto
++    it -> repeat against the new reference until the median offset is within
++    REF_DONE_PX.
++    """
++    import numpy as np
++    from suite2p.registration import register
++
++    info = {"recentred": False, "offset": [0, 0], "frames_used": 0, "note": ""}
++    if ops.get("force_refImg") and "refImg" in ops:
++        info["note"] = "reference supplied in the ops file"
++        return None, info
++    if ops.get("do_bidiphase") and not ops.get("bidiphase"):
++        # suite2p estimates the bidirectional phase only while building its own
++        # reference; forcing a reference would silently skip that estimate.
++        info["note"] = "do_bidiphase is on: suite2p's own reference kept"
++        return None, info
++    if ops.get("nplanes", 1) != 1 or ops.get("nchannels", 1) != 1:
++        info["note"] = "more than one plane or channel: suite2p's own reference kept"
++        return None, info
++
++    frames, idx, npages = reference_frames(session, ops)
++    info["npages"] = [int(n) for n in npages]
++    quiet = {**ops, "nonrigid": False, "reg_tif": False, "reg_tif_chan2": False}
++
++    def offsets(ref_img):
++        """Rigid (y, x) offset and correlation peak of every reference frame."""
++        with contextlib.redirect_stdout(io.StringIO()):
++            out = register.compute_reference_and_register_frames(
++                frames.copy(), f_align_out=np.zeros_like(frames),
++                refImg=ref_img, ops=quiet)
++        return [np.asarray(v) for v in out[4]]
++
++    with contextlib.redirect_stdout(io.StringIO()):
++        ref = register.compute_reference(frames.copy(), ops=ops)
++    y, x, c = offsets(ref)
++    total = [0, 0]
++    used = tol = 0
++    starved = False
++    for _ in range(REF_MAX_PASSES):
++        # All frames but the worst-correlated tenth (out-of-plane frames have
++        # meaningless offsets). Not "the best-correlated half": the correlation
++        # peak falls with the size of the shift, so the best half sits near the
++        # CURRENT reference and under-estimates how far off it is
++        # (090826-pnb104: +24 px in x from the best half, +47 px in truth).
++        keep = c >= np.percentile(c, REF_DROP_WORST_PCT)
++        my = int(np.round(np.median(y[keep])))
++        mx = int(np.round(np.median(x[keep])))
++        limit = REF_DONE_PX if total != [0, 0] else REF_MIN_OFFSET_PX
++        if max(abs(my), abs(mx)) <= limit:
++            break
++        for tol in REF_TOL_PX:
++            near = keep & (np.abs(y - my) <= tol) & (np.abs(x - mx) <= tol)
++            if near.sum() >= REF_MIN_FRAMES:
++                break
++        if near.sum() < 5:
++            starved = True
++            break
++        acc = np.zeros(ref.shape, np.float64)
++        for i in np.where(near)[0]:
++            acc += np.roll(frames[i], (-(int(y[i]) - my), -(int(x[i]) - mx)),
++                           axis=(0, 1))
++        ref = (acc / near.sum()).astype(np.int16)
++        used = int(near.sum())
++        total = [total[0] + my, total[1] + mx]
++        y, x, c = offsets(ref)
++
++    if total == [0, 0]:
++        info["offset"] = [my, mx]
++        info["note"] = ("too few frames near the median position: suite2p's "
++                        "own reference kept" if starved else
++                        "suite2p's reference is already at the median position")
++        return None, info
++    info["offset"] = total
++    info["recentred"] = True
++    info["frames_used"] = used
++    info["note"] = f"recentred from {used} frames within {tol} px"
++    return ref, info
++
++
++def apply_reference(session: Path, ops: dict) -> dict:
++    """Put the recentred reference (if one is needed) into ops, in place.
++
++    The outcome travels inside ops as ops["mc_reference"], so it ends up in
++    suite2p's ops.npy and the record and QC steps can read it back even when
++    registration and averaging happen in different runs.
++    """
++    ref, info = recentred_reference(session, ops)
++    if ref is not None:
++        ops["refImg"] = ref
++        ops["force_refImg"] = True
++    ops["mc_reference"] = info
++    return info
++
++
++# --------------------------------------------------------------------------- #
++# shift record
++# --------------------------------------------------------------------------- #
++
++RECORD_SETTINGS = ("maxregshift", "nonrigid", "block_size", "maxregshiftNR",
++                   "smooth_sigma", "smooth_sigma_time", "snr_thresh",
++                   "nimg_init", "batch_size", "two_step_registration",
++                   "th_badframes", "norm_frames", "force_refImg", "fs")
++
++
++def load_ops(session: Path, plane: int) -> dict:
++    import numpy as np
++
++    path = session / "suite2p" / f"plane{plane}" / "ops.npy"
++    return np.load(path, allow_pickle=True).item()
++
++
++def save_record(task_dir: Path, session: Path, out_tif: Path, plane: int) -> Path:
++    """Keep what the delete step would destroy. Never overwrites a record."""
++    import json
++
++    import numpy as np
++
++    ops = load_ops(session, plane)
++    ref_info = ops.get("mc_reference", {})
++    folder = task_dir / RECORD_DIR
++    folder.mkdir(exist_ok=True)
++    path = folder / f"{out_tif.stem}_mc.npz"
++    if path.exists():
++        path = folder / f"{out_tif.stem}_mc_{time.strftime('%Y%m%d-%H%M%S')}.npz"
++    settings = {k: ops.get(k) for k in RECORD_SETTINGS}
++    settings = {k: (v.tolist() if hasattr(v, "tolist") else v)
++                for k, v in settings.items()}
++    np.savez_compressed(
++        path,
++        yoff=np.asarray(ops["yoff"]), xoff=np.asarray(ops["xoff"]),
++        corrXY=np.asarray(ops["corrXY"]),
++        badframes=np.asarray(ops.get("badframes", [])),
++        refImg=np.asarray(ops["refImg"]), meanImg=np.asarray(ops["meanImg"]),
++        yrange=np.asarray(ops.get("yrange", [])),
++        xrange=np.asarray(ops.get("xrange", [])),
++        frames_per_file=np.asarray(ops.get("frames_per_file", [])),
++        settings=json.dumps(settings),
++        ref_recentred=bool(ref_info.get("recentred", False)),
++        ref_offset=np.asarray(ref_info.get("offset", [0, 0])),
++        ref_note=str(ref_info.get("note", "")),
++        session=session.name,
++    )
++    return path
++
++
++# --------------------------------------------------------------------------- #
++# QC
++# --------------------------------------------------------------------------- #
++
++def movie_quality(tif_path: Path, chunk: int = 256) -> tuple[float, float, float]:
++    """(bad, degraded, quiet r) of an averaged movie.
++
++    Each frame is band-passed (2-15 px) and correlated with the movie's own
++    template (mean of the better-correlated half of ~600 sampled frames, centre
++    crop). quiet = 90th percentile of that correlation; bad = share of frames
++    below 0.5 x quiet, degraded = below 0.75 x quiet. Same definition as r_raw
++    in ACORN's agent/eval/motion_correction_2026-11/motion_metrics.py.
++    """
++    import numpy as np
++    import tifffile
++    from scipy import fft as sfft
++
++    mov = tifffile.memmap(tif_path, mode="r")
++    nt, ly, lx = mov.shape
++    fy = np.fft.fftfreq(ly)[:, None].astype(np.float32)
++    fx = np.fft.rfftfreq(lx)[None, :].astype(np.float32)
++
++    def gauss(sigma: float):
++        return np.exp(-2.0 * (np.pi ** 2) * (sigma ** 2)
++                      * (fy ** 2 + fx ** 2)).astype(np.float32)
++
++    band = gauss(2.0) - gauss(15.0)
++    m = 48
++
++    def bandpass(x):
++        f = sfft.rfft2(x, workers=FFT_WORKERS)
++        return sfft.irfft2(f * band, s=(ly, lx), workers=FFT_WORKERS).astype(np.float32)
++
++    def pearson(a, t):
++        ac = a[:, m:-m, m:-m]
++        tc = t[m:-m, m:-m]
++        ac = ac - ac.mean(axis=(1, 2), keepdims=True)
++        tc = tc - tc.mean()
++        num = (ac * tc[None]).sum(axis=(1, 2))
++        den = np.sqrt((ac ** 2).sum(axis=(1, 2)) * (tc ** 2).sum())
++        return (num / np.maximum(den, 1e-12)).astype(np.float32)
++
++    samp = np.unique(np.linspace(0, nt - 1, min(nt, 600)).astype(int))
++    stack = np.empty((len(samp), ly, lx), np.float32)
++    for i, k in enumerate(samp):
++        stack[i] = mov[k]
++    stack = bandpass(stack)
++    r0 = pearson(stack, stack.mean(axis=0))
++    template = stack[r0 >= np.median(r0)].mean(axis=0)
++    del stack
++    r = np.zeros(nt, np.float32)
++    for a in range(0, nt, chunk):
++        b = min(nt, a + chunk)
++        r[a:b] = pearson(bandpass(np.asarray(mov[a:b], dtype=np.float32)), template)
++    quiet = float(np.percentile(r, 90))
++    return float((r < 0.5 * quiet).mean()), float((r < 0.75 * quiet).mean()), quiet
++
++
++def qc(task_dir: Path, session: Path, out_tif: Path, plane: int) -> dict:
++    """Measure one session, append the row to mc_qc.csv, return the row.
++
++    row["flag"] is empty for a clean session; otherwise it says which limit
++    was passed, and process_2p.py keeps the TSeries folder.
++    """
++    import numpy as np
++
++    ops = load_ops(session, plane)
++    ref_info = ops.get("mc_reference", {})
++    yoff = np.asarray(ops["yoff"], np.float64)
++    xoff = np.asarray(ops["xoff"], np.float64)
++    ly, lx = int(ops["Ly"]), int(ops["Lx"])
++    # suite2p's rigid search limit (rigid.phasecorr: lcorr)
++    limit = int(min(round(float(ops["maxregshift"]) * min(ly, lx)), min(ly, lx) // 2))
++    at_limit = float(((np.abs(yoff) >= limit - 1) | (np.abs(xoff) >= limit - 1)).mean())
++    bad, degraded, quiet = movie_quality(out_tif)
++
++    flags = []
++    if bad > QC_MAX_BAD:
++        flags.append(f"bad frames {100 * bad:.1f}% > {100 * QC_MAX_BAD:.0f}%")
++    if at_limit > QC_MAX_AT_LIMIT:
++        flags.append(f"frames at the search limit {100 * at_limit:.1f}% > "
++                     f"{100 * QC_MAX_AT_LIMIT:.0f}%")
++    npages = ref_info.get("npages")
++    if ref_info.get("recentred") and not np.array_equal(
++            np.asarray(npages), np.asarray(ops.get("frames_per_file", []))):
++        flags.append("reference built from a different frame list than suite2p read")
++
++    offset = ref_info.get("offset", [0, 0])
++    row = {
++        "date": time.strftime("%Y-%m-%d %H:%M"),
++        "session": session.name,
++        "raw_frames": int(ops["nframes"]),
++        "maxregshift": float(ops["maxregshift"]),
++        "limit_px": limit,
++        "ref_recentred": int(bool(ref_info.get("recentred", False))),
++        "ref_offset_y": int(offset[0]),
++        "ref_offset_x": int(offset[1]),
++        "at_limit_pct": round(100 * at_limit, 2),
++        "median_y": round(float(np.median(yoff)), 1),
++        "median_x": round(float(np.median(xoff)), 1),
++        "max_abs_shift": round(float(max(np.abs(yoff).max(), np.abs(xoff).max())), 1),
++        "corrXY_median": round(float(np.median(ops["corrXY"])), 4),
++        "bad_pct": round(100 * bad, 2),
++        "degraded_pct": round(100 * degraded, 2),
++        "quiet_r": round(quiet, 3),
++        "flag": "; ".join(flags),
++    }
++    path = task_dir / QC_CSV
++    new = not path.exists()
++    with open(path, "a", newline="", encoding="ascii") as fh:
++        writer = csv.DictWriter(fh, fieldnames=list(row))
++        if new:
++            writer.writeheader()
++        writer.writerow(row)
++    return row
+diff --git a/scripts_original/process_2p.py b/scripts_proposed/process_2p.py
+index f2cc075..67fc769 100644
+--- a/scripts_original/process_2p.py
++++ b/scripts_proposed/process_2p.py
+@@ -7,6 +7,7 @@ For every TSeries folder in a task directory this runs, per session:
+     raw Prairie View tifs
+       -> suite2p registration        (suite2p/plane0/reg_tif, fs from the .xml)
+       -> Fiji grouped-average + 8bit (AVG<n>x-<session>.tif in the task dir)
++      -> motion record + QC          (mc_record/ and mc_qc.csv in the task dir)
+       -> delete the TSeries folder   (only once that new AVG tif verifies)
+ 
+ The delete step removes the WHOLE session folder -- raw tifs, .xml and suite2p
+@@ -14,6 +15,13 @@ output. It runs only for a session whose averaged tif was produced in this same
+ run and passes verify_avg_tif() (frame count matches ops.npy, file not
+ truncated). Pass --keep-tseries to keep every folder.
+ 
++Motion correction follows the rule in mc_rule.py: a wider rigid search range
++(run_suite2p.REG_OVERRIDES), a reference image rebuilt at the field's usual
++position when suite2p's own sits away from it, the per-frame shifts saved under
++mc_record/ before anything is deleted, and one QC row per session in
++mc_qc.csv. A session over the QC limits keeps its TSeries folder so it can be
++looked at and re-registered; its averaged tif is still written.
++
+ It is a thin orchestrator: the actual work lives in run_suite2p.py and
+ avg_project.py, which still run standalone if you want one half only.
+ 
+@@ -43,6 +51,7 @@ from pathlib import Path
+ sys.path.insert(0, str(Path(__file__).resolve().parent))
+ 
+ import avg_project as avg
++import mc_rule as mc
+ import run_suite2p as s2p
+ 
+ 
+@@ -54,7 +63,7 @@ def run_registration(session: Path, fs: float, base_ops: dict,
+                      fast_disk: Path | None) -> tuple[bool, str]:
+     from suite2p import run_s2p
+ 
+-    run_s2p(ops=s2p.session_ops(base_ops, session, fs, fast_disk), db={})
++    run_s2p(ops=s2p.registration_ops(base_ops, session, fs, fast_disk), db={})
+     reg = avg.reg_tif_dir(session, 0)
+     made = len(list(reg.glob("*.tif"))) if reg.is_dir() else 0
+     if not made:
+@@ -114,6 +123,27 @@ def verify_avg_tif(out_tif: Path, expected_frames: int) -> tuple[bool, str]:
+     return True, f"{frames} frames, {avg.human_bytes(size)}"
+ 
+ 
++def run_motion_qc(task_dir: Path, session: Path, out_tif: Path,
++                  plane: int) -> tuple[str, str]:
++    """Save the shift record and the QC row. Returns (flag, one-line summary).
++
++    flag is empty for a clean session. Anything else -- a limit passed, or the
++    QC itself failing -- keeps the TSeries folder: without a QC result there is
++    no ground for deleting the only copy of the shifts.
++    """
++    try:
++        record = mc.save_record(task_dir, session, out_tif, plane)
++        row = mc.qc(task_dir, session, out_tif, plane)
++    except Exception as exc:                          # noqa: BLE001
++        return (f"QC did not run ({type(exc).__name__}: {exc})",
++                "no QC result")
++    summary = (f"bad {row['bad_pct']:.1f}%  degraded {row['degraded_pct']:.1f}%  "
++               f"at limit {row['at_limit_pct']:.1f}%  "
++               f"reference offset (y {row['ref_offset_y']:+d}, "
++               f"x {row['ref_offset_x']:+d})  record {record.name}")
++    return row["flag"], summary
++
++
+ def delete_session(task_dir: Path, session: Path) -> tuple[bool, str]:
+     """Remove one session folder, raw data included. task_dir must be resolved."""
+     target = session.resolve()
+@@ -193,6 +223,10 @@ def main(argv: list[str] | None = None) -> int:
+ 
+     print(f"Task directory : {task_dir}")
+     print(f"Base ops       : {ops_source}")
++    print(f"Registration   : maxregshift {base_ops.get('maxregshift')}, reference "
++          f"recentred when more than {mc.REF_MIN_OFFSET_PX} px off")
++    print(f"Motion QC      : TSeries folder kept above {100 * mc.QC_MAX_BAD:.0f}% bad "
++          f"frames or {100 * mc.QC_MAX_AT_LIMIT:.0f}% of frames at the search limit")
+     print(f"Averaging      : every {args.factor} frames -> 8-bit tif")
+     print("Delete TSeries : " + ("no (--keep-tseries)" if args.keep_tseries else
+                                  "yes, whole folder, once its new AVG tif verifies"))
+@@ -264,7 +298,19 @@ def main(argv: list[str] | None = None) -> int:
+             if not ok:
+                 failed = f"average: {detail}"
+ 
+-        if "delete" in steps and failed is None:
++        flag = ""
++        if "average" in steps and failed is None:
++            print("    motion QC ...")
++            t0 = time.time()
++            flag, summary = run_motion_qc(task_dir, session, out_tif, args.plane)
++            print(f"      {'FLAGGED  ' + flag if flag else 'OK'}  {summary}  "
++                  f"({time.time() - t0:.0f}s)")
++
++        if flag:
++            kept = f"motion QC: {flag}"
++            if "delete" in steps:
++                print("    TSeries folder KEPT for a human to look at")
++        elif "delete" in steps and failed is None:
+             print("    deleting TSeries folder ...")
+             try:
+                 ok, detail = remove_session(task_dir, session, out_tif,
+diff --git a/scripts_original/run_suite2p.py b/scripts_proposed/run_suite2p.py
+index f43a54c..f2c6cb4 100644
+--- a/scripts_original/run_suite2p.py
++++ b/scripts_proposed/run_suite2p.py
+@@ -13,8 +13,10 @@ Run it in the `suite2p` conda environment (NOT valence):
+     python run_suite2p.py --task-dir "D:\\2p data\\CTA"
+ 
+ Settings come from your saved suite2p defaults (~/.suite2p/ops/ops_user.npy),
+-so this stays in step with the GUI rather than hardcoding a second copy. Only
+-four keys are overridden per session: data_path, save_path0, fast_disk, and fs.
++so this stays in step with the GUI rather than hardcoding a second copy. Per
++session only data_path, save_path0, fast_disk and fs are overridden, plus the
++registration settings in REG_OVERRIDES below and, when the session needs it, a
++recentred reference image (mc_rule.py).
+ 
+ `fs` is read from each session's Prairie View .xml (1 / framePeriod) instead of
+ being taken from the saved ops, because the saved value is a single number and
+@@ -38,6 +40,12 @@ USER_OPS = Path.home() / ".suite2p" / "ops" / "ops_user.npy"
+ # Both are read by suite2p's plain "tif" path, which natsorts filenames.
+ OME_GLOB = "*.ome.tif"
+ 
++# Registration settings laid over the saved GUI defaults (not over a file given
++# with --ops). maxregshift is the rigid search range as a fraction of the
++# frame: 0.1 (the saved default, +/-51 px of 512) left 30% of the raw frames of
++# 090826-pnb104 pinned at the limit; 0.2 is +/-102 px.
++REG_OVERRIDES = {"maxregshift": 0.2}
++
+ 
+ # --------------------------------------------------------------------------- #
+ # session discovery and metadata
+@@ -126,6 +134,11 @@ def load_base_ops(ops_path: Path):
+         source = str(ops_path)
+     else:
+         source = "suite2p default_ops() (saved user ops not found)"
++    # An ops file named with --ops is taken as given; the overrides apply to
++    # the saved GUI defaults only.
++    if ops_path == USER_OPS:
++        ops.update(REG_OVERRIDES)
++        source += f"  + overrides {REG_OVERRIDES}"
+     return ops, source
+ 
+ 
+@@ -140,6 +153,19 @@ def session_ops(base: dict, session: Path, fs: float, fast_disk: Path | None) ->
+     return ops
+ 
+ 
++def registration_ops(base: dict, session: Path, fs: float,
++                     fast_disk: Path | None) -> dict:
++    """session_ops() plus the recentred reference image when one is needed."""
++    import mc_rule
++
++    ops = session_ops(base, session, fs, fast_disk)
++    info = mc_rule.apply_reference(session, ops)
++    print(f"    reference: the field usually sits (y {info['offset'][0]:+d}, "
++          f"x {info['offset'][1]:+d}) px from suite2p's own reference -- "
++          f"{info['note']}")
++    return ops
++
++
+ # --------------------------------------------------------------------------- #
+ # main
+ # --------------------------------------------------------------------------- #
+@@ -184,6 +210,8 @@ def main(argv: list[str] | None = None) -> int:
+           f"nplanes={base_ops.get('nplanes')} "
+           f"nchannels={base_ops.get('nchannels')} "
+           f"batch_size={base_ops.get('batch_size')}")
++    print(f"                 maxregshift={base_ops.get('maxregshift')}, "
++          f"reference recentred when it is off the median field position")
+     print(f"Sessions found : {len(sessions)}\n")
+ 
+     plan, blocked = [], []
+@@ -225,7 +253,8 @@ def main(argv: list[str] | None = None) -> int:
+         print(f"[{number}/{len(plan)}] {session.name}  (fs={fs:.4f} Hz)")
+         started = time.time()
+         try:
+-            run_s2p(ops=session_ops(base_ops, session, fs, args.fast_disk), db={})
++            run_s2p(ops=registration_ops(base_ops, session, fs, args.fast_disk),
++                    db={})
+             reg = session / "suite2p" / "plane0" / "reg_tif"
+             made = len(list(reg.glob("*.tif"))) if reg.is_dir() else 0
+             if made:

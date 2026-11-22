@@ -1,0 +1,7 @@
+TSeries-082726-pnb104-416um-3z-000: 12 trials, 6745 raw frames; reference from 300 full-session frames
+variant               sec | raw: |off-med| p50   p95   p99  f2f95  cXY50  cXY05 clip% med(y,x) >51px% | AVG5x: bad<.5 bad<.75  d>2px nr>2px   r50   r05  crisp
+prod                  119 |               10.0  32.9  48.7   10.2 0.0065 0.0046   3.6 (+5,+27)    0.0 |         0.008   0.023  0.000  0.019 0.840 0.726  18.36
+    VALIDATION prod vs delivered tif (1339 averaged frames): pixel r median 0.8669, p05 0.8536, min 0.6530, frames with r > 0.98: 0.0%   [null, next frame: median 0.8032]
+    VALIDATION with the groups shifted by N raw frames: -2: 0.8420  -1: 0.8547  +1: 0.8543  +2: 0.8418
+mrs20                 123 |               10.0  34.5  47.4    8.9 0.0065 0.0050   0.0 (+5,+27)    4.2 |         0.000   0.003  0.000  0.008 0.841 0.746  18.54
+mrs30_sm2             124 |               10.0  34.4  47.5    8.5 0.0054 0.0043   0.0 (+5,+27)    4.2 |         0.000   0.002  0.000  0.001 0.846 0.749  18.76

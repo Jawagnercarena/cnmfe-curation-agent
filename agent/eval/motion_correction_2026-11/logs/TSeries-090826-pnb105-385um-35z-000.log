@@ -1,0 +1,6 @@
+﻿TSeries-090826-pnb105-385um-35z-000: 12 trials, 6744 raw frames; reference from 300 full-session frames
+variant               sec | raw: |off-med| p50   p95   p99  f2f95  cXY50  cXY05 clip% med(y,x) >51px% | AVG5x: bad<.5 bad<.75  d>2px nr>2px   r50   r05  crisp
+prod                  194 |                7.1  24.2  36.1    8.0 0.0105 0.0084   0.0 (+15,+13)    0.0 |         0.000   0.000  0.000  0.000 0.908 0.863  44.07
+mrs20                 190 |                7.1  24.2  36.1    8.0 0.0105 0.0084   0.0 (+15,+13)    0.0 |         0.000   0.000  0.000  0.000 0.908 0.863  44.07
+mrs20_recenter        193 |                7.1  24.2  36.2    8.1 0.0098 0.0078   0.0  (+1,-1)    0.0 |         0.000   0.000  0.000  0.000 0.907 0.864  43.80
+    recenter: modal offset of the 300 reference frames vs suite2p's reference = (y +14, x +14); new reference from 53 frames within 5 px

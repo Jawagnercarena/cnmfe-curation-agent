@@ -1,0 +1,8 @@
+TSeries-090726-pnb102-494um-3z-000: 12 trials, 6756 raw frames; reference from 300 full-session frames
+variant               sec | raw: |off-med| p50   p95   p99  f2f95  cXY50  cXY05 clip% med(y,x) >51px% | AVG5x: bad<.5 bad<.75  d>2px nr>2px   r50   r05  crisp
+prod                  118 |               11.0  35.5  52.7   12.0 0.0055 0.0029   8.1 (+38,+2)    0.0 |         0.013   0.069  0.000  0.028 0.765 0.572  25.33
+    VALIDATION prod vs delivered tif (1341 averaged frames): pixel r median 0.8525, p05 0.8264, min 0.6544, frames with r > 0.98: 0.0%   [null, next frame: median 0.7826]
+    VALIDATION with the groups shifted by N raw frames: -2: 0.8257  -1: 0.8390  +1: 0.8382  +2: 0.8261
+mrs20                 120 |               10.8  35.4  47.3   10.0 0.0055 0.0034   0.0 (+39,+1)    6.8 |         0.000   0.045  0.000  0.008 0.766 0.603  25.64
+mrs20_recenter        121 |               10.8  35.4  47.9    9.9 0.0052 0.0032   0.0  (+2,+1)    0.2 |         0.000   0.046  0.000  0.006 0.764 0.600  25.62
+    recenter: modal offset of the 300 reference frames vs suite2p's reference = (y +37, x +0); new reference from 39 frames within 5 px
