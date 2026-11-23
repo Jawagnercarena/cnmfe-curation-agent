@@ -1,0 +1,116 @@
+[16:28:35] env: {'python': 'C:\\Users\\julia\\.conda\\envs\\ACORN\\python.exe', 'cpu_count': 48, 'threads': 8, 'n_jobs': 8, 'platform': 'Windows-10-10.0.26200-SP0', 'OMP_NUM_THREADS': '8', 'numpy': '2.2.5', 'scipy': '1.15.3', 'sklearn': '1.7.2', 'xgboost': '3.2.0', 'lightgbm': '4.6.0', 'catboost': '1.2.10'}
+[16:28:36] BLA: pool matches snapshot pool_BLA.json (176 labeled sessions)
+[16:28:36] BLA/session: 81 CV sessions (4 agent sessions <5 reals dropped), 13766 rows, 2618 real, 33448 bootstrap rows (4494 weight-0); 81 groups -> 5 folds; agent weight override None; seeds [42, 1, 7, 13, 100, 2024, 31337, 9]
+[16:28:36]   == xgb_tuned (seeds [42, 1, 7]) ==
+[16:28:36]   xgb_tuned: 30 configs (cfg 0 = deployed shape), nested on an inner 80/20 session split
+[16:29:02]     seed 42 fold 0: cfg 23 (inner AUC 0.9040, n_estimators=676)
+[16:29:31]     seed 42 fold 1: cfg 15 (inner AUC 0.9266, n_estimators=321)
+[16:30:04]     seed 42 fold 2: cfg 29 (inner AUC 0.9350, n_estimators=215)
+[16:30:38]     seed 42 fold 3: cfg 22 (inner AUC 0.9268, n_estimators=825)
+[16:31:10]     seed 42 fold 4: cfg 4 (inner AUC 0.9100, n_estimators=306)
+[16:31:37]     seed 1 fold 0: cfg 20 (inner AUC 0.9345, n_estimators=294)
+[16:32:09]     seed 1 fold 1: cfg 16 (inner AUC 0.9349, n_estimators=404)
+[16:32:45]     seed 1 fold 2: cfg 18 (inner AUC 0.9350, n_estimators=310)
+[16:33:23]     seed 1 fold 3: cfg 27 (inner AUC 0.9272, n_estimators=961)
+[16:33:52]     seed 1 fold 4: cfg 15 (inner AUC 0.9187, n_estimators=339)
+[16:34:40]     seed 7 fold 0: cfg 3 (inner AUC 0.9216, n_estimators=981)
+[16:35:25]     seed 7 fold 1: cfg 9 (inner AUC 0.9491, n_estimators=876)
+[16:36:04]     seed 7 fold 2: cfg 2 (inner AUC 0.9283, n_estimators=209)
+[16:36:41]     seed 7 fold 3: cfg 9 (inner AUC 0.9250, n_estimators=679)
+[16:37:15]     seed 7 fold 4: cfg 5 (inner AUC 0.9134, n_estimators=378)
+[16:37:15]   xgb_tuned      AUC full 0.9201  reviewed 0.9050 | FAR@0.04 1.39% (worst 2.06) junk 43.7% | rule_T None | 519s
+[16:37:15]   == lgbm_tuned (seeds [42, 1, 7]) ==
+[16:37:15]   lgbm_tuned: 30 configs (cfg 0 = deployed shape), nested on an inner 80/20 session split
+[16:37:33]     seed 42 fold 0: cfg 3 (inner AUC 0.9022, n_estimators=130)
+[16:37:53]     seed 42 fold 1: cfg 29 (inner AUC 0.9250, n_estimators=167)
+[16:38:11]     seed 42 fold 2: cfg 7 (inner AUC 0.9341, n_estimators=291)
+[16:38:28]     seed 42 fold 3: cfg 11 (inner AUC 0.9248, n_estimators=220)
+[16:38:52]     seed 42 fold 4: cfg 7 (inner AUC 0.9096, n_estimators=115)
+[16:39:12]     seed 1 fold 0: cfg 24 (inner AUC 0.9350, n_estimators=125)
+[16:39:29]     seed 1 fold 1: cfg 27 (inner AUC 0.9340, n_estimators=105)
+[16:39:46]     seed 1 fold 2: cfg 11 (inner AUC 0.9353, n_estimators=132)
+[16:39:59]     seed 1 fold 3: cfg 23 (inner AUC 0.9245, n_estimators=63)
+[16:40:10]     seed 1 fold 4: cfg 27 (inner AUC 0.9081, n_estimators=23)
+[16:40:37]     seed 7 fold 0: cfg 20 (inner AUC 0.9195, n_estimators=465)
+[16:40:50]     seed 7 fold 1: cfg 23 (inner AUC 0.9449, n_estimators=185)
+[16:41:02]     seed 7 fold 2: cfg 27 (inner AUC 0.9199, n_estimators=28)
+[16:41:13]     seed 7 fold 3: cfg 26 (inner AUC 0.9164, n_estimators=82)
+[16:41:27]     seed 7 fold 4: cfg 27 (inner AUC 0.9139, n_estimators=219)
+[16:41:27]   lgbm_tuned     AUC full 0.9139  reviewed 0.8985 | FAR@0.04 1.59% (worst 2.02) junk 44.7% | rule_T None | 252s
+[16:41:27]   == xgb_winner (from xgb_tuned: cfg 9 chosen 2/15 folds) == {'colsample_bytree': 1.0, 'gamma': 0.5, 'learning_rate': 0.02, 'max_depth': 4, 'min_child_weight': 20, 'reg_lambda': 1.0, 'subsample': 0.6, 'n_estimators': 778}
+[16:41:34]     seed 42 done (7s)
+[16:41:41]     seed 1 done (14s)
+[16:41:48]     seed 7 done (20s)
+[16:41:55]     seed 13 done (27s)
+[16:42:01]     seed 100 done (34s)
+[16:42:08]     seed 2024 done (41s)
+[16:42:15]     seed 31337 done (47s)
+[16:42:21]     seed 9 done (54s)
+[16:42:22]   xgb_winner     AUC full 0.9253  reviewed 0.9110 | FAR@0.04 0.81% (worst 1.03) junk 42.4% | rule_T 0.03 | 54s
+[16:42:22]   == lgbm_winner (from lgbm_tuned: cfg 27 chosen 4/15 folds) == {'colsample_bytree': 0.5, 'learning_rate': 0.05, 'max_depth': 8, 'min_child_samples': 20, 'reg_lambda': 0.0, 'subsample': 1.0, 'subsample_freq': 1, 'num_leaves': 63, 'n_estimators': 66}
+[16:42:23]     seed 42 done (1s)
+[16:42:24]     seed 1 done (3s)
+[16:42:26]     seed 7 done (4s)
+[16:42:27]     seed 13 done (6s)
+[16:42:28]     seed 100 done (7s)
+[16:42:30]     seed 2024 done (8s)
+[16:42:31]     seed 31337 done (10s)
+[16:42:33]     seed 9 done (11s)
+[16:42:33]   lgbm_winner    AUC full 0.9204  reviewed 0.9053 | FAR@0.04 0.43% (worst 0.53) junk 34.0% | rule_T 0.05 | 11s
+[16:42:33] BLA/animal: 81 CV sessions (4 agent sessions <5 reals dropped), 13766 rows, 2618 real, 33448 bootstrap rows (4494 weight-0); 6 groups -> 5 folds; agent weight override None; seeds [42, 1, 7, 13, 100, 2024, 31337, 9]
+[16:42:33]   == xgb_tuned (seeds [42, 1, 7]) ==
+[16:42:33]   xgb_tuned: 30 configs (cfg 0 = deployed shape), nested on an inner 80/20 session split
+[16:42:56]     seed 42 fold 0: cfg 9 (inner AUC 0.9344, n_estimators=569)
+[16:43:27]     seed 42 fold 1: cfg 27 (inner AUC 0.9276, n_estimators=634)
+[16:43:58]     seed 42 fold 2: cfg 16 (inner AUC 0.9191, n_estimators=353)
+[16:44:42]     seed 42 fold 3: cfg 23 (inner AUC 0.9280, n_estimators=1083)
+[16:45:01]     seed 42 fold 4: cfg 16 (inner AUC 0.9452, n_estimators=133)
+[16:45:45]     seed 1 fold 0: cfg 11 (inner AUC 0.9146, n_estimators=322)
+[16:46:16]     seed 1 fold 1: cfg 27 (inner AUC 0.9403, n_estimators=955)
+[16:46:52]     seed 1 fold 2: cfg 5 (inner AUC 0.9463, n_estimators=281)
+[16:47:26]     seed 1 fold 3: cfg 25 (inner AUC 0.9374, n_estimators=695)
+[16:48:00]     seed 1 fold 4: cfg 27 (inner AUC 0.9232, n_estimators=1012)
+[16:48:37]     seed 7 fold 0: cfg 21 (inner AUC 0.9340, n_estimators=538)
+[16:48:59]     seed 7 fold 1: cfg 2 (inner AUC 0.9203, n_estimators=220)
+[16:49:40]     seed 7 fold 2: cfg 7 (inner AUC 0.9224, n_estimators=427)
+[16:50:09]     seed 7 fold 3: cfg 9 (inner AUC 0.9171, n_estimators=527)
+[16:50:35]     seed 7 fold 4: cfg 5 (inner AUC 0.9259, n_estimators=219)
+[16:50:35]   xgb_tuned      AUC full 0.9134  reviewed 0.8973 | FAR@0.04 0.81% (worst 1.03) junk 34.2% | rule_T 0.03 | 483s
+[16:50:35]   == lgbm_tuned (seeds [42, 1, 7]) ==
+[16:50:35]   lgbm_tuned: 30 configs (cfg 0 = deployed shape), nested on an inner 80/20 session split
+[16:50:51]     seed 42 fold 0: cfg 3 (inner AUC 0.9333, n_estimators=80)
+[16:51:02]     seed 42 fold 1: cfg 26 (inner AUC 0.9246, n_estimators=65)
+[16:51:31]     seed 42 fold 2: cfg 24 (inner AUC 0.9186, n_estimators=182)
+[16:51:48]     seed 42 fold 3: cfg 23 (inner AUC 0.9269, n_estimators=158)
+[16:52:01]     seed 42 fold 4: cfg 27 (inner AUC 0.9439, n_estimators=97)
+[16:52:12]     seed 1 fold 0: cfg 2 (inner AUC 0.9011, n_estimators=18)
+[16:52:22]     seed 1 fold 1: cfg 27 (inner AUC 0.9293, n_estimators=16)
+[16:53:01]     seed 1 fold 2: cfg 1 (inner AUC 0.9476, n_estimators=447)
+[16:53:13]     seed 1 fold 3: cfg 23 (inner AUC 0.9349, n_estimators=109)
+[16:53:23]     seed 1 fold 4: cfg 27 (inner AUC 0.9080, n_estimators=17)
+[16:53:33]     seed 7 fold 0: cfg 27 (inner AUC 0.9184, n_estimators=14)
+[16:53:46]     seed 7 fold 1: cfg 27 (inner AUC 0.9164, n_estimators=138)
+[16:54:01]     seed 7 fold 2: cfg 27 (inner AUC 0.9182, n_estimators=198)
+[16:54:13]     seed 7 fold 3: cfg 26 (inner AUC 0.9156, n_estimators=117)
+[16:54:27]     seed 7 fold 4: cfg 13 (inner AUC 0.9260, n_estimators=81)
+[16:54:27]   lgbm_tuned     AUC full 0.9018  reviewed 0.8845 | FAR@0.04 1.30% (worst 1.49) junk 36.0% | rule_T None | 232s
+[16:54:27]   == xgb_winner (from xgb_tuned: cfg 27 chosen 3/15 folds) == {'colsample_bytree': 0.5, 'gamma': 0.5, 'learning_rate': 0.02, 'max_depth': 4, 'min_child_weight': 1, 'reg_lambda': 20.0, 'subsample': 0.8, 'n_estimators': 955}
+[16:54:34]     seed 42 done (7s)
+[16:54:41]     seed 1 done (13s)
+[16:54:48]     seed 7 done (21s)
+[16:54:55]     seed 13 done (28s)
+[16:55:02]     seed 100 done (35s)
+[16:55:08]     seed 2024 done (41s)
+[16:55:15]     seed 31337 done (48s)
+[16:55:22]     seed 9 done (54s)
+[16:55:22]   xgb_winner     AUC full 0.9174  reviewed 0.9017 | FAR@0.04 0.88% (worst 0.99) junk 40.2% | rule_T 0.03 | 54s
+[16:55:22]   == lgbm_winner (from lgbm_tuned: cfg 27 chosen 6/15 folds) == {'colsample_bytree': 0.5, 'learning_rate': 0.05, 'max_depth': 8, 'min_child_samples': 20, 'reg_lambda': 0.0, 'subsample': 1.0, 'subsample_freq': 1, 'num_leaves': 63, 'n_estimators': 57}
+[16:55:23]     seed 42 done (1s)
+[16:55:24]     seed 1 done (2s)
+[16:55:25]     seed 7 done (3s)
+[16:55:26]     seed 13 done (4s)
+[16:55:27]     seed 100 done (6s)
+[16:55:28]     seed 2024 done (7s)
+[16:55:30]     seed 31337 done (8s)
+[16:55:31]     seed 9 done (9s)
+[16:55:31]   lgbm_winner    AUC full 0.9110  reviewed 0.8944 | FAR@0.04 0.37% (worst 0.46) junk 30.2% | rule_T 0.05 | 9s

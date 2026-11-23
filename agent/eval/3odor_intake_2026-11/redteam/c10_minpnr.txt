@@ -1,0 +1,73 @@
+sessions in cache: 111 (3odor 71, 6odor 40)
+
+== 1. 6odor: pre-pass port vs the estimates ACORN logged ==
+  identical to every logged estimate in 40 of 40 sessions
+
+== 2. 3odor: exact pre-pass min_pnr vs the stand-in ==
+  N 71: exact - stand-in: median +0.40, min -0.57, max +5.01; exact > stand-in in 63
+  at the 5.0 clamp: stand-in 9, exact 0 (raw exact estimate below 5.0 in 0)
+  9/29-10/1 no dim note    N  7  stand-in median 5.68 [5.22-6.64] | exact median 6.30 [5.70-7.00]
+  after cleaning           N 42  stand-in median 5.72 [5.00-7.77] | exact median 6.25 [5.30-11.40]
+  before 9/29              N 12  stand-in median 5.68 [5.16-7.13] | exact median 6.35 [6.00-6.90]
+  dim/hazy noted           N 10  stand-in median 5.00 [5.00-5.80] | exact median 5.40 [5.10-6.60]
+
+== 3. top-50 Cn peaks at the rule's min_corr: share that can seed, stand-in vs exact min_pnr ==
+session | note | noise_rel | rule | min_pnr stand-in -> exact | strict | near | loose (earlier definition) | first-pass seeds stand-in -> exact
+  093026-pnb99-312um-3z- | dim/hazy noted | 0.309 | 0.57 | 5.0 -> 5.1 | 0.20 -> 0.20 | 0.20 -> 0.20 | 0.20 -> 0.20 | 18 -> 18
+  101626-pnb99-366um-3z- | dim/hazy noted | 0.354 | 0.57 | 5.0 -> 5.1 | 0.84 -> 0.84 | 0.88 -> 0.88 | 0.84 -> 0.84 | 99 -> 99
+  092926-pnb105-430um-35 | dim/hazy noted | 0.318 | 0.58 | 5.0 -> 5.3 | 0.80 -> 0.78 | 0.86 -> 0.84 | 0.80 -> 0.78 | 93 -> 89
+  092926-pnb102-460um-3z | dim/hazy noted | 0.251 | 0.59 | 5.1 -> 5.4 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 166 -> 162
+  092926-pnb109-133um-25 | dim/hazy noted | 0.091 | 0.59 | 5.0 -> 5.4 | 0.90 -> 0.84 | 0.90 -> 0.90 | 0.90 -> 0.86 | 112 -> 107
+  093026-pnb109-90um-25z | dim/hazy noted | 0.065 | 0.60 | 5.0 -> 5.5 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 139 -> 141
+  100126-pnb99-493um-3z- | dim/hazy noted | 0.205 | 0.60 | 5.0 -> 5.4 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 120 -> 119
+  100826-pnb99-492um-3z- | after cleaning | 0.196 | 0.61 | 5.0 -> 5.3 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 165 -> 163
+  101426-pnb99-574um-3z- | after cleaning | 0.198 | 0.61 | 5.2 -> 5.7 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 211 -> 205
+  101526-pnb99-473um-3z- | after cleaning | 0.200 | 0.61 | 5.0 -> 5.3 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 171 -> 171
+  100926-pnb99-392um-3z- | after cleaning | 0.226 | 0.62 | 5.0 -> 5.4 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 164 -> 164
+  101326-pnb99-560um-3z- | after cleaning | 0.192 | 0.62 | 5.2 -> 5.5 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 142 -> 138
+  100226-pnb99-392um-3z- | after cleaning | 0.216 | 0.63 | 5.1 -> 5.4 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 188 -> 188
+  092926-pnb99-518um-3z- | dim/hazy noted | 0.167 | 0.64 | 5.4 -> 5.8 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 210 -> 209
+  100126-pnb105-470um-35 | 9/29-10/1 no d | 0.127 | 0.64 | 5.2 -> 5.7 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 193 -> 189
+  100226-pnb109-310um-25 | after cleaning | 0.125 | 0.64 | 5.2 -> 5.5 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 192 -> 188
+  093026-pnb102-600um-3z | dim/hazy noted | 0.149 | 0.68 | 5.5 -> 6.5 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 266 -> 249
+  093026-pnb105-340um-35 | dim/hazy noted | 0.118 | 0.69 | 5.8 -> 6.6 | 1.00 -> 1.00 | 1.00 -> 1.00 | 1.00 -> 1.00 | 248 -> 238
+  dim/hazy noted     N 10 strict: stand-in median 1.00, sessions >= 0.90: 7 | exact median 1.00, sessions >= 0.90: 6
+  dim/hazy noted     N 10 near  : stand-in median 1.00, sessions >= 0.90: 7 | exact median 1.00, sessions >= 0.90: 7
+  dim/hazy noted     N 10 loose : stand-in median 1.00, sessions >= 0.90: 7 | exact median 1.00, sessions >= 0.90: 6
+  noise_rel >= 0.19  N 11 strict: stand-in median 1.00, sessions >= 0.90: 8 | exact median 1.00, sessions >= 0.90: 8
+  noise_rel >= 0.19  N 11 near  : stand-in median 1.00, sessions >= 0.90: 8 | exact median 1.00, sessions >= 0.90: 8
+  noise_rel >= 0.19  N 11 loose : stand-in median 1.00, sessions >= 0.90: 8 | exact median 1.00, sessions >= 0.90: 8
+  all 3odor          N 71 strict: stand-in median 1.00, sessions >= 0.90: 68 | exact median 1.00, sessions >= 0.90: 67
+  all 3odor          N 71 near  : stand-in median 1.00, sessions >= 0.90: 68 | exact median 1.00, sessions >= 0.90: 68
+  all 3odor          N 71 loose : stand-in median 1.00, sessions >= 0.90: 68 | exact median 1.00, sessions >= 0.90: 67
+  dim/hazy noted: top-50 peak PNR median 7.1 [5.7-13.7] vs exact min_pnr median 5.4 [5.1-6.6]
+
+== 4. labelled pilots: does min_pnr separate kept from rejected candidates? ==
+  082626-pnb102-479um-3z: N 215 kept 44 | run min_corr 0.70 min_pnr 7.3 | label join ok True (min cosine 0.80) | candidates seedable from their own core at the run's thresholds: kept 44/44, rejected 170/171
+  082626-pnb104-404um-3z: N 176 kept 32 | run min_corr 0.70 min_pnr 6.5 | label join ok True (min cosine 0.86) | candidates seedable from their own core at the run's thresholds: kept 32/32, rejected 142/144
+  082626-pnb105-397um-35: N 266 kept 24 | run min_corr 0.70 min_pnr 8.4 | label join ok True (min cosine 0.80) | candidates seedable from their own core at the run's thresholds: kept 24/24, rejected 240/242
+  082626-pnb106-205um-4z: N 228 kept 10 | run min_corr 0.70 min_pnr 6.9 | label join ok True (min cosine 0.75) | candidates seedable from their own core at the run's thresholds: kept 10/10, rejected 217/218
+  082626-pnb109-398um-26: N 196 kept 49 | run min_corr 0.70 min_pnr 6.6 | label join ok True (min cosine 0.83) | candidates seedable from their own core at the run's thresholds: kept 49/49, rejected 142/147
+  082626-pnb99-399um-3z-: N 81 kept 29 | run min_corr 0.70 min_pnr 5.9 | label join ok True (min cosine 0.90) | candidates seedable from their own core at the run's thresholds: kept 29/29, rejected 50/52
+  082726-pnb102-497um-3z: N 239 kept 40 | run min_corr 0.70 min_pnr 6.4 | label join ok True (min cosine 0.86) | candidates seedable from their own core at the run's thresholds: kept 40/40, rejected 196/199
+  082726-pnb104-416um-3z: N 170 kept 31 | run min_corr 0.70 min_pnr 6.2 | label join ok True (min cosine 0.75) | candidates seedable from their own core at the run's thresholds: kept 31/31, rejected 135/139
+  082726-pnb105-391um-35: N 169 kept 34 | run min_corr 0.60 min_pnr 5.7 | label join ok True (min cosine 0.79) | candidates seedable from their own core at the run's thresholds: kept 34/34, rejected 134/135
+  082726-pnb106-201um-4z: N 184 kept 11 | run min_corr 0.70 min_pnr 6.2 | label join ok True (min cosine 0.89) | candidates seedable from their own core at the run's thresholds: kept 11/11, rejected 164/173
+  082726-pnb109-405um-25: N 205 kept 57 | run min_corr 0.70 min_pnr 6.5 | label join ok True (min cosine 0.76) | candidates seedable from their own core at the run's thresholds: kept 57/57, rejected 146/148
+  082826-pnb99-436um-3z-: N 198 kept 49 | run min_corr 0.70 min_pnr 6.4 | label join ok True (min cosine 0.68) | candidates seedable from their own core at the run's thresholds: kept 49/49, rejected 148/149
+  pooled N 2327 candidates, 410 kept
+  kept-rate by PNR margin (max PNR in the footprint core minus the run's min_pnr):
+    margin    < to    0:   0 kept of    6 (0.0%)
+    margin    0 to    1:   0 kept of   14 (0.0%)
+    margin    1 to    2:   0 kept of   57 (0.0%)
+    margin    2 to    4:   6 kept of  332 (1.8%)
+    margin    4 to    8:  61 kept of  755 (8.1%)
+    margin    8 to   16: 203 kept of  760 (26.7%)
+    margin   16 to    >: 140 kept of  403 (34.7%)
+  raising min_pnr above the run's value (candidates that could seed from their own core at the run's thresholds):
+    +0: kept lost 0 of 410 (0.0%), rejected lost 0 of 1884 (0.0%)
+    +1: kept lost 0 of 410 (0.0%), rejected lost 96 of 1884 (5.1%)
+    +2: kept lost 3 of 410 (0.7%), rejected lost 253 of 1884 (13.4%)
+    +3: kept lost 6 of 410 (1.5%), rejected lost 453 of 1884 (24.0%)
+    +4: kept lost 22 of 410 (5.4%), rejected lost 650 of 1884 (34.5%)
+    +6: kept lost 67 of 410 (16.3%), rejected lost 1003 of 1884 (53.2%)

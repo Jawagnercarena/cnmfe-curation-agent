@@ -1,0 +1,30 @@
+== production SEEDTRACE runs (2026-11-04/05) ==
+  090826-pnb102-497um-3z | production | min_corr 0.70 min_pnr 7.0 bd 10 | real pass-1 attempts 379 (initialised in pass 1: 153), all passes: attempts 812, initialised 346 | replay on MATLAB's Cn0/PNR0 379 (same pixels: 379) | replay on this port 379 | max |Cn0 - port| 0.0015
+  090826-pnb104-425um-3z | production | min_corr 0.70 min_pnr 6.6 bd 10 | real pass-1 attempts 303 (initialised in pass 1: 110), all passes: attempts 627, initialised 251 | replay on MATLAB's Cn0/PNR0 303 (same pixels: 303) | replay on this port 303 | max |Cn0 - port| 0.0018
+  090826-pnb105-385um-35 | production | min_corr 0.60 min_pnr 6.1 bd 10 | real pass-1 attempts 276 (initialised in pass 1: 125), all passes: attempts 782, initialised 368 | replay on MATLAB's Cn0/PNR0 276 (same pixels: 276) | replay on this port 276 | max |Cn0 - port| 0.0019
+  090826-pnb106-209um-4z | production | min_corr 0.70 min_pnr 6.6 bd 10 | real pass-1 attempts 343 (initialised in pass 1: 148), all passes: attempts 719, initialised 331 | replay on MATLAB's Cn0/PNR0 343 (same pixels: 343) | replay on this port 343 | max |Cn0 - port| 0.0014
+  090826-pnb109-412um-25 | production | min_corr 0.70 min_pnr 6.4 bd 10 | real pass-1 attempts 344 (initialised in pass 1: 137), all passes: attempts 576, initialised 241 | replay on MATLAB's Cn0/PNR0 344 (same pixels: 344) | replay on this port 344 | max |Cn0 - port| 0.0025
+  090826-pnb99-463um-3z- | production | min_corr 0.70 min_pnr 6.1 bd 10 | real pass-1 attempts 290 (initialised in pass 1: 114), all passes: attempts 520, initialised 205 | replay on MATLAB's Cn0/PNR0 290 (same pixels: 290) | replay on this port 290 | max |Cn0 - port| 0.0018
+
+== initialisation-only runs at three thresholds (this red team) ==
+  090826-pnb102-497um-3z | init-only | min_corr 0.60 min_pnr 7.0 bd 10 | real pass-1 attempts 407 (initialised in pass 1: 169), all passes: attempts 1116, initialised 512 | replay on MATLAB's Cn0/PNR0 407 (same pixels: 407) | replay on this port 407 | max |Cn0 - port| 0.0015
+  090826-pnb102-497um-3z | init-only | min_corr 0.70 min_pnr 7.0 bd 10 | real pass-1 attempts 379 (initialised in pass 1: 153), all passes: attempts 812, initialised 346 | replay on MATLAB's Cn0/PNR0 379 (same pixels: 379) | replay on this port 379 | max |Cn0 - port| 0.0015
+  090826-pnb102-497um-3z | init-only | min_corr 0.80 min_pnr 7.0 bd 10 | real pass-1 attempts 282 (initialised in pass 1: 105), all passes: attempts 399, initialised 155 | replay on MATLAB's Cn0/PNR0 282 (same pixels: 282) | replay on this port 282 | max |Cn0 - port| 0.0015
+  090826-pnb105-385um-35 | init-only | min_corr 0.60 min_pnr 6.1 bd 10 | real pass-1 attempts 276 (initialised in pass 1: 125), all passes: attempts 782, initialised 368 | replay on MATLAB's Cn0/PNR0 276 (same pixels: 276) | replay on this port 276 | max |Cn0 - port| 0.0019
+  090826-pnb105-385um-35 | init-only | min_corr 0.70 min_pnr 6.1 bd 10 | real pass-1 attempts 244 (initialised in pass 1: 98), all passes: attempts 453, initialised 186 | replay on MATLAB's Cn0/PNR0 244 (same pixels: 244) | replay on this port 244 | max |Cn0 - port| 0.0019
+  090826-pnb105-385um-35 | init-only | min_corr 0.80 min_pnr 6.1 bd 10 | real pass-1 attempts 155 (initialised in pass 1: 63), all passes: attempts 209, initialised 84 | replay on MATLAB's Cn0/PNR0 155 (same pixels: 155) | replay on this port 155 | max |Cn0 - port| 0.0019
+  090826-pnb109-412um-25 | init-only | min_corr 0.60 min_pnr 6.4 bd 10 | real pass-1 attempts 390 (initialised in pass 1: 161), all passes: attempts 1044, initialised 473 | replay on MATLAB's Cn0/PNR0 390 (same pixels: 390) | replay on this port 390 | max |Cn0 - port| 0.0025
+  090826-pnb109-412um-25 | init-only | min_corr 0.70 min_pnr 6.4 bd 10 | real pass-1 attempts 344 (initialised in pass 1: 137), all passes: attempts 576, initialised 241 | replay on MATLAB's Cn0/PNR0 344 (same pixels: 344) | replay on this port 344 | max |Cn0 - port| 0.0025
+  090826-pnb109-412um-25 | init-only | min_corr 0.80 min_pnr 6.4 bd 10 | real pass-1 attempts 223 (initialised in pass 1: 79), all passes: attempts 261, initialised 95 | replay on MATLAB's Cn0/PNR0 223 (same pixels: 223) | replay on this port 223 | max |Cn0 - port| 0.0025
+  090826-pnb99-463um-3z- | init-only | min_corr 0.60 min_pnr 6.1 bd 10 | real pass-1 attempts 392 (initialised in pass 1: 159), all passes: attempts 970, initialised 424 | replay on MATLAB's Cn0/PNR0 392 (same pixels: 392) | replay on this port 392 | max |Cn0 - port| 0.0018
+  090826-pnb99-463um-3z- | init-only | min_corr 0.70 min_pnr 6.1 bd 10 | real pass-1 attempts 290 (initialised in pass 1: 114), all passes: attempts 520, initialised 205 | replay on MATLAB's Cn0/PNR0 290 (same pixels: 290) | replay on this port 290 | max |Cn0 - port| 0.0018
+  090826-pnb99-463um-3z- | init-only | min_corr 0.80 min_pnr 6.1 bd 10 | real pass-1 attempts 199 (initialised in pass 1: 75), all passes: attempts 240, initialised 90 | replay on MATLAB's Cn0/PNR0 199 (same pixels: 199) | replay on this port 199 | max |Cn0 - port| 0.0018
+
+replay (on MATLAB's own images) vs real pass-1 attempts: max relative error 0.000 over 18 (session, threshold) cases; within 10% in 18
+replay (on this port's images) vs real pass-1 attempts: max relative error 0.000 over 18 cases; within 10% in 18
+initialised components / pass-1 attempts: median 0.80 [0.43-1.33]; Spearman(pass-1 attempts, initialised) 0.77 (N 18)
+how the count moves with min_corr inside a session (init-only runs): pass-1 attempts and initialised components
+  090826-pnb102-497um-3z: 0.60: 407 attempts -> 512 components; 0.70: 379 attempts -> 346 components; 0.80: 282 attempts -> 155 components
+  090826-pnb105-385um-35: 0.60: 276 attempts -> 368 components; 0.70: 244 attempts -> 186 components; 0.80: 155 attempts -> 84 components
+  090826-pnb109-412um-25: 0.60: 390 attempts -> 473 components; 0.70: 344 attempts -> 241 components; 0.80: 223 attempts -> 95 components
+  090826-pnb99-463um-3z-: 0.60: 392 attempts -> 424 components; 0.70: 290 attempts -> 205 components; 0.80: 199 attempts -> 90 components

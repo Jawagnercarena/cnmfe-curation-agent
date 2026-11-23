@@ -1,0 +1,138 @@
+sessions in cache: 111
+
+== A. cell count alone: the statistic on a sub-field minus on the full field ==
+  all sessions           half    pk10 : N 444 sub-fields | diff median -0.025 [p10 -0.080, p90 -0.005] | rule shift (x 0.444) median -0.011; |shift| > 0.02 in 25%
+  all sessions           half    pk25 : N 444 sub-fields | diff median -0.049 [p10 -0.107, p90 -0.014] | rule shift (x 0.444) median -0.022; |shift| > 0.02 in 53%
+  all sessions           half    pk50 : N 444 sub-fields | diff median -0.084 [p10 -0.163, p90 -0.035] | rule shift (x 0.444) median -0.037; |shift| > 0.02 in 81%
+  all sessions           quarter pk10 : N 444 sub-fields | diff median -0.065 [p10 -0.170, p90 -0.022] | rule shift (x 0.444) median -0.029; |shift| > 0.02 in 69%
+  all sessions           quarter pk25 : N 444 sub-fields | diff median -0.138 [p10 -0.263, p90 -0.064] | rule shift (x 0.444) median -0.061; |shift| > 0.02 in 96%
+  all sessions           quarter pk50 : N 410 sub-fields | diff median -0.245 [p10 -0.333, p90 -0.112] | rule shift (x 0.444) median -0.109; |shift| > 0.02 in 98%
+  6odor                  half    pk10 : N 160 sub-fields | diff median -0.021 [p10 -0.081, p90 -0.002] | rule shift (x 0.444) median -0.009; |shift| > 0.02 in 23%
+  6odor                  half    pk25 : N 160 sub-fields | diff median -0.043 [p10 -0.114, p90 -0.010] | rule shift (x 0.444) median -0.019; |shift| > 0.02 in 48%
+  6odor                  half    pk50 : N 160 sub-fields | diff median -0.084 [p10 -0.179, p90 -0.039] | rule shift (x 0.444) median -0.037; |shift| > 0.02 in 83%
+  6odor                  quarter pk10 : N 160 sub-fields | diff median -0.057 [p10 -0.179, p90 -0.014] | rule shift (x 0.444) median -0.025; |shift| > 0.02 in 61%
+  6odor                  quarter pk25 : N 160 sub-fields | diff median -0.132 [p10 -0.285, p90 -0.069] | rule shift (x 0.444) median -0.059; |shift| > 0.02 in 94%
+  6odor                  quarter pk50 : N 144 sub-fields | diff median -0.279 [p10 -0.344, p90 -0.156] | rule shift (x 0.444) median -0.124; |shift| > 0.02 in 100%
+  3odor dim/hazy noted   half    pk10 : N  40 sub-fields | diff median -0.033 [p10 -0.122, p90 -0.007] | rule shift (x 0.444) median -0.015; |shift| > 0.02 in 40%
+  3odor dim/hazy noted   half    pk25 : N  40 sub-fields | diff median -0.055 [p10 -0.084, p90 -0.013] | rule shift (x 0.444) median -0.025; |shift| > 0.02 in 57%
+  3odor dim/hazy noted   half    pk50 : N  40 sub-fields | diff median -0.039 [p10 -0.118, p90 -0.011] | rule shift (x 0.444) median -0.017; |shift| > 0.02 in 38%
+  3odor dim/hazy noted   quarter pk10 : N  40 sub-fields | diff median -0.088 [p10 -0.179, p90 -0.039] | rule shift (x 0.444) median -0.039; |shift| > 0.02 in 70%
+  3odor dim/hazy noted   quarter pk25 : N  40 sub-fields | diff median -0.098 [p10 -0.194, p90 -0.046] | rule shift (x 0.444) median -0.043; |shift| > 0.02 in 90%
+  3odor dim/hazy noted   quarter pk50 : N  36 sub-fields | diff median -0.068 [p10 -0.249, p90 -0.033] | rule shift (x 0.444) median -0.030; |shift| > 0.02 in 81%
+
+== B. same-field pairs ==
+  within-animal pairs registered: 988; also in the earlier table: 988
+  earlier score > 0.354 (its same-field cut): 236 pairs; of those own score >= 0.30: 235
+  earlier score < 0.202 (its new-field cut): 566 pairs; of those own score >= 0.30: 0
+  Spearman(own score, earlier score) = 0.99
+  all same-field pairs                 N 235 pairs (107 sessions): Spearman(d pk10, d noise_rel) -0.56 | Spearman(d pk25, d noise_rel) -0.66 | Spearman(d pk50, d noise_rel) -0.67 | Spearman(d pk100, d noise_rel) -0.54 |
+  3odor-3odor                          N  97 pairs (70 sessions): Spearman(d pk10, d noise_rel) -0.66 | Spearman(d pk25, d noise_rel) -0.69 | Spearman(d pk50, d noise_rel) -0.73 | Spearman(d pk100, d noise_rel) -0.64 |
+  6odor-3odor                          N  95 pairs (71 sessions): Spearman(d pk10, d noise_rel) -0.56 | Spearman(d pk25, d noise_rel) -0.74 | Spearman(d pk50, d noise_rel) -0.74 | Spearman(d pk100, d noise_rel) -0.64 |
+  pairs with |noise_rel diff| >= 0.05  N  37 pairs (34 sessions): Spearman(d pk10, d noise_rel) -0.94 | Spearman(d pk25, d noise_rel) -0.96 | Spearman(d pk50, d noise_rel) -0.93 | Spearman(d pk100, d noise_rel) -0.85 |
+  fields with >= 4 sessions: 10 (sizes [4, 5, 6, 8, 8, 10, 11, 11, 11, 16])
+    pnb102 x10: noise_rel 0.100-0.251, pk50 0.648-0.907, within-field Spearman(pk50, noise_rel) +0.18
+    pnb104 x6: noise_rel 0.095-0.118, pk50 0.808-0.905, within-field Spearman(pk50, noise_rel) -0.37
+    pnb105 x16: noise_rel 0.070-0.318, pk50 0.609-0.951, within-field Spearman(pk50, noise_rel) -0.78
+    pnb106 x11: noise_rel 0.068-0.130, pk50 0.812-0.927, within-field Spearman(pk50, noise_rel) -0.82
+    pnb109 x11: noise_rel 0.062-0.122, pk50 0.871-0.927, within-field Spearman(pk50, noise_rel) -0.88
+    pnb99 x11: noise_rel 0.080-0.354, pk50 0.599-0.909, within-field Spearman(pk50, noise_rel) -0.99
+    pnb102 x8: noise_rel 0.072-0.149, pk50 0.787-0.884, within-field Spearman(pk50, noise_rel) -0.86
+    pnb106 x5: noise_rel 0.076-0.132, pk50 0.805-0.875, within-field Spearman(pk50, noise_rel) -0.80
+    pnb109 x4: noise_rel 0.063-0.104, pk50 0.874-0.922, within-field Spearman(pk50, noise_rel) -0.80
+    pnb104 x8: noise_rel 0.092-0.118, pk50 0.791-0.913, within-field Spearman(pk50, noise_rel) -0.69
+  pooled within-field (field means removed): Spearman(pk50, noise_rel) = -0.77, N 90 sessions in 10 fields; median of per-field rho -0.80
+
+== C. labelled pilots: pk50 vs the number of kept cells ==
+  082626-pnb102-479um-3z: kept  44 of 215 | noise_rel 0.109 | pk10 0.971 pk25 0.936 pk50 0.896 pk100 0.823 | rule 0.704 | ran at 0.70
+  082626-pnb104-404um-3z: kept  32 of 176 | noise_rel 0.095 | pk10 0.959 pk25 0.941 pk50 0.891 pk100 0.806 | rule 0.701 | ran at 0.70
+  082626-pnb105-397um-35: kept  24 of 266 | noise_rel 0.086 | pk10 0.985 pk25 0.976 pk50 0.951 pk100 0.869 | rule 0.728 | ran at 0.70
+  082626-pnb106-205um-4z: kept  10 of 228 | noise_rel 0.082 | pk10 0.956 pk25 0.930 pk50 0.897 pk100 0.829 | rule 0.704 | ran at 0.70
+  082626-pnb109-398um-26: kept  49 of 196 | noise_rel 0.122 | pk10 0.965 pk25 0.927 pk50 0.884 pk100 0.786 | rule 0.698 | ran at 0.70
+  082626-pnb99-399um-3z-: kept  29 of  81 | noise_rel 0.136 | pk10 0.935 pk25 0.893 pk50 0.835 pk100 0.701 | rule 0.677 | ran at 0.70
+  082726-pnb102-497um-3z: kept  40 of 239 | noise_rel 0.107 | pk10 0.956 pk25 0.919 pk50 0.877 pk100 0.804 | rule 0.695 | ran at 0.70
+  082726-pnb104-416um-3z: kept  31 of 170 | noise_rel 0.098 | pk10 0.960 pk25 0.928 pk50 0.895 pk100 0.733 | rule 0.703 | ran at 0.70
+  082726-pnb105-391um-35: kept  34 of 169 | noise_rel 0.121 | pk10 0.944 pk25 0.861 pk50 0.759 pk100 0.630 | rule 0.643 | ran at 0.60
+  082726-pnb106-201um-4z: kept  11 of 184 | noise_rel 0.083 | pk10 0.941 pk25 0.892 pk50 0.855 pk100 0.769 | rule 0.685 | ran at 0.70
+  082726-pnb109-405um-25: kept  57 of 205 | noise_rel 0.122 | pk10 0.963 pk25 0.924 pk50 0.871 pk100 0.779 | rule 0.693 | ran at 0.70
+  082826-pnb99-436um-3z-: kept  49 of 198 | noise_rel 0.080 | pk10 0.964 pk25 0.945 pk50 0.909 pk100 0.776 | rule 0.709 | ran at 0.70
+  Spearman(pk10, kept count) = +0.47 (p 0.121); Spearman(pk10, noise_rel) = -0.10, N 12
+  Spearman(pk25, kept count) = +0.05 (p 0.888); Spearman(pk25, noise_rel) = -0.52, N 12
+  Spearman(pk50, kept count) = -0.07 (p 0.820); Spearman(pk50, noise_rel) = -0.64, N 12
+  Spearman(pk100, kept count) = -0.11 (p 0.729); Spearman(pk100, noise_rel) = -0.36, N 12
+
+== D. the pilots' kept cells tracked into other sessions of the same field ==
+pilot -> target | target group / note | own score, shift | noise_rel | pk50 | rule | min_pnr (exact pre-pass) | kept cells inside the frame | can seed at 0.70 / rule / floor (min_pnr as estimated) | same with min_pnr 3 | median peak Cn of the tracked cells
+  082626-pnb102 -> 082626-pnb102-479um-3z | 6odor 6odor | 1.00 (+0, +0) | 0.109 | 0.896 | 0.70 | 7.3 | 42 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.936
+  082626-pnb102 -> 092426-pnb102-470um-3z | 3odor before 9/29 | 0.48 (-30, -31) | 0.106 | 0.861 | 0.69 | 6.4 | 40 | 0.97 / 0.97 / 1.00 | 0.97 / 0.97 / 1.00 | 0.874
+  082626-pnb102 -> 092326-pnb102-475um-3z | 3odor before 9/29 | 0.54 (-32, -12) | 0.106 | 0.865 | 0.70 | 6.3 | 42 | 0.93 / 0.93 / 0.95 | 0.93 / 0.93 / 1.00 | 0.913
+  082626-pnb102 -> 082726-pnb102-497um-3z | 6odor 6odor | 0.78 (+7, +0) | 0.107 | 0.877 | 0.70 | 6.4 | 42 | 0.93 / 0.93 / 1.00 | 0.93 / 0.93 / 1.00 | 0.917
+  082626-pnb104 -> 082626-pnb104-404um-3z | 6odor 6odor | 1.00 (+0, +0) | 0.095 | 0.891 | 0.70 | 6.5 | 31 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.946
+  082626-pnb104 -> 082726-pnb104-416um-3z | 6odor 6odor | 0.77 (-2, +11) | 0.098 | 0.895 | 0.70 | 6.2 | 29 | 0.86 / 0.86 / 1.00 | 0.86 / 0.86 / 1.00 | 0.875
+  082626-pnb104 -> 090826-pnb104-425um-3z | 6odor 6odor | 0.41 (+7, -23) | 0.108 | 0.905 | 0.71 | 6.6 | 31 | 0.90 / 0.90 / 1.00 | 0.90 / 0.90 / 1.00 | 0.876
+  082626-pnb105 -> 082626-pnb105-397um-35 | 6odor 6odor | 1.00 (+0, +0) | 0.086 | 0.951 | 0.73 | 8.4 | 24 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.978
+  082626-pnb105 -> 100226-pnb105-373um-35 | 3odor after cleaning | 0.63 (-10, +7) | 0.070 | 0.866 | 0.69 | 6.1 | 24 | 0.96 / 0.96 / 1.00 | 0.96 / 0.96 / 1.00 | 0.943
+  082626-pnb105 -> 090826-pnb105-385um-35 | 6odor 6odor | 0.45 (+17, -20) | 0.079 | 0.865 | 0.69 | 6.1 | 24 | 0.96 / 0.96 / 1.00 | 0.96 / 0.96 / 1.00 | 0.936
+  082626-pnb105 -> 090726-pnb105-404um-35 | 6odor 6odor | 0.44 (+16, -28) | 0.081 | 0.894 | 0.70 | 6.4 | 23 | 0.96 / 0.96 / 0.96 | 0.96 / 0.96 / 1.00 | 0.949
+  082626-pnb105 -> 100926-pnb105-375um-35 | 3odor after cleaning | 0.47 (-14, +18) | 0.084 | 0.894 | 0.70 | 6.4 | 24 | 0.92 / 0.92 / 0.92 | 0.92 / 0.92 / 1.00 | 0.933
+  082626-pnb105 -> 092326-pnb105-420um-35 | 3odor before 9/29 | 0.69 (-13, +4) | 0.085 | 0.865 | 0.70 | 6.4 | 24 | 0.88 / 0.88 / 0.92 | 0.92 / 0.92 / 0.96 | 0.911
+  082626-pnb105 -> 090926-pnb105-394um-35 | 6odor 6odor | 0.47 (+24, -17) | 0.089 | 0.907 | 0.71 | 6.4 | 24 | 0.96 / 0.96 / 0.96 | 0.96 / 0.96 / 1.00 | 0.955
+  082626-pnb105 -> 100326-pnb105-363um-35 | 3odor after cleaning | 0.55 (-22, +5) | 0.090 | 0.837 | 0.68 | 5.7 | 24 | 0.88 / 0.92 / 1.00 | 0.88 / 0.92 / 1.00 | 0.901
+  082626-pnb105 -> 101526-pnb105-374um-35 | 3odor after cleaning | 0.52 (-17, +6) | 0.090 | 0.864 | 0.69 | 6.0 | 24 | 0.88 / 0.88 / 0.96 | 0.88 / 0.88 / 1.00 | 0.936
+  082626-pnb105 -> 091026-pnb105-353um-35 | 6odor 6odor | 0.41 (+6, -23) | 0.095 | 0.859 | 0.69 | 6.4 | 24 | 0.83 / 0.83 / 0.96 | 0.83 / 0.88 / 0.96 | 0.957
+  082626-pnb105 -> 092426-pnb105-404um-35 | 3odor before 9/29 | 0.65 (-13, +2) | 0.104 | 0.856 | 0.69 | 6.2 | 24 | 0.92 / 0.92 / 0.96 | 0.92 / 0.92 / 1.00 | 0.928
+  082626-pnb105 -> 082726-pnb105-391um-35 | 6odor 6odor | 0.44 (+37, +1) | 0.121 | 0.759 | 0.64 | 5.7 | 23 | 0.65 / 0.74 / 0.87 | 0.65 / 0.74 / 0.91 | 0.848
+  082626-pnb106 -> 082626-pnb106-205um-4z | 6odor 6odor | 1.00 (+0, +0) | 0.082 | 0.897 | 0.70 | 6.9 | 10 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.978
+  082626-pnb106 -> 082726-pnb106-201um-4z | 6odor 6odor | 0.81 (-9, -7) | 0.083 | 0.855 | 0.69 | 6.2 | 10 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.962
+  082626-pnb106 -> 092326-pnb106-230um-4z | 3odor before 9/29 | 0.41 (-44, -18) | 0.083 | 0.839 | 0.69 | 6.2 | 8 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.913
+  082626-pnb109 -> 082626-pnb109-398um-26 | 6odor 6odor | 1.00 (+0, +0) | 0.122 | 0.884 | 0.70 | 6.6 | 49 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.915
+  082626-pnb109 -> 100426-pnb109-424um-25 | 3odor after cleaning | 0.70 (-6, -36) | 0.062 | 0.927 | 0.72 | 7.4 | 48 | 0.98 / 0.96 / 1.00 | 0.98 / 0.96 / 1.00 | 0.945
+  082626-pnb109 -> 100126-pnb109-440um-25 | 3odor after cleaning | 0.74 (-1, -35) | 0.066 | 0.895 | 0.70 | 6.6 | 49 | 0.94 / 0.94 / 1.00 | 0.94 / 0.94 / 1.00 | 0.932
+  082626-pnb109 -> 101226-pnb109-427um-25 | 3odor after cleaning | 0.67 (-9, -37) | 0.068 | 0.922 | 0.72 | 7.3 | 48 | 0.98 / 0.98 / 1.00 | 0.98 / 0.98 / 1.00 | 0.938
+  082626-pnb109 -> 092326-pnb109-360um-25 | 3odor before 9/29 | 0.38 (+0, -35) | 0.074 | 0.901 | 0.72 | 6.7 | 49 | 0.92 / 0.92 / 0.94 | 0.92 / 0.92 / 1.00 | 0.934
+  082626-pnb109 -> 101526-pnb109-400um-25 | 3odor after cleaning | 0.57 (-11, -37) | 0.075 | 0.907 | 0.71 | 6.9 | 48 | 0.92 / 0.92 / 0.96 | 0.92 / 0.92 / 1.00 | 0.909
+  082626-pnb109 -> 090926-pnb109-385um-25 | 6odor 6odor | 0.55 (+10, -52) | 0.088 | 0.892 | 0.70 | 6.5 | 48 | 0.96 / 0.96 / 0.98 | 0.98 / 0.98 / 1.00 | 0.917
+  082626-pnb109 -> 090826-pnb109-412um-25 | 6odor 6odor | 0.72 (+8, -26) | 0.089 | 0.890 | 0.70 | 6.4 | 49 | 0.96 / 0.96 / 1.00 | 0.96 / 0.96 / 1.00 | 0.914
+  082626-pnb109 -> 090726-pnb109-398um-25 | 6odor 6odor | 0.53 (+1, -17) | 0.103 | 0.892 | 0.70 | 6.3 | 49 | 0.92 / 0.92 / 0.98 | 0.92 / 0.92 / 0.98 | 0.919
+  082626-pnb109 -> 082726-pnb109-405um-25 | 6odor 6odor | 0.83 (+8, -2) | 0.122 | 0.871 | 0.69 | 6.5 | 49 | 0.98 / 0.98 / 1.00 | 0.98 / 0.98 / 1.00 | 0.910
+  082626-pnb99- -> 082626-pnb99-399um-3z- | 6odor 6odor | 1.00 (+0, +0) | 0.136 | 0.835 | 0.68 | 5.9 | 29 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.914
+  082626-pnb99- -> 082826-pnb99-436um-3z- | 6odor 6odor | 0.54 (-15, +1) | 0.080 | 0.909 | 0.71 | 6.4 | 29 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.931
+  082626-pnb99- -> 092426-pnb99-396um-3z- | 3odor before 9/29 | 0.74 (-18, +3) | 0.131 | 0.842 | 0.68 | 6.0 | 29 | 0.93 / 0.93 / 1.00 | 0.93 / 0.93 / 1.00 | 0.907
+  082626-pnb99- -> 092326-pnb99-398um-3z- | 3odor before 9/29 | 0.69 (-18, +10) | 0.143 | 0.791 | 0.67 | 6.0 | 29 | 0.76 / 0.83 / 0.90 | 0.76 / 0.83 / 1.00 | 0.877
+  082626-pnb99- -> 092926-pnb99-518um-3z- | 3odor dim/hazy noted | 0.58 (-28, -12) | 0.167 | 0.747 | 0.64 | 5.8 | 29 | 0.55 / 0.66 / 0.86 | 0.55 / 0.69 / 1.00 | 0.767
+  082626-pnb99- -> 100226-pnb99-392um-3z- | 3odor after cleaning | 0.67 (-22, -2) | 0.216 | 0.736 | 0.63 | 5.4 | 29 | 0.79 / 0.90 / 1.00 | 0.79 / 0.90 / 1.00 | 0.808
+  082626-pnb99- -> 100926-pnb99-392um-3z- | 3odor after cleaning | 0.58 (-18, -10) | 0.226 | 0.707 | 0.62 | 5.4 | 29 | 0.66 / 0.90 / 0.97 | 0.66 / 0.90 / 0.97 | 0.801
+  082726-pnb102 -> 082726-pnb102-497um-3z | 6odor 6odor | 1.00 (+0, +0) | 0.107 | 0.877 | 0.70 | 6.4 | 38 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.930
+  082726-pnb102 -> 092326-pnb102-475um-3z | 3odor before 9/29 | 0.44 (-39, -12) | 0.106 | 0.865 | 0.70 | 6.3 | 38 | 0.89 / 0.89 / 0.95 | 0.89 / 0.89 / 1.00 | 0.884
+  082726-pnb102 -> 082626-pnb102-479um-3z | 6odor 6odor | 0.78 (-7, +0) | 0.109 | 0.896 | 0.70 | 7.3 | 38 | 0.97 / 0.97 / 1.00 | 0.97 / 0.97 / 1.00 | 0.929
+  082726-pnb104 -> 082726-pnb104-416um-3z | 6odor 6odor | 1.00 (+0, +0) | 0.098 | 0.895 | 0.70 | 6.2 | 29 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.911
+  082726-pnb104 -> 082626-pnb104-404um-3z | 6odor 6odor | 0.77 (+2, -11) | 0.095 | 0.891 | 0.70 | 6.5 | 31 | 0.94 / 0.94 / 1.00 | 0.94 / 0.94 / 1.00 | 0.927
+  082726-pnb104 -> 090826-pnb104-425um-3z | 6odor 6odor | 0.50 (+9, -34) | 0.108 | 0.905 | 0.71 | 6.6 | 31 | 0.87 / 0.87 / 0.97 | 0.87 / 0.87 / 0.97 | 0.875
+  082726-pnb105 -> 082726-pnb105-391um-35 | 6odor 6odor | 1.00 (+0, +0) | 0.121 | 0.759 | 0.64 | 5.7 | 34 | 0.97 / 1.00 / 1.00 | 0.97 / 1.00 / 1.00 | 0.932
+  082726-pnb105 -> 082626-pnb105-397um-35 | 6odor 6odor | 0.44 (-37, -1) | 0.086 | 0.951 | 0.73 | 8.4 | 34 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.977
+  082726-pnb105 -> 090926-pnb105-394um-35 | 6odor 6odor | 0.41 (-13, -18) | 0.089 | 0.907 | 0.71 | 6.4 | 34 | 0.94 / 0.94 / 0.97 | 0.94 / 0.94 / 1.00 | 0.955
+  082726-pnb106 -> 082726-pnb106-201um-4z | 6odor 6odor | 1.00 (+0, +0) | 0.083 | 0.855 | 0.69 | 6.2 | 11 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.941
+  082726-pnb106 -> 092426-pnb106-207um-4z | 3odor before 9/29 | 0.39 (-42, -8) | 0.082 | 0.911 | 0.71 | 6.9 | 9 | 0.89 / 0.89 / 1.00 | 0.89 / 0.89 / 1.00 | 0.872
+  082726-pnb106 -> 082626-pnb106-205um-4z | 6odor 6odor | 0.81 (+9, +7) | 0.082 | 0.897 | 0.70 | 6.9 | 11 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.961
+  082726-pnb106 -> 092326-pnb106-230um-4z | 3odor before 9/29 | 0.49 (-35, -11) | 0.083 | 0.839 | 0.69 | 6.2 | 9 | 0.89 / 0.89 / 0.89 | 0.89 / 0.89 / 1.00 | 0.909
+  082726-pnb109 -> 082726-pnb109-405um-25 | 6odor 6odor | 1.00 (+0, +0) | 0.122 | 0.871 | 0.69 | 6.5 | 57 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.917
+  082726-pnb109 -> 100426-pnb109-424um-25 | 3odor after cleaning | 0.75 (-15, -34) | 0.062 | 0.927 | 0.72 | 7.4 | 54 | 1.00 / 0.98 / 1.00 | 1.00 / 0.98 / 1.00 | 0.942
+  082726-pnb109 -> 100126-pnb109-440um-25 | 3odor after cleaning | 0.82 (-9, -34) | 0.066 | 0.895 | 0.70 | 6.6 | 54 | 0.96 / 0.96 / 1.00 | 0.96 / 0.96 / 1.00 | 0.931
+  082726-pnb109 -> 101226-pnb109-427um-25 | 3odor after cleaning | 0.66 (-18, -35) | 0.068 | 0.922 | 0.72 | 7.3 | 54 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.946
+  082726-pnb109 -> 101526-pnb109-400um-25 | 3odor after cleaning | 0.47 (-19, -36) | 0.075 | 0.907 | 0.71 | 6.9 | 54 | 0.94 / 0.94 / 0.94 | 0.94 / 0.94 / 1.00 | 0.901
+  082726-pnb109 -> 090926-pnb109-385um-25 | 6odor 6odor | 0.51 (+2, -50) | 0.088 | 0.892 | 0.70 | 6.5 | 53 | 0.92 / 0.92 / 1.00 | 0.94 / 0.94 / 1.00 | 0.910
+  082726-pnb109 -> 090826-pnb109-412um-25 | 6odor 6odor | 0.72 (+0, -24) | 0.089 | 0.890 | 0.70 | 6.4 | 55 | 0.96 / 0.96 / 1.00 | 0.96 / 0.96 / 1.00 | 0.928
+  082726-pnb109 -> 090726-pnb109-398um-25 | 6odor 6odor | 0.47 (-7, -15) | 0.103 | 0.892 | 0.70 | 6.3 | 56 | 0.88 / 0.88 / 0.98 | 0.88 / 0.88 / 0.98 | 0.909
+  082726-pnb109 -> 082626-pnb109-398um-26 | 6odor 6odor | 0.83 (-8, +2) | 0.122 | 0.884 | 0.70 | 6.6 | 56 | 0.96 / 0.96 / 0.98 | 0.96 / 0.96 / 1.00 | 0.917
+  082826-pnb99- -> 082826-pnb99-436um-3z- | 6odor 6odor | 1.00 (+0, +0) | 0.080 | 0.909 | 0.71 | 6.4 | 49 | 1.00 / 1.00 / 1.00 | 1.00 / 1.00 / 1.00 | 0.945
+  082826-pnb99- -> 090626-pnb99-459um-3z- | 6odor 6odor | 0.54 (+6, +4) | 0.093 | 0.902 | 0.71 | 6.3 | 49 | 0.98 / 0.98 / 1.00 | 0.98 / 0.98 / 1.00 | 0.930
+  082826-pnb99- -> 090926-pnb99-463um-3z- | 6odor 6odor | 0.52 (+15, -6) | 0.100 | 0.903 | 0.71 | 6.5 | 49 | 0.98 / 0.98 / 1.00 | 0.98 / 0.98 / 1.00 | 0.941
+  082826-pnb99- -> 090826-pnb99-463um-3z- | 6odor 6odor | 0.47 (+8, -3) | 0.109 | 0.897 | 0.70 | 6.1 | 49 | 0.98 / 0.98 / 1.00 | 0.98 / 0.98 / 1.00 | 0.921
+  082826-pnb99- -> 092426-pnb99-396um-3z- | 3odor before 9/29 | 0.43 (-3, +2) | 0.131 | 0.842 | 0.68 | 6.0 | 49 | 0.82 / 0.84 / 0.94 | 0.82 / 0.84 / 1.00 | 0.871
+  082826-pnb99- -> 082626-pnb99-399um-3z- | 6odor 6odor | 0.54 (+15, -1) | 0.136 | 0.835 | 0.68 | 5.9 | 49 | 0.82 / 0.88 / 0.98 | 0.82 / 0.88 / 1.00 | 0.857
+  082826-pnb99- -> 092326-pnb99-398um-3z- | 3odor before 9/29 | 0.38 (-4, +9) | 0.143 | 0.791 | 0.67 | 6.0 | 49 | 0.59 / 0.63 / 0.71 | 0.59 / 0.63 / 0.90 | 0.776
+  082826-pnb99- -> 092926-pnb99-518um-3z- | 3odor dim/hazy noted | 0.63 (-13, -13) | 0.167 | 0.747 | 0.64 | 5.8 | 49 | 0.53 / 0.65 / 0.80 | 0.53 / 0.65 / 0.94 | 0.745
+  082826-pnb99- -> 100226-pnb99-392um-3z- | 3odor after cleaning | 0.52 (-8, -3) | 0.216 | 0.736 | 0.63 | 5.4 | 49 | 0.67 / 0.80 / 0.86 | 0.67 / 0.80 / 0.88 | 0.805
+  bright targets (noise_rel < 0.15)  N 53 pilot-target pairs: seedable at 0.70 median 0.94 | at the rule 0.94 | at the floor 1.00 | (min_pnr 3: 0.94 / 0.94 / 1.00) | rule median 0.70
+  middle (0.15-0.19)                 N  2 pilot-target pairs: seedable at 0.70 median 0.54 | at the rule 0.65 | at the floor 0.83 | (min_pnr 3: 0.54 / 0.67 / 0.97) | rule median 0.64
+  dim targets (noise_rel >= 0.19)    N  3 pilot-target pairs: seedable at 0.70 median 0.67 | at the rule 0.90 | at the floor 0.97 | (min_pnr 3: 0.67 / 0.90 / 0.97) | rule median 0.63
+  dim/hazy noted                     N  2 pilot-target pairs: seedable at 0.70 median 0.54 | at the rule 0.65 | at the floor 0.83 | (min_pnr 3: 0.54 / 0.67 / 0.97) | rule median 0.64

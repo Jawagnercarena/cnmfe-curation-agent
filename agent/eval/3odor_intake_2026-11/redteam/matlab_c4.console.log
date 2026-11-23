@@ -1,0 +1,45 @@
+2026-11-11 17:52:12  c4 start T 2392 seed 1
+2026-11-11 17:52:12    [MATLAB] Starting MATLAB...
+2026-11-11 17:52:21    [MATLAB] [C4] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\ca_source_extraction\endoscope\greedyROI_endoscope.m
+2026-11-11 17:52:31    [MATLAB] 10 neurons have been detected
+2026-11-11 17:52:38    [MATLAB] [C4] T 2392 seed 1 min_corr 0.550 min_pnr 3.0: init components 11, pick components 0 (17 s)
+2026-11-11 17:52:48    [MATLAB] [C4] T 2392 seed 1 min_corr 0.575 min_pnr 3.0: init components 1, pick components 0 (10 s)
+2026-11-11 17:52:58    [MATLAB] [C4] T 2392 seed 1 min_corr 0.600 min_pnr 3.0: init components 0, pick components 0 (10 s)
+2026-11-11 17:52:59    [MATLAB] [C4] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c4_T2392_s1.mat
+2026-11-11 17:53:03    [MATLAB] Finished successfully in 0.8 min.
+2026-11-11 17:53:03  c4 T 2392 seed 1: returned True, output present True
+2026-11-11 17:53:03  c4 start T 2392 seed 2
+2026-11-11 17:53:03    [MATLAB] Starting MATLAB...
+2026-11-11 17:53:09    [MATLAB] [C4] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\ca_source_extraction\endoscope\greedyROI_endoscope.m
+2026-11-11 17:53:17    [MATLAB] [C4] T 2392 seed 2 min_corr 0.550 min_pnr 3.0: init components 6, pick components NaN (8 s)
+2026-11-11 17:53:23    [MATLAB] [C4] T 2392 seed 2 min_corr 0.575 min_pnr 3.0: init components 0, pick components NaN (6 s)
+2026-11-11 17:53:28    [MATLAB] [C4] T 2392 seed 2 min_corr 0.600 min_pnr 3.0: init components 0, pick components NaN (5 s)
+2026-11-11 17:53:28    [MATLAB] [C4] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c4_T2392_s2.mat
+2026-11-11 17:53:31    [MATLAB] Finished successfully in 0.5 min.
+2026-11-11 17:53:31  c4 T 2392 seed 2: returned True, output present True
+2026-11-11 17:53:31  c4 start T 6370 seed 1
+2026-11-11 17:53:31    [MATLAB] Starting MATLAB...
+2026-11-11 17:53:40    [MATLAB] [C4] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\ca_source_extraction\endoscope\greedyROI_endoscope.m
+2026-11-11 17:54:14    [MATLAB] [C4] T 6370 seed 1 min_corr 0.530 min_pnr 3.0: init components 2, pick components 0 (33 s)
+2026-11-11 17:54:46    [MATLAB] [C4] T 6370 seed 1 min_corr 0.550 min_pnr 3.0: init components 0, pick components 0 (32 s)
+2026-11-11 17:55:18    [MATLAB] [C4] T 6370 seed 1 min_corr 0.575 min_pnr 3.0: init components 0, pick components 0 (31 s)
+2026-11-11 17:55:18    [MATLAB] [C4] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c4_T6370_s1.mat
+2026-11-11 17:55:22    [MATLAB] Finished successfully in 1.8 min.
+2026-11-11 17:55:22  c4 T 6370 seed 1: returned True, output present True
+2026-11-11 17:55:22  c4 start T 6370 seed 2
+2026-11-11 17:55:22    [MATLAB] Starting MATLAB...
+2026-11-11 17:55:31    [MATLAB] [C4] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\ca_source_extraction\endoscope\greedyROI_endoscope.m
+2026-11-11 17:55:46    [MATLAB] [C4] T 6370 seed 2 min_corr 0.530 min_pnr 3.0: init components 1, pick components NaN (15 s)
+2026-11-11 17:56:00    [MATLAB] [C4] T 6370 seed 2 min_corr 0.550 min_pnr 3.0: init components 0, pick components NaN (13 s)
+2026-11-11 17:56:12    [MATLAB] [C4] T 6370 seed 2 min_corr 0.575 min_pnr 3.0: init components 0, pick components NaN (13 s)
+2026-11-11 17:56:12    [MATLAB] [C4] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c4_T6370_s2.mat
+2026-11-11 17:56:16    [MATLAB] Finished successfully in 0.9 min.
+2026-11-11 17:56:16  c4 T 6370 seed 2: returned True, output present True
+2026-11-11 17:56:16  c4 start T 8480 seed 1
+2026-11-11 17:56:16    [MATLAB] Starting MATLAB...
+2026-11-11 17:56:25    [MATLAB] [C4] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\ca_source_extraction\endoscope\greedyROI_endoscope.m
+2026-11-11 17:56:42    [MATLAB] [C4] T 8480 seed 1 min_corr 0.530 min_pnr 3.0: init components 0, pick components NaN (17 s)
+2026-11-11 17:56:58    [MATLAB] [C4] T 8480 seed 1 min_corr 0.550 min_pnr 3.0: init components 0, pick components NaN (16 s)
+2026-11-11 17:56:58    [MATLAB] [C4] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c4_T8480_s1.mat
+2026-11-11 17:57:00    [MATLAB] Finished successfully in 0.7 min.
+2026-11-11 17:57:00  c4 T 8480 seed 1: returned True, output present True

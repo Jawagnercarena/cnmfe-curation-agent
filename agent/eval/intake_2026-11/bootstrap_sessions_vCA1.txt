@@ -1,0 +1,14 @@
+# intake 2026-11-05 23:41:15
+D:\Julian_CNMFe\vCA1\2tones\AVG2x-TSeries-093025-pnb88-145um-115um-35z-000-A
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-100125-pnb88-128um-35z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG2x-TSeries-093025-pnb74-650um-570um-22z-000-A
+D:\Julian_CNMFe\vCA1\2tones\AVG2x-TSeries-093025-pnb74-650um-570um-22z-000-B
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-100125-pnb74-535um-22z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-100925-pnb74-452um-25z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-100125-pnb76-531um-3z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-100925-pnb76-613um-3z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-101025-pnb76-517um-3z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-101325-pnb76-521um-3z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-101425-pnb76-518um-3z-000
+D:\Julian_CNMFe\vCA1\2tones\AVG5x-TSeries-101525-pnb76-520um-3z-000
+D:\Julian_CNMFe\vCA1\6odorDualDiffRew\AVG5x-TSeries-02092026-pnb74-767um-25z-000

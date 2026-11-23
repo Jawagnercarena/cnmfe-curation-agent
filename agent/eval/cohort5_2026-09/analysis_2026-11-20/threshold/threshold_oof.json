@@ -1,0 +1,1067 @@
+{
+ "seeds": [
+  42,
+  1,
+  7,
+  13,
+  100,
+  2024,
+  31337,
+  9
+ ],
+ "threads": 8,
+ "thresholds": [
+  0.005,
+  0.01,
+  0.015,
+  0.02,
+  0.03,
+  0.04,
+  0.05
+ ],
+ "n_pool": 211,
+ "session": {
+  "WHOLE AGENT POOL (78 sessions)": {
+   "0.005": {
+    "n_pos": 2505,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 13.481646273637374,
+    "junk_reviewed": 7.568674232654113
+   },
+   "0.010": {
+    "n_pos": 2505,
+    "miss_mean": 0.5,
+    "miss_worst": 1,
+    "far_mean": 0.01996007984031936,
+    "far_worst": 0.03992015968063872,
+    "junk_all": 21.311179087875416,
+    "junk_reviewed": 13.125483621356718
+   },
+   "0.015": {
+    "n_pos": 2505,
+    "miss_mean": 3.375,
+    "miss_worst": 4,
+    "far_mean": 0.1347305389221557,
+    "far_worst": 0.1596806387225549,
+    "junk_all": 26.700500556173523,
+    "junk_reviewed": 17.549006964147537
+   },
+   "0.020": {
+    "n_pos": 2505,
+    "miss_mean": 4.875,
+    "miss_worst": 6,
+    "far_mean": 0.19461077844311378,
+    "far_worst": 0.23952095808383234,
+    "junk_all": 30.873192436040043,
+    "junk_reviewed": 21.434098529791076
+   },
+   "0.030": {
+    "n_pos": 2505,
+    "miss_mean": 10.5,
+    "miss_worst": 13,
+    "far_mean": 0.41916167664670656,
+    "far_worst": 0.5189620758483033,
+    "junk_all": 36.90767519466073,
+    "junk_reviewed": 27.64702089244261
+   },
+   "0.040": {
+    "n_pos": 2505,
+    "miss_mean": 17.0,
+    "miss_worst": 20,
+    "far_mean": 0.6786427145708582,
+    "far_worst": 0.7984031936127745,
+    "junk_all": 41.319521690767516,
+    "junk_reviewed": 32.47356203249936
+   },
+   "0.050": {
+    "n_pos": 2505,
+    "miss_mean": 24.25,
+    "miss_worst": 28,
+    "far_mean": 0.9680638722554891,
+    "far_worst": 1.1177644710578842,
+    "junk_all": 44.926307007786434,
+    "junk_reviewed": 36.50212793396956
+   }
+  },
+  "cohort-5 pilots, threshold 0 (12)": {
+   "0.005": {
+    "n_pos": 410,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 13.184663536776213,
+    "junk_reviewed": 13.184663536776213
+   },
+   "0.010": {
+    "n_pos": 410,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 21.28325508607199,
+    "junk_reviewed": 21.28325508607199
+   },
+   "0.015": {
+    "n_pos": 410,
+    "miss_mean": 0.625,
+    "miss_worst": 1,
+    "far_mean": 0.1524390243902439,
+    "far_worst": 0.24390243902439024,
+    "junk_all": 26.467136150234744,
+    "junk_reviewed": 26.467136150234744
+   },
+   "0.020": {
+    "n_pos": 410,
+    "miss_mean": 0.875,
+    "miss_worst": 2,
+    "far_mean": 0.21341463414634146,
+    "far_worst": 0.4878048780487805,
+    "junk_all": 30.6207616066771,
+    "junk_reviewed": 30.6207616066771
+   },
+   "0.030": {
+    "n_pos": 410,
+    "miss_mean": 1.625,
+    "miss_worst": 3,
+    "far_mean": 0.39634146341463417,
+    "far_worst": 0.7317073170731707,
+    "junk_all": 36.86750130412102,
+    "junk_reviewed": 36.86750130412102
+   },
+   "0.040": {
+    "n_pos": 410,
+    "miss_mean": 2.375,
+    "miss_worst": 3,
+    "far_mean": 0.5792682926829268,
+    "far_worst": 0.7317073170731707,
+    "junk_all": 41.73187271778821,
+    "junk_reviewed": 41.73187271778821
+   },
+   "0.050": {
+    "n_pos": 410,
+    "miss_mean": 3.625,
+    "miss_worst": 6,
+    "far_mean": 0.8841463414634146,
+    "far_worst": 1.4634146341463414,
+    "junk_all": 45.63119457485655,
+    "junk_reviewed": 45.63119457485655
+   }
+  },
+  "cohort-5 09xx, curated at 0.01 (19)": {
+   "0.005": {
+    "n_pos": 926,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 16.66312358276644,
+    "junk_reviewed": 0.17967145790554412
+   },
+   "0.010": {
+    "n_pos": 926,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 25.187783446712018,
+    "junk_reviewed": 2.2997946611909654
+   },
+   "0.015": {
+    "n_pos": 926,
+    "miss_mean": 0.625,
+    "miss_worst": 1,
+    "far_mean": 0.06749460043196544,
+    "far_worst": 0.1079913606911447,
+    "junk_all": 31.062216553287982,
+    "junk_reviewed": 5.74435318275154
+   },
+   "0.020": {
+    "n_pos": 926,
+    "miss_mean": 1.5,
+    "miss_worst": 3,
+    "far_mean": 0.16198704103671707,
+    "far_worst": 0.32397408207343414,
+    "junk_all": 35.46272675736961,
+    "junk_reviewed": 9.573921971252567
+   },
+   "0.030": {
+    "n_pos": 926,
+    "miss_mean": 4.375,
+    "miss_worst": 6,
+    "far_mean": 0.4724622030237581,
+    "far_worst": 0.6479481641468683,
+    "junk_all": 41.34778911564625,
+    "junk_reviewed": 16.180698151950722
+   },
+   "0.040": {
+    "n_pos": 926,
+    "miss_mean": 7.625,
+    "miss_worst": 9,
+    "far_mean": 0.8234341252699784,
+    "far_worst": 0.9719222462203023,
+    "junk_all": 45.50736961451247,
+    "junk_reviewed": 21.647843942505133
+   },
+   "0.050": {
+    "n_pos": 926,
+    "miss_mean": 10.75,
+    "miss_worst": 12,
+    "far_mean": 1.1609071274298055,
+    "far_worst": 1.2958963282937366,
+    "junk_all": 48.92290249433107,
+    "junk_reviewed": 26.324435318275157
+   }
+  },
+  "09xx Taylor (pnb99/102/109)": {
+   "0.005": {
+    "n_pos": 711,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 14.69431760527651,
+    "junk_reviewed": 0.16748942172073344
+   },
+   "0.010": {
+    "n_pos": 711,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 22.596397767630645,
+    "junk_reviewed": 2.0980253878702397
+   },
+   "0.015": {
+    "n_pos": 711,
+    "miss_mean": 0.625,
+    "miss_worst": 1,
+    "far_mean": 0.08790436005625879,
+    "far_worst": 0.14064697609001406,
+    "junk_all": 28.37392186707255,
+    "junk_reviewed": 5.465444287729197
+   },
+   "0.020": {
+    "n_pos": 711,
+    "miss_mean": 1.375,
+    "miss_worst": 2,
+    "far_mean": 0.19338959212376933,
+    "far_worst": 0.2812939521800281,
+    "junk_all": 32.56595636732624,
+    "junk_reviewed": 9.053244005641748
+   },
+   "0.030": {
+    "n_pos": 711,
+    "miss_mean": 3.75,
+    "miss_worst": 5,
+    "far_mean": 0.5274261603375527,
+    "far_worst": 0.7032348804500703,
+    "junk_all": 38.18493150684932,
+    "junk_reviewed": 15.162200282087447
+   },
+   "0.040": {
+    "n_pos": 711,
+    "miss_mean": 6.375,
+    "miss_worst": 7,
+    "far_mean": 0.8966244725738397,
+    "far_worst": 0.9845288326300985,
+    "junk_all": 42.32623033992897,
+    "junk_reviewed": 20.36318758815233
+   },
+   "0.050": {
+    "n_pos": 711,
+    "miss_mean": 8.75,
+    "miss_worst": 10,
+    "far_mean": 1.230661040787623,
+    "far_worst": 1.4064697609001406,
+    "junk_all": 45.662100456621005,
+    "junk_reviewed": 24.77080394922426
+   }
+  },
+  "09xx Yawen (pnb105)": {
+   "0.005": {
+    "n_pos": 215,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 19.15542710340398,
+    "junk_reviewed": 0.1966568338249754
+   },
+   "0.010": {
+    "n_pos": 215,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 28.468208092485547,
+    "junk_reviewed": 2.5811209439528024
+   },
+   "0.015": {
+    "n_pos": 215,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 34.46531791907515,
+    "junk_reviewed": 6.13323500491642
+   },
+   "0.020": {
+    "n_pos": 215,
+    "miss_mean": 0.125,
+    "miss_worst": 1,
+    "far_mean": 0.05813953488372093,
+    "far_worst": 0.46511627906976744,
+    "junk_all": 39.12973667308927,
+    "junk_reviewed": 10.299901671583088
+   },
+   "0.030": {
+    "n_pos": 215,
+    "miss_mean": 0.625,
+    "miss_worst": 1,
+    "far_mean": 0.29069767441860467,
+    "far_worst": 0.46511627906976744,
+    "junk_all": 45.35163776493256,
+    "junk_reviewed": 17.6007866273353
+   },
+   "0.040": {
+    "n_pos": 215,
+    "miss_mean": 1.25,
+    "miss_worst": 3,
+    "far_mean": 0.5813953488372093,
+    "far_worst": 1.3953488372093024,
+    "junk_all": 49.53436095054592,
+    "junk_reviewed": 23.439036381514256
+   },
+   "0.050": {
+    "n_pos": 215,
+    "miss_mean": 2.0,
+    "miss_worst": 3,
+    "far_mean": 0.9302325581395349,
+    "far_worst": 1.3953488372093024,
+    "junk_all": 53.05073859987155,
+    "junk_reviewed": 28.490658800393312
+   }
+  },
+  "rest of the agent pool": {
+   "0.005": {
+    "n_pos": 1169,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 10.476022566995768,
+    "junk_reviewed": 9.692827748383303
+   },
+   "0.010": {
+    "n_pos": 1169,
+    "miss_mean": 0.5,
+    "miss_worst": 1,
+    "far_mean": 0.0427715996578272,
+    "far_worst": 0.0855431993156544,
+    "junk_all": 17.468265162200282,
+    "junk_reviewed": 16.277189888301
+   },
+   "0.015": {
+    "n_pos": 1169,
+    "miss_mean": 2.125,
+    "miss_worst": 3,
+    "far_mean": 0.1817792985457656,
+    "far_worst": 0.2566295979469632,
+    "junk_all": 22.48589562764457,
+    "junk_reviewed": 20.972957084068195
+   },
+   "0.020": {
+    "n_pos": 1169,
+    "miss_mean": 2.5,
+    "miss_worst": 3,
+    "far_mean": 0.21385799828913601,
+    "far_worst": 0.2566295979469632,
+    "junk_all": 26.442172073342736,
+    "junk_reviewed": 24.74647266313933
+   },
+   "0.030": {
+    "n_pos": 1169,
+    "miss_mean": 4.5,
+    "miss_worst": 6,
+    "far_mean": 0.3849443969204448,
+    "far_worst": 0.5132591958939264,
+    "junk_all": 32.51057827926657,
+    "junk_reviewed": 30.65843621399177
+   },
+   "0.040": {
+    "n_pos": 1169,
+    "miss_mean": 7.0,
+    "miss_worst": 10,
+    "far_mean": 0.5988023952095808,
+    "far_worst": 0.8554319931565441,
+    "junk_all": 36.92877291960508,
+    "junk_reviewed": 35.005144032921805
+   },
+   "0.050": {
+    "n_pos": 1169,
+    "miss_mean": 9.875,
+    "miss_worst": 12,
+    "far_mean": 0.8447390932420873,
+    "far_worst": 1.0265183917878529,
+    "junk_all": 40.56770098730607,
+    "junk_reviewed": 38.642710170487945
+   }
+  },
+  "ALL sessions with no auto-reject (46)": {
+   "0.005": {
+    "n_pos": 1389,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 11.5841384863124,
+    "junk_reviewed": 11.5841384863124
+   },
+   "0.010": {
+    "n_pos": 1389,
+    "miss_mean": 0.5,
+    "miss_worst": 1,
+    "far_mean": 0.03599712023038157,
+    "far_worst": 0.07199424046076314,
+    "junk_all": 19.145028180354267,
+    "junk_reviewed": 19.145028180354267
+   },
+   "0.015": {
+    "n_pos": 1389,
+    "miss_mean": 2.75,
+    "miss_worst": 4,
+    "far_mean": 0.19798416126709864,
+    "far_worst": 0.28797696184305255,
+    "junk_all": 24.282910628019323,
+    "junk_reviewed": 24.282910628019323
+   },
+   "0.020": {
+    "n_pos": 1389,
+    "miss_mean": 3.375,
+    "miss_worst": 5,
+    "far_mean": 0.24298056155507558,
+    "far_worst": 0.3599712023038157,
+    "junk_all": 28.389190821256037,
+    "junk_reviewed": 28.389190821256037
+   },
+   "0.030": {
+    "n_pos": 1389,
+    "miss_mean": 6.125,
+    "miss_worst": 8,
+    "far_mean": 0.44096472282217425,
+    "far_worst": 0.5759539236861051,
+    "junk_all": 34.699577294685994,
+    "junk_reviewed": 34.699577294685994
+   },
+   "0.040": {
+    "n_pos": 1389,
+    "miss_mean": 9.375,
+    "miss_worst": 13,
+    "far_mean": 0.6749460043196545,
+    "far_worst": 0.9359251259899208,
+    "junk_all": 39.3996578099839,
+    "junk_reviewed": 39.3996578099839
+   },
+   "0.050": {
+    "n_pos": 1389,
+    "miss_mean": 13.375,
+    "miss_worst": 15,
+    "far_mean": 0.962922966162707,
+    "far_worst": 1.079913606911447,
+    "junk_all": 43.19897342995169,
+    "junk_reviewed": 43.19897342995169
+   }
+  },
+  "ALL sessions with auto-rejects (32)": {
+   "0.005": {
+    "n_pos": 1116,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 15.825459970164099,
+    "junk_reviewed": 0.4082914572864322
+   },
+   "0.010": {
+    "n_pos": 1116,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 23.98682247637991,
+    "junk_reviewed": 2.391421392677674
+   },
+   "0.015": {
+    "n_pos": 1116,
+    "miss_mean": 0.625,
+    "miss_worst": 1,
+    "far_mean": 0.05600358422939068,
+    "far_worst": 0.08960573476702509,
+    "junk_all": 29.686723023371457,
+    "junk_reviewed": 5.541098348887293
+   },
+   "0.020": {
+    "n_pos": 1116,
+    "miss_mean": 1.5,
+    "miss_worst": 3,
+    "far_mean": 0.13440860215053763,
+    "far_worst": 0.26881720430107525,
+    "junk_all": 33.941447041272994,
+    "junk_reviewed": 9.031765972720747
+   },
+   "0.030": {
+    "n_pos": 1116,
+    "miss_mean": 4.375,
+    "miss_worst": 6,
+    "far_mean": 0.3920250896057348,
+    "far_worst": 0.5376344086021505,
+    "junk_all": 39.635131775236204,
+    "junk_reviewed": 15.07089016511127
+   },
+   "0.040": {
+    "n_pos": 1116,
+    "miss_mean": 7.625,
+    "miss_worst": 9,
+    "far_mean": 0.6832437275985663,
+    "far_worst": 0.8064516129032258,
+    "junk_all": 43.69094977623073,
+    "junk_reviewed": 20.122936109117013
+   },
+   "0.050": {
+    "n_pos": 1116,
+    "miss_mean": 10.875,
+    "miss_worst": 13,
+    "far_mean": 0.9744623655913979,
+    "far_worst": 1.1648745519713262,
+    "junk_all": 47.059920437593235,
+    "junk_reviewed": 24.560301507537687
+   }
+  }
+ },
+ "animal": {
+  "WHOLE AGENT POOL (78 sessions)": {
+   "0.005": {
+    "n_pos": 2505,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 13.318965517241379,
+    "junk_reviewed": 7.320415269538303
+   },
+   "0.010": {
+    "n_pos": 2505,
+    "miss_mean": 1.0,
+    "miss_worst": 2,
+    "far_mean": 0.03992015968063872,
+    "far_worst": 0.07984031936127745,
+    "junk_all": 21.044215795328142,
+    "junk_reviewed": 12.745034820737683
+   },
+   "0.015": {
+    "n_pos": 2505,
+    "miss_mean": 2.75,
+    "miss_worst": 5,
+    "far_mean": 0.10978043912175649,
+    "far_worst": 0.1996007984031936,
+    "junk_all": 26.400166852057843,
+    "junk_reviewed": 17.265282434872326
+   },
+   "0.020": {
+    "n_pos": 2505,
+    "miss_mean": 7.25,
+    "miss_worst": 9,
+    "far_mean": 0.2894211576846307,
+    "far_worst": 0.3592814371257485,
+    "junk_all": 30.469966629588434,
+    "junk_reviewed": 21.09233943770957
+   },
+   "0.030": {
+    "n_pos": 2505,
+    "miss_mean": 13.25,
+    "miss_worst": 16,
+    "far_mean": 0.5289421157684631,
+    "far_worst": 0.6387225548902196,
+    "junk_all": 36.53921023359288,
+    "junk_reviewed": 27.31654629868455
+   },
+   "0.040": {
+    "n_pos": 2505,
+    "miss_mean": 21.125,
+    "miss_worst": 23,
+    "far_mean": 0.843313373253493,
+    "far_worst": 0.9181636726546906,
+    "junk_all": 41.09705228031146,
+    "junk_reviewed": 32.2494841372195
+   },
+   "0.050": {
+    "n_pos": 2505,
+    "miss_mean": 28.375,
+    "miss_worst": 31,
+    "far_mean": 1.1327345309381238,
+    "far_worst": 1.2375249500998005,
+    "junk_all": 44.8011679644049,
+    "junk_reviewed": 36.41023987619293
+   }
+  },
+  "cohort-5 pilots, threshold 0 (12)": {
+   "0.005": {
+    "n_pos": 410,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 13.484611371935316,
+    "junk_reviewed": 13.484611371935316
+   },
+   "0.010": {
+    "n_pos": 410,
+    "miss_mean": 0.25,
+    "miss_worst": 1,
+    "far_mean": 0.06097560975609756,
+    "far_worst": 0.24390243902439024,
+    "junk_all": 21.75925925925926,
+    "junk_reviewed": 21.75925925925926
+   },
+   "0.015": {
+    "n_pos": 410,
+    "miss_mean": 0.625,
+    "miss_worst": 2,
+    "far_mean": 0.1524390243902439,
+    "far_worst": 0.4878048780487805,
+    "junk_all": 27.086593635889407,
+    "junk_reviewed": 27.086593635889407
+   },
+   "0.020": {
+    "n_pos": 410,
+    "miss_mean": 1.375,
+    "miss_worst": 2,
+    "far_mean": 0.3353658536585366,
+    "far_worst": 0.4878048780487805,
+    "junk_all": 31.27282211789254,
+    "junk_reviewed": 31.27282211789254
+   },
+   "0.030": {
+    "n_pos": 410,
+    "miss_mean": 2.375,
+    "miss_worst": 4,
+    "far_mean": 0.5792682926829268,
+    "far_worst": 0.975609756097561,
+    "junk_all": 37.695618153364634,
+    "junk_reviewed": 37.695618153364634
+   },
+   "0.040": {
+    "n_pos": 410,
+    "miss_mean": 4.5,
+    "miss_worst": 6,
+    "far_mean": 1.0975609756097562,
+    "far_worst": 1.4634146341463414,
+    "junk_all": 42.57303077725613,
+    "junk_reviewed": 42.57303077725613
+   },
+   "0.050": {
+    "n_pos": 410,
+    "miss_mean": 5.875,
+    "miss_worst": 7,
+    "far_mean": 1.4329268292682926,
+    "far_worst": 1.7073170731707317,
+    "junk_all": 46.98095983307251,
+    "junk_reviewed": 46.98095983307251
+   }
+  },
+  "cohort-5 09xx, curated at 0.01 (19)": {
+   "0.005": {
+    "n_pos": 926,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 17.06703514739229,
+    "junk_reviewed": 0.3388090349075975
+   },
+   "0.010": {
+    "n_pos": 926,
+    "miss_mean": 0.75,
+    "miss_worst": 2,
+    "far_mean": 0.08099352051835854,
+    "far_worst": 0.2159827213822894,
+    "junk_all": 25.860969387755098,
+    "junk_reviewed": 2.8388090349075976
+   },
+   "0.015": {
+    "n_pos": 926,
+    "miss_mean": 1.5,
+    "miss_worst": 3,
+    "far_mean": 0.16198704103671707,
+    "far_worst": 0.32397408207343414,
+    "junk_all": 31.639739229024944,
+    "junk_reviewed": 6.591375770020534
+   },
+   "0.020": {
+    "n_pos": 926,
+    "miss_mean": 2.875,
+    "miss_worst": 4,
+    "far_mean": 0.31047516198704106,
+    "far_worst": 0.4319654427645788,
+    "junk_all": 36.07568027210884,
+    "junk_reviewed": 10.698151950718685
+   },
+   "0.030": {
+    "n_pos": 926,
+    "miss_mean": 6.25,
+    "miss_worst": 8,
+    "far_mean": 0.6749460043196545,
+    "far_worst": 0.8639308855291576,
+    "junk_all": 42.442602040816325,
+    "junk_reviewed": 17.864476386036962
+   },
+   "0.040": {
+    "n_pos": 926,
+    "miss_mean": 10.375,
+    "miss_worst": 12,
+    "far_mean": 1.1204103671706263,
+    "far_worst": 1.2958963282937366,
+    "junk_all": 46.977749433106574,
+    "junk_reviewed": 23.6652977412731
+   },
+   "0.050": {
+    "n_pos": 926,
+    "miss_mean": 13.125,
+    "miss_worst": 16,
+    "far_mean": 1.4173866090712743,
+    "far_worst": 1.7278617710583153,
+    "junk_all": 50.400368480725625,
+    "junk_reviewed": 28.367556468172488
+   }
+  },
+  "09xx Taylor (pnb99/102/109)": {
+   "0.005": {
+    "n_pos": 711,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 16.21638762049721,
+    "junk_reviewed": 0.5112834978843441
+   },
+   "0.010": {
+    "n_pos": 711,
+    "miss_mean": 0.75,
+    "miss_worst": 2,
+    "far_mean": 0.10548523206751055,
+    "far_worst": 0.2812939521800281,
+    "junk_all": 24.473617453069508,
+    "junk_reviewed": 3.4203102961918193
+   },
+   "0.015": {
+    "n_pos": 711,
+    "miss_mean": 1.5,
+    "miss_worst": 3,
+    "far_mean": 0.2109704641350211,
+    "far_worst": 0.4219409282700422,
+    "junk_all": 30.358954845256214,
+    "junk_reviewed": 7.589915373765867
+   },
+   "0.020": {
+    "n_pos": 711,
+    "miss_mean": 2.625,
+    "miss_worst": 4,
+    "far_mean": 0.3691983122362869,
+    "far_worst": 0.5625879043600562,
+    "junk_all": 34.97590055809234,
+    "junk_reviewed": 12.050423131170664
+   },
+   "0.030": {
+    "n_pos": 711,
+    "miss_mean": 5.5,
+    "miss_worst": 8,
+    "far_mean": 0.7735583684950773,
+    "far_worst": 1.1251758087201125,
+    "junk_all": 41.36859462201928,
+    "junk_reviewed": 19.340620592383637
+   },
+   "0.040": {
+    "n_pos": 711,
+    "miss_mean": 9.125,
+    "miss_worst": 11,
+    "far_mean": 1.2834036568213782,
+    "far_worst": 1.5471167369901546,
+    "junk_all": 45.788939624556065,
+    "junk_reviewed": 24.894217207334272
+   },
+   "0.050": {
+    "n_pos": 711,
+    "miss_mean": 11.5,
+    "miss_worst": 15,
+    "far_mean": 1.6174402250351618,
+    "far_worst": 2.109704641350211,
+    "junk_all": 49.31506849315069,
+    "junk_reviewed": 29.63681241184767
+   }
+  },
+  "09xx Yawen (pnb105)": {
+   "0.005": {
+    "n_pos": 215,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 18.143866409762364,
+    "junk_reviewed": 0.09832841691248771
+   },
+   "0.010": {
+    "n_pos": 215,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 27.617212588310853,
+    "junk_reviewed": 2.028023598820059
+   },
+   "0.015": {
+    "n_pos": 215,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 33.261078998073216,
+    "junk_reviewed": 5.199115044247788
+   },
+   "0.020": {
+    "n_pos": 215,
+    "miss_mean": 0.25,
+    "miss_worst": 1,
+    "far_mean": 0.11627906976744186,
+    "far_worst": 0.46511627906976744,
+    "junk_all": 37.46788696210661,
+    "junk_reviewed": 8.812684365781712
+   },
+   "0.030": {
+    "n_pos": 215,
+    "miss_mean": 0.75,
+    "miss_worst": 2,
+    "far_mean": 0.3488372093023256,
+    "far_worst": 0.9302325581395349,
+    "junk_all": 43.802183686576754,
+    "junk_reviewed": 15.806293018682398
+   },
+   "0.040": {
+    "n_pos": 215,
+    "miss_mean": 1.25,
+    "miss_worst": 2,
+    "far_mean": 0.5813953488372093,
+    "far_worst": 0.9302325581395349,
+    "junk_all": 48.482658959537574,
+    "junk_reviewed": 21.951819075712883
+   },
+   "0.050": {
+    "n_pos": 215,
+    "miss_mean": 1.625,
+    "miss_worst": 2,
+    "far_mean": 0.7558139534883721,
+    "far_worst": 0.9302325581395349,
+    "junk_all": 51.77424534360951,
+    "junk_reviewed": 26.597836774827925
+   }
+  },
+  "rest of the agent pool": {
+   "0.005": {
+    "n_pos": 1169,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 9.499294781382229,
+    "junk_reviewed": 8.844062316284539
+   },
+   "0.010": {
+    "n_pos": 1169,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 15.8638928067701,
+    "junk_reviewed": 14.756025867136978
+   },
+   "0.015": {
+    "n_pos": 1169,
+    "miss_mean": 0.625,
+    "miss_worst": 2,
+    "far_mean": 0.053464499572284004,
+    "far_worst": 0.1710863986313088,
+    "junk_all": 20.814527503526094,
+    "junk_reviewed": 19.37095825984715
+   },
+   "0.020": {
+    "n_pos": 1169,
+    "miss_mean": 3.0,
+    "miss_worst": 4,
+    "far_mean": 0.2566295979469632,
+    "far_worst": 0.3421727972626176,
+    "junk_all": 24.456981664315936,
+    "junk_reviewed": 22.79541446208113
+   },
+   "0.030": {
+    "n_pos": 1169,
+    "miss_mean": 4.625,
+    "miss_worst": 6,
+    "far_mean": 0.3956372968349016,
+    "far_worst": 0.5132591958939264,
+    "junk_all": 30.038787023977434,
+    "junk_reviewed": 28.23339212228101
+   },
+   "0.040": {
+    "n_pos": 1169,
+    "miss_mean": 6.25,
+    "miss_worst": 8,
+    "far_mean": 0.5346449957228401,
+    "far_worst": 0.6843455945252352,
+    "junk_all": 34.446403385049365,
+    "junk_reviewed": 32.57642563198118
+   },
+   "0.050": {
+    "n_pos": 1169,
+    "miss_mean": 9.375,
+    "miss_worst": 12,
+    "far_mean": 0.80196749358426,
+    "far_worst": 1.0265183917878529,
+    "junk_all": 38.05007052186178,
+    "junk_reviewed": 36.210317460317455
+   }
+  },
+  "ALL sessions with no auto-reject (46)": {
+   "0.005": {
+    "n_pos": 1389,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 11.10859500805153,
+    "junk_reviewed": 11.10859500805153
+   },
+   "0.010": {
+    "n_pos": 1389,
+    "miss_mean": 0.25,
+    "miss_worst": 1,
+    "far_mean": 0.017998560115190784,
+    "far_worst": 0.07199424046076314,
+    "junk_all": 18.276972624798713,
+    "junk_reviewed": 18.276972624798713
+   },
+   "0.015": {
+    "n_pos": 1389,
+    "miss_mean": 1.25,
+    "miss_worst": 2,
+    "far_mean": 0.08999280057595392,
+    "far_worst": 0.14398848092152627,
+    "junk_all": 23.42743558776167,
+    "junk_reviewed": 23.42743558776167
+   },
+   "0.020": {
+    "n_pos": 1389,
+    "miss_mean": 4.375,
+    "miss_worst": 5,
+    "far_mean": 0.3149748020158387,
+    "far_worst": 0.3599712023038157,
+    "junk_all": 27.309782608695652,
+    "junk_reviewed": 27.309782608695652
+   },
+   "0.030": {
+    "n_pos": 1389,
+    "miss_mean": 7.0,
+    "miss_worst": 9,
+    "far_mean": 0.503959683225342,
+    "far_worst": 0.6479481641468683,
+    "junk_all": 33.31823671497584,
+    "junk_reviewed": 33.31823671497584
+   },
+   "0.040": {
+    "n_pos": 1389,
+    "miss_mean": 10.375,
+    "miss_worst": 13,
+    "far_mean": 0.7469402447804175,
+    "far_worst": 0.9359251259899208,
+    "junk_all": 38.000704508856685,
+    "junk_reviewed": 38.000704508856685
+   },
+   "0.050": {
+    "n_pos": 1389,
+    "miss_mean": 14.625,
+    "miss_worst": 18,
+    "far_mean": 1.0529157667386608,
+    "far_worst": 1.2958963282937366,
+    "junk_all": 42.05163043478261,
+    "junk_reviewed": 42.05163043478261
+   }
+  },
+  "ALL sessions with auto-rejects (32)": {
+   "0.005": {
+    "n_pos": 1116,
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_all": 16.049229239184484,
+    "junk_reviewed": 0.5653266331658291
+   },
+   "0.010": {
+    "n_pos": 1116,
+    "miss_mean": 0.75,
+    "miss_worst": 2,
+    "far_mean": 0.06720430107526881,
+    "far_worst": 0.17921146953405018,
+    "junk_all": 24.46233217304824,
+    "junk_reviewed": 2.8804737975592247
+   },
+   "0.015": {
+    "n_pos": 1116,
+    "miss_mean": 1.5,
+    "miss_worst": 3,
+    "far_mean": 0.13440860215053763,
+    "far_worst": 0.26881720430107525,
+    "junk_all": 30.07210343112879,
+    "junk_reviewed": 6.2769203158650395
+   },
+   "0.020": {
+    "n_pos": 1116,
+    "miss_mean": 2.875,
+    "miss_worst": 4,
+    "far_mean": 0.2576164874551971,
+    "far_worst": 0.35842293906810035,
+    "junk_all": 34.37344604674291,
+    "junk_reviewed": 10.005384063173008
+   },
+   "0.030": {
+    "n_pos": 1116,
+    "miss_mean": 6.25,
+    "miss_worst": 8,
+    "far_mean": 0.5600358422939068,
+    "far_worst": 0.7168458781362007,
+    "junk_all": 40.517777225261064,
+    "junk_reviewed": 16.6143216080402
+   },
+   "0.040": {
+    "n_pos": 1116,
+    "miss_mean": 10.75,
+    "miss_worst": 13,
+    "far_mean": 0.9632616487455197,
+    "far_worst": 1.1648745519713262,
+    "junk_all": 44.921680755842864,
+    "junk_reviewed": 21.99389806173726
+   },
+   "0.050": {
+    "n_pos": 1116,
+    "miss_mean": 13.75,
+    "miss_worst": 16,
+    "far_mean": 1.232078853046595,
+    "far_worst": 1.4336917562724014,
+    "junk_all": 48.19741422178021,
+    "junk_reviewed": 26.350502512562812
+   }
+  }
+ }
+}

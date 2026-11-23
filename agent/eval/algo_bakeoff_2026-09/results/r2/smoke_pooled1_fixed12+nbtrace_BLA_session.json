@@ -1,0 +1,63 @@
+{
+ "variant": "fixed12+nbtrace",
+ "cfg": {
+  "val_bs_frac": 0.0,
+  "epochs": 2,
+  "fixed_epochs": 2,
+  "ens": 1,
+  "corpus": "v2",
+  "nb": true,
+  "patience": 5,
+  "batch": 256,
+  "lr": 0.001
+ },
+ "other_area": "vCA1",
+ "other_weight": 1.0,
+ "other_rows": 45882,
+ "other_agw": 5.0,
+ "area": "BLA",
+ "grouping": "session",
+ "seeds": [
+  42
+ ],
+ "control": "BLA_session_xgb_deployed_t8.npz",
+ "corpora": [
+  "D:\\Julian_CNMFe\\BLA\\.feature_expansion\\_raw_corpus\\BLA_raw_corpus_v2.h5",
+  "D:\\Julian_CNMFe\\vCA1\\.feature_expansion\\_raw_corpus\\vCA1_raw_corpus_v2.h5"
+ ],
+ "smoke": true,
+ "runtime_s": 33.06577134132385,
+ "folds": [
+  {
+   "seed": 42,
+   "fold": 0,
+   "n_train": 84495,
+   "n_other": 45882,
+   "agw": 4.0,
+   "spw": 5.465625826938344,
+   "n_test_scored": 2218,
+   "test_auc": 0.8945098039215684,
+   "best_epoch": [
+    1
+   ],
+   "epochs_run": [
+    2
+   ],
+   "curve": [
+    [
+     {
+      "epoch": 0,
+      "loss": 0.44065565086923697,
+      "val_auc": NaN
+     },
+     {
+      "epoch": 1,
+      "loss": 0.36761661184518357,
+      "val_auc": NaN
+     }
+    ]
+   ]
+  }
+ ],
+ "written_at": "2026-09-08T17:36:31"
+}

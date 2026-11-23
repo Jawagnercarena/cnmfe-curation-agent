@@ -1,0 +1,74 @@
+[17:37:20] pooled1_fixed12+nbtrace_BLA_session: target 13766 rows (2618 real), raw for 11877; target bootstrap 33448; OTHER area vCA1: 45882 rows at native weights x 1 (its agw 5.00, 5650 real); 81 groups -> 5 folds; corpus rows 98213; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 1, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[17:40:28]   seed 42 fold 0: train 84495 (target agw 4.00, spw 5.47) | test AUC 0.9140 (2218 rows) | 188s
+[17:43:37]   seed 42 fold 1: train 84227 (target agw 4.00, spw 5.49) | test AUC 0.9067 (2486 rows) | 376s
+[17:46:44]   seed 42 fold 2: train 84065 (target agw 4.00, spw 5.52) | test AUC 0.9018 (2648 rows) | 564s
+[17:49:52]   seed 42 fold 3: train 84221 (target agw 4.00, spw 5.43) | test AUC 0.9233 (2492 rows) | 752s
+[17:53:04]   seed 42 fold 4: train 84680 (target agw 4.00, spw 5.47) | test AUC 0.9197 (2033 rows) | 943s
+[17:53:04]   seed 42: OOF AUC on rows with raw data: full 0.9115 reviewed 0.9115
+[17:56:12]   seed 1 fold 0: train 84117 (target agw 4.00, spw 5.37) | test AUC 0.9047 (2596 rows) | 1132s
+[17:59:20]   seed 1 fold 1: train 84832 (target agw 4.00, spw 5.52) | test AUC 0.9051 (1881 rows) | 1320s
+[18:02:28]   seed 1 fold 2: train 84570 (target agw 4.00, spw 5.52) | test AUC 0.9199 (2143 rows) | 1508s
+[18:05:35]   seed 1 fold 3: train 83855 (target agw 4.00, spw 5.45) | test AUC 0.9301 (2858 rows) | 1694s
+[18:08:42]   seed 1 fold 4: train 84314 (target agw 4.00, spw 5.51) | test AUC 0.8957 (2399 rows) | 1882s
+[18:08:42]   seed 1: OOF AUC on rows with raw data: full 0.9117 reviewed 0.9117
+[18:11:50]   seed 7 fold 0: train 84787 (target agw 4.00, spw 5.41) | test AUC 0.8978 (1926 rows) | 2070s
+[18:14:58]   seed 7 fold 1: train 84240 (target agw 4.00, spw 5.52) | test AUC 0.9193 (2473 rows) | 2258s
+[18:18:06]   seed 7 fold 2: train 84469 (target agw 4.00, spw 5.58) | test AUC 0.9048 (2244 rows) | 2446s
+[18:21:12]   seed 7 fold 3: train 84018 (target agw 4.00, spw 5.37) | test AUC 0.9237 (2695 rows) | 2632s
+[18:24:19]   seed 7 fold 4: train 84174 (target agw 4.00, spw 5.50) | test AUC 0.9108 (2539 rows) | 2819s
+[18:24:19]   seed 7: OOF AUC on rows with raw data: full 0.9111 reviewed 0.9111
+[18:24:19] wrote r2/pooled1_fixed12+nbtrace_BLA_session.npz/.json (2819s)
+[18:24:20] pooled1_fixed12+nbtrace_BLA_animal: target 13766 rows (2618 real), raw for 11877; target bootstrap 33448; OTHER area vCA1: 45882 rows at native weights x 1 (its agw 5.00, 5650 real); 6 groups -> 5 folds; corpus rows 98213; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 1, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[18:27:27]   seed 42 fold 0: train 83675 (target agw 4.00, spw 5.70) | test AUC 0.9162 (3038 rows) | 187s
+[18:30:38]   seed 42 fold 1: train 86406 (target agw 4.00, spw 5.35) | test AUC 0.9210 (307 rows) | 378s
+[18:33:48]   seed 42 fold 2: train 84375 (target agw 4.00, spw 5.61) | test AUC 0.9194 (1857 rows) | 568s
+[18:36:56]   seed 42 fold 3: train 84059 (target agw 4.00, spw 5.34) | test AUC 0.9170 (1721 rows) | 756s
+[18:39:58]   seed 42 fold 4: train 80906 (target agw 4.00, spw 5.35) | test AUC 0.9005 (4954 rows) | 938s
+[18:39:58]   seed 42: OOF AUC on rows with raw data: full 0.9093 reviewed 0.9093
+[18:43:10]   seed 1 fold 0: train 86406 (target agw 4.00, spw 5.35) | test AUC 0.9134 (307 rows) | 1130s
+[18:46:16]   seed 1 fold 1: train 84059 (target agw 4.00, spw 5.34) | test AUC 0.9120 (1721 rows) | 1316s
+[18:49:21]   seed 1 fold 2: train 82599 (target agw 4.00, spw 5.33) | test AUC 0.9003 (4114 rows) | 1501s
+[18:52:25]   seed 1 fold 3: train 83675 (target agw 4.00, spw 5.70) | test AUC 0.9203 (3038 rows) | 1685s
+[18:55:26]   seed 1 fold 4: train 82682 (target agw 4.00, spw 5.63) | test AUC 0.9102 (2697 rows) | 1866s
+[18:55:26]   seed 1: OOF AUC on rows with raw data: full 0.9084 reviewed 0.9084
+[18:58:30]   seed 7 fold 0: train 84059 (target agw 4.00, spw 5.34) | test AUC 0.9159 (1721 rows) | 2050s
+[19:01:36]   seed 7 fold 1: train 85020 (target agw 4.00, spw 5.29) | test AUC 0.8915 (840 rows) | 2235s
+[19:04:43]   seed 7 fold 2: train 86406 (target agw 4.00, spw 5.35) | test AUC 0.9185 (307 rows) | 2423s
+[19:07:47]   seed 7 fold 3: train 84375 (target agw 4.00, spw 5.61) | test AUC 0.9175 (1857 rows) | 2607s
+[19:10:44]   seed 7 fold 4: train 79561 (target agw 4.00, spw 5.84) | test AUC 0.9110 (7152 rows) | 2783s
+[19:10:44]   seed 7: OOF AUC on rows with raw data: full 0.9045 reviewed 0.9045
+[19:10:44] wrote r2/pooled1_fixed12+nbtrace_BLA_animal.npz/.json (2783s)
+[19:10:45] pooled1_fixed12+nbtrace_vCA1_session: target 2068 rows (483 real), raw for 2011; target bootstrap 50370; OTHER area BLA: 41175 rows at native weights x 1 (its agw 4.00, 5366 real); 24 groups -> 5 folds; corpus rows 98213; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 1, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[19:13:53]   seed 42 fold 0: train 86545 (target agw 5.00, spw 5.36) | test AUC 0.9271 (349 rows) | 188s
+[19:17:03]   seed 42 fold 1: train 86382 (target agw 5.00, spw 5.32) | test AUC 0.9410 (512 rows) | 379s
+[19:20:18]   seed 42 fold 2: train 86660 (target agw 5.00, spw 5.35) | test AUC 0.8907 (234 rows) | 573s
+[19:23:33]   seed 42 fold 3: train 86494 (target agw 5.00, spw 5.36) | test AUC 0.9189 (400 rows) | 768s
+[19:26:48]   seed 42 fold 4: train 86378 (target agw 5.00, spw 5.47) | test AUC 0.9288 (516 rows) | 963s
+[19:26:48]   seed 42: OOF AUC on rows with raw data: full 0.9261 reviewed 0.9261
+[19:29:59]   seed 1 fold 0: train 86495 (target agw 5.00, spw 5.40) | test AUC 0.9250 (399 rows) | 1155s
+[19:33:12]   seed 1 fold 1: train 86684 (target agw 5.00, spw 5.35) | test AUC 0.8997 (210 rows) | 1347s
+[19:36:25]   seed 1 fold 2: train 86660 (target agw 5.00, spw 5.35) | test AUC 0.9717 (234 rows) | 1540s
+[19:39:38]   seed 1 fold 3: train 86336 (target agw 5.00, spw 5.35) | test AUC 0.9193 (558 rows) | 1733s
+[19:42:50]   seed 1 fold 4: train 86284 (target agw 5.00, spw 5.42) | test AUC 0.9255 (610 rows) | 1925s
+[19:42:50]   seed 1: OOF AUC on rows with raw data: full 0.9257 reviewed 0.9257
+[19:46:02]   seed 7 fold 0: train 86520 (target agw 5.00, spw 5.42) | test AUC 0.8969 (374 rows) | 2117s
+[19:49:14]   seed 7 fold 1: train 86342 (target agw 5.00, spw 5.40) | test AUC 0.9359 (552 rows) | 2310s
+[19:52:27]   seed 7 fold 2: train 86628 (target agw 5.00, spw 5.34) | test AUC 0.9457 (266 rows) | 2502s
+[19:55:39]   seed 7 fold 3: train 86595 (target agw 5.00, spw 5.34) | test AUC 0.9416 (299 rows) | 2694s
+[19:58:52]   seed 7 fold 4: train 86374 (target agw 5.00, spw 5.37) | test AUC 0.9242 (520 rows) | 2887s
+[19:58:52]   seed 7: OOF AUC on rows with raw data: full 0.9220 reviewed 0.9220
+[19:58:52] wrote r2/pooled1_fixed12+nbtrace_vCA1_session.npz/.json (2887s)
+[19:58:53] pooled1_fixed12+nbtrace_vCA1_animal: target 2068 rows (483 real), raw for 2011; target bootstrap 50370; OTHER area BLA: 41175 rows at native weights x 1 (its agw 4.00, 5366 real); 3 groups -> 3 folds; corpus rows 98213; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 1, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[20:02:04]   seed 42 fold 0: train 85694 (target agw 5.00, spw 5.35) | test AUC 0.9295 (1200 rows) | 191s
+[20:05:16]   seed 42 fold 1: train 86566 (target agw 5.00, spw 5.41) | test AUC 0.8034 (328 rows) | 383s
+[20:08:28]   seed 42 fold 2: train 86411 (target agw 5.00, spw 5.47) | test AUC 0.9443 (483 rows) | 575s
+[20:08:28]   seed 42: OOF AUC on rows with raw data: full 0.9188 reviewed 0.9188
+[20:11:39]   seed 1 fold 0: train 86411 (target agw 5.00, spw 5.47) | test AUC 0.9472 (483 rows) | 766s
+[20:14:52]   seed 1 fold 1: train 86566 (target agw 5.00, spw 5.41) | test AUC 0.8259 (328 rows) | 959s
+[20:18:04]   seed 1 fold 2: train 85694 (target agw 5.00, spw 5.35) | test AUC 0.9318 (1200 rows) | 1151s
+[20:18:04]   seed 1: OOF AUC on rows with raw data: full 0.9237 reviewed 0.9237
+[20:21:15]   seed 7 fold 0: train 85694 (target agw 5.00, spw 5.35) | test AUC 0.9325 (1200 rows) | 1342s
+[20:24:27]   seed 7 fold 1: train 86411 (target agw 5.00, spw 5.47) | test AUC 0.9473 (483 rows) | 1534s
+[20:27:39]   seed 7 fold 2: train 86566 (target agw 5.00, spw 5.41) | test AUC 0.8171 (328 rows) | 1726s
+[20:27:39]   seed 7: OOF AUC on rows with raw data: full 0.9216 reviewed 0.9216
+[20:27:39] wrote r2/pooled1_fixed12+nbtrace_vCA1_animal.npz/.json (1726s)

@@ -1,0 +1,60 @@
+{
+ "session": "AVG5x-TSeries-082726-pnb105-391um-35z-000",
+ "arm": "gSig11",
+ "model": "C:\\code\\CNMF_E_LEGACY_BIANE_CLAUDE\\agent\\model\\vCA1\\classifier.joblib",
+ "unmatched": [
+  {
+   "cand": 28,
+   "first_pass": 0.007935350760817528,
+   "best_cos": 0.038377717405733335,
+   "area": 532.0,
+   "circularity": 0.26866037570435247,
+   "peak_snr": 8.047838558029206,
+   "skewness": 0.14092730076227888,
+   "cn_correlation": 0.4448548179918509
+  }
+ ],
+ "groups": {
+  "arm unmatched": {
+   "n": 1,
+   "first_pass": 0.007935350760817528,
+   "first_pass_frac_ge_0.02": 0.0,
+   "area": 532.0,
+   "circularity": 0.26866037570435247,
+   "peak_snr": 8.047838558029206,
+   "skewness": 0.14092730076227888,
+   "cn_correlation": 0.4448548179918509
+  },
+  "arm matched": {
+   "n": 28,
+   "first_pass": 0.6614357829093933,
+   "first_pass_frac_ge_0.02": 0.8571428571428571,
+   "area": 591.0,
+   "circularity": 0.3325962267103998,
+   "peak_snr": 23.444657920876576,
+   "skewness": 1.8616529233605776,
+   "cn_correlation": 0.7194162446686629
+  },
+  "live all": {
+   "n": 30,
+   "first_pass": 0.672958493232727,
+   "first_pass_frac_ge_0.02": 0.8333333333333334,
+   "area": 605.5,
+   "circularity": 0.32175997823064334,
+   "peak_snr": 23.33208218567374,
+   "skewness": 1.7700843635233174,
+   "cn_correlation": 0.7488347393437214
+  },
+  "live not auto-rejected": {
+   "n": 30,
+   "first_pass": 0.672958493232727,
+   "first_pass_frac_ge_0.02": 0.8333333333333334,
+   "area": 605.5,
+   "circularity": 0.32175997823064334,
+   "peak_snr": 23.33208218567374,
+   "skewness": 1.7700843635233174,
+   "cn_correlation": 0.7488347393437214
+  },
+  "live auto-rejected": {}
+ }
+}

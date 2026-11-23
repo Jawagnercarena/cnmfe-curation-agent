@@ -1,0 +1,98 @@
+2026-10-16/17 pnb105 question: "more cells, condensed on top of each other; worth checking params?"
+All numbers measured by the scripts in this folder (read-only on the server and the data root).
+Scripts carry the Claude scratchpad HERE path; figures are written next to the script.
+
+1. Kept-cell packing (0.70 sets, Taylor's labels; centroid nearest-neighbour distance, px at 512)
+session | N | kept | kept core radius med | kept NN med / 10th pct | kept pairs NN<18 px | all-candidate NN med
+082626-pnb102 | 215 | 44 | 10.7 | 33.9 / 14.3 | 5 of 44 | 14.2
+082626-pnb104 | 176 | 32 | 8.4 | 29.6 / 17.1 | 4 of 32 | 14.7
+082626-pnb105 | 266 | - | - | - | - | 10.5   (densest field of the 12, not yet reviewed)
+082626-pnb106 | 228 | - | - | - | - | 11.2
+082626-pnb109 | 196 | 49 | 8.0 | 21.7 / 13.1 | 17 of 49 | 15.4
+082626-pnb99 | 81 | 29 | 7.9 | 28.3 / 13.0 | 10 of 29 | 16.5
+082726-pnb102 | 239 | 40 | 10.8 | 28.0 / 15.4 | 10 of 40 | 14.0
+082726-pnb104 | 170 | 31 | 9.2 | 30.9 / 18.2 | 2 of 31 | 13.1
+082726-pnb105 | 79 | 24 | 9.6 | 22.2 / 12.9 | 6 of 24 | 19.2   (sparsest candidate set of the 12)
+082726-pnb106 | 184 | - | - | - | - | 12.3
+082726-pnb109 | 205 | 57 | 8.2 | 24.0 / 8.8 | 20 of 57 | 12.5
+082826-pnb99 | 198 | 49 | 8.9 | 18.1 / 10.6 | 23 of 49 | 11.5
+
+2. pnb105 sweep arms (2026-09-25, gSiz = 4 x gSig, arms at their own estimated thresholds) vs the 0.70 gSig-9 set, cosine >= 0.45
+082626-pnb105 gSig07 (min_corr 0.74): 161 cand; 153 match a 0.70 candidate, 8 extras
+082626-pnb105 gSig11 (0.88): 101 cand; 91 match, 10 extras
+082726-pnb105 gSig07 (0.69): 42 cand; 40 match, 2 extras; recovers 21 of Taylor's 24 kept cells
+082726-pnb105 gSig11 (0.87): 29 cand; 29 match, 0 extras; recovers 20 of 24
+
+3. Cn local maxima > 0.70 vs window size (px at 512; seeding window ~37), border 20
+session | w15 | w21 | w27 | w37 | N cand
+082626-pnb105 | 243 | 166 | 110 | 70 | 266
+082726-pnb105 | 87 | 62 | 50 | 40 | 79
+others (10 sessions) | 123-212 | 97-157 | 70-129 | 55-86 | 81-239
+
+4. Cn maxima > 0.70 (21 px window) outside every candidate's support (per-candidate normalised, > 0.3 max, dilated 5 px)
+082726-pnb105: 62 maxima, 53 inside a candidate, 9 outside; all 9 pass min_pnr 5.7; all 9 are blobs < 150 px at Cn > 0.70
+  (11-140 px; the seeding median filter needs ~150 px), none >= 0.75 with a cell-sized blob.
+other sessions: 17-39 outside, of which 3-16 are cell-sized blobs with Cn >= 0.75 (max 082626-pnb105: 15, 082626-pnb99: 15).
+
+5. Day 1 vs day 2 pnb105 (imaging sheet: both FOV A, zoom 3.5, laser 461/79, PMT 620, depth 397 vs 391 um)
+mean-image correlation day2 vs day1 at zero shift 0.802 (different animal control 0.155) -> same field, no shift
+residual motion (24 blocks of 40 frames vs session mean, phase correlation): 0 px in every block, both days (also 0 in two reference sessions)
+sharpness (gradient energy / std): 0.377 day 1, 0.406 day 2, references 0.450 / 0.367
+raw mean 75.5 day 1 vs 89.8 day 2; survey_vca1 (2026-10-05): Cn p90 0.866 vs 0.721, %Cn>0.8 19.9 vs 4.2, pnr p90 12.6 vs 8.3, %eligible 14.0 vs 3.7
+
+6. Soma-like blobs in the mean image (cell-scale DoG contrast above the 95th pct of random points) with NO candidate
+session | N cand | soma-like blobs | covered | uncovered | Cn at uncovered: median / n>=0.70 / n 0.60-0.70 / n<0.60
+082626-pnb105 | 266 | 102 | 92 | 10 | 0.73 / 5 / 4 / 1
+082726-pnb105 | 79 | 70 | 45 | 25 | 0.63 / 2 / 14 / 9
+082726-pnb109 | 205 | 90 | 74 | 16 | 0.68 / 4 / 12 / 0
+082826-pnb99 | 198 | 87 | 72 | 15 | 0.67 / 4 / 9 / 2
+082726-pnb104 | 170 | 96 | 74 | 22 | 0.65 / 6 / 9 / 7
+
+Reading: on 082726-pnb105 the 0.70 run already seeded every cell-sized Cn blob; the field is the same as day 1
+with no motion and the same acquisition settings, but its correlation/PNR images are far weaker (fewer active
+cells on that day). The visible-but-uncovered somata (25) sit at Cn 0.60-0.70 or below, the same count and
+Cn range as in the other sessions, so only a lower min_corr (< 0.70) could reach them, for every session alike.
+The dense patch (33 candidates in 160x160 px) was over-segmented into overlapping fragments that Taylor
+deleted, not under-seeded. gSig 7 / 11 do not add cells on day 2. Day 1 (266 candidates, NN 10.5 px) is the
+dense field; its gSig-7 arm has 8 extras -- Analysis C when its review returns.
+
+===== 2026-10-18 follow-up: "same FOV, same parameters, why 266 -> 79?" =====
+CORRECTION to item 5 above: the two fields are NOT at zero shift. Phase correlation on the raw mean images
+was fooled by the vignetting band; on high-pass filtered mean images the day-1 content sits 73 rows lower
+(dr, dc = 73, 2 px; ~24 um at 0.33 um/px; corr 0.50 vs -0.06 at zero shift; within-session control 0.92 at
+shift 0). The candidate matching below uses that shift. (day1_vs_day2.py / align_pnb105.py)
+
+7. Acquisition (Bruker XML, read-only; xml_settings.py, xml_all.py)
+   both days: laser 460.7 (setting), PMT 620, zoom 3.5, 930 nm, 0.330 um/px, framePeriod 0.03308
+   z motor -397 / piezo 41.806 (day 0) vs -391.9 / 46.852 (day 1): 5 um motor, 5 um piezo -> 5-10 um apart
+   bitDepth 13 (day 0) vs 12 (day 1). bitDepth 12 holds for ALL five 082726 sessions; every other session
+   of the cohort (082626, 082826, 0905-0910) is 13. Imaging sheet (D:/Analysis/6odor dual DR/2p imaging
+   parameters 4.0 (retro) - 4_6odor DR.csv) agrees on laser/PMT/zoom/depth for both days.
+8. Raw 16-bit frames on the server (raw_frames2/3.py; pages of every 10th-15th trial file)
+   day1/day0 raw mean ratio: pnb102 0.58, pnb104 0.54, pnb105 0.56, pnb106 0.58, pnb109 0.52; pnb99 (both
+   13-bit, 0826 vs 0828) 1.16 -> the 12-bit day halves the raw count scale rig-wide. pnb105 p50 ratio 0.42
+   (others 0.52-0.58), zero pixels 26.9% vs 11.0% (others +3 to +7 pts): its field was also ~20% dimmer.
+   No ADC clipping either day (px >= 4095: 0.18% day 0, 0.02% day 1; max 8191 reached by a handful).
+   uint8 AVG5x tifs are scaled per session (day 0 uint8 p50 66 at raw p50 568; day 1 85 at raw 241), so
+   uint8 brightness is not comparable across sessions; day 1 occupies fewer levels (p1-p99 54-169 vs 26-188).
+9. Time-resolved (time_resolved_quality.py; 1000-frame blocks): day 1 is uniformly weak -- PNR p90 6.4-8.5 in
+   all 16 blocks vs 10.3-15.3 on day 0; block means 89.4-90.5, block-vs-block0 corr >= 0.988, jitter 0,
+   frame-vs-block-mean corr 0.93 (0.95 day 0). No drift, no bad segment. (The Cn column of that script is
+   not comparable to CNMF-E's and is ignored.)
+10. Cell-level, aligned (overlap_pnb105.py, percell_pnb105.py; match radius 12 px)
+   day-0 candidates 266: 246 inside the day-1 field, 20 outside.
+   inside: 101 have a day-1 candidate; 145 do NOT. Taylor's 24 kept day-1 cells: 24 of 24 have a day-0
+   counterpart (21 of 24 within 8 px).
+   the 145 unseeded: day-0 Cn median 0.90; day-1 Cn at their position >= 0.70: 19, 0.60-0.70: 51,
+   0.50-0.60: 75, < 0.50: 0 (median 0.60). Soma contrast: 22% soma-like on day 0, 11% on day 1 (faint cells
+   on both days). Per-cell Cn drop median 0.28 (IQR 0.21-0.34).
+   the 101 seeded: Cn 0.96 -> 0.85 (drop 0.09, IQR 0.04-0.15); soma-like 57% -> 61%; Taylor kept 40 of
+   their day-1 counterparts (day-1 Cn median 0.93), deleted 61 (0.83).
+   day-0 cells with day-0 Cn >= 0.90 inside the day-1 field: 148, seeded on day 1: 76.
+   mean-image high-pass energy ratio identical (0.186 both days): no extra haze/blur on day 1.
+Reading: same cells, uniformly lower correlation on day 1 (-0.09 for the bright ones, -0.28 for the faint
+ones), so the faint-but-active population of day 0 (~145 cells, Cn ~0.90 then) sits at 0.50-0.70 on day 1
+and under the 0.70 seed. Not a gSig/gSiz/PNR problem and not motion/drift. The session is dimmer (raw) and
+5-10 um off in z per the XML; cause not separable from here. A session-level min_corr 0.60 would seed ~70
+of those 145 (0.50 all 145) at low SNR; the 85th-percentile estimator (0.81 for this session) moves the
+wrong way on a weak recording.

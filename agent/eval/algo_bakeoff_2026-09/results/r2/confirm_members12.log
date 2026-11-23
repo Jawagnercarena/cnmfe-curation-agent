@@ -1,0 +1,184 @@
+[22:53:51] fixed12+nbtrace+ens3_m1-2_BLA_session: control BLA_session_xgb_deployed_t8.npz: 13766 rows, 2618 real; raw for 11877 rows; bootstrap rows 33448 (4494 weight-0); 81 groups -> 5 folds; corpus BLA_raw_corpus_v2.h5 images (3, 32, 32); device cuda; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 3, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[22:59:53]   seed 42 fold 0: train 38613 (agw 4.00, spw 5.01) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9132 (members [0.9119, 0.9122]; 2218 rows) | 362s
+[23:05:50]   seed 42 fold 1: train 38345 (agw 4.00, spw 5.05) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9046 (members [0.9053, 0.9018]; 2486 rows) | 719s
+[23:11:47]   seed 42 fold 2: train 38183 (agw 4.00, spw 5.09) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8949 (members [0.8956, 0.8924]; 2648 rows) | 1077s
+[23:17:46]   seed 42 fold 3: train 38339 (agw 4.00, spw 4.95) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9198 (members [0.9211, 0.9167]; 2492 rows) | 1435s
+[23:23:48]   seed 42 fold 4: train 38798 (agw 4.00, spw 5.02) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9221 (members [0.9227, 0.919]; 2033 rows) | 1797s
+[23:23:48]   seed 42: OOF AUC on rows with raw data: full 0.9091 reviewed 0.9091
+[23:29:46]   seed 1 fold 0: train 38235 (agw 4.00, spw 4.86) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9077 (members [0.9085, 0.9049]; 2596 rows) | 2156s
+[23:35:49]   seed 1 fold 1: train 38950 (agw 4.00, spw 5.12) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9006 (members [0.8969, 0.9018]; 1881 rows) | 2518s
+[23:41:50]   seed 1 fold 2: train 38688 (agw 4.00, spw 5.10) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9141 (members [0.9127, 0.9126]; 2143 rows) | 2879s
+[23:47:46]   seed 1 fold 3: train 37973 (agw 4.00, spw 4.97) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9294 (members [0.9283, 0.9288]; 2858 rows) | 3235s
+[23:53:45]   seed 1 fold 4: train 38432 (agw 4.00, spw 5.08) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8932 (members [0.8943, 0.8902]; 2399 rows) | 3594s
+[23:53:45]   seed 1: OOF AUC on rows with raw data: full 0.9094 reviewed 0.9094
+[23:59:48]   seed 7 fold 0: train 38905 (agw 4.00, spw 4.93) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8934 (members [0.8931, 0.8918]; 1926 rows) | 3957s
+[00:05:46]   seed 7 fold 1: train 38358 (agw 4.00, spw 5.09) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9160 (members [0.9155, 0.9144]; 2473 rows) | 4316s
+[00:11:47]   seed 7 fold 2: train 38587 (agw 4.00, spw 5.19) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8997 (members [0.898, 0.8997]; 2244 rows) | 4676s
+[00:17:43]   seed 7 fold 3: train 38136 (agw 4.00, spw 4.86) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9212 (members [0.9223, 0.9185]; 2695 rows) | 5033s
+[00:23:41]   seed 7 fold 4: train 38292 (agw 4.00, spw 5.06) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9107 (members [0.9086, 0.9105]; 2539 rows) | 5390s
+[00:23:41]   seed 7: OOF AUC on rows with raw data: full 0.9075 reviewed 0.9075
+[00:29:39]   seed 13 fold 0: train 38440 (agw 4.00, spw 4.95) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9082 (members [0.9072, 0.9072]; 2391 rows) | 5749s
+[00:35:39]   seed 13 fold 1: train 38516 (agw 4.00, spw 4.98) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9088 (members [0.9073, 0.9087]; 2315 rows) | 6108s
+[00:41:37]   seed 13 fold 2: train 38196 (agw 4.00, spw 4.80) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9138 (members [0.9147, 0.9115]; 2635 rows) | 6466s
+[00:47:37]   seed 13 fold 3: train 38569 (agw 4.00, spw 4.98) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9222 (members [0.9193, 0.9224]; 2262 rows) | 6826s
+[00:53:36]   seed 13 fold 4: train 38557 (agw 4.00, spw 5.44) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9109 (members [0.9113, 0.9089]; 2274 rows) | 7186s
+[00:53:36]   seed 13: OOF AUC on rows with raw data: full 0.9111 reviewed 0.9111
+[00:59:36]   seed 100 fold 0: train 38499 (agw 4.00, spw 5.01) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9130 (members [0.9119, 0.9122]; 2332 rows) | 7545s
+[01:05:38]   seed 100 fold 1: train 38938 (agw 4.00, spw 5.09) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8888 (members [0.8887, 0.886]; 1893 rows) | 7907s
+[01:11:35]   seed 100 fold 2: train 38195 (agw 4.00, spw 4.96) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9044 (members [0.9031, 0.9038]; 2636 rows) | 8264s
+[01:17:35]   seed 100 fold 3: train 38403 (agw 4.00, spw 5.07) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9278 (members [0.925, 0.9275]; 2428 rows) | 8625s
+[01:23:32]   seed 100 fold 4: train 38243 (agw 4.00, spw 4.98) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9153 (members [0.912, 0.9161]; 2588 rows) | 8981s
+[01:23:32]   seed 100: OOF AUC on rows with raw data: full 0.9109 reviewed 0.9109
+[01:29:30]   seed 2024 fold 0: train 38307 (agw 4.00, spw 4.77) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9103 (members [0.9085, 0.9102]; 2524 rows) | 9339s
+[01:35:28]   seed 2024 fold 1: train 38324 (agw 4.00, spw 5.23) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9091 (members [0.9073, 0.9093]; 2507 rows) | 9697s
+[01:41:30]   seed 2024 fold 2: train 38693 (agw 4.00, spw 5.13) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9235 (members [0.9234, 0.9213]; 2138 rows) | 10059s
+[01:47:29]   seed 2024 fold 3: train 38413 (agw 4.00, spw 5.06) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9192 (members [0.9184, 0.9178]; 2418 rows) | 10418s
+[01:53:29]   seed 2024 fold 4: train 38541 (agw 4.00, spw 4.95) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8997 (members [0.8983, 0.8992]; 2290 rows) | 10778s
+[01:53:29]   seed 2024: OOF AUC on rows with raw data: full 0.9118 reviewed 0.9118
+[01:59:30]   seed 31337 fold 0: train 38694 (agw 4.00, spw 4.96) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9235 (members [0.9231, 0.9222]; 2137 rows) | 11139s
+[02:05:29]   seed 31337 fold 1: train 38511 (agw 4.00, spw 4.98) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9156 (members [0.9159, 0.9123]; 2320 rows) | 11499s
+[02:11:27]   seed 31337 fold 2: train 38356 (agw 4.00, spw 4.94) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9123 (members [0.9119, 0.9101]; 2475 rows) | 11857s
+[02:17:26]   seed 31337 fold 3: train 38306 (agw 4.00, spw 5.28) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9123 (members [0.9104, 0.9121]; 2525 rows) | 12215s
+[02:23:25]   seed 31337 fold 4: train 38411 (agw 4.00, spw 4.97) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8920 (members [0.8888, 0.8925]; 2420 rows) | 12574s
+[02:23:25]   seed 31337: OOF AUC on rows with raw data: full 0.9092 reviewed 0.9092
+[02:29:24]   seed 9 fold 0: train 38390 (agw 4.00, spw 5.04) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9084 (members [0.9087, 0.9065]; 2441 rows) | 12933s
+[02:35:22]   seed 9 fold 1: train 38147 (agw 4.00, spw 4.94) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9155 (members [0.9162, 0.9135]; 2684 rows) | 13291s
+[02:41:20]   seed 9 fold 2: train 38359 (agw 4.00, spw 4.99) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9057 (members [0.9047, 0.9049]; 2472 rows) | 13650s
+[02:47:21]   seed 9 fold 3: train 38646 (agw 4.00, spw 5.13) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9252 (members [0.923, 0.9255]; 2185 rows) | 14010s
+[02:53:21]   seed 9 fold 4: train 38736 (agw 4.00, spw 5.03) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8966 (members [0.897, 0.8933]; 2095 rows) | 14370s
+[02:53:21]   seed 9: OOF AUC on rows with raw data: full 0.9106 reviewed 0.9106
+[02:53:21] wrote r2/fixed12+nbtrace+ens3_m1-2_BLA_session.npz/.json (14370s)
+[02:53:22] fixed12+nbtrace+ens3_m1-2_BLA_animal: control BLA_animal_xgb_deployed_t8.npz: 13766 rows, 2618 real; raw for 11877 rows; bootstrap rows 33448 (4494 weight-0); 6 groups -> 5 folds; corpus BLA_raw_corpus_v2.h5 images (3, 32, 32); device cuda; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 3, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[02:59:17]   seed 42 fold 0: train 37793 (agw 4.00, spw 5.38) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9095 (members [0.9092, 0.9083]; 3038 rows) | 355s
+[03:05:32]   seed 42 fold 1: train 40524 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9280 (members [0.9248, 0.927]; 307 rows) | 730s
+[03:11:29]   seed 42 fold 2: train 38493 (agw 4.00, spw 5.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9173 (members [0.9181, 0.9139]; 1857 rows) | 1087s
+[03:17:23]   seed 42 fold 3: train 38177 (agw 4.00, spw 4.83) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9150 (members [0.9146, 0.9135]; 1721 rows) | 1442s
+[03:22:55]   seed 42 fold 4: train 35024 (agw 4.00, spw 4.73) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8986 (members [0.8991, 0.8958]; 4954 rows) | 1773s
+[03:22:55]   seed 42: OOF AUC on rows with raw data: full 0.9057 reviewed 0.9057
+[03:29:10]   seed 1 fold 0: train 40524 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9211 (members [0.9191, 0.9178]; 307 rows) | 2148s
+[03:35:05]   seed 1 fold 1: train 38177 (agw 4.00, spw 4.83) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9200 (members [0.9181, 0.9197]; 1721 rows) | 2503s
+[03:40:52]   seed 1 fold 2: train 36717 (agw 4.00, spw 4.74) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8995 (members [0.8975, 0.8992]; 4114 rows) | 2851s
+[03:46:48]   seed 1 fold 3: train 37793 (agw 4.00, spw 5.38) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9103 (members [0.9107, 0.9083]; 3038 rows) | 3206s
+[03:52:31]   seed 1 fold 4: train 36800 (agw 4.00, spw 5.27) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9056 (members [0.905, 0.9039]; 2697 rows) | 3549s
+[03:52:31]   seed 1: OOF AUC on rows with raw data: full 0.9053 reviewed 0.9053
+[03:58:26]   seed 7 fold 0: train 38177 (agw 4.00, spw 4.83) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9164 (members [0.914, 0.9168]; 1721 rows) | 3904s
+[04:04:28]   seed 7 fold 1: train 39138 (agw 4.00, spw 4.78) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8894 (members [0.8925, 0.8848]; 840 rows) | 4267s
+[04:10:43]   seed 7 fold 2: train 40524 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9252 (members [0.9282, 0.9194]; 307 rows) | 4641s
+[04:16:41]   seed 7 fold 3: train 38493 (agw 4.00, spw 5.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9199 (members [0.9191, 0.9181]; 1857 rows) | 4999s
+[04:22:06]   seed 7 fold 4: train 33679 (agw 4.00, spw 5.54) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9044 (members [0.9024, 0.9044]; 7152 rows) | 5324s
+[04:22:06]   seed 7: OOF AUC on rows with raw data: full 0.9015 reviewed 0.9015
+[04:28:21]   seed 13 fold 0: train 40524 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9174 (members [0.921, 0.9103]; 307 rows) | 5699s
+[04:34:08]   seed 13 fold 1: train 36717 (agw 4.00, spw 4.74) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9003 (members [0.8986, 0.8998]; 4114 rows) | 6046s
+[04:40:04]   seed 13 fold 2: train 37793 (agw 4.00, spw 5.38) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9094 (members [0.9083, 0.909]; 3038 rows) | 6402s
+[04:44:41]   seed 13 fold 3: train 39138 (agw 4.00, spw 4.78) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8869 (members [0.8838, 0.8865]; 840 rows) | 6679s
+[04:47:19]   seed 13 fold 4: train 35839 (agw 4.00, spw 5.36) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9095 (members [0.9085, 0.9086]; 3578 rows) | 6837s
+[04:47:19]   seed 13: OOF AUC on rows with raw data: full 0.9031 reviewed 0.9031
+[04:50:15]   seed 100 fold 0: train 40524 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9184 (members [0.9201, 0.9139]; 307 rows) | 7013s
+[04:53:02]   seed 100 fold 1: train 37793 (agw 4.00, spw 5.38) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9124 (members [0.9112, 0.9111]; 3038 rows) | 7180s
+[04:55:49]   seed 100 fold 2: train 38177 (agw 4.00, spw 4.83) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9188 (members [0.9189, 0.9171]; 1721 rows) | 7347s
+[04:58:32]   seed 100 fold 3: train 36717 (agw 4.00, spw 4.74) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8984 (members [0.8984, 0.8969]; 4114 rows) | 7510s
+[05:01:14]   seed 100 fold 4: train 36800 (agw 4.00, spw 5.27) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9082 (members [0.904, 0.9096]; 2697 rows) | 7672s
+[05:01:14]   seed 100: OOF AUC on rows with raw data: full 0.9059 reviewed 0.9059
+[05:04:02]   seed 2024 fold 0: train 38493 (agw 4.00, spw 5.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9178 (members [0.9161, 0.9177]; 1857 rows) | 7840s
+[05:06:45]   seed 2024 fold 1: train 36717 (agw 4.00, spw 4.74) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8973 (members [0.8946, 0.8981]; 4114 rows) | 8003s
+[05:09:32]   seed 2024 fold 2: train 38177 (agw 4.00, spw 4.83) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9199 (members [0.919, 0.919]; 1721 rows) | 8170s
+[05:12:28]   seed 2024 fold 3: train 40524 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9215 (members [0.9219, 0.9155]; 307 rows) | 8346s
+[05:15:09]   seed 2024 fold 4: train 36100 (agw 4.00, spw 5.42) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9062 (members [0.9063, 0.9042]; 3878 rows) | 8507s
+[05:15:09]   seed 2024: OOF AUC on rows with raw data: full 0.9060 reviewed 0.9060
+[05:17:59]   seed 31337 fold 0: train 39138 (agw 4.00, spw 4.78) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8867 (members [0.8845, 0.8862]; 840 rows) | 8678s
+[05:20:46]   seed 31337 fold 1: train 38177 (agw 4.00, spw 4.83) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9185 (members [0.9187, 0.9153]; 1721 rows) | 8844s
+[05:23:42]   seed 31337 fold 2: train 40524 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9201 (members [0.9163, 0.921]; 307 rows) | 9021s
+[05:26:26]   seed 31337 fold 3: train 36717 (agw 4.00, spw 4.74) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8995 (members [0.8994, 0.8979]; 4114 rows) | 9184s
+[05:29:04]   seed 31337 fold 4: train 35455 (agw 4.00, spw 6.18) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9095 (members [0.9085, 0.9083]; 4895 rows) | 9342s
+[05:29:04]   seed 31337: OOF AUC on rows with raw data: full 0.9047 reviewed 0.9047
+[05:31:51]   seed 9 fold 0: train 38177 (agw 4.00, spw 4.83) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9159 (members [0.9155, 0.9142]; 1721 rows) | 9509s
+[05:34:39]   seed 9 fold 1: train 38493 (agw 4.00, spw 5.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9199 (members [0.9191, 0.9181]; 1857 rows) | 9677s
+[05:37:26]   seed 9 fold 2: train 37793 (agw 4.00, spw 5.38) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9116 (members [0.9111, 0.9108]; 3038 rows) | 9845s
+[05:40:10]   seed 9 fold 3: train 36717 (agw 4.00, spw 4.74) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9000 (members [0.8978, 0.8997]; 4114 rows) | 10008s
+[05:42:59]   seed 9 fold 4: train 38831 (agw 4.00, spw 4.88) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8994 (members [0.8987, 0.897]; 1147 rows) | 10177s
+[05:42:59]   seed 9: OOF AUC on rows with raw data: full 0.9051 reviewed 0.9051
+[05:42:59] wrote r2/fixed12+nbtrace+ens3_m1-2_BLA_animal.npz/.json (10177s)
+[05:43:00] fixed12+nbtrace+ens3_m1-2_vCA1_session: control vCA1_session_xgb_deployed_t8.npz: 2068 rows, 483 real; raw for 2011 rows; bootstrap rows 50370 (6662 weight-0); 24 groups -> 5 folds; corpus vCA1_raw_corpus_v2.h5 images (3, 32, 32); device cuda; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 3, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[05:46:17]   seed 42 fold 0: train 45370 (agw 5.00, spw 6.26) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9280 (members [0.9268, 0.9241]; 349 rows) | 198s
+[05:49:35]   seed 42 fold 1: train 45207 (agw 5.00, spw 6.16) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9341 (members [0.9275, 0.9375]; 512 rows) | 395s
+[05:52:53]   seed 42 fold 2: train 45485 (agw 5.00, spw 6.21) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9142 (members [0.9126, 0.9154]; 234 rows) | 593s
+[05:56:10]   seed 42 fold 3: train 45319 (agw 5.00, spw 6.28) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9270 (members [0.9273, 0.9251]; 400 rows) | 791s
+[05:59:27]   seed 42 fold 4: train 45203 (agw 5.00, spw 6.66) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9352 (members [0.9347, 0.9341]; 516 rows) | 988s
+[05:59:27]   seed 42: OOF AUC on rows with raw data: full 0.9287 reviewed 0.9287
+[06:02:45]   seed 1 fold 0: train 45320 (agw 5.00, spw 6.40) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9227 (members [0.9215, 0.9218]; 399 rows) | 1185s
+[06:06:03]   seed 1 fold 1: train 45509 (agw 5.00, spw 6.22) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9094 (members [0.9064, 0.9082]; 210 rows) | 1383s
+[06:09:21]   seed 1 fold 2: train 45485 (agw 5.00, spw 6.21) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9769 (members [0.9753, 0.9715]; 234 rows) | 1581s
+[06:12:38]   seed 1 fold 3: train 45161 (agw 5.00, spw 6.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9235 (members [0.9232, 0.92]; 558 rows) | 1778s
+[06:15:55]   seed 1 fold 4: train 45109 (agw 5.00, spw 6.49) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9359 (members [0.9341, 0.9352]; 610 rows) | 1975s
+[06:15:55]   seed 1: OOF AUC on rows with raw data: full 0.9319 reviewed 0.9319
+[06:19:12]   seed 7 fold 0: train 45345 (agw 5.00, spw 6.47) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9235 (members [0.9258, 0.9187]; 374 rows) | 2173s
+[06:22:29]   seed 7 fold 1: train 45167 (agw 5.00, spw 6.42) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9414 (members [0.9427, 0.9375]; 552 rows) | 2369s
+[06:25:47]   seed 7 fold 2: train 45453 (agw 5.00, spw 6.17) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9505 (members [0.9529, 0.9463]; 266 rows) | 2567s
+[06:29:05]   seed 7 fold 3: train 45420 (agw 5.00, spw 6.20) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9353 (members [0.9358, 0.932]; 299 rows) | 2765s
+[06:32:22]   seed 7 fold 4: train 45199 (agw 5.00, spw 6.30) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9234 (members [0.9216, 0.9221]; 520 rows) | 2962s
+[06:32:22]   seed 7: OOF AUC on rows with raw data: full 0.9297 reviewed 0.9297
+[06:35:39]   seed 13 fold 0: train 45188 (agw 5.00, spw 6.34) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9304 (members [0.9329, 0.9253]; 531 rows) | 3159s
+[06:38:57]   seed 13 fold 1: train 45393 (agw 5.00, spw 6.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9310 (members [0.9313, 0.9276]; 326 rows) | 3357s
+[06:42:13]   seed 13 fold 2: train 45128 (agw 5.00, spw 6.48) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9541 (members [0.9518, 0.9549]; 591 rows) | 3554s
+[06:45:32]   seed 13 fold 3: train 45560 (agw 5.00, spw 6.18) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8623 (members [0.8623, 0.8552]; 159 rows) | 3752s
+[06:48:49]   seed 13 fold 4: train 45315 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9279 (members [0.9229, 0.9333]; 404 rows) | 3949s
+[06:48:49]   seed 13: OOF AUC on rows with raw data: full 0.9299 reviewed 0.9299
+[06:52:06]   seed 100 fold 0: train 45257 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9295 (members [0.9332, 0.9225]; 462 rows) | 4147s
+[06:55:24]   seed 100 fold 1: train 45275 (agw 5.00, spw 6.21) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9537 (members [0.9509, 0.9542]; 444 rows) | 4344s
+[06:58:42]   seed 100 fold 2: train 45501 (agw 5.00, spw 6.26) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9427 (members [0.9399, 0.9417]; 218 rows) | 4542s
+[07:01:59]   seed 100 fold 3: train 45453 (agw 5.00, spw 6.42) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9483 (members [0.951, 0.9435]; 266 rows) | 4740s
+[07:05:16]   seed 100 fold 4: train 45098 (agw 5.00, spw 6.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8985 (members [0.8936, 0.9004]; 621 rows) | 4936s
+[07:05:16]   seed 100: OOF AUC on rows with raw data: full 0.9287 reviewed 0.9287
+[07:08:33]   seed 2024 fold 0: train 45143 (agw 5.00, spw 6.25) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9401 (members [0.9371, 0.9402]; 576 rows) | 5133s
+[07:11:51]   seed 2024 fold 1: train 45485 (agw 5.00, spw 6.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9056 (members [0.9067, 0.9048]; 234 rows) | 5331s
+[07:15:09]   seed 2024 fold 2: train 45551 (agw 5.00, spw 6.37) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9412 (members [0.9375, 0.9429]; 168 rows) | 5529s
+[07:18:26]   seed 2024 fold 3: train 45083 (agw 5.00, spw 6.24) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9328 (members [0.9343, 0.9277]; 636 rows) | 5726s
+[07:21:44]   seed 2024 fold 4: train 45322 (agw 5.00, spw 6.46) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9122 (members [0.9093, 0.9122]; 397 rows) | 5924s
+[07:21:44]   seed 2024: OOF AUC on rows with raw data: full 0.9306 reviewed 0.9306
+[07:25:01]   seed 31337 fold 0: train 45356 (agw 5.00, spw 6.22) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9307 (members [0.9249, 0.9339]; 363 rows) | 6121s
+[07:28:19]   seed 31337 fold 1: train 45423 (agw 5.00, spw 6.23) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9047 (members [0.9061, 0.8998]; 296 rows) | 6319s
+[07:31:37]   seed 31337 fold 2: train 45634 (agw 5.00, spw 6.16) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.7771 (members [0.7857, 0.7698]; 85 rows) | 6518s
+[07:34:55]   seed 31337 fold 3: train 45254 (agw 5.00, spw 6.47) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9577 (members [0.9583, 0.9534]; 465 rows) | 6715s
+[07:38:11]   seed 31337 fold 4: train 44917 (agw 5.00, spw 6.50) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9388 (members [0.9395, 0.9367]; 802 rows) | 6911s
+[07:38:11]   seed 31337: OOF AUC on rows with raw data: full 0.9298 reviewed 0.9298
+[07:41:28]   seed 9 fold 0: train 45274 (agw 5.00, spw 6.40) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9163 (members [0.9128, 0.9175]; 445 rows) | 7108s
+[07:44:45]   seed 9 fold 1: train 45283 (agw 5.00, spw 6.19) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9273 (members [0.9264, 0.9256]; 436 rows) | 7306s
+[07:48:03]   seed 9 fold 2: train 45402 (agw 5.00, spw 6.23) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9438 (members [0.9448, 0.9423]; 317 rows) | 7503s
+[07:51:21]   seed 9 fold 3: train 45327 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9387 (members [0.9355, 0.9393]; 392 rows) | 7701s
+[07:54:38]   seed 9 fold 4: train 45298 (agw 5.00, spw 6.42) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9259 (members [0.9231, 0.9254]; 421 rows) | 7898s
+[07:54:38]   seed 9: OOF AUC on rows with raw data: full 0.9265 reviewed 0.9265
+[07:54:38] wrote r2/fixed12+nbtrace+ens3_m1-2_vCA1_session.npz/.json (7898s)
+[07:54:38] fixed12+nbtrace+ens3_m1-2_vCA1_animal: control vCA1_animal_xgb_deployed_t8.npz: 2068 rows, 483 real; raw for 2011 rows; bootstrap rows 50370 (6662 weight-0); 3 groups -> 3 folds; corpus vCA1_raw_corpus_v2.h5 images (3, 32, 32); device cuda; cfg {'val_bs_frac': 0.0, 'epochs': 25, 'fixed_epochs': 12, 'ens': 3, 'corpus': 'v2', 'nb': True, 'patience': 5, 'batch': 256, 'lr': 0.001}
+[07:57:53]   seed 42 fold 0: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9246 (members [0.9213, 0.9253]; 1200 rows) | 195s
+[08:01:11]   seed 42 fold 1: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8172 (members [0.8159, 0.8107]; 328 rows) | 392s
+[08:04:28]   seed 42 fold 2: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9490 (members [0.9454, 0.9499]; 483 rows) | 589s
+[08:04:28]   seed 42: OOF AUC on rows with raw data: full 0.9191 reviewed 0.9191
+[08:07:45]   seed 1 fold 0: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9469 (members [0.9461, 0.9458]; 483 rows) | 787s
+[08:11:03]   seed 1 fold 1: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8209 (members [0.8209, 0.8193]; 328 rows) | 984s
+[08:14:17]   seed 1 fold 2: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9283 (members [0.9277, 0.9268]; 1200 rows) | 1179s
+[08:14:17]   seed 1: OOF AUC on rows with raw data: full 0.9158 reviewed 0.9158
+[08:17:32]   seed 7 fold 0: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9252 (members [0.924, 0.9244]; 1200 rows) | 1374s
+[08:20:49]   seed 7 fold 1: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9509 (members [0.9533, 0.9464]; 483 rows) | 1571s
+[08:24:07]   seed 7 fold 2: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8083 (members [0.8161, 0.7973]; 328 rows) | 1768s
+[08:24:07]   seed 7: OOF AUC on rows with raw data: full 0.9144 reviewed 0.9144
+[08:27:24]   seed 13 fold 0: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8031 (members [0.8024, 0.8]; 328 rows) | 1966s
+[08:30:39]   seed 13 fold 1: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9277 (members [0.9271, 0.9261]; 1200 rows) | 2161s
+[08:33:56]   seed 13 fold 2: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9520 (members [0.9515, 0.9517]; 483 rows) | 2358s
+[08:33:56]   seed 13: OOF AUC on rows with raw data: full 0.9161 reviewed 0.9161
+[08:37:14]   seed 100 fold 0: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8303 (members [0.8145, 0.8419]; 328 rows) | 2555s
+[08:40:31]   seed 100 fold 1: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9523 (members [0.9493, 0.9533]; 483 rows) | 2752s
+[08:43:46]   seed 100 fold 2: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9265 (members [0.928, 0.9219]; 1200 rows) | 2947s
+[08:43:46]   seed 100: OOF AUC on rows with raw data: full 0.9203 reviewed 0.9203
+[08:47:03]   seed 2024 fold 0: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8367 (members [0.83, 0.8402]; 328 rows) | 3145s
+[08:50:20]   seed 2024 fold 1: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9513 (members [0.95, 0.9504]; 483 rows) | 3342s
+[08:53:35]   seed 2024 fold 2: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9276 (members [0.9254, 0.9274]; 1200 rows) | 3536s
+[08:53:35]   seed 2024: OOF AUC on rows with raw data: full 0.9230 reviewed 0.9230
+[08:56:50]   seed 31337 fold 0: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9268 (members [0.9266, 0.922]; 1200 rows) | 3731s
+[09:00:07]   seed 31337 fold 1: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.8167 (members [0.7944, 0.8321]; 328 rows) | 3929s
+[09:03:24]   seed 31337 fold 2: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9484 (members [0.9468, 0.9476]; 483 rows) | 4126s
+[09:03:24]   seed 31337: OOF AUC on rows with raw data: full 0.9190 reviewed 0.9190
+[09:06:42]   seed 9 fold 0: train 45391 (agw 5.00, spw 6.43) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.7990 (members [0.7997, 0.7965]; 328 rows) | 4323s
+[09:09:57]   seed 9 fold 1: train 44519 (agw 5.00, spw 6.31) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9260 (members [0.9222, 0.9276]; 1200 rows) | 4518s
+[09:13:14]   seed 9 fold 2: train 45236 (agw 5.00, spw 6.63) val 0 (0 bs) | best ep [11, 11] val AUC [nan, nan] | test AUC 0.9528 (members [0.9515, 0.9514]; 483 rows) | 4715s
+[09:13:14]   seed 9: OOF AUC on rows with raw data: full 0.9165 reviewed 0.9165
+[09:13:14] wrote r2/fixed12+nbtrace+ens3_m1-2_vCA1_animal.npz/.json (4715s)

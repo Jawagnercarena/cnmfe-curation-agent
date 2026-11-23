@@ -1,0 +1,102 @@
+curation model: n_sessions 177 T 0.01 n_features 35
+new labelled 13, pilots 12, still out 15
+
+== A. curation reproduced by the 10-28 snapshot (score < 0.01 == stored auto_rejected) ==
+  exact match in 28 of 28 sessions (13 labelled + 15 outstanding)
+
+== B. per session (scores = curating model, out of sample for these labels) ==
+session                               N auto  rev keep  rate   AUC | kept by score:  <.02  <.05   <.2   <.5  >=.5 | d>.9  mot m>=.5
+090526-pnb102-627um-28z-000         244   68  176   37  0.21 0.804 | kept by score:     2     0     3     9    23 |    2    1   51
+090526-pnb109-505um-26z-000         247   51  196   51  0.26 0.872 | kept by score:     1     1     4    10    35 |    3    0   55
+090526-pnb99-330um-3z-000            76   18   58   28  0.48 0.918 | kept by score:     0     1     1     4    22 |    0    0   24
+090626-pnb102-407um-3z-000          192   29  163   65  0.40 0.872 | kept by score:     0     0     7     9    49 |    2    9   65
+090626-pnb109-324um-26z-000         164   28  136   70  0.51 0.909 | kept by score:     0     3     5    12    50 |    1    1   56
+090626-pnb99-459um-3z-000           213   54  159   54  0.34 0.907 | kept by score:     0     0     1     4    49 |    9    2   75
+090726-pnb102-494um-3z-000          262   72  190   46  0.24 0.902 | kept by score:     0     0     5     4    37 |    0    6   55
+090726-pnb109-398um-25z-000         184   34  150   70  0.47 0.918 | kept by score:     0     1     4     6    59 |    2    1   69
+090826-pnb109-412um-25z-000         236   35  201   66  0.33 0.887 | kept by score:     0     0     7    11    48 |    2    1   75
+090826-pnb99-463um-3z-000           199   32  167   45  0.27 0.885 | kept by score:     0     1     0     4    40 |    6    0   74
+090926-pnb102-490um-3z-000          225   41  184   48  0.26 0.891 | kept by score:     0     1     6     4    37 |    2    1   57
+090926-pnb109-385um-25z-000         211   40  171   77  0.45 0.904 | kept by score:     0     0     3    11    63 |    3    0   81
+090926-pnb99-463um-3z-000           229   51  178   54  0.30 0.921 | kept by score:     0     0     2     5    47 |    3    4   73
+pooled: reviewed 2129, kept 711 (33.4%), AUC 0.889
+   pnb102  reviewed  713 kept 196  AUC 0.874
+   pnb109  reviewed  854 kept 334  AUC 0.896
+   pnb99   reviewed  562 kept 181  AUC 0.898
+
+== C. what a higher auto-reject threshold would have done on these 13 (scores from the curating model) ==
+   (candidates below 0.01 were never shown, so losses below 0.01 are invisible here)
+   at 0.01 (as run): auto-rejected 553 of 2682 candidates (20.6%)
+   T 0.02: kept cells lost   3 of 711 (0.42%) | extra junk removed  212 of 1418 reviewed deletes (15.0%) | review load 2129 -> 1914 | lost by animal {np.str_('pnb102'): '2/196', np.str_('pnb109'): '1/334', np.str_('pnb99'): '0/181'}
+   T 0.03: kept cells lost   7 of 711 (0.98%) | extra junk removed  338 of 1418 reviewed deletes (23.8%) | review load 2129 -> 1784 | lost by animal {np.str_('pnb102'): '2/196', np.str_('pnb109'): '4/334', np.str_('pnb99'): '1/181'}
+   T 0.04: kept cells lost   9 of 711 (1.27%) | extra junk removed  436 of 1418 reviewed deletes (30.7%) | review load 2129 -> 1684 | lost by animal {np.str_('pnb102'): '2/196', np.str_('pnb109'): '5/334', np.str_('pnb99'): '2/181'}
+   T 0.05: kept cells lost  11 of 711 (1.55%) | extra junk removed  505 of 1418 reviewed deletes (35.6%) | review load 2129 -> 1613 | lost by animal {np.str_('pnb102'): '3/196', np.str_('pnb109'): '6/334', np.str_('pnb99'): '2/181'}
+   T 0.10: kept cells lost  27 of 711 (3.80%) | extra junk removed  708 of 1418 reviewed deletes (49.9%) | review load 2129 -> 1394 | lost by animal {np.str_('pnb102'): '13/196', np.str_('pnb109'): '11/334', np.str_('pnb99'): '3/181'}
+
+== D. kept rate by score band, 13 sessions pooled ==
+   0.01-0.02:  215 reviewed (10.1% of load), kept   3 (1.4%)
+   0.02-0.05:  301 reviewed (14.1% of load), kept   8 (2.7%)
+   0.05-0.10:  219 reviewed (10.3% of load), kept  16 (7.3%)
+   0.10-0.20:  236 reviewed (11.1% of load), kept  32 (13.6%)
+   0.20-0.50:  348 reviewed (16.3% of load), kept  93 (26.7%)
+   0.50-0.80:  329 reviewed (15.5% of load), kept 158 (48.0%)
+   0.80-1.00:  481 reviewed (22.6% of load), kept 401 (83.4%)
+
+== E. kept cells per session by animal (pilots 08xx at threshold 0, new 09xx at 0.01) ==
+  pnb102
+     082626-pnb102-479um-3z-000         N 215  reviewed 215  kept  44
+     082726-pnb102-497um-3z-000         N 239  reviewed 239  kept  40
+     090526-pnb102-627um-28z-000        N 244  reviewed 176  kept  37
+     090626-pnb102-407um-3z-000         N 192  reviewed 163  kept  65
+     090726-pnb102-494um-3z-000         N 262  reviewed 190  kept  46
+     090926-pnb102-490um-3z-000         N 225  reviewed 184  kept  48
+  pnb104
+     082626-pnb104-404um-3z-000         N 176  reviewed 176  kept  32
+     082726-pnb104-416um-3z-000         N 170  reviewed 170  kept  31
+  pnb105
+     082626-pnb105-397um-35z-000        N 266  reviewed 266  kept  24
+     082726-pnb105-391um-35z-000        N 169  reviewed 169  kept  34
+  pnb106
+     082626-pnb106-205um-4z-000         N 228  reviewed 228  kept  10
+     082726-pnb106-201um-4z-000         N 184  reviewed 184  kept  11
+  pnb109
+     082626-pnb109-398um-26z-000        N 196  reviewed 196  kept  49
+     082726-pnb109-405um-25z-000        N 205  reviewed 205  kept  57
+     090526-pnb109-505um-26z-000        N 247  reviewed 196  kept  51
+     090626-pnb109-324um-26z-000        N 164  reviewed 136  kept  70
+     090726-pnb109-398um-25z-000        N 184  reviewed 150  kept  70
+     090826-pnb109-412um-25z-000        N 236  reviewed 201  kept  66
+     090926-pnb109-385um-25z-000        N 211  reviewed 171  kept  77
+  pnb99
+     082626-pnb99-399um-3z-000          N  81  reviewed  81  kept  29
+     082826-pnb99-436um-3z-000-000      N 198  reviewed 198  kept  49
+     090526-pnb99-330um-3z-000          N  76  reviewed  58  kept  28
+     090626-pnb99-459um-3z-000          N 213  reviewed 159  kept  54
+     090826-pnb99-463um-3z-000          N 199  reviewed 167  kept  45
+     090926-pnb99-463um-3z-000          N 229  reviewed 178  kept  54
+
+== F. still with Taylor ==
+   090526-pnb105-520um-32z-000        N 168  to review 111
+   090526-pnb106-180um-4z-000         N 135  to review  89
+   090626-pnb105-472um-3z-000         N 229  to review 158
+   090626-pnb106-212um-4z-000         N 205  to review 133
+   090726-pnb104-503um-3z-000         N 235  to review 162
+   090726-pnb105-404um-35z-000        N 372  to review 246
+   090826-pnb102-497um-3z-000         N 333  to review 233
+   090826-pnb104-425um-3z-000         N 276  to review 184
+   090826-pnb105-385um-35z-000        N 351  to review 240
+   090826-pnb106-209um-4z-000         N 250  to review 158
+   090926-pnb104-492um-3z-000         N 213  to review 170
+   090926-pnb105-394um-35z-000        N 348  to review 259
+   090926-pnb106-230um-4z-000         N 315  to review 196
+   091026-pnb104-485um-3z-000         N 275  to review 200
+   091026-pnb105-353um-35z-000        N 304  to review 218
+   15 sessions, 2757 candidates to review
+
+== G. 090526-pnb99 (re-run at min_corr 0.60): kept cells vs the old 0.70 candidate set ==
+   footprints: new (76, 512, 512) (candidates 76), old (30, 512, 512)
+   new candidates matching an old one (IoU >= 0.5): 35 of 76; old candidates matched: 30 of 30
+   present at 0.70 : 35 candidates -> auto-rejected  0, reviewed 35, KEPT 22
+   added by 0.60   : 41 candidates -> auto-rejected 18, reviewed 23, KEPT  6
+   scores of the kept cells added by 0.60: [0.15000000596046448, 0.20100000500679016, 0.20600000023841858, 0.2280000001192093, 0.2329999953508377, 0.7239999771118164]
+   best IoU with any old candidate for those: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

@@ -1,0 +1,16 @@
+# vCA1 bake-off report (t8, 2026-09-24 08:27)
+
+## session-grouped: 43 CV sessions, 4267 rows, 1042 real, 49772 bootstrap rows, 5 folds over 43 groups, T = 0.04
+
+| contender | seeds | AUC full | AUC reviewed | dAUC rev vs control (min; n+/n) | rule T | FAR@T mean / worst | junk@T | FAR at matched junk | junk at matched FAR (dpp) | min |
+|---|---|---|---|---|---|---|---|---|---|---|
+| xgb_deployed | 8 | 0.9225 +- 0.0024 | 0.9212 | +0.0000 (+0.0000; 0/8) | None | 1.20 / 1.63 | 46.2 | 1.20 | 47.2 (+0.9) | 0 |
+
+## animal-grouped: 43 CV sessions, 4267 rows, 1042 real, 49772 bootstrap rows, 3 folds over 3 groups, T = 0.04
+
+| contender | seeds | AUC full | AUC reviewed | dAUC rev vs control (min; n+/n) | rule T | FAR@T mean / worst | junk@T | FAR at matched junk | junk at matched FAR (dpp) | min |
+|---|---|---|---|---|---|---|---|---|---|---|
+| xgb_deployed | 8 | 0.9159 +- 0.0010 | 0.9145 | +0.0000 (+0.0000; 0/8) | 0.03 | 1.10 / 1.34 | 45.4 | 1.10 | 46.4 (+1.0) | 0 |
+
+## Decision rule (pre-registered in README.md)
+

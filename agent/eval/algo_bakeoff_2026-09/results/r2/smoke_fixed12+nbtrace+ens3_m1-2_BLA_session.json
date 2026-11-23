@@ -1,0 +1,87 @@
+{
+ "variant": "fixed12+nbtrace+ens3",
+ "cfg": {
+  "val_bs_frac": 0.0,
+  "epochs": 2,
+  "fixed_epochs": 2,
+  "ens": 3,
+  "corpus": "v2",
+  "nb": true,
+  "patience": 5,
+  "batch": 256,
+  "lr": 0.001
+ },
+ "members": [
+  1,
+  2
+ ],
+ "area": "BLA",
+ "grouping": "session",
+ "seeds": [
+  42
+ ],
+ "control": "BLA_session_xgb_deployed_t8.npz",
+ "corpus": "D:\\Julian_CNMFe\\BLA\\.feature_expansion\\_raw_corpus\\BLA_raw_corpus_v2.h5",
+ "n_rows": 13766,
+ "n_rows_with_raw": 11877,
+ "smoke": true,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "runtime_s": 64.10154867172241,
+ "folds": [
+  {
+   "seed": 42,
+   "fold": 0,
+   "n_train": 38613,
+   "agw": 4.0,
+   "spw": 5.014950609593308,
+   "n_val_agent": 0,
+   "n_val_bs": 0,
+   "n_test_scored": 2218,
+   "test_auc": 0.9015633359790692,
+   "member_auc": [
+    0.9028415204162625,
+    0.8951947555633947
+   ],
+   "best_epoch": [
+    1,
+    1
+   ],
+   "best_val_auc": [
+    NaN,
+    NaN
+   ],
+   "epochs_run": [
+    2,
+    2
+   ],
+   "curve": [
+    [
+     {
+      "epoch": 0,
+      "loss": 0.46323337578615603,
+      "val_auc": NaN
+     },
+     {
+      "epoch": 1,
+      "loss": 0.39369581254902264,
+      "val_auc": NaN
+     }
+    ],
+    [
+     {
+      "epoch": 0,
+      "loss": 0.46903349311146514,
+      "val_auc": NaN
+     },
+     {
+      "epoch": 1,
+      "loss": 0.3909411450095524,
+      "val_auc": NaN
+     }
+    ]
+   ]
+  }
+ ],
+ "written_at": "2026-09-07T21:02:30"
+}

@@ -1,0 +1,16 @@
+# intake 2026-11-05 23:41:15
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02052025-bla2-470um-3z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02062025-bla2-523um-3z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02052025-bla3-631um-26z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02062025-bla3-695um-26z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02062025-bla4-670um-32z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02052025-bla6-780um-32z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-07162025-bla13-665um-25z-000
+D:\Julian_CNMFe\BLA\Valence\AVG5x-TSeries-02062025-bla6-745um-3z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02202025-bla2-710um-27z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02202025-bla3-655um-26z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02202025-bla4-750um-28z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02202025-bla5-523um-25z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-02202025-bla6-730um-3z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-03132025-bla5-653um-25z-000
+D:\Julian_CNMFe\BLA\3odor\AVG5x-TSeries-050225-bla13-546um-27z-000

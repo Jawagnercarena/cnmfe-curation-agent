@@ -1,0 +1,18 @@
+{
+ "assembled_from": [
+  "smoke_fixed12+nbtrace",
+  "smoke_fixed12+nbtrace+ens3_m1-2"
+ ],
+ "members": [
+  0,
+  1,
+  2
+ ],
+ "seeds": [
+  42
+ ],
+ "reviewed_auc_per_seed_rows_with_raw": [
+  0.8992844754093541
+ ],
+ "written_at": "2026-09-07T21:02:32"
+}

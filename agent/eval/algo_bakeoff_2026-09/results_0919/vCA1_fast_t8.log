@@ -1,0 +1,85 @@
+[13:20:12] env: {'python': 'C:\\Users\\julia\\.conda\\envs\\ACORN\\python.exe', 'cpu_count': 48, 'threads': 8, 'n_jobs': 8, 'platform': 'Windows-10-10.0.26200-SP0', 'OMP_NUM_THREADS': '8', 'numpy': '2.2.5', 'scipy': '1.15.3', 'sklearn': '1.7.2', 'xgboost': '3.2.0', 'lightgbm': '4.6.0', 'catboost': '1.2.10'}
+[13:20:12] vCA1: wrote pool snapshot pool_vCA1.json (158 labeled sessions)
+[13:20:13] vCA1: vs red-team pin_manifest: new=0 gone=0 changed=163 joblib_changed=True
+[13:20:13] vCA1/session: 39 CV sessions (8 agent sessions <5 reals dropped), 3726 rows, 934 real, 50370 bootstrap rows (6662 weight-0); 39 groups -> 5 folds; agent weight override 5.0; seeds [42, 1, 7, 13, 100, 2024, 31337, 9]
+[13:20:13]   == xgb_deployed (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:20:15]     seed 42 done (2s)
+[13:20:17]     seed 1 done (5s)
+[13:20:19]     seed 7 done (7s)
+[13:20:23]     seed 13 done (10s)
+[13:20:25]     seed 100 done (12s)
+[13:20:27]     seed 2024 done (14s)
+[13:20:29]     seed 31337 done (16s)
+[13:20:31]     seed 9 done (19s)
+[13:20:31]   xgb_deployed   AUC full 0.9221  reviewed 0.9206 | FAR@0.04 1.06% (worst 1.28) junk 45.2% | rule_T 0.03 | 19s
+[13:20:31]   == lgbm_deployed (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:20:33]     seed 42 done (1s)
+[13:20:34]     seed 1 done (3s)
+[13:20:36]     seed 7 done (4s)
+[13:20:37]     seed 13 done (6s)
+[13:20:38]     seed 100 done (7s)
+[13:20:40]     seed 2024 done (9s)
+[13:20:41]     seed 31337 done (10s)
+[13:20:43]     seed 9 done (12s)
+[13:20:43]   lgbm_deployed  AUC full 0.9210  reviewed 0.9195 | FAR@0.04 0.83% (worst 1.07) junk 43.3% | rule_T 0.03 | 12s
+[13:20:43]   == histgb (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:20:46]     seed 42 done (3s)
+[13:20:48]     seed 1 done (5s)
+[13:20:51]     seed 7 done (8s)
+[13:20:53]     seed 13 done (10s)
+[13:20:56]     seed 100 done (13s)
+[13:20:58]     seed 2024 done (15s)
+[13:21:00]     seed 31337 done (18s)
+[13:21:03]     seed 9 done (20s)
+[13:21:03]   histgb         AUC full 0.9211  reviewed 0.9195 | FAR@0.04 0.76% (worst 0.96) junk 42.5% | rule_T 0.04 | 20s
+[13:21:03]   == mlp (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:21:19]     seed 42 done (16s)
+[13:21:32]     seed 1 done (29s)
+[13:21:45]     seed 7 done (42s)
+[13:22:00]     seed 13 done (57s)
+[13:22:15]     seed 100 done (73s)
+[13:22:29]     seed 2024 done (86s)
+[13:22:43]     seed 31337 done (100s)
+[13:22:56]     seed 9 done (113s)
+[13:22:56]   mlp            AUC full 0.9182  reviewed 0.9165 | FAR@0.04 1.42% (worst 1.93) junk 40.0% | rule_T None | 113s
+[13:22:56] vCA1/animal: 39 CV sessions (8 agent sessions <5 reals dropped), 3726 rows, 934 real, 50370 bootstrap rows (6662 weight-0); 3 groups -> 3 folds (fixed split: model seed varies); agent weight override 5.0; seeds [42, 1, 7, 13, 100, 2024, 31337, 9]
+[13:22:56]   == xgb_deployed (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:22:57]     seed 42 done (1s)
+[13:22:59]     seed 1 done (3s)
+[13:23:00]     seed 7 done (4s)
+[13:23:02]     seed 13 done (6s)
+[13:23:03]     seed 100 done (7s)
+[13:23:05]     seed 2024 done (9s)
+[13:23:06]     seed 31337 done (10s)
+[13:23:08]     seed 9 done (12s)
+[13:23:08]   xgb_deployed   AUC full 0.9142  reviewed 0.9125 | FAR@0.04 0.91% (worst 1.28) junk 44.7% | rule_T 0.03 | 12s
+[13:23:08]   == lgbm_deployed (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:23:09]     seed 42 done (1s)
+[13:23:10]     seed 1 done (2s)
+[13:23:11]     seed 7 done (3s)
+[13:23:12]     seed 13 done (4s)
+[13:23:13]     seed 100 done (6s)
+[13:23:14]     seed 2024 done (6s)
+[13:23:15]     seed 31337 done (7s)
+[13:23:16]     seed 9 done (8s)
+[13:23:16]   lgbm_deployed  AUC full 0.9117  reviewed 0.9100 | FAR@0.04 0.67% (worst 0.86) junk 42.1% | rule_T 0.04 | 8s
+[13:23:16]   == histgb (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:23:18]     seed 42 done (1s)
+[13:23:19]     seed 1 done (3s)
+[13:23:21]     seed 7 done (4s)
+[13:23:22]     seed 13 done (6s)
+[13:23:24]     seed 100 done (7s)
+[13:23:25]     seed 2024 done (9s)
+[13:23:27]     seed 31337 done (10s)
+[13:23:28]     seed 9 done (12s)
+[13:23:28]   histgb         AUC full 0.9083  reviewed 0.9065 | FAR@0.04 0.86% (worst 0.86) junk 41.8% | rule_T 0.03 | 12s
+[13:23:28]   == mlp (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[13:23:36]     seed 42 done (8s)
+[13:23:43]     seed 1 done (15s)
+[13:23:52]     seed 7 done (24s)
+[13:24:04]     seed 13 done (35s)
+[13:24:12]     seed 100 done (44s)
+[13:24:21]     seed 2024 done (53s)
+[13:24:31]     seed 31337 done (63s)
+[13:24:40]     seed 9 done (72s)
+[13:24:40]   mlp            AUC full 0.9065  reviewed 0.9047 | FAR@0.04 1.95% (worst 2.89) junk 45.3% | rule_T None | 72s

@@ -1,0 +1,11 @@
+[16:54:38] env: {'python': 'C:\\Users\\julia\\.conda\\envs\\ACORN\\python.exe', 'cpu_count': 48, 'threads': 8, 'n_jobs': 8, 'platform': 'Windows-10-10.0.26200-SP0', 'OMP_NUM_THREADS': '8', 'numpy': '2.2.5', 'scipy': '1.15.3', 'sklearn': '1.7.2', 'xgboost': '3.2.0', 'lightgbm': '4.6.0', 'catboost': '1.2.10'}
+[16:54:38] BLA: pool matches snapshot pool_BLA.json (176 labeled sessions)
+[16:54:38] REPRO: 75 sessions, 12677 rows (ref 12677), labels identical: True; 33448 bootstrap rows; n_jobs=8
+[16:54:59] REPRO: auc_full      recomputed 0.92914  reference 0.92908  abs diff 5.68e-05
+[16:54:59] REPRO: auc_reviewed  recomputed 0.91593  reference 0.91587  abs diff 6.09e-05
+[16:54:59] REPRO: far_0.04      recomputed 0.71533  reference 0.72577  abs diff 1.04e-02
+[16:54:59] REPRO: junk_0.04     recomputed 43.09540  reference 43.11728  abs diff 2.19e-02
+[16:54:59] REPRO: far_0.03      recomputed 0.46992  reference 0.43338  abs diff 3.65e-02
+[16:54:59] REPRO: junk_0.03     recomputed 38.62200  reference 38.71925  abs diff 9.72e-02
+[16:54:59] REPRO: max |score diff| per seed = [0.3120649456977844, 0.34354928135871887, 0.407857283949852, 0.31615447998046875, 0.2607932686805725, 0.3453807979822159, 0.31047313660383224, 0.4194698631763458]
+[16:54:59] REPRO: pass(<5e-3 on all six) = False

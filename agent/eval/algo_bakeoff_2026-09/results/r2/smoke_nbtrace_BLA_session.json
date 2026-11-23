@@ -1,0 +1,67 @@
+{
+ "variant": "nbtrace",
+ "cfg": {
+  "val_bs_frac": 0.0,
+  "epochs": 2,
+  "fixed_epochs": 0,
+  "ens": 1,
+  "corpus": "v2",
+  "nb": true,
+  "patience": 5,
+  "batch": 256,
+  "lr": 0.001
+ },
+ "area": "BLA",
+ "grouping": "session",
+ "seeds": [
+  42
+ ],
+ "control": "BLA_session_xgb_deployed_t8.npz",
+ "corpus": "D:\\Julian_CNMFe\\BLA\\.feature_expansion\\_raw_corpus\\BLA_raw_corpus_v2.h5",
+ "n_rows": 13766,
+ "n_rows_with_raw": 11877,
+ "smoke": true,
+ "device": "cuda",
+ "torch": "2.11.0+cu128",
+ "runtime_s": 35.031089305877686,
+ "folds": [
+  {
+   "seed": 42,
+   "fold": 0,
+   "n_train": 36733,
+   "agw": 4.0,
+   "spw": 5.267083985393844,
+   "n_val_agent": 1880,
+   "n_val_bs": 0,
+   "n_test_scored": 2218,
+   "test_auc": 0.8955069524061499,
+   "member_auc": [
+    0.8955069524061499
+   ],
+   "best_epoch": [
+    1
+   ],
+   "best_val_auc": [
+    0.9016011659247596
+   ],
+   "epochs_run": [
+    2
+   ],
+   "curve": [
+    [
+     {
+      "epoch": 0,
+      "loss": 0.46662397910323405,
+      "val_auc": 0.8914595681258881
+     },
+     {
+      "epoch": 1,
+      "loss": 0.3971743940686186,
+      "val_auc": 0.9016011659247596
+     }
+    ]
+   ]
+  }
+ ],
+ "written_at": "2026-09-07T14:56:59"
+}

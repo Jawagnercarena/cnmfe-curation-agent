@@ -1,0 +1,40 @@
+{
+ "session": "AVG5x-TSeries-082826-pnb99-436um-3z-000-000",
+ "arm": "gSig11",
+ "model": "C:\\code\\CNMF_E_LEGACY_BIANE_CLAUDE\\agent\\model\\vCA1\\classifier.joblib",
+ "unmatched": [],
+ "groups": {
+  "arm unmatched": {},
+  "arm matched": {
+   "n": 61,
+   "first_pass": 0.49114999175071716,
+   "first_pass_frac_ge_0.02": 0.8688524590163934,
+   "area": 539.0,
+   "circularity": 0.47341288758526007,
+   "peak_snr": 20.444181098965487,
+   "skewness": 1.302712298242892,
+   "cn_correlation": 0.6824329798834815
+  },
+  "live all": {
+   "n": 75,
+   "first_pass": 0.45745760202407837,
+   "first_pass_frac_ge_0.02": 0.9066666666666666,
+   "area": 535.0,
+   "circularity": 0.4321297527059932,
+   "peak_snr": 21.123402071530716,
+   "skewness": 1.303756170761598,
+   "cn_correlation": 0.6803412996338796
+  },
+  "live not auto-rejected": {
+   "n": 75,
+   "first_pass": 0.45745760202407837,
+   "first_pass_frac_ge_0.02": 0.9066666666666666,
+   "area": 535.0,
+   "circularity": 0.4321297527059932,
+   "peak_snr": 21.123402071530716,
+   "skewness": 1.303756170761598,
+   "cn_correlation": 0.6803412996338796
+  },
+  "live auto-rejected": {}
+ }
+}

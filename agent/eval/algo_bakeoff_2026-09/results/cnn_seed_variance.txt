@@ -1,0 +1,32 @@
+== BLA/session: 40 folds, epochs cap 25, patience 5, lr 0.001, batch 256, runtime 194 min
+   n_train 36535-37442  n_val(inner) 1202-1925
+   best_epoch: hist [0, 2, 0, 3, 1, 3, 0, 2, 7, 1, 2, 3, 2, 2, 1, 3, 0, 0, 0, 0, 2, 1, 2, 1, 2]  median 10  epochs_run median 16 max 25  hit cap 8
+   loss ep0 0.460 -> at best 0.347 -> last 0.331   val AUC ep0 0.8722 best 0.9043 last 0.9006
+   val(best) - test AUC: mean +0.0032  test AUC mean 0.9011 sd 0.0128 min 0.8682 max 0.9246
+   reviewed rows with raw N=11877 (real 2618): per-seed AUC CNN 0.8944 sd 0.0054 [0.8812,0.8994] | XGB 0.9099 sd 0.0015 | blend 0.9144
+   8-seed-averaged OOF: CNN 0.9054 (+0.0110) | XGB 0.9120 (+0.0021) | blend 0.9178 (+0.0034)
+   mean per-seed corr(CNN, XGB) on those rows: 0.840
+== BLA/animal: 40 folds, epochs cap 25, patience 5, lr 0.001, batch 256, runtime 148 min
+   n_train 32985-38767  n_val(inner) 694-1990
+   best_epoch: hist [0, 1, 2, 2, 0, 1, 3, 2, 3, 4, 4, 3, 3, 2, 2, 0, 0, 2, 1, 1, 0, 2, 0, 0, 2]  median 10  epochs_run median 16 max 25  hit cap 5
+   loss ep0 0.457 -> at best 0.347 -> last 0.331   val AUC ep0 0.8777 best 0.9074 last 0.9037
+   val(best) - test AUC: mean +0.0079  test AUC mean 0.8994 sd 0.0125 min 0.8702 max 0.9215
+   reviewed rows with raw N=11877 (real 2618): per-seed AUC CNN 0.8881 sd 0.0076 [0.8726,0.9012] | XGB 0.8989 sd 0.0010 | blend 0.9067
+   8-seed-averaged OOF: CNN 0.8991 (+0.0111) | XGB 0.9005 (+0.0016) | blend 0.9100 (+0.0034)
+   mean per-seed corr(CNN, XGB) on those rows: 0.824
+== vCA1/session: 40 folds, epochs cap 25, patience 5, lr 0.001, batch 256, runtime 225 min
+   n_train 44639-45398  n_val(inner) 75-516
+   best_epoch: hist [0, 0, 1, 2, 3, 2, 2, 6, 2, 1, 1, 0, 1, 1, 2, 1, 6, 1, 2, 0, 2, 1, 1, 0, 2]  median 11  epochs_run median 17 max 25  hit cap 6
+   loss ep0 0.446 -> at best 0.278 -> last 0.253   val AUC ep0 0.8733 best 0.9327 last 0.9267
+   val(best) - test AUC: mean +0.0117  test AUC mean 0.9210 sd 0.0279 min 0.7994 max 0.9635
+   reviewed rows with raw N=2011 (real 483): per-seed AUC CNN 0.9205 sd 0.0066 [0.9074,0.9260] | XGB 0.9227 sd 0.0025 | blend 0.9319
+   8-seed-averaged OOF: CNN 0.9321 (+0.0117) | XGB 0.9245 (+0.0018) | blend 0.9352 (+0.0033)
+   mean per-seed corr(CNN, XGB) on those rows: 0.847
+== vCA1/animal: 24 folds, epochs cap 25, patience 5, lr 0.001, batch 256, runtime 99 min
+   n_train 44421-45181  n_val(inner) 20-394
+   best_epoch: hist [0, 1, 1, 2, 2, 3, 0, 4, 1, 1, 2, 2, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1]  median 7  epochs_run median 13 max 25  hit cap 1
+   loss ep0 0.436 -> at best 0.288 -> last 0.259   val AUC ep0 0.8471 best 0.9203 last 0.9028
+   val(best) - test AUC: mean +0.0310  test AUC mean 0.8892 sd 0.0591 min 0.7751 max 0.9497
+   reviewed rows with raw N=2011 (real 483): per-seed AUC CNN 0.8930 sd 0.0142 [0.8752,0.9143] | XGB 0.9071 sd 0.0016 | blend 0.9152
+   8-seed-averaged OOF: CNN 0.9148 (+0.0218) | XGB 0.9085 (+0.0014) | blend 0.9213 (+0.0061)
+   mean per-seed corr(CNN, XGB) on those rows: 0.799

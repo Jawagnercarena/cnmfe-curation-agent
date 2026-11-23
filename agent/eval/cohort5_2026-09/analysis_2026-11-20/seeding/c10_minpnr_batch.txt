@@ -1,0 +1,143 @@
+labelled sessions: 31
+
+== per session: candidates seedable from their own core at the run's thresholds, and what min_pnr + 2 removes ==
+session | group | run min_corr / min_pnr | N | seedable kept / reviewed deletes / auto-rejected | +2 loses: kept (covered by a surviving copy) / reviewed deletes / auto-rejected
+  082626-pnb102-479um-3z-0 | pilots at 0.70 (11) | 0.70 / 7.3 | 215 | 44 of 44 / 170 of 171 / 0 of 0 | 1 (0) / 19 / 0
+  082626-pnb104-404um-3z-0 | pilots at 0.70 (11) | 0.70 / 6.5 | 176 | 32 of 32 / 142 of 144 / 0 of 0 | 0 (0) / 25 / 0
+  082626-pnb105-397um-35z- | pilots at 0.70 (11) | 0.70 / 8.4 | 266 | 24 of 24 / 240 of 242 / 0 of 0 | 0 (0) / 30 / 0
+  082626-pnb106-205um-4z-0 | pilots at 0.70 (11) | 0.70 / 6.9 | 228 | 10 of 10 / 217 of 218 / 0 of 0 | 0 (0) / 30 / 0
+  082626-pnb109-398um-26z- | pilots at 0.70 (11) | 0.70 / 6.6 | 196 | 49 of 49 / 142 of 147 / 0 of 0 | 1 (0) / 30 / 0
+  082626-pnb99-399um-3z-00 | pilots at 0.70 (11) | 0.70 / 5.9 | 81 | 29 of 29 / 50 of 52 / 0 of 0 | 0 (0) / 5 / 0
+  082726-pnb102-497um-3z-0 | pilots at 0.70 (11) | 0.70 / 6.4 | 239 | 40 of 40 / 196 of 199 / 0 of 0 | 0 (0) / 30 / 0
+  082726-pnb104-416um-3z-0 | pilots at 0.70 (11) | 0.70 / 6.2 | 170 | 31 of 31 / 135 of 139 / 0 of 0 | 0 (0) / 9 / 0
+  082726-pnb105-391um-35z- | pilot 0.60 (082726-pnb105) | 0.60 / 5.7 | 169 | 34 of 34 / 134 of 135 / 0 of 0 | 0 (0) / 31 / 0
+  082726-pnb106-201um-4z-0 | pilots at 0.70 (11) | 0.70 / 6.2 | 184 | 11 of 11 / 164 of 173 / 0 of 0 | 0 (0) / 16 / 0
+  082726-pnb109-405um-25z- | pilots at 0.70 (11) | 0.70 / 6.5 | 205 | 57 of 57 / 146 of 148 / 0 of 0 | 1 (0) / 20 / 0
+  082826-pnb99-436um-3z-00 | pilots at 0.70 (11) | 0.70 / 6.4 | 198 | 49 of 49 / 148 of 149 / 0 of 0 | 0 (0) / 8 / 0
+  090526-pnb102-627um-28z- | Taylor 09xx at 0.70 (12) | 0.70 / 6.1 | 244 | 37 of 37 / 136 of 139 / 60 of 68 | 0 (0) / 12 / 18
+  090526-pnb105-520um-32z- | Yawen pnb105 FOVC 090526 at 0.60 | 0.60 / 5.5 | 168 | 10 of 10 / 101 of 101 / 52 of 57 | 1 (0) / 34 / 37
+  090526-pnb109-505um-26z- | Taylor 09xx at 0.70 (12) | 0.70 / 6.4 | 247 | 51 of 51 / 144 of 145 / 50 of 51 | 2 (0) / 10 / 11
+  090526-pnb99-330um-3z-00 | Taylor 090526-pnb99 dim FOVB at 0.60 | 0.60 / 5.2 | 76 | 28 of 28 / 30 of 30 / 18 of 18 | 4 (0) / 6 / 14
+  090626-pnb102-407um-3z-0 | Taylor 09xx at 0.70 (12) | 0.70 / 6.3 | 192 | 65 of 65 / 98 of 98 / 28 of 29 | 1 (0) / 4 / 9
+  090626-pnb105-472um-3z-0 | Yawen pnb105 FOVB 090626 at 0.60 | 0.60 / 5.9 | 229 | 25 of 25 / 132 of 133 / 65 of 71 | 0 (0) / 25 / 35
+  090626-pnb109-324um-26z- | Taylor 09xx at 0.70 (12) | 0.70 / 6.1 | 164 | 70 of 70 / 65 of 66 / 27 of 28 | 1 (0) / 9 / 8
+  090626-pnb99-459um-3z-00 | Taylor 09xx at 0.70 (12) | 0.70 / 6.3 | 213 | 54 of 54 / 104 of 105 / 53 of 54 | 0 (0) / 2 / 12
+  090726-pnb102-494um-3z-0 | Taylor 09xx at 0.70 (12) | 0.70 / 6.4 | 262 | 46 of 46 / 143 of 144 / 68 of 72 | 0 (0) / 8 / 16
+  090726-pnb105-404um-35z- | Yawen pnb105 FOVA at 0.60 (4) | 0.60 / 6.4 | 372 | 40 of 40 / 206 of 206 / 120 of 126 | 0 (0) / 27 / 43
+  090726-pnb109-398um-25z- | Taylor 09xx at 0.70 (12) | 0.70 / 6.3 | 184 | 70 of 70 / 80 of 80 / 32 of 34 | 1 (0) / 8 / 10
+  090826-pnb105-385um-35z- | Yawen pnb105 FOVA at 0.60 (4) | 0.60 / 6.1 | 351 | 46 of 46 / 194 of 194 / 106 of 111 | 0 (0) / 15 / 29
+  090826-pnb109-412um-25z- | Taylor 09xx at 0.70 (12) | 0.70 / 6.4 | 236 | 66 of 66 / 135 of 135 / 31 of 35 | 0 (0) / 8 / 10
+  090826-pnb99-463um-3z-00 | Taylor 09xx at 0.70 (12) | 0.70 / 6.1 | 199 | 45 of 45 / 122 of 122 / 31 of 32 | 0 (0) / 8 / 10
+  090926-pnb102-490um-3z-0 | Taylor 09xx at 0.70 (12) | 0.70 / 6.3 | 225 | 48 of 48 / 135 of 136 / 40 of 41 | 2 (0) / 7 / 8
+  090926-pnb105-394um-35z- | Yawen pnb105 FOVA at 0.60 (4) | 0.60 / 6.4 | 348 | 51 of 51 / 208 of 208 / 87 of 89 | 0 (0) / 23 / 34
+  090926-pnb109-385um-25z- | Taylor 09xx at 0.70 (12) | 0.70 / 6.5 | 211 | 77 of 77 / 93 of 94 / 38 of 40 | 0 (0) / 5 / 12
+  090926-pnb99-463um-3z-00 | Taylor 09xx at 0.70 (12) | 0.70 / 6.5 | 229 | 54 of 54 / 124 of 124 / 46 of 51 | 0 (0) / 10 / 13
+  091026-pnb105-353um-35z- | Yawen pnb105 FOVA at 0.60 (4) | 0.60 / 6.4 | 304 | 43 of 43 / 173 of 175 / 81 of 86 | 0 (0) / 17 / 24
+
+== raising min_pnr above the run's value, by group ==
+
+  pilots at 0.70 (11)
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of  376 (0.0%), covered 0 |   0 of 129 (0.0%),   0 of 1621 (0.0%) |   0 of    0 (-) |    0 of 1750 (0.0%) |    0 of 2126 (0.0%)
+   +1 |   0 of  376 (0.0%), covered 0 |   0 of 129 (0.0%),  81 of 1621 (5.0%) |   0 of    0 (-) |   81 of 1750 (4.6%) |   81 of 2126 (3.8%)
+   +2 |   3 of  376 (0.8%), covered 0 |   0 of 129 (0.0%), 222 of 1621 (13.7%) |   0 of    0 (-) |  222 of 1750 (12.7%) |  225 of 2126 (10.6%)
+   +3 |   6 of  376 (1.6%), covered 0 |   0 of 129 (0.0%), 407 of 1621 (25.1%) |   0 of    0 (-) |  407 of 1750 (23.3%) |  413 of 2126 (19.4%)
+   +4 |  17 of  376 (4.5%), covered 0 |   0 of 129 (0.0%), 590 of 1621 (36.4%) |   0 of    0 (-) |  590 of 1750 (33.7%) |  607 of 2126 (28.6%)
+   +6 |  58 of  376 (15.4%), covered 0 |   3 of 129 (2.3%), 923 of 1621 (56.9%) |   0 of    0 (-) |  926 of 1750 (52.9%) |  984 of 2126 (46.3%)
+
+  pilot 0.60 (082726-pnb105)
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of   34 (0.0%), covered 0 |   0 of  14 (0.0%),   0 of  120 (0.0%) |   0 of    0 (-) |    0 of  134 (0.0%) |    0 of  168 (0.0%)
+   +1 |   0 of   34 (0.0%), covered 0 |   0 of  14 (0.0%),  15 of  120 (12.5%) |   0 of    0 (-) |   15 of  134 (11.2%) |   15 of  168 (8.9%)
+   +2 |   0 of   34 (0.0%), covered 0 |   0 of  14 (0.0%),  31 of  120 (25.8%) |   0 of    0 (-) |   31 of  134 (23.1%) |   31 of  168 (18.5%)
+   +3 |   0 of   34 (0.0%), covered 0 |   0 of  14 (0.0%),  46 of  120 (38.3%) |   0 of    0 (-) |   46 of  134 (34.3%) |   46 of  168 (27.4%)
+   +4 |   5 of   34 (14.7%), covered 0 |   1 of  14 (7.1%),  59 of  120 (49.2%) |   0 of    0 (-) |   60 of  134 (44.8%) |   65 of  168 (38.7%)
+   +6 |   9 of   34 (26.5%), covered 0 |   1 of  14 (7.1%),  76 of  120 (63.3%) |   0 of    0 (-) |   77 of  134 (57.5%) |   86 of  168 (51.2%)
+
+  Taylor 09xx at 0.70 (12)
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of  683 (0.0%), covered 0 |   0 of 156 (0.0%),   0 of 1223 (0.0%) |   0 of  504 (0.0%) |    0 of 1883 (0.0%) |    0 of 2566 (0.0%)
+   +1 |   0 of  683 (0.0%), covered 0 |   0 of 156 (0.0%),  18 of 1223 (1.5%) |  49 of  504 (9.7%) |   67 of 1883 (3.6%) |   67 of 2566 (2.6%)
+   +2 |   7 of  683 (1.0%), covered 0 |   0 of 156 (0.0%),  91 of 1223 (7.4%) | 137 of  504 (27.2%) |  228 of 1883 (12.1%) |  235 of 2566 (9.2%)
+   +3 |  17 of  683 (2.5%), covered 0 |   0 of 156 (0.0%), 218 of 1223 (17.8%) | 229 of  504 (45.4%) |  447 of 1883 (23.7%) |  464 of 2566 (18.1%)
+   +4 |  35 of  683 (5.1%), covered 0 |   2 of 156 (1.3%), 371 of 1223 (30.3%) | 283 of  504 (56.2%) |  656 of 1883 (34.8%) |  691 of 2566 (26.9%)
+   +6 | 123 of  683 (18.0%), covered 0 |  15 of 156 (9.6%), 608 of 1223 (49.7%) | 366 of  504 (72.6%) |  989 of 1883 (52.5%) | 1112 of 2566 (43.3%)
+
+  Taylor 090526-pnb99 dim FOVB at 0.60
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of   28 (0.0%), covered 0 |   0 of   3 (0.0%),   0 of   27 (0.0%) |   0 of   18 (0.0%) |    0 of   48 (0.0%) |    0 of   76 (0.0%)
+   +1 |   1 of   28 (3.6%), covered 0 |   0 of   3 (0.0%),   2 of   27 (7.4%) |   5 of   18 (27.8%) |    7 of   48 (14.6%) |    8 of   76 (10.5%)
+   +2 |   4 of   28 (14.3%), covered 0 |   0 of   3 (0.0%),   6 of   27 (22.2%) |  14 of   18 (77.8%) |   20 of   48 (41.7%) |   24 of   76 (31.6%)
+   +3 |   6 of   28 (21.4%), covered 0 |   1 of   3 (33.3%),  12 of   27 (44.4%) |  15 of   18 (83.3%) |   28 of   48 (58.3%) |   34 of   76 (44.7%)
+   +4 |   7 of   28 (25.0%), covered 0 |   1 of   3 (33.3%),  17 of   27 (63.0%) |  15 of   18 (83.3%) |   33 of   48 (68.8%) |   40 of   76 (52.6%)
+   +6 |  19 of   28 (67.9%), covered 0 |   1 of   3 (33.3%),  22 of   27 (81.5%) |  15 of   18 (83.3%) |   38 of   48 (79.2%) |   57 of   76 (75.0%)
+
+  Yawen pnb105 FOVA at 0.60 (4)
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of  180 (0.0%), covered 0 |   0 of 235 (0.0%),   0 of  546 (0.0%) |   0 of  394 (0.0%) |    0 of 1175 (0.0%) |    0 of 1355 (0.0%)
+   +1 |   0 of  180 (0.0%), covered 0 |   0 of 235 (0.0%),  24 of  546 (4.4%) |  56 of  394 (14.2%) |   80 of 1175 (6.8%) |   80 of 1355 (5.9%)
+   +2 |   0 of  180 (0.0%), covered 0 |   0 of 235 (0.0%),  82 of  546 (15.0%) | 130 of  394 (33.0%) |  212 of 1175 (18.0%) |  212 of 1355 (15.6%)
+   +3 |   1 of  180 (0.6%), covered 0 |   0 of 235 (0.0%), 175 of  546 (32.1%) | 209 of  394 (53.0%) |  384 of 1175 (32.7%) |  385 of 1355 (28.4%)
+   +4 |   3 of  180 (1.7%), covered 0 |   1 of 235 (0.4%), 239 of  546 (43.8%) | 259 of  394 (65.7%) |  499 of 1175 (42.5%) |  502 of 1355 (37.0%)
+   +6 |  12 of  180 (6.7%), covered 0 |   4 of 235 (1.7%), 323 of  546 (59.2%) | 303 of  394 (76.9%) |  630 of 1175 (53.6%) |  642 of 1355 (47.4%)
+
+  Yawen pnb105 FOVC 090526 at 0.60
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of   10 (0.0%), covered 0 |   0 of  17 (0.0%),   0 of   84 (0.0%) |   0 of   52 (0.0%) |    0 of  153 (0.0%) |    0 of  163 (0.0%)
+   +1 |   0 of   10 (0.0%), covered 0 |   0 of  17 (0.0%),   4 of   84 (4.8%) |  16 of   52 (30.8%) |   20 of  153 (13.1%) |   20 of  163 (12.3%)
+   +2 |   1 of   10 (10.0%), covered 0 |   0 of  17 (0.0%),  34 of   84 (40.5%) |  37 of   52 (71.2%) |   71 of  153 (46.4%) |   72 of  163 (44.2%)
+   +3 |   2 of   10 (20.0%), covered 0 |   0 of  17 (0.0%),  53 of   84 (63.1%) |  41 of   52 (78.8%) |   94 of  153 (61.4%) |   96 of  163 (58.9%)
+   +4 |   4 of   10 (40.0%), covered 0 |   0 of  17 (0.0%),  60 of   84 (71.4%) |  45 of   52 (86.5%) |  105 of  153 (68.6%) |  109 of  163 (66.9%)
+   +6 |   4 of   10 (40.0%), covered 0 |   0 of  17 (0.0%),  71 of   84 (84.5%) |  49 of   52 (94.2%) |  120 of  153 (78.4%) |  124 of  163 (76.1%)
+
+  Yawen pnb105 FOVB 090626 at 0.60
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of   25 (0.0%), covered 0 |   0 of  30 (0.0%),   0 of  102 (0.0%) |   0 of   65 (0.0%) |    0 of  197 (0.0%) |    0 of  222 (0.0%)
+   +1 |   0 of   25 (0.0%), covered 0 |   0 of  30 (0.0%),   1 of  102 (1.0%) |  17 of   65 (26.2%) |   18 of  197 (9.1%) |   18 of  222 (8.1%)
+   +2 |   0 of   25 (0.0%), covered 0 |   0 of  30 (0.0%),  25 of  102 (24.5%) |  35 of   65 (53.8%) |   60 of  197 (30.5%) |   60 of  222 (27.0%)
+   +3 |   0 of   25 (0.0%), covered 0 |   0 of  30 (0.0%),  40 of  102 (39.2%) |  46 of   65 (70.8%) |   86 of  197 (43.7%) |   86 of  222 (38.7%)
+   +4 |   4 of   25 (16.0%), covered 0 |   6 of  30 (20.0%),  57 of  102 (55.9%) |  53 of   65 (81.5%) |  116 of  197 (58.9%) |  120 of  222 (54.1%)
+   +6 |   6 of   25 (24.0%), covered 0 |   7 of  30 (23.3%),  75 of  102 (73.5%) |  59 of   65 (90.8%) |  141 of  197 (71.6%) |  147 of  222 (66.2%)
+
+  ALL sessions run at 0.70 (11 pilots + Taylor's 12): the bright set
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of 1059 (0.0%), covered 0 |   0 of 285 (0.0%),   0 of 2844 (0.0%) |   0 of  504 (0.0%) |    0 of 3633 (0.0%) |    0 of 4692 (0.0%)
+   +1 |   0 of 1059 (0.0%), covered 0 |   0 of 285 (0.0%),  99 of 2844 (3.5%) |  49 of  504 (9.7%) |  148 of 3633 (4.1%) |  148 of 4692 (3.2%)
+   +2 |  10 of 1059 (0.9%), covered 0 |   0 of 285 (0.0%), 313 of 2844 (11.0%) | 137 of  504 (27.2%) |  450 of 3633 (12.4%) |  460 of 4692 (9.8%)
+   +3 |  23 of 1059 (2.2%), covered 0 |   0 of 285 (0.0%), 625 of 2844 (22.0%) | 229 of  504 (45.4%) |  854 of 3633 (23.5%) |  877 of 4692 (18.7%)
+   +4 |  52 of 1059 (4.9%), covered 0 |   2 of 285 (0.7%), 961 of 2844 (33.8%) | 283 of  504 (56.2%) | 1246 of 3633 (34.3%) | 1298 of 4692 (27.7%)
+   +6 | 181 of 1059 (17.1%), covered 0 |  18 of 285 (6.3%), 1531 of 2844 (53.8%) | 366 of  504 (72.6%) | 1915 of 3633 (52.7%) | 2096 of 4692 (44.7%)
+
+  the 12 pilots as on 11-11 (11 at 0.70 + 082726-pnb105 at 0.60): must reproduce +2 = 3 of 410 kept, 253 of 1884 rejected
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of  410 (0.0%), covered 0 |   0 of 143 (0.0%),   0 of 1741 (0.0%) |   0 of    0 (-) |    0 of 1884 (0.0%) |    0 of 2294 (0.0%)
+   +1 |   0 of  410 (0.0%), covered 0 |   0 of 143 (0.0%),  96 of 1741 (5.5%) |   0 of    0 (-) |   96 of 1884 (5.1%) |   96 of 2294 (4.2%)
+   +2 |   3 of  410 (0.7%), covered 0 |   0 of 143 (0.0%), 253 of 1741 (14.5%) |   0 of    0 (-) |  253 of 1884 (13.4%) |  256 of 2294 (11.2%)
+   +3 |   6 of  410 (1.5%), covered 0 |   0 of 143 (0.0%), 453 of 1741 (26.0%) |   0 of    0 (-) |  453 of 1884 (24.0%) |  459 of 2294 (20.0%)
+   +4 |  22 of  410 (5.4%), covered 0 |   1 of 143 (0.7%), 649 of 1741 (37.3%) |   0 of    0 (-) |  650 of 1884 (34.5%) |  672 of 2294 (29.3%)
+   +6 |  67 of  410 (16.3%), covered 0 |   4 of 143 (2.8%), 999 of 1741 (57.4%) |   0 of    0 (-) | 1003 of 1884 (53.2%) | 1070 of 2294 (46.6%)
+
+  ALL six Yawen pnb105 sessions at 0.60
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of  215 (0.0%), covered 0 |   0 of 282 (0.0%),   0 of  732 (0.0%) |   0 of  511 (0.0%) |    0 of 1525 (0.0%) |    0 of 1740 (0.0%)
+   +1 |   0 of  215 (0.0%), covered 0 |   0 of 282 (0.0%),  29 of  732 (4.0%) |  89 of  511 (17.4%) |  118 of 1525 (7.7%) |  118 of 1740 (6.8%)
+   +2 |   1 of  215 (0.5%), covered 0 |   0 of 282 (0.0%), 141 of  732 (19.3%) | 202 of  511 (39.5%) |  343 of 1525 (22.5%) |  344 of 1740 (19.8%)
+   +3 |   3 of  215 (1.4%), covered 0 |   0 of 282 (0.0%), 268 of  732 (36.6%) | 296 of  511 (57.9%) |  564 of 1525 (37.0%) |  567 of 1740 (32.6%)
+   +4 |  11 of  215 (5.1%), covered 0 |   7 of 282 (2.5%), 356 of  732 (48.6%) | 357 of  511 (69.9%) |  720 of 1525 (47.2%) |  731 of 1740 (42.0%)
+   +6 |  22 of  215 (10.2%), covered 0 |  11 of 282 (3.9%), 469 of  732 (64.1%) | 411 of  511 (80.4%) |  891 of 1525 (58.4%) |  913 of 1740 (52.5%)
+
+  ALL 31 labelled sessions
+    d | kept lost (of them covered by a surviving copy) | reviewed deletes lost: dup-of-kept, other | auto-rejected lost | every non-kept candidate lost (the 11-11 'rejected') | all candidates lost
+   +0 |   0 of 1336 (0.0%), covered 0 |   0 of 584 (0.0%),   0 of 3723 (0.0%) |   0 of 1033 (0.0%) |    0 of 5340 (0.0%) |    0 of 6676 (0.0%)
+   +1 |   1 of 1336 (0.1%), covered 0 |   0 of 584 (0.0%), 145 of 3723 (3.9%) | 143 of 1033 (13.8%) |  288 of 5340 (5.4%) |  289 of 6676 (4.3%)
+   +2 |  15 of 1336 (1.1%), covered 0 |   0 of 584 (0.0%), 491 of 3723 (13.2%) | 353 of 1033 (34.2%) |  844 of 5340 (15.8%) |  859 of 6676 (12.9%)
+   +3 |  32 of 1336 (2.4%), covered 0 |   1 of 584 (0.2%), 951 of 3723 (25.5%) | 540 of 1033 (52.3%) | 1492 of 5340 (27.9%) | 1524 of 6676 (22.8%)
+   +4 |  75 of 1336 (5.6%), covered 0 |  11 of 584 (1.9%), 1393 of 3723 (37.4%) | 655 of 1033 (63.4%) | 2059 of 5340 (38.6%) | 2134 of 6676 (32.0%)
+   +6 | 231 of 1336 (17.3%), covered 0 |  31 of 584 (5.3%), 2098 of 3723 (56.4%) | 792 of 1033 (76.7%) | 2921 of 5340 (54.7%) | 3152 of 6676 (47.2%)
+
+== kept-rate by PNR margin (max PNR in the footprint core minus the run's min_pnr) ==
+   columns per margin band: kept of reviewed (auto-rejected candidates in the band, never shown)
+  pilots at 0.70 (11)              < to 0: 0 of 6 (0.0%; auto 0) | 0 to 1: 0 of 12 (0.0%; auto 0) | 1 to 2: 0 of 51 (0.0%; auto 0) | 2 to 4: 6 of 295 (2.0%; auto 0) | 4 to 8: 52 of 705 (7.4%; auto 0) | 8 to 16: 193 of 721 (26.8%; auto 0) | 16 to >: 125 of 368 (34.0%; auto 0)
+  Taylor 09xx at 0.70 (12)         < to 0: 0 of 0 (-; auto 2) | 0 to 1: 0 of 0 (-; auto 7) | 1 to 2: 0 of 13 (0.0%; auto 47) | 2 to 4: 11 of 162 (6.8%; auto 177) | 4 to 8: 128 of 625 (20.5%; auto 170) | 8 to 16: 320 of 816 (39.2%; auto 111) | 16 to >: 224 of 455 (49.2%; auto 21)
+  Yawen pnb105 FOVA at 0.60 (4)    < to 0: 0 of 0 (-; auto 7) | 0 to 1: 0 of 2 (0.0%; auto 22) | 1 to 2: 0 of 24 (0.0%; auto 58) | 2 to 4: 1 of 122 (0.8%; auto 123) | 4 to 8: 13 of 206 (6.3%; auto 124) | 8 to 16: 55 of 224 (24.6%; auto 42) | 16 to >: 111 of 385 (28.8%; auto 36)
+  the other four sessions at 0.60  < to 0: 0 of 0 (-; auto 3) | 0 to 1: 0 of 3 (0.0%; auto 10) | 1 to 2: 1 of 13 (7.7%; auto 37) | 2 to 4: 5 of 128 (3.9%; auto 60) | 4 to 8: 33 of 170 (19.4%; auto 28) | 8 to 16: 32 of 115 (27.8%; auto 5) | 16 to >: 26 of 67 (38.8%; auto 3)

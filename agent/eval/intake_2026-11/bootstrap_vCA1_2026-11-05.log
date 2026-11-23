@@ -1,0 +1,1473 @@
+﻿[23:52:34] Pre-agent sessions eligible for bootstrap: 13 total, 13 assigned to this worker.
+[23:52:34] 
+=================================================================
+[23:52:34]   2tones/AVG2x-TSeries-093025-pnb88-145um-115um-35z-000-A
+[23:52:34] =================================================================
+[23:52:34]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[23:52:34]   [MATLAB] Starting MATLAB...
+[23:52:39]   [MATLAB] Extracted 9 final neurons (gSig=10 gSiz=32)
+[23:52:42]   [MATLAB] Finished successfully in 0.1 min.
+[23:52:42]   Step 1 done: 9 curated neurons (original gSig=10, gSiz=32).
+[23:52:42]   Step 2: Estimating CNMFe parameters...
+[23:52:42]   Step 2a: No pnr.mat found — running pre-pass (gSig=10, gSiz=32 from original run)...
+[23:52:42] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[23:52:42]   [MATLAB] Starting MATLAB...
+[23:52:47]   [MATLAB] converting the selected file to *.mat version...
+[23:52:48]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 1320 of 1320 total frames
+[23:52:50]   [MATLAB] Finished reading images
+[23:52:56]   [MATLAB] Time cost in converting data to *.mat file:     8.50 seconds
+[23:52:56]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 1320 frames.
+[23:52:56]   [MATLAB] Loading all data requires 2.58 GB RAM
+[23:52:56]   [MATLAB] load data from frame 1 to frame 1024 of 1320 total frames
+[23:53:00]   [MATLAB] load data from frame 1025 to frame 1320 of 1320 total frames
+[23:53:00]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 660 frames.
+[23:53:00]   [MATLAB] Loading all data requires 0.32 GB RAM
+[23:53:03]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[23:53:05]   [MATLAB] Finished successfully in 0.4 min.
+[23:53:05]   [PARAMS] Animal 'pnb88': gSig=9, gSiz=36 (consistent across 19 sessions).
+[23:53:05]   [PARAMS] WARNING: estimated min_corr=0.500 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[23:53:05]   [PARAMS] WARNING: estimated min_pnr=4.673 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[23:53:05]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[23:53:05]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[23:53:05]   [PARAMS] Estimated bd=17 from Cn edge analysis (candidates per edge: [3, 4, 17, 4]).
+[23:53:05]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 17}
+[23:53:05]   Step 2 done: {'gSig': 10, 'gSiz': 32, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 17}
+[23:53:05]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[23:53:05]   [MATLAB] Starting MATLAB...
+[23:53:09]   [MATLAB] The selected file has been replaced with its *.mat version.
+[23:53:10]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 1320 frames.
+[23:53:10]   [MATLAB] Loading all data requires 2.58 GB RAM
+[23:53:10]   [MATLAB] Warning: Directory already exists.
+[23:53:10]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[23:53:10]   [MATLAB] In run (line 99)
+[23:53:10]   [MATLAB] load data from frame 1 to frame 1024 of 1320 total frames
+[23:53:13]   [MATLAB] load data from frame 1025 to frame 1320 of 1320 total frames
+[23:53:13]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 660 frames.
+[23:53:13]   [MATLAB] Loading all data requires 0.32 GB RAM
+[23:53:13]   [MATLAB] Time cost in downsampling data:     3.40 seconds
+[23:53:19]   [MATLAB] 10 neurons have been detected
+[23:53:20]   [MATLAB] 20 neurons have been detected
+[23:53:20]   [MATLAB] 30 neurons have been detected
+[23:53:21]   [MATLAB] 40 neurons have been detected
+[23:53:21]   [MATLAB] 50 neurons have been detected
+[23:53:22]   [MATLAB] 60 neurons have been detected
+[23:53:22]   [MATLAB] 70 neurons have been detected
+[23:53:23]   [MATLAB] Time cost in initializing neurons:     6.11 seconds
+[23:53:23]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:53:23]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:53:37]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[23:53:52]   [MATLAB] Connected to parallel pool with 24 workers.
+[23:53:54]   [MATLAB] Time cost in estimating the background:        30.72 seconds
+[23:53:55]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:53:56]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[23:53:56]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:53:57]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:53:57]   [MATLAB] Time cost in updating spatial & temporal components:     2.72 seconds
+[23:53:59]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:53:59]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:54:13]   [MATLAB] Time cost in estimating the background:        13.25 seconds
+[23:54:13]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[23:54:14]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:54:14]   [MATLAB] Time cost in updating spatial & temporal components:     0.87 seconds
+[23:54:14]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[23:54:14]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:54:27]   [MATLAB] Time cost in estimating the background:        13.40 seconds
+[23:54:27]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:54:28]   [MATLAB] All pairs of neurons are below the merging criterion!
+[23:54:28]   [MATLAB] Time cost in updating spatial & temporal components:     0.65 seconds
+[23:54:35]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[23:58:19]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[23:58:20]   [MATLAB] Time cost in updating neuronal spatial components:     0.66 seconds
+[23:58:21]   [MATLAB] Time cost in updating neuronal temporal components:     1.64 seconds
+[00:02:32]   [MATLAB] Time cost in estimating the background:        250.67 seconds
+[00:02:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:02:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:02:35]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:02:35]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:02:35]   [MATLAB] Time cost in updating spatial & temporal components:     3.74 seconds
+[00:02:37]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:02:37]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:02:38]   [MATLAB] The folder has been created and old results will be overwritten.
+[00:02:50]   [MATLAB] [HEADLESS] Done. 29 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG2x-TSeries-093025-pnb88-145um-115um-35z-000-A/_bootstrap/
+[00:02:50]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[00:02:57]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[00:02:57]   [MATLAB] Finished successfully in 9.9 min.
+[00:02:57]   Step 4: Matching candidates to ground truth, extracting features...
+[00:02:57]   [BOOTSTRAP] A_final:  (262144, 9)  (pixels x N_kept)
+[00:02:57]   [BOOTSTRAP] A_review: (262144, 29)  (pixels x N_candidates)
+[00:02:57]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.978', '0.958', '0.951', '0.916', '0.812', '0.791', '0.760', '0.685', '0.673']
+[00:02:57]   [BOOTSTRAP] Matched: 9 keep, 20 delete (29 candidates vs 9 final neurons, threshold=0.45)
+[00:02:58]   [BOOTSTRAP] v2b computed for all 29 candidates (mode b0, ring_contrast=0, 1 hi-conf neighbours).
+[00:02:58]   [BOOTSTRAP] Saved bootstrap_candidates.npz (9146 nonzero footprint px, full sim matrix).
+[00:02:58]   [BOOTSTRAP] Saved: 29 candidates, 9 kept, 0 ambiguous, 5 duplicates, 35 features.
+[00:02:58]   _bootstrap/ cleaned up.
+[00:02:58] 
+  Progress: 1/13  (1 ok, 0 failed)
+
+[00:02:58] 
+=================================================================
+[00:02:58]   2tones/AVG5x-TSeries-100125-pnb88-128um-35z-000
+[00:02:58] =================================================================
+[00:02:58]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[00:02:58]   [MATLAB] Starting MATLAB...
+[00:03:04]   [MATLAB] Extracted 36 final neurons (gSig=10 gSiz=32)
+[00:03:07]   [MATLAB] Finished successfully in 0.2 min.
+[00:03:07]   Step 1 done: 36 curated neurons (original gSig=10, gSiz=32).
+[00:03:07]   Step 2: Estimating CNMFe parameters...
+[00:03:07]   Step 2a: No pnr.mat found — running pre-pass (gSig=10, gSiz=32 from original run)...
+[00:03:07] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[00:03:07]   [MATLAB] Starting MATLAB...
+[00:03:13]   [MATLAB] converting the selected file to *.mat version...
+[00:03:13]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[00:03:17]   [MATLAB] Finished reading images
+[00:03:25]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[00:03:29]   [MATLAB] Finished reading images
+[00:03:38]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[00:03:41]   [MATLAB] Finished reading images
+[00:03:50]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[00:03:52]   [MATLAB] Finished reading images
+[00:03:58]   [MATLAB] Time cost in converting data to *.mat file:     45.08 seconds
+[00:03:58]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[00:03:58]   [MATLAB] Loading all data requires 14.69 GB RAM
+[00:03:58]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[00:04:00]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[00:04:02]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[00:04:04]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[00:04:05]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[00:04:07]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[00:04:09]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[00:04:11]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[00:04:12]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[00:04:12]   [MATLAB] Loading all data requires 1.84 GB RAM
+[00:04:15]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[00:04:19]   [MATLAB] Finished successfully in 1.2 min.
+[00:04:19]   [PARAMS] Animal 'pnb88': gSig=9, gSiz=36 (consistent across 19 sessions).
+[00:04:19]   [PARAMS] WARNING: estimated min_corr=0.500 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[00:04:19]   [PARAMS] WARNING: estimated min_pnr=4.824 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[00:04:19]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[00:04:19]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[00:04:19]   [PARAMS] Edge analysis returned bd=7 (no clear motion border detected). Falling back to bd=10 (no visible border means less boundary to exclude).
+[00:04:19]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 10}
+[00:04:19]   Step 2 done: {'gSig': 10, 'gSiz': 32, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 10}
+[00:04:19]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[00:04:19]   [MATLAB] Starting MATLAB...
+[00:04:25]   [MATLAB] The selected file has been replaced with its *.mat version.
+[00:04:25]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[00:04:25]   [MATLAB] Loading all data requires 14.69 GB RAM
+[00:04:25]   [MATLAB] Warning: Directory already exists.
+[00:04:25]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[00:04:25]   [MATLAB] In run (line 99)
+[00:04:25]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[00:04:27]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[00:04:29]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[00:04:31]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[00:04:33]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[00:04:34]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[00:04:36]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[00:04:38]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[00:04:38]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[00:04:38]   [MATLAB] Loading all data requires 1.84 GB RAM
+[00:04:38]   [MATLAB] Time cost in downsampling data:     13.28 seconds
+[00:04:53]   [MATLAB] 10 neurons have been detected
+[00:04:56]   [MATLAB] 20 neurons have been detected
+[00:04:59]   [MATLAB] 30 neurons have been detected
+[00:05:02]   [MATLAB] 40 neurons have been detected
+[00:05:06]   [MATLAB] 50 neurons have been detected
+[00:05:09]   [MATLAB] 60 neurons have been detected
+[00:05:12]   [MATLAB] 70 neurons have been detected
+[00:05:15]   [MATLAB] 80 neurons have been detected
+[00:05:18]   [MATLAB] 90 neurons have been detected
+[00:05:21]   [MATLAB] 100 neurons have been detected
+[00:05:24]   [MATLAB] 110 neurons have been detected
+[00:05:28]   [MATLAB] 120 neurons have been detected
+[00:05:30]   [MATLAB] 130 neurons have been detected
+[00:05:33]   [MATLAB] 140 neurons have been detected
+[00:05:36]   [MATLAB] 150 neurons have been detected
+[00:05:37]   [MATLAB] Time cost in initializing neurons:     53.22 seconds
+[00:05:37]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[00:05:37]   [MATLAB] 4 neurons will be merged into 2 new neurons
+[00:07:06]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[00:07:22]   [MATLAB] Connected to parallel pool with 24 workers.
+[00:07:26]   [MATLAB] Time cost in estimating the background:        108.87 seconds
+[00:07:35]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:07:36]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[00:07:44]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:07:45]   [MATLAB] 11 neurons will be merged into 5 new neurons
+[00:07:45]   [MATLAB] Time cost in updating spatial & temporal components:     19.19 seconds
+[00:08:00]   [MATLAB] 10 neurons have been detected
+[00:08:03]   [MATLAB] 20 neurons have been detected
+[00:08:06]   [MATLAB] 30 neurons have been detected
+[00:08:07]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:08:07]   [MATLAB] 6 neurons will be merged into 3 new neurons
+[00:09:38]   [MATLAB] Time cost in estimating the background:        90.81 seconds
+[00:09:47]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[00:09:48]   [MATLAB] 13 neurons will be merged into 5 new neurons
+[00:09:57]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:09:58]   [MATLAB] 5 neurons will be merged into 1 new neurons
+[00:09:58]   [MATLAB] Time cost in updating spatial & temporal components:     19.54 seconds
+[00:09:58]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:09:58]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:11:26]   [MATLAB] Time cost in estimating the background:        88.36 seconds
+[00:11:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:11:35]   [MATLAB] 7 neurons will be merged into 3 new neurons
+[00:11:42]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:11:43]   [MATLAB] 5 neurons will be merged into 2 new neurons
+[00:11:43]   [MATLAB] Time cost in updating spatial & temporal components:     17.08 seconds
+[00:12:31]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[00:36:32]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[00:36:36]   [MATLAB] Time cost in updating neuronal spatial components:     3.91 seconds
+[00:36:53]   [MATLAB] Time cost in updating neuronal temporal components:     20.71 seconds
+[00:58:54]   [MATLAB] Time cost in estimating the background:        1319.72 seconds
+[00:59:12]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:59:16]   [MATLAB] 4 neurons will be merged into 2 new neurons
+[00:59:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:59:38]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:59:38]   [MATLAB] Time cost in updating spatial & temporal components:     43.22 seconds
+[00:59:55]   [MATLAB] All pairs of neurons are below the merging criterion!
+[00:59:58]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:00:03]   [MATLAB] The folder has been created and old results will be overwritten.
+[01:00:54]   [MATLAB] [HEADLESS] Done. 119 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-100125-pnb88-128um-35z-000/_bootstrap/
+[01:00:54]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[01:01:06]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[01:01:06]   [MATLAB] Finished successfully in 56.8 min.
+[01:01:06]   Step 4: Matching candidates to ground truth, extracting features...
+[01:01:07]   [BOOTSTRAP] A_final:  (262144, 36)  (pixels x N_kept)
+[01:01:07]   [BOOTSTRAP] A_review: (262144, 119)  (pixels x N_candidates)
+[01:01:07]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.999', '0.999', '0.998', '0.995', '0.994', '0.990', '0.989', '0.987', '0.985', '0.980', '0.968', '0.964', '0.957', '0.956', '0.953', '0.948', '0.943', '0.939', '0.927', '0.917', '0.914', '0.907', '0.904', '0.901', '0.894', '0.889', '0.879', '0.862', '0.823', '0.816', '0.792', '0.788', '0.752', '0.631', '0.604', '0.263']
+[01:01:07]   [BOOTSTRAP] Matched: 35 keep, 84 delete (119 candidates vs 36 final neurons, threshold=0.45)
+[01:01:08]   [BOOTSTRAP] v2b computed for all 119 candidates (mode b0, ring_contrast=0, 20 hi-conf neighbours).
+[01:01:08]   [BOOTSTRAP] Saved bootstrap_candidates.npz (82592 nonzero footprint px, full sim matrix).
+[01:01:08]   [BOOTSTRAP] Saved: 119 candidates, 35 kept, 1 ambiguous, 31 duplicates, 35 features.
+[01:01:09]   _bootstrap/ cleaned up.
+[01:01:09] 
+  Progress: 2/13  (2 ok, 0 failed)
+
+[01:01:09] 
+=================================================================
+[01:01:09]   2tones/AVG2x-TSeries-093025-pnb74-650um-570um-22z-000-A
+[01:01:09] =================================================================
+[01:01:09]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[01:01:09]   [MATLAB] Starting MATLAB...
+[01:01:15]   [MATLAB] Extracted 2 final neurons (gSig=11 gSiz=35)
+[01:01:18]   [MATLAB] Finished successfully in 0.2 min.
+[01:01:18]   Step 1 done: 2 curated neurons (original gSig=11, gSiz=35).
+[01:01:18]   Step 2: Estimating CNMFe parameters...
+[01:01:18]   Step 2a: No pnr.mat found — running pre-pass (gSig=11, gSiz=35 from original run)...
+[01:01:18] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[01:01:18]   [MATLAB] Starting MATLAB...
+[01:01:25]   [MATLAB] converting the selected file to *.mat version...
+[01:01:25]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 1320 of 1320 total frames
+[01:01:28]   [MATLAB] Finished reading images
+[01:01:36]   [MATLAB] Time cost in converting data to *.mat file:     11.08 seconds
+[01:01:36]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 1320 frames.
+[01:01:36]   [MATLAB] Loading all data requires 2.58 GB RAM
+[01:01:37]   [MATLAB] load data from frame 1 to frame 1024 of 1320 total frames
+[01:01:38]   [MATLAB] load data from frame 1025 to frame 1320 of 1320 total frames
+[01:01:39]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 660 frames.
+[01:01:39]   [MATLAB] Loading all data requires 0.32 GB RAM
+[01:01:42]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[01:01:45]   [MATLAB] Finished successfully in 0.4 min.
+[01:01:45]   [PARAMS] Animal 'pnb74' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[01:01:45]   [PARAMS] WARNING: estimated min_pnr=4.705 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[01:01:45]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[01:01:45]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.62, min_pnr=5.0.
+[01:01:45]   [PARAMS] Estimated bd=40 from Cn edge analysis (candidates per edge: [40, 47, 42, 27]).
+[01:01:45]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.62, 'min_pnr': 5.0, 'bd': 40}
+[01:01:45]   Step 2 done: {'gSig': 11, 'gSiz': 35, 'min_corr': 0.62, 'min_pnr': 5.0, 'bd': 40}
+[01:01:45]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[01:01:45]   [MATLAB] Starting MATLAB...
+[01:01:51]   [MATLAB] The selected file has been replaced with its *.mat version.
+[01:01:51]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 1320 frames.
+[01:01:51]   [MATLAB] Loading all data requires 2.58 GB RAM
+[01:01:51]   [MATLAB] Warning: Directory already exists.
+[01:01:51]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[01:01:51]   [MATLAB] In run (line 99)
+[01:01:51]   [MATLAB] load data from frame 1 to frame 1024 of 1320 total frames
+[01:01:53]   [MATLAB] load data from frame 1025 to frame 1320 of 1320 total frames
+[01:01:54]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 660 frames.
+[01:01:54]   [MATLAB] Loading all data requires 0.32 GB RAM
+[01:01:54]   [MATLAB] Time cost in downsampling data:     2.71 seconds
+[01:02:01]   [MATLAB] Time cost in initializing neurons:     2.60 seconds
+[01:02:01]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:02:01]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:02:21]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[01:02:36]   [MATLAB] Connected to parallel pool with 24 workers.
+[01:02:39]   [MATLAB] Time cost in estimating the background:        37.77 seconds
+[01:02:39]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:02:40]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:02:40]   [MATLAB] Time cost in updating spatial & temporal components:     0.68 seconds
+[01:02:41]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:02:41]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:02:59]   [MATLAB] Time cost in estimating the background:        18.07 seconds
+[01:03:00]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:03:00]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:03:00]   [MATLAB] Time cost in updating spatial & temporal components:     0.24 seconds
+[01:03:06]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[01:07:10]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[01:07:10]   [MATLAB] Time cost in updating neuronal spatial components:     0.20 seconds
+[01:07:10]   [MATLAB] Time cost in updating neuronal temporal components:     0.38 seconds
+[01:11:04]   [MATLAB] Time cost in estimating the background:        233.69 seconds
+[01:11:04]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:11:04]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:11:04]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:11:05]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:11:05]   [MATLAB] Time cost in updating spatial & temporal components:     0.78 seconds
+[01:11:05]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:11:06]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:11:06]   [MATLAB] The folder has been created and old results will be overwritten.
+[01:11:12]   [MATLAB] [HEADLESS] Done. 4 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG2x-TSeries-093025-pnb74-650um-570um-22z-000-A/_bootstrap/
+[01:11:12]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[01:11:20]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[01:11:20]   [MATLAB] Finished successfully in 9.6 min.
+[01:11:20]   Step 4: Matching candidates to ground truth, extracting features...
+[01:11:20]   [BOOTSTRAP] A_final:  (262144, 2)  (pixels x N_kept)
+[01:11:20]   [BOOTSTRAP] A_review: (262144, 4)  (pixels x N_candidates)
+[01:11:20]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.979', '0.799']
+[01:11:20]   [BOOTSTRAP] Matched: 2 keep, 2 delete (4 candidates vs 2 final neurons, threshold=0.45)
+[01:11:20]   [BOOTSTRAP] v2b computed for all 4 candidates (mode b0, ring_contrast=0, 1 hi-conf neighbours).
+[01:11:20]   [BOOTSTRAP] Saved bootstrap_candidates.npz (1252 nonzero footprint px, full sim matrix).
+[01:11:20]   [BOOTSTRAP] Saved: 4 candidates, 2 kept, 0 ambiguous, 0 duplicates, 35 features.
+[01:11:20]   _bootstrap/ cleaned up.
+[01:11:20] 
+  Progress: 3/13  (3 ok, 0 failed)
+
+[01:11:20] 
+=================================================================
+[01:11:20]   2tones/AVG2x-TSeries-093025-pnb74-650um-570um-22z-000-B
+[01:11:20] =================================================================
+[01:11:20]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[01:11:20]   [MATLAB] Starting MATLAB...
+[01:11:27]   [MATLAB] Extracted 4 final neurons (gSig=11 gSiz=34)
+[01:11:29]   [MATLAB] Finished successfully in 0.2 min.
+[01:11:30]   Step 1 done: 4 curated neurons (original gSig=11, gSiz=34).
+[01:11:30]   Step 2: Estimating CNMFe parameters...
+[01:11:30]   Step 2a: No pnr.mat found — running pre-pass (gSig=11, gSiz=34 from original run)...
+[01:11:30] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[01:11:30]   [MATLAB] Starting MATLAB...
+[01:11:35]   [MATLAB] converting the selected file to *.mat version...
+[01:11:36]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 1320 of 1320 total frames
+[01:11:39]   [MATLAB] Finished reading images
+[01:11:47]   [MATLAB] Time cost in converting data to *.mat file:     11.43 seconds
+[01:11:47]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 1320 frames.
+[01:11:47]   [MATLAB] Loading all data requires 2.58 GB RAM
+[01:11:47]   [MATLAB] load data from frame 1 to frame 1024 of 1320 total frames
+[01:11:49]   [MATLAB] load data from frame 1025 to frame 1320 of 1320 total frames
+[01:11:50]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 660 frames.
+[01:11:50]   [MATLAB] Loading all data requires 0.32 GB RAM
+[01:11:52]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[01:11:55]   [MATLAB] Finished successfully in 0.4 min.
+[01:11:55]   [PARAMS] Animal 'pnb74' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[01:11:55]   [PARAMS] WARNING: estimated min_pnr=4.732 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[01:11:55]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[01:11:55]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.59, min_pnr=5.0.
+[01:11:55]   [PARAMS] Estimated bd=40 from Cn edge analysis (candidates per edge: [20, 20, 20, 45]).
+[01:11:55]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.59, 'min_pnr': 5.0, 'bd': 40}
+[01:11:55]   Step 2 done: {'gSig': 11, 'gSiz': 34, 'min_corr': 0.59, 'min_pnr': 5.0, 'bd': 40}
+[01:11:55]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[01:11:55]   [MATLAB] Starting MATLAB...
+[01:12:01]   [MATLAB] The selected file has been replaced with its *.mat version.
+[01:12:01]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 1320 frames.
+[01:12:01]   [MATLAB] Loading all data requires 2.58 GB RAM
+[01:12:01]   [MATLAB] Warning: Directory already exists.
+[01:12:01]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[01:12:01]   [MATLAB] In run (line 99)
+[01:12:02]   [MATLAB] load data from frame 1 to frame 1024 of 1320 total frames
+[01:12:04]   [MATLAB] load data from frame 1025 to frame 1320 of 1320 total frames
+[01:12:04]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 660 frames.
+[01:12:04]   [MATLAB] Loading all data requires 0.32 GB RAM
+[01:12:04]   [MATLAB] Time cost in downsampling data:     2.51 seconds
+[01:12:11]   [MATLAB] 10 neurons have been detected
+[01:12:11]   [MATLAB] Time cost in initializing neurons:     2.75 seconds
+[01:12:11]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:12:11]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:12:28]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[01:12:43]   [MATLAB] Connected to parallel pool with 24 workers.
+[01:12:46]   [MATLAB] Time cost in estimating the background:        34.43 seconds
+[01:12:46]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:12:47]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:12:47]   [MATLAB] Time cost in updating spatial & temporal components:     0.80 seconds
+[01:12:48]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:12:48]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:13:04]   [MATLAB] Time cost in estimating the background:        15.64 seconds
+[01:13:04]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:13:04]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:13:04]   [MATLAB] Time cost in updating spatial & temporal components:     0.24 seconds
+[01:13:11]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[01:16:49]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[01:16:50]   [MATLAB] Time cost in updating neuronal spatial components:     0.27 seconds
+[01:16:50]   [MATLAB] Time cost in updating neuronal temporal components:     0.49 seconds
+[01:20:20]   [MATLAB] Time cost in estimating the background:        210.29 seconds
+[01:20:21]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:20:21]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:20:21]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:20:21]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:20:21]   [MATLAB] Time cost in updating spatial & temporal components:     0.86 seconds
+[01:20:22]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:20:22]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:20:23]   [MATLAB] The folder has been created and old results will be overwritten.
+[01:20:27]   [MATLAB] [HEADLESS] Done. 5 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG2x-TSeries-093025-pnb74-650um-570um-22z-000-B/_bootstrap/
+[01:20:27]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[01:20:35]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[01:20:35]   [MATLAB] Finished successfully in 8.7 min.
+[01:20:35]   Step 4: Matching candidates to ground truth, extracting features...
+[01:20:35]   [BOOTSTRAP] A_final:  (262144, 4)  (pixels x N_kept)
+[01:20:35]   [BOOTSTRAP] A_review: (262144, 5)  (pixels x N_candidates)
+[01:20:35]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.878', '0.876', '0.830', '0.000']
+[01:20:35]   [BOOTSTRAP] Matched: 3 keep, 2 delete (5 candidates vs 4 final neurons, threshold=0.45)
+[01:20:35]   [BOOTSTRAP] v2b computed for all 5 candidates (mode b0, ring_contrast=0, 0 hi-conf neighbours).
+[01:20:35]   [BOOTSTRAP] Saved bootstrap_candidates.npz (1688 nonzero footprint px, full sim matrix).
+[01:20:35]   [BOOTSTRAP] Saved: 5 candidates, 3 kept, 1 ambiguous, 0 duplicates, 35 features.
+[01:20:35]   _bootstrap/ cleaned up.
+[01:20:35] 
+  Progress: 4/13  (4 ok, 0 failed)
+
+[01:20:35] 
+=================================================================
+[01:20:35]   2tones/AVG5x-TSeries-100125-pnb74-535um-22z-000
+[01:20:35] =================================================================
+[01:20:35]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[01:20:35]   [MATLAB] Starting MATLAB...
+[01:20:40]   [MATLAB] Extracted 15 final neurons (gSig=10 gSiz=31)
+[01:20:42]   [MATLAB] Finished successfully in 0.1 min.
+[01:20:42]   Step 1 done: 15 curated neurons (original gSig=10, gSiz=31).
+[01:20:42]   Step 2: Estimating CNMFe parameters...
+[01:20:42]   Step 2a: No pnr.mat found — running pre-pass (gSig=10, gSiz=31 from original run)...
+[01:20:42] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[01:20:42]   [MATLAB] Starting MATLAB...
+[01:20:46]   [MATLAB] converting the selected file to *.mat version...
+[01:20:47]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[01:20:51]   [MATLAB] Finished reading images
+[01:21:01]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[01:21:05]   [MATLAB] Finished reading images
+[01:21:15]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[01:21:20]   [MATLAB] Finished reading images
+[01:21:31]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[01:21:33]   [MATLAB] Finished reading images
+[01:21:40]   [MATLAB] Time cost in converting data to *.mat file:     53.80 seconds
+[01:21:40]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[01:21:40]   [MATLAB] Loading all data requires 14.69 GB RAM
+[01:21:40]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[01:21:42]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[01:21:44]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[01:21:46]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[01:21:47]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[01:21:49]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[01:21:51]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[01:21:53]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[01:21:53]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[01:21:53]   [MATLAB] Loading all data requires 1.84 GB RAM
+[01:21:57]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[01:22:01]   [MATLAB] Finished successfully in 1.3 min.
+[01:22:01]   [PARAMS] Animal 'pnb74' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[01:22:01]   [PARAMS] WARNING: estimated min_corr=0.525 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[01:22:01]   [PARAMS] WARNING: estimated min_pnr=4.872 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[01:22:01]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[01:22:01]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[01:22:01]   [PARAMS] Estimated bd=40 from Cn edge analysis (candidates per edge: [20, 40, 20, 14]).
+[01:22:01]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 40}
+[01:22:01]   Step 2 done: {'gSig': 10, 'gSiz': 31, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 40}
+[01:22:01]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[01:22:01]   [MATLAB] Starting MATLAB...
+[01:22:05]   [MATLAB] The selected file has been replaced with its *.mat version.
+[01:22:05]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[01:22:05]   [MATLAB] Loading all data requires 14.69 GB RAM
+[01:22:05]   [MATLAB] Warning: Directory already exists.
+[01:22:05]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[01:22:05]   [MATLAB] In run (line 99)
+[01:22:06]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[01:22:07]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[01:22:09]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[01:22:11]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[01:22:13]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[01:22:15]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[01:22:17]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[01:22:19]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[01:22:19]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[01:22:19]   [MATLAB] Loading all data requires 1.84 GB RAM
+[01:22:19]   [MATLAB] Time cost in downsampling data:     13.79 seconds
+[01:22:36]   [MATLAB] 10 neurons have been detected
+[01:22:39]   [MATLAB] 20 neurons have been detected
+[01:22:42]   [MATLAB] 30 neurons have been detected
+[01:22:45]   [MATLAB] Time cost in initializing neurons:     20.13 seconds
+[01:22:45]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:22:45]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:24:18]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[01:24:35]   [MATLAB] Connected to parallel pool with 24 workers.
+[01:24:38]   [MATLAB] Time cost in estimating the background:        112.71 seconds
+[01:24:41]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:24:41]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:24:41]   [MATLAB] Time cost in updating spatial & temporal components:     3.16 seconds
+[01:24:51]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:24:51]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[01:26:20]   [MATLAB] Time cost in estimating the background:        88.71 seconds
+[01:26:23]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:26:23]   [MATLAB] 4 neurons will be merged into 2 new neurons
+[01:26:26]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:26:26]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:26:26]   [MATLAB] Time cost in updating spatial & temporal components:     5.71 seconds
+[01:26:26]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:26:26]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:27:54]   [MATLAB] Time cost in estimating the background:        88.17 seconds
+[01:27:56]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:27:56]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[01:28:00]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:28:00]   [MATLAB] All pairs of neurons are below the merging criterion!
+[01:28:00]   [MATLAB] Time cost in updating spatial & temporal components:     6.13 seconds
+[01:28:41]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[01:50:34]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[01:50:35]   [MATLAB] Time cost in updating neuronal spatial components:     1.68 seconds
+[01:50:40]   [MATLAB] Time cost in updating neuronal temporal components:     6.60 seconds
+[02:12:23]   [MATLAB] Time cost in estimating the background:        1301.23 seconds
+[02:12:28]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:12:30]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:12:35]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:12:37]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[02:12:37]   [MATLAB] Time cost in updating spatial & temporal components:     13.70 seconds
+[02:12:45]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:12:46]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[02:12:49]   [MATLAB] The folder has been created and old results will be overwritten.
+[02:13:08]   [MATLAB] [HEADLESS] Done. 33 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-100125-pnb74-535um-22z-000/_bootstrap/
+[02:13:08]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[02:13:17]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[02:13:18]   [MATLAB] Finished successfully in 51.3 min.
+[02:13:18]   Step 4: Matching candidates to ground truth, extracting features...
+[02:13:18]   [BOOTSTRAP] A_final:  (262144, 15)  (pixels x N_kept)
+[02:13:18]   [BOOTSTRAP] A_review: (262144, 33)  (pixels x N_candidates)
+[02:13:18]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.999', '0.997', '0.981', '0.978', '0.976', '0.954', '0.936', '0.919', '0.897', '0.885', '0.875', '0.037', '0.006', '0.000', '0.000']
+[02:13:18]   [BOOTSTRAP] Matched: 11 keep, 22 delete (33 candidates vs 15 final neurons, threshold=0.45)
+[02:13:18]   [BOOTSTRAP] v2b computed for all 33 candidates (mode b0, ring_contrast=0, 3 hi-conf neighbours).
+[02:13:18]   [BOOTSTRAP] Saved bootstrap_candidates.npz (21684 nonzero footprint px, full sim matrix).
+[02:13:18]   [BOOTSTRAP] Saved: 33 candidates, 11 kept, 4 ambiguous, 5 duplicates, 35 features.
+[02:13:18]   _bootstrap/ cleaned up.
+[02:13:18] 
+  Progress: 5/13  (5 ok, 0 failed)
+
+[02:13:18] 
+=================================================================
+[02:13:18]   2tones/AVG5x-TSeries-100925-pnb74-452um-25z-000
+[02:13:18] =================================================================
+[02:13:18]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[02:13:18]   [MATLAB] Starting MATLAB...
+[02:13:25]   [MATLAB] Extracted 17 final neurons (gSig=8 gSiz=28)
+[02:13:28]   [MATLAB] Finished successfully in 0.2 min.
+[02:13:28]   Step 1 done: 17 curated neurons (original gSig=8, gSiz=28).
+[02:13:28]   Step 2: Estimating CNMFe parameters...
+[02:13:28]   Step 2a: No pnr.mat found — running pre-pass (gSig=8, gSiz=28 from original run)...
+[02:13:28] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[02:13:28]   [MATLAB] Starting MATLAB...
+[02:13:34]   [MATLAB] converting the selected file to *.mat version...
+[02:13:35]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[02:13:41]   [MATLAB] Finished reading images
+[02:13:52]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[02:13:58]   [MATLAB] Finished reading images
+[02:14:09]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[02:14:15]   [MATLAB] Finished reading images
+[02:14:26]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[02:14:31]   [MATLAB] Finished reading images
+[02:14:38]   [MATLAB] Time cost in converting data to *.mat file:     64.09 seconds
+[02:14:39]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[02:14:39]   [MATLAB] Loading all data requires 14.69 GB RAM
+[02:14:39]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[02:14:41]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[02:14:43]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[02:14:45]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[02:14:47]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[02:14:49]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[02:14:50]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[02:14:52]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[02:14:53]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[02:14:53]   [MATLAB] Loading all data requires 1.84 GB RAM
+[02:14:56]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[02:15:01]   [MATLAB] Finished successfully in 1.5 min.
+[02:15:01]   [PARAMS] Animal 'pnb74' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[02:15:01]   [PARAMS] WARNING: estimated min_corr=0.463 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[02:15:01]   [PARAMS] WARNING: estimated min_pnr=4.827 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[02:15:01]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[02:15:01]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[02:15:01]   [PARAMS] Estimated bd=40 from Cn edge analysis (candidates per edge: [27, 5, 45, 45]).
+[02:15:01]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 40}
+[02:15:01]   Step 2 done: {'gSig': 8, 'gSiz': 28, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 40}
+[02:15:01]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[02:15:01]   [MATLAB] Starting MATLAB...
+[02:15:08]   [MATLAB] The selected file has been replaced with its *.mat version.
+[02:15:08]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[02:15:08]   [MATLAB] Loading all data requires 14.69 GB RAM
+[02:15:08]   [MATLAB] Warning: Directory already exists.
+[02:15:08]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[02:15:08]   [MATLAB] In run (line 99)
+[02:15:08]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[02:15:10]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[02:15:12]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[02:15:14]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[02:15:16]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[02:15:18]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[02:15:20]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[02:15:21]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[02:15:22]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[02:15:22]   [MATLAB] Loading all data requires 1.84 GB RAM
+[02:15:22]   [MATLAB] Time cost in downsampling data:     14.22 seconds
+[02:15:37]   [MATLAB] 10 neurons have been detected
+[02:15:40]   [MATLAB] 20 neurons have been detected
+[02:15:40]   [MATLAB] Time cost in initializing neurons:     12.70 seconds
+[02:15:40]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:15:40]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:17:08]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[02:17:23]   [MATLAB] Connected to parallel pool with 24 workers.
+[02:17:27]   [MATLAB] Time cost in estimating the background:        106.43 seconds
+[02:17:29]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:17:29]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:17:29]   [MATLAB] Time cost in updating spatial & temporal components:     2.07 seconds
+[02:17:39]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:17:39]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[02:19:04]   [MATLAB] Time cost in estimating the background:        85.32 seconds
+[02:19:06]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:19:06]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:19:06]   [MATLAB] Time cost in updating spatial & temporal components:     2.06 seconds
+[02:19:06]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:19:06]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:20:30]   [MATLAB] Time cost in estimating the background:        84.08 seconds
+[02:20:32]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:20:32]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:20:32]   [MATLAB] Time cost in updating spatial & temporal components:     1.98 seconds
+[02:21:16]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[02:38:50]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[02:38:51]   [MATLAB] Time cost in updating neuronal spatial components:     1.32 seconds
+[02:38:55]   [MATLAB] Time cost in updating neuronal temporal components:     5.28 seconds
+[02:54:38]   [MATLAB] Time cost in estimating the background:        941.97 seconds
+[02:54:42]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:54:43]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:54:47]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:54:48]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:54:48]   [MATLAB] Time cost in updating spatial & temporal components:     10.00 seconds
+[02:54:54]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:54:55]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:54:58]   [MATLAB] The folder has been created and old results will be overwritten.
+[02:55:12]   [MATLAB] [HEADLESS] Done. 25 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-100925-pnb74-452um-25z-000/_bootstrap/
+[02:55:12]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[02:55:20]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[02:55:20]   [MATLAB] Finished successfully in 40.3 min.
+[02:55:20]   Step 4: Matching candidates to ground truth, extracting features...
+[02:55:20]   [BOOTSTRAP] A_final:  (262144, 17)  (pixels x N_kept)
+[02:55:20]   [BOOTSTRAP] A_review: (262144, 25)  (pixels x N_candidates)
+[02:55:21]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.997', '0.993', '0.992', '0.990', '0.983', '0.980', '0.973', '0.971', '0.963', '0.963', '0.953', '0.951', '0.934', '0.926', '0.000', '0.000', '0.000']
+[02:55:21]   [BOOTSTRAP] Matched: 14 keep, 11 delete (25 candidates vs 17 final neurons, threshold=0.45)
+[02:55:21]   [BOOTSTRAP] v2b computed for all 25 candidates (mode b0, ring_contrast=0, 8 hi-conf neighbours).
+[02:55:21]   [BOOTSTRAP] Saved bootstrap_candidates.npz (21981 nonzero footprint px, full sim matrix).
+[02:55:21]   [BOOTSTRAP] Saved: 25 candidates, 14 kept, 3 ambiguous, 7 duplicates, 35 features.
+[02:55:21]   _bootstrap/ cleaned up.
+[02:55:21] 
+  Progress: 6/13  (6 ok, 0 failed)
+
+[02:55:21] 
+=================================================================
+[02:55:21]   2tones/AVG5x-TSeries-100125-pnb76-531um-3z-000
+[02:55:21] =================================================================
+[02:55:21]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[02:55:21]   [MATLAB] Starting MATLAB...
+[02:55:28]   [MATLAB] Extracted 4 final neurons (gSig=10 gSiz=30)
+[02:55:31]   [MATLAB] Finished successfully in 0.2 min.
+[02:55:31]   Step 1 done: 4 curated neurons (original gSig=10, gSiz=30).
+[02:55:31]   Step 2: Estimating CNMFe parameters...
+[02:55:31]   Step 2a: No pnr.mat found — running pre-pass (gSig=10, gSiz=30 from original run)...
+[02:55:31] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[02:55:31]   [MATLAB] Starting MATLAB...
+[02:55:37]   [MATLAB] converting the selected file to *.mat version...
+[02:55:38]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[02:55:44]   [MATLAB] Finished reading images
+[02:55:55]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[02:56:01]   [MATLAB] Finished reading images
+[02:56:12]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[02:56:18]   [MATLAB] Finished reading images
+[02:56:29]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[02:56:34]   [MATLAB] Finished reading images
+[02:56:41]   [MATLAB] Time cost in converting data to *.mat file:     64.84 seconds
+[02:56:42]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[02:56:42]   [MATLAB] Loading all data requires 14.69 GB RAM
+[02:56:42]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[02:56:44]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[02:56:46]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[02:56:48]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[02:56:50]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[02:56:52]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[02:56:53]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[02:56:55]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[02:56:56]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[02:56:56]   [MATLAB] Loading all data requires 1.84 GB RAM
+[02:56:59]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[02:57:04]   [MATLAB] Finished successfully in 1.6 min.
+[02:57:04]   [PARAMS] Animal 'pnb76' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[02:57:04]   [PARAMS] WARNING: estimated min_corr=0.440 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[02:57:04]   [PARAMS] WARNING: estimated min_pnr=4.754 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[02:57:04]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[02:57:04]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[02:57:04]   [PARAMS] Estimated bd=40 from Cn edge analysis (candidates per edge: [5, 43, 45, 18]).
+[02:57:04]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 40}
+[02:57:04]   Step 2 done: {'gSig': 10, 'gSiz': 30, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 40}
+[02:57:04]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[02:57:04]   [MATLAB] Starting MATLAB...
+[02:57:18]   [MATLAB] The selected file has been replaced with its *.mat version.
+[02:57:18]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[02:57:18]   [MATLAB] Loading all data requires 14.69 GB RAM
+[02:57:18]   [MATLAB] Warning: Directory already exists.
+[02:57:18]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[02:57:18]   [MATLAB] In run (line 99)
+[02:57:19]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[02:57:20]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[02:57:23]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[02:57:25]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[02:57:27]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[02:57:29]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[02:57:31]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[02:57:33]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[02:57:33]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[02:57:33]   [MATLAB] Loading all data requires 1.84 GB RAM
+[02:57:33]   [MATLAB] Time cost in downsampling data:     15.06 seconds
+[02:57:49]   [MATLAB] Time cost in initializing neurons:     8.33 seconds
+[02:57:49]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:57:49]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:59:21]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[02:59:38]   [MATLAB] Connected to parallel pool with 24 workers.
+[02:59:42]   [MATLAB] Time cost in estimating the background:        113.00 seconds
+[02:59:42]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:59:43]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:59:43]   [MATLAB] Time cost in updating spatial & temporal components:     0.68 seconds
+[02:59:50]   [MATLAB] All pairs of neurons are below the merging criterion!
+[02:59:50]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:01:13]   [MATLAB] Time cost in estimating the background:        82.53 seconds
+[03:01:13]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:01:13]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:01:13]   [MATLAB] Time cost in updating spatial & temporal components:     0.47 seconds
+[03:02:03]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[03:22:54]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[03:22:54]   [MATLAB] Time cost in updating neuronal spatial components:     0.63 seconds
+[03:22:55]   [MATLAB] Time cost in updating neuronal temporal components:     1.39 seconds
+[03:42:33]   [MATLAB] Time cost in estimating the background:        1176.07 seconds
+[03:42:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:42:35]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:42:36]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:42:36]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:42:36]   [MATLAB] Time cost in updating spatial & temporal components:     2.77 seconds
+[03:42:40]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:42:41]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:42:45]   [MATLAB] The folder has been created and old results will be overwritten.
+[03:42:54]   [MATLAB] [HEADLESS] Done. 4 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-100125-pnb76-531um-3z-000/_bootstrap/
+[03:42:54]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[03:43:06]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[03:43:06]   [MATLAB] Finished successfully in 46.0 min.
+[03:43:06]   Step 4: Matching candidates to ground truth, extracting features...
+[03:43:06]   [BOOTSTRAP] A_final:  (262144, 4)  (pixels x N_kept)
+[03:43:06]   [BOOTSTRAP] A_review: (262144, 4)  (pixels x N_candidates)
+[03:43:06]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.992', '0.899', '0.000', '0.000']
+[03:43:06]   [BOOTSTRAP] Matched: 2 keep, 2 delete (4 candidates vs 4 final neurons, threshold=0.45)
+[03:43:06]   [BOOTSTRAP] v2b computed for all 4 candidates (mode b0, ring_contrast=0, 1 hi-conf neighbours).
+[03:43:06]   [BOOTSTRAP] Saved bootstrap_candidates.npz (3804 nonzero footprint px, full sim matrix).
+[03:43:06]   [BOOTSTRAP] Saved: 4 candidates, 2 kept, 2 ambiguous, 0 duplicates, 35 features.
+[03:43:06]   _bootstrap/ cleaned up.
+[03:43:06] 
+  Progress: 7/13  (7 ok, 0 failed)
+
+[03:43:06] 
+=================================================================
+[03:43:06]   2tones/AVG5x-TSeries-100925-pnb76-613um-3z-000
+[03:43:06] =================================================================
+[03:43:06]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[03:43:06]   [MATLAB] Starting MATLAB...
+[03:43:13]   [MATLAB] Extracted 5 final neurons (gSig=13 gSiz=38)
+[03:43:16]   [MATLAB] Finished successfully in 0.2 min.
+[03:43:16]   Step 1 done: 5 curated neurons (original gSig=13, gSiz=38).
+[03:43:16]   Step 2: Estimating CNMFe parameters...
+[03:43:16]   Step 2a: No pnr.mat found — running pre-pass (gSig=13, gSiz=38 from original run)...
+[03:43:16] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[03:43:16]   [MATLAB] Starting MATLAB...
+[03:43:23]   [MATLAB] converting the selected file to *.mat version...
+[03:43:24]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[03:43:30]   [MATLAB] Finished reading images
+[03:43:41]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[03:43:48]   [MATLAB] Finished reading images
+[03:43:58]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[03:44:05]   [MATLAB] Finished reading images
+[03:44:16]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[03:44:20]   [MATLAB] Finished reading images
+[03:44:27]   [MATLAB] Time cost in converting data to *.mat file:     64.39 seconds
+[03:44:27]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[03:44:27]   [MATLAB] Loading all data requires 14.69 GB RAM
+[03:44:28]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[03:44:30]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[03:44:32]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[03:44:34]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[03:44:35]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[03:44:37]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[03:44:39]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[03:44:41]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[03:44:42]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[03:44:42]   [MATLAB] Loading all data requires 1.84 GB RAM
+[03:44:46]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[03:44:50]   [MATLAB] Finished successfully in 1.6 min.
+[03:44:50]   [PARAMS] Animal 'pnb76' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[03:44:50]   [PARAMS] WARNING: estimated min_corr=0.526 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[03:44:50]   [PARAMS] WARNING: estimated min_pnr=4.755 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[03:44:50]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[03:44:50]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[03:44:50]   [PARAMS] Estimated bd=26 from Cn edge analysis (candidates per edge: [26, 2, 8, 4]).
+[03:44:50]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 26}
+[03:44:50]   Step 2 done: {'gSig': 13, 'gSiz': 38, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 26}
+[03:44:50]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[03:44:50]   [MATLAB] Starting MATLAB...
+[03:44:56]   [MATLAB] The selected file has been replaced with its *.mat version.
+[03:44:57]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[03:44:57]   [MATLAB] Loading all data requires 14.69 GB RAM
+[03:44:57]   [MATLAB] Warning: Directory already exists.
+[03:44:57]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[03:44:57]   [MATLAB] In run (line 99)
+[03:44:57]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[03:44:59]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[03:45:01]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[03:45:03]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[03:45:05]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[03:45:06]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[03:45:08]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[03:45:10]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[03:45:11]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[03:45:11]   [MATLAB] Loading all data requires 1.84 GB RAM
+[03:45:11]   [MATLAB] Time cost in downsampling data:     14.12 seconds
+[03:45:29]   [MATLAB] 10 neurons have been detected
+[03:45:33]   [MATLAB] 20 neurons have been detected
+[03:45:37]   [MATLAB] 30 neurons have been detected
+[03:45:37]   [MATLAB] Time cost in initializing neurons:     20.12 seconds
+[03:45:37]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:45:37]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:47:12]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[03:47:28]   [MATLAB] Connected to parallel pool with 24 workers.
+[03:47:32]   [MATLAB] Time cost in estimating the background:        114.39 seconds
+[03:47:33]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:47:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:47:34]   [MATLAB] Time cost in updating spatial & temporal components:     2.25 seconds
+[03:47:42]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:47:42]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:49:15]   [MATLAB] Time cost in estimating the background:        93.65 seconds
+[03:49:17]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:49:17]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:49:17]   [MATLAB] Time cost in updating spatial & temporal components:     1.56 seconds
+[03:49:17]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:49:17]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:50:50]   [MATLAB] Time cost in estimating the background:        92.80 seconds
+[03:50:51]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:50:51]   [MATLAB] All pairs of neurons are below the merging criterion!
+[03:50:51]   [MATLAB] Time cost in updating spatial & temporal components:     1.29 seconds
+[03:51:36]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[04:13:40]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[04:13:41]   [MATLAB] Time cost in updating neuronal spatial components:     0.73 seconds
+[04:13:43]   [MATLAB] Time cost in updating neuronal temporal components:     2.70 seconds
+[04:38:45]   [MATLAB] Time cost in estimating the background:        1501.78 seconds
+[04:38:47]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:38:48]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:38:51]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:38:51]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:38:51]   [MATLAB] Time cost in updating spatial & temporal components:     6.30 seconds
+[04:38:57]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:38:58]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:39:01]   [MATLAB] The folder has been created and old results will be overwritten.
+[04:39:13]   [MATLAB] [HEADLESS] Done. 16 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-100925-pnb76-613um-3z-000/_bootstrap/
+[04:39:13]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[04:39:23]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[04:39:23]   [MATLAB] Finished successfully in 54.6 min.
+[04:39:23]   Step 4: Matching candidates to ground truth, extracting features...
+[04:39:24]   [BOOTSTRAP] A_final:  (262144, 5)  (pixels x N_kept)
+[04:39:24]   [BOOTSTRAP] A_review: (262144, 16)  (pixels x N_candidates)
+[04:39:24]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.957', '0.947', '0.891', '0.859', '0.261']
+[04:39:24]   [BOOTSTRAP] Matched: 4 keep, 12 delete (16 candidates vs 5 final neurons, threshold=0.45)
+[04:39:24]   [BOOTSTRAP] v2b computed for all 16 candidates (mode b0, ring_contrast=0, 0 hi-conf neighbours).
+[04:39:24]   [BOOTSTRAP] Saved bootstrap_candidates.npz (9646 nonzero footprint px, full sim matrix).
+[04:39:24]   [BOOTSTRAP] Saved: 16 candidates, 4 kept, 1 ambiguous, 3 duplicates, 35 features.
+[04:39:24]   _bootstrap/ cleaned up.
+[04:39:24] 
+  Progress: 8/13  (8 ok, 0 failed)
+
+[04:39:24] 
+=================================================================
+[04:39:24]   2tones/AVG5x-TSeries-101025-pnb76-517um-3z-000
+[04:39:24] =================================================================
+[04:39:24]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[04:39:24]   [MATLAB] Starting MATLAB...
+[04:39:31]   [MATLAB] Extracted 6 final neurons (gSig=11 gSiz=38)
+[04:39:34]   [MATLAB] Finished successfully in 0.2 min.
+[04:39:34]   Step 1 done: 6 curated neurons (original gSig=11, gSiz=38).
+[04:39:34]   Step 2: Estimating CNMFe parameters...
+[04:39:34]   Step 2a: No pnr.mat found — running pre-pass (gSig=11, gSiz=38 from original run)...
+[04:39:34] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[04:39:34]   [MATLAB] Starting MATLAB...
+[04:39:40]   [MATLAB] converting the selected file to *.mat version...
+[04:39:41]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[04:39:47]   [MATLAB] Finished reading images
+[04:39:58]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[04:40:05]   [MATLAB] Finished reading images
+[04:40:16]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[04:40:23]   [MATLAB] Finished reading images
+[04:40:34]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[04:40:40]   [MATLAB] Finished reading images
+[04:40:47]   [MATLAB] Time cost in converting data to *.mat file:     66.60 seconds
+[04:40:47]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[04:40:47]   [MATLAB] Loading all data requires 14.69 GB RAM
+[04:40:47]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[04:40:49]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[04:40:51]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[04:40:53]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[04:40:55]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[04:40:57]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[04:40:58]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[04:41:00]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[04:41:01]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[04:41:01]   [MATLAB] Loading all data requires 1.84 GB RAM
+[04:41:05]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[04:41:09]   [MATLAB] Finished successfully in 1.6 min.
+[04:41:09]   [PARAMS] Animal 'pnb76' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[04:41:10]   [PARAMS] WARNING: estimated min_corr=0.500 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[04:41:10]   [PARAMS] WARNING: estimated min_pnr=4.757 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[04:41:10]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[04:41:10]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[04:41:10]   [PARAMS] Estimated bd=28 from Cn edge analysis (candidates per edge: [28, 6, 15, 10]).
+[04:41:10]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 28}
+[04:41:10]   Step 2 done: {'gSig': 11, 'gSiz': 38, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 28}
+[04:41:10]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[04:41:10]   [MATLAB] Starting MATLAB...
+[04:41:17]   [MATLAB] The selected file has been replaced with its *.mat version.
+[04:41:17]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[04:41:17]   [MATLAB] Loading all data requires 14.69 GB RAM
+[04:41:17]   [MATLAB] Warning: Directory already exists.
+[04:41:17]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[04:41:17]   [MATLAB] In run (line 99)
+[04:41:17]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[04:41:19]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[04:41:21]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[04:41:23]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[04:41:25]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[04:41:27]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[04:41:29]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[04:41:30]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[04:41:31]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[04:41:31]   [MATLAB] Loading all data requires 1.84 GB RAM
+[04:41:31]   [MATLAB] Time cost in downsampling data:     14.23 seconds
+[04:41:49]   [MATLAB] 10 neurons have been detected
+[04:41:53]   [MATLAB] 20 neurons have been detected
+[04:41:57]   [MATLAB] 30 neurons have been detected
+[04:42:01]   [MATLAB] 40 neurons have been detected
+[04:42:05]   [MATLAB] 50 neurons have been detected
+[04:42:08]   [MATLAB] Time cost in initializing neurons:     30.98 seconds
+[04:42:08]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:42:08]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:43:43]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[04:43:59]   [MATLAB] Connected to parallel pool with 24 workers.
+[04:44:02]   [MATLAB] Time cost in estimating the background:        113.84 seconds
+[04:44:05]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:44:05]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:44:05]   [MATLAB] Time cost in updating spatial & temporal components:     3.36 seconds
+[04:44:14]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:44:14]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:45:47]   [MATLAB] Time cost in estimating the background:        92.75 seconds
+[04:45:49]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:45:49]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:45:49]   [MATLAB] Time cost in updating spatial & temporal components:     1.98 seconds
+[04:45:49]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:45:49]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:47:21]   [MATLAB] Time cost in estimating the background:        92.53 seconds
+[04:47:23]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:47:23]   [MATLAB] All pairs of neurons are below the merging criterion!
+[04:47:23]   [MATLAB] Time cost in updating spatial & temporal components:     1.83 seconds
+[04:48:07]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[05:14:14]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[05:14:16]   [MATLAB] Time cost in updating neuronal spatial components:     1.23 seconds
+[05:14:19]   [MATLAB] Time cost in updating neuronal temporal components:     4.21 seconds
+[05:35:26]   [MATLAB] Time cost in estimating the background:        1265.22 seconds
+[05:35:29]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:35:30]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:35:33]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:35:35]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:35:35]   [MATLAB] Time cost in updating spatial & temporal components:     8.73 seconds
+[05:35:41]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:35:41]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:35:45]   [MATLAB] The folder has been created and old results will be overwritten.
+[05:35:59]   [MATLAB] [HEADLESS] Done. 25 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-101025-pnb76-517um-3z-000/_bootstrap/
+[05:35:59]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[05:36:07]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[05:36:08]   [MATLAB] Finished successfully in 55.0 min.
+[05:36:08]   Step 4: Matching candidates to ground truth, extracting features...
+[05:36:08]   [BOOTSTRAP] A_final:  (262144, 6)  (pixels x N_kept)
+[05:36:08]   [BOOTSTRAP] A_review: (262144, 25)  (pixels x N_candidates)
+[05:36:08]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.992', '0.977', '0.901', '0.900', '0.898', '0.000']
+[05:36:08]   [BOOTSTRAP] Matched: 5 keep, 20 delete (25 candidates vs 6 final neurons, threshold=0.45)
+[05:36:08]   [BOOTSTRAP] v2b computed for all 25 candidates (mode b0, ring_contrast=0, 1 hi-conf neighbours).
+[05:36:08]   [BOOTSTRAP] Saved bootstrap_candidates.npz (12454 nonzero footprint px, full sim matrix).
+[05:36:08]   [BOOTSTRAP] Saved: 25 candidates, 5 kept, 1 ambiguous, 4 duplicates, 35 features.
+[05:36:08]   _bootstrap/ cleaned up.
+[05:36:08] 
+  Progress: 9/13  (9 ok, 0 failed)
+
+[05:36:08] 
+=================================================================
+[05:36:08]   2tones/AVG5x-TSeries-101325-pnb76-521um-3z-000
+[05:36:08] =================================================================
+[05:36:08]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[05:36:08]   [MATLAB] Starting MATLAB...
+[05:36:14]   [MATLAB] Extracted 6 final neurons (gSig=11 gSiz=38)
+[05:36:16]   [MATLAB] Finished successfully in 0.1 min.
+[05:36:16]   Step 1 done: 6 curated neurons (original gSig=11, gSiz=38).
+[05:36:16]   Step 2: Estimating CNMFe parameters...
+[05:36:16]   Step 2a: No pnr.mat found — running pre-pass (gSig=11, gSiz=38 from original run)...
+[05:36:16] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[05:36:16]   [MATLAB] Starting MATLAB...
+[05:36:22]   [MATLAB] converting the selected file to *.mat version...
+[05:36:23]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[05:36:29]   [MATLAB] Finished reading images
+[05:36:39]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[05:36:46]   [MATLAB] Finished reading images
+[05:36:57]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[05:37:04]   [MATLAB] Finished reading images
+[05:37:15]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[05:37:19]   [MATLAB] Finished reading images
+[05:37:26]   [MATLAB] Time cost in converting data to *.mat file:     63.88 seconds
+[05:37:26]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[05:37:26]   [MATLAB] Loading all data requires 14.69 GB RAM
+[05:37:27]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[05:37:29]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[05:37:30]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[05:37:32]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[05:37:34]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[05:37:36]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[05:37:38]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[05:37:40]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[05:37:40]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[05:37:40]   [MATLAB] Loading all data requires 1.84 GB RAM
+[05:37:44]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[05:37:49]   [MATLAB] Finished successfully in 1.5 min.
+[05:37:49]   [PARAMS] Animal 'pnb76' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[05:37:49]   [PARAMS] WARNING: estimated min_pnr=4.771 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[05:37:49]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[05:37:49]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.58, min_pnr=5.0.
+[05:37:49]   [PARAMS] Estimated bd=19 from Cn edge analysis (candidates per edge: [14, 3, 19, 2]).
+[05:37:49]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.58, 'min_pnr': 5.0, 'bd': 19}
+[05:37:49]   Step 2 done: {'gSig': 11, 'gSiz': 38, 'min_corr': 0.58, 'min_pnr': 5.0, 'bd': 19}
+[05:37:49]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[05:37:49]   [MATLAB] Starting MATLAB...
+[05:37:56]   [MATLAB] The selected file has been replaced with its *.mat version.
+[05:37:56]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[05:37:56]   [MATLAB] Loading all data requires 14.69 GB RAM
+[05:37:56]   [MATLAB] Warning: Directory already exists.
+[05:37:56]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[05:37:56]   [MATLAB] In run (line 99)
+[05:37:56]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[05:37:58]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[05:38:00]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[05:38:02]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[05:38:04]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[05:38:06]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[05:38:07]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[05:38:09]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[05:38:10]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[05:38:10]   [MATLAB] Loading all data requires 1.84 GB RAM
+[05:38:10]   [MATLAB] Time cost in downsampling data:     13.70 seconds
+[05:38:26]   [MATLAB] 10 neurons have been detected
+[05:38:27]   [MATLAB] Time cost in initializing neurons:     11.27 seconds
+[05:38:27]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:38:27]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:39:58]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[05:40:16]   [MATLAB] Connected to parallel pool with 24 workers.
+[05:40:19]   [MATLAB] Time cost in estimating the background:        112.52 seconds
+[05:40:20]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:40:21]   [MATLAB] All pairs of neurons are below the merging criterion!
+[05:40:21]   [MATLAB] Time cost in updating spatial & temporal components:     1.21 seconds
+[05:41:11]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[06:06:23]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[06:06:24]   [MATLAB] Time cost in updating neuronal spatial components:     1.24 seconds
+[06:06:26]   [MATLAB] Time cost in updating neuronal temporal components:     3.38 seconds
+[06:31:10]   [MATLAB] Time cost in estimating the background:        1481.34 seconds
+[06:31:12]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:31:13]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:31:15]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:31:16]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:31:16]   [MATLAB] Time cost in updating spatial & temporal components:     6.61 seconds
+[06:31:22]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:31:23]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:31:27]   [MATLAB] The folder has been created and old results will be overwritten.
+[06:31:37]   [MATLAB] [HEADLESS] Done. 11 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-101325-pnb76-521um-3z-000/_bootstrap/
+[06:31:37]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[06:31:48]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[06:31:48]   [MATLAB] Finished successfully in 54.0 min.
+[06:31:48]   Step 4: Matching candidates to ground truth, extracting features...
+[06:31:48]   [BOOTSTRAP] A_final:  (262144, 6)  (pixels x N_kept)
+[06:31:48]   [BOOTSTRAP] A_review: (262144, 11)  (pixels x N_candidates)
+[06:31:48]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.933', '0.913', '0.868', '0.844', '0.794', '0.772']
+[06:31:48]   [BOOTSTRAP] Matched: 6 keep, 5 delete (11 candidates vs 6 final neurons, threshold=0.45)
+[06:31:48]   [BOOTSTRAP] v2b computed for all 11 candidates (mode b0, ring_contrast=0, 0 hi-conf neighbours).
+[06:31:48]   [BOOTSTRAP] Saved bootstrap_candidates.npz (8413 nonzero footprint px, full sim matrix).
+[06:31:48]   [BOOTSTRAP] Saved: 11 candidates, 6 kept, 0 ambiguous, 2 duplicates, 35 features.
+[06:31:48]   _bootstrap/ cleaned up.
+[06:31:48] 
+  Progress: 10/13  (10 ok, 0 failed)
+
+[06:31:48] 
+=================================================================
+[06:31:48]   2tones/AVG5x-TSeries-101425-pnb76-518um-3z-000
+[06:31:48] =================================================================
+[06:31:48]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[06:31:48]   [MATLAB] Starting MATLAB...
+[06:31:56]   [MATLAB] Extracted 5 final neurons (gSig=11 gSiz=38)
+[06:32:02]   [MATLAB] Finished successfully in 0.2 min.
+[06:32:02]   Step 1 done: 5 curated neurons (original gSig=11, gSiz=38).
+[06:32:02]   Step 2: Estimating CNMFe parameters...
+[06:32:02]   Step 2a: No pnr.mat found — running pre-pass (gSig=11, gSiz=38 from original run)...
+[06:32:02] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[06:32:02]   [MATLAB] Starting MATLAB...
+[06:32:08]   [MATLAB] converting the selected file to *.mat version...
+[06:32:09]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[06:32:15]   [MATLAB] Finished reading images
+[06:32:26]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[06:32:33]   [MATLAB] Finished reading images
+[06:32:43]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[06:32:50]   [MATLAB] Finished reading images
+[06:33:01]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[06:33:06]   [MATLAB] Finished reading images
+[06:33:13]   [MATLAB] Time cost in converting data to *.mat file:     64.35 seconds
+[06:33:13]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[06:33:13]   [MATLAB] Loading all data requires 14.69 GB RAM
+[06:33:13]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[06:33:15]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[06:33:17]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[06:33:19]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[06:33:21]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[06:33:23]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[06:33:25]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[06:33:26]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[06:33:27]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[06:33:27]   [MATLAB] Loading all data requires 1.84 GB RAM
+[06:33:31]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[06:33:36]   [MATLAB] Finished successfully in 1.6 min.
+[06:33:36]   [PARAMS] Animal 'pnb76' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[06:33:36]   [PARAMS] WARNING: estimated min_corr=0.500 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[06:33:36]   [PARAMS] WARNING: estimated min_pnr=4.714 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[06:33:36]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[06:33:36]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[06:33:36]   [PARAMS] Estimated bd=20 from Cn edge analysis (candidates per edge: [7, 4, 20, 4]).
+[06:33:36]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 20}
+[06:33:36]   Step 2 done: {'gSig': 11, 'gSiz': 38, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 20}
+[06:33:36]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[06:33:36]   [MATLAB] Starting MATLAB...
+[06:33:42]   [MATLAB] The selected file has been replaced with its *.mat version.
+[06:33:42]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[06:33:42]   [MATLAB] Loading all data requires 14.69 GB RAM
+[06:33:42]   [MATLAB] Warning: Directory already exists.
+[06:33:42]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[06:33:42]   [MATLAB] In run (line 99)
+[06:33:42]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[06:33:44]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[06:33:46]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[06:33:48]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[06:33:50]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[06:33:52]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[06:33:54]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[06:33:56]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[06:33:57]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[06:33:57]   [MATLAB] Loading all data requires 1.84 GB RAM
+[06:33:57]   [MATLAB] Time cost in downsampling data:     14.35 seconds
+[06:34:14]   [MATLAB] 10 neurons have been detected
+[06:34:18]   [MATLAB] 20 neurons have been detected
+[06:34:23]   [MATLAB] 30 neurons have been detected
+[06:34:27]   [MATLAB] 40 neurons have been detected
+[06:34:31]   [MATLAB] 50 neurons have been detected
+[06:34:33]   [MATLAB] Time cost in initializing neurons:     30.25 seconds
+[06:34:33]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:34:33]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:36:09]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[06:36:27]   [MATLAB] Connected to parallel pool with 24 workers.
+[06:36:31]   [MATLAB] Time cost in estimating the background:        117.72 seconds
+[06:36:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:36:34]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:36:34]   [MATLAB] Time cost in updating spatial & temporal components:     3.51 seconds
+[06:36:42]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:36:42]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:38:17]   [MATLAB] Time cost in estimating the background:        94.22 seconds
+[06:38:18]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:38:19]   [MATLAB] 4 neurons will be merged into 2 new neurons
+[06:38:20]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:38:21]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[06:38:21]   [MATLAB] Time cost in updating spatial & temporal components:     3.97 seconds
+[06:38:21]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:38:21]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:39:56]   [MATLAB] Time cost in estimating the background:        95.54 seconds
+[06:39:58]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:39:58]   [MATLAB] All pairs of neurons are below the merging criterion!
+[06:39:58]   [MATLAB] Time cost in updating spatial & temporal components:     1.61 seconds
+[06:40:44]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[07:03:19]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[07:03:20]   [MATLAB] Time cost in updating neuronal spatial components:     1.07 seconds
+[07:03:23]   [MATLAB] Time cost in updating neuronal temporal components:     3.68 seconds
+[07:27:04]   [MATLAB] Time cost in estimating the background:        1420.19 seconds
+[07:27:07]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:27:08]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:27:11]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:27:12]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:27:12]   [MATLAB] Time cost in updating spatial & temporal components:     8.16 seconds
+[07:27:18]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:27:19]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:27:23]   [MATLAB] The folder has been created and old results will be overwritten.
+[07:27:36]   [MATLAB] [HEADLESS] Done. 21 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-101425-pnb76-518um-3z-000/_bootstrap/
+[07:27:36]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[07:27:46]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[07:27:47]   [MATLAB] Finished successfully in 54.2 min.
+[07:27:47]   Step 4: Matching candidates to ground truth, extracting features...
+[07:27:47]   [BOOTSTRAP] A_final:  (262144, 5)  (pixels x N_kept)
+[07:27:47]   [BOOTSTRAP] A_review: (262144, 21)  (pixels x N_candidates)
+[07:27:47]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.979', '0.974', '0.911', '0.821', '0.581']
+[07:27:47]   [BOOTSTRAP] Matched: 5 keep, 16 delete (21 candidates vs 5 final neurons, threshold=0.45)
+[07:27:47]   [BOOTSTRAP] v2b computed for all 21 candidates (mode b0, ring_contrast=0, 2 hi-conf neighbours).
+[07:27:47]   [BOOTSTRAP] Saved bootstrap_candidates.npz (11861 nonzero footprint px, full sim matrix).
+[07:27:47]   [BOOTSTRAP] Saved: 21 candidates, 5 kept, 0 ambiguous, 2 duplicates, 35 features.
+[07:27:47]   _bootstrap/ cleaned up.
+[07:27:47] 
+  Progress: 11/13  (11 ok, 0 failed)
+
+[07:27:47] 
+=================================================================
+[07:27:47]   2tones/AVG5x-TSeries-101525-pnb76-520um-3z-000
+[07:27:47] =================================================================
+[07:27:47]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[07:27:47]   [MATLAB] Starting MATLAB...
+[07:27:54]   [MATLAB] Extracted 3 final neurons (gSig=6 gSiz=23)
+[07:27:58]   [MATLAB] Finished successfully in 0.2 min.
+[07:27:58]   Step 1 done: 3 curated neurons (original gSig=6, gSiz=23).
+[07:27:58]   Step 2: Estimating CNMFe parameters...
+[07:27:58]   Step 2a: No pnr.mat found — running pre-pass (gSig=6, gSiz=23 from original run)...
+[07:27:58] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[07:27:58]   [MATLAB] Starting MATLAB...
+[07:28:05]   [MATLAB] converting the selected file to *.mat version...
+[07:28:06]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 7520 total frames
+[07:28:12]   [MATLAB] Finished reading images
+[07:28:23]   [MATLAB] Reading from frame 2049 to frame 4096 of 7520 total frames
+[07:28:29]   [MATLAB] Finished reading images
+[07:28:40]   [MATLAB] Reading from frame 4097 to frame 6144 of 7520 total frames
+[07:28:46]   [MATLAB] Finished reading images
+[07:28:57]   [MATLAB] Reading from frame 6145 to frame 7520 of 7520 total frames
+[07:29:02]   [MATLAB] Finished reading images
+[07:29:09]   [MATLAB] Time cost in converting data to *.mat file:     63.77 seconds
+[07:29:09]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[07:29:09]   [MATLAB] Loading all data requires 14.69 GB RAM
+[07:29:09]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[07:29:11]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[07:29:13]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[07:29:15]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[07:29:17]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[07:29:19]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[07:29:21]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[07:29:22]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[07:29:23]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[07:29:23]   [MATLAB] Loading all data requires 1.84 GB RAM
+[07:29:26]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[07:29:31]   [MATLAB] Finished successfully in 1.5 min.
+[07:29:31]   [PARAMS] Animal 'pnb76' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[07:29:31]   [PARAMS] WARNING: estimated min_corr=0.375 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[07:29:31]   [PARAMS] WARNING: estimated min_pnr=4.768 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[07:29:31]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[07:29:31]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[07:29:31]   [PARAMS] Estimated bd=26 from Cn edge analysis (candidates per edge: [4, 20, 20, 26]).
+[07:29:31]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 26}
+[07:29:31]   Step 2 done: {'gSig': 6, 'gSiz': 23, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 26}
+[07:29:31]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[07:29:31]   [MATLAB] Starting MATLAB...
+[07:29:37]   [MATLAB] The selected file has been replaced with its *.mat version.
+[07:29:37]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 7520 frames.
+[07:29:37]   [MATLAB] Loading all data requires 14.69 GB RAM
+[07:29:37]   [MATLAB] Warning: Directory already exists.
+[07:29:37]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[07:29:37]   [MATLAB] In run (line 99)
+[07:29:38]   [MATLAB] load data from frame 1 to frame 1024 of 7520 total frames
+[07:29:39]   [MATLAB] load data from frame 1025 to frame 2048 of 7520 total frames
+[07:29:41]   [MATLAB] load data from frame 2049 to frame 3072 of 7520 total frames
+[07:29:43]   [MATLAB] load data from frame 3073 to frame 4096 of 7520 total frames
+[07:29:45]   [MATLAB] load data from frame 4097 to frame 5120 of 7520 total frames
+[07:29:47]   [MATLAB] load data from frame 5121 to frame 6144 of 7520 total frames
+[07:29:49]   [MATLAB] load data from frame 6145 to frame 7168 of 7520 total frames
+[07:29:51]   [MATLAB] load data from frame 7169 to frame 7520 of 7520 total frames
+[07:29:52]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3760 frames.
+[07:29:52]   [MATLAB] Loading all data requires 1.84 GB RAM
+[07:29:52]   [MATLAB] Time cost in downsampling data:     14.28 seconds
+[07:30:05]   [MATLAB] Time cost in initializing neurons:     7.78 seconds
+[07:30:05]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:30:05]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:31:22]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[07:31:40]   [MATLAB] Connected to parallel pool with 24 workers.
+[07:31:44]   [MATLAB] Time cost in estimating the background:        98.66 seconds
+[07:31:44]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:31:44]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:31:44]   [MATLAB] Time cost in updating spatial & temporal components:     0.71 seconds
+[07:31:53]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:31:53]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:33:07]   [MATLAB] Time cost in estimating the background:        73.37 seconds
+[07:33:07]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:33:07]   [MATLAB] All pairs of neurons are below the merging criterion!
+[07:33:07]   [MATLAB] Time cost in updating spatial & temporal components:     0.80 seconds
+[07:33:45]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[07:50:08]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[07:50:09]   [MATLAB] Time cost in updating neuronal spatial components:     0.74 seconds
+[07:50:11]   [MATLAB] Time cost in updating neuronal temporal components:     2.09 seconds
+[08:07:14]   [MATLAB] Time cost in estimating the background:        1020.98 seconds
+[08:07:15]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:07:16]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:07:17]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:07:18]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:07:18]   [MATLAB] Time cost in updating spatial & temporal components:     4.28 seconds
+[08:07:22]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:07:23]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:07:27]   [MATLAB] The folder has been created and old results will be overwritten.
+[08:07:36]   [MATLAB] [HEADLESS] Done. 8 candidate neurons saved to D:/Julian_CNMFe/vCA1/2tones/AVG5x-TSeries-101525-pnb76-520um-3z-000/_bootstrap/
+[08:07:36]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[08:07:47]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[08:07:47]   [MATLAB] Finished successfully in 38.3 min.
+[08:07:47]   Step 4: Matching candidates to ground truth, extracting features...
+[08:07:47]   [BOOTSTRAP] A_final:  (262144, 3)  (pixels x N_kept)
+[08:07:47]   [BOOTSTRAP] A_review: (262144, 8)  (pixels x N_candidates)
+[08:07:47]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.943', '0.936', '0.932']
+[08:07:47]   [BOOTSTRAP] Matched: 3 keep, 5 delete (8 candidates vs 3 final neurons, threshold=0.45)
+[08:07:47]   [BOOTSTRAP] v2b computed for all 8 candidates (mode b0, ring_contrast=0, 3 hi-conf neighbours).
+[08:07:47]   [BOOTSTRAP] Saved bootstrap_candidates.npz (4804 nonzero footprint px, full sim matrix).
+[08:07:47]   [BOOTSTRAP] Saved: 8 candidates, 3 kept, 0 ambiguous, 4 duplicates, 35 features.
+[08:07:47]   _bootstrap/ cleaned up.
+[08:07:47] 
+  Progress: 12/13  (12 ok, 0 failed)
+
+[08:07:47] 
+=================================================================
+[08:07:47]   6odorDualDiffRew/AVG5x-TSeries-02092026-pnb74-767um-25z-000
+[08:07:47] =================================================================
+[08:07:47]   Step 1: Extracting curated neuron footprints (MATLAB ~15s)...
+[08:07:47]   [MATLAB] Starting MATLAB...
+[08:07:54]   [MATLAB] Extracted 4 final neurons (gSig=12 gSiz=38)
+[08:07:57]   [MATLAB] Finished successfully in 0.2 min.
+[08:07:58]   Step 1 done: 4 curated neurons (original gSig=12, gSiz=38).
+[08:07:58]   Step 2: Estimating CNMFe parameters...
+[08:07:58]   Step 2a: No pnr.mat found — running pre-pass (gSig=12, gSiz=38 from original run)...
+[08:07:58] 
+[RUN] Pre-pass (bootstrap): computing Cn and pnr for param estimation...
+[08:07:58]   [MATLAB] Starting MATLAB...
+[08:08:04]   [MATLAB] converting the selected file to *.mat version...
+[08:08:05]   [MATLAB] CNMF_E is converting TIFF file to *.mat fileReading from frame 1 to frame 2048 of 6754 total frames
+[08:08:14]   [MATLAB] Finished reading images
+[08:08:42]   [MATLAB] Reading from frame 2049 to frame 4096 of 6754 total frames
+[08:08:52]   [MATLAB] Finished reading images
+[08:09:21]   [MATLAB] Reading from frame 4097 to frame 6144 of 6754 total frames
+[08:09:30]   [MATLAB] Finished reading images
+[08:09:59]   [MATLAB] Reading from frame 6145 to frame 6754 of 6754 total frames
+[08:10:02]   [MATLAB] Finished reading images
+[08:10:11]   [MATLAB] Time cost in converting data to *.mat file:     126.94 seconds
+[08:10:11]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 6754 frames.
+[08:10:11]   [MATLAB] Loading all data requires 13.19 GB RAM
+[08:10:11]   [MATLAB] load data from frame 1 to frame 1024 of 6754 total frames
+[08:10:14]   [MATLAB] load data from frame 1025 to frame 2048 of 6754 total frames
+[08:10:17]   [MATLAB] load data from frame 2049 to frame 3072 of 6754 total frames
+[08:10:19]   [MATLAB] load data from frame 3073 to frame 4096 of 6754 total frames
+[08:10:22]   [MATLAB] load data from frame 4097 to frame 5120 of 6754 total frames
+[08:10:25]   [MATLAB] load data from frame 5121 to frame 6144 of 6754 total frames
+[08:10:28]   [MATLAB] load data from frame 6145 to frame 6754 of 6754 total frames
+[08:10:30]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3377 frames.
+[08:10:30]   [MATLAB] Loading all data requires 1.65 GB RAM
+[08:10:33]   [MATLAB] Pre-run complete. Cn and pnr saved.
+[08:10:38]   [MATLAB] Finished successfully in 2.7 min.
+[08:10:38]   [PARAMS] Animal 'pnb74' not in config. Using defaults (gSig=9, gSiz=36). Add this animal to animal_params.json after processing.
+[08:10:38]   [PARAMS] WARNING: estimated min_corr=0.500 hit the floor clamp -> using 0.55 (designed range [0.55, 0.82]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[08:10:38]   [PARAMS] WARNING: estimated min_pnr=4.693 hit the floor clamp -> using 5 (designed range [5.0, 13.0]). If this is a new area/prep/objective, check gSig against the true cell scale before trusting this session's candidate set: an oversized gSig inflates Cn and suppresses detection (DG_AL 2026-08-16).
+[08:10:38]   [PARAMS] clamp_warning.txt written to _bootstrap/.
+[08:10:38]   [PARAMS] Estimated from Cn/pnr images: min_corr=0.55, min_pnr=5.0.
+[08:10:38]   [PARAMS] Estimated bd=17 from Cn edge analysis (candidates per edge: [4, 4, 17, 6]).
+[08:10:38]   [PARAMS] Final parameters: {'gSig': 9, 'gSiz': 36, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 17}
+[08:10:38]   Step 2 done: {'gSig': 12, 'gSiz': 38, 'min_corr': 0.55, 'min_pnr': 5.0, 'bd': 17}
+[08:10:38]   Step 3: Running headless CNMFe into _bootstrap/ (30-120 min)...
+[08:10:38]   [MATLAB] Starting MATLAB...
+[08:10:45]   [MATLAB] The selected file has been replaced with its *.mat version.
+[08:10:45]   [MATLAB] The data has been mapped to RAM. It has 512 X 512 pixels X 6754 frames.
+[08:10:45]   [MATLAB] Loading all data requires 13.19 GB RAM
+[08:10:45]   [MATLAB] Warning: Directory already exists.
+[08:10:45]   [MATLAB] > In CNMFe_Biane_headless (line 30)
+[08:10:45]   [MATLAB] In run (line 99)
+[08:10:45]   [MATLAB] load data from frame 1 to frame 1024 of 6754 total frames
+[08:10:49]   [MATLAB] load data from frame 1025 to frame 2048 of 6754 total frames
+[08:10:51]   [MATLAB] load data from frame 2049 to frame 3072 of 6754 total frames
+[08:10:54]   [MATLAB] load data from frame 3073 to frame 4096 of 6754 total frames
+[08:10:57]   [MATLAB] load data from frame 4097 to frame 5120 of 6754 total frames
+[08:11:00]   [MATLAB] load data from frame 5121 to frame 6144 of 6754 total frames
+[08:11:03]   [MATLAB] load data from frame 6145 to frame 6754 of 6754 total frames
+[08:11:05]   [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 3377 frames.
+[08:11:05]   [MATLAB] Loading all data requires 1.65 GB RAM
+[08:11:05]   [MATLAB] Time cost in downsampling data:     19.46 seconds
+[08:11:20]   [MATLAB] 10 neurons have been detected
+[08:11:25]   [MATLAB] 20 neurons have been detected
+[08:11:29]   [MATLAB] 30 neurons have been detected
+[08:11:33]   [MATLAB] 40 neurons have been detected
+[08:11:37]   [MATLAB] 50 neurons have been detected
+[08:11:37]   [MATLAB] Time cost in initializing neurons:     27.35 seconds
+[08:11:38]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:11:38]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:12:51]   [MATLAB] Starting parallel pool (parpool) using the 'Processes' profile ...
+[08:13:09]   [MATLAB] Connected to parallel pool with 24 workers.
+[08:13:13]   [MATLAB] Time cost in estimating the background:        95.03 seconds
+[08:13:15]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:13:15]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:13:15]   [MATLAB] Time cost in updating spatial & temporal components:     2.69 seconds
+[08:13:22]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:13:22]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:14:36]   [MATLAB] Time cost in estimating the background:        73.69 seconds
+[08:14:37]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:14:37]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[08:14:38]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:14:38]   [MATLAB] 2 neurons will be merged into 1 new neurons
+[08:14:38]   [MATLAB] Time cost in updating spatial & temporal components:     2.74 seconds
+[08:14:38]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:14:38]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:15:50]   [MATLAB] Time cost in estimating the background:        72.14 seconds
+[08:15:51]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:15:52]   [MATLAB] All pairs of neurons are below the merging criterion!
+[08:15:52]   [MATLAB] Time cost in updating spatial & temporal components:     1.19 seconds
+[08:16:27]   [MATLAB] Estimating the noise power for each pixel from a simple PSD estimate...  done
+[08:37:26]   [MATLAB] Iteration 1/1 to update spatial and temporal components
+[08:37:27]   [MATLAB] Time cost in updating neuronal spatial components:     0.97 seconds
+[08:37:30]   [MATLAB] Time cost in updating neuronal temporal components:     3.37 seconds
+[09:01:23]   [MATLAB] Time cost in estimating the background:        1432.58 seconds
+[09:01:25]   [MATLAB] All pairs of neurons are below the merging criterion!
+[09:01:26]   [MATLAB] All pairs of neurons are below the merging criterion!
+[09:01:29]   [MATLAB] All pairs of neurons are below the merging criterion!
+[09:01:30]   [MATLAB] All pairs of neurons are below the merging criterion!
+[09:01:30]   [MATLAB] Time cost in updating spatial & temporal components:     6.77 seconds
+[09:01:35]   [MATLAB] All pairs of neurons are below the merging criterion!
+[09:01:36]   [MATLAB] All pairs of neurons are below the merging criterion!
+[09:01:40]   [MATLAB] The folder has been created and old results will be overwritten.
+[09:01:53]   [MATLAB] [HEADLESS] Done. 17 candidate neurons saved to D:/Julian_CNMFe/vCA1/6odorDualDiffRew/AVG5x-TSeries-02092026-pnb74-767um-25z-000/_bootstrap/
+[09:01:53]   [MATLAB] [HEADLESS] Review package will be prepared by the Python agent.
+[09:02:02]   [MATLAB] Parallel pool using the 'Processes' profile is shutting down.
+[09:02:03]   [MATLAB] Finished successfully in 51.4 min.
+[09:02:03]   Step 4: Matching candidates to ground truth, extracting features...
+[09:02:03]   [BOOTSTRAP] A_final:  (262144, 4)  (pixels x N_kept)
+[09:02:03]   [BOOTSTRAP] A_review: (262144, 17)  (pixels x N_candidates)
+[09:02:03]   [BOOTSTRAP] Hungarian pair similarities (best first): ['0.987', '0.974', '0.952', '0.836']
+[09:02:03]   [BOOTSTRAP] Matched: 4 keep, 13 delete (17 candidates vs 4 final neurons, threshold=0.45)
+[09:02:03]   [BOOTSTRAP] v2b computed for all 17 candidates (mode b0, ring_contrast=0, 2 hi-conf neighbours).
+[09:02:03]   [BOOTSTRAP] Saved bootstrap_candidates.npz (8510 nonzero footprint px, full sim matrix).
+[09:02:03]   [BOOTSTRAP] Saved: 17 candidates, 4 kept, 0 ambiguous, 3 duplicates, 35 features.
+[09:02:03]   _bootstrap/ cleaned up.
+[09:02:03] 
+  Progress: 13/13  (13 ok, 0 failed)
+
+[09:02:03] 
+=================================================================
+[09:02:03] Bootstrap complete: 13 succeeded, 0 failed.
+[09:02:03] Next step:  python train_classifier.py --prospective-only
+[09:02:03] =================================================================
+

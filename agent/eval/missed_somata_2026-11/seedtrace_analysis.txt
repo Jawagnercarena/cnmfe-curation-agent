@@ -1,0 +1,225 @@
+analyze_seedtrace.py -- analyze_seedtrace.py -- why do visible GCaMP somata end up with no ACORN candidate?
+sessions with a seedtrace: 6
+
+=== AVG5x-TSeries-090826-pnb102-497um-3z-000  (0.385 um/px full res)
+reproduction: re-run K 333 vs production spatial_footprints 333 / npz N 333; max |diff| 0 (max value 7.81); per-component cos min 1.000000  -> EXACT
+seeding init: gSig 5 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 7.0; K cap 2385, initialised 346, end reason 1 (1 = no local max left, 2 = K cap); attempts 812: below min at its turn 466, initialised 346
+seeding pick: gSig 1 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 7.0; K cap 203, initialised 23, end reason 1 (1 = no local max left, 2 = K cap); attempts 57: below min at its turn 34, initialised 23
+component count: init:346 -> L1_qm0:338 -> L1_pick:350 -> F_full:337 -> Q_mn:333
+merge survivors with an UNCHANGED footprint: MergeNeighbors 23/23, quickMerge 0/4
+  link note: L1_2_us: 1 deleted (aligned; matched cos min 0.675, median 0.945)
+  link note: L1_2_tc: 1 deleted (aligned; matched cos min 0.695, median 0.979)
+  link note: L2_2_us: 1 deleted (aligned; matched cos min 0.335, median 0.963)
+  link note: L2_2_tc: 1 deleted (aligned; matched cos min 0.327, median 0.973)
+  link note: P_1_us: 1 deleted (aligned; matched cos min 0.746, median 0.984)
+components removed, by step type: mn merged 23, qm merged 8, tc deleted 2, us deleted 3
+
+=== AVG5x-TSeries-090826-pnb104-425um-3z-000  (0.385 um/px full res)
+reproduction: re-run K 276 vs production spatial_footprints 276 / npz N 276; max |diff| 0 (max value 10.5); per-component cos min 1.000000  -> EXACT
+seeding init: gSig 5 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.6; K cap 1948, initialised 251, end reason 1 (1 = no local max left, 2 = K cap); attempts 627: below min at its turn 376, initialised 251
+seeding pick: gSig 1 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.6; K cap 586, initialised 107, end reason 1 (1 = no local max left, 2 = K cap); attempts 248: below min at its turn 141, initialised 107
+component count: init:251 -> L1_qm0:225 -> L1_pick:319 -> F_full:279 -> Q_mn:276
+merge survivors with an UNCHANGED footprint: MergeNeighbors 39/39, quickMerge 0/21
+  link note: L1_1_tc: 1 deleted (aligned; matched cos min 0.256, median 0.972)
+  link note: L2_2_tc: 1 deleted (aligned; matched cos min 0.733, median 0.979)
+components removed, by step type: mn merged 42, qm merged 38, tc deleted 2
+
+=== AVG5x-TSeries-090826-pnb105-385um-35z-000  (0.330 um/px full res)
+reproduction: re-run K 351 vs production spatial_footprints 351 / npz N 351; max |diff| 0 (max value 7.85); per-component cos min 1.000000  -> EXACT
+seeding init: gSig 5 gSiz 18 (ds grid 256x256), min_corr 0.6, min_pnr 6.1; K cap 2326, initialised 368, end reason 1 (1 = no local max left, 2 = K cap); attempts 782: below min at its turn 412, min_pixel 2, initialised 368
+seeding pick: gSig 1 gSiz 18 (ds grid 256x256), min_corr 0.6, min_pnr 6.1; K cap 339, initialised 43, end reason 1 (1 = no local max left, 2 = K cap); attempts 84: below min at its turn 41, initialised 43
+component count: init:368 -> L1_qm0:360 -> L1_pick:381 -> F_full:357 -> Q_mn:351
+merge survivors with an UNCHANGED footprint: MergeNeighbors 31/31, quickMerge 0/8
+  link note: L1_1_us: 4 deleted (aligned; matched cos min 0.519, median 0.876)
+  link note: L1_1_tc: 1 deleted (aligned; matched cos min 0.480, median 0.969)
+  link note: L1_2_tc: 2 deleted (aligned; matched cos min 0.347, median 0.969)
+  link note: L2_1_us: 1 deleted (aligned; matched cos min 0.263, median 0.939)
+  link note: L2_1_tc: 4 deleted (aligned; matched cos min 0.645, median 0.968)
+  link note: L2_2_tc: 1 deleted (aligned; matched cos min 0.627, median 0.966)
+  link note: L3_1_us: 1 deleted (aligned; matched cos min 0.617, median 0.956)
+  link note: L3_1_tc: 1 deleted (aligned; matched cos min 0.625, median 0.964)
+  link note: L3_2_tc: 1 deleted (aligned; matched cos min 0.652, median 0.959)
+  link note: P_1_us: 1 deleted (aligned; matched cos min 0.463, median 0.979)
+components removed, by step type: mn merged 33, qm merged 10, tc deleted 10, us deleted 7
+
+=== AVG5x-TSeries-090826-pnb106-209um-4z-000  (0.289 um/px full res)
+reproduction: re-run K 250 vs production spatial_footprints 250 / npz N 250; max |diff| 0 (max value 16.3); per-component cos min 1.000000  -> EXACT
+seeding init: gSig 5 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.6; K cap 2096, initialised 331, end reason 1 (1 = no local max left, 2 = K cap); attempts 719: below min at its turn 363, min_pixel 25, initialised 331
+seeding pick: gSig 1 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.6; K cap 306, initialised 50, end reason 1 (1 = no local max left, 2 = K cap); attempts 102: below min at its turn 45, min_pixel 7, initialised 50
+component count: init:331 -> L1_qm0:313 -> L1_pick:312 -> F_full:255 -> Q_mn:250
+merge survivors with an UNCHANGED footprint: MergeNeighbors 27/27, quickMerge 0/31
+  link note: L1_1_us: 5 deleted (aligned; matched cos min 0.226, median 0.873)
+  link note: L1_1_tc: 17 deleted (aligned; matched cos min 0.339, median 0.944)
+  link note: L1_2_us: 2 deleted (aligned; matched cos min 0.158, median 0.911)
+  link note: L1_2_tc: 6 deleted (aligned; matched cos min 0.607, median 0.945)
+  link note: L2_1_us: 1 deleted (aligned; matched cos min 0.379, median 0.917)
+  link note: L2_1_tc: 18 deleted (aligned; matched cos min 0.314, median 0.945)
+  link note: L2_2_tc: 4 deleted (aligned; matched cos min 0.501, median 0.944)
+  link note: L3_1_tc: 6 deleted (aligned; matched cos min 0.533, median 0.939)
+  link note: L3_2_tc: 4 deleted (aligned; matched cos min 0.510, median 0.943)
+  link note: Q_us: 2 deleted (aligned; matched cos min 0.677, median 0.933)
+components removed, by step type: mn merged 28, qm merged 38, tc deleted 55, us deleted 10
+
+=== AVG5x-TSeries-090826-pnb109-412um-25z-000  (0.462 um/px full res)
+reproduction: re-run K 236 vs production spatial_footprints 236 / npz N 236; max |diff| 0 (max value 8.81); per-component cos min 1.000000  -> EXACT
+seeding init: gSig 5 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.4; K cap 1538, initialised 241, end reason 1 (1 = no local max left, 2 = K cap); attempts 576: below min at its turn 335, initialised 241
+seeding pick: gSig 1 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.4; K cap 147, initialised 6, end reason 1 (1 = no local max left, 2 = K cap); attempts 22: below min at its turn 16, initialised 6
+component count: init:241 -> L1_qm0:238 -> L1_pick:242 -> F_full:237 -> Q_mn:236
+merge survivors with an UNCHANGED footprint: MergeNeighbors 2/2, quickMerge 0/4
+  link note: L1_1_us: 2 deleted (aligned; matched cos min 0.194, median 0.929)
+  link note: L2_1_tc: 2 deleted (aligned; matched cos min 0.606, median 0.988)
+  link note: P_2_us: 1 deleted (aligned; matched cos min 0.603, median 0.966)
+components removed, by step type: mn merged 2, qm merged 4, tc deleted 2, us deleted 3
+
+=== AVG5x-TSeries-090826-pnb99-463um-3z-000  (0.385 um/px full res)
+reproduction: re-run K 199 vs production spatial_footprints 199 / npz N 199; max |diff| 0 (max value 9.06); per-component cos min 1.000000  -> EXACT
+seeding init: gSig 5 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.1; K cap 1226, initialised 205, end reason 1 (1 = no local max left, 2 = K cap); attempts 520: below min at its turn 315, initialised 205
+seeding pick: gSig 1 gSiz 18 (ds grid 256x256), min_corr 0.7, min_pnr 6.1; K cap 14, initialised 3, end reason 1 (1 = no local max left, 2 = K cap); attempts 6: below min at its turn 3, initialised 3
+component count: init:205 -> L1_qm0:199 -> L1_pick:199 -> F_full:199 -> Q_mn:199
+merge survivors with an UNCHANGED footprint: MergeNeighbors 2/2, quickMerge 0/2
+  link note: L1_1_tc: 1 deleted (aligned; matched cos min 0.708, median 0.992)
+components removed, by step type: mn merged 2, qm merged 6, tc deleted 1
+
+=================== SUMMARY (all sessions pooled)
+reproduction exact: 6/6
+somata whose re-run coverage differs from production category: 0 of 600
+raw-gate check vs 2026-11-04 gate (production Cn/pnr files): agree 483/486
+
+--- GCaMP somata with NO candidate, passing both gates (2026-11-04 gate): n = 49
+  [coverage-first] fate of the component that last covered the soma
+  1 never covered: 18 (37%)
+      A: passes raw Cn/PNR gate, lost to the median filter: 10
+      B: dropped below min after a neighbour was subtracted: 7
+      D: survived, footprint off soma: 1
+  2 covering component merged away: 2 (4%)
+      quickMerge: 2
+      covering component's birth seed: median 9.3 um from the soma centre (<= 5 um 0/2); its centroid then median 3.8 um; born at init 2, pick 0
+      that component ends as a candidate covering ANOTHER visible GCaMP soma: {'yes': 1}
+  3 covering component deleted: 1 (2%)
+      tc: 1
+      covering component's birth seed: median 12.3 um from the soma centre (<= 5 um 0/1); its centroid then median 5.6 um; born at init 1, pick 0
+  4 covering footprint retracted off the soma: 28 (57%)
+      tc: 20
+      us: 6
+      full: 2
+      covering component's birth seed: median 5.0 um from the soma centre (<= 5 um 14/28); its centroid then median 3.9 um; born at init 28, pick 0
+      that component ends as a candidate covering ANOTHER visible GCaMP soma: {'yes': 6, 'no': 16}
+      after the step, share of the soma disk still >= 0.1 of that footprint's peak (snapshots keep >= 0.1): median 0.50; none left 1/28, >= half left 15/28
+  never covered: raw-gate pixels inside the soma's ds disk (37 px): median 10, 0 px 0, 1-12 px 11, >= 13 px 7; nearest initialised seed median 7.6 um
+  [seed-based] attempts inside the soma's own 7-px disk
+  A never eligible: 11 (22%)
+      passes raw Cn/PNR gate, lost to the median filter: 11
+  B eligible, never attempted: 23 (47%)
+      dropped below min after a neighbour was subtracted: 23
+  D seeded: 15 (31%)
+      survived, footprint off soma: 6
+      deleted without a merge (tc): 6
+      merged (MergeNeighbors): 2
+      deleted without a merge (us): 1
+  ever covered by some component at some stage: 31/49; step type where coverage was last lost: {'tc': 21, 'full': 2, 'us': 6, 'qm': 2}
+  nearest initialised seed (any) median 4.3 um
+  per session (A/B/C/D): pnb102 1/1/0/0; pnb104 1/0/0/2; pnb105 1/3/0/2; pnb106 2/12/0/10; pnb109 2/5/0/1; pnb99 4/2/0/0
+
+--- same, EXCLUDING pnb106 (zoom 4: the DoG detector picks sub-cellular texture there, see QC figure): n = 25
+  [coverage-first] fate of the component that last covered the soma
+  1 never covered: 16 (64%)
+      A: passes raw Cn/PNR gate, lost to the median filter: 9
+      B: dropped below min after a neighbour was subtracted: 6
+      D: survived, footprint off soma: 1
+  4 covering footprint retracted off the soma: 9 (36%)
+      tc: 8
+      full: 1
+      covering component's birth seed: median 6.4 um from the soma centre (<= 5 um 2/9); its centroid then median 5.8 um; born at init 9, pick 0
+      that component ends as a candidate covering ANOTHER visible GCaMP soma: {'yes': 5, 'no': 4}
+      after the step, share of the soma disk still >= 0.1 of that footprint's peak (snapshots keep >= 0.1): median 0.48; none left 1/9, >= half left 4/9
+  never covered: raw-gate pixels inside the soma's ds disk (37 px): median 10, 0 px 0, 1-12 px 10, >= 13 px 6; nearest initialised seed median 8.2 um
+  [seed-based] attempts inside the soma's own 7-px disk
+  A never eligible: 9 (36%)
+      passes raw Cn/PNR gate, lost to the median filter: 9
+  B eligible, never attempted: 11 (44%)
+      dropped below min after a neighbour was subtracted: 11
+  D seeded: 5 (20%)
+      survived, footprint off soma: 3
+      merged (MergeNeighbors): 2
+  ever covered by some component at some stage: 9/25; step type where coverage was last lost: {'tc': 8, 'full': 1}
+  nearest initialised seed (any) median 5.8 um
+  per session (A/B/C/D): pnb102 1/1/0/0; pnb104 1/0/0/2; pnb105 1/3/0/2; pnb109 2/5/0/1; pnb99 4/2/0/0
+
+--- GCaMP somata with NO candidate, failing a gate: n = 29
+  [coverage-first] fate of the component that last covered the soma
+  1 never covered: 19 (66%)
+      A: fails the Cn/PNR gate: 18
+      A: passes raw Cn/PNR gate, lost to the median filter: 1
+  4 covering footprint retracted off the soma: 10 (34%)
+      tc: 8
+      full: 2
+      covering component's birth seed: median 8.5 um from the soma centre (<= 5 um 0/10); its centroid then median 8.7 um; born at init 9, pick 1
+      that component ends as a candidate covering ANOTHER visible GCaMP soma: {'no': 8, 'yes': 2}
+      after the step, share of the soma disk still >= 0.1 of that footprint's peak (snapshots keep >= 0.1): median 0.39; none left 2/10, >= half left 3/10
+  never covered: raw-gate pixels inside the soma's ds disk (40 px): median 0, 0 px 18, 1-12 px 1, >= 13 px 0; nearest initialised seed median 8.4 um
+  [seed-based] attempts inside the soma's own 7-px disk
+  A never eligible: 29 (100%)
+      fails the Cn/PNR gate: 27
+      passes raw Cn/PNR gate, lost to the median filter: 2
+  ever covered by some component at some stage: 10/29; step type where coverage was last lost: {'tc': 8, 'full': 2}
+  nearest initialised seed (any) median 8.2 um
+  per session (A/B/C/D): pnb104 13/0/0/0; pnb105 1/0/0/0; pnb109 9/0/0/0; pnb99 6/0/0/0
+
+--- red somata with NO candidate: n = 38
+  [coverage-first] fate of the component that last covered the soma
+  1 never covered: 19 (50%)
+      A: fails the Cn/PNR gate: 12
+      B: dropped below min after a neighbour was subtracted: 4
+      A: passes raw Cn/PNR gate, lost to the median filter: 3
+  2 covering component merged away: 2 (5%)
+      MergeNeighbors: 1
+      quickMerge: 1
+      covering component's birth seed: median 3.2 um from the soma centre (<= 5 um 1/2); its centroid then median 2.1 um; born at init 2, pick 0
+      that component ends as a candidate covering ANOTHER visible GCaMP soma: {'no': 1, 'yes': 1}
+  4 covering footprint retracted off the soma: 17 (45%)
+      tc: 14
+      us: 3
+      covering component's birth seed: median 5.6 um from the soma centre (<= 5 um 8/17); its centroid then median 4.2 um; born at init 16, pick 1
+      that component ends as a candidate covering ANOTHER visible GCaMP soma: {'yes': 12, 'no': 5}
+      after the step, share of the soma disk still >= 0.1 of that footprint's peak (snapshots keep >= 0.1): median 0.55; none left 0/17, >= half left 11/17
+  never covered: raw-gate pixels inside the soma's ds disk (40 px): median 0, 0 px 12, 1-12 px 5, >= 13 px 2; nearest initialised seed median 7.9 um
+  red: nearest GCaMP mean-image soma median 6.0 um; within 3 um AND that GCaMP soma has a candidate (possible red/green offset, same cell) 0/38
+  [seed-based] attempts inside the soma's own 7-px disk
+  A never eligible: 19 (50%)
+      fails the Cn/PNR gate: 16
+      passes raw Cn/PNR gate, lost to the median filter: 3
+  B eligible, never attempted: 11 (29%)
+      dropped below min after a neighbour was subtracted: 10
+      blocked by a neighbour's half-max footprint: 1
+  C attempted, rejected: 1 (3%)
+      below min at its turn: 1
+  D seeded: 7 (18%)
+      survived, footprint off soma: 4
+      merged (MergeNeighbors): 2
+      merged (quickMerge): 1
+  ever covered by some component at some stage: 19/38; step type where coverage was last lost: {'tc': 14, 'us': 3, 'mn': 1, 'qm': 1}
+  nearest initialised seed (any) median 5.6 um
+  per session (A/B/C/D): pnb102 1/0/0/0; pnb104 2/0/0/1; pnb105 3/3/0/2; pnb106 1/1/0/2; pnb109 4/3/0/0; pnb99 8/4/1/2
+
+--- CONTROL: GCaMP somata WITH a candidate (review or auto-rejected): n = 408
+  [coverage-first] fate of the component that last covered the soma
+  0 covered at the end: 408 (100%)
+      covering component's birth seed: median 3.0 um from the soma centre (<= 5 um 302/408); its centroid then median 2.1 um; born at init 393, pick 15
+  [seed-based] attempts inside the soma's own 7-px disk
+  A never eligible: 31 (8%)
+      passes raw Cn/PNR gate, lost to the median filter: 19
+      fails the Cn/PNR gate: 12
+  B eligible, never attempted: 113 (28%)
+      dropped below min after a neighbour was subtracted: 82
+      blocked by a neighbour's half-max footprint: 31
+  C attempted, rejected: 41 (10%)
+      below min at its turn: 41
+  D seeded: 223 (55%)
+      survived, covers soma: 197
+      survived, footprint off soma: 20
+      merged (MergeNeighbors): 4
+      merged (quickMerge): 1
+      deleted without a merge (tc): 1
+  ever covered by some component at some stage: 408/408; step type where coverage was last lost: {'never lost': 408}
+  nearest initialised seed (any) median 2.5 um
+  per session (A/B/C/D): pnb102 7/27/4/25; pnb104 13/12/13/18; pnb105 1/19/6/55; pnb106 0/19/5/28; pnb109 4/21/7/47; pnb99 6/15/6/50

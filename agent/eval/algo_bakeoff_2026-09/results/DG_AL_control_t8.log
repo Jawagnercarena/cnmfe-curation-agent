@@ -1,0 +1,25 @@
+[16:49:58] env: {'python': 'C:\\Users\\julia\\.conda\\envs\\ACORN\\python.exe', 'cpu_count': 48, 'threads': 8, 'n_jobs': 8, 'platform': 'Windows-10-10.0.26200-SP0', 'OMP_NUM_THREADS': '8', 'numpy': '2.2.5', 'scipy': '1.15.3', 'sklearn': '1.7.2', 'xgboost': '3.2.0', 'lightgbm': '4.6.0', 'catboost': '1.2.10'}
+[16:49:58] DG_AL: wrote pool snapshot pool_DG_AL.json (17 labeled sessions)
+[16:49:58] DG_AL: vs red-team pin_manifest: new=0 gone=0 changed=8 joblib_changed=True
+[16:49:58] DG_AL/session: 17 CV sessions (0 agent sessions <5 reals dropped), 2025 rows, 1028 real, 0 bootstrap rows (0 weight-0); 17 groups -> 5 folds; agent weight override None; seeds [42, 1, 7, 13, 100, 2024, 31337, 9]
+[16:49:58]   == xgb_deployed (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[16:49:59]     seed 42 done (1s)
+[16:50:00]     seed 1 done (1s)
+[16:50:00]     seed 7 done (2s)
+[16:50:01]     seed 13 done (2s)
+[16:50:01]     seed 100 done (3s)
+[16:50:02]     seed 2024 done (3s)
+[16:50:02]     seed 31337 done (4s)
+[16:50:03]     seed 9 done (5s)
+[16:50:03]   xgb_deployed   AUC full 0.9002  reviewed 0.9002 | FAR@0.0 0.00% (worst 0.00) junk 0.0% | rule_T None | 5s
+[16:50:03] DG_AL/animal: 17 CV sessions (0 agent sessions <5 reals dropped), 2025 rows, 1028 real, 0 bootstrap rows (0 weight-0); 2 groups -> 2 folds (fixed split: model seed varies); agent weight override None; seeds [42, 1, 7, 13, 100, 2024, 31337, 9]
+[16:50:03]   == xgb_deployed (seeds [42, 1, 7, 13, 100, 2024, 31337, 9]) ==
+[16:50:03]     seed 42 done (0s)
+[16:50:04]     seed 1 done (0s)
+[16:50:04]     seed 7 done (1s)
+[16:50:04]     seed 13 done (1s)
+[16:50:04]     seed 100 done (1s)
+[16:50:05]     seed 2024 done (1s)
+[16:50:05]     seed 31337 done (2s)
+[16:50:05]     seed 9 done (2s)
+[16:50:05]   xgb_deployed   AUC full 0.8638  reviewed 0.8638 | FAR@0.0 0.00% (worst 0.00) junk 0.0% | rule_T None | 2s

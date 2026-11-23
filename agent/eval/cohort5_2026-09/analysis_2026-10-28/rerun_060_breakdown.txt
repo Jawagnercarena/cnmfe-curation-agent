@@ -1,0 +1,26 @@
+model: classifier.joblib  n_sessions 177  n_features 35  reject_threshold 0.01  feature_version 2
+Cn live (512, 512) vs archived (512, 512): identical
+new set: 168 candidates, curator auto_rejected 57, rescored < 0.01: 57
+old set: 44 candidates, curator auto_rejected 7, rescored < 0.01: 7
+
+old 44 recovered in the new set (support Jaccard >= 0.5): 42/44; Jaccard median 0.78, min 0.45
+new candidates not in the old set: 127
+
+old candidates, old run (44 alone) vs new run (same cell among 168):
+  old auto-rejected -> new auto-rejected: 6 stay rejected, 1 now pass, 1 now rejected, 36 stay in review
+  score change (new - old): median +0.016, p10 -0.069, p90 +0.336; >= 0.5 old 7 -> new 14
+    old #28: Cn peak 0.75, score 0.013 -> 0.009 (new #33)
+
+old set (44, seeded at 0.70) by the same Cn peak proxy: < 0.60 0, 0.60-0.65 0, 0.65-0.70 0, 0.70-0.80 17, >= 0.80 27; min 0.72, median 0.83
+new set by Cn peak band (all 168):
+  band       |   n | auto-rej | score med | >=0.5 | >=0.2 | 0.01-0.2 | of which new
+  < 0.60     |   2 |        2 |     0.001 |     0 |     0 |        0 |   2
+  0.60-0.65  |  11 |        6 |     0.004 |     0 |     1 |        4 |  11
+  0.65-0.70  |  30 |       16 |     0.008 |     1 |     1 |       13 |  30
+  0.70-0.80  |  60 |       23 |     0.020 |     2 |     7 |       30 |  45
+  >= 0.80    |  65 |       10 |     0.071 |    13 |    24 |       31 |  39
+
+the 127 added candidates: auto-rejected 51, score median 0.021, >= 0.5: 3, 0.2-0.5: 11, 0.01-0.2: 62, < 0.01: 51; Cn peak median 0.72, >= 0.70: 84
+review set 111: old-set cells 35, added cells 76
+
+pilot precedent (LOG.md 2026-10-28 Analysis A): kept-rate for Cn peak 0.60-0.70 was 0/33 pooled over the 12 pilots (threshold-0 reviews); 0.70-0.75 1/74; 0.75-0.80 10/221; 0.80-0.85 35/407.

@@ -1,0 +1,18 @@
+[vCA1] extracting 16 sessions into D:\Julian_CNMFe\vCA1\.feature_expansion
+OK 3odor/AVG5x-TSeries-030126-pnb88-183um-35z-000: N=19 T=12768 (5 s)
+OK 3odor/AVG5x-TSeries-071626-pnb98-442um-3z-000: N=124 T=12774 (15 s)
+OK 3odor/AVG5x-TSeries-072326-pnb98-419um-3z-000: N=99 T=12768 (28 s)
+OK 3odor/AVG5x-TSeries-07292026-pnb98-470um-3z-000: N=106 T=17024 (27 s)
+OK 3odor/AVG5x-TSeries-07312026-pnb98-335um-3z-000: N=102 T=17033 (10 s)
+OK 6odorDualDiffRew/AVG2x-TSeries-052126-pnb98-408um-3z-000: N=120 T=21300 (20 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-061126-pnb98-340um-24z-000: N=83 T=16882 (17 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-061226-pnb98-511um-3z-000: N=152 T=16865 (29 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-061726-pnb98-341um-34z-000: N=67 T=16861 (11 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-061826-pnb98-506um-3z-000: N=125 T=16860 (5 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-061926-pnb98-457um-3z-000: N=137 T=16860 (6 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-062226-pnb98-349um-34z-000: N=79 T=16860 (4 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-062426-pnb98-428um-3z-000: N=134 T=16862 (6 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-062526-pnb98-351um-34z-000: N=94 T=16861 (3 s)
+OK 6odorDualDiffRew/AVG5x-TSeries-062626-pnb98-501um-3z-000: N=128 T=16860 (6 s)
+OK CTA/AVG5x-TSeries-080926-pnb98-473um-3z-000: N=108 T=3006 (2 s)
+[vCA1] done: 16 ok, 0 skipped, 0 failed

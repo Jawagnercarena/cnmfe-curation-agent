@@ -1,0 +1,51 @@
+session | N cand | min_corr/min_pnr | seeded maxima | unseeded maxima per band [0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 1.01]
+AVG5x-TSeries-082626-pnb102-479um-3z-000 | 71 | 0.85 / 7.3 | 54 | 22 17 23 31 40 12 7
+AVG5x-TSeries-082626-pnb104-404um-3z-000 | 64 | 0.82 / 6.5 | 56 | 40 22 25 17 32 11 6
+AVG5x-TSeries-082626-pnb105-397um-35z-000 | 112 | 0.83 / 8.4 | 74 | 26 16 22 23 27 22 29
+AVG5x-TSeries-082626-pnb106-205um-4z-000 | 116 | 0.79 / 6.9 | 75 | 34 33 19 30 25 13 8
+AVG5x-TSeries-082626-pnb109-398um-26z-000 | 83 | 0.81 / 6.6 | 63 | 34 32 29 32 28 4 2
+AVG5x-TSeries-082626-pnb99-399um-3z-000 | 43 | 0.79 / 5.9 | 40 | 41 34 22 20 12 7 2
+AVG5x-TSeries-082726-pnb102-497um-3z-000 | 76 | 0.82 / 6.4 | 52 | 19 17 31 29 33 16 5
+AVG5x-TSeries-082726-pnb104-416um-3z-000 | 50 | 0.84 / 6.2 | 42 | 33 26 21 18 13 13 16
+AVG5x-TSeries-082726-pnb105-391um-35z-000 | 30 | 0.81 / 5.7 | 26 | 32 23 12 15 12 3 0
+AVG5x-TSeries-082726-pnb106-201um-4z-000 | 84 | 0.78 / 6.2 | 48 | 22 19 35 25 21 15 5
+AVG5x-TSeries-082726-pnb109-405um-25z-000 | 70 | 0.81 / 6.5 | 51 | 25 34 33 27 35 8 1
+AVG5x-TSeries-082826-pnb99-436um-3z-000-000 | 75 | 0.84 / 6.4 | 65 | 21 29 17 24 17 17 4
+
+POOLED over the 12 pilot sessions. contrast = (disk - annulus)/annulus on the mean image; soma-like = contrast above the 90th percentile of random interior points of the same session
+random points: median contrast 0.037
+seeded peaks (candidates): n 646, median Cn 0.920, median PNR 17.3, median contrast 0.092, soma-like 50%
+band | unseeded n | PNR>=min_pnr | PNR>=5 | median PNR | median contrast | soma-like
+0.60-0.65 | 349 | 76% | 100% | 7.0 | 0.031 | 3%
+0.65-0.70 | 302 | 91% | 100% | 7.7 | 0.037 | 5%
+0.70-0.75 | 289 | 95% | 100% | 8.4 | 0.034 | 7%
+0.75-0.80 | 291 | 99% | 100% | 9.7 | 0.042 | 13%
+0.80-0.85 | 295 | 100% | 100% | 10.9 | 0.044 | 14%
+0.85-0.90 | 141 | 100% | 100% | 11.7 | 0.045 | 20%
+0.90-1.00 | 85 | 100% | 100% | 15.0 | 0.022 | 13%
+
+Per-session soma-like counts among UNSEEDED maxima with Cn >= 0.75 (and 0.70) and PNR >= min_pnr:
+  AVG5x-TSeries-082626-pnb102-479um-3z-000  Cn>=0.75: 90 unseeded pass PNR, 7 soma-like
+  AVG5x-TSeries-082626-pnb102-479um-3z-000  Cn>=0.70: 112 unseeded pass PNR, 8 soma-like
+  AVG5x-TSeries-082626-pnb104-404um-3z-000  Cn>=0.75: 66 unseeded pass PNR, 15 soma-like
+  AVG5x-TSeries-082626-pnb104-404um-3z-000  Cn>=0.70: 91 unseeded pass PNR, 19 soma-like
+  AVG5x-TSeries-082626-pnb105-397um-35z-000  Cn>=0.75: 98 unseeded pass PNR, 5 soma-like
+  AVG5x-TSeries-082626-pnb105-397um-35z-000  Cn>=0.70: 106 unseeded pass PNR, 5 soma-like
+  AVG5x-TSeries-082626-pnb106-205um-4z-000  Cn>=0.75: 76 unseeded pass PNR, 9 soma-like
+  AVG5x-TSeries-082626-pnb106-205um-4z-000  Cn>=0.70: 95 unseeded pass PNR, 10 soma-like
+  AVG5x-TSeries-082626-pnb109-398um-26z-000  Cn>=0.75: 66 unseeded pass PNR, 10 soma-like
+  AVG5x-TSeries-082626-pnb109-398um-26z-000  Cn>=0.70: 95 unseeded pass PNR, 11 soma-like
+  AVG5x-TSeries-082626-pnb99-399um-3z-000  Cn>=0.75: 41 unseeded pass PNR, 11 soma-like
+  AVG5x-TSeries-082626-pnb99-399um-3z-000  Cn>=0.70: 63 unseeded pass PNR, 12 soma-like
+  AVG5x-TSeries-082726-pnb102-497um-3z-000  Cn>=0.75: 83 unseeded pass PNR, 7 soma-like
+  AVG5x-TSeries-082726-pnb102-497um-3z-000  Cn>=0.70: 114 unseeded pass PNR, 8 soma-like
+  AVG5x-TSeries-082726-pnb104-416um-3z-000  Cn>=0.75: 60 unseeded pass PNR, 2 soma-like
+  AVG5x-TSeries-082726-pnb104-416um-3z-000  Cn>=0.70: 81 unseeded pass PNR, 3 soma-like
+  AVG5x-TSeries-082726-pnb105-391um-35z-000  Cn>=0.75: 30 unseeded pass PNR, 10 soma-like
+  AVG5x-TSeries-082726-pnb105-391um-35z-000  Cn>=0.70: 42 unseeded pass PNR, 14 soma-like
+  AVG5x-TSeries-082726-pnb106-201um-4z-000  Cn>=0.75: 66 unseeded pass PNR, 11 soma-like
+  AVG5x-TSeries-082726-pnb106-201um-4z-000  Cn>=0.70: 101 unseeded pass PNR, 13 soma-like
+  AVG5x-TSeries-082726-pnb109-405um-25z-000  Cn>=0.75: 71 unseeded pass PNR, 15 soma-like
+  AVG5x-TSeries-082726-pnb109-405um-25z-000  Cn>=0.70: 104 unseeded pass PNR, 19 soma-like
+  AVG5x-TSeries-082826-pnb99-436um-3z-000-000  Cn>=0.75: 62 unseeded pass PNR, 14 soma-like
+  AVG5x-TSeries-082826-pnb99-436um-3z-000-000  Cn>=0.70: 79 unseeded pass PNR, 14 soma-like

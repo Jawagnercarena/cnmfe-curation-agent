@@ -1,0 +1,12 @@
+[16:26:00] env: {'python': 'C:\\ProgramData\\anaconda3\\envs\\valence\\python.exe', 'cpu_count': 48, 'threads': 0, 'n_jobs': -1, 'platform': 'Windows-10-10.0.26200-SP0', 'OMP_NUM_THREADS': None, 'numpy': '2.2.5', 'scipy': '1.15.3', 'sklearn': '1.7.2', 'xgboost': '3.2.0', 'lightgbm': '4.6.0', 'catboost': None}
+[16:26:00] BLA: wrote pool snapshot pool_BLA.json (176 labeled sessions)
+[16:26:00] BLA: vs red-team pin_manifest: new=0 gone=0 changed=12 joblib_changed=True
+[16:26:00] REPRO: 75 sessions, 12677 rows (ref 12677), labels identical: True; 33448 bootstrap rows; n_jobs=-1
+[16:26:18] REPRO: auc_full      recomputed 0.92908  reference 0.92908  abs diff 0.00e+00
+[16:26:18] REPRO: auc_reviewed  recomputed 0.91587  reference 0.91587  abs diff 0.00e+00
+[16:26:18] REPRO: far_0.04      recomputed 0.72577  reference 0.72577  abs diff 0.00e+00
+[16:26:18] REPRO: junk_0.04     recomputed 43.11728  reference 43.11728  abs diff 0.00e+00
+[16:26:18] REPRO: far_0.03      recomputed 0.43338  reference 0.43338  abs diff 0.00e+00
+[16:26:18] REPRO: junk_0.03     recomputed 38.71925  reference 38.71925  abs diff 0.00e+00
+[16:26:18] REPRO: max |score diff| per seed = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[16:26:18] REPRO: pass(<5e-3 on all six) = True

@@ -1,0 +1,11 @@
+[16:49:28] vCA1/session: control vCA1_session_xgb_deployed_t8.npz: 2068 rows, 483 real; raw for 945 rows (1123 without); bootstrap rows 50370 (6662 weight-0); 24 groups -> 5 folds; device cuda; corpus vCA1_raw_corpus.h5
+C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\algo_bakeoff_2026-09\train_cnn.py:232: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\autograd\generated\python_variable_methods.cpp:837.)
+  tot += float(loss)
+[16:49:56]   seed 42 fold 0: train 44453 (agw 5.00, spw 6.93) | best epoch 2 val AUC 0.8447 | test AUC 0.8494 (85 rows) | 27s
+[16:50:21]   seed 42 fold 1: train 44221 (agw 5.00, spw 6.95) | best epoch 2 val AUC 0.8438 | test AUC 0.8675 (372 rows) | 53s
+[16:50:46]   seed 42 fold 2: train 44544 (agw 5.00, spw 7.04) | best epoch 1 val AUC 0.8682 | test AUC 0.8648 (67 rows) | 78s
+[16:51:11]   seed 42 fold 3: train 44251 (agw 5.00, spw 7.08) | best epoch 2 val AUC 0.8659 | test AUC 0.8895 (243 rows) | 103s
+[16:51:37]   seed 42 fold 4: train 44294 (agw 5.00, spw 7.03) | best epoch 2 val AUC 0.8830 | test AUC 0.8409 (178 rows) | 129s
+[16:51:37]   seed 42: OOF AUC on rows with raw data: full 0.8406 reviewed 0.8406
+[16:51:37] wrote vCA1_session_cnn_t8.npz/.json (129s)

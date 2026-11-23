@@ -1,0 +1,7 @@
+[16:51:05] DG_AL: output D:\Julian_CNMFe\DG_AL\.feature_expansion\_raw_corpus\DG_AL_raw_corpus.h5
+[16:51:05] DG_AL: pool matches snapshot pool_DG_AL.json (17 labeled sessions)
+[16:51:25]   10/17 sessions, 1296 rows, 20s
+[16:51:36]   17/17 sessions, 2025 rows, 31s
+[16:51:38] contact sheet -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\algo_bakeoff_2026-09\results\contact_sheet_DG_AL.png
+[16:51:38] DG_AL: 2025 rows from 17 sessions (0 skipped, 0 labeled rows without raw data); positives 1028; join_ok=True; orientation votes {'bootstrap': {'n_reals_checked': 0, 'frac_cn_under_mask_beats_transposed': None}, 'agent': {'n_reals_checked': 1028, 'frac_cn_under_mask_beats_transposed': 0.9941634241245136}}; h5 ~0.02 GB; 33s
+[16:51:38] wrote D:\Julian_CNMFe\DG_AL\.feature_expansion\_raw_corpus\DG_AL_raw_corpus.h5

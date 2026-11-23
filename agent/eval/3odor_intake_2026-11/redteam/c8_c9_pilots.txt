@@ -1,0 +1,49 @@
+session | ran at | pk50 | rule | candidates / kept | kept with peak Cn < rule | kept with ceiling < rule | kept with ceiling < the run's min_corr | kept ceiling p5 / p10 / p25 | rejected with ceiling >= rule
+  082626-pnb102-479um-3z | 0.70 | 0.896 | 0.70 | 215 / 44 | 0 | 0 | 0 | 0.820 / 0.835 / 0.873 | 170 of 171
+  082626-pnb104-404um-3z | 0.70 | 0.891 | 0.70 | 176 / 32 | 0 | 0 | 0 | 0.825 / 0.846 / 0.888 | 142 of 144
+  082626-pnb105-397um-35 | 0.70 | 0.951 | 0.73 | 266 / 24 | 0 | 0 | 0 | 0.893 / 0.907 / 0.926 | 238 of 242
+      C9 082626-pnb105 by peak Cn: candidates in [0.60, rule 0.73): 0, kept 0 | below 0.60: 0, kept 0 | at or above the rule: 266, kept 24
+      C9 082626-pnb105 by ceiling: candidates in [0.60, rule 0.73): 4, kept 0 | below 0.60: 0, kept 0 | at or above the rule: 262, kept 24
+  082626-pnb106-205um-4z | 0.70 | 0.897 | 0.70 | 228 / 10 | 0 | 0 | 0 | 0.817 / 0.869 / 0.892 | 217 of 218
+  082626-pnb109-398um-26 | 0.70 | 0.884 | 0.70 | 196 / 49 | 0 | 0 | 0 | 0.770 / 0.810 / 0.857 | 142 of 147
+  082626-pnb99-399um-3z- | 0.70 | 0.835 | 0.68 | 81 / 29 | 0 | 0 | 0 | 0.801 / 0.814 / 0.846 | 51 of 52
+  082726-pnb102-497um-3z | 0.70 | 0.877 | 0.70 | 239 / 40 | 0 | 0 | 0 | 0.802 / 0.827 / 0.854 | 196 of 199
+  082726-pnb104-416um-3z | 0.70 | 0.895 | 0.70 | 170 / 31 | 0 | 0 | 0 | 0.821 / 0.832 / 0.854 | 135 of 139
+  082726-pnb105-391um-35 | 0.60 | 0.759 | 0.64 | 169 / 34 | 0 | 0 | 0 | 0.750 / 0.778 / 0.807 | 115 of 135
+      C9 082726-pnb105 by peak Cn: candidates in [0.60, rule 0.64): 2, kept 0 | below 0.60: 1, kept 0 | at or above the rule: 166, kept 34
+      C9 082726-pnb105 by ceiling: candidates in [0.60, rule 0.64): 19, kept 0 | below 0.60: 1, kept 0 | at or above the rule: 149, kept 34
+  082726-pnb106-201um-4z | 0.70 | 0.855 | 0.69 | 184 / 11 | 0 | 0 | 0 | 0.787 / 0.797 / 0.809 | 167 of 173
+  082726-pnb109-405um-25 | 0.70 | 0.871 | 0.69 | 205 / 57 | 0 | 0 | 0 | 0.765 / 0.780 / 0.820 | 148 of 148
+  082826-pnb99-436um-3z- | 0.70 | 0.909 | 0.71 | 198 / 49 | 0 | 0 | 0 | 0.848 / 0.865 / 0.888 | 145 of 149
+
+pooled: 410 kept cells; peak Cn below the session's rule value: 0 (0.00%); ceiling below the rule value: 0 (0.00%); ceiling below the run's own min_corr: 0 (0.00%)
+
+kept-rate by band, pooled (N 2327 candidates, 410 kept):
+  by peak Cn in the core:
+    0.00-0.55:   0 kept of    4 (0.0%)
+    0.55-0.60:   0 kept of    1 (0.0%)
+    0.60-0.65:   0 kept of   11 (0.0%)
+    0.65-0.70:   0 kept of   19 (0.0%)
+    0.70-0.75:   1 kept of   85 (1.2%)
+    0.75-0.80:  10 kept of  238 (4.2%)
+    0.80-0.85:  33 kept of  408 (8.1%)
+    0.85-0.90:  81 kept of  489 (16.6%)
+    0.90-1.01: 285 kept of 1072 (26.6%)
+  by seeding ceiling:
+    0.00-0.55:   0 kept of   12 (0.0%)
+    0.55-0.60:   0 kept of    2 (0.0%)
+    0.60-0.65:   0 kept of   21 (0.0%)
+    0.65-0.70:   1 kept of   32 (3.1%)
+    0.70-0.75:   7 kept of  220 (3.2%)
+    0.75-0.80:  25 kept of  333 (7.5%)
+    0.80-0.85:  54 kept of  413 (13.1%)
+    0.85-0.90: 108 kept of  491 (22.0%)
+    0.90-1.01: 215 kept of  803 (26.8%)
+  by ceiling minus the run's own min_corr (how much margin the kept cells had):
+    -1.00 to -0.05:   0 kept of   14 (0.0%)
+    -0.05 to +0.00:   0 kept of   19 (0.0%)
+    +0.00 to +0.02:   1 kept of   64 (1.6%)
+    +0.02 to +0.05:   5 kept of  150 (3.3%)
+    +0.05 to +0.10:  20 kept of  314 (6.4%)
+    +0.10 to +0.20: 161 kept of  936 (17.2%)
+    +0.20 to +1.00: 223 kept of  830 (26.9%)

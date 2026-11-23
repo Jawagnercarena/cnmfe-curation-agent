@@ -1,0 +1,332 @@
+model pre = classifier_prepilot_2026-09-24.joblib: n_sessions 161, T 0.02, n_features 35
+model cur = classifier_cohort5_T001_2026-10-28.joblib: n_sessions 177, T 0.01, n_features 35
+labelled cohort-5 sessions: 31 (Taylor 25, Yawen 6)
+
+== A. per session. AUC over reviewed candidates; pre = pre-pilot model (161 sessions, no cohort-5 animal),
+      cur = the curating model of 10-28 (out of sample for 09xx sessions, IN sample for the 08xx pilots).
+      exp = sum of pre-pilot scores over reviewed candidates (keeps that model expected); k/exp = kept / exp.
+session                        review     N auto  rev keep  rate AUCpre AUCcur    exp k/exp  d>.9 k<.05  mot   min min/c
+082626-pnb102-479um-3z-000     Taylor   215    0  215   44  0.20  0.898  0.964   49.6  0.89     2     0   11     -     -
+082726-pnb102-497um-3z-000     Taylor   239    0  239   40  0.17  0.931  0.986   44.1  0.91     1     0    0     -     -
+090526-pnb102-627um-28z-000    Taylor   244   68  176   37  0.21  0.789  0.804   38.2  0.97     2     2    1   193  1.10
+090626-pnb102-407um-3z-000     Taylor   192   29  163   65  0.40  0.854  0.872   55.0  1.18     2     0    9   171  1.05
+090726-pnb102-494um-3z-000     Taylor   262   72  190   46  0.24  0.910  0.902   43.0  1.07     0     0    6    40  0.21
+090926-pnb102-490um-3z-000     Taylor   225   41  184   48  0.26  0.879  0.891   46.6  1.03     2     1    1   210  1.14
+082626-pnb104-404um-3z-000     Taylor   176    0  176   32  0.18  0.961  0.996   39.0  0.82     0     0   11     -     -
+082726-pnb104-416um-3z-000     Taylor   170    0  170   31  0.18  0.878  0.991   25.9  1.20     0     0   10     -     -
+082626-pnb105-397um-35z-000    Taylor   266    0  266   24  0.09  0.905  0.964   46.3  0.52     2     0   26   144  0.54
+082726-pnb105-391um-35z-000    Taylor   169    0  169   34  0.20  0.891  0.972   30.9  1.10     2     0    0     -     -
+082626-pnb106-205um-4z-000     Taylor   228    0  228   10  0.04  0.944  0.976   29.8  0.34     1     0    2    43  0.19
+082726-pnb106-201um-4z-000     Taylor   184    0  184   11  0.06  0.930  0.981   20.4  0.54     0     0    0    73  0.40
+082626-pnb109-398um-26z-000    Taylor   196    0  196   49  0.25  0.894  0.968   37.9  1.29     0     0    6     -     -
+082726-pnb109-405um-25z-000    Taylor   205    0  205   57  0.28  0.869  0.971   40.7  1.40     1     0    1     -     -
+090526-pnb109-505um-26z-000    Taylor   247   51  196   51  0.26  0.858  0.872   44.3  1.15     3     2    0   176  0.90
+090626-pnb109-324um-26z-000    Taylor   164   28  136   70  0.51  0.866  0.909   38.3  1.83     1     3    1   301  2.21
+090726-pnb109-398um-25z-000    Taylor   184   34  150   70  0.47  0.910  0.918   50.2  1.40     2     1    1   128  0.86
+090826-pnb109-412um-25z-000    Taylor   236   35  201   66  0.33  0.856  0.887   56.8  1.16     2     0    1   135  0.67
+090926-pnb109-385um-25z-000    Taylor   211   40  171   77  0.45  0.870  0.904   57.5  1.34     3     0    0   250  1.46
+082626-pnb99-399um-3z-000      Taylor    81    0   81   29  0.36  0.871  0.963   17.8  1.63     1     0    0     -     -
+082826-pnb99-436um-3z-000-000  Taylor   198    0  198   49  0.25  0.917  0.968   52.7  0.93     2     0    7     -     -
+090526-pnb99-330um-3z-000      Taylor    76   18   58   28  0.48  0.829  0.918   13.9  2.02     0     1    0    30  0.53
+090626-pnb99-459um-3z-000      Taylor   213   54  159   54  0.34  0.888  0.907   53.3  1.01     9     0    2   275  1.73
+090826-pnb99-463um-3z-000      Taylor   199   32  167   45  0.27  0.881  0.885   49.9  0.90     6     1    0  1893 11.33
+090926-pnb99-463um-3z-000      Taylor   229   51  178   54  0.30  0.906  0.921   55.3  0.98     3     0    4   332  1.86
+090526-pnb105-520um-32z-000    Yawen    168   57  111   10  0.09  0.719  0.864   15.0  0.67     0     0    1   154  1.39
+090626-pnb105-472um-3z-000     Yawen    229   71  158   25  0.16  0.836  0.853   33.9  0.74     2     2    6   227  1.44
+090726-pnb105-404um-35z-000    Yawen    372  126  246   40  0.16  0.848  0.875   60.9  0.66     5     2    0   449  1.82
+090826-pnb105-385um-35z-000    Yawen    351  111  240   46  0.19  0.885  0.907   64.0  0.72     8     0    3   397  1.65
+090926-pnb105-394um-35z-000    Yawen    348   89  259   51  0.20  0.827  0.850   66.3  0.77     7     1    7   304  1.17
+091026-pnb105-353um-35z-000    Yawen    304   86  218   43  0.20  0.863  0.883   56.9  0.76     5     1    0    50  0.23
+  (d>.9 = deleted, not motion-tagged, cur score > 0.9; k<.05 = kept with cur score < 0.05;
+   min = review_meta duration_min, min/c = minutes per reviewed candidate; a resumed review restarts the clock)
+
+  pooled by group (reviewed candidates):
+   Taylor 09xx (13 sess, pnb99/102/109)   sessions 13  reviewed 2129  kept 711 (33.4%)  AUC pre 0.868  cur 0.889  kept/expected 1.18
+   Taylor pilots, not pnb105 (thr 0)      sessions 10  reviewed 1892  kept 352 (18.6%)  AUC pre 0.903  cur 0.977  kept/expected 0.98
+   Taylor pilots pnb105 (thr 0)           sessions  2  reviewed  435  kept  58 (13.3%)  AUC pre 0.882  cur 0.968  kept/expected 0.75
+   Yawen 09xx (pnb105)                    sessions  6  reviewed 1232  kept 215 (17.5%)  AUC pre 0.851  cur 0.878  kept/expected 0.72
+
+== B. keep rate at matched model score (pre-pilot model, out of sample for every group) ==
+   population: reviewed candidates. The 09xx sets were cut at cur score 0.01 before review, the pilots were
+   not (threshold 0), so the lowest band is not comparable across groups; read 0.05 upward.
+   group                                       0.00-0.05      0.05-0.20      0.20-0.50      0.50-0.80      0.80-1.00
+   Taylor 09xx (13 sess, pnb99/102/109)      72/909   8%   101/417  24%   111/246  45%   119/205  58%   308/352  88%
+   Taylor pilots, not pnb105 (thr 0)        28/1072   3%    48/305  16%    56/201  28%    96/163  59%   124/151  82%
+   Taylor pilots pnb105 (thr 0)               7/262   3%     7/ 69  10%     8/ 37  22%    10/ 25  40%    26/ 42  62%
+   Yawen 09xx (pnb105)                       22/634   3%    24/204  12%    34/126  27%    32/100  32%   103/168  61%
+   per Yawen session:
+   090526-pnb105-520um-32z-000                3/ 68   4%     2/ 20  10%     1/ 14   7%     1/  5  20%     3/  4  75%
+   090626-pnb105-472um-3z-000                 3/ 82   4%     3/ 31  10%     4/ 13  31%     5/ 18  28%    10/ 14  71%
+   090726-pnb105-404um-35z-000                4/135   3%     4/ 27  15%     8/ 30  27%     5/ 18  28%    19/ 36  53%
+   090826-pnb105-385um-35z-000                2/123   2%     4/ 36  11%     7/ 18  39%     9/ 21  43%    24/ 42  57%
+   090926-pnb105-394um-35z-000                6/124   5%     7/ 47  15%     8/ 28  29%     6/ 21  29%    24/ 39  62%
+   091026-pnb105-353um-35z-000                4/102   4%     4/ 43   9%     6/ 23  26%     6/ 17  35%    23/ 33  70%
+
+   logistic model keep ~ logit(pre-pilot score) + [reviewer is Yawen]; reviewed candidates with pre score >= 0.05.
+   coefficient > 0: Yawen keeps MORE than Taylor at the same score; < 0: fewer. CI = bootstrap over sessions
+   within reviewer (2000 draws). Reviewer and animal are confounded except in the pnb105-only row.
+   Yawen 6 vs Taylor 09xx 13                  offset -1.10 (odds x 0.33), 95% CI -1.42 .. -0.83; slope 0.58; sessions Y 6 / T 13
+   Yawen 6 vs all Taylor (13 + 12 pilots)     offset -0.88 (odds x 0.42), 95% CI -1.15 .. -0.62; slope 0.61; sessions Y 6 / T 25
+   pnb105 only: Yawen 6 vs Taylor 2 pilots    offset -0.01 (odds x 0.99), 95% CI -0.77 .. +0.49; slope 0.53; sessions Y 6 / T 2
+
+== C. same field, different days: fate in session B of the cells KEPT in session A ==
+   registration, three independent estimates of the shift between two sessions of one animal:
+   (1) voting: every (A candidate, B candidate) pair votes for the displacement between the centroids,
+   pooled over +/-2 px; (2) cross-correlation of the candidate-support density images; (3) cross-
+   correlation of the high-passed Cn. A pair is a RELIABLE edge when at least two of the three agree
+   within 3 px. Sessions linked by reliable edges form one field; every session gets a position by
+   least squares over those edges, so every pair in the field gets a shift by composition, refined to
+   the best vote count within +/-4 px ('votes'; 'next' = best count > 10 px away = chance level).
+   A kept cell in A is matched to B candidates with support IoU >= 0.3 after the shift: 'kept' if any
+   matching candidate was kept, 'deleted' if matched only to reviewed deletes, 'auto' if matched only to
+   auto-rejected candidates, 'none' if no candidate. Cells whose centre falls within 15 px of B's edge
+   are left out. A cell can be silent on another day, so the within-reviewer rows are the baseline.
+
+   pnb102: 6 sessions, 2 reliable edges of 15 pairs
+     field of 2: 082626-pnb102, 082726-pnb102 | edges 1, worst edge residual 0.0 px (y) 0.0 px (x)
+       082626-pnb102 082726-pnb102 T>T gap  1d  composed   13,   2  refined   13,   2  votes   44  next   19  used
+     alone (no reliable link): 090526-pnb102-627um-28z-000
+     alone (no reliable link): 090626-pnb102-407um-3z-000
+     field of 2: 090726-pnb102, 090926-pnb102 | edges 1, worst edge residual 0.0 px (y) 0.0 px (x)
+       090726-pnb102 090926-pnb102 T>T gap  2d  composed  -55, -16  refined  -55, -16  votes   47  next   23  used
+
+   pnb104: 2 sessions, 1 reliable edges of 1 pairs
+     field of 2: 082626-pnb104, 082726-pnb104 | edges 1, worst edge residual 0.0 px (y) 0.0 px (x)
+       082626-pnb104 082726-pnb104 T>T gap  1d  composed   -4,  21  refined   -4,  21  votes   35  next   15  used
+
+   pnb105: 8 sessions, 9 reliable edges of 28 pairs
+     field of 6: 082626-pnb105, 082726-pnb105, 090726-pnb105, 090826-pnb105, 090926-pnb105, 091026-pnb105 | edges 9, worst edge residual 1.1 px (y) 0.6 px (x)
+       082626-pnb105 082726-pnb105 T>T gap  1d  composed   72,   2  refined   71,   2  votes   46  next   27  used
+       082626-pnb105 090726-pnb105 T>Y gap 12d  composed   33, -54  refined   34, -54  votes   48  next   39  NOT used (votes < 1.3 x next)
+       082626-pnb105 090826-pnb105 T>Y gap 13d  composed   34, -38  refined   37, -36  votes   41  next   44  NOT used (votes < 1.3 x next)
+       082626-pnb105 090926-pnb105 T>Y gap 14d  composed   48, -33  refined   49, -32  votes   52  next   45  NOT used (votes < 1.3 x next)
+       082626-pnb105 091026-pnb105 T>Y gap 15d  composed   12, -44  refined   14, -42  votes   39  next   38  NOT used (votes < 1.3 x next)
+       082726-pnb105 090726-pnb105 T>Y gap 11d  composed  -39, -57  refined  -40, -54  votes   41  next   30  used
+       082726-pnb105 090826-pnb105 T>Y gap 12d  composed  -38, -40  refined  -40, -39  votes   42  next   38  NOT used (votes < 1.3 x next)
+       082726-pnb105 090926-pnb105 T>Y gap 13d  composed  -24, -36  refined  -25, -36  votes   54  next   38  used
+       082726-pnb105 091026-pnb105 T>Y gap 14d  composed  -60, -46  refined  -61, -44  votes   29  next   30  NOT used (votes < 1.3 x next)
+       090726-pnb105 090826-pnb105 Y>Y gap  1d  composed    1,  16  refined    1,  17  votes  255  next   58  used
+       090726-pnb105 090926-pnb105 Y>Y gap  2d  composed   15,  21  refined   16,  21  votes  206  next   55  used
+       090726-pnb105 091026-pnb105 Y>Y gap  3d  composed  -21,  11  refined  -21,  11  votes  177  next   45  used
+       090826-pnb105 090926-pnb105 Y>Y gap  1d  composed   14,   5  refined   15,   5  votes  243  next   56  used
+       090826-pnb105 091026-pnb105 Y>Y gap  2d  composed  -22,  -6  refined  -22,  -5  votes  186  next   50  used
+       090926-pnb105 091026-pnb105 Y>Y gap  1d  composed  -36, -10  refined  -36, -11  votes  134  next   44  used
+     alone (no reliable link): 090526-pnb105-520um-32z-000
+     alone (no reliable link): 090626-pnb105-472um-3z-000
+
+   pnb106: 2 sessions, 1 reliable edges of 1 pairs
+     field of 2: 082626-pnb106, 082726-pnb106 | edges 1, worst edge residual 0.0 px (y) 0.0 px (x)
+       082626-pnb106 082726-pnb106 T>T gap  1d  composed  -16, -14  refined  -16, -14  votes   79  next   35  used
+
+   pnb109: 7 sessions, 11 reliable edges of 21 pairs
+     alone (no reliable link): 090526-pnb109-505um-26z-000
+     field of 6: 082626-pnb109, 082726-pnb109, 090626-pnb109, 090726-pnb109, 090826-pnb109, 090926-pnb109 | edges 11, worst edge residual 1.8 px (y) 1.8 px (x)
+       082626-pnb109 082726-pnb109 T>T gap  1d  composed   17,  -4  refined   19,  -6  votes   41  next   21  used
+       082626-pnb109 090626-pnb109 T>T gap 11d  composed   -1, -39  refined    0, -35  votes    7  next   15  NOT used (votes < 1.3 x next)
+       082626-pnb109 090726-pnb109 T>T gap 12d  composed    2, -32  refined    1, -31  votes   26  next   17  used
+       082626-pnb109 090826-pnb109 T>T gap 13d  composed   15, -49  refined   14, -47  votes   31  next   19  used
+       082626-pnb109 090926-pnb109 T>T gap 14d  composed   20,-102  refined   20,-103  votes   29  next   18  used
+       082726-pnb109 090626-pnb109 T>T gap 10d  composed  -18, -35  refined  -14, -39  votes   11  next   17  NOT used (votes < 1.3 x next)
+       082726-pnb109 090726-pnb109 T>T gap 11d  composed  -15, -28  refined  -14, -28  votes   35  next   23  used
+       082726-pnb109 090826-pnb109 T>T gap 12d  composed   -2, -44  refined   -2, -45  votes   45  next   32  used
+       082726-pnb109 090926-pnb109 T>T gap 13d  composed    3, -98  refined    3, -99  votes   38  next   21  used
+       090626-pnb109 090726-pnb109 T>T gap  1d  composed    3,   7  refined    3,   7  votes   15  next   14  NOT used (votes < 1.3 x next)
+       090626-pnb109 090826-pnb109 T>T gap  2d  composed   16, -10  refined   18,  -9  votes   17  next   19  NOT used (votes < 1.3 x next)
+       090626-pnb109 090926-pnb109 T>T gap  3d  composed   21, -64  refined   22, -63  votes   15  next   15  NOT used (votes < 1.3 x next)
+       090726-pnb109 090826-pnb109 T>T gap  1d  composed   13, -17  refined   14, -17  votes   94  next   20  used
+       090726-pnb109 090926-pnb109 T>T gap  2d  composed   18, -71  refined   18, -70  votes   85  next   18  used
+       090826-pnb109 090926-pnb109 T>T gap  1d  composed    5, -54  refined    4, -53  votes  113  next   20  used
+
+   pnb99: 6 sessions, 5 reliable edges of 15 pairs
+     alone (no reliable link): 090526-pnb99-330um-3z-000
+     field of 5: 082626-pnb99-, 082826-pnb99-, 090626-pnb99-, 090826-pnb99-, 090926-pnb99- | edges 5, worst edge residual 0.3 px (y) 0.0 px (x)
+       082626-pnb99- 082826-pnb99- T>T gap  2d  composed  -27,   4  refined  -27,   4  votes   26  next   17  used
+       082626-pnb99- 090626-pnb99- T>T gap 11d  composed  -15,  17  refined  -15,  15  votes    8  next   14  NOT used (votes < 1.3 x next)
+       082626-pnb99- 090826-pnb99- T>T gap 13d  composed  -11,   4  refined  -14,   1  votes   10  next   14  NOT used (votes < 1.3 x next)
+       082626-pnb99- 090926-pnb99- T>T gap 14d  composed    4,  -2  refined    0,   0  votes    8  next   13  NOT used (votes < 1.3 x next)
+       082826-pnb99- 090626-pnb99- T>T gap  9d  composed   12,  13  refined   10,   9  votes   35  next   28  NOT used (votes < 1.3 x next)
+       082826-pnb99- 090826-pnb99- T>T gap 11d  composed   16,   0  refined   14,  -4  votes   25  next   26  NOT used (votes < 1.3 x next)
+       082826-pnb99- 090926-pnb99- T>T gap 12d  composed   31,  -6  refined   35, -10  votes   26  next   24  NOT used (votes < 1.3 x next)
+       090626-pnb99- 090826-pnb99- T>T gap  2d  composed    4, -13  refined    4, -13  votes  103  next   23  used
+       090626-pnb99- 090926-pnb99- T>T gap  3d  composed   18, -19  refined   18, -19  votes  115  next   22  used
+       090826-pnb99- 090926-pnb99- T>T gap  1d  composed   15,  -6  refined   15,  -6  votes  121  next   21  used
+
+   fate table, IoU >= 0.3 (both directions of every used pair)
+   A (kept)      -> B             rev    gap     n  kept   del  auto  none | kept/(kept+del)  kept/n
+   082626-pnb102 -> 082726-pnb102 T>T     1d    44    27    11     0     6 | 0.71  0.61
+   082726-pnb102 -> 082626-pnb102 T>T     1d    40    26     9     0     5 | 0.74  0.65
+   090726-pnb102 -> 090926-pnb102 T>T     2d    46    35    11     0     0 | 0.76  0.76
+   090926-pnb102 -> 090726-pnb102 T>T     2d    48    35     9     0     4 | 0.80  0.73
+   082626-pnb104 -> 082726-pnb104 T>T     1d    31    14     9     0     8 | 0.61  0.45
+   082726-pnb104 -> 082626-pnb104 T>T     1d    31    14    11     0     6 | 0.56  0.45
+   082626-pnb105 -> 082726-pnb105 T>T     1d    24    14     5     0     5 | 0.74  0.58
+   082726-pnb105 -> 082626-pnb105 T>T     1d    34    14    17     0     3 | 0.45  0.41
+   082726-pnb105 -> 090726-pnb105 T>Y    11d    34    20     5     1     8 | 0.80  0.59
+   090726-pnb105 -> 082726-pnb105 Y>T    11d    38    19     7     0    12 | 0.73  0.50
+   082726-pnb105 -> 090926-pnb105 T>Y    13d    34    22     7     1     4 | 0.76  0.65
+   090926-pnb105 -> 082726-pnb105 Y>T    13d    47    23    10     0    14 | 0.70  0.49
+   090726-pnb105 -> 090826-pnb105 Y>Y     1d    40    36     4     0     0 | 0.90  0.90
+   090826-pnb105 -> 090726-pnb105 Y>Y     1d    46    36    10     0     0 | 0.78  0.78
+   090726-pnb105 -> 090926-pnb105 Y>Y     2d    40    35     4     0     1 | 0.90  0.88
+   090926-pnb105 -> 090726-pnb105 Y>Y     2d    51    37    10     3     1 | 0.79  0.73
+   090726-pnb105 -> 091026-pnb105 Y>Y     3d    40    34     6     0     0 | 0.85  0.85
+   091026-pnb105 -> 090726-pnb105 Y>Y     3d    42    35     6     1     0 | 0.85  0.83
+   090826-pnb105 -> 090926-pnb105 Y>Y     1d    45    38     7     0     0 | 0.84  0.84
+   090926-pnb105 -> 090826-pnb105 Y>Y     1d    51    39    10     1     1 | 0.80  0.76
+   090826-pnb105 -> 091026-pnb105 Y>Y     2d    46    35    11     0     0 | 0.76  0.76
+   091026-pnb105 -> 090826-pnb105 Y>Y     2d    42    35     7     0     0 | 0.83  0.83
+   090926-pnb105 -> 091026-pnb105 Y>Y     1d    51    38    10     1     2 | 0.79  0.75
+   091026-pnb105 -> 090926-pnb105 Y>Y     1d    42    37     2     1     2 | 0.95  0.88
+   082626-pnb106 -> 082726-pnb106 T>T     1d    10     8     1     0     1 | 0.89  0.80
+   082726-pnb106 -> 082626-pnb106 T>T     1d    11     8     3     0     0 | 0.73  0.73
+   082626-pnb109 -> 082726-pnb109 T>T     1d    49    30    13     0     6 | 0.70  0.61
+   082726-pnb109 -> 082626-pnb109 T>T     1d    57    31    15     0    11 | 0.67  0.54
+   082626-pnb109 -> 090726-pnb109 T>T    12d    49    25     9     1    14 | 0.74  0.51
+   090726-pnb109 -> 082626-pnb109 T>T    12d    70    24    14     0    32 | 0.63  0.34
+   082626-pnb109 -> 090826-pnb109 T>T    13d    49    25     9     0    15 | 0.74  0.51
+   090826-pnb109 -> 082626-pnb109 T>T    13d    66    25    15     0    26 | 0.62  0.38
+   082626-pnb109 -> 090926-pnb109 T>T    14d    48    26    10     1    11 | 0.72  0.54
+   090926-pnb109 -> 082626-pnb109 T>T    14d    75    25    18     0    32 | 0.58  0.33
+   082726-pnb109 -> 090726-pnb109 T>T    11d    57    27     9     3    18 | 0.75  0.47
+   090726-pnb109 -> 082726-pnb109 T>T    11d    70    24    15     0    31 | 0.62  0.34
+   082726-pnb109 -> 090826-pnb109 T>T    12d    56    28    21     0     7 | 0.57  0.50
+   090826-pnb109 -> 082726-pnb109 T>T    12d    66    26    13     0    27 | 0.67  0.39
+   082726-pnb109 -> 090926-pnb109 T>T    13d    54    30    14     2     8 | 0.68  0.56
+   090926-pnb109 -> 082726-pnb109 T>T    13d    75    30    14     0    31 | 0.68  0.40
+   090726-pnb109 -> 090826-pnb109 T>T     1d    69    46    17     1     5 | 0.73  0.67
+   090826-pnb109 -> 090726-pnb109 T>T     1d    66    47     8     1    10 | 0.85  0.71
+   090726-pnb109 -> 090926-pnb109 T>T     2d    66    49    14     1     2 | 0.78  0.74
+   090926-pnb109 -> 090726-pnb109 T>T     2d    76    52    10     3    11 | 0.84  0.68
+   090826-pnb109 -> 090926-pnb109 T>T     1d    63    54     8     0     1 | 0.87  0.86
+   090926-pnb109 -> 090826-pnb109 T>T     1d    76    56    15     2     3 | 0.79  0.74
+   082626-pnb99- -> 082826-pnb99- T>T     2d    29    16     9     0     4 | 0.64  0.55
+   082826-pnb99- -> 082626-pnb99- T>T     2d    49    16    20     0    13 | 0.44  0.33
+   090626-pnb99- -> 090826-pnb99- T>T     2d    54    35    17     0     2 | 0.67  0.65
+   090826-pnb99- -> 090626-pnb99- T>T     2d    45    36     8     1     0 | 0.82  0.80
+   090626-pnb99- -> 090926-pnb99- T>T     3d    54    43    10     0     1 | 0.81  0.80
+   090926-pnb99- -> 090626-pnb99- T>T     3d    52    41    10     0     1 | 0.80  0.79
+   090826-pnb99- -> 090926-pnb99- T>T     1d    45    33    12     0     0 | 0.73  0.73
+   090926-pnb99- -> 090826-pnb99- T>T     1d    54    32    22     0     0 | 0.59  0.59
+   summary:
+     Taylor -> Taylor, other animals, 1-5 days apart directed pairs 24  kept cells 1165 -> kept  784, deleted  272, auto   9, none  100 | kept/(kept+del) 0.742 | kept/n 0.673
+     Taylor -> Taylor, other animals, 9+ days apart directed pairs 12  kept cells  735 -> kept  315, deleted  161, auto   7, none  252 | kept/(kept+del) 0.662 | kept/n 0.429
+     Taylor -> Taylor, pnb105, 1-5 days apart       directed pairs  2  kept cells   58 -> kept   28, deleted   22, auto   0, none    8 | kept/(kept+del) 0.560 | kept/n 0.483
+     Taylor -> Yawen, pnb105, 9+ days apart         directed pairs  2  kept cells   68 -> kept   42, deleted   12, auto   2, none   12 | kept/(kept+del) 0.778 | kept/n 0.618
+     Yawen -> Taylor, pnb105, 9+ days apart         directed pairs  2  kept cells   85 -> kept   42, deleted   17, auto   0, none   26 | kept/(kept+del) 0.712 | kept/n 0.494
+     Yawen -> Yawen, pnb105, 1-5 days apart         directed pairs 12  kept cells  536 -> kept  435, deleted   87, auto   7, none    7 | kept/(kept+del) 0.833 | kept/n 0.812
+
+   fate table, IoU >= 0.5 (both directions of every used pair)
+   summary:
+     Taylor -> Taylor, other animals, 1-5 days apart directed pairs 24  kept cells 1165 -> kept  699, deleted  234, auto   4, none  228 | kept/(kept+del) 0.749 | kept/n 0.600
+     Taylor -> Taylor, other animals, 9+ days apart directed pairs 12  kept cells  735 -> kept  173, deleted   64, auto   1, none  497 | kept/(kept+del) 0.730 | kept/n 0.235
+     Taylor -> Taylor, pnb105, 1-5 days apart       directed pairs  2  kept cells   58 -> kept   24, deleted   12, auto   0, none   22 | kept/(kept+del) 0.667 | kept/n 0.414
+     Taylor -> Yawen, pnb105, 9+ days apart         directed pairs  2  kept cells   68 -> kept   22, deleted    7, auto   1, none   38 | kept/(kept+del) 0.759 | kept/n 0.324
+     Yawen -> Taylor, pnb105, 9+ days apart         directed pairs  2  kept cells   85 -> kept   22, deleted    5, auto   0, none   58 | kept/(kept+del) 0.815 | kept/n 0.259
+     Yawen -> Yawen, pnb105, 1-5 days apart         directed pairs 12  kept cells  536 -> kept  382, deleted   70, auto   1, none   83 | kept/(kept+del) 0.845 | kept/n 0.713
+
+   sensitivity, IoU >= 0.3: EVERY pair of a field at its composed shift, including the pairs set aside
+   above for a weak vote peak (few shared cells, or a wrong shift; the two cannot be told apart):
+     Taylor -> Taylor, other animals, 1-5 days apart directed pairs 30  kept cells 1581 -> kept  890, deleted  336, auto  17, none  338 | kept/(kept+del) 0.726 | kept/n 0.563
+     Taylor -> Taylor, other animals, 9+ days apart directed pairs 28  kept cells 1520 -> kept  513, deleted  353, auto  12, none  642 | kept/(kept+del) 0.592 | kept/n 0.338
+     Taylor -> Taylor, pnb105, 1-5 days apart       directed pairs  2  kept cells   58 -> kept   28, deleted   22, auto   0, none    8 | kept/(kept+del) 0.560 | kept/n 0.483
+     Taylor -> Yawen, pnb105, 9+ days apart         directed pairs  8  kept cells  232 -> kept  130, deleted   51, auto   4, none   47 | kept/(kept+del) 0.718 | kept/n 0.560
+     Yawen -> Taylor, pnb105, 9+ days apart         directed pairs  8  kept cells  337 -> kept  136, deleted   98, auto   0, none  103 | kept/(kept+del) 0.581 | kept/n 0.404
+     Yawen -> Yawen, pnb105, 1-5 days apart         directed pairs 12  kept cells  536 -> kept  435, deleted   87, auto   7, none    7 | kept/(kept+del) 0.833 | kept/n 0.812
+
+== D. Yawen's training drills (progress.csv in the server training folders; read only) ==
+   attempts: 9 (one 'final' row each); modes: ['drill_workflow_coach']
+   finished         area  session                stg  shown  visit scored  agree false keep false del    kappa
+   2026-10-08 18:05 BLA   07292026-bla36-674um-3   3    162    162    133 0.4962 65/121     2/12        0.0880
+   2026-10-13 16:13 BLA   07292026-bla36-674um-3   3    162    162    133 0.7143 37/121     1/12        0.2598
+   2026-10-13 17:48 BLA   061226-bla37-213um-37z   2    137    137    104 0.5673 40/69      5/35        0.2226
+   2026-10-14 15:26 BLA   061226-bla37-213um-37z   2    137     73    104 0.8173 19/69      0/35        0.6392
+   2026-10-14 15:34 BLA   061226-bla37-213um-37z   2    137      1    104 0.3365 69/69      0/35             0
+   2026-10-14 17:05 BLA   102225-bla8-734um-23z-   1    158    158    107 0.7850 21/81      2/26        0.5319
+   2026-10-14 17:48 vCA1  072326-pnb98-419um-3z-   1     99     99     83 0.9277 4/62       2/21        0.8146
+   2026-10-20 16:35 vCA1  062526-pnb98-351um-34z   3     94     94     79 0.8987 6/57       2/22        0.7613
+   2026-10-20 18:00 vCA1  061126-pnb97-561um-3z-   2    138    138    124 0.8790 10/102     5/22        0.6195
+   (coach mode scores the first decision, before the feedback; contested items are not scored)
+
+== E. the six sessions: final footprints that do not best-match a KEEP candidate (IoU of supports) ==
+   090526-pnb105-520um-32z-000  final #  2: best candidate  36 (IoU 0.28, DELETE, cur score 0.02) | best KEEP candidate 131 (IoU 0.28)
+   090626-pnb105-472um-3z-000   final # 17: best candidate 153 (IoU 0.73, DELETE, cur score 0.27) | best KEEP candidate 183 (IoU 0.71)
+   090626-pnb105-472um-3z-000   final # 23: best candidate  59 (IoU 0.49, KEEP, cur score 0.02) | best KEEP candidate  59 (IoU 0.49)
+   090726-pnb105-404um-35z-000  final #  8: best candidate  84 (IoU 0.97, DELETE, cur score 0.84) | best KEEP candidate  18 (IoU 0.94)
+   090726-pnb105-404um-35z-000  final # 23: best candidate  52 (IoU 0.55, DELETE, cur score 0.07) | best KEEP candidate  12 (IoU 0.52)
+   090726-pnb105-404um-35z-000  final # 32: best candidate 298 (IoU 0.41, KEEP, cur score 0.60) | best KEEP candidate 298 (IoU 0.41)
+   090726-pnb105-404um-35z-000  final # 38: best candidate 175 (IoU 0.65, DELETE, cur score 0.95) | best KEEP candidate  32 (IoU 0.65)
+   090826-pnb105-385um-35z-000  final # 20: best candidate 317 (IoU 0.89, DELETE, cur score 0.84) | best KEEP candidate  12 (IoU 0.87)
+   090826-pnb105-385um-35z-000  final # 32: best candidate  64 (IoU 0.46, DELETE, cur score 0.09) | best KEEP candidate  90 (IoU 0.43)
+   090826-pnb105-385um-35z-000  final # 39: best candidate  99 (IoU 0.93, DELETE, cur score 0.91) | best KEEP candidate   4 (IoU 0.93)
+   090926-pnb105-394um-35z-000  final #  9: best candidate 346 (IoU 0.83, DELETE, cur score 0.50) | best KEEP candidate 155 (IoU 0.80)
+   090926-pnb105-394um-35z-000  final # 40: best candidate  26 (IoU 0.46, KEEP, cur score 0.34) | best KEEP candidate  26 (IoU 0.46)
+   090926-pnb105-394um-35z-000  final # 51: best candidate 149 (IoU 0.78, DELETE, cur score 0.88) | best KEEP candidate  22 (IoU 0.76)
+   091026-pnb105-353um-35z-000  final # 23: best candidate  25 (IoU 0.51, DELETE, cur score 0.32) | best KEEP candidate 109 (IoU 0.44)
+   091026-pnb105-353um-35z-000  final # 32: best candidate  46 (IoU 0.72, DELETE, cur score 0.16) | best KEEP candidate 123 (IoU 0.64)
+   091026-pnb105-353um-35z-000  final # 42: best candidate  98 (IoU 0.64, AUTO-REJECTED, cur score 0.01) | best KEEP candidate 223 (IoU 0.46)
+
+== F. deleted candidates the models liked: duplicates of a kept cell, or unique objects? ==
+   deleted, not motion-tagged, score >= 0.8. 'dup' = support IoU >= 0.5 with a candidate the same reviewer KEPT
+   in that session (a second copy of a kept cell); 'near' = IoU 0.2-0.5; 'unique' = IoU < 0.2 with every kept one.
+   Columns for both models: cur (10-28) and pre (pre-pilot).
+   session                        review  | cur:  dup near uniq      n | pre:  dup near uniq      n | all high cur: kept/total
+   082626-pnb102-479um-3z-000     Taylor  |         5    0    1      6 |         8    0    0      8 | 27/33
+   082726-pnb102-497um-3z-000     Taylor  |         1    0    1      2 |         1    0    0      1 | 29/31
+   090526-pnb102-627um-28z-000    Taylor  |         6    1    1      8 |         3    1    0      4 | 11/19
+   090626-pnb102-407um-3z-000     Taylor  |         2    2    0      4 |         2    1    0      3 | 35/40
+   090726-pnb102-494um-3z-000     Taylor  |         1    0    2      3 |         1    0    1      2 | 20/23
+   090926-pnb102-490um-3z-000     Taylor  |         2    0    2      4 |         2    0    0      2 | 27/31
+   082626-pnb104-404um-3z-000     Taylor  |         1    0    1      2 |         1    0    1      2 | 29/31
+   082726-pnb104-416um-3z-000     Taylor  |         0    0    0      0 |         0    0    0      0 | 20/20
+   082626-pnb105-397um-35z-000    Taylor  |         4    0    0      4 |         8    0    0      8 | 15/22
+   082726-pnb105-391um-35z-000    Taylor  |         4    0    1      5 |         4    0    1      5 | 22/27
+   082626-pnb106-205um-4z-000     Taylor  |         2    0    0      2 |         3    0    0      3 | 5/7
+   082726-pnb106-201um-4z-000     Taylor  |         1    1    1      3 |         3    1    1      5 | 8/11
+   082626-pnb109-398um-26z-000    Taylor  |         2    1    0      3 |         0    0    0      0 | 34/37
+   082726-pnb109-405um-25z-000    Taylor  |         2    0    1      3 |         2    0    0      2 | 34/38
+   090526-pnb109-505um-26z-000    Taylor  |         2    0    6      8 |         1    0    1      2 | 27/35
+   090626-pnb109-324um-26z-000    Taylor  |         0    1    1      2 |         0    0    0      0 | 32/34
+   090726-pnb109-398um-25z-000    Taylor  |         0    0    2      2 |         0    0    2      2 | 47/50
+   090826-pnb109-412um-25z-000    Taylor  |         4    0    8     12 |         2    0    2      4 | 41/53
+   090926-pnb109-385um-25z-000    Taylor  |         1    1    2      4 |         1    0    1      2 | 44/48
+   082626-pnb99-399um-3z-000      Taylor  |         0    1    0      1 |         0    1    0      1 | 16/17
+   082826-pnb99-436um-3z-000-000  Taylor  |         0    0    8      8 |         2    0    2      4 | 38/47
+   090526-pnb99-330um-3z-000      Taylor  |         0    0    0      0 |         0    0    0      0 | 15/15
+   090626-pnb99-459um-3z-000      Taylor  |         2    2    5      9 |         2    2    4      8 | 33/42
+   090826-pnb99-463um-3z-000      Taylor  |         3    1   11     15 |         1    1    4      6 | 33/48
+   090926-pnb99-463um-3z-000      Taylor  |         2    0    3      5 |         4    0    2      6 | 36/43
+   090526-pnb105-520um-32z-000    Yawen   |         0    0    0      0 |         0    0    0      0 | 4/5
+   090626-pnb105-472um-3z-000     Yawen   |         6    0    3      9 |         4    0    0      4 | 14/23
+   090726-pnb105-404um-35z-000    Yawen   |        16    0    1     17 |        17    0    0     17 | 23/40
+   090826-pnb105-385um-35z-000    Yawen   |        19    2    0     21 |        16    2    0     18 | 29/50
+   090926-pnb105-394um-35z-000    Yawen   |        12    0    1     13 |        14    0    1     15 | 25/38
+   091026-pnb105-353um-35z-000    Yawen   |         8    0    0      8 |        10    0    0     10 | 28/36
+   totals:
+     Taylor  other  cur   deleted high-score 106: dup  39, near  11, unique  56 | kept 641 of 753 high-score reviewed (85%); unique deletes = 7.4% of high-score reviewed
+     Taylor  other  pre   deleted high-score  67: dup  39, near   7, unique  21 | kept 432 of 503 high-score reviewed (86%); unique deletes = 4.2% of high-score reviewed
+     Taylor  pnb105 cur   deleted high-score   9: dup   8, near   0, unique   1 | kept 37 of 49 high-score reviewed (76%); unique deletes = 2.0% of high-score reviewed
+     Taylor  pnb105 pre   deleted high-score  13: dup  12, near   0, unique   1 | kept 26 of 42 high-score reviewed (62%); unique deletes = 2.4% of high-score reviewed
+     Yawen   pnb105 cur   deleted high-score  68: dup  61, near   2, unique   5 | kept 123 of 192 high-score reviewed (64%); unique deletes = 2.6% of high-score reviewed
+     Yawen   pnb105 pre   deleted high-score  64: dup  61, near   2, unique   1 | kept 103 of 168 high-score reviewed (61%); unique deletes = 0.6% of high-score reviewed
+
+== G. duplicates at every score, and section B again without them ==
+   duplicate = a reviewed DELETE (not motion-tagged) whose support has IoU >= 0.5 with a candidate KEPT in the
+   same session. These rows enter training as agent-weight negatives (train_classifier.py zero-weights
+   duplicates only for bootstrap sessions).
+   group                                  sessions  deletes      dup dup/delete   dup per kept
+   Taylor 09xx (13 sess, pnb99/102/109)         13     1418      159      11.2%           0.22
+   Taylor pilots, not pnb105 (thr 0)            10     1540      110       7.1%           0.31
+   Taylor pilots pnb105 (thr 0)                  2      377       33       8.8%           0.57
+   Yawen 09xx (pnb105)                           6     1017      282      27.7%           1.31
+   per Yawen session: 090526-pnb105 17 dup of 101 deletes; 090626-pnb105 30 dup of 133 deletes; 090726-pnb105 54 dup of 206 deletes; 090826-pnb105 60 dup of 194 deletes; 090926-pnb105 72 dup of 208 deletes; 091026-pnb105 49 dup of 175 deletes
+
+   keep rate by pre-pilot score band with the duplicates removed from the denominator:
+   group                                       0.00-0.05      0.05-0.20      0.20-0.50      0.50-0.80      0.80-1.00
+   Taylor 09xx (13 sess, pnb99/102/109)      72/865   8%   101/381  27%   111/217  51%   119/174  68%   308/333  92%
+   Taylor pilots, not pnb105 (thr 0)        28/1054   3%    48/275  17%    56/178  31%    96/144  67%   124/131  95%
+   Taylor pilots pnb105 (thr 0)               7/258   3%     7/ 66  11%     8/ 33  24%    10/ 15  67%    26/ 30  87%
+   Yawen 09xx (pnb105)                       22/580   4%    24/146  16%    34/ 70  49%    32/ 47  68%   103/107  96%
+   logistic offset for Yawen as in B, duplicates removed:
+   Yawen 6 vs Taylor 09xx 13                  offset -0.20 (odds x 0.82), 95% CI -0.63 .. +0.16; slope 0.77
+   Yawen 6 vs all Taylor (13 + 12 pilots)     offset +0.04 (odds x 1.04), 95% CI -0.35 .. +0.39; slope 0.80
+   pnb105 only: Yawen 6 vs Taylor 2 pilots    offset +0.72 (odds x 2.05), 95% CI -0.54 .. +1.44; slope 0.92

@@ -1,0 +1,859 @@
+{
+ "thresholds": [
+  0.005,
+  0.01,
+  0.02,
+  0.03,
+  0.04
+ ],
+ "seeds": [
+  42,
+  43,
+  44
+ ],
+ "n_pool_sessions": 177,
+ "per_animal": {
+  "pnb99": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 78,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 11.940298507462686
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 78,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 17.744610281923716
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 78,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 26.53399668325041
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 78,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 33.49917081260365
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 78,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 37.47927031509121
+   }
+  },
+  "pnb102": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 84,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 16.756756756756754
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 84,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 24.054054054054056
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 84,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 34.32432432432432
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 84,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 40.9009009009009
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 84,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 46.486486486486484
+   }
+  },
+  "pnb104": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 63,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 15.665488810365137
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 63,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 24.381625441696116
+   },
+   "0.020": {
+    "miss_mean": 0.3333333333333333,
+    "miss_worst": 1,
+    "n_pos": 63,
+    "far_mean": 0.5291005291005291,
+    "far_worst": 1.5873015873015872,
+    "junk_mean": 35.217903415783276
+   },
+   "0.030": {
+    "miss_mean": 1.3333333333333333,
+    "miss_worst": 2,
+    "n_pos": 63,
+    "far_mean": 2.1164021164021163,
+    "far_worst": 3.1746031746031744,
+    "junk_mean": 39.811542991755005
+   },
+   "0.040": {
+    "miss_mean": 1.6666666666666667,
+    "miss_worst": 2,
+    "n_pos": 63,
+    "far_mean": 2.645502645502646,
+    "far_worst": 3.1746031746031744,
+    "junk_mean": 44.87632508833922
+   }
+  },
+  "pnb105": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 58,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 18.125552608311228
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 58,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 28.293545534924846
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 58,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 42.35190097259063
+   },
+   "0.030": {
+    "miss_mean": 0.6666666666666666,
+    "miss_worst": 1,
+    "n_pos": 58,
+    "far_mean": 1.1494252873563218,
+    "far_worst": 1.7241379310344827,
+    "junk_mean": 50.132625994694955
+   },
+   "0.040": {
+    "miss_mean": 2.0,
+    "miss_worst": 3,
+    "n_pos": 58,
+    "far_mean": 3.4482758620689653,
+    "far_worst": 5.172413793103448,
+    "junk_mean": 56.145004420866485
+   }
+  },
+  "pnb106": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 21,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 19.693094629156015
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 21,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 28.985507246376812
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 21,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 39.812446717817565
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 21,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 47.91133844842285
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 21,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 53.367433930093775
+   }
+  },
+  "pnb109": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 106,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 18.983050847457626
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 106,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 29.265536723163848
+   },
+   "0.020": {
+    "miss_mean": 1.6666666666666667,
+    "miss_worst": 3,
+    "n_pos": 106,
+    "far_mean": 1.5723270440251573,
+    "far_worst": 2.830188679245283,
+    "junk_mean": 39.2090395480226
+   },
+   "0.030": {
+    "miss_mean": 3.0,
+    "miss_worst": 3,
+    "n_pos": 106,
+    "far_mean": 2.830188679245283,
+    "far_worst": 2.830188679245283,
+    "junk_mean": 46.32768361581921
+   },
+   "0.040": {
+    "miss_mean": 4.0,
+    "miss_worst": 4,
+    "n_pos": 106,
+    "far_mean": 3.7735849056603774,
+    "far_worst": 3.7735849056603774,
+    "junk_mean": 52.54237288135594
+   }
+  }
+ },
+ "per_session": {
+  "6odorDualDiffRew/AVG5x-TSeries-082626-pnb102-479um-3z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 44,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 18.12865497076023
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 44,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 24.366471734892784
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 44,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 33.72319688109162
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 44,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 41.32553606237816
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 44,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 45.41910331384016
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082626-pnb104-404um-3z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 32,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 13.888888888888888
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 32,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 19.90740740740741
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 32,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 29.398148148148145
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 32,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 34.72222222222223
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 32,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 39.35185185185184
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082626-pnb105-397um-35z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 24,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 15.426997245179063
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 24,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 25.482093663911847
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 24,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 39.66942148760331
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 24,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 46.694214876033065
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 24,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 53.30578512396694
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082626-pnb106-205um-4z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 10,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 17.889908256880734
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 10,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 25.993883792048926
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 10,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 35.932721712538225
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 10,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 43.57798165137615
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 10,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 48.77675840978593
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082626-pnb109-398um-26z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 49,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 23.356009070294785
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 49,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 37.64172335600907
+   },
+   "0.020": {
+    "miss_mean": 0.6666666666666666,
+    "miss_worst": 2,
+    "n_pos": 49,
+    "far_mean": 1.3605442176870746,
+    "far_worst": 4.081632653061225,
+    "junk_mean": 49.20634920634921
+   },
+   "0.030": {
+    "miss_mean": 1.6666666666666667,
+    "miss_worst": 2,
+    "n_pos": 49,
+    "far_mean": 3.4013605442176873,
+    "far_worst": 4.081632653061225,
+    "junk_mean": 54.87528344671202
+   },
+   "0.040": {
+    "miss_mean": 2.0,
+    "miss_worst": 2,
+    "n_pos": 49,
+    "far_mean": 4.081632653061225,
+    "far_worst": 4.081632653061225,
+    "junk_mean": 60.090702947845806
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082626-pnb99-399um-3z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 29,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 10.897435897435898
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 29,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 13.461538461538462
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 29,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 22.435897435897438
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 29,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 32.69230769230769
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 29,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 37.17948717948718
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082726-pnb102-497um-3z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 40,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 15.57788944723618
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 40,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 23.785594639865995
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 40,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 34.84087102177554
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 40,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 40.53601340033501
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 40,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 47.403685092127304
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082726-pnb104-416um-3z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 31,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 17.50599520383693
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 31,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 29.016786570743403
+   },
+   "0.020": {
+    "miss_mean": 0.3333333333333333,
+    "miss_worst": 1,
+    "n_pos": 31,
+    "far_mean": 1.075268817204301,
+    "far_worst": 3.225806451612903,
+    "junk_mean": 41.24700239808154
+   },
+   "0.030": {
+    "miss_mean": 1.3333333333333333,
+    "miss_worst": 2,
+    "n_pos": 31,
+    "far_mean": 4.301075268817204,
+    "far_worst": 6.451612903225806,
+    "junk_mean": 45.08393285371703
+   },
+   "0.040": {
+    "miss_mean": 1.6666666666666667,
+    "miss_worst": 2,
+    "n_pos": 31,
+    "far_mean": 5.376344086021506,
+    "far_worst": 6.451612903225806,
+    "junk_mean": 50.59952038369304
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082726-pnb105-391um-35z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 34,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 22.962962962962962
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 34,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 33.33333333333333
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 34,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 47.160493827160494
+   },
+   "0.030": {
+    "miss_mean": 0.6666666666666666,
+    "miss_worst": 1,
+    "n_pos": 34,
+    "far_mean": 1.96078431372549,
+    "far_worst": 2.9411764705882355,
+    "junk_mean": 56.29629629629629
+   },
+   "0.040": {
+    "miss_mean": 2.0,
+    "miss_worst": 3,
+    "n_pos": 34,
+    "far_mean": 5.882352941176471,
+    "far_worst": 8.823529411764707,
+    "junk_mean": 61.23456790123457
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082726-pnb106-201um-4z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 11,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 21.965317919075144
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 11,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 32.75529865125241
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 11,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 44.701348747591524
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 11,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 53.371868978805395
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 11,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 59.15221579961464
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082726-pnb109-405um-25z-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 57,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 14.63963963963964
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 57,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 20.945945945945947
+   },
+   "0.020": {
+    "miss_mean": 1.0,
+    "miss_worst": 1,
+    "n_pos": 57,
+    "far_mean": 1.7543859649122806,
+    "far_worst": 1.7543859649122806,
+    "junk_mean": 29.279279279279276
+   },
+   "0.030": {
+    "miss_mean": 1.3333333333333333,
+    "miss_worst": 2,
+    "n_pos": 57,
+    "far_mean": 2.3391812865497075,
+    "far_worst": 3.508771929824561,
+    "junk_mean": 37.83783783783783
+   },
+   "0.040": {
+    "miss_mean": 2.0,
+    "miss_worst": 2,
+    "n_pos": 57,
+    "far_mean": 3.508771929824561,
+    "far_worst": 3.508771929824561,
+    "junk_mean": 45.04504504504504
+   }
+  },
+  "6odorDualDiffRew/AVG5x-TSeries-082826-pnb99-436um-3z-000-000": {
+   "0.005": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 49,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 12.304250559284117
+   },
+   "0.010": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 49,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 19.23937360178971
+   },
+   "0.020": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 49,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 27.96420581655481
+   },
+   "0.030": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 49,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 33.78076062639821
+   },
+   "0.040": {
+    "miss_mean": 0.0,
+    "miss_worst": 0,
+    "n_pos": 49,
+    "far_mean": 0.0,
+    "far_worst": 0.0,
+    "junk_mean": 37.58389261744966
+   }
+  }
+ },
+ "cohort5_pooled": {
+  "0.005": {
+   "miss_mean": 0.0,
+   "miss_worst": 0,
+   "n_pos": 410,
+   "far_mean": 0.0,
+   "far_worst": 0.0,
+   "junk_mean": 17.30133889758303
+  },
+  "0.010": {
+   "miss_mean": 0.0,
+   "miss_worst": 0,
+   "n_pos": 410,
+   "far_mean": 0.0,
+   "far_worst": 0.0,
+   "junk_mean": 26.082420448617633
+  },
+  "0.020": {
+   "miss_mean": 2.0,
+   "miss_worst": 3,
+   "n_pos": 410,
+   "far_mean": 0.4878048780487805,
+   "far_worst": 0.7317073170731707,
+   "junk_mean": 37.08920187793427
+  },
+  "0.030": {
+   "miss_mean": 5.0,
+   "miss_worst": 6,
+   "n_pos": 410,
+   "far_mean": 1.2195121951219512,
+   "far_worst": 1.4634146341463414,
+   "junk_mean": 44.04451399756564
+  },
+  "0.040": {
+   "miss_mean": 7.666666666666667,
+   "miss_worst": 9,
+   "n_pos": 410,
+   "far_mean": 1.869918699186992,
+   "far_worst": 2.1951219512195124,
+   "junk_mean": 49.539210572074424
+  }
+ },
+ "rest_of_pool": {
+  "0.005": {
+   "miss_mean": 0.0,
+   "miss_worst": 0,
+   "n_pos": 1112,
+   "far_mean": 0.0,
+   "far_worst": 0.0,
+   "junk_mean": 13.047285464098074
+  },
+  "0.010": {
+   "miss_mean": 0.6666666666666666,
+   "miss_worst": 1,
+   "n_pos": 1112,
+   "far_mean": 0.059952038369304544,
+   "far_worst": 0.08992805755395683,
+   "junk_mean": 20.470908737108388
+  },
+  "0.020": {
+   "miss_mean": 2.6666666666666665,
+   "miss_worst": 3,
+   "n_pos": 1112,
+   "far_mean": 0.23980815347721818,
+   "far_worst": 0.2697841726618705,
+   "junk_mean": 30.443666082895504
+  },
+  "0.030": {
+   "miss_mean": 5.666666666666667,
+   "miss_worst": 6,
+   "n_pos": 1112,
+   "far_mean": 0.5095923261390888,
+   "far_worst": 0.539568345323741,
+   "junk_mean": 36.631640396964386
+  },
+  "0.040": {
+   "miss_mean": 9.0,
+   "miss_worst": 11,
+   "n_pos": 1112,
+   "far_mean": 0.8093525179856115,
+   "far_worst": 0.9892086330935251,
+   "junk_mean": 40.68884997081143
+  }
+ }
+}
