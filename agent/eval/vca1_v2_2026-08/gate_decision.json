@@ -56,8 +56,159 @@
   "junk_full": 45.30856423173804,
   "junk_reviewed": 43.52103120759837
  },
- "chosen_T": 0.04,
+ "chosen_T": 0.02,
  "rule_T_for_arm_b0": 0.05,
+ "user_decision_T_2026-11": {
+  "date": "2026-11-20",
+  "T": 0.02,
+  "previous_T": 0.01,
+  "decided_by": "user",
+  "scope": "vCA1 deployed threshold for sessions curated from now on (the 3odor sessions of the six cohort-5 animals); the 9 cohort-5 6odor sessions still out for review were curated at 0.01 and are not re-curated",
+  "basis": "agent/eval/cohort5_2026-09/analysis_2026-11-20/threshold/ (rt_lib OOF on the 211-session pool, 78 testable agent sessions, 2505 kept cells, 8 seeds, threads 8)",
+  "false_ar_mean_worst_pct": {
+   "pilots_threshold0_session_held_out": {
+    "0.01": [
+     0.0,
+     0.0
+    ],
+    "0.02": [
+     0.21,
+     0.49
+    ],
+    "0.03": [
+     0.4,
+     0.73
+    ],
+    "0.04": [
+     0.58,
+     0.73
+    ],
+    "0.05": [
+     0.88,
+     1.46
+    ]
+   },
+   "pilots_threshold0_animal_held_out": {
+    "0.01": [
+     0.06,
+     0.24
+    ],
+    "0.02": [
+     0.34,
+     0.49
+    ],
+    "0.03": [
+     0.58,
+     0.98
+    ],
+    "0.04": [
+     1.1,
+     1.46
+    ],
+    "0.05": [
+     1.43,
+     1.71
+    ]
+   },
+   "all_46_sessions_without_auto_reject_session": {
+    "0.02": [
+     0.24,
+     0.36
+    ],
+    "0.03": [
+     0.44,
+     0.58
+    ],
+    "0.04": [
+     0.67,
+     0.94
+    ],
+    "0.05": [
+     0.96,
+     1.08
+    ]
+   },
+   "all_46_sessions_without_auto_reject_animal": {
+    "0.02": [
+     0.31,
+     0.36
+    ],
+    "0.03": [
+     0.5,
+     0.65
+    ],
+    "0.04": [
+     0.75,
+     0.94
+    ],
+    "0.05": [
+     1.05,
+     1.3
+    ]
+   }
+  },
+  "junk_caught_pct": {
+   "all_46_sessions_without_auto_reject_session": {
+    "0.01": 19.1,
+    "0.02": 28.4,
+    "0.03": 34.7,
+    "0.04": 39.4
+   }
+  },
+  "rule_T": {
+   "whole_pool_both_groupings": 0.04,
+   "pilots_both_groupings": 0.03,
+   "sessions_without_auto_reject_both_groupings": 0.04
+  },
+  "per_animal_pilots_far_at_0.02_pct": {
+   "session_held_out": {
+    "pnb99": 0.0,
+    "pnb102": 0.0,
+    "pnb104": 0.2,
+    "pnb105": 0.0,
+    "pnb106": 0.0,
+    "pnb109": 0.71
+   },
+   "animal_held_out": {
+    "pnb99": 0.0,
+    "pnb102": 0.0,
+    "pnb104": 0.0,
+    "pnb105": 0.0,
+    "pnb106": 0.0,
+    "pnb109": 1.3
+   }
+  },
+  "why": "With 19 more labelled sessions of the same animals in training, the false auto-reject of the threshold-0 pilots at 0.02 fell from 0.49 / 0.73 (2026-10-28) to 0.21 / 0.49; 0.02 meets the standing rule with margin on every unbiased basis. 0.03 passes at the cap under animal grouping (0.98 worst seed) and 0.04 fails it on the pilots; the user chose 0.02. pnb106 rests on 21 kept pilot cells; dim sessions are not represented."
+ },
+ "user_decision_T_2026-10": {
+  "date": "2026-10-28",
+  "T": 0.01,
+  "previous_T": 0.02,
+  "decided_by": "user",
+  "scope": "vCA1 deployed threshold while the remaining 28 cohort-5 sessions (pnb99/102/104/105/106/109) are curated; reassess when they return",
+  "basis": "agent/eval/cohort5_2026-09/analysis_2026-10-28/ (12 pilot sessions reviewed at threshold 0, 2327 candidates, 410 kept; rt_lib within-animal OOF on the 177-session pool, 3 seeds; pilot_far.py with classifier_prepilot_2026-09-24.joblib)",
+  "false_ar_mean_worst_pct": {
+   "within_animal_oof": {"0.005": [0.0, 0.0], "0.01": [0.0, 0.0], "0.02": [0.49, 0.73], "0.03": [1.22, 1.46], "0.04": [1.87, 2.2]},
+   "unseen_animal_prepilot": {"0.01": [1.22, 1.22], "0.02": [3.17, 3.17], "0.03": [4.88, 4.88], "0.04": [6.34, 6.34]}
+  },
+  "junk_caught_pct": {"within_animal_oof": {"0.01": 26.0, "0.02": 37.0, "0.03": 44.0, "0.04": 50.0}},
+  "per_animal_far_at_0.02_pct": {"pnb99": 0.0, "pnb102": 0.0, "pnb104": 0.53, "pnb105": 0.0, "pnb106": 0.0, "pnb109": 1.57},
+  "why": "0.02 meets the 1% rule pooled within animal but pnb109 alone runs 1.6% and the unseen-animal rate is 3.2%; the user prefers review time over lost cells for this batch, and 0.01 missed no kept cell in any seed at a cost of 11 pp junk caught."
+ },
+ "user_decision_T_2026-09": {
+  "date": "2026-09-24",
+  "T": 0.02,
+  "previous_T": 0.04,
+  "decided_by": "user",
+  "basis": "agent/eval/algo_bakeoff_2026-09/results_0924 (161-session pool after the 071526-pnb98 fork repair and parking the duplicate 06222022-99; 43 CV sessions, 1042 kept cells, 8 seeds, threads 8)",
+  "false_ar_mean_worst_pct": {
+   "session": {"0.02": [0.47, 0.67], "0.03": [0.82, 1.15], "0.04": [1.20, 1.63]},
+   "animal": {"0.02": [0.44, 0.67], "0.03": [0.72, 0.96], "0.04": [1.10, 1.34]}
+  },
+  "junk_caught_pct": {"session": {"0.02": 36.1, "0.03": 42.1, "0.04": 46.2}, "animal": {"0.02": 35.0, "0.03": 40.9, "0.04": 45.4}},
+  "rule_T": {"session": null, "animal": 0.03},
+  "why": "0.04 had drifted outside the 1% worst-seed posture under both groupings; 0.03 is admissible under animal grouping only (session worst seed 1.15%); 0.02 holds the posture under both groupings with margin, matches the 0.02 chosen for the six new cohort-5 animals (parallel pilot, 2026-09-24), and leaves headroom for the per-batch drift. Cost vs 0.03: about 6 pp less junk caught."
+ },
  "user_decision_T": {
   "date": "2026-08-26",
   "T": 0.04,
