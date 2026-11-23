@@ -18,6 +18,13 @@ ask before acting.
 
 Read this block first; the 11-20 block below is the measurement record.
 
+**2026-11-22 update.**
+- **Push done.** Both re-run sessions were pushed to Taylor on 2026-11-21 at 20:44-20:46 (`review_assigned.txt` by `push_review_bundle.py`).
+- **Guides rebuilt.** `red_guide.png` in the outbox is dated 20:44 / 20:45, so the stale 11-02 guide was replaced and no operator delete is needed.
+- **No return yet** (checked read-only, 11-22 about 17:50).
+- **Version control.** This handoff and `agent/eval/motion_correction_2026-11/` are on main (PR #4); `fig/` and `xml_frames/` stay untracked on purpose.
+- **3odor.** The pnb106 decision is in `docs/HANDOFF_2026-11-20_3ODOR_STAGING.md`.
+
 **Job C DONE (verified 18:55-19:05).** Background run 15:07:55-18:54:45, log
 `agent/logs/rerun_cohort5_mc_new_movie.log`, "0 session(s) skipped or failed", no
 ERROR / TIMEOUT / Traceback. Parameters as on 10-29 apart from min_pnr (pnb104 6.4, was
