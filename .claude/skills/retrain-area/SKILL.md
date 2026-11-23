@@ -7,7 +7,8 @@ argument-hint: "<BLA|vCA1|DG_AL> [--threshold X] [--dry-run]"
 
 # Retrain an area's classifier
 
-Manual-only: this overwrites the deployed model in place and nothing backs it up.
+Manual-only: this overwrites the deployed model in place. Since 2026-11-20 the
+trainer first copies the old model to `agent/model/{AREA}/history/` (section 2).
 Central machine only (CLAUDE.md rule 4: reviewer machines never train).
 Arguments: `$ARGUMENTS` = area, then optional `--threshold X` and/or `--dry-run`.
 
@@ -47,15 +48,24 @@ newer than every `labels.mat`, so the watcher stays quiet afterwards.
 
 ## 2. Snapshot the live model and record the "before" values
 
-`joblib.dump` overwrites in place; no script keeps a backup. Copy
-`agent/model/{AREA}/classifier.joblib` to `classifier_pre_<YYYY-MM-DD>.joblib` in
-the same folder (local, `*.joblib` is gitignored). Then print the deployed values:
+The trainer snapshots by itself [2026-11-20]: just before `joblib.dump`,
+`_snapshot_previous_model()` (`agent/train_classifier.py`) copies the old
+`classifier.joblib` to `agent/model/{AREA}/history/classifier_<YYYY-MM-DD_HHMMSS>.joblib`,
+named after the old file's own modification time (= when that model was trained),
+mtime preserved, byte-verified. It is write-once (never overwrites a snapshot,
+nothing prunes), it also runs on every watcher auto-retrain, and if the copy
+cannot be verified the trainer stops WITHOUT saving. `--dry-run` never reaches it.
+Test: `agent/test_model_snapshot.py`. An extra hand-named copy
+(`classifier_pre_<YYYY-MM-DD>.joblib` next to the live model; `*.joblib` is
+gitignored) is only needed when you want a descriptive name to refer to later.
+Record the live file's md5 so step 5 can confirm the snapshot, then print the
+deployed values:
 
 ```bash
 "/c/ProgramData/anaconda3/envs/valence/python.exe" -c "import joblib,sys; m=joblib.load(sys.argv[1]); print({k:m.get(k) for k in ('model_type','feature_version','n_features','n_sessions','reject_threshold','agent_weight')})" agent/model/{AREA}/classifier.joblib
 ```
 
-Skip the copy on `--dry-run` (nothing will be written).
+On `--dry-run` nothing is written, so there is nothing to snapshot.
 
 ## 3. Dry run first
 
@@ -85,8 +95,18 @@ Same command without `--dry-run`. Rules:
   exact-token on a list, so `--threshold=0.05` goes unrecognised, a second flag is
   appended, and argparse keeps the wrapper's value. The vCA1 wrapper handles both
   forms; use the space form everywhere anyway.
-- Success lines: `Model saved -> <path>  (type: xgboost)` and `Sessions used: N`.
-  Anything else, including a zero exit with no `Model saved` line, is not success.
+- Success lines: `Previous model kept -> <history path>` (absent only for an
+  area's very first model), `Model saved -> <path>  (type: xgboost)` and
+  `Sessions used: N`. Anything else, including a zero exit with no `Model saved`
+  line, is not success.
+- Since 2026-11-20 reviewed deletes that are a second copy of a kept cell train at
+  weight 0 (`_agent_duplicate_mask`; line `Excluded (agent-session deletes that
+  duplicate a kept cell, weight=0): N [...]`). The first run after an ingest reads
+  each new session's `.pre_ingest/spatial_footprints.mat` (a few seconds per session)
+  and caches the result in `<session>/review_duplicates.json`; `--dry-run` computes
+  but does not cache. The headline AUC leaves these rows out; the log also prints
+  the figure with them counted as deletes, which is the one comparable with runs
+  before that date.
 
 ## 5. Verify against the joblib, not the log
 
@@ -94,6 +114,7 @@ Re-run the one-liner from step 2 and check:
 
 - `model_type == "xgboost"`
 - `feature_version` and `n_features` unchanged from the snapshot
+- the newest file in `history/` has the md5 recorded in step 2
 - `n_sessions` >= the snapshot's value
 - `reject_threshold` equals the intended value (the wrapper constant, the BLA
   default, or the explicit `--threshold`)

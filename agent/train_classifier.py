@@ -26,10 +26,13 @@ Usage:
 """
 
 import argparse
+import filecmp
 import json
+import shutil
 import sys
 import traceback
 import warnings
+from datetime import datetime
 from pathlib import Path
 
 import joblib
@@ -69,9 +72,11 @@ BAD_SESSION_RECOVERY_THRESHOLD = 0.40
 BAD_SESSION_WEIGHT = 0.4
 
 # Floor for the dynamic agent up-weight (max(sqrt(n_bootstrap/n_agent), floor)).
-# Agent labels are unconditionally higher quality than bootstrap labels (~41%
-# noisy negatives), so the floor should not decay below a meaningful minimum
-# regardless of session counts. Empirically validated via 5-fold OOF sweep on
+# Agent labels are human review decisions; bootstrap labels are footprint matches
+# to a past curation, so the floor should not decay below a meaningful minimum
+# regardless of session counts.  (The "~41% noisy negatives" once quoted here was
+# an artifact of the pixel-order matching bug fixed 2026-08; the live recovery
+# rate is printed at train time from bootstrap_match_stats.json.) Empirically validated via 5-fold OOF sweep on
 # 13 BLA agent sessions (2026-03-30): performance plateau at 3–5x; floor=4.0
 # gives 0.5% false-AR vs 0.8% at 3.13x with no AUC cost.
 MIN_AGENT_WEIGHT = 4.0
@@ -87,6 +92,57 @@ REPO_ROOT = str(_REPO_ROOT)
 
 def log(msg: str):
     print(msg, flush=True)
+
+
+# ---------------------------------------------------------------------------
+# Model history
+# ---------------------------------------------------------------------------
+
+MODEL_HISTORY_DIRNAME = "history"
+
+
+def _snapshot_previous_model(model_path: Path) -> Path | None:
+    """
+    Keep a copy of the model that is about to be overwritten.
+
+    joblib.dump replaces classifier.joblib in place, and the watcher retrains by
+    itself whenever a labels.mat is newer than the model, so the model that
+    curated the sessions still out for review used to vanish at the next ingest
+    (2026-11-20: the 2026-11-06 vCA1 model was lost that way).
+
+    The old file is copied to <model dir>/history/classifier_<mtime>.joblib,
+    named after its OWN modification time (= when that model was trained), with
+    the mtime preserved.  Write-once: an existing snapshot is never overwritten
+    (identical bytes -> reused; different bytes under the same name -> _2, _3,
+    ...), and nothing here deletes or prunes.  The copy is made under a
+    .partial name, compared byte for byte, and only then given its final name.
+
+    Returns the snapshot path, or None when there is no model yet.  Raises if
+    the copy cannot be made or verified, so a retrain never replaces a model it
+    could not preserve.
+    """
+    model_path = Path(model_path)
+    if not model_path.is_file():
+        return None
+    stamp = datetime.fromtimestamp(model_path.stat().st_mtime).strftime("%Y-%m-%d_%H%M%S")
+    hist = model_path.parent / MODEL_HISTORY_DIRNAME
+    hist.mkdir(parents=True, exist_ok=True)
+    k = 1
+    while True:
+        tag = "" if k == 1 else f"_{k}"
+        snap = hist / f"{model_path.stem}_{stamp}{tag}{model_path.suffix}"
+        if not snap.exists():
+            break
+        if filecmp.cmp(str(model_path), str(snap), shallow=False):
+            return snap
+        k += 1
+    partial = snap.with_name(snap.name + ".partial")
+    shutil.copy2(str(model_path), str(partial))
+    if not filecmp.cmp(str(model_path), str(partial), shallow=False):
+        raise OSError(f"model snapshot {partial} does not match {model_path}; "
+                      f"the model was NOT overwritten")
+    partial.rename(snap)
+    return snap
 
 
 # ---------------------------------------------------------------------------
@@ -423,6 +479,125 @@ def _get_bootstrap_ambiguous_mask(session_dir: Path, n_candidates: int) -> np.nd
 
 
 # ---------------------------------------------------------------------------
+# Duplicate deletes in agent (human-reviewed) sessions
+# ---------------------------------------------------------------------------
+
+AGENT_DUP_FILE = "review_duplicates.json"
+AGENT_DUP_SCHEMA = 1
+AGENT_DUP_IOU = 0.5          # support overlap that makes a delete a copy of a kept cell
+AGENT_DUP_SUPPORT_FRAC = 0.2  # support = footprint > this fraction of its own max
+
+
+def _file_sig(p: Path) -> list:
+    st = p.stat()
+    return [int(st.st_size), int(st.st_mtime_ns)]
+
+
+def _compute_agent_duplicates(session_dir: Path, n_candidates: int):
+    """(indices, status).  indices: sorted candidate indices (npz order) of the
+    reviewed deletes that are a second copy of a kept cell.  status is 'ok' or the
+    reason nothing could be computed."""
+    fp_file = session_dir / ".pre_ingest" / "spatial_footprints.mat"
+    if not fp_file.exists():
+        return [], "no_footprints"
+    d = sio.loadmat(str(session_dir / "labels.mat"))
+    lab = d["labels"].ravel().astype(int)
+    mot = (d["motion_delete"].ravel().astype(int) if "motion_delete" in d
+           else np.zeros(len(lab), dtype=int))
+    reviewed = _reviewed_mask(session_dir, n_candidates)
+    rows = np.arange(n_candidates) if len(lab) == n_candidates else np.where(reviewed)[0]
+    if len(rows) != len(lab) or len(mot) != len(lab):
+        return [], "labels_length_mismatch"
+    full = np.full(n_candidates, -1, dtype=int)
+    full[rows] = lab
+    fmot = np.zeros(n_candidates, dtype=int)
+    fmot[rows] = mot
+    keep = np.where(full == 1)[0]
+    dele = np.where((full == 0) & (fmot == 0))[0]
+    if len(keep) == 0 or len(dele) == 0:
+        return [], "ok"
+    A = sio.loadmat(str(fp_file))["spatial_footprints"]
+    if A.ndim != 3 or A.shape[0] != n_candidates:
+        return [], "footprint_count_mismatch"
+    height, width = int(A.shape[1]), int(A.shape[2])
+    mx = A.reshape(n_candidates, -1).max(axis=1)
+    c, yy, xx = np.nonzero(A > (AGENT_DUP_SUPPORT_FRAC * mx[:, None, None]))
+    del A
+    import scipy.sparse as sp
+    pix = yy.astype(np.int64) * width + xx.astype(np.int64)
+    M = sp.csr_matrix((np.ones(len(c), dtype=np.float32), (c, pix)),
+                      shape=(n_candidates, height * width))
+    inter = (M[dele] @ M[keep].T).toarray()
+    union = np.asarray(M[dele].sum(axis=1)) + np.asarray(M[keep].sum(axis=1)).T - inter
+    best = (inter / np.maximum(union, 1)).max(axis=1)
+    return sorted(int(i) for i in dele[best >= AGENT_DUP_IOU]), "ok"
+
+
+def _agent_duplicate_mask(session_dir: Path, n_candidates: int, write_cache: bool = True):
+    """
+    (mask, status) for an agent session: mask marks the reviewed DELETES that are a
+    second copy of a cell the same reviewer KEPT, which are excluded from training
+    (weight 0), exactly as duplicates are for bootstrap sessions.
+
+    CNMF-E sometimes seeds one cell twice.  The reviewer keeps one candidate and
+    deletes the other; the deleted copy looks like a cell but would train as "not
+    a cell" at the agent weight.  Measured on the vCA1 pool of 2026-11-20 (587
+    such rows in 33 sessions, agent/eval/cohort5_2026-09/analysis_2026-11-20/
+    duplicates/): weight 0 instead of 5.0 raises the held-out AUC on the other
+    reviewed rows by 0.001-0.004 in 8 of 8 seeds and removes about 1 point more
+    junk at a fixed threshold, with no change in false auto-rejects.
+
+    duplicate = reviewed, label 0, not motion-tagged, and its support (footprint >
+    0.2 x its max) has IoU >= 0.5 with the support of a KEPT candidate of the same
+    session.  Auto-rejected candidates are never flagged.  The footprints of every
+    candidate exist only in <session>/.pre_ingest/spatial_footprints.mat, which
+    ingest_returns.py has snapshotted since 2026-10-12; a session without it gets
+    no flags (status 'no_footprints') and trains as before.
+
+    The result is cached in <session>/review_duplicates.json, keyed on the size
+    and mtime of labels.mat and of the footprint snapshot, so a re-review or a
+    re-run recomputes it.  The cache is central-only (never pushed, never ingested).
+    A cache that cannot be written is not an error.
+    """
+    mask = np.zeros(n_candidates, dtype=bool)
+    lab_file = session_dir / "labels.mat"
+    fp_file = session_dir / ".pre_ingest" / "spatial_footprints.mat"
+    if not lab_file.exists():
+        return mask, "no_labels"
+    if not fp_file.exists():
+        return mask, "no_footprints"
+    key = {"schema_version": AGENT_DUP_SCHEMA, "n_candidates": int(n_candidates),
+           "iou": AGENT_DUP_IOU, "support_frac": AGENT_DUP_SUPPORT_FRAC,
+           "labels_sig": _file_sig(lab_file), "footprints_sig": _file_sig(fp_file)}
+    cache = session_dir / AGENT_DUP_FILE
+    idx, status = None, "ok"
+    if cache.exists():
+        try:
+            js = json.loads(cache.read_text(encoding="utf-8", errors="replace"))
+            if all(js.get(k) == v for k, v in key.items()):
+                idx, status = list(js.get("duplicate_candidate_indices", [])), js.get("status", "ok")
+        except (ValueError, OSError):
+            idx = None
+    if idx is None:
+        idx, status = _compute_agent_duplicates(session_dir, n_candidates)
+        if write_cache:
+            try:
+                out = dict(key)
+                out.update({"status": status, "duplicate_candidate_indices": idx,
+                            "n_duplicates": len(idx),
+                            "computed": datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
+                tmp = cache.with_name(cache.name + ".partial")
+                tmp.write_text(json.dumps(out, indent=1), encoding="ascii")
+                tmp.replace(cache)
+            except OSError:
+                pass
+    for i in idx:
+        if 0 <= i < n_candidates:
+            mask[i] = True
+    return mask, status
+
+
+# ---------------------------------------------------------------------------
 # Training
 # ---------------------------------------------------------------------------
 
@@ -489,18 +664,27 @@ def train_model(X: np.ndarray, y: np.ndarray,
 
 def _grouped_cv(X_scaled: np.ndarray, y: np.ndarray,
                 groups: np.ndarray, sample_weight: np.ndarray,
-                n_splits: int = 5, model_type: str = "xgboost") -> float:
+                n_splits: int = 5, model_type: str = "xgboost",
+                is_bootstrap_row: np.ndarray | None = None,
+                breakdown: dict | None = None) -> float:
     """
-    Grouped k-fold cross-validation (split by session, not by candidate).
-    Measures between-session generalisation rather than within-session discrimination.
-    Returns mean ROC-AUC across folds.
+    Grouped k-fold cross-validation over ALL sessions (split by session, not by
+    candidate).  Returns mean ROC-AUC across folds.
 
-    Note: bootstrap test folds have noisy labels (~41% of real neurons labeled 0
-    due to CNMFe merging during re-detection).  The reported AUC is therefore a
-    conservative lower bound.  Agent-session-only AUC is the clean upper estimate.
+    What this number is: every session, bootstrap included, takes a turn in the
+    test fold, so the AUC is dominated by whichever population has the most
+    candidates -- in practice the bootstrap sessions, which hold every CNMFe
+    candidate including the trivially separable junk.  It is used for model
+    selection only.  The performance figure for the curator's real workload is
+    _agent_pool_eval (held-out agent sessions, reviewed candidates).
+
+    If `breakdown` (a dict) and `is_bootstrap_row` are given, the pooled
+    out-of-fold AUC of the bootstrap rows (training weight > 0 only, i.e. without
+    the ambiguous negatives) and of the agent rows is written into it.
     """
     cv = StratifiedGroupKFold(n_splits=n_splits, shuffle=True, random_state=42)
     aucs = []
+    oof = np.full(len(y), np.nan)
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         for train_idx, test_idx in cv.split(X_scaled, y, groups):
@@ -519,8 +703,148 @@ def _grouped_cv(X_scaled: np.ndarray, y: np.ndarray,
             if len(np.unique(y_te)) < 2:
                 continue
             proba = clf_cv.predict_proba(X_scaled[test_idx])[:, 1]
+            oof[test_idx] = proba
             aucs.append(roc_auc_score(y_te, proba))
+    if breakdown is not None and is_bootstrap_row is not None:
+        scored = ~np.isnan(oof)
+        for key, m in (("bootstrap", scored & is_bootstrap_row & (sample_weight > 0)),
+                       ("agent", scored & ~is_bootstrap_row)):
+            breakdown[key] = {
+                "n": int(m.sum()), "n_pos": int(y[m].sum()),
+                "auc": (float(roc_auc_score(y[m], oof[m]))
+                        if m.any() and len(np.unique(y[m])) == 2 else float("nan"))}
     return float(np.mean(aucs)) if aucs else float("nan")
+
+
+# ---------------------------------------------------------------------------
+# Agent-pool evaluation -- the headline performance number
+# ---------------------------------------------------------------------------
+
+AGENT_POOL_MIN_POS = 5
+
+
+def _reviewed_mask(session_dir: Path, n: int) -> np.ndarray:
+    """True for candidates a human actually reviewed (not auto-rejected)."""
+    mask = np.ones(n, dtype=bool)
+    try:
+        npz = np.load(str(session_dir / "candidate_features.npz"), allow_pickle=True)
+        auto = npz["auto_rejected"].flatten().astype(int)
+        auto = auto[(auto >= 0) & (auto < n)]
+        mask[auto] = False
+    except Exception:
+        pass
+    return mask
+
+
+def _agent_pool_eval(records: list[dict], model_type: str, agent_weight_override,
+                     n_splits: int = 5) -> dict | None:
+    """
+    Out-of-fold evaluation on the population the curator actually serves.
+
+      test   agent sessions with >= AGENT_POOL_MIN_POS kept cells, split by session
+             (StratifiedGroupKFold, seed 42); each is scored by a model that never
+             saw it
+      train  the other agent sessions (incl. those with too few kept cells to be
+             tested) at the agent weight recomputed per fold, plus EVERY bootstrap
+             session at its stored weights -- bootstrap is never in a test fold
+      AUC    pooled over all out-of-fold rows (not a mean of fold AUCs), reported
+             for all candidates and for REVIEWED candidates only (auto-rejected
+             ones carry label 0 by construction and make the full-pool AUC easier)
+
+    Same protocol as the evaluation harness (agent/eval/bootstrap_redteam_2026-08/
+    rt_lib.run_oof) except that the untestable agent sessions stay in training, as
+    they do in the deployed fit, and that duplicate deletes (r["dup"], see
+    _agent_duplicate_mask) are handled as in the deployed fit: weight 0 in the
+    training folds, and left out of the headline AUC and of the junk count, since
+    their label is not "junk".  auc_reviewed_incl_duplicates keeps them in as
+    deletes, for comparison with figures from before 2026-11-20.  One seed: expect
+    about +-0.003 run-to-run; the 8-seed harness is the reference for decisions.
+    """
+    ag = [r for r in records if not r["is_bootstrap"]]
+    bs = [r for r in records if r["is_bootstrap"]]
+    cv_recs = [r for r in ag if int(r["y"].sum()) >= AGENT_POOL_MIN_POS]
+    rest = [r for r in ag if int(r["y"].sum()) < AGENT_POOL_MIN_POS]
+    if len(cv_recs) < 3:
+        return None
+
+    def _dup(r):
+        d = r.get("dup")
+        return d if d is not None else np.zeros(len(r["y"]), dtype=bool)
+
+    X = np.vstack([r["X"] for r in cv_recs])
+    y = np.concatenate([r["y"] for r in cv_recs]).astype(int)
+    g = np.concatenate([[i] * len(r["y"]) for i, r in enumerate(cv_recs)])
+    rev = np.concatenate([_reviewed_mask(r["session_dir"], len(r["y"])) for r in cv_recs])
+    dup = np.concatenate([_dup(r) for r in cv_recs])
+    fixed = rest + bs
+    X_fx = np.vstack([r["X"] for r in fixed]) if fixed else np.zeros((0, X.shape[1]))
+    y_fx = np.concatenate([r["y"] for r in fixed]).astype(int) if fixed else np.zeros(0, dtype=int)
+    n_bs_rows = sum(len(r["y"]) for r in bs)
+    n_rest_rows = sum(len(r["y"]) for r in rest)
+    oof = np.full(len(y), np.nan)
+    k = min(n_splits, len(cv_recs))
+    cv = StratifiedGroupKFold(n_splits=k, shuffle=True, random_state=42)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        for tr, te in cv.split(X, y, g):
+            n_ag_tr = len(tr) + n_rest_rows
+            if agent_weight_override is not None:
+                agw = float(agent_weight_override)
+            elif n_bs_rows > 0 and n_ag_tr > 0:
+                agw = float(max(np.sqrt(n_bs_rows / n_ag_tr), MIN_AGENT_WEIGHT))
+            else:
+                agw = MIN_AGENT_WEIGHT
+            w_fx = (np.concatenate([np.where(_dup(r), 0.0, agw) if not r["is_bootstrap"] else r["w"]
+                                    for r in fixed]) if fixed else np.zeros(0))
+            X_tr = np.vstack([X[tr], X_fx])
+            y_tr = np.concatenate([y[tr], y_fx])
+            w_tr = np.concatenate([np.where(dup[tr], 0.0, agw), w_fx])
+            if model_type != "lr":
+                m = w_tr > 0
+                ep = float(w_tr[(y_tr == 1) & m].sum())
+                en = float(w_tr[(y_tr == 0) & m].sum())
+                spw = en / ep if ep > 0 else 1.0
+            else:
+                spw = 1.0
+            sc = StandardScaler().fit(X_tr)
+            clf_cv = _make_clf(model_type, scale_pos_weight=spw)
+            clf_cv.fit(sc.transform(X_tr), y_tr, sample_weight=w_tr)
+            oof[te] = clf_cv.predict_proba(sc.transform(X[te]))[:, 1]
+    scored = ~np.isnan(oof)
+    ok = scored & ~dup
+
+    def _auc(m):
+        return (float(roc_auc_score(y[m], oof[m]))
+                if m.any() and len(np.unique(y[m])) == 2 else float("nan"))
+
+    return {"n_sessions": len(cv_recs), "n_sessions_untestable": len(rest), "n_folds": k,
+            "n_rows": int(ok.sum()), "n_pos": int(y[ok].sum()), "n_reviewed": int((ok & rev).sum()),
+            "auc_full": _auc(ok), "auc_reviewed": _auc(ok & rev),
+            "n_duplicates_left_out": int((scored & dup).sum()),
+            "auc_reviewed_incl_duplicates": _auc(scored & rev),
+            "oof": oof, "y": y, "reviewed": rev, "duplicate": dup}
+
+
+def _operating_point(ev: dict, threshold: float) -> dict:
+    """False auto-reject rate and junk caught at `threshold` on the agent-pool OOF
+    (duplicate deletes are neither kept cells nor junk and are left out)."""
+    ok = ~np.isnan(ev["oof"])
+    if ev.get("duplicate") is not None:
+        ok &= ~ev["duplicate"]
+    y, s_ = ev["y"][ok], ev["oof"][ok]
+    n_real, n_junk = int((y == 1).sum()), int((y == 0).sum())
+    n_below = int(((s_ < threshold) & (y == 1)).sum())
+    junk = float(((s_ < threshold) & (y == 0)).sum()) / max(n_junk, 1)
+    return {"threshold": float(threshold), "false_ar": n_below / max(n_real, 1), "junk_caught": junk,
+            "n_real": n_real, "n_real_below": n_below, "n_junk": n_junk}
+
+
+def _log_operating_point(ev: dict, threshold: float) -> dict:
+    op = _operating_point(ev, threshold)
+    log(f"  Agent-pool operating point at threshold {threshold:.2f} (out-of-fold): "
+        f"false auto-reject {op['false_ar']:.2%} ({op['n_real_below']} of {op['n_real']} kept cells), "
+        f"junk auto-rejected {op['junk_caught']:.1%} of {op['n_junk']}")
+    return op
 
 
 # ---------------------------------------------------------------------------
@@ -534,11 +858,9 @@ def _bootstrap_roi_eval(records: list[dict], n_splits: int = 5,
     Compare training on agent-only vs agent+bootstrap, evaluated on held-out
     agent sessions (clean human labels).  Answers: did bootstrap help?
 
-    A near-zero delta on agent folds is expected: the benefit of bootstrap
-    appears on out-of-distribution sessions (CTA, WSE, later-lifecycle animals
-    with lower SNR and fewer cells) which are not represented in the agent test
-    folds.  Feature regime shifts printed below confirm bootstrap covers
-    qualitatively different recording conditions.
+    The delta is measured, not assumed: read it from the table.  The feature
+    regime shifts printed below show where bootstrap sessions differ from agent
+    sessions; they do not by themselves show that bootstrap helps.
     """
     ag_recs = [r for r in records if not r["is_bootstrap"]]
     bs_recs = [r for r in records if r["is_bootstrap"]]
@@ -824,6 +1146,8 @@ def main():
 
     all_X, all_y, all_w, all_groups = [], [], [], []
     n_excluded = 0
+    n_dup_excluded = 0
+    dup_status: dict[str, int] = {}
 
     for r in records:
         X, y = r["X"], r["y"]
@@ -832,6 +1156,16 @@ def main():
 
         if not r["is_bootstrap"]:
             w *= agent_weight
+            # Zero-weight the reviewed deletes that are a second copy of a kept
+            # cell (see _agent_duplicate_mask): same treatment as the duplicate
+            # negatives of bootstrap sessions.  --dry-run computes them but does
+            # not write the per-session cache.
+            dup, _st = _agent_duplicate_mask(r["session_dir"], n, write_cache=not args.dry_run)
+            dup &= (np.asarray(y) == 0)
+            w[dup] = 0.0
+            r["dup"] = dup
+            n_dup_excluded += int(dup.sum())
+            dup_status[_st] = dup_status.get(_st, 0) + 1
         else:
             recovery = _get_bootstrap_recovery(r["session_dir"])
             if recovery is not None and recovery < BAD_SESSION_RECOVERY_THRESHOLD:
@@ -864,7 +1198,41 @@ def main():
 
     log(f"\nTotal candidates: {n_total}  ({n_pos} keep, {n_neg} delete)")
     log(f"  Excluded (ambiguous bootstrap negatives, weight=0): {n_excluded}")
+    _n_ag_sess = sum(dup_status.values())
+    log(f"  Excluded (agent-session deletes that duplicate a kept cell, weight=0): {n_dup_excluded}  "
+        f"[{dup_status.get('ok', 0)} of {_n_ag_sess} agent sessions checked; "
+        f"{dup_status.get('no_footprints', 0)} have no all-candidate footprints (.pre_ingest) and train as before"
+        + "".join(f"; {v} {k}" for k, v in sorted(dup_status.items()) if k not in ("ok", "no_footprints")) + "]")
     log(f"  Active in training (weight > 0): {n_active}")
+
+    # Bootstrap label quality, read live from bootstrap_match_stats.json (never a
+    # remembered constant): recovery = curated cells matched to a candidate.
+    bootstrap_report = None
+    _bs_recs = [r for r in records if r["is_bootstrap"]]
+    if _bs_recs:
+        _rec_vals = [_get_bootstrap_recovery(r["session_dir"]) for r in _bs_recs]
+        _known = np.array([v for v in _rec_vals if v is not None], dtype=float)
+        _n_nostats = sum(1 for v in _rec_vals if v is None)
+        _n_bad = int((_known < BAD_SESSION_RECOVERY_THRESHOLD).sum()) if len(_known) else 0
+        _n_bs_rows = sum(len(r["y"]) for r in _bs_recs)
+        _n_bs_pos = int(sum(r["y"].sum() for r in _bs_recs))
+        log(f"\nBootstrap sessions: {len(_bs_recs)}  ({_n_bs_rows} candidates, {_n_bs_pos} matched cells; "
+            f"{n_excluded} ambiguous/duplicate negatives at weight 0 = {n_excluded / max(_n_bs_rows, 1):.1%})")
+        if len(_known):
+            log(f"  Match recovery (matched / curated cells), {len(_known)} sessions with stats: "
+                f"median {np.median(_known):.1%}, mean {_known.mean():.1%}, min {_known.min():.1%}; "
+                f"{_n_bad} below {BAD_SESSION_RECOVERY_THRESHOLD:.0%} (down-weighted {BAD_SESSION_WEIGHT}x)")
+        if _n_nostats:
+            log(f"  {_n_nostats} bootstrap session(s) have no bootstrap_match_stats.json "
+                f"(early pre-agent matches): recovery unknown, no ambiguous mask, full bootstrap weight")
+        bootstrap_report = {
+            "n_sessions": len(_bs_recs), "n_rows": int(_n_bs_rows), "n_pos": _n_bs_pos,
+            "n_zero_weight": int(n_excluded), "n_with_stats": int(len(_known)),
+            "n_without_stats": int(_n_nostats),
+            "recovery_median": float(np.median(_known)) if len(_known) else None,
+            "recovery_mean": float(_known.mean()) if len(_known) else None,
+            "recovery_min": float(_known.min()) if len(_known) else None,
+            "n_below_bad_threshold": _n_bad}
 
     if args.retro_only:
         log("\n[--retro-only] Skipping training.")
@@ -901,36 +1269,84 @@ def main():
         candidates = [model_arg]
 
     cv_results: dict[str, float] = {}
+    cv_breakdown: dict[str, dict] = {}
     min_class = min(n_pos, n_neg)
     n_sessions = len(records)
     if min_class >= 10 and n_sessions >= 5:
         n_splits = min(5, n_sessions)
         scaler_cv = StandardScaler()
         X_scaled_cv = scaler_cv.fit_transform(X_all)
-        log(f"\n  Grouped {n_splits}-fold CV (split by session):")
+        is_bs_row = np.concatenate([np.full(len(r["y"]), bool(r["is_bootstrap"])) for r in records])
+        bs_share = float(is_bs_row.mean()) if len(is_bs_row) else 0.0
+        log(f"\n  All-session grouped {n_splits}-fold CV (split by session) -- MODEL SELECTION ONLY.")
+        if bs_share > 0:
+            log(f"  {bs_share:.0%} of its test candidates come from bootstrap sessions (every CNMFe candidate,")
+            log(f"  easy junk included), so it is not the curator's performance: see the agent-pool evaluation below.")
+        else:
+            log("  No bootstrap sessions in this area; it differs from the agent-pool evaluation below only in")
+            log("  being a mean of fold AUCs rather than a pooled out-of-fold AUC.")
         for mtype in candidates:
             try:
+                bd: dict = {}
                 auc = _grouped_cv(X_scaled_cv, y_all, groups, w_all,
-                                  n_splits=n_splits, model_type=mtype)
+                                  n_splits=n_splits, model_type=mtype,
+                                  is_bootstrap_row=is_bs_row, breakdown=bd)
                 cv_results[mtype] = auc
-                quality = "good" if auc > 0.80 else "moderate" if auc > 0.65 else "poor"
-                log(f"    {mtype:12s}  AUC={auc:.3f}  ({quality})")
+                cv_breakdown[mtype] = bd
+                log(f"    {mtype:12s}  all-session fold-mean AUC={auc:.3f}")
+                if bd.get("bootstrap", {}).get("n"):
+                    b_ = bd["bootstrap"]
+                    log(f"    {'':12s}  bootstrap test rows: AUC={b_['auc']:.3f}  "
+                        f"({b_['n']} candidates with training weight > 0, {b_['n_pos']} matched cells)")
+                if bd.get("agent", {}).get("n"):
+                    a_ = bd["agent"]
+                    log(f"    {'':12s}  agent test rows:     AUC={a_['auc']:.3f}  "
+                        f"({a_['n']} candidates incl. auto-rejected, {a_['n_pos']} kept cells)")
             except Exception as e:
                 log(f"    {mtype:12s}  FAILED: {e}")
-        log(f"  (Bootstrap test folds are noisy: ~41% of real neurons labeled 0 "
-            f"-> AUC is a conservative lower bound)")
     else:
         log(f"\n  Skipping CV (fewer than 10 samples in minority class or fewer than 5 sessions).")
 
     # Pick the best model by CV AUC; fall back sensibly if CV was skipped
     if cv_results:
         best_model = max(cv_results, key=cv_results.get)
-        log(f"\n  Selected model: {best_model}  (CV AUC={cv_results[best_model]:.3f})")
+        log(f"\n  Selected model: {best_model}  "
+            f"(all-session CV AUC={cv_results[best_model]:.3f}; selection only)")
     elif candidates:
         best_model = "xgboost" if "xgboost" in candidates else candidates[0]
         log(f"\n  No CV results — defaulting to {best_model}.")
     else:
         best_model = "lr"
+
+    # ------------------------------------------------------------------
+    # Headline performance: held-out agent sessions (what the curator serves)
+    # ------------------------------------------------------------------
+    agent_eval = None
+    try:
+        agent_eval = _agent_pool_eval(records, best_model, _aw_override)
+    except Exception as e:
+        log(f"\n  [WARN] agent-pool evaluation failed: {e}")
+    if agent_eval is None:
+        log("\n  Agent-pool evaluation skipped (fewer than 3 agent sessions with "
+            f">= {AGENT_POOL_MIN_POS} kept cells).")
+    else:
+        log(f"\n  AGENT-POOL EVALUATION ({best_model}) -- held-out agent sessions, bootstrap in training only")
+        log(f"    {agent_eval['n_sessions']} agent sessions in {agent_eval['n_folds']} session-grouped folds "
+            f"({agent_eval['n_sessions_untestable']} with < {AGENT_POOL_MIN_POS} kept cells train but are not tested)")
+        log(f"    AUC reviewed candidates = {agent_eval['auc_reviewed']:.3f}   "
+            f"({agent_eval['n_reviewed']} candidates, {agent_eval['n_pos']} kept cells)   <- headline")
+        log(f"    AUC all candidates      = {agent_eval['auc_full']:.3f}   "
+            f"({agent_eval['n_rows']} candidates incl. auto-rejected, which carry label 0 by construction)")
+        if agent_eval.get("n_duplicates_left_out"):
+            log(f"    {agent_eval['n_duplicates_left_out']} duplicate deletes (copies of a kept cell) are left out of "
+                f"both; counted as deletes the reviewed AUC is {agent_eval['auc_reviewed_incl_duplicates']:.3f} "
+                f"(the figure comparable with runs before 2026-11-20)")
+        log("    pooled out-of-fold, one seed (about +-0.003 run to run); sessions are held out, animals are not")
+        if args.dry_run:
+            if args.threshold is not None:
+                _log_operating_point(agent_eval, args.threshold)
+            else:
+                log("    (dry run: pass --threshold to print the operating point at that threshold)")
 
     if args.dry_run:
         log("\n[--dry-run] Model not saved.")
@@ -1013,7 +1429,17 @@ def main():
         log(f"\n  Overriding reject_threshold: {reject_threshold:.2f} -> {args.threshold:.2f} (--threshold flag)")
         reject_threshold = args.threshold
 
+    agent_pool_report = None
+    if agent_eval is not None:
+        _op = _log_operating_point(agent_eval, reject_threshold)
+        agent_pool_report = {k: v for k, v in agent_eval.items()
+                             if k not in ("oof", "y", "reviewed", "duplicate")}
+        agent_pool_report["operating_point"] = _op
+
     model_path = MODEL_DIR / "classifier.joblib"
+    _prev = _snapshot_previous_model(model_path)
+    if _prev is not None:
+        log(f"\nPrevious model kept -> {_prev}")
     joblib.dump(
         {
             "scaler": scaler,
@@ -1025,7 +1451,11 @@ def main():
             "n_sessions": len(records),
             "n_training_active": n_active,
             "n_excluded_ambiguous": n_excluded,
-            "cv_results": cv_results,
+            "n_excluded_agent_duplicates": n_dup_excluded,
+            "cv_results": cv_results,              # all-session fold-mean AUC (model selection only)
+            "cv_breakdown": cv_breakdown,          # bootstrap-row / agent-row AUC of that CV
+            "agent_pool_eval": agent_pool_report,  # headline: held-out agent sessions
+            "bootstrap_report": bootstrap_report,
             **_v2_extra,
         },
         str(model_path),
