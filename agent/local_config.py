@@ -52,3 +52,15 @@ PYTHON_EXE = os.environ.get("CNMFE_PYTHON_EXE",
 # Lab-server exchange root for distributing review bundles (see W2 scripts:
 # push_review_bundle.py / ingest_returns.py). Empty until the server path is set.
 EXCHANGE_ROOT = os.environ.get("CNMFE_EXCHANGE_ROOT", "")
+
+# Results root of the retro_tdTomato_Alignment project (read-only from here):
+# push_review_bundle.py adds <root>\<animal>\<MMDDYY>\<session>\red_guide\red_guide.png
+# to a session's bundle when one exists. Empty, or a missing folder, = no guide.
+RETRO_RESULTS = os.environ.get("CNMFE_RETRO_RESULTS",
+                               r"D:\retro_tdTomato_Alignment\results")
+
+# For pnb* sessions push_review_bundle.py first runs the retro project's
+# guide-for-push hook, which reuses a current guide or rebuilds it. 0 = skip the
+# hook; an existing guide is still looked up and checked.
+RETRO_GUIDE_BUILD = (os.environ.get("CNMFE_RETRO_GUIDE_BUILD", "1").strip().lower()
+                     not in ("0", "false", "no", "off"))

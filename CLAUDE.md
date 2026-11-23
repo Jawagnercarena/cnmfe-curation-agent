@@ -16,7 +16,12 @@ problem to solve by creating it: exit and say so.
 The exchange scripts have a fixed contract:
 - `agent/push_review_bundle.py`: copy-only into `outbox/<assignee>/...`. Its only
   server writes are `shutil.copy2` and the generated `run_final_review.m`; the
-  `review_assigned.txt` marker it writes is local.
+  `review_assigned.txt` marker it writes is local. For pnb* sessions it runs the
+  retro project's `guide-for-push` hook (reads X:, writes only inside that
+  project) and adds `red_guide.png` when one matches (section 4)
+  [2026-11-03]. A file already in the outbox is skipped only when byte-identical,
+  never on size alone [explicit, 2026-11-03]; `rereview.py request` uses the
+  same check.
 - `agent/ingest_returns.py`: read-only on the server; writes only under
   `DATA_PARENT`. Exits gracefully when the inbox is absent.
 - `agent/push_training_bundle.py` [2026-10-01]: copy-only into
@@ -81,9 +86,25 @@ against the real data root on its first outing.
 - **Ingest never invents a brain-area folder.** [derived, 2026-07-12] It resolves
   the destination by session name against the local tree and skips loudly when it
   cannot. Skipping is correct; guessing is not. It also never copies
-  `labels_provenance.txt` or `candidate_features.npz` back from a reviewer
-  (`CENTRAL_ONLY`), and refuses to overwrite a different reviewer's labels unless
-  `--replace-labels` is given.
+  `labels_provenance.txt`, `candidate_features.npz` or `red_guide.png` back from
+  a reviewer (`CENTRAL_ONLY`), and refuses to overwrite a different reviewer's
+  labels unless `--replace-labels` is given.
+- **A red guide ships only if it matches the live review set.** [derived,
+  2026-11-03: 090526-pnb99 was re-run 30 -> 76 candidates after its guide was
+  drawn] `red_guide.png` (the tdTomato image with the review candidates
+  outlined; retro-labelled pnb* animals) is made by the separate project
+  `D:\retro_tdTomato_Alignment`. ACORN code never writes there itself and never
+  calls its `red-guide --force`.
+- **The push builds the guide.** [explicit, 2026-11-03: the user chose push
+  time over after-curation and after-ingest] For pnb* sessions `stage_one` runs
+  `python -m retro_align guide-for-push <session> [--dry-run]` from the retro
+  project. The hook reuses a current guide or rebuilds it inside that project.
+  The guide goes in only if the hook exits 0 AND the push's own check passes
+  (same N, same auto-rejected indices in `candidates_shown.npz`); otherwise
+  the push says why. A failed, timed-out or missing hook never blocks a push.
+  `CNMFE_RETRO_GUIDE_BUILD=0` skips the hook (lookup only). Re-review bundles
+  never run the hook (`collect_files` default). X: must be mapped in the shell
+  that runs the push. Do not move the call into the watcher or ingest.
 - **Ingest matches by name, so a reviewer rename forks the session.** [derived,
   2026-08-07] Before concluding "new session", check for an existing one under a
   new name.
@@ -108,6 +129,16 @@ against the real data root on its first outing.
   about to overwrite into `<session>/.pre_ingest/` (write-once); a first-review
   `labels.mat` whose length does not match the live review set is skipped; a
   return for a labelled session is parked under `<session>/.rereview/`.
+- **A finished session's movie .mat is pruned; whatever needs it rebuilds it.**
+  [explicit, 2026-11-11] `<session>/<session>.mat` is a frame-exact copy of
+  `<session>.tif`. `agent/prune_movie_mats.py` (dry run unless `--apply`; manifest
+  in `DATA_PARENT/.movie_prune/`) deletes it only for finished sessions whose .tif
+  reproduces it. Retro-tracked animals are exempt until the user decides
+  (`--include-retro`), as are sessions the watcher still pre-computes from.
+  `CNMFe_final_save.m`, the push and `rereview.py request` rebuild it into the
+  session folder; `push_training_bundle.py` rebuilds into `.training/movies/`.
+  All rebuilds go through `rebuild_movie_mat.m` (never overwrites; moves into
+  place only when complete). A missing movie in a finished session is expected.
 - **Report faithfully.** [explicit] A zero exit code is not success; a timed-out
   MATLAB job has more than once kept running and finished while the log said
   "failed". If a step was skipped, say so.
@@ -117,7 +148,7 @@ against the real data root on its first outing.
 
 ## 5. Machine-specific values (re-derive, do not copy)
 
-All resolved by `agent/local_config.py:37-54`; each is overridable by an env var
+All resolved by `agent/local_config.py:37-66`; each is overridable by an env var
 or an entry in `agent/.env` (gitignored; template in `agent/.env.example`).
 
 | Env var | Central-machine default |
@@ -127,6 +158,8 @@ or an entry in `agent/.env` (gitignored; template in `agent/.env.example`).
 | `CNMFE_MATLAB_EXE` | `C:\Program Files\MATLAB\R2023b\bin\matlab.exe` |
 | `CNMFE_PYTHON_EXE` | `C:\ProgramData\anaconda3\envs\valence\python.exe` |
 | `CNMFE_EXCHANGE_ROOT` | server exchange root, read-only to Claude |
+| `CNMFE_RETRO_RESULTS` | `D:\retro_tdTomato_Alignment\results` (ACORN never writes there; set empty to send no red guides) |
+| `CNMFE_RETRO_GUIDE_BUILD` | on (`0` = the push does not run the retro guide hook) |
 
 MATLAB reads `getenv('CNMFE_DATA_PARENT')`.
 

@@ -16,8 +16,19 @@ to `agent/push_review_bundle.py`.
 - Copies `{SESSION}.mat`, `review_neuron.mat`, `Cn.mat`, `pnr.mat`,
   `Ybg_weights.mat`, `review_report.pdf`, `review_summary.txt` with `shutil.copy2`
   and generates a self-locating `run_final_review.m` into
-  `<exchange>/outbox/<assignee>/<area>/<task>/<session>/`. Same-size files already
-  there are skipped, so a re-run resumes.
+  `<exchange>/outbox/<assignee>/<area>/<task>/<session>/`. A file already there
+  is skipped only if byte-identical (size alone is not trusted), so a re-run
+  resumes and an in-place re-push replaces anything that changed; the check
+  reads an identical raw video back from the server in full.
+- For pnb* sessions, first runs the retro hook `python -m retro_align
+  guide-for-push <session> [--dry-run]` (cwd = the retro project), which reuses
+  a current guide or rebuilds it there (needs X: mapped). Then adds
+  `red_guide.png` from `CNMFE_RETRO_RESULTS` only if the hook said `red guide ok`
+  and its `candidates_shown.npz` matches the live review set (same N, same
+  auto-rejected indices). Prints the hook's line, then `red guide: included` or
+  `STALE, NOT included`. A failed, timed-out or missing hook means no guide,
+  never a blocked push. `CNMFE_RETRO_GUIDE_BUILD=0` skips the hook (lookup
+  only). Two matching guides is an error.
 - Writes `review_assigned.txt` into the **local** session folder (assigned, to, by).
 - Never deletes anything anywhere (CLAUDE.md section 1). Re-assignment needs the
   operator to delete the stale `outbox/<old>/` folder on the server first.
@@ -47,7 +58,11 @@ to `agent/push_review_bundle.py`.
 
    Read the list: is every session one you meant to send, and none already out?
    A `WARNING: raw video ... not found` means the reviewer cannot do the video
-   pass; fix before staging.
+   pass; fix before staging. For pnb* sessions, `red guide: would be built at
+   push (...)` is normal (the real push builds it; one timed build took 48 s);
+   `red guide NOT MADE: <reason>` means the session will go without a guide, so
+   fix the reason first if the guide matters (e.g. map X:). Never write into
+   the retro project or call its `red-guide --force` from here.
 4. **Single-session mode** re-stages even when a marker exists (prints `NOTE:
    already out for review ...`) without `--force`. Check the marker yourself.
 

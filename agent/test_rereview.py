@@ -128,6 +128,13 @@ try:
     check(rc == 1 and "already out" in out, "second request refused while one is open")
     st = rp.rereview_state(sd)
     check(st and st["state"] == "out" and "Aneesh" in st["summary"], f"state = out ({st and st['summary']})")
+    (sd / "Cn.mat").write_bytes(b"j" * inputs["Cn.mat"])            # re-saved, same size
+    rc, out = run(rr.main, ["--data-parent", str(data), "request", "BLA\\task1\\" + sd.name,
+                            "--assignee", "Aneesh", "--reason", "keep rate looked low",
+                            "--exchange", str(exchange), "--force"])
+    check(rc == 0 and (bundle / "Cn.mat").read_bytes() == b"j" * inputs["Cn.mat"]
+          and "skip (already staged): review_neuron.mat" in out,
+          "--force re-push replaces a same-size changed input, skips identical ones")
 
     # ---- reviewer return --------------------------------------------------
     print("return + ingest (park)")

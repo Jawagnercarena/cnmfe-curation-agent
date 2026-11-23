@@ -1,0 +1,81 @@
+{
+ "label": "ctrl_082726-pnb104_mrs20_recentred",
+ "nframes": 84307,
+ "n_offsets": 84307,
+ "n_files": 150,
+ "maxregshift": 0.2,
+ "smooth_sigma": 1.15,
+ "nonrigid": true,
+ "force_refImg": true,
+ "limit_px": 102,
+ "at_limit": 0.0,
+ "beyond_51px": 0.004222662412373825,
+ "med_y": 0.0,
+ "med_x": 1.0,
+ "dev_p50": 8.06225774829855,
+ "dev_p95": 34.058772731852805,
+ "dev_p99": 48.60041152089147,
+ "max_abs_y": 59.0,
+ "max_abs_x": 72.0,
+ "corrXY_p50": 0.006210251245647669,
+ "corrXY_p05": 0.00484269130975008,
+ "corrXY_p01": 0.0040297629870474335,
+ "s2p_badframes": 0.0,
+ "yrange": [
+  59,
+  453
+ ],
+ "xrange": [
+  72,
+  440
+ ],
+ "at_limit_quarters": [
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "beyond_51px_quarters": [
+  0.01024813778051905,
+  0.0032262655975708117,
+  0.002087583621957584,
+  0.0013285253368760675
+ ],
+ "med_y_quarters": [
+  -6.0,
+  0.0,
+  3.0,
+  1.0
+ ],
+ "med_x_quarters": [
+  -6.0,
+  4.0,
+  3.0,
+  2.0
+ ],
+ "forced_ref_used": true,
+ "frames_per_file_match": true,
+ "ref_frames_checked": 60,
+ "ref_frames_match_binary": 60,
+ "tif": "D:\\2p data\\mc_rerun_2026-11\\movies\\ctrl_new\\AVG5x-TSeries-082726-pnb104-416um-3z-000.tif",
+ "avg_frames": 16861,
+ "quiet_r": 0.8596475124359131,
+ "bad": 0.0,
+ "degraded": 0.0055749955518652515,
+ "r_p50": 0.841306209564209,
+ "r_p05": 0.7542181015014648,
+ "resid_gt2px": 0.0,
+ "resid_p95": 0.3447180986404419,
+ "bad_quarters": [
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "degraded_quarters": [
+  0.019449715370018977,
+  0.00166073546856465,
+  0.0009489916963226571,
+  0.00023724792408066428
+ ]
+}

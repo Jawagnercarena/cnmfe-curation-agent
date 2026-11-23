@@ -1,0 +1,34 @@
+﻿Task directory : C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\b0c01501-e40c-4081-a4b7-7cbeda34a860\scratchpad\ctrl\new
+Base ops       : D:\2p data\mc_rerun_2026-11\ops\ops_TSeries-082726-pnb104-416um-3z-000.npy
+Averaging      : every 5 frames -> 8-bit tif
+Delete TSeries : no (--keep-tseries)
+Sessions found : 1
+
+  session                              fs (Hz)   files  layout      todo
+  TSeries-082726-pnb104-416um-3z-000   30.2289     150  per-cycle   suite2p
+
+Processing 1 session(s).
+
+[1/1] TSeries-082726-pnb104-416um-3z-000
+    suite2p (fs=30.2289 Hz) ...
+{}
+tif
+** Found 150 tifs - converting to binary **
+time 261.82 sec. Wrote 84307 frames per binary for 1 planes
+>>>>>>>>>>>>>>>>>>>>> PLANE 0 <<<<<<<<<<<<<<<<<<<<<<
+NOTE: not registered / registration forced with ops['do_registration']>1
+      (no previous offsets to delete)
+NOTE: applying default C:\Users\julia\.suite2p\classifiers\classifier_user.npy
+----------- REGISTRATION
+----------- Total 2136.48 sec
+Registration metrics, 13.44 sec.
+WARNING: skipping cell detection (ops['roidetect']=False)
+Plane 0 processed in 2150.36 sec (can open in GUI).
+total = 2423.91 sec.
+TOTAL RUNTIME 2423.91 sec
+      OK  211 reg_tif files  (2424s)
+    DONE in 2424s
+
+============================================================
+Finished: 1 succeeded, 0 failed.
+  ok    TSeries-082726-pnb104-416um-3z-000  (2424s)

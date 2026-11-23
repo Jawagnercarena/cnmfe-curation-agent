@@ -101,6 +101,12 @@ def key_dir(area: str, task: str, session: str, root: Path | None = None) -> Pat
     return (root or training_root()) / "keys" / check_area(area) / task / session
 
 
+def movie_cache_dir(area: str, task: str, session: str, root: Path | None = None) -> Path:
+    """Where a training push rebuilds a pruned session's movie .mat (never the
+    production session folder); prune_movie_mats.py clears it again."""
+    return (root or training_root()) / "movies" / check_area(area) / task / session
+
+
 def key_path(area: str, task: str, session: str, root: Path | None = None) -> Path:
     return key_dir(area, task, session, root) / KEY_NAME
 

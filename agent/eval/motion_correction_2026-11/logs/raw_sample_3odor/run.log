@@ -1,0 +1,96 @@
+=== 20:53:21 TSeries-100826-pnb106-258um-4z-000
+TSeries-100826-pnb106-258um-4z-000: 120 cycles, 63984 raw frames (531 x30, 532 x3, 534 x87); delivered 12796 frames, 25.36% bad
+  bad share per cycle (%): 3 5 7 2 22 8 6 18 7 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 16 72 8 34 60 83 93 96 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100
+  cycles with >= 30% bad: 31 (89-120); clean: 76
+  sample: bad-stretch cycles [89, 94, 99, 103, 107, 111, 116, 120] (bad % [72, 93, 100, 100, 100, 100, 100, 100]), clean cycles [10, 36, 61, 86]
+  sample + 300 reference frames on scratch (357 s)
+Traceback (most recent call last):
+  File "C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\raw_sample_test.py", line 366, in <module>
+    sys.exit(main())
+  File "C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\raw_sample_test.py", line 276, in main
+    res = register.compute_reference_and_register_frames(raw.copy(), f_align_out=out, refImg=ref, ops=ops)
+  File "C:\Users\julia\.conda\envs\suite2p\lib\site-packages\suite2p\registration\register.py", line 471, in compute_reference_and_register_frames
+    save_path=ops["save_path"], k=k,
+KeyError: 'save_path'
+exit 1
+=== 20:59:38 TSeries-100926-pnb102-452um-3z-000
+TSeries-100926-pnb102-452um-3z-000: 120 cycles, 63840 raw frames (532 x120); delivered 12768 frames, 7.71% bad
+  bad share per cycle (%): 58 0 15 46 0 24 10 25 4 8 25 33 29 0 37 42 51 22 70 2 9 45 60 16 0 8 0 0 14 0 2 2 16 36 3 0 0 19 10 7 1 1 3 5 1 0 0 0 31 0 0 0 1 0 1 4 0 7 0 4 4 3 1 1 0 0 0 3 0 0 8 1 0 0 0 0 3 7 0 0 0 4 5 6 0 0 9 3 0 3 0 4 0 2 8 0 0 0 5 5 0 0 4 4 0 0 2 7 3 3 0 9 0 1 2 0 0 5 4 0
+  cycles with >= 30% bad: 11 (1-49); clean: 47
+  sample: bad-stretch cycles [1, 4, 15, 16, 19, 22, 34, 49] (bad % [58, 46, 37, 42, 70, 45, 36, 31]), clean cycles [2, 54, 86, 120]
+  sample + 300 reference frames on scratch (363 s)
+Traceback (most recent call last):
+  File "C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\raw_sample_test.py", line 366, in <module>
+    print(f"\n  summary -> {args.out / (name + '.json')}  ({summary['minutes']} min)", flush=True)
+  File "C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\raw_sample_test.py", line 276, in main
+    finally:
+  File "C:\Users\julia\.conda\envs\suite2p\lib\site-packages\suite2p\registration\register.py", line 471, in compute_reference_and_register_frames
+    save_path=ops["save_path"], k=k,
+KeyError: 'save_path'
+exit 1
+=== 21:06:01 TSeries-093026-pnb102-600um-3z-000
+TSeries-093026-pnb102-600um-3z-000: 120 cycles, 63823 raw frames (531 x17, 532 x103); delivered 12764 frames, 5.23% bad
+  bad share per cycle (%): 24 25 96 14 49 44 79 75 74 94 21 0 0 0 4 1 0 0 11 1 6 0 2 1 3 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  cycles with >= 30% bad: 7 (3-10); clean: 98
+  sample: bad-stretch cycles [3, 5, 6, 7, 8, 9, 10] (bad % [96, 49, 44, 79, 75, 74, 94]), clean cycles [12, 55, 88, 120]
+  sample + 300 reference frames on scratch (388 s)
+  registered 'old' in 88 s (search limit +/-51 px)
+  registered 'new' in 89 s (search limit +/-102 px; reference: recentred from 96 frames within 5 px, offset [6, -32])
+
+  old vs delivered, same frames: pixel r median 0.9999, p05 0.9999 (reproduction check)
+  movie      quiet r | bad-stretch cycles:   bad%  degr% | clean cycles:   bad%  degr% | raw frames at limit: bad-stretch  clean | median shift (y,x)
+  delivered    0.825 |                     74.05  82.84 |                0.00   0.00
+  old          0.825 |                     74.05  82.84 |                0.00   0.00 |                 31.23   1.97 | (+0,-38)
+  new          0.824 |                      0.14   3.92 |                0.00   0.00 |                  0.00   0.00 | (-11,-23)
+  per-cycle bad % (old): 3:96  5:49  6:44  7:81  8:76  9:74  10:97  12:0  55:0  88:0  120:0
+  per-cycle bad % (new): 3:0  5:1  6:0  7:0  8:0  9:0  10:0  12:0  55:0  88:0  120:0
+
+  still bad under 'new': 1 frames; unrestricted best shift median 0.0 px (p90 0.0); back to >= 0.75 of quiet at some shift: 0.0%; below 0.5 of quiet at every shift: 100.0%
+  mean intensity, 'new': still-bad frames median 502.28759765625, clean-cycle frames median 462.5
+
+  summary -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\logs\raw_sample_3odor\TSeries-093026-pnb102-600um-3z-000.json  (9.7 min)
+exit 0
+=== 21:16:02 TSeries-100826-pnb106-258um-4z-000 (re-run after the reg_tif fix)
+TSeries-100826-pnb106-258um-4z-000: 120 cycles, 63984 raw frames (531 x30, 532 x3, 534 x87); delivered 12796 frames, 25.36% bad
+  bad share per cycle (%): 3 5 7 2 22 8 6 18 7 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 16 72 8 34 60 83 93 96 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100 100
+  cycles with >= 30% bad: 31 (89-120); clean: 76
+  sample: bad-stretch cycles [89, 94, 99, 103, 107, 111, 116, 120] (bad % [72, 93, 100, 100, 100, 100, 100, 100]), clean cycles [10, 36, 61, 86]
+  sample + 300 reference frames on scratch (0 s)
+  registered 'old' in 96 s (search limit +/-51 px)
+  registered 'new' in 97 s (search limit +/-102 px; reference: recentred from 116 frames within 5 px, offset [5, 12])
+
+  old vs delivered, same frames: pixel r median 0.9994, p05 0.9990 (reproduction check)
+  movie      quiet r | bad-stretch cycles:   bad%  degr% | clean cycles:   bad%  degr% | raw frames at limit: bad-stretch  clean | median shift (y,x)
+  delivered    0.938 |                    100.00 100.00 |               24.88  49.53
+  old          0.938 |                    100.00 100.00 |               24.88  49.53 |                  0.23   0.05 | (+4,+7)
+  new          0.943 |                    100.00 100.00 |               24.88  49.53 |                  0.05   0.00 | (-1,-3)
+  per-cycle bad % (old): 10:0  36:0  61:0  86:100  89:100  94:100  99:100  103:100  107:100  111:100  116:100  120:100
+  per-cycle bad % (new): 10:0  36:0  61:0  86:100  89:100  94:100  99:100  103:100  107:100  111:100  116:100  120:100
+
+  still bad under 'new': 953 frames; unrestricted best shift median 1.0 px (p90 72.5); back to >= 0.75 of quiet at some shift: 0.0%; below 0.5 of quiet at every shift: 100.0%
+  mean intensity, 'new': still-bad frames median 466.61431884765625, clean-cycle frames median 465.9
+
+  summary -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\logs\raw_sample_3odor\TSeries-100826-pnb106-258um-4z-000.json  (3.6 min)
+exit 0
+=== 21:19:39 TSeries-100926-pnb102-452um-3z-000 (re-run after the reg_tif fix)
+TSeries-100926-pnb102-452um-3z-000: 120 cycles, 63840 raw frames (532 x120); delivered 12768 frames, 7.71% bad
+  bad share per cycle (%): 58 0 15 46 0 24 10 25 4 8 25 33 29 0 37 42 51 22 70 2 9 45 60 16 0 8 0 0 14 0 2 2 16 36 3 0 0 19 10 7 1 1 3 5 1 0 0 0 31 0 0 0 1 0 1 4 0 7 0 4 4 3 1 1 0 0 0 3 0 0 8 1 0 0 0 0 3 7 0 0 0 4 5 6 0 0 9 3 0 3 0 4 0 2 8 0 0 0 5 5 0 0 4 4 0 0 2 7 3 3 0 9 0 1 2 0 0 5 4 0
+  cycles with >= 30% bad: 11 (1-49); clean: 47
+  sample: bad-stretch cycles [1, 4, 15, 16, 19, 22, 34, 49] (bad % [58, 46, 37, 42, 70, 45, 36, 31]), clean cycles [2, 54, 86, 120]
+  sample + 300 reference frames on scratch (0 s)
+  registered 'old' in 98 s (search limit +/-51 px)
+  registered 'new' in 94 s (search limit +/-102 px; reference: recentred from 48 frames within 5 px, offset [2, -39])
+
+  old vs delivered, same frames: pixel r median 1.0000, p05 0.9999 (reproduction check)
+  movie      quiet r | bad-stretch cycles:   bad%  degr% | clean cycles:   bad%  degr% | raw frames at limit: bad-stretch  clean | median shift (y,x)
+  delivered    0.841 |                     45.20  54.80 |                0.00   0.71
+  old          0.841 |                     45.31  54.80 |                0.00   0.71 |                 21.33   1.93 | (-3,-39)
+  new          0.838 |                      0.71  10.08 |                0.00   0.71 |                  0.00   0.00 | (-8,-9)
+  per-cycle bad % (old): 1:58  2:0  4:46  15:37  16:40  19:70  22:45  34:36  49:31  54:0  86:0  120:0
+  per-cycle bad % (new): 1:4  2:0  4:0  15:0  16:0  19:1  22:0  34:1  49:0  54:0  86:0  120:0
+
+  still bad under 'new': 6 frames; unrestricted best shift median 0.0 px (p90 0.5); back to >= 0.75 of quiet at some shift: 0.0%; below 0.5 of quiet at every shift: 100.0%
+  mean intensity, 'new': still-bad frames median 604.7286987304688, clean-cycle frames median 531.2
+
+  summary -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\logs\raw_sample_3odor\TSeries-100926-pnb102-452um-3z-000.json  (3.5 min)
+exit 0

@@ -190,6 +190,19 @@ fprintf('\nReloading raw video data (this may take a moment)...\n');
 % Locate the .mat data file (session_nm was computed up front for the checkpoint fingerprint)
 nam_mat = fullfile(session_dir, [session_nm, '.mat']);
 if ~isfile(nam_mat)
+    % The movie .mat is a frame-exact re-encoding of the session .tif and is
+    % pruned once a session is finished (agent/prune_movie_mats.py).  Rebuild it
+    % when the .tif is here (central machine; a review bundle ships the .mat).
+    nam_tif = fullfile(session_dir, [session_nm, '.tif']);
+    if ~isfile(nam_tif)
+        nam_tif = fullfile(session_dir, [session_nm, '.tiff']);
+    end
+    if isfile(nam_tif)
+        fprintf('  Movie %s.mat not found; rebuilding it from the .tif (usually 1-3 min) ...\n', session_nm);
+        rebuild_movie_mat(nam_tif, nam_mat);
+    end
+end
+if ~isfile(nam_mat)
     % try .tif -> .mat conversion name pattern
     nam_mat_files = dir(fullfile(session_dir, '*.mat'));
     % exclude output .mat files (neuron.mat, Cn.mat, etc.)

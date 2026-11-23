@@ -1,0 +1,24 @@
+Task directory : C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\b0c01501-e40c-4081-a4b7-7cbeda34a860\scratchpad\remake_3odor
+Base ops       : C:\Users\julia\.suite2p\ops\ops_user.npy  + overrides {'maxregshift': 0.2}
+Registration   : maxregshift 0.2, reference recentred when more than 5 px off
+Motion QC      : TSeries folder kept above 5% bad frames or 1% of frames at the search limit
+Averaging      : every 5 frames -> 8-bit tif
+Delete TSeries : no (--keep-tseries)
+Sessions found : 1
+
+  session                              fs (Hz)   files  layout      todo
+  TSeries-093026-pnb102-600um-3z-000   30.2350     120  per-cycle   average
+
+Processing 1 session(s).
+
+[1/1] TSeries-093026-pnb102-600um-3z-000
+    averaging ...
+      OK  3.1 GB  (63s)
+    motion QC ...
+      OK  bad 0.0%  degraded 0.4%  at limit 0.0%  reference offset (y +6, x -32)  record AVG5x-TSeries-093026-pnb102-600um-3z-000_mc.npz  (34s)
+    DONE in 97s
+
+============================================================
+Finished: 1 succeeded, 0 failed.
+  ok    TSeries-093026-pnb102-600um-3z-000  (97s)
+exit 0

@@ -7,7 +7,10 @@ the files the trainee-side MATLAB needs:
     review_neuron.mat          (required: the candidate set the reviewer saw)
     Cn.mat, pnr.mat, Ybg_weights.mat   (optional; Ybg_weights for the dress rehearsal)
     {session}.mat              (raw video; the default drill is the VIDEO drill, so keep it.
-                                --no-video leaves only the static warm-up drill usable)
+                                --no-video leaves only the static warm-up drill usable.
+                                If prune_movie_mats.py removed it, it is rebuilt from the
+                                session .tif into <training_root>/movies/<area>/<task>/<session>/
+                                -- never into the production folder -- and shipped from there)
     training_key.mat           (required; from DATA_PARENT/.training/keys, built by
                                 build_training_key.py)
     run_training.m             (generated, self-locating launcher)
@@ -37,6 +40,7 @@ AGENT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(AGENT_DIR))
 from local_config import DATA_PARENT, EXCHANGE_ROOT, REPO_ROOT
 import training_common as tc
+import movie_mat
 
 REQUIRED = ["review_neuron.mat"]
 OPTIONAL = ["Cn.mat", "pnr.mat", "Ybg_weights.mat"]
@@ -113,14 +117,21 @@ def stage_one(sd: Path, exchange: Path, trainee: str, stage, with_video: bool,
             files.append(f)
         else:
             print(f"  (optional) missing: {name}")
-    video = sd / f"{sd.name}.mat"
     has_video = False
     if with_video:
-        if video.exists():
+        # a finished session's movie may have been pruned (prune_movie_mats.py):
+        # rebuild it from the session .tif into the training cache (never the
+        # production session folder); a failed rebuild raises
+        video = movie_mat.ensure(sd, dry_run=dry_run,
+                                 out_dir=tc.movie_cache_dir(area, task, session, training_root))
+        if video is not None:
             files.append(video)
             has_video = True
+        elif dry_run and movie_mat.movie_tif(sd) is not None:
+            has_video = True
         else:
-            print(f"  WARNING: raw video {video.name} not found -- no video pass / rehearsal possible")
+            print(f"  WARNING: raw video {movie_mat.movie_mat(sd).name} not found -- "
+                  f"no video pass / rehearsal possible")
     else:
         print("  --no-video: raw video NOT included -- only the static warm-up drill works on this bundle; "
               "the video drill (the training default), the workflow drill and the rehearsal need it.")

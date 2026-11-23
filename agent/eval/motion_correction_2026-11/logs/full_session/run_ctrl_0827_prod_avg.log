@@ -1,0 +1,19 @@
+﻿Task directory : C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\b0c01501-e40c-4081-a4b7-7cbeda34a860\scratchpad\ctrl\prod
+Base ops       : C:\Users\julia\.suite2p\ops\ops_user.npy
+Averaging      : every 5 frames -> 8-bit tif
+Delete TSeries : no (--keep-tseries)
+Sessions found : 1
+
+  session                              fs (Hz)   files  layout      todo
+  TSeries-082726-pnb104-416um-3z-000   30.2289     150  per-cycle   average
+
+Processing 1 session(s).
+
+[1/1] TSeries-082726-pnb104-416um-3z-000
+    averaging ...
+      OK  4.1 GB  (152s)
+    DONE in 152s
+
+============================================================
+Finished: 1 succeeded, 0 failed.
+  ok    TSeries-082726-pnb104-416um-3z-000  (152s)
