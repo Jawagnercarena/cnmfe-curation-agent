@@ -1,0 +1,95 @@
+AVG5x-TSeries-090826-pnb109-412um-25z-000
+min_corr 0.7 min_pnr 6.4 gSig 9 gSiz 36
+CACHE 0 2.4
+1024 5.0
+2048 7.6
+3072 10.3
+4096 12.9
+5120 15.5
+6144 18.6
+7168 21.2
+8192 23.8
+9216 26.5
+10240 29.1
+11264 31.8
+12288 34.5
+13312 37.1
+14336 39.7
+15360 42.3
+16384 45.0
+17408 47.8
+18432 50.5
+19456 53.3
+20480 54.7
+done 21018 56.4
+
+=== missed_cells.py rc 0
+orientation check: mean img inside footprints 68.0 vs outside 46.3; Cn inside 0.71 vs outside 0.59
+mean-image somata detected (DoG > 3 MAD, min dist 8 px, outside bd): 96
+
+thresholds used by the run: min_corr 0.7, min_pnr 6.4
+  review: n=72
+     mean brightness 89.40 [79.85-107.52]   DoG z 7.53 [5.09-10.80]   frames at 255 0.00 [0.00-0.00]
+     seeding Cn max 0.91 [0.84-0.95]   seeding PNR max 19.23 [12.87-26.11]   pass both gates 71/72
+     trace PNR (raw) 11.01 [8.57-15.14]   trace PNR (neuropil-corr) 10.50 [7.48-16.44]   frac frames >3sd 0.06 [0.03-0.12]
+     dF/F 99.5 pct 0.18 [0.14-0.25]   corr with neuropil 0.79 [0.66-0.88]
+     red soma within 10 px 5/72   red z 1.21 [0.08-2.19]
+  autorej: n=7
+     mean brightness 78.12 [56.22-92.31]   DoG z 5.36 [3.26-8.19]   frames at 255 0.00 [0.00-0.00]
+     seeding Cn max 0.75 [0.74-0.80]   seeding PNR max 8.73 [7.23-10.12]   pass both gates 6/7
+     trace PNR (raw) 6.90 [5.95-9.07]   trace PNR (neuropil-corr) 6.16 [4.34-8.22]   frac frames >3sd 0.01 [0.01-0.05]
+     dF/F 99.5 pct 0.13 [0.11-0.15]   corr with neuropil 0.84 [0.77-0.91]
+     red soma within 10 px 0/7   red z 0.96 [0.21-2.54]
+  none: n=17
+     mean brightness 99.34 [80.11-107.39]   DoG z 5.83 [4.27-6.89]   frames at 255 0.00 [0.00-0.00]
+     seeding Cn max 0.69 [0.66-0.78]   seeding PNR max 8.52 [7.76-10.70]   pass both gates 8/17
+     trace PNR (raw) 6.28 [5.30-6.91]   trace PNR (neuropil-corr) 5.23 [4.72-5.67]   frac frames >3sd 0.00 [0.00-0.01]
+     dF/F 99.5 pct 0.09 [0.09-0.11]   corr with neuropil 0.81 [0.70-0.88]
+     red soma within 10 px 4/17   red z 2.14 [0.88-6.86]
+
+'none' split by gate:
+  none, passes both gates: n=8
+     mean brightness 101.03 [91.58-105.77]   DoG z 5.78 [4.03-6.82]   frames at 255 0.00 [0.00-0.00]
+     seeding Cn max 0.78 [0.74-0.81]   seeding PNR max 10.54 [9.41-13.52]   pass both gates 8/8
+     trace PNR (raw) 6.79 [6.09-7.83]   trace PNR (neuropil-corr) 5.26 [5.05-5.72]   frac frames >3sd 0.01 [0.01-0.02]
+     dF/F 99.5 pct 0.10 [0.09-0.12]   corr with neuropil 0.84 [0.75-0.88]
+     red soma within 10 px 3/8   red z 4.50 [1.68-8.75]
+  none, fails a gate: n=9
+     mean brightness 99.34 [73.27-107.39]   DoG z 5.83 [4.34-8.28]   frames at 255 0.00 [0.00-0.00]
+     seeding Cn max 0.66 [0.63-0.69]   seeding PNR max 7.87 [7.47-8.40]   pass both gates 0/9
+     trace PNR (raw) 5.69 [5.30-6.28]   trace PNR (neuropil-corr) 4.79 [3.95-5.67]   frac frames >3sd 0.00 [0.00-0.00]
+     dF/F 99.5 pct 0.09 [0.08-0.10]   corr with neuropil 0.79 [0.65-0.87]
+     red soma within 10 px 1/9   red z 1.96 [0.65-4.72]
+   of the gate failures: Cn<min_corr 9, PNR<min_pnr 0, both 0
+
+red somata (from red_blobs.csv) -> nearest mean-image soma category:
+   review: 5
+   autorej: 0
+   none: 4
+red somata (18) by candidate coverage: {'review': 8, 'autorej': 3, 'none': 7}
+
+coverage by mean-image contrast (DoG z):
+   z 3-5: n=28  review 18 (64%)  autorej 3 (11%)  none 7 (25%)
+   z 5-8: n=29  review 20 (69%)  autorej 2 (7%)  none 7 (24%)
+   z 8-inf: n=39  review 34 (87%)  autorej 2 (5%)  none 3 (8%)
+   none, passes gates: nearest candidate centroid median 16.4 px; within 22 px (one 11x11 ds local-max window) 7/8
+   none, fails gate: nearest candidate centroid median 19.8 px; within 22 px (one 11x11 ds local-max window) 7/9
+red z, none vs review: Mann-Whitney p=0.025 (n 17 vs 72)
+SUMMARY AVG5x-TSeries-090826-pnb109-412um-25z-000: somata 96 review 72 autorej 7 none 17 none_fail_gate 9 none_fail_Cn 9 none_fail_PNR 0 red_somata 18 red_by_cover {'review': 8, 'autorej': 3, 'none': 7}
+QC -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\24c15806-b725-476d-b146-77583a6eaff7\scratchpad\miss\090826-pnb109\missed_cells_qc.png
+
+
+=== red_somata.py rc 0
+red somata 18  (min_corr 0.7, min_pnr 6.4)
+  review: n=8  GCaMP mean-image DoG z 2.46 [1.49-5.92]  visible soma (z>=3) 3/8
+      Cn max 0.92 [0.85-0.96]  PNR max 23.54 [19.14-27.50]  pass gates 8/8
+      trace PNR (np-corr) 14.30 [10.38-17.02]  frac frames >3sd 0.06 [0.03-0.07]
+  autorej: n=3  GCaMP mean-image DoG z 2.00 [0.16-2.16]  visible soma (z>=3) 0/3
+      Cn max 0.83 [0.79-0.85]  PNR max 9.83 [9.58-16.40]  pass gates 3/3
+      trace PNR (np-corr) 4.86 [4.50-5.72]  frac frames >3sd 0.01 [0.01-0.01]
+  none: n=7  GCaMP mean-image DoG z 0.88 [-0.70-4.22]  visible soma (z>=3) 2/7
+      Cn max 0.71 [0.68-0.80]  PNR max 11.72 [10.10-13.04]  pass gates 5/7
+      trace PNR (np-corr) 6.23 [5.03-6.59]  frac frames >3sd 0.01 [0.01-0.01]
+traces -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\24c15806-b725-476d-b146-77583a6eaff7\scratchpad\miss\090826-pnb109\example_traces.png
+
+

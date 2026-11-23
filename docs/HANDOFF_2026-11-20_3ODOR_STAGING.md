@@ -7,7 +7,37 @@ overrides the same day (section 1); the 3odor work itself is undecided (section 
 Your job, once Julian says go: settle which of the 71 3odor sessions are run, confirm
 the seed for each, and run the labelled dim experiment if he approves it.
 
-## STATUS 2026-11-21 (read this first; it overrides "open" in sections 3, 5 and 6)
+## STATUS 2026-11-22 (read this first; it overrides the 11-21 block below where they differ)
+
+**Code and records: all on main.** Merged 2026-11-22:
+- PR #4, merge 064da18:
+  - the red guide in review bundles and the movie-mat prune;
+  - `params.py` applying `agent/config/param_overrides.json`;
+  - the stager, the pre-recurate snapshot script and this handoff;
+  - the cohort-5 `LOG.md`;
+  - the pnb106 drop;
+  - the motion-correction handoff and its record folder.
+- PR #5, merge 7acdb36:
+  - the trainer's model history and the duplicate deletes at weight 0;
+  - the vCA1 threshold 0.02 (main still had 0.04 until then);
+  - the `extract_params.m` cache;
+  - `sweep_gsig.py --area`.
+
+The central machine was on `training-program` at 1bb3250, the same tree as main. Still uncommitted: `agent/config/animal_params.json` (the watchers rewrite it) and older untracked eval records under `agent/eval/` (about 520 text files and 230 binary files).
+
+**Reviews** (read-only check of the exchange and D:, 11-22 about 17:50):
+- **Dim run:** the three labelled dim-run sessions of item 5 were pushed to Taylor by the user on 11-21 at about 20:56, red guides included. Taylor now owns 3odor pnb99 FOVA, pnb99 FOVC and pnb102 FOVA (FOV letters are task-scoped). No return yet.
+- **Motion sessions:** 090826-pnb104 and 090826-pnb102 were re-run on the re-registered movies and pushed to Taylor on 11-21 at 20:44-20:46. `red_guide.png` in the outbox is dated 20:44 / 20:45, so the stale 11-02 guide was replaced. No return yet.
+- **6odor batch:** 19 of 28 are labelled. The 9 still with Taylor (pnb104 x4, pnb106 x4, 090826-pnb102) have no return either.
+- **Watchers:** both are heartbeating and idle.
+
+**Run set:** 67 of the 71 3odor sessions are run (item 1). 64 remain to stage: 58 at 0.70 and 6 at 0.60. Among them, 093026-pnb102 and 100926-pnb102 now have re-registered movies. Nothing beyond the three dim-run sessions is staged.
+
+**Next, in order:**
+1. **Taylor's returns.** Run `/ingest-returns`, then the dim-field analysis of item 5: the false auto-reject rate of 0.02 from the `dimrun_2026-11-21/` snapshots, and kept-rate by ceiling band.
+2. **The remaining 64.** The order and the reviewers are Julian's call; deal them in whole FOVs. The 6 dim pnb99 sessions are re-curated at threshold 0 before their push.
+
+## STATUS 2026-11-21 (it overrides "open" in sections 3, 5 and 6)
 
 Julian decided on 2026-11-21 (record: `agent/eval/cohort5_2026-09/LOG.md`, entry of
 that date):
@@ -28,7 +58,7 @@ that date):
    64 (58 at 0.70, 6 at 0.60) since 100826-pnb106 was dropped on 2026-11-22.
    093026-pnb102 and 100926-pnb102 are among them with re-registered movies (11-22).
 
-5. **The labelled run is done and ready to push (11-21 15:29), not pushed.** All three
+5. **The labelled run is done (11-21 15:29); pushed to Taylor 11-21 about 20:56.** All three
    ran at min_corr 0.575 (about 68 min each, no error) and were re-curated at threshold
    0; verified from each `candidate_features.npz`:
 
@@ -43,8 +73,9 @@ that date):
    auto-reject rate of 0.02 on dim fields. After the labels are ingested: that rate,
    and kept-rate by ceiling band with `analysis_2026-11-20/seeding/c8_c9_batch.py`.
 
-Still open: who reviews the three (the push is the operator's; whole-FOV dealing means
-that reviewer also gets the rest of pnb99 FOVA, pnb99 FOVC and pnb102 FOVA), the order
+Still open on 11-21 (the reviewer was settled that evening: Taylor, see the 11-22
+status): who reviews the three (whole-FOV dealing means that reviewer also gets the
+rest of pnb99 FOVA, pnb99 FOVC and pnb102 FOVA), the order
 of the remaining 65, who reviews which FOV, and red guides (question 5 of section 6:
 the retro project has no results for any 3odor day yet; the push hook would build each
 guide from scratch, single images are on the server for these three, hook not run).
@@ -93,7 +124,8 @@ they are not the same cells. Julian knew this when he decided.
   090826-pnb102). 090826-pnb104 and 090826-pnb102 are the "too much motion" sessions;
   Julian is re-registering them and Taylor reviews those two last
   (`docs/HANDOFF_2026-11-20_MOTION_CORRECTION.md`).
-- All of the above is uncommitted on branch `training-program`.
+- All of the above was uncommitted on branch `training-program` on 11-20; it is on
+  main since 2026-11-22 (PR #4 and PR #5).
 
 ## 2. Decisions Julian took on 2026-11-20
 

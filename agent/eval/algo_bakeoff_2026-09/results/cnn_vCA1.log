@@ -1,0 +1,84 @@
+[16:57:20] vCA1/session: control vCA1_session_xgb_deployed_t8.npz: 2068 rows, 483 real; raw for 2011 rows (57 without); bootstrap rows 50370 (6662 weight-0); 24 groups -> 5 folds; device cuda; corpus vCA1_raw_corpus.h5
+[17:07:01]   seed 42 fold 0: train 45157 (agw 5.00, spw 6.51) | best epoch 16 val AUC 0.9704 | test AUC 0.9261 (349 rows) | 580s
+[17:16:16]   seed 42 fold 1: train 44995 (agw 5.00, spw 6.24) | best epoch 15 val AUC 0.9027 | test AUC 0.9341 (512 rows) | 1136s
+[17:27:24]   seed 42 fold 2: train 45134 (agw 5.00, spw 6.38) | best epoch 24 val AUC 0.9425 | test AUC 0.9273 (234 rows) | 1804s
+[17:37:58]   seed 42 fold 3: train 45160 (agw 5.00, spw 6.33) | best epoch 18 val AUC 0.9277 | test AUC 0.9217 (400 rows) | 2437s
+[17:49:03]   seed 42 fold 4: train 44725 (agw 5.00, spw 6.81) | best epoch 20 val AUC 0.9526 | test AUC 0.9325 (516 rows) | 3103s
+[17:49:03]   seed 42: OOF AUC on rows with raw data: full 0.9256 reviewed 0.9256
+[17:53:04]   seed 1 fold 0: train 45027 (agw 5.00, spw 6.45) | best epoch 3 val AUC 0.9195 | test AUC 0.9074 (399 rows) | 3343s
+[17:58:50]   seed 1 fold 1: train 45146 (agw 5.00, spw 6.44) | best epoch 7 val AUC 0.9363 | test AUC 0.8982 (210 rows) | 3690s
+[18:04:38]   seed 1 fold 2: train 45151 (agw 5.00, spw 6.32) | best epoch 7 val AUC 0.9250 | test AUC 0.9635 (234 rows) | 4038s
+[18:08:07]   seed 1 fold 3: train 45086 (agw 5.00, spw 6.33) | best epoch 4 val AUC 0.8701 | test AUC 0.8890 (558 rows) | 4247s
+[18:11:20]   seed 1 fold 4: train 44737 (agw 5.00, spw 6.68) | best epoch 5 val AUC 0.9266 | test AUC 0.9320 (610 rows) | 4440s
+[18:11:20]   seed 1: OOF AUC on rows with raw data: full 0.9074 reviewed 0.9074
+[18:18:39]   seed 7 fold 0: train 45154 (agw 5.00, spw 6.59) | best epoch 22 val AUC 0.9818 | test AUC 0.9241 (374 rows) | 4878s
+[18:23:55]   seed 7 fold 1: train 44808 (agw 5.00, spw 6.57) | best epoch 12 val AUC 0.9444 | test AUC 0.9394 (552 rows) | 5195s
+[18:27:44]   seed 7 fold 2: train 45134 (agw 5.00, spw 6.22) | best epoch 7 val AUC 0.9175 | test AUC 0.9539 (266 rows) | 5424s
+[18:30:04]   seed 7 fold 3: train 45258 (agw 5.00, spw 6.34) | best epoch 2 val AUC 0.8971 | test AUC 0.9132 (299 rows) | 5563s
+[18:33:14]   seed 7 fold 4: train 45017 (agw 5.00, spw 6.44) | best epoch 5 val AUC 0.9267 | test AUC 0.9197 (520 rows) | 5754s
+[18:33:14]   seed 7: OOF AUC on rows with raw data: full 0.9246 reviewed 0.9246
+[18:39:56]   seed 13 fold 0: train 44794 (agw 5.00, spw 6.40) | best epoch 17 val AUC 0.9629 | test AUC 0.9283 (531 rows) | 6155s
+[18:42:49]   seed 13 fold 1: train 45195 (agw 5.00, spw 6.32) | best epoch 4 val AUC 0.9293 | test AUC 0.9151 (326 rows) | 6329s
+[18:50:04]   seed 13 fold 2: train 44875 (agw 5.00, spw 6.51) | best epoch 20 val AUC 0.9352 | test AUC 0.9592 (591 rows) | 6764s
+[18:56:29]   seed 13 fold 3: train 45268 (agw 5.00, spw 6.48) | best epoch 16 val AUC 0.9522 | test AUC 0.8493 (159 rows) | 7149s
+[19:00:52]   seed 13 fold 4: train 45014 (agw 5.00, spw 6.65) | best epoch 9 val AUC 0.9557 | test AUC 0.9263 (404 rows) | 7411s
+[19:00:52]   seed 13: OOF AUC on rows with raw data: full 0.9260 reviewed 0.9260
+[19:06:26]   seed 100 fold 0: train 44955 (agw 5.00, spw 6.46) | best epoch 13 val AUC 0.9271 | test AUC 0.9149 (462 rows) | 7746s
+[19:10:14]   seed 100 fold 1: train 45020 (agw 5.00, spw 6.52) | best epoch 7 val AUC 0.9625 | test AUC 0.9464 (444 rows) | 7973s
+[19:12:53]   seed 100 fold 2: train 45086 (agw 5.00, spw 6.79) | best epoch 3 val AUC 0.9335 | test AUC 0.9181 (218 rows) | 8132s
+[19:16:43]   seed 100 fold 3: train 45123 (agw 5.00, spw 6.49) | best epoch 7 val AUC 0.9146 | test AUC 0.9418 (266 rows) | 8362s
+[19:23:07]   seed 100 fold 4: train 44839 (agw 5.00, spw 6.62) | best epoch 16 val AUC 0.9514 | test AUC 0.9084 (621 rows) | 8746s
+[19:23:07]   seed 100: OOF AUC on rows with raw data: full 0.9177 reviewed 0.9177
+[19:28:55]   seed 2024 fold 0: train 44964 (agw 5.00, spw 6.30) | best epoch 14 val AUC 0.9022 | test AUC 0.9246 (576 rows) | 9095s
+[19:36:13]   seed 2024 fold 1: train 45246 (agw 5.00, spw 6.62) | best epoch 21 val AUC 0.9407 | test AUC 0.9109 (234 rows) | 9533s
+[19:40:03]   seed 2024 fold 2: train 45198 (agw 5.00, spw 6.50) | best epoch 7 val AUC 0.9330 | test AUC 0.9447 (168 rows) | 9763s
+[19:46:28]   seed 2024 fold 3: train 44731 (agw 5.00, spw 6.59) | best epoch 16 val AUC 0.9213 | test AUC 0.9351 (636 rows) | 10148s
+[19:52:56]   seed 2024 fold 4: train 44831 (agw 5.00, spw 6.66) | best epoch 16 val AUC 0.9317 | test AUC 0.9055 (397 rows) | 10536s
+[19:52:56]   seed 2024: OOF AUC on rows with raw data: full 0.9260 reviewed 0.9260
+[19:56:24]   seed 31337 fold 0: train 45238 (agw 5.00, spw 6.47) | best epoch 6 val AUC 0.9442 | test AUC 0.9117 (363 rows) | 10744s
+[20:03:42]   seed 31337 fold 1: train 45053 (agw 5.00, spw 6.51) | best epoch 24 val AUC 0.9736 | test AUC 0.9052 (296 rows) | 11182s
+[20:07:46]   seed 31337 fold 2: train 45398 (agw 5.00, spw 6.32) | best epoch 8 val AUC 0.9258 | test AUC 0.7994 (85 rows) | 11426s
+[20:12:24]   seed 31337 fold 3: train 45012 (agw 5.00, spw 6.53) | best epoch 10 val AUC 0.9127 | test AUC 0.9473 (465 rows) | 11704s
+[20:16:27]   seed 31337 fold 4: train 44639 (agw 5.00, spw 6.53) | best epoch 8 val AUC 0.9403 | test AUC 0.9305 (802 rows) | 11947s
+[20:16:27]   seed 31337: OOF AUC on rows with raw data: full 0.9128 reviewed 0.9128
+[20:22:53]   seed 9 fold 0: train 44758 (agw 5.00, spw 6.63) | best epoch 16 val AUC 0.9297 | test AUC 0.9165 (445 rows) | 12333s
+[20:29:49]   seed 9 fold 1: train 45125 (agw 5.00, spw 6.22) | best epoch 18 val AUC 0.9019 | test AUC 0.9190 (436 rows) | 12749s
+[20:35:40]   seed 9 fold 2: train 44988 (agw 5.00, spw 6.32) | best epoch 14 val AUC 0.9250 | test AUC 0.9394 (317 rows) | 13100s
+[20:38:34]   seed 9 fold 3: train 45070 (agw 5.00, spw 6.63) | best epoch 4 val AUC 0.9533 | test AUC 0.9279 (392 rows) | 13273s
+[20:42:03]   seed 9 fold 4: train 45037 (agw 5.00, spw 6.50) | best epoch 6 val AUC 0.9080 | test AUC 0.9332 (421 rows) | 13483s
+[20:42:03]   seed 9: OOF AUC on rows with raw data: full 0.9237 reviewed 0.9237
+[20:42:03] wrote vCA1_session_cnn_t8.npz/.json (13483s)
+[20:42:04] vCA1/animal: control vCA1_animal_xgb_deployed_t8.npz: 2068 rows, 483 real; raw for 2011 rows (57 without); bootstrap rows 50370 (6662 weight-0); 3 groups -> 3 folds; device cuda; corpus vCA1_raw_corpus.h5
+[20:44:21]   seed 42 fold 0: train 44475 (agw 5.00, spw 6.36) | best epoch 2 val AUC 0.8690 | test AUC 0.9088 (1200 rows) | 137s
+[20:47:33]   seed 42 fold 1: train 45127 (agw 5.00, spw 6.53) | best epoch 5 val AUC 0.9360 | test AUC 0.7942 (328 rows) | 329s
+[20:50:44]   seed 42 fold 2: train 44989 (agw 5.00, spw 6.79) | best epoch 5 val AUC 0.9137 | test AUC 0.9438 (483 rows) | 520s
+[20:50:44]   seed 42: OOF AUC on rows with raw data: full 0.8924 reviewed 0.8924
+[20:55:56]   seed 1 fold 0: train 45018 (agw 5.00, spw 6.73) | best epoch 12 val AUC 0.9064 | test AUC 0.9453 (483 rows) | 832s
+[21:00:17]   seed 1 fold 1: train 45181 (agw 5.00, spw 6.65) | best epoch 9 val AUC 0.9444 | test AUC 0.8058 (328 rows) | 1093s
+[21:05:06]   seed 1 fold 2: train 44492 (agw 5.00, spw 6.35) | best epoch 11 val AUC 0.8176 | test AUC 0.9185 (1200 rows) | 1382s
+[21:05:06]   seed 1: OOF AUC on rows with raw data: full 0.9013 reviewed 0.9013
+[21:07:40]   seed 7 fold 0: train 44486 (agw 5.00, spw 6.32) | best epoch 3 val AUC 0.9630 | test AUC 0.9121 (1200 rows) | 1536s
+[21:14:36]   seed 7 fold 1: train 44982 (agw 5.00, spw 6.78) | best epoch 18 val AUC 0.9510 | test AUC 0.9497 (483 rows) | 1952s
+[21:17:30]   seed 7 fold 2: train 45132 (agw 5.00, spw 6.52) | best epoch 4 val AUC 0.8903 | test AUC 0.8343 (328 rows) | 2126s
+[21:17:30]   seed 7: OOF AUC on rows with raw data: full 0.9143 reviewed 0.9143
+[21:20:25]   seed 13 fold 0: train 45127 (agw 5.00, spw 6.53) | best epoch 4 val AUC 0.9442 | test AUC 0.8148 (328 rows) | 2301s
+[21:22:59]   seed 13 fold 1: train 44499 (agw 5.00, spw 6.32) | best epoch 3 val AUC 0.9067 | test AUC 0.9144 (1200 rows) | 2455s
+[21:26:44]   seed 13 fold 2: train 45022 (agw 5.00, spw 6.77) | best epoch 7 val AUC 0.9291 | test AUC 0.9470 (483 rows) | 2680s
+[21:26:44]   seed 13: OOF AUC on rows with raw data: full 0.8948 reviewed 0.8948
+[21:33:59]   seed 100 fold 0: train 45113 (agw 5.00, spw 6.51) | best epoch 24 val AUC 0.9405 | test AUC 0.8332 (328 rows) | 3116s
+[21:40:41]   seed 100 fold 1: train 44864 (agw 5.00, spw 6.79) | best epoch 17 val AUC 0.9110 | test AUC 0.9408 (483 rows) | 3518s
+[21:42:42]   seed 100 fold 2: train 44477 (agw 5.00, spw 6.40) | best epoch 1 val AUC 0.8977 | test AUC 0.9021 (1200 rows) | 3638s
+[21:42:42]   seed 100: OOF AUC on rows with raw data: full 0.8798 reviewed 0.8798
+[21:46:29]   seed 2024 fold 0: train 45149 (agw 5.00, spw 6.46) | best epoch 7 val AUC 0.9538 | test AUC 0.7751 (328 rows) | 3865s
+[21:51:09]   seed 2024 fold 1: train 44842 (agw 5.00, spw 6.75) | best epoch 10 val AUC 0.8896 | test AUC 0.9461 (483 rows) | 4145s
+[21:54:51]   seed 2024 fold 2: train 44494 (agw 5.00, spw 6.33) | best epoch 7 val AUC 0.9298 | test AUC 0.9253 (1200 rows) | 4367s
+[21:54:51]   seed 2024: OOF AUC on rows with raw data: full 0.8758 reviewed 0.8758
+[21:58:49]   seed 31337 fold 0: train 44476 (agw 5.00, spw 6.32) | best epoch 8 val AUC 0.9722 | test AUC 0.9247 (1200 rows) | 4605s
+[22:03:45]   seed 31337 fold 1: train 45112 (agw 5.00, spw 6.52) | best epoch 11 val AUC 0.9500 | test AUC 0.7970 (328 rows) | 4902s
+[22:07:33]   seed 31337 fold 2: train 45057 (agw 5.00, spw 6.69) | best epoch 7 val AUC 0.8892 | test AUC 0.9403 (483 rows) | 5129s
+[22:07:33]   seed 31337: OOF AUC on rows with raw data: full 0.9101 reviewed 0.9101
+[22:10:45]   seed 9 fold 0: train 45117 (agw 5.00, spw 6.48) | best epoch 5 val AUC 0.9200 | test AUC 0.8173 (328 rows) | 5321s
+[22:16:42]   seed 9 fold 1: train 44421 (agw 5.00, spw 6.58) | best epoch 15 val AUC 0.9635 | test AUC 0.9272 (1200 rows) | 5678s
+[22:21:21]   seed 9 fold 2: train 44889 (agw 5.00, spw 6.71) | best epoch 10 val AUC 0.8977 | test AUC 0.9236 (483 rows) | 5957s
+[22:21:21]   seed 9: OOF AUC on rows with raw data: full 0.8752 reviewed 0.8752
+[22:21:21] wrote vCA1_animal_cnn_t8.npz/.json (5957s)

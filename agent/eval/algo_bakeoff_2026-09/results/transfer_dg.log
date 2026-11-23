@@ -1,0 +1,7 @@
+[16:57:21] train rows 98213 (11016 real; BLA agw 4.00, vCA1 agw 5.00); DG_AL rows 2025 (1028 real) from 17 sessions; device cuda
+[17:21:01]   seed 42: train 72623 val 14434 | best epoch 24 val AUC 0.9520 | DG_AL AUC 0.7919 | 1420s
+[17:44:01]   seed 1: train 73731 val 13326 | best epoch 21 val AUC 0.9421 | DG_AL AUC 0.7918 | 2800s
+[18:06:19]   seed 7: train 72356 val 14701 | best epoch 24 val AUC 0.9561 | DG_AL AUC 0.7960 | 4138s
+[18:06:19]   vs own-model (session-grouped OOF, 2025 rows): own 0.9002 | transfer CNN 0.7933 | rank blend 0.8863 (-0.0138)
+[18:06:19]   vs own-model (animal-grouped OOF, 2025 rows): own 0.8638 | transfer CNN 0.7933 | rank blend 0.8674 (+0.0036)
+[18:06:19] transfer AUC on DG_AL (all 17 sessions, 2025 rows): 0.7933 per animal {np.str_('DG6D'): 0.7921899038481243, np.str_('DG6E'): 0.7919159595378494}; wrote DG_AL_transfer_cnn.npz/.json

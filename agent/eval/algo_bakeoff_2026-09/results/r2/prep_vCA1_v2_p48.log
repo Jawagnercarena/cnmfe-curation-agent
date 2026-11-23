@@ -1,0 +1,18 @@
+[14:49:41] vCA1: output D:\Julian_CNMFe\vCA1\.feature_expansion\_raw_corpus\vCA1_raw_corpus_v2_p48.h5 (patch 48)
+[14:49:41] vCA1: pool matches snapshot pool_vCA1.json (142 labeled sessions)
+[14:49:46]   10/142 sessions, 334 rows, 5s
+[14:49:51]   20/142 sessions, 677 rows, 10s
+[14:50:18]   30/142 sessions, 4298 rows, 37s
+[14:50:47]   40/142 sessions, 8624 rows, 66s
+[14:51:10]   50/142 sessions, 10995 rows, 89s
+[14:51:34]   60/142 sessions, 14711 rows, 113s
+[14:52:01]   70/142 sessions, 19160 rows, 140s
+[14:52:18]   80/142 sessions, 21986 rows, 157s
+[14:52:43]   90/142 sessions, 26210 rows, 182s
+[14:53:14]   100/142 sessions, 31326 rows, 213s
+[14:53:40]   110/142 sessions, 35521 rows, 239s
+[14:54:17]   120/142 sessions, 41180 rows, 276s
+[14:54:42]   130/142 sessions, 45684 rows, 301s
+[14:55:20]   140/142 sessions, 51670 rows, 339s
+[14:55:25]   142/142 sessions, 52544 rows, 344s
+[14:55:29] vCA1/v2_p48: 52544 rows (52406 with a neighbour; corr quartiles [0.36371229588985443, 0.4831376373767853, 0.5857018232345581]), 142 sessions, 348s -> D:\Julian_CNMFe\vCA1\.feature_expansion\_raw_corpus\vCA1_raw_corpus_v2_p48.h5

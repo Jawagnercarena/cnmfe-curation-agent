@@ -1,0 +1,90 @@
+{
+ "session": "AVG5x-TSeries-082726-pnb109-405um-25z-000",
+ "arm": "gSig11",
+ "model": "C:\\code\\CNMF_E_LEGACY_BIANE_CLAUDE\\agent\\model\\vCA1\\classifier.joblib",
+ "unmatched": [
+  {
+   "cand": 25,
+   "first_pass": 0.015491542406380177,
+   "best_cos": 0.017830499058789275,
+   "area": 1010.0,
+   "circularity": 0.14997676323050707,
+   "peak_snr": 15.394906743140774,
+   "skewness": 1.0633703297061974,
+   "cn_correlation": 0.7350369831693871
+  },
+  {
+   "cand": 29,
+   "first_pass": 0.019508149474859238,
+   "best_cos": 0.09968625270668494,
+   "area": 812.0,
+   "circularity": 0.2648769844243402,
+   "peak_snr": 10.047364474892419,
+   "skewness": 0.3522845338890139,
+   "cn_correlation": 0.7855108282103399
+  },
+  {
+   "cand": 57,
+   "first_pass": 0.0021185341756790876,
+   "best_cos": 0.0,
+   "area": 1626.0,
+   "circularity": 0.10818702729551978,
+   "peak_snr": 8.15801671894269,
+   "skewness": 0.12748633856000952,
+   "cn_correlation": 0.019169049079276402
+  },
+  {
+   "cand": 62,
+   "first_pass": 0.09668111056089401,
+   "best_cos": 0.0,
+   "area": 819.0,
+   "circularity": 0.4340254531513729,
+   "peak_snr": 26.629912512202793,
+   "skewness": 2.56133464921441,
+   "cn_correlation": 0.35045321756901926
+  }
+ ],
+ "groups": {
+  "arm unmatched": {
+   "n": 4,
+   "first_pass": 0.01749984547495842,
+   "first_pass_frac_ge_0.02": 0.25,
+   "area": 914.5,
+   "circularity": 0.20742687382742364,
+   "peak_snr": 12.721135609016596,
+   "skewness": 0.7078274317976057,
+   "cn_correlation": 0.5427451003692032
+  },
+  "arm matched": {
+   "n": 58,
+   "first_pass": 0.15670694410800934,
+   "first_pass_frac_ge_0.02": 0.8448275862068966,
+   "area": 571.5,
+   "circularity": 0.3073939717195985,
+   "peak_snr": 21.042097425648905,
+   "skewness": 1.472432298494994,
+   "cn_correlation": 0.648846361960373
+  },
+  "live all": {
+   "n": 70,
+   "first_pass": 0.15697187185287476,
+   "first_pass_frac_ge_0.02": 0.8,
+   "area": 530.0,
+   "circularity": 0.321769745701842,
+   "peak_snr": 20.250300828158302,
+   "skewness": 1.4096682979481923,
+   "cn_correlation": 0.6904144917295075
+  },
+  "live not auto-rejected": {
+   "n": 70,
+   "first_pass": 0.15697187185287476,
+   "first_pass_frac_ge_0.02": 0.8,
+   "area": 530.0,
+   "circularity": 0.321769745701842,
+   "peak_snr": 20.250300828158302,
+   "skewness": 1.4096682979481923,
+   "cn_correlation": 0.6904144917295075
+  },
+  "live auto-rejected": {}
+ }
+}

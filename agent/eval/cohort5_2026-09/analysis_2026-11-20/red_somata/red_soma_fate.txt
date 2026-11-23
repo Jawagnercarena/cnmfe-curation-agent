@@ -1,0 +1,243 @@
+models: curating 10-28 n_sessions 177 T 0.01 | prepilot n_sessions 161 T 0.02
+rule: candidate ON a red soma = mask (>= 0.3 x max) covers >= 30% of the 7-px-radius disk (149 px) at a red_blobs.csv centre with bleed_flag False; disks crossing the edge not assessed.
+sessions found 40: labelled 09xx 19, pilots 12, still out 9; skipped 0
+
+== 0. inputs per session ==
+  082626-pnb102-479um-3z-000     Taylor  N 215 auto   0 | blobs 13 bleed-flagged 1 edge 1 assessed 11 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082626-pnb104-404um-3z-000     Taylor  N 176 auto   0 | blobs 27 bleed-flagged 0 edge 0 assessed 27 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082626-pnb105-397um-35z-000    Taylor  N 266 auto   0 | blobs 10 bleed-flagged 0 edge 0 assessed 10 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082626-pnb106-205um-4z-000     Taylor  N 228 auto   0 | blobs  4 bleed-flagged 0 edge 0 assessed  4 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082626-pnb109-398um-26z-000    Taylor  N 196 auto   0 | blobs 20 bleed-flagged 2 edge 0 assessed 18 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082626-pnb99-399um-3z-000      Taylor  N  81 auto   0 | blobs 21 bleed-flagged 0 edge 0 assessed 21 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082726-pnb102-497um-3z-000     Taylor  N 239 auto   0 | blobs 14 bleed-flagged 0 edge 0 assessed 14 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082726-pnb104-416um-3z-000     Taylor  N 170 auto   0 | blobs 19 bleed-flagged 0 edge 0 assessed 19 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082726-pnb105-391um-35z-000    Taylor  N 169 auto   0 | blobs 12 bleed-flagged 0 edge 0 assessed 12 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082726-pnb106-201um-4z-000     Taylor  N 184 auto   0 | blobs 23 bleed-flagged 0 edge 0 assessed 23 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082726-pnb109-405um-25z-000    Taylor  N 205 auto   0 | blobs 17 bleed-flagged 2 edge 0 assessed 15 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  082826-pnb99-436um-3z-000-000  Taylor  N 198 auto   0 | blobs 35 bleed-flagged 0 edge 0 assessed 35 | pilot: red_blobs.csv of 10-28 (positions in the session-mean frame; no candidates_shown to compare) | 
+  090526-pnb102-627um-28z-000    Taylor  N 244 auto  68 | blobs  9 bleed-flagged 0 edge 0 assessed  9 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 106829 set) | curating model reproduces auto-rejects: yes
+  090526-pnb105-520um-32z-000    Yawen   N 168 auto  57 | blobs 10 bleed-flagged 0 edge 0 assessed 10 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 50317 set) | curating model reproduces auto-rejects: yes
+  090526-pnb106-180um-4z-000     -       N 135 auto  46 | blobs 13 bleed-flagged 1 edge 0 assessed 12 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 46688 set) | 
+  090526-pnb109-505um-26z-000    Taylor  N 247 auto  51 | blobs 14 bleed-flagged 0 edge 0 assessed 14 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 82321 set) | curating model reproduces auto-rejects: yes
+  090526-pnb99-330um-3z-000      Taylor  N  76 auto  18 | blobs 31 bleed-flagged 0 edge 0 assessed 31 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 26246 set) | curating model reproduces auto-rejects: yes
+  090626-pnb102-407um-3z-000     Taylor  N 192 auto  29 | blobs  6 bleed-flagged 0 edge 0 assessed  6 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 104081 set) | curating model reproduces auto-rejects: yes
+  090626-pnb105-472um-3z-000     Yawen   N 229 auto  71 | blobs 30 bleed-flagged 0 edge 0 assessed 30 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 61530 set) | curating model reproduces auto-rejects: yes
+  090626-pnb106-212um-4z-000     -       N 205 auto  72 | blobs 17 bleed-flagged 0 edge 0 assessed 17 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 62190 set) | 
+  090626-pnb109-324um-26z-000    Taylor  N 164 auto  28 | blobs 17 bleed-flagged 0 edge 0 assessed 17 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 56127 set) | curating model reproduces auto-rejects: yes
+  090626-pnb99-459um-3z-000      Taylor  N 213 auto  54 | blobs 26 bleed-flagged 0 edge 0 assessed 26 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 71508 set) | curating model reproduces auto-rejects: yes
+  090726-pnb102-494um-3z-000     Taylor  N 262 auto  72 | blobs  9 bleed-flagged 0 edge 0 assessed  9 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 132759 set) | curating model reproduces auto-rejects: yes
+  090726-pnb104-503um-3z-000     -       N 235 auto  73 | blobs 16 bleed-flagged 0 edge 0 assessed 16 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 121659 set) | 
+  090726-pnb105-404um-35z-000    Yawen   N 372 auto 126 | blobs 24 bleed-flagged 0 edge 0 assessed 24 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 109938 set) | curating model reproduces auto-rejects: yes
+  090726-pnb109-398um-25z-000    Taylor  N 184 auto  34 | blobs 21 bleed-flagged 0 edge 0 assessed 21 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 55897 set) | curating model reproduces auto-rejects: yes
+  090826-pnb102-497um-3z-000     -       N 333 auto 100 | blobs  6 bleed-flagged 0 edge 0 assessed  6 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 204459 set) | 
+  090826-pnb104-425um-3z-000     -       N 276 auto  92 | blobs 16 bleed-flagged 1 edge 0 assessed 15 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 113395 set) | 
+  090826-pnb105-385um-35z-000    Yawen   N 351 auto 111 | blobs 26 bleed-flagged 0 edge 0 assessed 26 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 108126 set) | curating model reproduces auto-rejects: yes
+  090826-pnb106-209um-4z-000     -       N 250 auto  92 | blobs 18 bleed-flagged 1 edge 0 assessed 17 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 68644 set) | 
+  090826-pnb109-412um-25z-000    Taylor  N 236 auto  35 | blobs 18 bleed-flagged 0 edge 0 assessed 18 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 83191 set) | curating model reproduces auto-rejects: yes
+  090826-pnb99-463um-3z-000      Taylor  N 199 auto  32 | blobs 30 bleed-flagged 0 edge 0 assessed 30 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 76875 set) | curating model reproduces auto-rejects: yes
+  090926-pnb102-490um-3z-000     Taylor  N 225 auto  41 | blobs  5 bleed-flagged 0 edge 0 assessed  5 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 121906 set) | curating model reproduces auto-rejects: yes
+  090926-pnb104-492um-3z-000     -       N 213 auto  43 | blobs 12 bleed-flagged 0 edge 0 assessed 12 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 117120 set) | 
+  090926-pnb105-394um-35z-000    Yawen   N 348 auto  89 | blobs 30 bleed-flagged 0 edge 0 assessed 30 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 120343 set) | curating model reproduces auto-rejects: yes
+  090926-pnb106-230um-4z-000     -       N 315 auto 119 | blobs 17 bleed-flagged 1 edge 0 assessed 16 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 90377 set) | 
+  090926-pnb109-385um-25z-000    Taylor  N 211 auto  40 | blobs 20 bleed-flagged 0 edge 1 assessed 19 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 66361 set) | curating model reproduces auto-rejects: yes
+  090926-pnb99-463um-3z-000      Taylor  N 229 auto  51 | blobs 33 bleed-flagged 0 edge 0 assessed 33 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 82983 set) | curating model reproduces auto-rejects: yes
+  091026-pnb104-485um-3z-000     -       N 275 auto  75 | blobs 11 bleed-flagged 1 edge 0 assessed 10 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 139681 set) | 
+  091026-pnb105-353um-35z-000    Yawen   N 304 auto  86 | blobs 22 bleed-flagged 0 edge 0 assessed 22 | guide N/auto match; shown masks vs .pre_ingest masks differ in 0 px (of 108610 set) | curating model reproduces auto-rejects: yes
+
+== 1. fate of the red somata (soma level) ==
+   KEPT = a candidate on it was kept; DELETED = reviewed, none kept; AUTO = only auto-rejected candidates;
+   NONE = no candidate. dup = DELETED somata whose reviewed candidates are ALL second copies of a kept cell
+   (support IoU >= 0.5 with a kept candidate); mot = DELETED somata with a motion-tagged candidate.
+   session                        review   red  KEPT   DEL  AUTO  NONE |  dup  mot | reviewed     kept
+   090526-pnb102-627um-28z-000    Taylor     9     2     3     0     4 |    0    0 |      56%      22%
+   090626-pnb102-407um-3z-000     Taylor     6     2     2     0     2 |    0    0 |      67%      33%
+   090726-pnb102-494um-3z-000     Taylor     9     5     1     0     3 |    0    1 |      67%      56%
+   090926-pnb102-490um-3z-000     Taylor     5     2     0     1     2 |    0    0 |      40%      40%
+   090526-pnb105-520um-32z-000    Yawen     10     2     1     2     5 |    0    0 |      30%      20%
+   090626-pnb105-472um-3z-000     Yawen     30     6    12     5     7 |    0    0 |      60%      20%
+   090726-pnb105-404um-35z-000    Yawen     24     4     8     2    10 |    1    0 |      50%      17%
+   090826-pnb105-385um-35z-000    Yawen     26     4     9     5     8 |    0    0 |      50%      15%
+   090926-pnb105-394um-35z-000    Yawen     30    11    11     2     6 |    1    0 |      73%      37%
+   091026-pnb105-353um-35z-000    Yawen     22     5     4     1    12 |    0    0 |      41%      23%
+   090526-pnb109-505um-26z-000    Taylor    14     2     8     3     1 |    0    0 |      71%      14%
+   090626-pnb109-324um-26z-000    Taylor    17     9     1     2     5 |    0    0 |      59%      53%
+   090726-pnb109-398um-25z-000    Taylor    21     6     3     1    11 |    0    0 |      43%      29%
+   090826-pnb109-412um-25z-000    Taylor    18     5     3     3     7 |    0    0 |      44%      28%
+   090926-pnb109-385um-25z-000    Taylor    19     6     7     0     6 |    0    0 |      68%      32%
+   090526-pnb99-330um-3z-000      Taylor    31     0     3     1    27 |    0    0 |      10%       0%
+   090626-pnb99-459um-3z-000      Taylor    26     6     6     2    12 |    1    0 |      46%      23%
+   090826-pnb99-463um-3z-000      Taylor    30     1    12     2    15 |    0    0 |      43%       3%
+   090926-pnb99-463um-3z-000      Taylor    33     7    12     0    14 |    1    0 |      58%      21%
+   pooled by animal (labelled 09xx):
+   pnb102                                   29    11     6     1    11 |    0    1 |      59%      38%
+   pnb105                                  142    32    45    17    48 |    2    0 |      54%      23%
+   pnb109                                   89    28    22     9    30 |    0    0 |      56%      31%
+   pnb99                                   120    14    33     5    68 |    2    0 |      39%      12%
+   ALL 19 labelled 09xx                    380    85   106    32   157 |    4    1 |      50%      22%
+     Taylor 13                             238    53    61    15   109 |    2    1 |      48%      22%
+     Yawen 6                               142    32    45    17    48 |    2    0 |      54%      23%
+   pilots (threshold 0: every candidate reviewed, so AUTO is empty by construction):
+   082626-pnb102-479um-3z-000     Taylor    11     4     3     0     4 |    0    0 |      64%      36%
+   082726-pnb102-497um-3z-000     Taylor    14     5     4     0     5 |    0    0 |      64%      36%
+   082626-pnb104-404um-3z-000     Taylor    27     1    13     0    13 |    0    1 |      52%       4%
+   082726-pnb104-416um-3z-000     Taylor    19     3     7     0     9 |    0    0 |      53%      16%
+   082626-pnb105-397um-35z-000    Taylor    10     2     8     0     0 |    0    1 |     100%      20%
+   082726-pnb105-391um-35z-000    Taylor    12     3     4     0     5 |    0    0 |      58%      25%
+   082626-pnb106-205um-4z-000     Taylor     4     0     2     0     2 |    0    0 |      50%       0%
+   082726-pnb106-201um-4z-000     Taylor    23     0    11     0    12 |    0    0 |      48%       0%
+   082626-pnb109-398um-26z-000    Taylor    18     3     6     0     9 |    0    0 |      50%      17%
+   082726-pnb109-405um-25z-000    Taylor    15     3     6     0     6 |    0    0 |      60%      20%
+   082626-pnb99-399um-3z-000      Taylor    21     3     2     0    16 |    0    0 |      24%      14%
+   082826-pnb99-436um-3z-000-000  Taylor    35     2    12     0    21 |    0    1 |      40%       6%
+   ALL 12 pilots                           209    29    78     0   102 |    0    3 |      51%      14%
+     pilots pnb102                          25     9     7     0     9 |    0    0 |      64%      36%
+     pilots pnb104                          46     4    20     0    22 |    0    1 |      52%       9%
+     pilots pnb105                          22     5    12     0     5 |    0    1 |      77%      23%
+     pilots pnb106                          27     0    13     0    14 |    0    0 |      48%       0%
+     pilots pnb109                          33     6    12     0    15 |    0    0 |      55%      18%
+     pilots pnb99                           56     5    14     0    37 |    0    1 |      34%       9%
+
+== 1b. how specific is the matching rule? ==
+   centre rule (red centre pixel inside the mask) and two control positions per soma in the same field
+   (transposed = (col, row); rotated = 180 degrees). A control lands on a candidate by chance, so the
+   control rows are the chance level of each column under the disk rule.
+   19 labelled 09xx, red somata, disk rule      n 380: KEPT  85 (22%)  DELETED 106 (28%)  AUTO  32 ( 8%)  NONE 157 (41%)
+   19 labelled 09xx, red somata, centre rule    n 380: KEPT  70 (18%)  DELETED  89 (23%)  AUTO  27 ( 7%)  NONE 194 (51%)
+   19 labelled 09xx, control transposed, disk rule n 380: KEPT  78 (21%)  DELETED 100 (26%)  AUTO  19 ( 5%)  NONE 183 (48%)
+   19 labelled 09xx, control rotated 180, disk rule n 380: KEPT  37 (10%)  DELETED  82 (22%)  AUTO  25 ( 7%)  NONE 236 (62%)
+   12 pilots, red somata, disk rule             n 209: KEPT  29 (14%)  DELETED  78 (37%)  AUTO   0 ( 0%)  NONE 102 (49%)
+   12 pilots, red somata, centre rule           n 209: KEPT  27 (13%)  DELETED  66 (32%)  AUTO   0 ( 0%)  NONE 116 (56%)
+   12 pilots, control transposed, disk rule     n 209: KEPT  26 (12%)  DELETED  77 (37%)  AUTO   0 ( 0%)  NONE 106 (51%)
+   12 pilots, control rotated 180, disk rule    n 209: KEPT  35 (17%)  DELETED  80 (38%)  AUTO   0 ( 0%)  NONE  94 (45%)
+
+== 4. share of red somata reaching the reviewer; comparison with the 11-04 measurement ==
+   11-04 (memory note, 28 Taylor sessions, 502 red somata; script not in the repo): 50% reach the reviewer,
+   38% no candidate, 12% auto-rejected.
+   19 labelled 09xx                   red somata 380: reach reviewer 191/380 (50%), auto-rejected only 32/380 (8%), no candidate 157/380 (41%)
+   9 still out (unlabelled)           red somata 121: reach reviewer 73/121 (60%), auto-rejected only 17/121 (14%), no candidate 31/121 (26%)
+   all 28 of the batch                red somata 501: reach reviewer 264/501 (53%), auto-rejected only 49/501 (10%), no candidate 188/501 (38%)
+     pnb102 (all its 09xx)            red somata  35: reach reviewer 22/35 (63%), auto-rejected only 1/35 (3%), no candidate 12/35 (34%)
+     pnb104 (all its 09xx)            red somata  53: reach reviewer 33/53 (62%), auto-rejected only 8/53 (15%), no candidate 12/53 (23%)
+     pnb105 (all its 09xx)            red somata 142: reach reviewer 77/142 (54%), auto-rejected only 17/142 (12%), no candidate 48/142 (34%)
+     pnb106 (all its 09xx)            red somata  62: reach reviewer 35/62 (56%), auto-rejected only 9/62 (15%), no candidate 18/62 (29%)
+     pnb109 (all its 09xx)            red somata  89: reach reviewer 50/89 (56%), auto-rejected only 9/89 (10%), no candidate 30/89 (34%)
+     pnb99 (all its 09xx)             red somata 120: reach reviewer 47/120 (39%), auto-rejected only 5/120 (4%), no candidate 68/120 (57%)
+   12 pilots (threshold 0)            red somata 209: reach reviewer 107/209 (51%), auto-rejected only 0/209 (0%), no candidate 102/209 (49%)
+   final set, 19 labelled: 85/380 (22%) of the red somata have a KEPT candidate; of those shown to the reviewer 85/191 (45%).
+
+== 2. the exemption: red-overlapping candidates that were auto-rejected at 0.01 ==
+   session                         rev  auto | cand exempt disk (11-04) centre (11-04) | somata AUTO-only | cur scores of exempt candidates
+   090526-pnb102-627um-28z-000     176    68 |   2 (2)   0 (0) |   0 | 0.0014 0.0030
+   090626-pnb102-407um-3z-000      163    29 |   1 (1)   0 (0) |   0 | 0.0018
+   090726-pnb102-494um-3z-000      190    72 |   7 (7)   3 (3) |   0 | 0.0003 0.0004 0.0011 0.0022 0.0030 0.0047 0.0076
+   090826-pnb102-497um-3z-000      233   100 |   6 (6)   3 (3) |   0 | 0.0034 0.0048 0.0050 0.0061 0.0081 0.0082   [still out]
+   090926-pnb102-490um-3z-000      184    41 |   1 (1)   1 (1) |   1 | 0.0017
+   090726-pnb104-503um-3z-000      162    73 |   6 (6)   6 (6) |   4 | 0.0028 0.0028 0.0031 0.0037 0.0063 0.0091   [still out]
+   090826-pnb104-425um-3z-000      184    92 |   8 (8)   5 (5) |   3 | 0.0008 0.0009 0.0013 0.0034 0.0034 0.0071 0.0080 0.0081   [still out]
+   090926-pnb104-492um-3z-000      170    43 |   1 (1)   1 (1) |   0 | 0.0049   [still out]
+   091026-pnb104-485um-3z-000      200    75 |   4 (4)   3 (3) |   1 | 0.0007 0.0044 0.0059 0.0086   [still out]
+   090526-pnb105-520um-32z-000     111    57 |   4 (4)   5 (5) |   2 | 0.0009 0.0029 0.0054 0.0069
+   090626-pnb105-472um-3z-000      158    71 |   6 (6)   3 (3) |   5 | 0.0016 0.0017 0.0031 0.0084 0.0093 0.0095
+   090726-pnb105-404um-35z-000     246   126 |   4 (4)   3 (3) |   2 | 0.0015 0.0017 0.0021 0.0033
+   090826-pnb105-385um-35z-000     240   111 |  10 (10)   5 (5) |   5 | 0.0015 0.0017 0.0018 0.0026 0.0034 0.0037 0.0043 0.0053 0.0071 0.0077
+   090926-pnb105-394um-35z-000     259    89 |   8 (8)   8 (8) |   2 | 0.0014 0.0027 0.0029 0.0034 0.0049 0.0071 0.0083 0.0093
+   091026-pnb105-353um-35z-000     218    86 |   2 (2)   2 (2) |   1 | 0.0050 0.0076
+   090526-pnb106-180um-4z-000       89    46 |   5 (5)   4 (4) |   2 | 0.0005 0.0006 0.0023 0.0026 0.0057   [still out]
+   090626-pnb106-212um-4z-000      133    72 |   6 (6)   5 (5) |   3 | 0.0020 0.0021 0.0023 0.0029 0.0048 0.0097   [still out]
+   090826-pnb106-209um-4z-000      158    92 |   4 (4)   3 (3) |   3 | 0.0018 0.0018 0.0033 0.0061   [still out]
+   090926-pnb106-230um-4z-000      196   119 |   3 (3)   3 (3) |   1 | 0.0017 0.0030 0.0050   [still out]
+   090526-pnb109-505um-26z-000     196    51 |   3 (3)   2 (2) |   3 | 0.0008 0.0080 0.0099
+   090626-pnb109-324um-26z-000     136    28 |   3 (3)   2 (2) |   2 | 0.0013 0.0041 0.0044
+   090726-pnb109-398um-25z-000     150    34 |   4 (4)   3 (3) |   1 | 0.0007 0.0013 0.0040 0.0071
+   090826-pnb109-412um-25z-000     201    35 |   4 (4)   3 (3) |   3 | 0.0009 0.0035 0.0051 0.0098
+   090926-pnb109-385um-25z-000     171    40 |   0 (0)   0 (0) |   0 | 
+   090526-pnb99-330um-3z-000        58    18 |   1 (1)   2 (2) |   1 | 0.0026
+   090626-pnb99-459um-3z-000       159    54 |   4 (4)   4 (4) |   2 | 0.0008 0.0024 0.0067 0.0067
+   090826-pnb99-463um-3z-000       167    32 |   3 (3)   1 (1) |   2 | 0.0016 0.0065 0.0081
+   090926-pnb99-463um-3z-000       178    51 |   1 (1)   1 (1) |   0 | 0.0059
+   19 labelled: exempt candidates 68 (11-04 record for the same sessions: 68), centre rule 48 (48); = +2.0% on 3361 reviewed; red somata with ONLY auto-rejected candidates: 32
+   curating-model score of the 68 exempt candidates: median 0.0033, IQR 0.0017-0.0067, max 0.0099; < 0.001: 7, 0.001-0.003: 25, 0.003-0.005: 13, 0.005-0.01: 23
+   the 32 AUTO-only somata, best curating score among their candidates: median 0.0033, range 0.0007-0.0099; by animal: pnb102 1, pnb105 17, pnb109 9, pnb99 5
+
+   proxy A (measured, 19 labelled sessions, curating scores): reviewer keep rate of candidates just ABOVE the
+   threshold, red vs not red. Nothing below 0.01 was reviewed in these sessions.
+   all reviewed candidates:
+                    0.01-0.02       0.02-0.05       0.05-0.20
+   red            0/  31   0%     3/  35   9%     8/  67  12%
+   not red        3/ 337   1%    11/ 509   2%    55/ 671   8%
+   duplicates of a kept cell removed:
+                    0.01-0.02       0.02-0.05       0.05-0.20
+   red            0/  31   0%     3/  34   9%     8/  62  13%
+   not red        3/ 325   1%    11/ 489   2%    55/ 603   9%
+   band 0.01-0.05: red kept 3/66 (5%), not red kept 14/846 (2%), Fisher p 0.119
+   band 0.01-0.02: red kept 0/31 (0%), not red kept 3/337 (1%), Fisher p 1
+
+   proxy B (measured, 12 pilots at threshold 0, PREPILOT scores = out of sample; every candidate has a label):
+   prepilot score < 0.01: red-overlapping kept 1/54 (2%), not red kept 4/677 (1%), Fisher p 0.319
+   prepilot score < 0.02: red-overlapping kept 2/78 (3%), not red kept 11/943 (1%), Fisher p 0.261
+   soma level, pilots: red somata whose candidates ALL score < 0.01 (prepilot): 27; KEPT 0, DELETED 27
+   soma level, pilots: red somata with any candidate 107; KEPT 29, DELETED 78
+
+== 3. at the same model score, is a red-overlapping candidate kept more often? (reviewed candidates) ==
+   19 labelled: reviewed 3361, kept 926; red-overlapping reviewed 304, kept 90 (30% vs 27% of the rest); duplicates of a kept cell 441, of which red-overlapping 49
+   19 labelled 09xx, curating scores, all reviewed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/  31   0%     3/  35   9%     8/  67  12%    13/  56  23%    13/  51  25%    53/  64  83%
+   not red        3/ 337   1%    11/ 509   2%    55/ 671   8%   104/ 482  22%   192/ 449  43%   471/ 609  77%
+   19 labelled 09xx, duplicates of a kept cell removed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/  31   0%     3/  34   9%     8/  62  13%    13/  45  29%    13/  28  46%    53/  55  96%
+   not red        3/ 325   1%    11/ 489   2%    55/ 603   9%   104/ 380  27%   192/ 336  57%   471/ 532  89%
+   Taylor 13, curating scores, all reviewed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/  15   0%     1/  15   7%     3/  37   8%     6/  29  21%    12/  30  40%    36/  40  90%
+   not red        3/ 200   2%     7/ 286   2%    45/ 418  11%    87/ 319  27%   146/ 299  49%   365/ 441  83%
+   Taylor 13, duplicates of a kept cell removed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/  15   0%     1/  15   7%     3/  34   9%     6/  26  23%    12/  23  52%    36/  38  95%
+   not red        3/ 192   2%     7/ 277   3%    45/ 390  12%    87/ 282  31%   146/ 260  56%   365/ 418  87%
+   Yawen 6 (pnb105), curating scores, all reviewed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/  16   0%     2/  20  10%     5/  30  17%     7/  27  26%     1/  21   5%    17/  24  71%
+   not red        0/ 137   0%     4/ 223   2%    10/ 253   4%    17/ 163  10%    46/ 150  31%   106/ 168  63%
+   Yawen 6 (pnb105), duplicates of a kept cell removed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/  16   0%     2/  19  11%     5/  28  18%     7/  19  37%     1/   5  20%    17/  17 100%
+   not red        0/ 133   0%     4/ 212   2%    10/ 213   5%    17/  98  17%    46/  76  61%   106/ 114  93%
+   logistic keep ~ logit(curating score) + [red-overlapping], 19 sessions: red offset -0.03 (odds x 0.97), 95% CI -0.34 .. +0.32 (bootstrap over sessions, 2000 draws)
+   logistic keep ~ logit(curating score) + [red-overlapping], 19 sessions, duplicates removed: red offset +0.20 (odds x 1.23), 95% CI -0.20 .. +0.62 (bootstrap over sessions, 2000 draws)
+   same on the 12 pilots with prepilot scores (all candidates): red offset -0.28 (odds x 0.76), 95% CI -0.81 .. +0.34
+   Yawen duplicate check: 282 duplicate deletes on the six pnb105 sessions (reviewer_check_yawen.txt G: 282)
+
+== 5. stricter variant: a candidate CENTRED on the red soma (mask centroid within 6 px of the red centre) ==
+   Added because 1b shows the disk rule is met by an arbitrary point of the field about as often as by a
+   red soma. Same fate order; controls as in 1b.
+   19 labelled 09xx, red somata, centroid rule  n 380: KEPT  33 ( 9%)  DELETED  46 (12%)  AUTO  16 ( 4%)  NONE 285 (75%)
+   19 labelled 09xx, control transposed         n 380: KEPT  24 ( 6%)  DELETED  29 ( 8%)  AUTO  11 ( 3%)  NONE 316 (83%)
+   19 labelled 09xx, control rotated 180        n 380: KEPT   6 ( 2%)  DELETED  26 ( 7%)  AUTO   8 ( 2%)  NONE 340 (89%)
+   12 pilots, red somata, centroid rule         n 209: KEPT  18 ( 9%)  DELETED  33 (16%)  AUTO   0 ( 0%)  NONE 158 (76%)
+   12 pilots, control transposed                n 209: KEPT   7 ( 3%)  DELETED  25 (12%)  AUTO   0 ( 0%)  NONE 177 (85%)
+   12 pilots, control rotated 180               n 209: KEPT   5 ( 2%)  DELETED  22 (11%)  AUTO   0 ( 0%)  NONE 182 (87%)
+   by animal, 19 labelled 09xx:
+     pnb102                                     n  29: KEPT   3 (10%)  DELETED   5 (17%)  AUTO   2 ( 7%)  NONE  19 (66%)
+     pnb105                                     n 142: KEPT  13 ( 9%)  DELETED  16 (11%)  AUTO   7 ( 5%)  NONE 106 (75%)
+     pnb109                                     n  89: KEPT  14 (16%)  DELETED  14 (16%)  AUTO   5 ( 6%)  NONE  56 (63%)
+     pnb99                                      n 120: KEPT   3 ( 2%)  DELETED  11 ( 9%)  AUTO   2 ( 2%)  NONE 104 (87%)
+     Taylor 13                                  n 238: KEPT  20 ( 8%)  DELETED  30 (13%)  AUTO   9 ( 4%)  NONE 179 (75%)
+     Yawen 6                                    n 142: KEPT  13 ( 9%)  DELETED  16 (11%)  AUTO   7 ( 5%)  NONE 106 (75%)
+   9 still out (SHOWN counted under KEPT/DELETED = 0) n 121: KEPT   0 ( 0%)  DELETED   0 ( 0%)  AUTO   9 ( 7%)  NONE  89 (74%)
+   9 still out: shown to the reviewer 23/121 (19%), auto-rejected only 9/121 (7%), none 89/121 (74%)
+   exemption under this rule, 19 labelled: auto-rejected candidates centred on a red soma 20 (+0.6% on 3361 reviewed); red somata whose centred candidates were all auto-rejected: 16 (best curating score: 0.0005 0.0007 0.0008 0.0009 0.0013 0.0014 0.0017 0.0022 0.0029 0.0047 0.0049 0.0050 0.0071 0.0081 0.0084 0.0099)
+   19 labelled, curating scores, candidates centred on a red soma vs the rest, all reviewed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/   7   0%     1/  12   8%     4/  20  20%     7/  21  33%     6/  14  43%    15/  18  83%
+   not red        3/ 361   1%    13/ 532   2%    59/ 718   8%   110/ 517  21%   199/ 486  41%   509/ 655  78%
+   same, duplicates of a kept cell removed:
+                    0.01-0.02       0.02-0.05       0.05-0.20       0.20-0.50       0.50-0.80       0.80-1.00
+   red            0/   7   0%     1/  12   8%     4/  19  21%     7/  17  41%     6/   9  67%    15/  17  88%
+   not red        3/ 349   1%    13/ 511   3%    59/ 646   9%   110/ 408  27%   199/ 355  56%   509/ 570  89%
+   logistic keep ~ logit(curating score) + [centred on a red soma]: offset +0.58 (odds x 1.78), 95% CI +0.16 .. +1.00
+   logistic keep ~ logit(curating score) + [centred on a red soma], duplicates removed: offset +0.66 (odds x 1.94), 95% CI +0.12 .. +1.27
+   pilots, prepilot score < 0.01: centred-on-red kept 1/16 (6%), the rest kept 4/715 (1%)
+   pilots, prepilot score < 0.02: centred-on-red kept 2/23 (9%), the rest kept 11/998 (1%)
+   pilots, soma level: red somata whose centred candidates all score < 0.01 (prepilot): 13; KEPT 1, DELETED 12

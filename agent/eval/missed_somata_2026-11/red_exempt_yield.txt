@@ -1,0 +1,70 @@
+prepilot model: n_sessions 161, n_features 35, reject_threshold 0.02; deployed: n_sessions 177, T 0.01
+
+Part A: 12 pilot sessions
+  AVG5x-TSeries-082626-pnb102-479um-3z-000       N  215 kept  44 red somata  12 red-overlap cand disk  12 ctr  14 labels [0, 1]
+  AVG5x-TSeries-082626-pnb104-404um-3z-000       N  176 kept  32 red somata  27 red-overlap cand disk  23 ctr  19 labels [0, 1]
+  AVG5x-TSeries-082626-pnb105-397um-35z-000      N  266 kept  24 red somata  10 red-overlap cand disk  18 ctr  14 labels [0, 1]
+  AVG5x-TSeries-082626-pnb106-205um-4z-000       N  228 kept  10 red somata   4 red-overlap cand disk   2 ctr   2 labels [0, 1]
+  AVG5x-TSeries-082626-pnb109-398um-26z-000      N  196 kept  49 red somata  18 red-overlap cand disk  12 ctr  10 labels [0, 1]
+  AVG5x-TSeries-082626-pnb99-399um-3z-000        N   81 kept  29 red somata  21 red-overlap cand disk   5 ctr   4 labels [0, 1]
+  AVG5x-TSeries-082726-pnb102-497um-3z-000       N  239 kept  40 red somata  14 red-overlap cand disk  19 ctr  15 labels [0, 1]
+  AVG5x-TSeries-082726-pnb104-416um-3z-000       N  170 kept  31 red somata  19 red-overlap cand disk  18 ctr  13 labels [0, 1]
+  AVG5x-TSeries-082726-pnb105-391um-35z-000      N  169 kept  34 red somata  12 red-overlap cand disk  12 ctr   9 labels [0, 1]
+  AVG5x-TSeries-082726-pnb106-201um-4z-000       N  184 kept  11 red somata  23 red-overlap cand disk  15 ctr  12 labels [0, 1]
+  AVG5x-TSeries-082726-pnb109-405um-25z-000      N  205 kept  57 red somata  15 red-overlap cand disk  17 ctr  13 labels [0, 1]
+  AVG5x-TSeries-082826-pnb99-436um-3z-000-000    N  198 kept  49 red somata  35 red-overlap cand disk  21 ctr  14 labels [0, 1]
+
+pooled candidates 2327, kept 410 (17.6%), red-overlapping (disk rule) 174, kept among them 31/174 (18%)
+- prepilot (out-of-sample), T 0.010: below T 731 (kept 5); red-overlap below T 54, kept 1/54 (2%); non-red below T 677, kept 4/677 (1%); Fisher p 0.319
+    centre rule: red-overlap below T 36, kept 1/36 (3%)
+    above T: red kept 30/120 (25%), non-red kept 375/1476 (25%)
+- prepilot (out-of-sample), T 0.020: below T 1021 (kept 13); red-overlap below T 78, kept 2/78 (3%); non-red below T 943, kept 11/943 (1%); Fisher p 0.261
+    centre rule: red-overlap below T 57, kept 2/57 (4%)
+    above T: red kept 29/96 (30%), non-red kept 368/1210 (30%)
+- deployed (IN-sample, reference), T 0.010: below T 511 (kept 0); red-overlap below T 28, kept 0/28 (0%); non-red below T 483, kept 0/483 (0%); Fisher p 1
+    centre rule: red-overlap below T 17, kept 0/17 (0%)
+    above T: red kept 31/146 (21%), non-red kept 379/1670 (23%)
+  per session (prepilot, T 0.01): red-overlap below T -> kept
+    AVG5x-TSeries-082626-pnb102-479um-3z-000         1 ->   0 kept
+    AVG5x-TSeries-082626-pnb104-404um-3z-000         9 ->   0 kept
+    AVG5x-TSeries-082626-pnb105-397um-35z-000        2 ->   0 kept
+    AVG5x-TSeries-082626-pnb106-205um-4z-000         2 ->   0 kept
+    AVG5x-TSeries-082626-pnb109-398um-26z-000        4 ->   0 kept
+    AVG5x-TSeries-082626-pnb99-399um-3z-000          0 ->   0 kept
+    AVG5x-TSeries-082726-pnb102-497um-3z-000         5 ->   0 kept
+    AVG5x-TSeries-082726-pnb104-416um-3z-000         6 ->   0 kept
+    AVG5x-TSeries-082726-pnb105-391um-35z-000        4 ->   1 kept
+    AVG5x-TSeries-082726-pnb106-201um-4z-000         8 ->   0 kept
+    AVG5x-TSeries-082726-pnb109-405um-25z-000        5 ->   0 kept
+    AVG5x-TSeries-082826-pnb99-436um-3z-000-000      8 ->   0 kept
+
+Part B: the 28 sessions at Taylor (current npz auto_rejected)
+  AVG5x-TSeries-090526-pnb102-627um-28z-000      N  244 review  176 auto-rej   68 -> exempt (disk)   2 (centre rule   0)
+  AVG5x-TSeries-090626-pnb102-407um-3z-000       N  192 review  163 auto-rej   29 -> exempt (disk)   1 (centre rule   0)
+  AVG5x-TSeries-090726-pnb102-494um-3z-000       N  262 review  190 auto-rej   72 -> exempt (disk)   7 (centre rule   3)
+  AVG5x-TSeries-090826-pnb102-497um-3z-000       N  333 review  233 auto-rej  100 -> exempt (disk)   6 (centre rule   3)
+  AVG5x-TSeries-090926-pnb102-490um-3z-000       N  225 review  184 auto-rej   41 -> exempt (disk)   1 (centre rule   1)
+  AVG5x-TSeries-090726-pnb104-503um-3z-000       N  235 review  162 auto-rej   73 -> exempt (disk)   6 (centre rule   6)
+  AVG5x-TSeries-090826-pnb104-425um-3z-000       N  276 review  184 auto-rej   92 -> exempt (disk)   8 (centre rule   5)
+  AVG5x-TSeries-090926-pnb104-492um-3z-000       N  213 review  170 auto-rej   43 -> exempt (disk)   1 (centre rule   1)
+  AVG5x-TSeries-091026-pnb104-485um-3z-000       N  275 review  200 auto-rej   75 -> exempt (disk)   4 (centre rule   3)
+  AVG5x-TSeries-090526-pnb105-520um-32z-000      N  168 review  111 auto-rej   57 -> exempt (disk)   4 (centre rule   5)
+  AVG5x-TSeries-090626-pnb105-472um-3z-000       N  229 review  158 auto-rej   71 -> exempt (disk)   6 (centre rule   3)
+  AVG5x-TSeries-090726-pnb105-404um-35z-000      N  372 review  246 auto-rej  126 -> exempt (disk)   4 (centre rule   3)
+  AVG5x-TSeries-090826-pnb105-385um-35z-000      N  351 review  240 auto-rej  111 -> exempt (disk)  10 (centre rule   5)
+  AVG5x-TSeries-090926-pnb105-394um-35z-000      N  348 review  259 auto-rej   89 -> exempt (disk)   8 (centre rule   8)
+  AVG5x-TSeries-091026-pnb105-353um-35z-000      N  304 review  218 auto-rej   86 -> exempt (disk)   2 (centre rule   2)
+  AVG5x-TSeries-090526-pnb106-180um-4z-000       N  135 review   89 auto-rej   46 -> exempt (disk)   5 (centre rule   4)
+  AVG5x-TSeries-090626-pnb106-212um-4z-000       N  205 review  133 auto-rej   72 -> exempt (disk)   6 (centre rule   5)
+  AVG5x-TSeries-090826-pnb106-209um-4z-000       N  250 review  158 auto-rej   92 -> exempt (disk)   4 (centre rule   3)
+  AVG5x-TSeries-090926-pnb106-230um-4z-000       N  315 review  196 auto-rej  119 -> exempt (disk)   3 (centre rule   3)
+  AVG5x-TSeries-090526-pnb109-505um-26z-000      N  247 review  196 auto-rej   51 -> exempt (disk)   3 (centre rule   2)
+  AVG5x-TSeries-090626-pnb109-324um-26z-000      N  164 review  136 auto-rej   28 -> exempt (disk)   3 (centre rule   2)
+  AVG5x-TSeries-090726-pnb109-398um-25z-000      N  184 review  150 auto-rej   34 -> exempt (disk)   4 (centre rule   3)
+  AVG5x-TSeries-090826-pnb109-412um-25z-000      N  236 review  201 auto-rej   35 -> exempt (disk)   4 (centre rule   3)
+  AVG5x-TSeries-090926-pnb109-385um-25z-000      N  211 review  171 auto-rej   40 -> exempt (disk)   0 (centre rule   0)
+  AVG5x-TSeries-090526-pnb99-330um-3z-000        N   76 review   58 auto-rej   18 -> exempt (disk)   1 (centre rule   2)
+  AVG5x-TSeries-090626-pnb99-459um-3z-000        N  213 review  159 auto-rej   54 -> exempt (disk)   4 (centre rule   4)
+  AVG5x-TSeries-090826-pnb99-463um-3z-000        N  199 review  167 auto-rej   32 -> exempt (disk)   3 (centre rule   1)
+  AVG5x-TSeries-090926-pnb99-463um-3z-000        N  229 review  178 auto-rej   51 -> exempt (disk)   1 (centre rule   1)
+  TOTAL: review 4886, auto-rejected 1805, would be exempted 111 (centre rule 81) = +2.3% review load

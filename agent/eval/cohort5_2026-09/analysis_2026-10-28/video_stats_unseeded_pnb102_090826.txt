@@ -1,0 +1,3 @@
+session | set | N cand | frames | raw p1/p50/p99 | %sat | noise(60-100) | Cn p50/p90/p95 | %Cn>0.8 | PNR p90 | blobs: total / covered / uncovered Cn>=0.70, 0.60-0.70, <0.60 | strong uncovered Cn>=0.70 | Cn maxima outside all candidates >0.60 / >0.70 (PNR ok, blob>=150px)
+090826-pnb102-497um-3z-000 | live | 333 | 21027 | 23/63/150 | 0.00 | 12.58 | 0.67/0.83/0.87 | 15.7 | 13.0 | 122 / 110 / 3, 6, 3 | 0 | 24 / 5
+   figure: figs\fig_090826-pnb102-497um-3z-000_unseeded.png

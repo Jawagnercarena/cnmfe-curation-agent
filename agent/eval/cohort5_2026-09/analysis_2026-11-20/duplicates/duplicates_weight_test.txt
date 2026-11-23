@@ -1,0 +1,25 @@
+pool: 211 sessions (78 agent testable, 125 bootstrap); agent rows 11495, kept 2505
+agent sessions with all-candidate footprints (flag computable): 33 of 78; rows 6957
+duplicate deletes flagged: 587 = 13.1% of the 4465 reviewed deletes in those sessions (6.5% of all 8990 agent negatives)
+   per animal (duplicates / kept): pnb102 113/280, pnb104 9/63, pnb105 315/273, pnb106 34/21, pnb109 58/440, pnb98 3/57, pnb99 55/259
+
+session-grouped OOF, 8 seeds, same folds in both arms (mean; B - A range over seeds)
+                                                       A deployed  B dup w=0     B - A (min .. max)
+  AUC reviewed rows (duplicates count as deletes)          0.9169     0.9090    -0.0089 .. -0.0068
+  AUC reviewed rows, duplicates left out                   0.9239     0.9265    +0.0012 .. +0.0035
+  AUC, flagged sessions only, duplicates left out          0.9322     0.9347    +0.0013 .. +0.0040
+  median score of the duplicate deletes                    0.4358     0.7562    +0.2974 .. +0.3402
+  median score of kept cells (flagged sessions)            0.8774     0.9100    +0.0285 .. +0.0354
+  false auto-reject at 0.01                                 0.02%      0.05%       -1.0 .. +3.0 cells of 2505
+  false auto-reject at 0.02                                 0.19%      0.22%       -2.0 .. +3.0 cells of 2505
+  false auto-reject at 0.03                                 0.42%      0.45%       -3.0 .. +4.0 cells of 2505
+  false auto-reject at 0.04                                 0.68%      0.69%       -4.0 .. +3.0 cells of 2505
+  junk auto-rejected at 0.01 (non-duplicate deletes)        22.8%      23.8%      +0.43 .. +1.57 pts
+  junk auto-rejected at 0.02 (non-duplicate deletes)        32.9%      34.1%      +0.62 .. +2.24 pts
+  junk auto-rejected at 0.03 (non-duplicate deletes)        39.3%      40.5%      +0.83 .. +1.74 pts
+  junk auto-rejected at 0.04 (non-duplicate deletes)        43.9%      45.2%      +0.82 .. +1.89 pts
+  duplicates scored below 0.01                                1.5        0.2   of 587
+  duplicates scored below 0.02                                8.1        3.4   of 587
+  duplicates scored below 0.03                               16.0        7.4   of 587
+  duplicates scored below 0.04                               24.5       12.1   of 587
+wrote duplicates_weight_test.json

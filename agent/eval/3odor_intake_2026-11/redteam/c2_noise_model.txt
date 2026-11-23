@@ -1,0 +1,47 @@
+N sessions 111.  Model values: rx1 0.18, ry1 0.13, rx2 = ry2 = 0.008, rt1 -0.667, rt2 0.167, std/sn = mad/sn = 1.335, psd 1, Cn of noise 0.478
+
+== medians over quiet pixels, by group: median [min-max] ==
+  6odor                  N  40 | rx1 0.193 [0.171-0.302] | ry1 0.140 [0.121-0.262] | rx2 0.035 [0.014-0.166] | ry2 0.035 [0.014-0.167] | rt1 -0.662 [-0.665--0.650] | rt2 0.160 [0.143-0.164] | std_sn 1.392 [1.349-1.461] | mad_sn 1.381 [1.347-1.441] | psd_lo 1.581 [1.145-2.424] | psd_mid 1.040 [1.018-1.179] | cn_quiet 0.509 [0.486-0.561] | cn_quiet_p90 0.556 [0.524-0.626] | cn_p10 0.491 [0.464-0.544] | pnr_p25 5.422 [4.978-6.319]
+  3odor all              N  71 | rx1 0.184 [0.162-0.251] | ry1 0.130 [0.118-0.198] | rx2 0.026 [0.008-0.100] | ry2 0.025 [0.006-0.101] | rt1 -0.663 [-0.666--0.649] | rt2 0.162 [0.141-0.166] | std_sn 1.387 [1.339-1.469] | mad_sn 1.381 [1.339-1.442] | psd_lo 1.442 [1.055-2.726] | psd_mid 1.028 [0.997-1.082] | cn_quiet 0.505 [0.479-0.542] | cn_quiet_p90 0.551 [0.517-0.605] | cn_p10 0.484 [0.448-0.524] | pnr_p25 5.237 [4.614-5.841]
+  3odor dim/hazy noted   N  10 | rx1 0.177 [0.162-0.191] | ry1 0.126 [0.118-0.147] | rx2 0.017 [0.008-0.040] | ry2 0.017 [0.006-0.040] | rt1 -0.665 [-0.666--0.662] | rt2 0.164 [0.161-0.166] | std_sn 1.360 [1.339-1.406] | mad_sn 1.357 [1.339-1.397] | psd_lo 1.219 [1.055-1.638] | psd_mid 1.006 [0.997-1.030] | cn_quiet 0.497 [0.480-0.524] | cn_quiet_p90 0.539 [0.517-0.573] | cn_p10 0.474 [0.454-0.505] | pnr_p25 5.008 [4.810-5.436]
+  noise_rel >= 0.19      N  11 | rx1 0.170 [0.162-0.185] | ry1 0.123 [0.118-0.134] | rx2 0.014 [0.008-0.028] | ry2 0.014 [0.006-0.028] | rt1 -0.665 [-0.666--0.664] | rt2 0.164 [0.162-0.166] | std_sn 1.360 [1.339-1.387] | mad_sn 1.359 [1.339-1.382] | psd_lo 1.207 [1.055-1.402] | psd_mid 1.012 [0.997-1.026] | cn_quiet 0.494 [0.480-0.508] | cn_quiet_p90 0.535 [0.517-0.551] | cn_p10 0.470 [0.454-0.487] | pnr_p25 4.994 [4.810-5.237]
+
+== Spearman with noise_rel over all sessions ==
+  rx1 -0.45 | ry1 -0.40 | rx2 -0.47 | ry2 -0.46 | rt1 -0.37 | rt2 +0.33 | std_sn -0.36 | mad_sn -0.27 | psd_lo -0.44 | psd_mid -0.37 | cn_quiet -0.29 | cn_quiet_p90 -0.37 | cn_p10 -0.34 | pnr_p25 -0.44
+
+== sessions outside the model: rx1 > 0.22 or ry1 > 0.17 or std/sn > 1.45 or Cn quiet > 0.52 ==
+  24 of 111 sessions
+  6odor 090826-pnb102-497um-3z-0 | 6odor | noise_rel 0.117 | rx1 0.268 ry1 0.220 rx2 0.123 ry2 0.125 | rt1 -0.655 | std/sn 1.461 mad/sn 1.441 | psd lo 2.03 mid 1.10 | Cn quiet 0.561 (p90 0.626)
+  3odor 100926-pnb102-452um-3z-0 | after cleaning | noise_rel 0.106 | rx1 0.225 ry1 0.177 rx2 0.075 ry2 0.076 | rt1 -0.660 | std/sn 1.428 mad/sn 1.415 | psd lo 1.92 mid 1.05 | Cn quiet 0.542 (p90 0.605)
+  6odor 090726-pnb102-494um-3z-0 | 6odor | noise_rel 0.115 | rx1 0.227 ry1 0.179 rx2 0.079 ry2 0.079 | rt1 -0.655 | std/sn 1.456 mad/sn 1.437 | psd lo 2.14 mid 1.09 | Cn quiet 0.540 (p90 0.601)
+  3odor 101526-pnb102-466um-3z-0 | after cleaning | noise_rel 0.100 | rx1 0.224 ry1 0.171 rx2 0.070 ry2 0.069 | rt1 -0.655 | std/sn 1.438 mad/sn 1.412 | psd lo 1.82 mid 1.06 | Cn quiet 0.538 (p90 0.590)
+  6odor 090726-pnb104-503um-3z-0 | 6odor | noise_rel 0.106 | rx1 0.284 ry1 0.238 rx2 0.145 ry2 0.144 | rt1 -0.651 | std/sn 1.428 mad/sn 1.400 | psd lo 1.79 mid 1.08 | Cn quiet 0.533 (p90 0.592)
+  3odor 101626-pnb102-644um-3z-0 | after cleaning | noise_rel 0.072 | rx1 0.200 ry1 0.148 rx2 0.041 ry2 0.041 | rt1 -0.659 | std/sn 1.469 mad/sn 1.442 | psd lo 2.73 mid 1.07 | Cn quiet 0.532 (p90 0.591)
+  6odor 090826-pnb104-425um-3z-0 | 6odor | noise_rel 0.108 | rx1 0.302 ry1 0.262 rx2 0.166 ry2 0.167 | rt1 -0.650 | std/sn 1.410 mad/sn 1.389 | psd lo 2.42 mid 1.18 | Cn quiet 0.532 (p90 0.609)
+  3odor 093026-pnb104-521um-3z-0 | 9/29-10/1 no d | noise_rel 0.093 | rx1 0.250 ry1 0.191 rx2 0.094 ry2 0.093 | rt1 -0.656 | std/sn 1.452 mad/sn 1.420 | psd lo 1.93 mid 1.07 | Cn quiet 0.531 (p90 0.591)
+  3odor 100826-pnb104-524um-3z-0 | after cleaning | noise_rel 0.096 | rx1 0.248 ry1 0.195 rx2 0.099 ry2 0.100 | rt1 -0.651 | std/sn 1.458 mad/sn 1.416 | psd lo 2.07 mid 1.08 | Cn quiet 0.528 (p90 0.586)
+  6odor 082726-pnb102-497um-3z-0 | 6odor | noise_rel 0.107 | rx1 0.217 ry1 0.161 rx2 0.058 ry2 0.058 | rt1 -0.655 | std/sn 1.431 mad/sn 1.416 | psd lo 1.82 mid 1.08 | Cn quiet 0.527 (p90 0.584)
+  6odor 091026-pnb104-485um-3z-0 | 6odor | noise_rel 0.092 | rx1 0.257 ry1 0.214 rx2 0.119 ry2 0.120 | rt1 -0.654 | std/sn 1.406 mad/sn 1.389 | psd lo 1.67 mid 1.06 | Cn quiet 0.525 (p90 0.582)
+  6odor 090526-pnb102-627um-28z- | 6odor | noise_rel 0.084 | rx1 0.208 ry1 0.156 rx2 0.051 ry2 0.051 | rt1 -0.659 | std/sn 1.425 mad/sn 1.405 | psd lo 1.85 mid 1.08 | Cn quiet 0.524 (p90 0.576)
+  6odor 082626-pnb105-397um-35z- | 6odor | noise_rel 0.086 | rx1 0.184 ry1 0.130 rx2 0.027 ry2 0.026 | rt1 -0.663 | std/sn 1.417 mad/sn 1.398 | psd lo 1.79 mid 1.03 | Cn quiet 0.524 (p90 0.578)
+  3odor 093026-pnb102-600um-3z-0 | dim/hazy noted | noise_rel 0.149 | rx1 0.191 ry1 0.147 rx2 0.040 ry2 0.040 | rt1 -0.662 | std/sn 1.406 mad/sn 1.397 | psd lo 1.64 mid 1.03 | Cn quiet 0.524 (p90 0.573)
+  3odor 092426-pnb102-470um-3z-0 | before 9/29 | noise_rel 0.106 | rx1 0.198 ry1 0.147 rx2 0.045 ry2 0.046 | rt1 -0.660 | std/sn 1.425 mad/sn 1.409 | psd lo 1.73 mid 1.05 | Cn quiet 0.522 (p90 0.574)
+  3odor 101326-pnb102-632um-3z-0 | after cleaning | noise_rel 0.130 | rx1 0.185 ry1 0.138 rx2 0.032 ry2 0.032 | rt1 -0.662 | std/sn 1.408 mad/sn 1.402 | psd lo 1.62 mid 1.03 | Cn quiet 0.521 (p90 0.569)
+  6odor 082626-pnb102-479um-3z-0 | 6odor | noise_rel 0.109 | rx1 0.197 ry1 0.141 rx2 0.038 ry2 0.038 | rt1 -0.659 | std/sn 1.428 mad/sn 1.410 | psd lo 1.82 mid 1.07 | Cn quiet 0.520 (p90 0.576)
+  3odor 092426-pnb106-207um-4z-0 | before 9/29 | noise_rel 0.082 | rx1 0.209 ry1 0.159 rx2 0.060 ry2 0.059 | rt1 -0.659 | std/sn 1.423 mad/sn 1.413 | psd lo 1.71 mid 1.04 | Cn quiet 0.520 (p90 0.571)
+  6odor 090926-pnb102-490um-3z-0 | 6odor | noise_rel 0.119 | rx1 0.199 ry1 0.149 rx2 0.048 ry2 0.048 | rt1 -0.657 | std/sn 1.412 mad/sn 1.399 | psd lo 1.64 mid 1.07 | Cn quiet 0.520 (p90 0.571)
+  3odor 092426-pnb104-470um-3z-0 | before 9/29 | noise_rel 0.095 | rx1 0.251 ry1 0.198 rx2 0.100 ry2 0.101 | rt1 -0.654 | std/sn 1.420 mad/sn 1.394 | psd lo 1.73 mid 1.08 | Cn quiet 0.520 (p90 0.578)
+  3odor 092926-pnb104-497um-3z-0 | 9/29-10/1 no d | noise_rel 0.109 | rx1 0.232 ry1 0.171 rx2 0.071 ry2 0.071 | rt1 -0.658 | std/sn 1.423 mad/sn 1.400 | psd lo 1.68 mid 1.06 | Cn quiet 0.520 (p90 0.572)
+  3odor 100926-pnb104-415um-3z-0 | after cleaning | noise_rel 0.102 | rx1 0.237 ry1 0.190 rx2 0.090 ry2 0.091 | rt1 -0.653 | std/sn 1.408 mad/sn 1.394 | psd lo 1.58 mid 1.05 | Cn quiet 0.517 (p90 0.568)
+  6odor 090926-pnb104-492um-3z-0 | 6odor | noise_rel 0.098 | rx1 0.240 ry1 0.193 rx2 0.098 ry2 0.098 | rt1 -0.655 | std/sn 1.396 mad/sn 1.386 | psd lo 1.55 mid 1.06 | Cn quiet 0.516 (p90 0.564)
+  3odor 100226-pnb104-433um-3z-0 | after cleaning | noise_rel 0.102 | rx1 0.242 ry1 0.195 rx2 0.099 ry2 0.099 | rt1 -0.649 | std/sn 1.405 mad/sn 1.395 | psd lo 1.56 mid 1.05 | Cn quiet 0.515 (p90 0.559)
+
+== C3: per animal, quiet-pixel Cn in its brightest vs dimmest sessions (by noise_rel) ==
+  pnb99 (N 18): brightest 4 sessions noise_rel 0.080-0.109: Cn quiet median 0.500 [0.497-0.505] | dimmest 4 noise_rel 0.216-0.354: Cn quiet median 0.485 [0.480-0.492] | Spearman(Cn quiet, noise_rel) -0.52
+  pnb102 (N 19): brightest 4 sessions noise_rel 0.072-0.095: Cn quiet median 0.522 [0.510-0.532] | dimmest 4 noise_rel 0.137-0.251: Cn quiet median 0.510 [0.497-0.524] | Spearman(Cn quiet, noise_rel) -0.37
+  pnb104 (N 14): brightest 3 sessions noise_rel 0.092-0.095: Cn quiet median 0.525 [0.520-0.531] | dimmest 3 noise_rel 0.109-0.118: Cn quiet median 0.505 [0.490-0.520] | Spearman(Cn quiet, noise_rel) -0.24
+  pnb105 (N 21): brightest 5 sessions noise_rel 0.070-0.085: Cn quiet median 0.504 [0.486-0.507] | dimmest 5 noise_rel 0.124-0.318: Cn quiet median 0.500 [0.488-0.508] | Spearman(Cn quiet, noise_rel) -0.29
+  pnb106 (N 18): brightest 4 sessions noise_rel 0.050-0.076: Cn quiet median 0.511 [0.501-0.515] | dimmest 4 noise_rel 0.115-0.132: Cn quiet median 0.507 [0.505-0.509] | Spearman(Cn quiet, noise_rel) -0.30
+  pnb109 (N 21): brightest 5 sessions noise_rel 0.062-0.068: Cn quiet median 0.512 [0.499-0.514] | dimmest 5 noise_rel 0.122-0.134: Cn quiet median 0.505 [0.492-0.515] | Spearman(Cn quiet, noise_rel) -0.31
+
+wrote C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\3odor_intake_2026-11\redteam\c2_sessions.tsv

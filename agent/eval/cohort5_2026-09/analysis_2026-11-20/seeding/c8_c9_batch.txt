@@ -1,0 +1,226 @@
+labelled sessions: 31 | by reviewer: Taylor 25, Yawen 6
+candidates 6781, kept 1336, reviewed deletes 4352 (dup-of-kept 584), auto-rejected (never shown) 1093
+check against reviewer_check_yawen.txt section G: Yawen's six sessions, dup-of-kept deletes 282 of 1017 deletes
+label join (final footprints whose best-cosine candidate is a KEEP): 090526-pnb102 37/38; 091026-pnb105 42/43 | all others exact
+
+== 1. C8 per session ==
+session | group | reviewer | ran at / min_pnr | T | floor | pk50 | rule (f 0.444) | N / auto / reviewed / kept | kept with ceiling < rule | kept with ceiling < the run's min_corr | kept with ceiling < 0.70 | kept ceiling p5 / p10 / p25 | reviewed with ceiling < 0.70 | dup deletes
+  082626-pnb102-479um-3z-0 | pilots at 0.70 (11) | Taylor | 0.70 / 7.3 | 5067 | 0.550 | 0.896 | 0.70 | 215 / 0 / 215 / 44 | 0 | 0 | 0 | 0.820 / 0.835 / 0.873 | 1 | 16
+  082626-pnb104-404um-3z-0 | pilots at 0.70 (11) | Taylor | 0.70 / 6.5 | 5067 | 0.550 | 0.891 | 0.70 | 176 / 0 / 176 / 32 | 0 | 0 | 0 | 0.825 / 0.846 / 0.888 | 2 | 3
+  082626-pnb105-397um-35z- | pilots at 0.70 (11) | Taylor | 0.70 / 8.4 | 5067 | 0.550 | 0.951 | 0.73 | 266 / 0 / 266 / 24 | 0 | 0 | 0 | 0.893 / 0.907 / 0.926 | 2 | 19
+  082626-pnb106-205um-4z-0 | pilots at 0.70 (11) | Taylor | 0.70 / 6.9 | 5067 | 0.550 | 0.897 | 0.70 | 228 / 0 / 228 / 10 | 0 | 0 | 0 | 0.817 / 0.869 / 0.892 | 1 | 17
+  082626-pnb109-398um-26z- | pilots at 0.70 (11) | Taylor | 0.70 / 6.6 | 5058 | 0.550 | 0.884 | 0.70 | 196 / 0 / 196 / 49 | 0 | 0 | 0 | 0.770 / 0.810 / 0.857 | 5 | 5
+  082626-pnb99-399um-3z-00 | pilots at 0.70 (11) | Taylor | 0.70 / 5.9 | 5067 | 0.550 | 0.835 | 0.68 | 81 / 0 / 81 / 29 | 0 | 0 | 0 | 0.801 / 0.814 / 0.846 | 2 | 0
+  082726-pnb102-497um-3z-0 | pilots at 0.70 (11) | Taylor | 0.70 / 6.4 | 8441 | 0.550 | 0.877 | 0.70 | 239 / 0 / 239 / 40 | 0 | 0 | 0 | 0.802 / 0.827 / 0.854 | 3 | 19
+  082726-pnb104-416um-3z-0 | pilots at 0.70 (11) | Taylor | 0.70 / 6.2 | 8430 | 0.550 | 0.895 | 0.70 | 170 / 0 / 170 / 31 | 0 | 0 | 0 | 0.821 / 0.832 / 0.854 | 4 | 6
+  082726-pnb105-391um-35z- | pilot 0.60 (082726-pnb105) | Taylor | 0.60 / 5.7 | 8430 | 0.550 | 0.759 | 0.64 | 169 / 0 / 169 / 34 | 0 | 0 | 1 | 0.750 / 0.778 / 0.807 | 35 | 14
+  082726-pnb106-201um-4z-0 | pilots at 0.70 (11) | Taylor | 0.70 / 6.2 | 8430 | 0.550 | 0.855 | 0.69 | 184 / 0 / 184 / 11 | 0 | 0 | 0 | 0.787 / 0.797 / 0.809 | 9 | 17
+  082726-pnb109-405um-25z- | pilots at 0.70 (11) | Taylor | 0.70 / 6.5 | 8430 | 0.550 | 0.871 | 0.69 | 205 / 0 / 205 / 57 | 0 | 0 | 0 | 0.765 / 0.780 / 0.820 | 2 | 12
+  082826-pnb99-436um-3z-00 | pilots at 0.70 (11) | Taylor | 0.70 / 6.4 | 8445 | 0.550 | 0.909 | 0.71 | 198 / 0 / 198 / 49 | 0 | 0 | 0 | 0.848 / 0.865 / 0.888 | 1 | 15
+  090526-pnb102-627um-28z- | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.1 | 8445 | 0.550 | 0.869 | 0.69 | 244 / 68 / 176 / 37 | 0 | 0 | 0 | 0.792 / 0.808 / 0.833 | 3 | 24
+  090526-pnb105-520um-32z- | Yawen pnb105 FOVC 090526 at 0.60 | Yawen | 0.60 / 5.5 | 8431 | 0.550 | 0.713 | 0.62 | 168 / 57 / 111 / 10 | 1 | 0 | 1 | 0.675 / 0.735 / 0.766 | 36 | 17
+  090526-pnb109-505um-26z- | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.4 | 8400 | 0.550 | 0.874 | 0.69 | 247 / 51 / 196 / 51 | 0 | 0 | 0 | 0.732 / 0.763 / 0.814 | 1 | 10
+  090526-pnb99-330um-3z-00 | Taylor 090526-pnb99 dim FOVB at 0.60 | Taylor | 0.60 / 5.2 | 8445 | 0.550 | 0.643 | 0.59 | 76 / 18 / 58 / 28 | 0 | 0 | 6 | 0.646 / 0.675 / 0.724 | 18 | 3
+  090626-pnb102-407um-3z-0 | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.3 | 8445 | 0.550 | 0.870 | 0.69 | 192 / 29 / 163 / 65 | 0 | 0 | 0 | 0.776 / 0.804 / 0.846 | 0 | 22
+  090626-pnb105-472um-3z-0 | Yawen pnb105 FOVB 090626 at 0.60 | Yawen | 0.60 / 5.9 | 8430 | 0.550 | 0.810 | 0.67 | 229 / 71 / 158 / 25 | 0 | 0 | 0 | 0.790 / 0.825 / 0.842 | 17 | 30
+  090626-pnb109-324um-26z- | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.1 | 8430 | 0.550 | 0.852 | 0.68 | 164 / 28 / 136 / 70 | 0 | 0 | 0 | 0.762 / 0.776 / 0.812 | 1 | 4
+  090626-pnb99-459um-3z-00 | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.3 | 8445 | 0.550 | 0.902 | 0.71 | 213 / 54 / 159 / 54 | 0 | 0 | 0 | 0.830 / 0.845 / 0.887 | 1 | 17
+  090726-pnb102-494um-3z-0 | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.4 | 8445 | 0.550 | 0.884 | 0.70 | 262 / 72 / 190 / 46 | 0 | 0 | 0 | 0.821 / 0.841 / 0.857 | 1 | 21
+  090726-pnb105-404um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | 0.60 / 6.4 | 8436 | 0.550 | 0.894 | 0.70 | 372 / 126 / 246 / 40 | 0 | 0 | 0 | 0.813 / 0.852 / 0.901 | 10 | 54
+  090726-pnb109-398um-25z- | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.3 | 8430 | 0.550 | 0.892 | 0.70 | 184 / 34 / 150 / 70 | 0 | 0 | 0 | 0.785 / 0.800 / 0.850 | 0 | 6
+  090826-pnb105-385um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | 0.60 / 6.1 | 10509 | 0.550 | 0.865 | 0.69 | 351 / 111 / 240 / 46 | 1 | 0 | 1 | 0.806 / 0.844 / 0.905 | 11 | 60
+  090826-pnb109-412um-25z- | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.4 | 10509 | 0.550 | 0.890 | 0.70 | 236 / 35 / 201 / 66 | 0 | 0 | 0 | 0.783 / 0.808 / 0.852 | 0 | 16
+  090826-pnb99-463um-3z-00 | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.1 | 10528 | 0.550 | 0.897 | 0.70 | 199 / 32 / 167 / 45 | 0 | 0 | 0 | 0.833 / 0.837 / 0.869 | 0 | 9
+  090926-pnb102-490um-3z-0 | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.3 | 8442 | 0.550 | 0.882 | 0.70 | 225 / 41 / 184 / 48 | 0 | 0 | 0 | 0.774 / 0.801 / 0.852 | 1 | 11
+  090926-pnb105-394um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | 0.60 / 6.4 | 8430 | 0.550 | 0.907 | 0.71 | 348 / 89 / 259 / 51 | 0 | 0 | 0 | 0.835 / 0.855 / 0.913 | 13 | 72
+  090926-pnb109-385um-25z- | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.5 | 8430 | 0.550 | 0.892 | 0.70 | 211 / 40 / 171 / 77 | 0 | 0 | 0 | 0.765 / 0.797 / 0.848 | 1 | 5
+  090926-pnb99-463um-3z-00 | Taylor 09xx at 0.70 (12) | Taylor | 0.70 / 6.5 | 8445 | 0.550 | 0.903 | 0.71 | 229 / 51 / 178 / 54 | 0 | 0 | 0 | 0.820 / 0.849 / 0.891 | 0 | 11
+  091026-pnb105-353um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | 0.60 / 6.4 | 8434 | 0.550 | 0.859 | 0.69 | 304 / 86 / 218 / 43 | 1 | 0 | 1 | 0.807 / 0.845 / 0.891 | 17 | 49
+
+  pooled by group:
+   pilots at 0.70 (11)                    sessions 11  candidates 2158  auto    0  reviewed 2158  kept 376 | kept with ceiling < rule 0 (0.0%) | < run's min_corr 0 (0.0%) | < 0.70 0 (0.0%) | reviewed with ceiling < 0.70: 32 (1.5% of reviewed) | dup deletes 129
+   pilot 0.60 (082726-pnb105)             sessions  1  candidates  169  auto    0  reviewed  169  kept  34 | kept with ceiling < rule 0 (0.0%) | < run's min_corr 0 (0.0%) | < 0.70 1 (2.9%) | reviewed with ceiling < 0.70: 35 (20.7% of reviewed) | dup deletes 14
+   Taylor 09xx at 0.70 (12)               sessions 12  candidates 2606  auto  535  reviewed 2071  kept 683 | kept with ceiling < rule 0 (0.0%) | < run's min_corr 0 (0.0%) | < 0.70 0 (0.0%) | reviewed with ceiling < 0.70: 9 (0.4% of reviewed) | dup deletes 156
+   Taylor 090526-pnb99 dim FOVB at 0.60   sessions  1  candidates   76  auto   18  reviewed   58  kept  28 | kept with ceiling < rule 0 (0.0%) | < run's min_corr 0 (0.0%) | < 0.70 6 (21.4%) | reviewed with ceiling < 0.70: 18 (31.0% of reviewed) | dup deletes 3
+   Yawen pnb105 FOVA at 0.60 (4)          sessions  4  candidates 1375  auto  412  reviewed  963  kept 180 | kept with ceiling < rule 2 (1.1%) | < run's min_corr 0 (0.0%) | < 0.70 2 (1.1%) | reviewed with ceiling < 0.70: 51 (5.3% of reviewed) | dup deletes 235
+   Yawen pnb105 FOVC 090526 at 0.60       sessions  1  candidates  168  auto   57  reviewed  111  kept  10 | kept with ceiling < rule 1 (10.0%) | < run's min_corr 0 (0.0%) | < 0.70 1 (10.0%) | reviewed with ceiling < 0.70: 36 (32.4% of reviewed) | dup deletes 17
+   Yawen pnb105 FOVB 090626 at 0.60       sessions  1  candidates  229  auto   71  reviewed  158  kept  25 | kept with ceiling < rule 0 (0.0%) | < run's min_corr 0 (0.0%) | < 0.70 0 (0.0%) | reviewed with ceiling < 0.70: 17 (10.8% of reviewed) | dup deletes 30
+   all 31: kept 1336 | ceiling < rule 3 (0.2%) | ceiling < the run's min_corr 0 (0.0%)
+   sessions run at 0.70 whose rule value is ABOVE 0.70 (the rule would raise them): 082626-pnb105 0.73 (kept with ceiling < rule: 0 of 24), 082826-pnb99- 0.71 (kept with ceiling < rule: 0 of 49), 090626-pnb99- 0.71 (kept with ceiling < rule: 0 of 54), 090926-pnb99- 0.71 (kept with ceiling < rule: 0 of 54)
+   sessions run at 0.70, all 23: kept 1059, kept with ceiling < rule 0 (0.0%)
+
+== 2. kept-rate by seeding-ceiling band, per group ==
+   columns: candidates | auto-rejected (never shown) | reviewed | kept | dup-of-kept deletes | other deletes |
+            kept / reviewed | kept / (reviewed - dup)
+  pilots at 0.70 (11): sessions 11, candidates 2158, kept 376
+    0.00-0.55:   11 |    0 |   11 |   0 |   0 |   11 |   0.0% |   0.0%
+    0.55-0.60:    2 |    0 |    2 |   0 |   0 |    2 |   0.0% |   0.0%
+    0.65-0.70:   19 |    0 |   19 |   0 |   0 |   19 |   0.0% |   0.0%
+    0.70-0.75:  193 |    0 |  193 |   6 |   0 |  187 |   3.1% |   3.1%
+    0.75-0.80:  301 |    0 |  301 |  19 |   1 |  281 |   6.3% |   6.3%
+    0.80-0.85:  397 |    0 |  397 |  49 |   1 |  347 |  12.3% |  12.4%
+    0.85-0.90:  480 |    0 |  480 | 105 |   9 |  366 |  21.9% |  22.3%
+    0.90-1.00:  755 |    0 |  755 | 197 | 118 |  440 |  26.1% |  30.9%
+  pilot 0.60 (082726-pnb105): sessions 1, candidates 169, kept 34
+    0.00-0.55:    1 |    0 |    1 |   0 |   0 |    1 |   0.0% |   0.0%
+    0.60-0.65:   21 |    0 |   21 |   0 |   0 |   21 |   0.0% |   0.0%
+    0.65-0.70:   13 |    0 |   13 |   1 |   0 |   12 |   7.7% |   7.7%
+    0.70-0.75:   27 |    0 |   27 |   1 |   0 |   26 |   3.7% |   3.7%
+    0.75-0.80:   32 |    0 |   32 |   6 |   2 |   24 |  18.8% |  20.0%
+    0.80-0.85:   16 |    0 |   16 |   5 |   0 |   11 |  31.2% |  31.2%
+    0.85-0.90:   11 |    0 |   11 |   3 |   0 |    8 |  27.3% |  27.3%
+    0.90-1.00:   48 |    0 |   48 |  18 |  12 |   18 |  37.5% |  50.0%
+  Taylor 09xx at 0.70 (12): sessions 12, candidates 2606, kept 683
+    0.00-0.55:    8 |    8 |    0 |   0 |   0 |    0 |      - |      -
+    0.55-0.60:    3 |    3 |    0 |   0 |   0 |    0 |      - |      -
+    0.60-0.65:    7 |    5 |    2 |   0 |   0 |    2 |   0.0% |   0.0%
+    0.65-0.70:   22 |   15 |    7 |   0 |   0 |    7 |   0.0% |   0.0%
+    0.70-0.75:  283 |  121 |  162 |  14 |   1 |  147 |   8.6% |   8.7%
+    0.75-0.80:  422 |  131 |  291 |  55 |   0 |  236 |  18.9% |  18.9%
+    0.80-0.85:  528 |  118 |  410 | 114 |  13 |  283 |  27.8% |  28.7%
+    0.85-0.90:  570 |   86 |  484 | 183 |  19 |  282 |  37.8% |  39.4%
+    0.90-1.00:  763 |   48 |  715 | 317 | 123 |  275 |  44.3% |  53.5%
+  Taylor 090526-pnb99 dim FOVB at 0.60: sessions 1, candidates 76, kept 28
+    0.60-0.65:   13 |    7 |    6 |   2 |   0 |    4 |  33.3% |  33.3%
+    0.65-0.70:   18 |    6 |   12 |   4 |   0 |    8 |  33.3% |  33.3%
+    0.70-0.75:   10 |    2 |    8 |   4 |   1 |    3 |  50.0% |  57.1%
+    0.75-0.80:    9 |    1 |    8 |   6 |   0 |    2 |  75.0% |  75.0%
+    0.80-0.85:    8 |    0 |    8 |   5 |   0 |    3 |  62.5% |  62.5%
+    0.85-0.90:   12 |    1 |   11 |   4 |   0 |    7 |  36.4% |  36.4%
+    0.90-1.00:    6 |    1 |    5 |   3 |   2 |    0 |  60.0% | 100.0%
+  Yawen pnb105 FOVA at 0.60 (4): sessions 4, candidates 1375, kept 180
+    0.00-0.55:   15 |   14 |    1 |   0 |   0 |    1 |   0.0% |   0.0%
+    0.55-0.60:    5 |    4 |    1 |   0 |   0 |    1 |   0.0% |   0.0%
+    0.60-0.65:   50 |   30 |   20 |   1 |   0 |   19 |   5.0% |   5.0%
+    0.65-0.70:   76 |   47 |   29 |   1 |   0 |   28 |   3.4% |   3.4%
+    0.70-0.75:  121 |   53 |   68 |   0 |   0 |   68 |   0.0% |   0.0%
+    0.75-0.80:  154 |   63 |   91 |   3 |   0 |   88 |   3.3% |   3.3%
+    0.80-0.85:  199 |   74 |  125 |  14 |   2 |  109 |  11.2% |  11.4%
+    0.85-0.90:  222 |   74 |  148 |  23 |  17 |  108 |  15.5% |  17.6%
+    0.90-1.00:  533 |   53 |  480 | 138 | 216 |  126 |  28.8% |  52.3%
+  Yawen pnb105 FOVC 090526 at 0.60: sessions 1, candidates 168, kept 10
+    0.00-0.55:    2 |    2 |    0 |   0 |   0 |    0 |      - |      -
+    0.55-0.60:    3 |    3 |    0 |   0 |   0 |    0 |      - |      -
+    0.60-0.65:   33 |   16 |   17 |   1 |   0 |   16 |   5.9% |   5.9%
+    0.65-0.70:   34 |   15 |   19 |   0 |   0 |   19 |   0.0% |   0.0%
+    0.70-0.75:   27 |   11 |   16 |   1 |   0 |   15 |   6.2% |   6.2%
+    0.75-0.80:   17 |    2 |   15 |   3 |   1 |   11 |  20.0% |  21.4%
+    0.80-0.85:   16 |    4 |   12 |   0 |   0 |   12 |   0.0% |   0.0%
+    0.85-0.90:   10 |    2 |    8 |   1 |   3 |    4 |  12.5% |  20.0%
+    0.90-1.00:   26 |    2 |   24 |   4 |  13 |    7 |  16.7% |  36.4%
+  Yawen pnb105 FOVB 090626 at 0.60: sessions 1, candidates 229, kept 25
+    0.00-0.55:    6 |    6 |    0 |   0 |   0 |    0 |      - |      -
+    0.55-0.60:    1 |    0 |    1 |   0 |   0 |    1 |   0.0% |   0.0%
+    0.60-0.65:   13 |    9 |    4 |   0 |   0 |    4 |   0.0% |   0.0%
+    0.65-0.70:   36 |   24 |   12 |   0 |   0 |   12 |   0.0% |   0.0%
+    0.70-0.75:   37 |   10 |   27 |   1 |   0 |   26 |   3.7% |   3.7%
+    0.75-0.80:   27 |    8 |   19 |   1 |   0 |   18 |   5.3% |   5.3%
+    0.80-0.85:   31 |    6 |   25 |   8 |   2 |   15 |  32.0% |  34.8%
+    0.85-0.90:   32 |    5 |   27 |   4 |   3 |   20 |  14.8% |  16.7%
+    0.90-1.00:   46 |    3 |   43 |  11 |  25 |    7 |  25.6% |  61.1%
+
+== 3. C9: sessions seeded at 0.60 ==
+   low-ceiling candidates and what became of them.  'copy of a >= 0.70 kept cell' = not kept, IoU >= 0.5 with a
+   KEPT candidate whose own ceiling is >= 0.70 (the low seed added a second copy, not a new cell).
+   'only-0.60 cell' = KEPT, ceiling < 0.70, and no other candidate with ceiling >= 0.70 overlaps it at IoU >= 0.5
+   (in brackets: the same count with the looser IoU >= 0.2).
+  082726-pnb105-391um-35z- | pilot 0.60 (082726-pnb105) | Taylor | pk50 0.759 | rule 0.64 | N 169, auto 0, reviewed 169, kept 34
+      ceiling < 0.60               candidates   1: auto-rejected   0, reviewed   1, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   1
+      0.60 <= ceiling < 0.70       candidates  34: auto-rejected   0, reviewed  34, KEPT  1 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  33
+      0.60 <= ceiling < rule 0.64  candidates  19: auto-rejected   0, reviewed  19, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  19
+      ceiling >= 0.70              candidates 134: auto-rejected   0, reviewed 134, KEPT 33 | of the not kept: copy of a >= 0.70 kept cell  14 (reviewed 14, auto 0), other  87
+      kept with ceiling < 0.70: 1 of 34 kept; only-0.60 cells: 1 (1); their ceilings: [0.69]
+  090526-pnb105-520um-32z- | Yawen pnb105 FOVC 090526 at 0.60 | Yawen | pk50 0.713 | rule 0.62 | N 168, auto 57, reviewed 111, kept 10
+      ceiling < 0.60               candidates   5: auto-rejected   5, reviewed   0, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   5
+      0.60 <= ceiling < 0.70       candidates  67: auto-rejected  31, reviewed  36, KEPT  1 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  66
+      0.60 <= ceiling < rule 0.62  candidates   9: auto-rejected   4, reviewed   5, KEPT  1 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   8
+      ceiling >= 0.70              candidates  96: auto-rejected  21, reviewed  75, KEPT  9 | of the not kept: copy of a >= 0.70 kept cell  18 (reviewed 17, auto 1), other  69
+      kept with ceiling < 0.70: 1 of 10 kept; only-0.60 cells: 1 (1); their ceilings: [0.614]
+  090526-pnb99-330um-3z-00 | Taylor 090526-pnb99 dim FOVB at 0.60 | Taylor | pk50 0.643 | rule 0.59 | N 76, auto 18, reviewed 58, kept 28
+      ceiling < 0.60               candidates   0: auto-rejected   0, reviewed   0, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   0
+      0.60 <= ceiling < 0.70       candidates  31: auto-rejected  13, reviewed  18, KEPT  6 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  25
+      0.60 <= ceiling < rule 0.59  candidates   0: auto-rejected   0, reviewed   0, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   0
+      ceiling >= 0.70              candidates  45: auto-rejected   5, reviewed  40, KEPT 22 | of the not kept: copy of a >= 0.70 kept cell   3 (reviewed 3, auto 0), other  20
+      kept with ceiling < 0.70: 6 of 28 kept; only-0.60 cells: 6 (6); their ceilings: [0.629, 0.637, 0.664, 0.68, 0.686, 0.686]
+  090626-pnb105-472um-3z-0 | Yawen pnb105 FOVB 090626 at 0.60 | Yawen | pk50 0.810 | rule 0.67 | N 229, auto 71, reviewed 158, kept 25
+      ceiling < 0.60               candidates   7: auto-rejected   6, reviewed   1, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   7
+      0.60 <= ceiling < 0.70       candidates  49: auto-rejected  33, reviewed  16, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  49
+      0.60 <= ceiling < rule 0.67  candidates  22: auto-rejected  16, reviewed   6, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  22
+      ceiling >= 0.70              candidates 173: auto-rejected  32, reviewed 141, KEPT 25 | of the not kept: copy of a >= 0.70 kept cell  30 (reviewed 30, auto 0), other 118
+      kept with ceiling < 0.70: 0 of 25 kept; only-0.60 cells: 0 (0); their ceilings: []
+  090726-pnb105-404um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | pk50 0.894 | rule 0.70 | N 372, auto 126, reviewed 246, kept 40
+      ceiling < 0.60               candidates   6: auto-rejected   6, reviewed   0, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   6
+      0.60 <= ceiling < 0.70       candidates  28: auto-rejected  18, reviewed  10, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  28
+      0.60 <= ceiling < rule 0.70  candidates  28: auto-rejected  18, reviewed  10, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  28
+      ceiling >= 0.70              candidates 338: auto-rejected 102, reviewed 236, KEPT 40 | of the not kept: copy of a >= 0.70 kept cell  54 (reviewed 54, auto 0), other 244
+      kept with ceiling < 0.70: 0 of 40 kept; only-0.60 cells: 0 (0); their ceilings: []
+  090826-pnb105-385um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | pk50 0.865 | rule 0.69 | N 351, auto 111, reviewed 240, kept 46
+      ceiling < 0.60               candidates   5: auto-rejected   5, reviewed   0, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   5
+      0.60 <= ceiling < 0.70       candidates  38: auto-rejected  27, reviewed  11, KEPT  1 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  37
+      0.60 <= ceiling < rule 0.69  candidates  32: auto-rejected  24, reviewed   8, KEPT  1 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  31
+      ceiling >= 0.70              candidates 308: auto-rejected  79, reviewed 229, KEPT 45 | of the not kept: copy of a >= 0.70 kept cell  61 (reviewed 60, auto 1), other 202
+      kept with ceiling < 0.70: 1 of 46 kept; only-0.60 cells: 1 (1); their ceilings: [0.628]
+  090926-pnb105-394um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | pk50 0.907 | rule 0.71 | N 348, auto 89, reviewed 259, kept 51
+      ceiling < 0.60               candidates   2: auto-rejected   2, reviewed   0, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   2
+      0.60 <= ceiling < 0.70       candidates  31: auto-rejected  18, reviewed  13, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  31
+      0.60 <= ceiling < rule 0.71  candidates  32: auto-rejected  18, reviewed  14, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  32
+      ceiling >= 0.70              candidates 315: auto-rejected  69, reviewed 246, KEPT 51 | of the not kept: copy of a >= 0.70 kept cell  74 (reviewed 72, auto 2), other 190
+      kept with ceiling < 0.70: 0 of 51 kept; only-0.60 cells: 0 (0); their ceilings: []
+  091026-pnb105-353um-35z- | Yawen pnb105 FOVA at 0.60 (4) | Yawen | pk50 0.859 | rule 0.69 | N 304, auto 86, reviewed 218, kept 43
+      ceiling < 0.60               candidates   7: auto-rejected   5, reviewed   2, KEPT  0 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other   7
+      0.60 <= ceiling < 0.70       candidates  29: auto-rejected  14, reviewed  15, KEPT  1 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  28
+      0.60 <= ceiling < rule 0.69  candidates  26: auto-rejected  13, reviewed  13, KEPT  1 | of the not kept: copy of a >= 0.70 kept cell   0 (reviewed 0, auto 0), other  25
+      ceiling >= 0.70              candidates 268: auto-rejected  67, reviewed 201, KEPT 42 | of the not kept: copy of a >= 0.70 kept cell  51 (reviewed 49, auto 2), other 175
+      kept with ceiling < 0.70: 1 of 43 kept; only-0.60 cells: 1 (1); their ceilings: [0.69]
+
+  by group (0.60 sessions):
+   pilot 0.60 (082726-pnb105)             sessions 1  candidates  169  kept  34 | candidates with ceiling < 0.70:  35 (reviewed  35) | kept among them  1 (2.9% of kept) | only-0.60 cells  1 (1 at IoU 0.2) | dup deletes  14 of  135 deletes (0.41 per kept)
+   Taylor 090526-pnb99 dim FOVB at 0.60   sessions 1  candidates   76  kept  28 | candidates with ceiling < 0.70:  31 (reviewed  18) | kept among them  6 (21.4% of kept) | only-0.60 cells  6 (6 at IoU 0.2) | dup deletes   3 of   30 deletes (0.11 per kept)
+   Yawen pnb105 FOVA at 0.60 (4)          sessions 4  candidates 1375  kept 180 | candidates with ceiling < 0.70: 146 (reviewed  51) | kept among them  2 (1.1% of kept) | only-0.60 cells  2 (2 at IoU 0.2) | dup deletes 235 of  783 deletes (1.31 per kept)
+   Yawen pnb105 FOVC 090526 at 0.60       sessions 1  candidates  168  kept  10 | candidates with ceiling < 0.70:  72 (reviewed  36) | kept among them  1 (10.0% of kept) | only-0.60 cells  1 (1 at IoU 0.2) | dup deletes  17 of  101 deletes (1.70 per kept)
+   Yawen pnb105 FOVB 090626 at 0.60       sessions 1  candidates  229  kept  25 | candidates with ceiling < 0.70:  56 (reviewed  17) | kept among them  0 (0.0% of kept) | only-0.60 cells  0 (0 at IoU 0.2) | dup deletes  30 of  133 deletes (1.20 per kept)
+  for scale, sessions run at 0.70 (dup deletes per kept cell):
+   pilots at 0.70 (11)                    dup deletes 129 of 1782 deletes, kept 376 (0.34 per kept)
+   Taylor 09xx at 0.70 (12)               dup deletes 156 of 1388 deletes, kept 683 (0.23 per kept)
+   pnb105 082626-pnb105 (ran at 0.70, Taylor): dup deletes  19 of 242 deletes, kept 24 (0.79 per kept)
+   pnb105 082726-pnb105 (ran at 0.60, Taylor): dup deletes  14 of 135 deletes, kept 34 (0.41 per kept)
+   pnb105 090526-pnb105 (ran at 0.60, Yawen): dup deletes  17 of 101 deletes, kept 10 (1.70 per kept)
+   pnb105 090626-pnb105 (ran at 0.60, Yawen): dup deletes  30 of 133 deletes, kept 25 (1.20 per kept)
+   pnb105 090726-pnb105 (ran at 0.60, Yawen): dup deletes  54 of 206 deletes, kept 40 (1.35 per kept)
+   pnb105 090826-pnb105 (ran at 0.60, Yawen): dup deletes  60 of 194 deletes, kept 46 (1.30 per kept)
+   pnb105 090926-pnb105 (ran at 0.60, Yawen): dup deletes  72 of 208 deletes, kept 51 (1.41 per kept)
+   pnb105 091026-pnb105 (ran at 0.60, Yawen): dup deletes  49 of 175 deletes, kept 43 (1.14 per kept)
+
+== 4. measured, not estimated: the three sessions that also have an archived 0.70 run ==
+   a live (0.60) candidate is 'present at 0.70' when its support has IoU >= 0.5 with a candidate of the archived
+   0.70 run (<session>/.prev_mincorr070_*/spatial_footprints.mat; same movie, same code, min_corr 0.70).
+  082726-pnb105-391um-35z- (pilot 0.60 (082726-pnb105), Taylor): live 0.60 set 169 candidates, archived 0.70 set 79 (.prev_mincorr070_2026-10-18); 0.70 candidates matched by a live one: 70
+      present at 0.70   85 candidates: auto-rejected   0, reviewed  85, KEPT 32, dup-of-kept deletes  14, other deletes  39 | ceiling >= 0.70 in  85, < 0.70 in   0
+      ADDED by 0.60     84 candidates: auto-rejected   0, reviewed  84, KEPT  2, dup-of-kept deletes   0, other deletes  82 | ceiling >= 0.70 in  49, < 0.70 in  35
+      kept cells: present at 0.70 and ceiling >= 0.70: 32 | present, ceiling < 0.70: 0 | added, ceiling >= 0.70: 1 | added, ceiling < 0.70: 1   (ceiling as a predictor of 'a 0.70 run finds it': agrees on 33 of 34 kept cells)
+      kept cells added by 0.60: ceilings [0.69, 0.908]
+      all candidates added by 0.60: ceiling >= 0.70 in 49 of 84 (the ceiling estimate would have called these 'found at 0.70')
+      one-to-one matching (each 0.70 candidate stands for one live candidate); the archived 0.70 set itself holds 5 candidates that overlap another 0.70 candidate at IoU >= 0.5:
+        matched 1:1             70 candidates: auto-rejected   0, reviewed  70, KEPT 31, dup-of-kept deletes   3, other deletes  36
+        extra copy at 0.60      15 candidates: auto-rejected   0, reviewed  15, KEPT  1, dup-of-kept deletes  11, other deletes   3
+        new location at 0.60    84 candidates: auto-rejected   0, reviewed  84, KEPT  2, dup-of-kept deletes   0, other deletes  82
+  090526-pnb105-520um-32z- (Yawen pnb105 FOVC 090526 at 0.60, Yawen): live 0.60 set 168 candidates, archived 0.70 set 44 (.prev_mincorr070_2026-10-28); 0.70 candidates matched by a live one: 43
+      present at 0.70   59 candidates: auto-rejected   6, reviewed  53, KEPT  9, dup-of-kept deletes  17, other deletes  27 | ceiling >= 0.70 in  59, < 0.70 in   0
+      ADDED by 0.60    109 candidates: auto-rejected  51, reviewed  58, KEPT  1, dup-of-kept deletes   0, other deletes  57 | ceiling >= 0.70 in  37, < 0.70 in  72
+      kept cells: present at 0.70 and ceiling >= 0.70: 9 | present, ceiling < 0.70: 0 | added, ceiling >= 0.70: 0 | added, ceiling < 0.70: 1   (ceiling as a predictor of 'a 0.70 run finds it': agrees on 10 of 10 kept cells)
+      kept cells added by 0.60: ceilings [0.614]
+      all candidates added by 0.60: ceiling >= 0.70 in 37 of 109 (the ceiling estimate would have called these 'found at 0.70')
+      one-to-one matching (each 0.70 candidate stands for one live candidate); the archived 0.70 set itself holds 6 candidates that overlap another 0.70 candidate at IoU >= 0.5:
+        matched 1:1             43 candidates: auto-rejected   6, reviewed  37, KEPT  9, dup-of-kept deletes   4, other deletes  24
+        extra copy at 0.60      16 candidates: auto-rejected   0, reviewed  16, KEPT  0, dup-of-kept deletes  13, other deletes   3
+        new location at 0.60   109 candidates: auto-rejected  51, reviewed  58, KEPT  1, dup-of-kept deletes   0, other deletes  57
+  090526-pnb99-330um-3z-00 (Taylor 090526-pnb99 dim FOVB at 0.60, Taylor): live 0.60 set 76 candidates, archived 0.70 set 30 (.prev_mincorr070_2026-11-02); 0.70 candidates matched by a live one: 30
+      present at 0.70   35 candidates: auto-rejected   0, reviewed  35, KEPT 22, dup-of-kept deletes   3, other deletes  10 | ceiling >= 0.70 in  35, < 0.70 in   0
+      ADDED by 0.60     41 candidates: auto-rejected  18, reviewed  23, KEPT  6, dup-of-kept deletes   0, other deletes  17 | ceiling >= 0.70 in  10, < 0.70 in  31
+      kept cells: present at 0.70 and ceiling >= 0.70: 22 | present, ceiling < 0.70: 0 | added, ceiling >= 0.70: 0 | added, ceiling < 0.70: 6   (ceiling as a predictor of 'a 0.70 run finds it': agrees on 28 of 28 kept cells)
+      kept cells added by 0.60: ceilings [0.629, 0.637, 0.664, 0.68, 0.686, 0.686]
+      all candidates added by 0.60: ceiling >= 0.70 in 10 of 41 (the ceiling estimate would have called these 'found at 0.70')
+      one-to-one matching (each 0.70 candidate stands for one live candidate); the archived 0.70 set itself holds 2 candidates that overlap another 0.70 candidate at IoU >= 0.5:
+        matched 1:1             30 candidates: auto-rejected   0, reviewed  30, KEPT 22, dup-of-kept deletes   1, other deletes   7
+        extra copy at 0.60       5 candidates: auto-rejected   0, reviewed   5, KEPT  0, dup-of-kept deletes   2, other deletes   3
+        new location at 0.60    41 candidates: auto-rejected  18, reviewed  23, KEPT  6, dup-of-kept deletes   0, other deletes  17

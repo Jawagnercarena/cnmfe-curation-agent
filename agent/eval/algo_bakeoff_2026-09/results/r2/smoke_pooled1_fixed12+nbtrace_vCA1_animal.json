@@ -1,0 +1,63 @@
+{
+ "variant": "fixed12+nbtrace",
+ "cfg": {
+  "val_bs_frac": 0.0,
+  "epochs": 2,
+  "fixed_epochs": 2,
+  "ens": 1,
+  "corpus": "v2",
+  "nb": true,
+  "patience": 5,
+  "batch": 256,
+  "lr": 0.001
+ },
+ "other_area": "BLA",
+ "other_weight": 1.0,
+ "other_rows": 41175,
+ "other_agw": 4.0,
+ "area": "vCA1",
+ "grouping": "animal",
+ "seeds": [
+  42
+ ],
+ "control": "vCA1_animal_xgb_deployed_t8.npz",
+ "corpora": [
+  "D:\\Julian_CNMFe\\vCA1\\.feature_expansion\\_raw_corpus\\vCA1_raw_corpus_v2.h5",
+  "D:\\Julian_CNMFe\\BLA\\.feature_expansion\\_raw_corpus\\BLA_raw_corpus_v2.h5"
+ ],
+ "smoke": true,
+ "runtime_s": 31.96189546585083,
+ "folds": [
+  {
+   "seed": 42,
+   "fold": 0,
+   "n_train": 85694,
+   "n_other": 41175,
+   "agw": 5.0,
+   "spw": 5.347973314464773,
+   "n_test_scored": 1200,
+   "test_auc": 0.910614170459651,
+   "best_epoch": [
+    1
+   ],
+   "epochs_run": [
+    2
+   ],
+   "curve": [
+    [
+     {
+      "epoch": 0,
+      "loss": 0.43405815087147614,
+      "val_auc": NaN
+     },
+     {
+      "epoch": 1,
+      "loss": 0.36507276198757227,
+      "val_auc": NaN
+     }
+    ]
+   ]
+  }
+ ],
+ "written_at": "2026-09-08T17:37:05"
+}

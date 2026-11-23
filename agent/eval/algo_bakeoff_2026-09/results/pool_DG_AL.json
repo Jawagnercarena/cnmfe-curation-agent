@@ -1,0 +1,143 @@
+{
+ "area": "DG_AL",
+ "created": "2026-09-06T16:49:58",
+ "width": 13,
+ "sessions": [
+  {
+   "name": "odor_encoding/AVG4x-TSeries-040623-DG6D-356um-406um-2z-000A",
+   "is_bootstrap": false,
+   "n_cand": 127,
+   "n_pos": 49,
+   "animal": "DG6D",
+   "labels_sha256": "eccea516ef97f2e1fca96f347878241f2444ea5300db49cc7fe1069b9f9587c3"
+  },
+  {
+   "name": "odor_encoding/AVG4x-TSeries-040623-DG6D-356um-406um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 158,
+   "n_pos": 69,
+   "animal": "DG6D",
+   "labels_sha256": "2e7fff016ba81cfa23bd4438eedb80b3ad589a01f959b0f9136e72eace9398ef"
+  },
+  {
+   "name": "odor_encoding/AVG4x-TSeries-040623-DG6E-283um-233um-2z-000A",
+   "is_bootstrap": false,
+   "n_cand": 133,
+   "n_pos": 60,
+   "animal": "DG6E",
+   "labels_sha256": "bc1bbea4268af0e5858730b03834e564cbb711e41793e07693eb78e61a68ec0b"
+  },
+  {
+   "name": "odor_encoding/AVG4x-TSeries-040623-DG6E-283um-233um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 108,
+   "n_pos": 69,
+   "animal": "DG6E",
+   "labels_sha256": "58ddf0a896a9b01378371e579a47ec79da72edb92107bd2fa838d06f448e292f"
+  },
+  {
+   "name": "odor_encoding/AVG4x-TSeries-040723-DG6D-349um-299um-2z-000A",
+   "is_bootstrap": false,
+   "n_cand": 145,
+   "n_pos": 61,
+   "animal": "DG6D",
+   "labels_sha256": "648544c12e6f4f9d7883fbdb3696588afee7d855536eb3c1eb9fbefb471676d5"
+  },
+  {
+   "name": "odor_encoding/AVG4x-TSeries-040723-DG6D-349um-299um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 169,
+   "n_pos": 80,
+   "animal": "DG6D",
+   "labels_sha256": "6804af5b57051cb674e249c6f2c4b2725cab434afcd29713a21b112f3939e864"
+  },
+  {
+   "name": "odor_encoding/AVG4x-TSeries-040723-DG6E-295um-245um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 128,
+   "n_pos": 73,
+   "animal": "DG6E",
+   "labels_sha256": "d48aeca21d4e4efd62f6aa579f0a6a797389fc38ab9d40acf80ebbfa11d80433"
+  },
+  {
+   "name": "odor_encoding/TSeries-040623-DG6D-356um-406um-2z-000A",
+   "is_bootstrap": false,
+   "n_cand": 101,
+   "n_pos": 51,
+   "animal": "DG6D",
+   "labels_sha256": "aa203f748ce148a3ebf42cc1900e739ba17670b463b3741a3d012b704cb784a7"
+  },
+  {
+   "name": "odor_encoding/TSeries-040623-DG6D-356um-406um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 138,
+   "n_pos": 71,
+   "animal": "DG6D",
+   "labels_sha256": "4ac043c245f09b2394bace546e56458f082cb79c3539820e65127126eca2ee8f"
+  },
+  {
+   "name": "odor_encoding/TSeries-040623-DG6E-283um-233um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 89,
+   "n_pos": 51,
+   "animal": "DG6E",
+   "labels_sha256": "47dd6076d5a97a537dbe63f3dc7f8d79e6ae8ffef32172e42de966d75262e70d"
+  },
+  {
+   "name": "odor_encoding/TSeries-040723-DG6D-349um-299um-2z-000A",
+   "is_bootstrap": false,
+   "n_cand": 106,
+   "n_pos": 59,
+   "animal": "DG6D",
+   "labels_sha256": "ae6e8975c6ff745b669acd8678475b84383c05d25de5b5591f02f4adee9c2b78"
+  },
+  {
+   "name": "odor_encoding/TSeries-040723-DG6D-349um-299um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 126,
+   "n_pos": 69,
+   "animal": "DG6D",
+   "labels_sha256": "be904720c811e4801f07af774a116327c2079f088efc19b0ed4f9492f3dd777c"
+  },
+  {
+   "name": "odor_encoding/TSeries-040723-DG6E-295um-245um-2z-000A",
+   "is_bootstrap": false,
+   "n_cand": 113,
+   "n_pos": 49,
+   "animal": "DG6E",
+   "labels_sha256": "fb22aaeca0c7b77f3a162f910305793f86513bb737c5fc25d7cf80fb5424d60d"
+  },
+  {
+   "name": "odor_encoding/TSeries-040723-DG6E-295um-245um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 93,
+   "n_pos": 53,
+   "animal": "DG6E",
+   "labels_sha256": "dc32f5906ca3abd15ef482f53794b3cade0aae47de5763e0b449728db62777a6"
+  },
+  {
+   "name": "odor_encoding/TSeries-041523-DG6D-382um-332um-2z-000A",
+   "is_bootstrap": false,
+   "n_cand": 98,
+   "n_pos": 52,
+   "animal": "DG6D",
+   "labels_sha256": "80461bbc3ce7acb3fe015933625e23f707e6a7df35e1238a87ce06e5fdabd55e"
+  },
+  {
+   "name": "odor_encoding/TSeries-041523-DG6D-382um-332um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 108,
+   "n_pos": 58,
+   "animal": "DG6D",
+   "labels_sha256": "6a0f06639ff4883b57bf8d00fff414832bcd6781db84af1710d609afea58c63c"
+  },
+  {
+   "name": "odor_encoding/TSeries-041523-DG6E-284um-234um-2z-000B",
+   "is_bootstrap": false,
+   "n_cand": 85,
+   "n_pos": 54,
+   "animal": "DG6E",
+   "labels_sha256": "1edbb2242622ed8fcf9a72ad4ea6aa9c57ace7265232ff778d5216c75bb9937b"
+  }
+ ]
+}

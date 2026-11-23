@@ -1,0 +1,23 @@
+[16:51:05] BLA: output D:\Julian_CNMFe\BLA\.feature_expansion\_raw_corpus\BLA_raw_corpus.h5
+[16:51:05] BLA: pool matches snapshot pool_BLA.json (176 labeled sessions)
+[16:51:22]   10/176 sessions, 1142 rows, 17s
+[16:51:42]   20/176 sessions, 2495 rows, 36s
+[16:52:00]   30/176 sessions, 3909 rows, 55s
+[16:52:20]   40/176 sessions, 6821 rows, 75s
+[16:52:42]   50/176 sessions, 10516 rows, 97s
+[16:53:02]   60/176 sessions, 13932 rows, 117s
+[16:53:20]   70/176 sessions, 16888 rows, 134s
+[16:53:37]   80/176 sessions, 20051 rows, 152s
+[16:53:58]   90/176 sessions, 23628 rows, 172s
+[16:54:20]   100/176 sessions, 25356 rows, 195s
+[16:54:38]   110/176 sessions, 26679 rows, 213s
+[16:54:56]   120/176 sessions, 28091 rows, 231s
+[16:55:18]   130/176 sessions, 29738 rows, 253s
+[16:55:43]   140/176 sessions, 33235 rows, 278s
+[16:56:03]   150/176 sessions, 36840 rows, 298s
+[16:56:18]   160/176 sessions, 39728 rows, 313s
+[16:56:36]   170/176 sessions, 42338 rows, 331s
+[16:56:55]   176/176 sessions, 45669 rows, 350s
+[16:56:58] contact sheet -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\algo_bakeoff_2026-09\results\contact_sheet_BLA.png
+[16:56:58] BLA: 45669 rows from 176 sessions (0 skipped, 2006 labeled rows without raw data); positives 5366; join_ok=True; orientation votes {'bootstrap': {'n_reals_checked': 2676, 'frac_cn_under_mask_beats_transposed': 0.898355754857997}, 'agent': {'n_reals_checked': 2629, 'frac_cn_under_mask_beats_transposed': 0.9159376188664892}}; h5 ~1.27 GB; 353s
+[16:56:58] wrote D:\Julian_CNMFe\BLA\.feature_expansion\_raw_corpus\BLA_raw_corpus.h5

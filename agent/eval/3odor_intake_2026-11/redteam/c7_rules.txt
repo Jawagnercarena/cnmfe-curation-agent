@@ -1,0 +1,38 @@
+line fitted on all 55 conditions: needed(95%) = 0.032 + 0.835 * pk50; leave-one-session-out fits: 0.036 + 0.846; 0.057 + 0.795; -0.109 + 1.006; 0.038 + 0.836; 0.071 + 0.779
+
+== scored on the 50 degraded conditions (5 sessions) ==
+rule | conditions keeping >= 95%% / >= 90%% of base kept cells | kept share, median [min] at noise_rel 0.15-0.20 | at 0.25-0.35 | first-pass seeds relative to the floor, median at 0.25-0.35 | min_corr median [min-max] at 0.25-0.35
+  0.70               |  7 / 12 of 50 | 0.91 [0.74] | 0.66 [0.47] | 0.52 | 0.70 [0.70-0.70]
+  rule f=0.444       | 21 / 28 of 50 | 0.98 [0.89] | 0.88 [0.79] | 0.79 | 0.60 [0.56-0.65]
+  rule f=0.30        | 32 / 37 of 50 | 1.00 [0.95] | 0.92 [0.82] | 0.88 | 0.59 [0.56-0.61]
+  rule f=0.20        | 34 / 42 of 50 | 1.00 [0.97] | 0.94 [0.85] | 0.90 | 0.57 [0.56-0.59]
+  line (LOSO)        | 23 / 34 of 50 | 0.98 [0.84] | 0.92 [0.79] | 0.82 | 0.60 [0.55-0.68]
+  line - 0.02 (LOSO) | 27 / 36 of 50 | 0.98 [0.86] | 0.94 [0.82] | 0.89 | 0.58 [0.55-0.66]
+  pk50 - 0.12        | 30 / 45 of 50 | 0.98 [0.86] | 0.96 [0.89] | 1.00 | 0.55 [0.55-0.65]
+  pk50-0.12, >= fl+.025 | 24 / 34 of 50 | 0.98 [0.86] | 0.91 [0.76] | 0.86 | 0.58 [0.58-0.65]
+  floor + 0.025      | 33 / 38 of 50 | 1.00 [0.97] | 0.93 [0.76] | 0.88 | 0.58 [0.58-0.58]
+  floor              | 43 / 50 of 50 | 1.00 [0.97] | 0.97 [0.91] | 1.00 | 0.55 [0.55-0.55]
+
+== on the 5 originals: kept share (all must be 1.00) and min_corr ==
+  0.70               | kept 1.00 1.00 0.97 1.00 1.00 | min_corr 0.70 0.70 0.70 0.70 0.70
+  rule f=0.444       | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.70 0.70 0.64 0.69 0.71
+  rule f=0.30        | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.65 0.65 0.61 0.65 0.66
+  rule f=0.20        | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.62 0.62 0.59 0.61 0.62
+  line (LOSO)        | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.70 0.70 0.65 0.70 0.70
+  line - 0.02 (LOSO) | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.70 0.70 0.63 0.70 0.70
+  pk50 - 0.12        | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.70 0.70 0.64 0.70 0.70
+  pk50-0.12, >= fl+.025 | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.70 0.70 0.64 0.70 0.70
+  floor + 0.025      | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.58 0.58 0.58 0.58 0.58
+  floor              | kept 1.00 1.00 1.00 1.00 1.00 | min_corr 0.55 0.55 0.55 0.55 0.55
+
+== the same rules on the real 3odor sessions (values only) ==
+  0.70               | all 71: median 0.70 [0.70-0.70], at the floor in 0, < 0.65 in 0 | dim/hazy noted 10: median 0.70 [0.70-0.70]
+  rule f=0.444       | all 71: median 0.68 [0.57-0.74], at the floor in 0, < 0.65 in 16 | dim/hazy noted 10: median 0.59 [0.57-0.69]
+  rule f=0.30        | all 71: median 0.64 [0.56-0.68], at the floor in 0, < 0.65 in 45 | dim/hazy noted 10: median 0.58 [0.56-0.65]
+  rule f=0.20        | all 71: median 0.61 [0.56-0.64], at the floor in 0, < 0.65 in 71 | dim/hazy noted 10: median 0.57 [0.56-0.61]
+  pk50 - 0.12        | all 71: median 0.70 [0.55-0.70], at the floor in 7, < 0.65 in 16 | dim/hazy noted 10: median 0.55 [0.55-0.70]
+  pk50-0.12, >= fl+.025 | all 71: median 0.70 [0.58-0.70], at the floor in 0, < 0.65 in 16 | dim/hazy noted 10: median 0.58 [0.58-0.70]
+  floor + 0.025      | all 71: median 0.58 [0.58-0.60], at the floor in 0, < 0.65 in 71 | dim/hazy noted 10: median 0.58 [0.58-0.58]
+  floor              | all 71: median 0.55 [0.55-0.57], at the floor in 71, < 0.65 in 71 | dim/hazy noted 10: median 0.55 [0.55-0.55]
+  line (all)         | all 71: median 0.70 [0.55-0.70], at the floor in 3, < 0.65 in 12 | dim/hazy noted 10: median 0.57 [0.55-0.70]
+  line - 0.02 (all)  | all 71: median 0.70 [0.55-0.70], at the floor in 5, < 0.65 in 16 | dim/hazy noted 10: median 0.56 [0.55-0.70]

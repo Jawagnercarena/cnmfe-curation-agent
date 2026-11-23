@@ -1,0 +1,21 @@
+[14:49:41] BLA: output D:\Julian_CNMFe\BLA\.feature_expansion\_raw_corpus\BLA_raw_corpus_v2.h5 (patch 32)
+[14:49:41] BLA: pool matches snapshot pool_BLA.json (176 labeled sessions)
+[14:49:57]   10/176 sessions, 1142 rows, 16s
+[14:50:16]   20/176 sessions, 2495 rows, 35s
+[14:50:35]   30/176 sessions, 3909 rows, 54s
+[14:50:58]   40/176 sessions, 6821 rows, 77s
+[14:51:21]   50/176 sessions, 10516 rows, 100s
+[14:51:41]   60/176 sessions, 13932 rows, 120s
+[14:51:58]   70/176 sessions, 16888 rows, 137s
+[14:52:15]   80/176 sessions, 20051 rows, 154s
+[14:52:36]   90/176 sessions, 23628 rows, 175s
+[14:52:59]   100/176 sessions, 25356 rows, 198s
+[14:53:18]   110/176 sessions, 26679 rows, 217s
+[14:53:38]   120/176 sessions, 28091 rows, 237s
+[14:54:01]   130/176 sessions, 29738 rows, 260s
+[14:54:27]   140/176 sessions, 33235 rows, 286s
+[14:54:48]   150/176 sessions, 36840 rows, 307s
+[14:55:04]   160/176 sessions, 39728 rows, 323s
+[14:55:23]   170/176 sessions, 42338 rows, 342s
+[14:55:43]   176/176 sessions, 45669 rows, 362s
+[14:55:44] BLA/v2: 45669 rows (45445 with a neighbour; corr quartiles [0.3520837426185608, 0.46868768334388733, 0.578967273235321]), 176 sessions, 363s -> D:\Julian_CNMFe\BLA\.feature_expansion\_raw_corpus\BLA_raw_corpus_v2.h5

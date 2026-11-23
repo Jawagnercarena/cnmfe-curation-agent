@@ -1,0 +1,453 @@
+2026-11-11 18:00:11  c5 start 090826-pnb102-497um-3z-000 (production run: min_corr 0.7, min_pnr 7.0)
+2026-11-11 18:00:11    [MATLAB] Starting MATLAB...
+2026-11-11 18:00:18    [MATLAB] [C5] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\missed_somata_2026-11\shadow\greedyROI_endoscope.m
+2026-11-11 18:00:21    [MATLAB] load data from frame 1 to frame 1024 of 21026 total frames
+2026-11-11 18:00:42    [MATLAB] load data from frame 1025 to frame 2048 of 21026 total frames
+2026-11-11 18:00:57    [MATLAB] load data from frame 2049 to frame 3072 of 21026 total frames
+2026-11-11 18:01:15    [MATLAB] load data from frame 3073 to frame 4096 of 21026 total frames
+2026-11-11 18:01:41    [MATLAB] load data from frame 4097 to frame 5120 of 21026 total frames
+2026-11-11 18:02:03    [MATLAB] load data from frame 5121 to frame 6144 of 21026 total frames
+2026-11-11 18:02:20    [MATLAB] load data from frame 6145 to frame 7168 of 21026 total frames
+2026-11-11 18:02:41    [MATLAB] load data from frame 7169 to frame 8192 of 21026 total frames
+2026-11-11 18:03:02    [MATLAB] load data from frame 8193 to frame 9216 of 21026 total frames
+2026-11-11 18:03:23    [MATLAB] load data from frame 9217 to frame 10240 of 21026 total frames
+2026-11-11 18:03:42    [MATLAB] load data from frame 10241 to frame 11264 of 21026 total frames
+2026-11-11 18:04:02    [MATLAB] load data from frame 11265 to frame 12288 of 21026 total frames
+2026-11-11 18:04:24    [MATLAB] load data from frame 12289 to frame 13312 of 21026 total frames
+2026-11-11 18:04:43    [MATLAB] load data from frame 13313 to frame 14336 of 21026 total frames
+2026-11-11 18:05:02    [MATLAB] load data from frame 14337 to frame 15360 of 21026 total frames
+2026-11-11 18:05:23    [MATLAB] load data from frame 15361 to frame 16384 of 21026 total frames
+2026-11-11 18:05:46    [MATLAB] load data from frame 16385 to frame 17408 of 21026 total frames
+2026-11-11 18:06:05    [MATLAB] load data from frame 17409 to frame 18432 of 21026 total frames
+2026-11-11 18:06:20    [MATLAB] load data from frame 18433 to frame 19456 of 21026 total frames
+2026-11-11 18:06:36    [MATLAB] load data from frame 19457 to frame 20480 of 21026 total frames
+2026-11-11 18:06:53    [MATLAB] load data from frame 20481 to frame 21026 of 21026 total frames
+2026-11-11 18:07:04    [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 10513 frames.
+2026-11-11 18:07:04    [MATLAB] Loading all data requires 5.13 GB RAM
+2026-11-11 18:08:12    [MATLAB] 10 neurons have been detected
+2026-11-11 18:08:35    [MATLAB] 20 neurons have been detected
+2026-11-11 18:08:51    [MATLAB] 30 neurons have been detected
+2026-11-11 18:09:07    [MATLAB] 40 neurons have been detected
+2026-11-11 18:09:24    [MATLAB] 50 neurons have been detected
+2026-11-11 18:09:39    [MATLAB] 60 neurons have been detected
+2026-11-11 18:09:54    [MATLAB] 70 neurons have been detected
+2026-11-11 18:10:08    [MATLAB] 80 neurons have been detected
+2026-11-11 18:10:21    [MATLAB] 90 neurons have been detected
+2026-11-11 18:10:35    [MATLAB] 100 neurons have been detected
+2026-11-11 18:10:48    [MATLAB] 110 neurons have been detected
+2026-11-11 18:11:02    [MATLAB] 120 neurons have been detected
+2026-11-11 18:11:15    [MATLAB] 130 neurons have been detected
+2026-11-11 18:11:29    [MATLAB] 140 neurons have been detected
+2026-11-11 18:11:42    [MATLAB] 150 neurons have been detected
+2026-11-11 18:11:54    [MATLAB] 160 neurons have been detected
+2026-11-11 18:12:06    [MATLAB] 170 neurons have been detected
+2026-11-11 18:12:21    [MATLAB] 180 neurons have been detected
+2026-11-11 18:12:33    [MATLAB] 190 neurons have been detected
+2026-11-11 18:12:47    [MATLAB] 200 neurons have been detected
+2026-11-11 18:13:02    [MATLAB] 210 neurons have been detected
+2026-11-11 18:13:20    [MATLAB] 220 neurons have been detected
+2026-11-11 18:13:35    [MATLAB] 230 neurons have been detected
+2026-11-11 18:13:51    [MATLAB] 240 neurons have been detected
+2026-11-11 18:14:05    [MATLAB] 250 neurons have been detected
+2026-11-11 18:14:17    [MATLAB] 260 neurons have been detected
+2026-11-11 18:14:30    [MATLAB] 270 neurons have been detected
+2026-11-11 18:14:42    [MATLAB] 280 neurons have been detected
+2026-11-11 18:14:55    [MATLAB] 290 neurons have been detected
+2026-11-11 18:15:09    [MATLAB] 300 neurons have been detected
+2026-11-11 18:15:26    [MATLAB] 310 neurons have been detected
+2026-11-11 18:15:43    [MATLAB] 320 neurons have been detected
+2026-11-11 18:16:08    [MATLAB] 330 neurons have been detected
+2026-11-11 18:16:27    [MATLAB] 340 neurons have been detected
+2026-11-11 18:16:43    [MATLAB] 350 neurons have been detected
+2026-11-11 18:16:59    [MATLAB] 360 neurons have been detected
+2026-11-11 18:17:15    [MATLAB] 370 neurons have been detected
+2026-11-11 18:17:29    [MATLAB] 380 neurons have been detected
+2026-11-11 18:17:43    [MATLAB] 390 neurons have been detected
+2026-11-11 18:17:57    [MATLAB] 400 neurons have been detected
+2026-11-11 18:18:08    [MATLAB] 410 neurons have been detected
+2026-11-11 18:18:20    [MATLAB] 420 neurons have been detected
+2026-11-11 18:18:31    [MATLAB] 430 neurons have been detected
+2026-11-11 18:18:43    [MATLAB] 440 neurons have been detected
+2026-11-11 18:18:55    [MATLAB] 450 neurons have been detected
+2026-11-11 18:19:07    [MATLAB] 460 neurons have been detected
+2026-11-11 18:19:20    [MATLAB] 470 neurons have been detected
+2026-11-11 18:19:32    [MATLAB] 480 neurons have been detected
+2026-11-11 18:19:42    [MATLAB] 490 neurons have been detected
+2026-11-11 18:19:56    [MATLAB] 500 neurons have been detected
+2026-11-11 18:20:08    [MATLAB] 510 neurons have been detected
+2026-11-11 18:20:11    [MATLAB] [SEEDTRACE] greedy init: K cap 3563, initialized 512, attempts 1116, passes 7, end 1
+2026-11-11 18:20:12    [MATLAB] [C5] min_corr 0.60 min_pnr 7.0: pass-1 attempts 407, initialised 512, passes 7 (789 s)
+2026-11-11 18:20:52    [MATLAB] 10 neurons have been detected
+2026-11-11 18:21:05    [MATLAB] 20 neurons have been detected
+2026-11-11 18:21:17    [MATLAB] 30 neurons have been detected
+2026-11-11 18:21:30    [MATLAB] 40 neurons have been detected
+2026-11-11 18:21:43    [MATLAB] 50 neurons have been detected
+2026-11-11 18:21:59    [MATLAB] 60 neurons have been detected
+2026-11-11 18:22:14    [MATLAB] 70 neurons have been detected
+2026-11-11 18:22:31    [MATLAB] 80 neurons have been detected
+2026-11-11 18:22:45    [MATLAB] 90 neurons have been detected
+2026-11-11 18:22:58    [MATLAB] 100 neurons have been detected
+2026-11-11 18:23:09    [MATLAB] 110 neurons have been detected
+2026-11-11 18:23:21    [MATLAB] 120 neurons have been detected
+2026-11-11 18:23:32    [MATLAB] 130 neurons have been detected
+2026-11-11 18:23:43    [MATLAB] 140 neurons have been detected
+2026-11-11 18:23:53    [MATLAB] 150 neurons have been detected
+2026-11-11 18:24:04    [MATLAB] 160 neurons have been detected
+2026-11-11 18:24:16    [MATLAB] 170 neurons have been detected
+2026-11-11 18:24:28    [MATLAB] 180 neurons have been detected
+2026-11-11 18:24:42    [MATLAB] 190 neurons have been detected
+2026-11-11 18:25:02    [MATLAB] 200 neurons have been detected
+2026-11-11 18:25:21    [MATLAB] 210 neurons have been detected
+2026-11-11 18:25:36    [MATLAB] 220 neurons have been detected
+2026-11-11 18:25:51    [MATLAB] 230 neurons have been detected
+2026-11-11 18:26:02    [MATLAB] 240 neurons have been detected
+2026-11-11 18:26:13    [MATLAB] 250 neurons have been detected
+2026-11-11 18:26:25    [MATLAB] 260 neurons have been detected
+2026-11-11 18:26:36    [MATLAB] 270 neurons have been detected
+2026-11-11 18:26:49    [MATLAB] 280 neurons have been detected
+2026-11-11 18:27:01    [MATLAB] 290 neurons have been detected
+2026-11-11 18:27:11    [MATLAB] 300 neurons have been detected
+2026-11-11 18:27:23    [MATLAB] 310 neurons have been detected
+2026-11-11 18:27:36    [MATLAB] 320 neurons have been detected
+2026-11-11 18:27:48    [MATLAB] 330 neurons have been detected
+2026-11-11 18:28:00    [MATLAB] 340 neurons have been detected
+2026-11-11 18:28:07    [MATLAB] [SEEDTRACE] greedy init: K cap 2385, initialized 346, attempts 812, passes 6, end 1
+2026-11-11 18:28:08    [MATLAB] [C5] min_corr 0.70 min_pnr 7.0: pass-1 attempts 379, initialised 346, passes 6 (475 s)
+2026-11-11 18:28:41    [MATLAB] 10 neurons have been detected
+2026-11-11 18:28:53    [MATLAB] 20 neurons have been detected
+2026-11-11 18:29:05    [MATLAB] 30 neurons have been detected
+2026-11-11 18:29:17    [MATLAB] 40 neurons have been detected
+2026-11-11 18:29:29    [MATLAB] 50 neurons have been detected
+2026-11-11 18:29:41    [MATLAB] 60 neurons have been detected
+2026-11-11 18:29:53    [MATLAB] 70 neurons have been detected
+2026-11-11 18:30:05    [MATLAB] 80 neurons have been detected
+2026-11-11 18:30:18    [MATLAB] 90 neurons have been detected
+2026-11-11 18:30:33    [MATLAB] 100 neurons have been detected
+2026-11-11 18:30:45    [MATLAB] 110 neurons have been detected
+2026-11-11 18:30:58    [MATLAB] 120 neurons have been detected
+2026-11-11 18:31:11    [MATLAB] 130 neurons have been detected
+2026-11-11 18:31:25    [MATLAB] 140 neurons have been detected
+2026-11-11 18:31:39    [MATLAB] 150 neurons have been detected
+2026-11-11 18:31:46    [MATLAB] [SEEDTRACE] greedy init: K cap 932, initialized 155, attempts 399, passes 4, end 1
+2026-11-11 18:31:47    [MATLAB] [C5] min_corr 0.80 min_pnr 7.0: pass-1 attempts 282, initialised 155, passes 4 (220 s)
+2026-11-11 18:31:47    [MATLAB] [C5] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c5_090826-pnb102-497um-3z-000.mat
+2026-11-11 18:31:52    [MATLAB] Finished successfully in 31.7 min.
+2026-11-11 18:31:52  c5 090826-pnb102-497um-3z-000: returned True, output present True
+2026-11-11 18:31:53  c5 start 090826-pnb105-385um-35z-000 (production run: min_corr 0.6, min_pnr 6.1)
+2026-11-11 18:31:53    [MATLAB] Starting MATLAB...
+2026-11-11 18:31:58    [MATLAB] [C5] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\missed_somata_2026-11\shadow\greedyROI_endoscope.m
+2026-11-11 18:32:00    [MATLAB] load data from frame 1 to frame 1024 of 21018 total frames
+2026-11-11 18:32:21    [MATLAB] load data from frame 1025 to frame 2048 of 21018 total frames
+2026-11-11 18:32:34    [MATLAB] load data from frame 2049 to frame 3072 of 21018 total frames
+2026-11-11 18:32:48    [MATLAB] load data from frame 3073 to frame 4096 of 21018 total frames
+2026-11-11 18:33:03    [MATLAB] load data from frame 4097 to frame 5120 of 21018 total frames
+2026-11-11 18:33:35    [MATLAB] load data from frame 5121 to frame 6144 of 21018 total frames
+2026-11-11 18:33:58    [MATLAB] load data from frame 6145 to frame 7168 of 21018 total frames
+2026-11-11 18:34:16    [MATLAB] load data from frame 7169 to frame 8192 of 21018 total frames
+2026-11-11 18:34:41    [MATLAB] load data from frame 8193 to frame 9216 of 21018 total frames
+2026-11-11 18:35:07    [MATLAB] load data from frame 9217 to frame 10240 of 21018 total frames
+2026-11-11 18:35:38    [MATLAB] load data from frame 10241 to frame 11264 of 21018 total frames
+2026-11-11 18:36:08    [MATLAB] load data from frame 11265 to frame 12288 of 21018 total frames
+2026-11-11 18:36:42    [MATLAB] load data from frame 12289 to frame 13312 of 21018 total frames
+2026-11-11 18:37:00    [MATLAB] load data from frame 13313 to frame 14336 of 21018 total frames
+2026-11-11 18:37:16    [MATLAB] load data from frame 14337 to frame 15360 of 21018 total frames
+2026-11-11 18:37:33    [MATLAB] load data from frame 15361 to frame 16384 of 21018 total frames
+2026-11-11 18:37:55    [MATLAB] load data from frame 16385 to frame 17408 of 21018 total frames
+2026-11-11 18:38:26    [MATLAB] load data from frame 17409 to frame 18432 of 21018 total frames
+2026-11-11 18:38:51    [MATLAB] load data from frame 18433 to frame 19456 of 21018 total frames
+2026-11-11 18:39:22    [MATLAB] load data from frame 19457 to frame 20480 of 21018 total frames
+2026-11-11 18:39:45    [MATLAB] load data from frame 20481 to frame 21018 of 21018 total frames
+2026-11-11 18:39:54    [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 10509 frames.
+2026-11-11 18:39:54    [MATLAB] Loading all data requires 5.13 GB RAM
+2026-11-11 18:40:45    [MATLAB] 10 neurons have been detected
+2026-11-11 18:40:59    [MATLAB] 20 neurons have been detected
+2026-11-11 18:41:10    [MATLAB] 30 neurons have been detected
+2026-11-11 18:41:22    [MATLAB] 40 neurons have been detected
+2026-11-11 18:41:32    [MATLAB] 50 neurons have been detected
+2026-11-11 18:41:43    [MATLAB] 60 neurons have been detected
+2026-11-11 18:41:53    [MATLAB] 70 neurons have been detected
+2026-11-11 18:42:04    [MATLAB] 80 neurons have been detected
+2026-11-11 18:42:15    [MATLAB] 90 neurons have been detected
+2026-11-11 18:42:26    [MATLAB] 100 neurons have been detected
+2026-11-11 18:42:36    [MATLAB] 110 neurons have been detected
+2026-11-11 18:42:46    [MATLAB] 120 neurons have been detected
+2026-11-11 18:42:58    [MATLAB] 130 neurons have been detected
+2026-11-11 18:43:08    [MATLAB] 140 neurons have been detected
+2026-11-11 18:43:17    [MATLAB] 150 neurons have been detected
+2026-11-11 18:43:26    [MATLAB] 160 neurons have been detected
+2026-11-11 18:43:36    [MATLAB] 170 neurons have been detected
+2026-11-11 18:43:45    [MATLAB] 180 neurons have been detected
+2026-11-11 18:43:54    [MATLAB] 190 neurons have been detected
+2026-11-11 18:44:03    [MATLAB] 200 neurons have been detected
+2026-11-11 18:44:12    [MATLAB] 210 neurons have been detected
+2026-11-11 18:44:21    [MATLAB] 220 neurons have been detected
+2026-11-11 18:44:30    [MATLAB] 230 neurons have been detected
+2026-11-11 18:44:43    [MATLAB] 240 neurons have been detected
+2026-11-11 18:44:58    [MATLAB] 250 neurons have been detected
+2026-11-11 18:45:09    [MATLAB] 260 neurons have been detected
+2026-11-11 18:45:20    [MATLAB] 270 neurons have been detected
+2026-11-11 18:45:30    [MATLAB] 280 neurons have been detected
+2026-11-11 18:45:41    [MATLAB] 290 neurons have been detected
+2026-11-11 18:45:52    [MATLAB] 300 neurons have been detected
+2026-11-11 18:46:04    [MATLAB] 310 neurons have been detected
+2026-11-11 18:46:18    [MATLAB] 320 neurons have been detected
+2026-11-11 18:46:30    [MATLAB] 330 neurons have been detected
+2026-11-11 18:46:42    [MATLAB] 340 neurons have been detected
+2026-11-11 18:46:55    [MATLAB] 350 neurons have been detected
+2026-11-11 18:47:07    [MATLAB] 360 neurons have been detected
+2026-11-11 18:47:16    [MATLAB] [SEEDTRACE] greedy init: K cap 2326, initialized 368, attempts 782, passes 8, end 1
+2026-11-11 18:47:17    [MATLAB] [C5] min_corr 0.60 min_pnr 6.1: pass-1 attempts 276, initialised 368, passes 8 (443 s)
+2026-11-11 18:47:48    [MATLAB] 10 neurons have been detected
+2026-11-11 18:47:58    [MATLAB] 20 neurons have been detected
+2026-11-11 18:48:07    [MATLAB] 30 neurons have been detected
+2026-11-11 18:48:18    [MATLAB] 40 neurons have been detected
+2026-11-11 18:48:27    [MATLAB] 50 neurons have been detected
+2026-11-11 18:48:36    [MATLAB] 60 neurons have been detected
+2026-11-11 18:48:45    [MATLAB] 70 neurons have been detected
+2026-11-11 18:48:54    [MATLAB] 80 neurons have been detected
+2026-11-11 18:49:04    [MATLAB] 90 neurons have been detected
+2026-11-11 18:49:14    [MATLAB] 100 neurons have been detected
+2026-11-11 18:49:25    [MATLAB] 110 neurons have been detected
+2026-11-11 18:49:34    [MATLAB] 120 neurons have been detected
+2026-11-11 18:49:47    [MATLAB] 130 neurons have been detected
+2026-11-11 18:50:00    [MATLAB] 140 neurons have been detected
+2026-11-11 18:50:11    [MATLAB] 150 neurons have been detected
+2026-11-11 18:50:23    [MATLAB] 160 neurons have been detected
+2026-11-11 18:50:33    [MATLAB] 170 neurons have been detected
+2026-11-11 18:50:43    [MATLAB] 180 neurons have been detected
+2026-11-11 18:50:48    [MATLAB] [SEEDTRACE] greedy init: K cap 1296, initialized 186, attempts 453, passes 6, end 1
+2026-11-11 18:50:49    [MATLAB] [C5] min_corr 0.70 min_pnr 6.1: pass-1 attempts 244, initialised 186, passes 6 (212 s)
+2026-11-11 18:51:30    [MATLAB] 10 neurons have been detected
+2026-11-11 18:51:42    [MATLAB] 20 neurons have been detected
+2026-11-11 18:51:54    [MATLAB] 30 neurons have been detected
+2026-11-11 18:52:05    [MATLAB] 40 neurons have been detected
+2026-11-11 18:52:15    [MATLAB] 50 neurons have been detected
+2026-11-11 18:52:26    [MATLAB] 60 neurons have been detected
+2026-11-11 18:52:38    [MATLAB] 70 neurons have been detected
+2026-11-11 18:52:50    [MATLAB] 80 neurons have been detected
+2026-11-11 18:52:55    [MATLAB] [SEEDTRACE] greedy init: K cap 588, initialized 84, attempts 209, passes 4, end 1
+2026-11-11 18:52:56    [MATLAB] [C5] min_corr 0.80 min_pnr 6.1: pass-1 attempts 155, initialised 84, passes 4 (127 s)
+2026-11-11 18:52:56    [MATLAB] [C5] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c5_090826-pnb105-385um-35z-000.mat
+2026-11-11 18:53:00    [MATLAB] Finished successfully in 21.1 min.
+2026-11-11 18:53:00  c5 090826-pnb105-385um-35z-000: returned True, output present True
+2026-11-11 18:53:01  c5 start 090826-pnb109-412um-25z-000 (production run: min_corr 0.7, min_pnr 6.4)
+2026-11-11 18:53:01    [MATLAB] Starting MATLAB...
+2026-11-11 18:53:16    [MATLAB] [C5] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\missed_somata_2026-11\shadow\greedyROI_endoscope.m
+2026-11-11 18:53:18    [MATLAB] load data from frame 1 to frame 1024 of 21018 total frames
+2026-11-11 18:53:23    [MATLAB] load data from frame 1025 to frame 2048 of 21018 total frames
+2026-11-11 18:53:31    [MATLAB] load data from frame 2049 to frame 3072 of 21018 total frames
+2026-11-11 18:53:34    [MATLAB] load data from frame 3073 to frame 4096 of 21018 total frames
+2026-11-11 18:53:36    [MATLAB] load data from frame 4097 to frame 5120 of 21018 total frames
+2026-11-11 18:53:39    [MATLAB] load data from frame 5121 to frame 6144 of 21018 total frames
+2026-11-11 18:53:41    [MATLAB] load data from frame 6145 to frame 7168 of 21018 total frames
+2026-11-11 18:53:51    [MATLAB] load data from frame 7169 to frame 8192 of 21018 total frames
+2026-11-11 18:53:59    [MATLAB] load data from frame 8193 to frame 9216 of 21018 total frames
+2026-11-11 18:54:05    [MATLAB] load data from frame 9217 to frame 10240 of 21018 total frames
+2026-11-11 18:54:13    [MATLAB] load data from frame 10241 to frame 11264 of 21018 total frames
+2026-11-11 18:54:21    [MATLAB] load data from frame 11265 to frame 12288 of 21018 total frames
+2026-11-11 18:54:28    [MATLAB] load data from frame 12289 to frame 13312 of 21018 total frames
+2026-11-11 18:54:41    [MATLAB] load data from frame 13313 to frame 14336 of 21018 total frames
+2026-11-11 18:54:56    [MATLAB] load data from frame 14337 to frame 15360 of 21018 total frames
+2026-11-11 18:55:10    [MATLAB] load data from frame 15361 to frame 16384 of 21018 total frames
+2026-11-11 18:55:23    [MATLAB] load data from frame 16385 to frame 17408 of 21018 total frames
+2026-11-11 18:55:37    [MATLAB] load data from frame 17409 to frame 18432 of 21018 total frames
+2026-11-11 18:55:55    [MATLAB] load data from frame 18433 to frame 19456 of 21018 total frames
+2026-11-11 18:56:15    [MATLAB] load data from frame 19457 to frame 20480 of 21018 total frames
+2026-11-11 18:56:41    [MATLAB] load data from frame 20481 to frame 21018 of 21018 total frames
+2026-11-11 18:56:55    [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 10509 frames.
+2026-11-11 18:56:55    [MATLAB] Loading all data requires 5.13 GB RAM
+2026-11-11 18:57:33    [MATLAB] 10 neurons have been detected
+2026-11-11 18:57:45    [MATLAB] 20 neurons have been detected
+2026-11-11 18:57:58    [MATLAB] 30 neurons have been detected
+2026-11-11 18:58:13    [MATLAB] 40 neurons have been detected
+2026-11-11 18:58:26    [MATLAB] 50 neurons have been detected
+2026-11-11 18:58:38    [MATLAB] 60 neurons have been detected
+2026-11-11 18:58:51    [MATLAB] 70 neurons have been detected
+2026-11-11 18:59:02    [MATLAB] 80 neurons have been detected
+2026-11-11 18:59:13    [MATLAB] 90 neurons have been detected
+2026-11-11 18:59:23    [MATLAB] 100 neurons have been detected
+2026-11-11 18:59:32    [MATLAB] 110 neurons have been detected
+2026-11-11 18:59:40    [MATLAB] 120 neurons have been detected
+2026-11-11 18:59:49    [MATLAB] 130 neurons have been detected
+2026-11-11 18:59:59    [MATLAB] 140 neurons have been detected
+2026-11-11 19:00:09    [MATLAB] 150 neurons have been detected
+2026-11-11 19:00:18    [MATLAB] 160 neurons have been detected
+2026-11-11 19:00:28    [MATLAB] 170 neurons have been detected
+2026-11-11 19:00:37    [MATLAB] 180 neurons have been detected
+2026-11-11 19:00:46    [MATLAB] 190 neurons have been detected
+2026-11-11 19:00:56    [MATLAB] 200 neurons have been detected
+2026-11-11 19:01:05    [MATLAB] 210 neurons have been detected
+2026-11-11 19:01:14    [MATLAB] 220 neurons have been detected
+2026-11-11 19:01:26    [MATLAB] 230 neurons have been detected
+2026-11-11 19:01:39    [MATLAB] 240 neurons have been detected
+2026-11-11 19:01:53    [MATLAB] 250 neurons have been detected
+2026-11-11 19:02:04    [MATLAB] 260 neurons have been detected
+2026-11-11 19:02:17    [MATLAB] 270 neurons have been detected
+2026-11-11 19:02:29    [MATLAB] 280 neurons have been detected
+2026-11-11 19:02:41    [MATLAB] 290 neurons have been detected
+2026-11-11 19:02:51    [MATLAB] 300 neurons have been detected
+2026-11-11 19:03:03    [MATLAB] 310 neurons have been detected
+2026-11-11 19:03:14    [MATLAB] 320 neurons have been detected
+2026-11-11 19:03:26    [MATLAB] 330 neurons have been detected
+2026-11-11 19:03:37    [MATLAB] 340 neurons have been detected
+2026-11-11 19:03:52    [MATLAB] 350 neurons have been detected
+2026-11-11 19:04:05    [MATLAB] 360 neurons have been detected
+2026-11-11 19:04:18    [MATLAB] 370 neurons have been detected
+2026-11-11 19:04:29    [MATLAB] 380 neurons have been detected
+2026-11-11 19:04:40    [MATLAB] 390 neurons have been detected
+2026-11-11 19:04:51    [MATLAB] 400 neurons have been detected
+2026-11-11 19:04:59    [MATLAB] 410 neurons have been detected
+2026-11-11 19:05:09    [MATLAB] 420 neurons have been detected
+2026-11-11 19:05:19    [MATLAB] 430 neurons have been detected
+2026-11-11 19:05:29    [MATLAB] 440 neurons have been detected
+2026-11-11 19:05:39    [MATLAB] 450 neurons have been detected
+2026-11-11 19:05:49    [MATLAB] 460 neurons have been detected
+2026-11-11 19:05:58    [MATLAB] 470 neurons have been detected
+2026-11-11 19:06:01    [MATLAB] [SEEDTRACE] greedy init: K cap 2829, initialized 473, attempts 1044, passes 10, end 1
+2026-11-11 19:06:02    [MATLAB] [C5] min_corr 0.60 min_pnr 6.4: pass-1 attempts 390, initialised 473, passes 10 (546 s)
+2026-11-11 19:06:30    [MATLAB] 10 neurons have been detected
+2026-11-11 19:06:41    [MATLAB] 20 neurons have been detected
+2026-11-11 19:06:51    [MATLAB] 30 neurons have been detected
+2026-11-11 19:07:01    [MATLAB] 40 neurons have been detected
+2026-11-11 19:07:10    [MATLAB] 50 neurons have been detected
+2026-11-11 19:07:18    [MATLAB] 60 neurons have been detected
+2026-11-11 19:07:27    [MATLAB] 70 neurons have been detected
+2026-11-11 19:07:36    [MATLAB] 80 neurons have been detected
+2026-11-11 19:07:44    [MATLAB] 90 neurons have been detected
+2026-11-11 19:07:53    [MATLAB] 100 neurons have been detected
+2026-11-11 19:08:02    [MATLAB] 110 neurons have been detected
+2026-11-11 19:08:10    [MATLAB] 120 neurons have been detected
+2026-11-11 19:08:19    [MATLAB] 130 neurons have been detected
+2026-11-11 19:08:27    [MATLAB] 140 neurons have been detected
+2026-11-11 19:08:36    [MATLAB] 150 neurons have been detected
+2026-11-11 19:08:45    [MATLAB] 160 neurons have been detected
+2026-11-11 19:08:54    [MATLAB] 170 neurons have been detected
+2026-11-11 19:09:03    [MATLAB] 180 neurons have been detected
+2026-11-11 19:09:11    [MATLAB] 190 neurons have been detected
+2026-11-11 19:09:20    [MATLAB] 200 neurons have been detected
+2026-11-11 19:09:28    [MATLAB] 210 neurons have been detected
+2026-11-11 19:09:37    [MATLAB] 220 neurons have been detected
+2026-11-11 19:09:47    [MATLAB] 230 neurons have been detected
+2026-11-11 19:09:57    [MATLAB] 240 neurons have been detected
+2026-11-11 19:09:58    [MATLAB] [SEEDTRACE] greedy init: K cap 1538, initialized 241, attempts 576, passes 5, end 1
+2026-11-11 19:09:59    [MATLAB] [C5] min_corr 0.70 min_pnr 6.4: pass-1 attempts 344, initialised 241, passes 5 (237 s)
+2026-11-11 19:10:25    [MATLAB] 10 neurons have been detected
+2026-11-11 19:10:34    [MATLAB] 20 neurons have been detected
+2026-11-11 19:10:43    [MATLAB] 30 neurons have been detected
+2026-11-11 19:10:52    [MATLAB] 40 neurons have been detected
+2026-11-11 19:11:02    [MATLAB] 50 neurons have been detected
+2026-11-11 19:11:10    [MATLAB] 60 neurons have been detected
+2026-11-11 19:11:19    [MATLAB] 70 neurons have been detected
+2026-11-11 19:11:28    [MATLAB] 80 neurons have been detected
+2026-11-11 19:11:36    [MATLAB] 90 neurons have been detected
+2026-11-11 19:11:41    [MATLAB] [SEEDTRACE] greedy init: K cap 541, initialized 95, attempts 261, passes 4, end 1
+2026-11-11 19:11:41    [MATLAB] [C5] min_corr 0.80 min_pnr 6.4: pass-1 attempts 223, initialised 95, passes 4 (103 s)
+2026-11-11 19:11:41    [MATLAB] [C5] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c5_090826-pnb109-412um-25z-000.mat
+2026-11-11 19:11:46    [MATLAB] Finished successfully in 18.8 min.
+2026-11-11 19:11:46  c5 090826-pnb109-412um-25z-000: returned True, output present True
+2026-11-11 19:11:46  c5 start 090826-pnb99-463um-3z-000 (production run: min_corr 0.7, min_pnr 6.1)
+2026-11-11 19:11:46    [MATLAB] Starting MATLAB...
+2026-11-11 19:11:51    [MATLAB] [C5] greedyROI_endoscope -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\missed_somata_2026-11\shadow\greedyROI_endoscope.m
+2026-11-11 19:11:51    [MATLAB] load data from frame 1 to frame 1024 of 21056 total frames
+2026-11-11 19:11:53    [MATLAB] load data from frame 1025 to frame 2048 of 21056 total frames
+2026-11-11 19:11:55    [MATLAB] load data from frame 2049 to frame 3072 of 21056 total frames
+2026-11-11 19:11:56    [MATLAB] load data from frame 3073 to frame 4096 of 21056 total frames
+2026-11-11 19:11:58    [MATLAB] load data from frame 4097 to frame 5120 of 21056 total frames
+2026-11-11 19:12:00    [MATLAB] load data from frame 5121 to frame 6144 of 21056 total frames
+2026-11-11 19:12:02    [MATLAB] load data from frame 6145 to frame 7168 of 21056 total frames
+2026-11-11 19:12:03    [MATLAB] load data from frame 7169 to frame 8192 of 21056 total frames
+2026-11-11 19:12:05    [MATLAB] load data from frame 8193 to frame 9216 of 21056 total frames
+2026-11-11 19:12:07    [MATLAB] load data from frame 9217 to frame 10240 of 21056 total frames
+2026-11-11 19:12:09    [MATLAB] load data from frame 10241 to frame 11264 of 21056 total frames
+2026-11-11 19:12:11    [MATLAB] load data from frame 11265 to frame 12288 of 21056 total frames
+2026-11-11 19:12:13    [MATLAB] load data from frame 12289 to frame 13312 of 21056 total frames
+2026-11-11 19:12:15    [MATLAB] load data from frame 13313 to frame 14336 of 21056 total frames
+2026-11-11 19:12:16    [MATLAB] load data from frame 14337 to frame 15360 of 21056 total frames
+2026-11-11 19:12:18    [MATLAB] load data from frame 15361 to frame 16384 of 21056 total frames
+2026-11-11 19:12:20    [MATLAB] load data from frame 16385 to frame 17408 of 21056 total frames
+2026-11-11 19:12:22    [MATLAB] load data from frame 17409 to frame 18432 of 21056 total frames
+2026-11-11 19:12:24    [MATLAB] load data from frame 18433 to frame 19456 of 21056 total frames
+2026-11-11 19:12:26    [MATLAB] load data from frame 19457 to frame 20480 of 21056 total frames
+2026-11-11 19:12:28    [MATLAB] load data from frame 20481 to frame 21056 of 21056 total frames
+2026-11-11 19:12:29    [MATLAB] The data has been downsampled and loaded into RAM. It has 256 X 256 pixels X 10528 frames.
+2026-11-11 19:12:29    [MATLAB] Loading all data requires 5.14 GB RAM
+2026-11-11 19:12:59    [MATLAB] 10 neurons have been detected
+2026-11-11 19:13:09    [MATLAB] 20 neurons have been detected
+2026-11-11 19:13:19    [MATLAB] 30 neurons have been detected
+2026-11-11 19:13:29    [MATLAB] 40 neurons have been detected
+2026-11-11 19:13:39    [MATLAB] 50 neurons have been detected
+2026-11-11 19:13:49    [MATLAB] 60 neurons have been detected
+2026-11-11 19:14:00    [MATLAB] 70 neurons have been detected
+2026-11-11 19:14:09    [MATLAB] 80 neurons have been detected
+2026-11-11 19:14:17    [MATLAB] 90 neurons have been detected
+2026-11-11 19:14:25    [MATLAB] 100 neurons have been detected
+2026-11-11 19:14:33    [MATLAB] 110 neurons have been detected
+2026-11-11 19:14:42    [MATLAB] 120 neurons have been detected
+2026-11-11 19:14:49    [MATLAB] 130 neurons have been detected
+2026-11-11 19:14:57    [MATLAB] 140 neurons have been detected
+2026-11-11 19:15:05    [MATLAB] 150 neurons have been detected
+2026-11-11 19:15:13    [MATLAB] 160 neurons have been detected
+2026-11-11 19:15:22    [MATLAB] 170 neurons have been detected
+2026-11-11 19:15:31    [MATLAB] 180 neurons have been detected
+2026-11-11 19:15:40    [MATLAB] 190 neurons have been detected
+2026-11-11 19:15:49    [MATLAB] 200 neurons have been detected
+2026-11-11 19:15:57    [MATLAB] 210 neurons have been detected
+2026-11-11 19:16:06    [MATLAB] 220 neurons have been detected
+2026-11-11 19:16:14    [MATLAB] 230 neurons have been detected
+2026-11-11 19:16:23    [MATLAB] 240 neurons have been detected
+2026-11-11 19:16:31    [MATLAB] 250 neurons have been detected
+2026-11-11 19:16:39    [MATLAB] 260 neurons have been detected
+2026-11-11 19:16:47    [MATLAB] 270 neurons have been detected
+2026-11-11 19:16:54    [MATLAB] 280 neurons have been detected
+2026-11-11 19:17:03    [MATLAB] 290 neurons have been detected
+2026-11-11 19:17:11    [MATLAB] 300 neurons have been detected
+2026-11-11 19:17:20    [MATLAB] 310 neurons have been detected
+2026-11-11 19:17:29    [MATLAB] 320 neurons have been detected
+2026-11-11 19:17:37    [MATLAB] 330 neurons have been detected
+2026-11-11 19:17:46    [MATLAB] 340 neurons have been detected
+2026-11-11 19:17:54    [MATLAB] 350 neurons have been detected
+2026-11-11 19:18:02    [MATLAB] 360 neurons have been detected
+2026-11-11 19:18:10    [MATLAB] 370 neurons have been detected
+2026-11-11 19:18:19    [MATLAB] 380 neurons have been detected
+2026-11-11 19:18:28    [MATLAB] 390 neurons have been detected
+2026-11-11 19:18:36    [MATLAB] 400 neurons have been detected
+2026-11-11 19:18:45    [MATLAB] 410 neurons have been detected
+2026-11-11 19:18:54    [MATLAB] 420 neurons have been detected
+2026-11-11 19:18:57    [MATLAB] [SEEDTRACE] greedy init: K cap 2507, initialized 424, attempts 970, passes 6, end 1
+2026-11-11 19:18:57    [MATLAB] [C5] min_corr 0.60 min_pnr 6.1: pass-1 attempts 392, initialised 424, passes 6 (388 s)
+2026-11-11 19:19:23    [MATLAB] 10 neurons have been detected
+2026-11-11 19:19:32    [MATLAB] 20 neurons have been detected
+2026-11-11 19:19:42    [MATLAB] 30 neurons have been detected
+2026-11-11 19:19:51    [MATLAB] 40 neurons have been detected
+2026-11-11 19:20:00    [MATLAB] 50 neurons have been detected
+2026-11-11 19:20:09    [MATLAB] 60 neurons have been detected
+2026-11-11 19:20:18    [MATLAB] 70 neurons have been detected
+2026-11-11 19:20:26    [MATLAB] 80 neurons have been detected
+2026-11-11 19:20:34    [MATLAB] 90 neurons have been detected
+2026-11-11 19:20:42    [MATLAB] 100 neurons have been detected
+2026-11-11 19:20:50    [MATLAB] 110 neurons have been detected
+2026-11-11 19:20:59    [MATLAB] 120 neurons have been detected
+2026-11-11 19:21:08    [MATLAB] 130 neurons have been detected
+2026-11-11 19:21:17    [MATLAB] 140 neurons have been detected
+2026-11-11 19:21:25    [MATLAB] 150 neurons have been detected
+2026-11-11 19:21:33    [MATLAB] 160 neurons have been detected
+2026-11-11 19:21:41    [MATLAB] 170 neurons have been detected
+2026-11-11 19:21:49    [MATLAB] 180 neurons have been detected
+2026-11-11 19:21:58    [MATLAB] 190 neurons have been detected
+2026-11-11 19:22:06    [MATLAB] 200 neurons have been detected
+2026-11-11 19:22:10    [MATLAB] [SEEDTRACE] greedy init: K cap 1226, initialized 205, attempts 520, passes 5, end 1
+2026-11-11 19:22:11    [MATLAB] [C5] min_corr 0.70 min_pnr 6.1: pass-1 attempts 290, initialised 205, passes 5 (193 s)
+2026-11-11 19:22:35    [MATLAB] 10 neurons have been detected
+2026-11-11 19:22:44    [MATLAB] 20 neurons have been detected
+2026-11-11 19:22:53    [MATLAB] 30 neurons have been detected
+2026-11-11 19:23:01    [MATLAB] 40 neurons have been detected
+2026-11-11 19:23:10    [MATLAB] 50 neurons have been detected
+2026-11-11 19:23:18    [MATLAB] 60 neurons have been detected
+2026-11-11 19:23:27    [MATLAB] 70 neurons have been detected
+2026-11-11 19:23:35    [MATLAB] 80 neurons have been detected
+2026-11-11 19:23:44    [MATLAB] 90 neurons have been detected
+2026-11-11 19:23:44    [MATLAB] [SEEDTRACE] greedy init: K cap 462, initialized 90, attempts 240, passes 3, end 1
+2026-11-11 19:23:44    [MATLAB] [C5] min_corr 0.80 min_pnr 6.1: pass-1 attempts 199, initialised 90, passes 3 (94 s)
+2026-11-11 19:23:44    [MATLAB] [C5] wrote C:/code/CNMF_E_LEGACY_BIANE_CLAUDE/agent/eval/3odor_intake_2026-11/redteam/cache/matlab/c5_090826-pnb99-463um-3z-000.mat
+2026-11-11 19:23:48    [MATLAB] Finished successfully in 12.0 min.
+2026-11-11 19:23:48  c5 090826-pnb99-463um-3z-000: returned True, output present True

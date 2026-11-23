@@ -1,0 +1,65 @@
+{
+ "area": "BLA",
+ "threads": 8,
+ "n_jobs": 8,
+ "rows": 12677,
+ "labels_identical": true,
+ "runtime_s": 20.6,
+ "env": {
+  "python": "C:\\Users\\julia\\.conda\\envs\\ACORN\\python.exe",
+  "cpu_count": 48,
+  "threads": 8,
+  "n_jobs": 8,
+  "platform": "Windows-10-10.0.26200-SP0",
+  "OMP_NUM_THREADS": "8",
+  "numpy": "2.2.5",
+  "scipy": "1.15.3",
+  "sklearn": "1.7.2",
+  "xgboost": "3.2.0",
+  "lightgbm": "4.6.0",
+  "catboost": "1.2.10"
+ },
+ "max_abs_score_diff_per_seed": [
+  0.3120649456977844,
+  0.34354928135871887,
+  0.407857283949852,
+  0.31615447998046875,
+  0.2607932686805725,
+  0.3453807979822159,
+  0.31047313660383224,
+  0.4194698631763458
+ ],
+ "stats": {
+  "auc_full": {
+   "recomputed": 0.9291380351060802,
+   "reference": 0.9290812437021434,
+   "abs_diff": 5.67914039367734e-05
+  },
+  "auc_reviewed": {
+   "recomputed": 0.915934183294869,
+   "reference": 0.9158732894031743,
+   "abs_diff": 6.089389169472437e-05
+  },
+  "far_0.04": {
+   "recomputed": 0.715329991645781,
+   "reference": 0.7257727652464494,
+   "abs_diff": 0.010442773600668365
+  },
+  "junk_0.04": {
+   "recomputed": 43.095400175046194,
+   "reference": 43.11728094913936,
+   "abs_diff": 0.02188077409316236
+  },
+  "far_0.03": {
+   "recomputed": 0.4699248120300752,
+   "reference": 0.43337510442773597,
+   "abs_diff": 0.03654970760233922
+  },
+  "junk_0.03": {
+   "recomputed": 38.62199747155499,
+   "reference": 38.719245356413495,
+   "abs_diff": 0.09724788485850411
+  }
+ },
+ "pass_5e-3": false
+}

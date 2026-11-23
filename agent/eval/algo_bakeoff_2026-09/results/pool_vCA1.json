@@ -1,0 +1,1143 @@
+{
+ "area": "vCA1",
+ "created": "2026-09-06T16:28:36",
+ "width": 35,
+ "sessions": [
+  {
+   "name": "2tones/AVG5x-TSeries-100925-pnb88-153um-33z-000",
+   "is_bootstrap": false,
+   "n_cand": 47,
+   "n_pos": 15,
+   "animal": "pnb88",
+   "labels_sha256": "e58a17d37b8fc46bf2440751152ae118c732af949c505a38420a3c3d04efe801"
+  },
+  {
+   "name": "2tones/AVG5x-TSeries-101025-pnb88-120um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 47,
+   "n_pos": 7,
+   "animal": "pnb88",
+   "labels_sha256": "5226d986fade263469c72ea43333fe24b3ab9c302dba63aaa38812166c331b6c"
+  },
+  {
+   "name": "2tones/AVG5x-TSeries-101325-pnb88-121um-22z-000",
+   "is_bootstrap": false,
+   "n_cand": 44,
+   "n_pos": 22,
+   "animal": "pnb88",
+   "labels_sha256": "4380e1bf7c098b2f24a47eb47263c093bba3414f13aa9a356bd9c48a36ceea53"
+  },
+  {
+   "name": "2tones/AVG5x-TSeries-101425-pnb88-115um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 34,
+   "n_pos": 19,
+   "animal": "pnb88",
+   "labels_sha256": "a8d814fe0e489a1969a1f0e6ded7f66e6f1e9d020e74bc69b52818458f8ac884"
+  },
+  {
+   "name": "2tones/AVG5x-TSeries-101525-pnb88-122um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 36,
+   "n_pos": 6,
+   "animal": "pnb88",
+   "labels_sha256": "14b59518e854cd8d1241be087f906a16f7bc29273c2c28b82dc86155b37d79af"
+  },
+  {
+   "name": "2tones/AVG5x-TSeries-101625-pnb88-109um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 36,
+   "n_pos": 2,
+   "animal": "pnb88",
+   "labels_sha256": "f8c8f3b6203b2ef8fa06638b7c119bc3fb1db9747af86371d3ab0f1edf44cfe9"
+  },
+  {
+   "name": "2tones/AVG5x-TSeries-101725-pnb88-174um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 47,
+   "n_pos": 4,
+   "animal": "pnb88",
+   "labels_sha256": "0e0cb17ee716d00c30ed2741e1dc5ff5b0a96feb81896f55969ecdede8c276cc"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-022326-pnb88-145um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 29,
+   "n_pos": 9,
+   "animal": "pnb88",
+   "labels_sha256": "f9626715f5a961755933e61e2d48a95612a080763809460c3a0360381d757f4a"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-022426-pnb88-175um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 36,
+   "n_pos": 10,
+   "animal": "pnb88",
+   "labels_sha256": "784eb1ee7eb5e089620c84f40f6de5d8b1ae7ee954698aad68677cd94386d631"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-022726-pnb88-225um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 35,
+   "n_pos": 4,
+   "animal": "pnb88",
+   "labels_sha256": "abe5297cf9445efdec5b6cc9bddee2ed440b69eeb1b6c388d46fc2c45db8d1bd"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-022826-pnb88-130um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 20,
+   "n_pos": 3,
+   "animal": "pnb88",
+   "labels_sha256": "6e00696befa8f2274cf251e83a5e812a62165fec5425078bdd462e964ed7ba4b"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-030226-pnb88-173um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 41,
+   "n_pos": 2,
+   "animal": "pnb88",
+   "labels_sha256": "e66d89ae76beea6ca5bb8aba28e2eaccdca04898f0cf7c4f930f9208d83f2960"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-030326-pnb88-139um-35z-000",
+   "is_bootstrap": false,
+   "n_cand": 33,
+   "n_pos": 5,
+   "animal": "pnb88",
+   "labels_sha256": "d00dc50d811df63836de182994503015874780c7610901077533141ef12cacf2"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-030526-pnb88-122um-36z-000",
+   "is_bootstrap": false,
+   "n_cand": 22,
+   "n_pos": 2,
+   "animal": "pnb88",
+   "labels_sha256": "7e561a54dd95acb0cdc42bd593e83de1d57946aab8283b5d521cf3320e9528f8"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-031226-pnb88-124um-36z-000",
+   "is_bootstrap": false,
+   "n_cand": 30,
+   "n_pos": 6,
+   "animal": "pnb88",
+   "labels_sha256": "30c36791443f242ee8e89cbab9dbcca2c2cdbb52b37d692bbf87ebde38456837"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-031326-pnb88-143um-36z-000",
+   "is_bootstrap": false,
+   "n_cand": 22,
+   "n_pos": 5,
+   "animal": "pnb88",
+   "labels_sha256": "ee710e36adf9974d9f5e3c4bd36dc8dcaf62655ec87a27148c90b0acd91577e1"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-031726-pnb88-139um-36z-000",
+   "is_bootstrap": false,
+   "n_cand": 19,
+   "n_pos": 2,
+   "animal": "pnb88",
+   "labels_sha256": "b0fdcdbfaf19c161795c3cd87bea7c5b81cfa4f65c94a5fbfd8ef1644a3e5adc"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-031826-pnb88-145um-36z-000",
+   "is_bootstrap": false,
+   "n_cand": 27,
+   "n_pos": 6,
+   "animal": "pnb88",
+   "labels_sha256": "a8da0f3515ab8c54f031a5d62ebecfa46a6e6e4d6a923f2d4c8e18dbf64dc0ea"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-07072026-pnb98-450um-3z-000",
+   "is_bootstrap": false,
+   "n_cand": 98,
+   "n_pos": 59,
+   "animal": "pnb98",
+   "labels_sha256": "716ffe577f2b76afc299fe77b8718c41192af8b6117384b1d8c1426f44487555"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-07082026-pnb98-454um-3z-real-000",
+   "is_bootstrap": false,
+   "n_cand": 88,
+   "n_pos": 47,
+   "animal": "pnb98",
+   "labels_sha256": "e0df226610f04df5f74b62de342194c1d68262b67e0e815d39efcf287efb8ce0"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-07202026-pnb98-460um-3z-000",
+   "is_bootstrap": false,
+   "n_cand": 140,
+   "n_pos": 28,
+   "animal": "pnb98",
+   "labels_sha256": "62f2d66fdedace1008c6c2ac80d9db760fa719ad14a97bd975f59b325c3ed954"
+  },
+  {
+   "name": "3odor/AVG5x-TSeries-07222026-pnb98-532um-3z-000",
+   "is_bootstrap": false,
+   "n_cand": 157,
+   "n_pos": 33,
+   "animal": "pnb98",
+   "labels_sha256": "c38d9f8180bee59d3995e885b58cd8ef98121b031fcc5a90576c0ba931c24b29"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05172022-100-300um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 287,
+   "n_pos": 48,
+   "animal": "100",
+   "labels_sha256": "5f3835db74f595b7ff71e611f9423f60c808a3543bd2c949dacfefc5f5ebee3f"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05182022-100-316um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 337,
+   "n_pos": 64,
+   "animal": "100",
+   "labels_sha256": "981ea81f3e6506e79d10d06848b5aa0c03c3a6e900183b3abe7c3e5eab46fac6"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05182022-94-473um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 526,
+   "n_pos": 12,
+   "animal": "94",
+   "labels_sha256": "5353e3b2a657630ce45ba604a86083699feb6791d11be8b5bad63abdab11db0d"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05182022-96-215um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 466,
+   "n_pos": 44,
+   "animal": "96",
+   "labels_sha256": "7aabcd5fff5ddedb883d9ec26b3c42fedd2a27cafdb5f59e3181d6b205dc41dc"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05212022-100-255um-45z-000",
+   "is_bootstrap": true,
+   "n_cand": 407,
+   "n_pos": 40,
+   "animal": "100",
+   "labels_sha256": "2a73b0d45ff22ab7ca0f506a42ab603599e7994b371af47afaa047031eefe813"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05212022-96-267um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 571,
+   "n_pos": 49,
+   "animal": "96",
+   "labels_sha256": "680364c8d26d64b5f13bdd85afac13ba95a8a5005245a98494fe521d7bbb4a26"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05222022-100-um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 269,
+   "n_pos": 21,
+   "animal": "100",
+   "labels_sha256": "8ee16f88e7ed4707663ba252893d0b314d7a3510fe24762805d13ed536dc30e7"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05222022-94-476um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 461,
+   "n_pos": 14,
+   "animal": "94",
+   "labels_sha256": "291a3d31eecb393e94d5e58df065d936b236398743da6353d952bb6a67f94057"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05222022-96-223um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 644,
+   "n_pos": 43,
+   "animal": "96",
+   "labels_sha256": "79dda0502f989763941c57f474ef5d508e4a06c3b165ca8d533568e049d6e3de"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05262022-100-317um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 293,
+   "n_pos": 25,
+   "animal": "100",
+   "labels_sha256": "e72f7c4097a06358b069cbefdea1f92913f53cbf5eaf4ad81cae62915ddf9819"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05262022-94-485um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 326,
+   "n_pos": 14,
+   "animal": "94",
+   "labels_sha256": "d290cbe5ba3b7e6b7c49796b98d3045924ed814744aef6a19dced5f84262621e"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05262022-96-um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 636,
+   "n_pos": 37,
+   "animal": "96",
+   "labels_sha256": "7652225c4c78eb078893f20823b1a42286317912e95c7a8c6ed8292e7b4e12c5"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-05272022-96-245um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 427,
+   "n_pos": 18,
+   "animal": "96",
+   "labels_sha256": "222f46586205ff5102fc709017ad4f7f5a2854bbb59686b811088570a5c0f26f"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06132022-98-447um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 400,
+   "n_pos": 53,
+   "animal": "98",
+   "labels_sha256": "fdb040f6fd203f896d2cef07bead38113083545acba5b445a8654188667f8a93"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06132022-99-295um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 330,
+   "n_pos": 39,
+   "animal": "99",
+   "labels_sha256": "e2679ed4a6f8bbb37a434c244227e1b35fae0a21e27515aae41298ee58ad8262"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06142022-98-444um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 309,
+   "n_pos": 32,
+   "animal": "98",
+   "labels_sha256": "15cf07ecd2971a12f5e7f825425faaefda2bc5dd80a79ad249b187fcb31a4ad2"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06142022-99-305um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 491,
+   "n_pos": 40,
+   "animal": "99",
+   "labels_sha256": "4f11277cf5d928e72d88ef6366fb17908842535e1e5be6dfb62331efd1384f1d"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06182022-98-445um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 470,
+   "n_pos": 36,
+   "animal": "98",
+   "labels_sha256": "1899b595d3681ef8d0e738e827ac70dfa0e17a49af15e870bcc7a354890ab33b"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06182022-99-299um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 388,
+   "n_pos": 52,
+   "animal": "99",
+   "labels_sha256": "cb54b1ef6ef221ad73f61458f3c6acaadd79b5646bcc3de13365bac99b39739e"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06222022-98-451um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 449,
+   "n_pos": 56,
+   "animal": "98",
+   "labels_sha256": "c7d4ca14de8212835275fe41cdbb5748b20e4f41edd60896b76f57f333bd9483"
+  },
+  {
+   "name": "4CS/AVG8x-TSeries-06222022-99-303um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 598,
+   "n_pos": 45,
+   "animal": "99",
+   "labels_sha256": "9f9a1a1cb97f23d4295f9f000b95564b478f3ed3e9a98d340d77e5f686b52e80"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-061126-pnb97-561um-3z-000",
+   "is_bootstrap": false,
+   "n_cand": 138,
+   "n_pos": 23,
+   "animal": "pnb97",
+   "labels_sha256": "3adfd03e574d2094c7340abde53febb33472f59ea34c843446dd973eb4517c1c"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-061226-pnb97-679um-24z-000",
+   "is_bootstrap": false,
+   "n_cand": 122,
+   "n_pos": 21,
+   "animal": "pnb97",
+   "labels_sha256": "2b550cedf8230114982311e3a945117888a8e6286996ea1ce6cd4101c75983fd"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-061726-pnb97-558um-3z-000",
+   "is_bootstrap": false,
+   "n_cand": 115,
+   "n_pos": 16,
+   "animal": "pnb97",
+   "labels_sha256": "974a07cf840e96bec87125bb2e0e0b0533e61382355cd5a4f6271f131878227c"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-061826-pnb97-679um-24z-000",
+   "is_bootstrap": false,
+   "n_cand": 135,
+   "n_pos": 17,
+   "animal": "pnb97",
+   "labels_sha256": "478d8a7808db45a1a60c950ab9798e05675b6a11646f853da03a27d1edf105bc"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-061926-pnb97-610um-24z-000",
+   "is_bootstrap": false,
+   "n_cand": 107,
+   "n_pos": 21,
+   "animal": "pnb97",
+   "labels_sha256": "fee7a4889fcb617a1ca0b7d480b778fc53313f0e356211cbeb34d05ddba1bf0f"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-062226-pnb97-510um-3z-000",
+   "is_bootstrap": false,
+   "n_cand": 152,
+   "n_pos": 25,
+   "animal": "pnb97",
+   "labels_sha256": "3c5a05ebe40db7b8f51bbf3438a6f89fc5aed05bff5d6c3d5e644ab89868e7ec"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-062426-pnb97-612um-24z-000",
+   "is_bootstrap": false,
+   "n_cand": 167,
+   "n_pos": 29,
+   "animal": "pnb97",
+   "labels_sha256": "a0612e1a345b42770fe91fa728049164035896bce8155e322bd385920a61b036"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-062526-pnb97-580um-3z-000",
+   "is_bootstrap": false,
+   "n_cand": 157,
+   "n_pos": 28,
+   "animal": "pnb97",
+   "labels_sha256": "18abc2a9b3bfc5903181d182a97bc7fb0a068e899fd2583ee6e674e939ca7341"
+  },
+  {
+   "name": "6odorDualDiffRew/AVG5x-TSeries-062626-pnb97-630um-24z-000",
+   "is_bootstrap": false,
+   "n_cand": 107,
+   "n_pos": 26,
+   "animal": "pnb97",
+   "labels_sha256": "be51d04d4a163bf7e8014655ffcee0406d7aa91c11a1916bedf49da6970d02be"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-06222022-99-303um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 598,
+   "n_pos": 45,
+   "animal": "99",
+   "labels_sha256": "556406bf13d2e05a6e7c546c382557f715e5f09273c34b3ab8d0549ec4d56d6d"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-06272022-100-317um-38z-000",
+   "is_bootstrap": true,
+   "n_cand": 463,
+   "n_pos": 23,
+   "animal": "100",
+   "labels_sha256": "b5b2ed869310ad99f70eb24d2ec98d3739fa9b074c9f9b1bc3a6e40a3792beb8"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-06272022-94-440um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 410,
+   "n_pos": 14,
+   "animal": "94",
+   "labels_sha256": "12748fbaa46fef59d7fa5739b7787e56ed26b3e28f8eef7bdd072c46a3b8e20f"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-06282022-100-297um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 458,
+   "n_pos": 32,
+   "animal": "100",
+   "labels_sha256": "a89d3dd556cb376648866587d07b52281809e42121f432eeedd0752538fd3139"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-06282022-94-452um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 366,
+   "n_pos": 15,
+   "animal": "94",
+   "labels_sha256": "fcc8913aa3875af561a4db2e98e3f95e5a8d7dd108807137b58892faa6a7e455"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-06292022-94-448um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 353,
+   "n_pos": 15,
+   "animal": "94",
+   "labels_sha256": "7507ef1581ccec2b8159b1bbf8cf8e6ceada5de57ca0b5b511383f2f21c1cb5c"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-06302022-94-456um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 405,
+   "n_pos": 17,
+   "animal": "94",
+   "labels_sha256": "3b0fcf1013fdf1307fbbb44e3ffd5e0e71fbac3ae14f3f7501a65e4e9fb55e2c"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07012022-94-600um-28z-000",
+   "is_bootstrap": true,
+   "n_cand": 399,
+   "n_pos": 16,
+   "animal": "94",
+   "labels_sha256": "40b08c352690a52b111c40a0013907240fd54503963008a7e0df013f60f1b6da"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07012022-96-172um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 160,
+   "n_pos": 28,
+   "animal": "96",
+   "labels_sha256": "b1d61b1baf612e0305d18a01661cb383484a95e9fa07d3caa61e52bed9499597"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07022022-100-299um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 486,
+   "n_pos": 36,
+   "animal": "100",
+   "labels_sha256": "64c953e6b6d7ab3ddab537fca1c260c927607da27cdd7b8134bca0ad833e758a"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07022022-94-440um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 394,
+   "n_pos": 15,
+   "animal": "94",
+   "labels_sha256": "485a87bd0c35f09781d966a08c5ca9da09b6a178ca59b97b01f22bc5dd6be7f8"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07102022-104-350um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 405,
+   "n_pos": 28,
+   "animal": "104",
+   "labels_sha256": "a0bc8b8700eb525b11d73b9589db6001e07a58150af6a04e8657d62b0709d77a"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07102022-98-369um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 385,
+   "n_pos": 56,
+   "animal": "98",
+   "labels_sha256": "746922bf01d19980f85d68e56761cf43214c805d3c5ec1cf739ee7f302a2694d"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07102022-99-300um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 267,
+   "n_pos": 34,
+   "animal": "99",
+   "labels_sha256": "c72f49f7957c4e69abf48c00b66d84792b536a77f638372987dd48273cf10f16"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07142022-104-420um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 685,
+   "n_pos": 33,
+   "animal": "104",
+   "labels_sha256": "928b7e2ed6d05640309423ab20e694b9f58f2f9df47f80e98da7221c9779dc06"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07142022-98-450um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 469,
+   "n_pos": 43,
+   "animal": "98",
+   "labels_sha256": "9b2e1ba56af96e77cf9ee5bbfd02c8258c10bbfc86b9ed8230015591c4f84845"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07142022-99-365um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 521,
+   "n_pos": 34,
+   "animal": "99",
+   "labels_sha256": "ecc58c2794e01013e796d97b7d3b8cee4fb77e3d30a3a86bf58ce0ca5095ecfb"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07152022-104-365um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 677,
+   "n_pos": 84,
+   "animal": "104",
+   "labels_sha256": "fb182f1fc6e2e4164e0b0e8e54d775293c74ee0d2c72e0c5b396cb37567adc6f"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07152022-98-374um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 843,
+   "n_pos": 87,
+   "animal": "98",
+   "labels_sha256": "77d226a54e22955046feba247d2e0ebc7a0151abdb68b826fc0a75e12d67160a"
+  },
+  {
+   "name": "AA/AVG8x-TSeries-07152022-99-297um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 450,
+   "n_pos": 36,
+   "animal": "99",
+   "labels_sha256": "73b5b54aa35458174b4e331a61776a502ef2ac621c2f7d460d7e012e5c3f2d9d"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10232023-921-880-780um-25z-A",
+   "is_bootstrap": true,
+   "n_cand": 196,
+   "n_pos": 69,
+   "animal": "921",
+   "labels_sha256": "0636523d0ccb56d560bf4bab151a15f6d7ea32b2575ab4cda447240aae49bf50"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10232023-921-880-780um-25z-B",
+   "is_bootstrap": true,
+   "n_cand": 237,
+   "n_pos": 85,
+   "animal": "921",
+   "labels_sha256": "887f40caa6ed00bafe1065e0ce4fd12a26924bc2eac8452ab297ff3fb3e8da5a"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10232023-924-720-620um-28z-A",
+   "is_bootstrap": true,
+   "n_cand": 262,
+   "n_pos": 38,
+   "animal": "924",
+   "labels_sha256": "a02d16851b615c5f981c683c96deae41b7b215ad4143fc696fd3592c3b234bde"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10232023-924-720-620um-28z-B",
+   "is_bootstrap": true,
+   "n_cand": 233,
+   "n_pos": 29,
+   "animal": "924",
+   "labels_sha256": "5ba130900d95f892a905d24155935c37f2e4b22f8053a2cb3c1020e3b163793a"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10232023-961-420-335um-22z-A",
+   "is_bootstrap": true,
+   "n_cand": 90,
+   "n_pos": 14,
+   "animal": "961",
+   "labels_sha256": "48def80bfa39b82be7b895762307837501c729b006874aaabbce61601afb9b8a"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10272023-920-810-670um-25z-000B",
+   "is_bootstrap": true,
+   "n_cand": 178,
+   "n_pos": 11,
+   "animal": "920",
+   "labels_sha256": "6c0d880d4c59a9e90986c4840a4d278b0d17bd70b0b1649ea329daa7a00882ab"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10272023-920-810-670um-25z-A",
+   "is_bootstrap": true,
+   "n_cand": 168,
+   "n_pos": 8,
+   "animal": "920",
+   "labels_sha256": "86a4629f64e9b6809938b244fc4a081face44e37d1cf2efe25c6b1e40112c7be"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10272023-921-831-731um-25z-000A",
+   "is_bootstrap": true,
+   "n_cand": 169,
+   "n_pos": 65,
+   "animal": "921",
+   "labels_sha256": "5434d151ed84bca92ba2f9ff0fd4d79ef63ebf72e582ddf02dcd2a325a30d054"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10272023-921-831-731um-25z-000B",
+   "is_bootstrap": true,
+   "n_cand": 188,
+   "n_pos": 64,
+   "animal": "921",
+   "labels_sha256": "6335cf4e8f66dce312b06a3e724fb5c251713de81e870319edac30760a77048e"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10272023-924-um-28z-000A",
+   "is_bootstrap": true,
+   "n_cand": 251,
+   "n_pos": 35,
+   "animal": "924",
+   "labels_sha256": "9bde7bddcd8e18ac94e266e93a942d312ed4afd33b8e81779dbb843f3b75226f"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-10272023-924-um-28z-B",
+   "is_bootstrap": true,
+   "n_cand": 200,
+   "n_pos": 27,
+   "animal": "924",
+   "labels_sha256": "cfad4151d66367c4e4ad4ff9524357fe21bf15fe16e73830385002e0180a9743"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-962-517um-477um-23z-000A",
+   "is_bootstrap": true,
+   "n_cand": 701,
+   "n_pos": 118,
+   "animal": "962",
+   "labels_sha256": "84e5a13028d17cb492e67f4578b4f6bad41f1f2aae1c0508b147296a2ed9dc92"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-962-517um-477um-23z-000B",
+   "is_bootstrap": true,
+   "n_cand": 885,
+   "n_pos": 136,
+   "animal": "962",
+   "labels_sha256": "d9b979cb9ba8f86cba3aea300447f6372cdbd46efebae98e3e727fee3c6ee2ba"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-963-508um-453um-3z-000A",
+   "is_bootstrap": true,
+   "n_cand": 279,
+   "n_pos": 42,
+   "animal": "963",
+   "labels_sha256": "a4186ba8f6e0ad1a519c36cd1aebadd389eaff96519aff39621817d959c521aa"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-963-508um-453um-3z-000B",
+   "is_bootstrap": true,
+   "n_cand": 444,
+   "n_pos": 35,
+   "animal": "963",
+   "labels_sha256": "b6d3b2c0fd71b3a2e8a4fc238baaa29d0c6de7e477af9488496bc94df8c3cee4"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-964-510um-450um-31z-000A",
+   "is_bootstrap": true,
+   "n_cand": 301,
+   "n_pos": 24,
+   "animal": "964",
+   "labels_sha256": "b858494df320a94134fa45af81b3a7d3d064290324661947983d1d3746e3704a"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-964-510um-450um-31z-000B",
+   "is_bootstrap": true,
+   "n_cand": 312,
+   "n_pos": 20,
+   "animal": "964",
+   "labels_sha256": "2385caf946f731530e2484045534d37f52aa0a75598e1bfa9fe043c3da26cef3"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-965-475um-430um-32z-000A",
+   "is_bootstrap": true,
+   "n_cand": 663,
+   "n_pos": 77,
+   "animal": "965",
+   "labels_sha256": "0c2636961e0d6ab29a15f09380c54f1300a3477b815ed331319813f513a1fe74"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-11282023-965-475um-430um-32z-000B",
+   "is_bootstrap": true,
+   "n_cand": 682,
+   "n_pos": 74,
+   "animal": "965",
+   "labels_sha256": "66224ce7e4bdf78cd979a8c46e4770509259e49c18cf8da70ebcf00f3f68a6dc"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-962-525um-485um-23z-000A",
+   "is_bootstrap": true,
+   "n_cand": 651,
+   "n_pos": 139,
+   "animal": "962",
+   "labels_sha256": "b2d989816f35e31b99db78b27fc6344a1d38e8eb0546e58de89b5059898f44ce"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-962-525um-485um-23z-000B",
+   "is_bootstrap": true,
+   "n_cand": 697,
+   "n_pos": 174,
+   "animal": "962",
+   "labels_sha256": "a9fa5f288d09992d1faec054293603b6c8a716a80ba2b853635a2a3c802ffaca"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-963-462um-407um-3z-000A",
+   "is_bootstrap": true,
+   "n_cand": 283,
+   "n_pos": 31,
+   "animal": "963",
+   "labels_sha256": "de2d504f71994f75865febb42460af626f04724f7bf13974816640cefff3130c"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-963-462um-407um-3z-000B",
+   "is_bootstrap": true,
+   "n_cand": 422,
+   "n_pos": 42,
+   "animal": "963",
+   "labels_sha256": "e2749691807eb40560d202fc853947c0cd2dc79801e103ec4bf05a9f6d08179a"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-964-516um-456um-31z-000A",
+   "is_bootstrap": true,
+   "n_cand": 263,
+   "n_pos": 20,
+   "animal": "964",
+   "labels_sha256": "99b1a4058ab126ce8b3dd748f55857bc41b559b302bb7e8e6158688bf77c258e"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-964-516um-456um-31z-000B",
+   "is_bootstrap": true,
+   "n_cand": 294,
+   "n_pos": 25,
+   "animal": "964",
+   "labels_sha256": "c4109f8cf024e4ac019ae91bef4079b546747b6717a1164ef3d514c1eb5d785d"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-965-468um-423um-32z-000A",
+   "is_bootstrap": true,
+   "n_cand": 385,
+   "n_pos": 69,
+   "animal": "965",
+   "labels_sha256": "a99533ed9f4e7695b017f9ceaaf83ae762bde30784b053316eac6a15580c6662"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12012023-965-468um-423um-32z-000B",
+   "is_bootstrap": true,
+   "n_cand": 638,
+   "n_pos": 79,
+   "animal": "965",
+   "labels_sha256": "c86ea91475d466562858571d9dc35cda6d6ead6cd9bf8a11f819c95162f08198"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000A",
+   "is_bootstrap": true,
+   "n_cand": 801,
+   "n_pos": 135,
+   "animal": "962",
+   "labels_sha256": "0276c6b45b99d90efcf944f7f5a4f53683ca90188185f7def6150bb096385287"
+  },
+  {
+   "name": "CTA/AVG2x-TSeries-12062023-962-518um-478um-23z-000B",
+   "is_bootstrap": true,
+   "n_cand": 502,
+   "n_pos": 120,
+   "animal": "962",
+   "labels_sha256": "3396a076d983ab574a2701a09f9c617c63a961a6eb037c4bcc6d8dc0c292db56"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07032022-100-371um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 354,
+   "n_pos": 25,
+   "animal": "100",
+   "labels_sha256": "5e31073028f2182428d5f7b214259e23a10fea707e621a1a19b1534b2488905f"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07032022-94-455um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 379,
+   "n_pos": 15,
+   "animal": "94",
+   "labels_sha256": "a93656d2c230832f144e2c7d6b76ca8371754dafae5247a4114267b4eb7bdd2c"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07082022-100-292um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 537,
+   "n_pos": 20,
+   "animal": "100",
+   "labels_sha256": "2952d2043b1e3dc2089a97cebb06b0eb72a4f5ad98e77e7306d8cddc7341e703"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07082022-94-447um-29z-000",
+   "is_bootstrap": true,
+   "n_cand": 444,
+   "n_pos": 12,
+   "animal": "94",
+   "labels_sha256": "fc98ee91749dc311dd139c14484252a6d6be749db748ca8caeeb6a10fd2138fe"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07102022-94-564um-28z-000",
+   "is_bootstrap": true,
+   "n_cand": 293,
+   "n_pos": 12,
+   "animal": "94",
+   "labels_sha256": "ddaaaf0b34cd1b22d8bf27e5cd9b1312b2d3b87467089e5464a28b2b41008932"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07122022-94-627um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 322,
+   "n_pos": 14,
+   "animal": "94",
+   "labels_sha256": "4f1ea2c65bfbc1170c335eeb853c57e4e2fef85ee21ed85f6d7c171f0e4faf73"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07132022-94-545um-28z-000",
+   "is_bootstrap": true,
+   "n_cand": 339,
+   "n_pos": 12,
+   "animal": "94",
+   "labels_sha256": "12bc319811c481ab7ae7fa33ebad1fe20be73d5d48bac9eb16cd3706900b0e14"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07162022-104-358um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 604,
+   "n_pos": 39,
+   "animal": "104",
+   "labels_sha256": "b637efa337894d251bf7dd0ff7ba3b4039e89eb9707bb48e214bbbf1cb1214c8"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07162022-99-295um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 421,
+   "n_pos": 37,
+   "animal": "99",
+   "labels_sha256": "01622760e2368ffe583ec6de4c3a504d7f62e113ca89e2a8b760cebcc540cea1"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07182022-99-um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 441,
+   "n_pos": 33,
+   "animal": "99",
+   "labels_sha256": "a5e89f848aecf44b6aecab3bf01ce86b57316aceaa9f7887e18dc4d99ecab165"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07202022-104-375um-3z-001",
+   "is_bootstrap": true,
+   "n_cand": 561,
+   "n_pos": 49,
+   "animal": "104",
+   "labels_sha256": "fa51486baf14d9fd545a663c876068ecb813a379569e9267d0575b21ca935993"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07212022-104-460um-28z-000",
+   "is_bootstrap": true,
+   "n_cand": 618,
+   "n_pos": 26,
+   "animal": "104",
+   "labels_sha256": "c00adcf479f0d509e9ed214c2994b3898f88ab1dd46019fc6f494f856643cf59"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07212022-98-450um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 585,
+   "n_pos": 47,
+   "animal": "98",
+   "labels_sha256": "1adb20087d39cf1719451590bad84bc0baf86bab71fae82e582b116de45de49a"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07212022-99-395um-3z-000",
+   "is_bootstrap": true,
+   "n_cand": 565,
+   "n_pos": 55,
+   "animal": "99",
+   "labels_sha256": "72d78e9851747172d91773938e3ee442f9997746d9c433ef1b40b056d9687057"
+  },
+  {
+   "name": "LH/AVG8x-TSeries-07222022-98-380um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 468,
+   "n_pos": 56,
+   "animal": "98",
+   "labels_sha256": "064f37f87d1b869689dbed55f8b910bdb162b600fe01794df35964d00bcbbe73"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11272023-964-495um-425um-22z-000A",
+   "is_bootstrap": true,
+   "n_cand": 607,
+   "n_pos": 31,
+   "animal": "964",
+   "labels_sha256": "43cef7c166d5517f72e60de7b29f013f5e9c15059a0092fa11e43abde462217b"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11272023-964-495um-425um-22z-000B",
+   "is_bootstrap": true,
+   "n_cand": 852,
+   "n_pos": 60,
+   "animal": "964",
+   "labels_sha256": "5fd4525e711cd8504e6b1a8f22fcfcba194984929048bd1ff4820946aa490fce"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11272023-965-466um-426um-33z-000A",
+   "is_bootstrap": true,
+   "n_cand": 489,
+   "n_pos": 65,
+   "animal": "965",
+   "labels_sha256": "88efb085c72fadbde636ffc13c2b5464345c857d5bc787a3f0e1971be199934f"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11272023-965-466um-426um-33z-000B",
+   "is_bootstrap": true,
+   "n_cand": 473,
+   "n_pos": 102,
+   "animal": "965",
+   "labels_sha256": "e43c7c8c4cdb3d07742a6d91f5cb2a35d12debd019f9d38f21a0c4c220c9ce76"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11282023-921-800um-720um-27z-000A",
+   "is_bootstrap": true,
+   "n_cand": 238,
+   "n_pos": 67,
+   "animal": "921",
+   "labels_sha256": "0591ac919943737b83f279b43a2ae06eab6444aeb52e108383c3ab46eeaf5d75"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11282023-921-800um-720um-27z-000B",
+   "is_bootstrap": true,
+   "n_cand": 321,
+   "n_pos": 66,
+   "animal": "921",
+   "labels_sha256": "a684dc4fd253f8f60163afa8abffc10c9889a556ce7fb7187c300f247efc7b01"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11282023-963-505um-450um-3z-000A",
+   "is_bootstrap": true,
+   "n_cand": 358,
+   "n_pos": 51,
+   "animal": "963",
+   "labels_sha256": "cb5cf9288e0d6c24bcafbae693419629f45e42fe54a92e1eb483cd1de08a0214"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11282023-963-505um-450um-3z-000B",
+   "is_bootstrap": true,
+   "n_cand": 361,
+   "n_pos": 57,
+   "animal": "963",
+   "labels_sha256": "1781c1e13979c949d2e484716fca5ee9028beecaf702a404fcc5b0fef5994824"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11302023-931-403um-343um-32z-000A",
+   "is_bootstrap": true,
+   "n_cand": 466,
+   "n_pos": 16,
+   "animal": "931",
+   "labels_sha256": "cc9799432e8ac9707f84f13d9be4ab1d2e5e2b7d09995d7c42214d7b8c9e664b"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-11302023-931-403um-343um-32z-000B",
+   "is_bootstrap": true,
+   "n_cand": 415,
+   "n_pos": 12,
+   "animal": "931",
+   "labels_sha256": "71039205171c1b0a4905ea12e089ba51668fc015c18548050f1d959041b8f606"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-120723-920-633um-570um-27z-000A",
+   "is_bootstrap": true,
+   "n_cand": 374,
+   "n_pos": 23,
+   "animal": "920",
+   "labels_sha256": "532a65dcef8a86fa096e9b1ad4e2d48e4ac83da1ef66392979ae6325a00abc00"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-120723-920-633um-570um-27z-000B",
+   "is_bootstrap": true,
+   "n_cand": 449,
+   "n_pos": 15,
+   "animal": "920",
+   "labels_sha256": "ad8330082f9b173f2ce087977a25eb2de48ed5e0135f497581dfdde559dd764a"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-120723-961-410um-350um-32z-000A",
+   "is_bootstrap": true,
+   "n_cand": 519,
+   "n_pos": 30,
+   "animal": "961",
+   "labels_sha256": "9b19ba1e23d8b92728fca801ade318cabaced5d95288638d146bb7bf2712368c"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-120723-961-410um-350um-32z-000B",
+   "is_bootstrap": true,
+   "n_cand": 1003,
+   "n_pos": 5,
+   "animal": "961",
+   "labels_sha256": "22744fb1f910ed9dccb03a27e779fb3bc3ea445bac3cbfe3bbe4891e5f02f4f9"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-120723-964-505um-445um-31z-000A",
+   "is_bootstrap": true,
+   "n_cand": 378,
+   "n_pos": 34,
+   "animal": "964",
+   "labels_sha256": "d293a2e974a9db34db1f6f45bf0635f7a3c88354ef11a416463ff0571b8d15ef"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-120723-964-505um-445um-31z-000B",
+   "is_bootstrap": true,
+   "n_cand": 320,
+   "n_pos": 26,
+   "animal": "964",
+   "labels_sha256": "468307934d44f88fe11c8657c18d58896d0302182478a51ec204cc30ee726bc3"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000A",
+   "is_bootstrap": true,
+   "n_cand": 878,
+   "n_pos": 212,
+   "animal": "962",
+   "labels_sha256": "3cb864bbee554fe1113f17d88bc067a616e26b95ac0a09f05e80686492f80f00"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-12082023-962-507um-467um-23z-000B",
+   "is_bootstrap": true,
+   "n_cand": 930,
+   "n_pos": 282,
+   "animal": "962",
+   "labels_sha256": "e2c761003cb712734bfd9f9fb0cfac3243d7e39682bb1c1f399dd79a7fe9f62a"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-12082023-963-520um-470um-27z-000A",
+   "is_bootstrap": true,
+   "n_cand": 405,
+   "n_pos": 72,
+   "animal": "963",
+   "labels_sha256": "16232458e0acf099ae9f04db6019af9e2a753c0687875853620dbb6e4b5c063e"
+  },
+  {
+   "name": "Valence/AVG2x-TSeries-12082023-963-520um-470um-27z-000B",
+   "is_bootstrap": true,
+   "n_cand": 377,
+   "n_pos": 70,
+   "animal": "963",
+   "labels_sha256": "237d295a961d24bf25204393d15bf0192a94e4afaac73a8dfd0a99b6b826d0d0"
+  },
+  {
+   "name": "VSA/AVG8x-TSeries-08092022-94-510um-3z-002",
+   "is_bootstrap": true,
+   "n_cand": 400,
+   "n_pos": 21,
+   "animal": "94",
+   "labels_sha256": "8bb65490a4234726d91e1ea4260f2d028e6358c6b50cb46b3a8e4c877840ff83"
+  },
+  {
+   "name": "VSA/AVG8x-TSeries-08152022-100-375-3z-003",
+   "is_bootstrap": true,
+   "n_cand": 1387,
+   "n_pos": 14,
+   "animal": "100",
+   "labels_sha256": "7a6523ad8aa553e2abb4a48aebdddd85a267f1e0cb874c2ebd184038d5b6b3e7"
+  },
+  {
+   "name": "VSA/AVG8x-TSeries-08162022-94-500-3z-006",
+   "is_bootstrap": true,
+   "n_cand": 390,
+   "n_pos": 17,
+   "animal": "94",
+   "labels_sha256": "6cacdbeff4167dc69e08f3d38eb368e82d7658a24a4775832fe57f0abe96a08e"
+  },
+  {
+   "name": "VSA/AVG8x-TSeries-08282022-104-387um-26z-000",
+   "is_bootstrap": true,
+   "n_cand": 521,
+   "n_pos": 21,
+   "animal": "104",
+   "labels_sha256": "190697431af352ea87eedae9e4b6955518625023fbc699b4701a2d708c56825a"
+  },
+  {
+   "name": "VSA/AVG8x-TSeries-08282022-98-431um-33z-000",
+   "is_bootstrap": true,
+   "n_cand": 495,
+   "n_pos": 21,
+   "animal": "98",
+   "labels_sha256": "c4cc0c2acaf7947341f84f2554ef83e38f10555f108e75847dd6545c74bd762c"
+  },
+  {
+   "name": "VSA/AVG8x-TSeries-08282022-99-293um-35z-000",
+   "is_bootstrap": true,
+   "n_cand": 379,
+   "n_pos": 28,
+   "animal": "99",
+   "labels_sha256": "19f447d72b3b70907b8877bd34dad308e02d50855e7aae2fef81cf1f1e51de32"
+  }
+ ]
+}

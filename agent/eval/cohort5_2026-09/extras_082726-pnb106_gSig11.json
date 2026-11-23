@@ -1,0 +1,170 @@
+{
+ "session": "AVG5x-TSeries-082726-pnb106-201um-4z-000",
+ "arm": "gSig11",
+ "model": "C:\\code\\CNMF_E_LEGACY_BIANE_CLAUDE\\agent\\model\\vCA1\\classifier.joblib",
+ "unmatched": [
+  {
+   "cand": 6,
+   "first_pass": 0.006663276348263025,
+   "best_cos": 0.0,
+   "area": 807.0,
+   "circularity": 0.4534963993805605,
+   "peak_snr": 17.01366588651311,
+   "skewness": 1.6727330553309554,
+   "cn_correlation": 0.3120882325093974
+  },
+  {
+   "cand": 7,
+   "first_pass": 0.0007211788324639201,
+   "best_cos": 0.0,
+   "area": 533.0,
+   "circularity": 0.06620171408840239,
+   "peak_snr": 8.178572576475993,
+   "skewness": 0.1919427822397397,
+   "cn_correlation": 0.33902848253453277
+  },
+  {
+   "cand": 16,
+   "first_pass": 0.0006190649583004415,
+   "best_cos": 0.0,
+   "area": 1220.0,
+   "circularity": 0.07536260296527075,
+   "peak_snr": 10.705579893901794,
+   "skewness": 0.6854702920309941,
+   "cn_correlation": 0.3932329949571474
+  },
+  {
+   "cand": 19,
+   "first_pass": 0.010095365345478058,
+   "best_cos": 0.41515378874953285,
+   "area": 371.0,
+   "circularity": 0.15729579707368258,
+   "peak_snr": 10.629196911312652,
+   "skewness": 0.19705912238480094,
+   "cn_correlation": 0.336840417572992
+  },
+  {
+   "cand": 22,
+   "first_pass": 0.00011462035035947338,
+   "best_cos": 0.08354446527169325,
+   "area": 1113.0,
+   "circularity": 0.033140983182193946,
+   "peak_snr": 10.664230342385542,
+   "skewness": 0.3548436544370452,
+   "cn_correlation": -0.28210311056127996
+  },
+  {
+   "cand": 23,
+   "first_pass": 0.004441624972969294,
+   "best_cos": 0.4030419027476257,
+   "area": 846.0,
+   "circularity": 0.04854821002381597,
+   "peak_snr": 12.3749467764965,
+   "skewness": 0.2805097356197281,
+   "cn_correlation": 0.4293948183319007
+  },
+  {
+   "cand": 24,
+   "first_pass": 0.001387518597766757,
+   "best_cos": 0.08993290792610294,
+   "area": 1010.0,
+   "circularity": 0.05019352099466059,
+   "peak_snr": 13.44461776961849,
+   "skewness": 0.3379738418253393,
+   "cn_correlation": 0.10164243645999148
+  },
+  {
+   "cand": 25,
+   "first_pass": 0.0013661887496709824,
+   "best_cos": 0.0026274801678332895,
+   "area": 224.0,
+   "circularity": 0.10574520409279078,
+   "peak_snr": 10.386985332099085,
+   "skewness": 0.3304820867414753,
+   "cn_correlation": 0.16551956496872333
+  },
+  {
+   "cand": 30,
+   "first_pass": 0.0012810693588107824,
+   "best_cos": 0.08379324905907296,
+   "area": 174.0,
+   "circularity": 0.24345654327990982,
+   "peak_snr": 12.73450236364108,
+   "skewness": 0.3277563181591441,
+   "cn_correlation": 0.08312413617375207
+  },
+  {
+   "cand": 37,
+   "first_pass": 0.0002338237245567143,
+   "best_cos": 0.03355074837620662,
+   "area": 67.0,
+   "circularity": 0.3816217685331881,
+   "peak_snr": 11.82812873948598,
+   "skewness": 0.23731102390932554,
+   "cn_correlation": -0.29556564594708584
+  },
+  {
+   "cand": 47,
+   "first_pass": 0.0008468307205475867,
+   "best_cos": 0.12384005099855618,
+   "area": 211.0,
+   "circularity": 0.1859052211748994,
+   "peak_snr": 13.118715208970402,
+   "skewness": 0.4032713134599113,
+   "cn_correlation": -0.25776043462594866
+  },
+  {
+   "cand": 51,
+   "first_pass": 0.005369109101593494,
+   "best_cos": 0.36990784902911905,
+   "area": 293.0,
+   "circularity": 0.10557810963859511,
+   "peak_snr": 13.773233076525528,
+   "skewness": 0.4370264525322844,
+   "cn_correlation": 0.02036907046923511
+  }
+ ],
+ "groups": {
+  "arm unmatched": {
+   "n": 12,
+   "first_pass": 0.0013236290542408824,
+   "first_pass_frac_ge_0.02": 0.0,
+   "area": 452.0,
+   "circularity": 0.10566165686569295,
+   "peak_snr": 12.10153775799124,
+   "skewness": 0.3342279642834073,
+   "cn_correlation": 0.1335810007143574
+  },
+  "arm matched": {
+   "n": 53,
+   "first_pass": 0.010903808288276196,
+   "first_pass_frac_ge_0.02": 0.3584905660377358,
+   "area": 629.0,
+   "circularity": 0.10647271125504226,
+   "peak_snr": 14.958086007669934,
+   "skewness": 0.6953952155403669,
+   "cn_correlation": 0.42539860552922615
+  },
+  "live all": {
+   "n": 84,
+   "first_pass": 0.008213192224502563,
+   "first_pass_frac_ge_0.02": 0.36904761904761907,
+   "area": 575.0,
+   "circularity": 0.14204350509979302,
+   "peak_snr": 15.08617440056188,
+   "skewness": 0.7237432171468444,
+   "cn_correlation": 0.40282742580784114
+  },
+  "live not auto-rejected": {
+   "n": 84,
+   "first_pass": 0.008213192224502563,
+   "first_pass_frac_ge_0.02": 0.36904761904761907,
+   "area": 575.0,
+   "circularity": 0.14204350509979302,
+   "peak_snr": 15.08617440056188,
+   "skewness": 0.7237432171468444,
+   "cn_correlation": 0.40282742580784114
+  },
+  "live auto-rejected": {}
+ }
+}

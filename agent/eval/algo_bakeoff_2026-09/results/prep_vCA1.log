@@ -1,0 +1,20 @@
+[16:51:05] vCA1: output D:\Julian_CNMFe\vCA1\.feature_expansion\_raw_corpus\vCA1_raw_corpus.h5
+[16:51:05] vCA1: pool matches snapshot pool_vCA1.json (142 labeled sessions)
+[16:51:10]   10/142 sessions, 334 rows, 5s
+[16:51:16]   20/142 sessions, 677 rows, 11s
+[16:51:42]   30/142 sessions, 4298 rows, 37s
+[16:52:09]   40/142 sessions, 8624 rows, 64s
+[16:52:30]   50/142 sessions, 10995 rows, 85s
+[16:52:54]   60/142 sessions, 14711 rows, 109s
+[16:53:21]   70/142 sessions, 19160 rows, 136s
+[16:53:37]   80/142 sessions, 21986 rows, 152s
+[16:54:01]   90/142 sessions, 26210 rows, 176s
+[16:54:31]   100/142 sessions, 31326 rows, 206s
+[16:54:56]   110/142 sessions, 35521 rows, 231s
+[16:55:30]   120/142 sessions, 41180 rows, 265s
+[16:55:55]   130/142 sessions, 45684 rows, 290s
+[16:56:30]   140/142 sessions, 51670 rows, 325s
+[16:56:35]   142/142 sessions, 52544 rows, 330s
+[16:56:37] contact sheet -> C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\algo_bakeoff_2026-09\results\contact_sheet_vCA1.png
+[16:56:37] vCA1: 52544 rows from 142 sessions (0 skipped, 114 labeled rows without raw data); positives 5650; join_ok=True; orientation votes {'bootstrap': {'n_reals_checked': 4573, 'frac_cn_under_mask_beats_transposed': 0.8860704132954297}, 'agent': {'n_reals_checked': 502, 'frac_cn_under_mask_beats_transposed': 0.898406374501992}}; h5 ~1.05 GB; 332s
+[16:56:37] wrote D:\Julian_CNMFe\vCA1\.feature_expansion\_raw_corpus\vCA1_raw_corpus.h5

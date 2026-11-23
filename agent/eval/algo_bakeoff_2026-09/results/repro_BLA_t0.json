@@ -1,0 +1,65 @@
+{
+ "area": "BLA",
+ "threads": 0,
+ "n_jobs": -1,
+ "rows": 12677,
+ "labels_identical": true,
+ "runtime_s": 17.7,
+ "env": {
+  "python": "C:\\ProgramData\\anaconda3\\envs\\valence\\python.exe",
+  "cpu_count": 48,
+  "threads": 0,
+  "n_jobs": -1,
+  "platform": "Windows-10-10.0.26200-SP0",
+  "OMP_NUM_THREADS": null,
+  "numpy": "2.2.5",
+  "scipy": "1.15.3",
+  "sklearn": "1.7.2",
+  "xgboost": "3.2.0",
+  "lightgbm": "4.6.0",
+  "catboost": null
+ },
+ "max_abs_score_diff_per_seed": [
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "stats": {
+  "auc_full": {
+   "recomputed": 0.9290812437021434,
+   "reference": 0.9290812437021434,
+   "abs_diff": 0.0
+  },
+  "auc_reviewed": {
+   "recomputed": 0.9158732894031743,
+   "reference": 0.9158732894031743,
+   "abs_diff": 0.0
+  },
+  "far_0.04": {
+   "recomputed": 0.7257727652464494,
+   "reference": 0.7257727652464494,
+   "abs_diff": 0.0
+  },
+  "junk_0.04": {
+   "recomputed": 43.11728094913936,
+   "reference": 43.11728094913936,
+   "abs_diff": 0.0
+  },
+  "far_0.03": {
+   "recomputed": 0.43337510442773597,
+   "reference": 0.43337510442773597,
+   "abs_diff": 0.0
+  },
+  "junk_0.03": {
+   "recomputed": 38.719245356413495,
+   "reference": 38.719245356413495,
+   "abs_diff": 0.0
+  }
+ },
+ "pass_5e-3": true
+}

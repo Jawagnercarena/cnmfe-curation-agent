@@ -1,0 +1,58 @@
+[14:49:44] BLA: pool matches snapshot pool_BLA.json (176 labeled sessions)
+[14:49:49]   BLA/session seed 42: stack reviewed AUC 0.9149 | ctrl35 0.9103 | pinned control 0.9103 (5s)
+[14:49:55]   BLA/session seed 1: stack reviewed AUC 0.9123 | ctrl35 0.9080 | pinned control 0.9080 (11s)
+[14:50:00]   BLA/session seed 7: stack reviewed AUC 0.9124 | ctrl35 0.9074 | pinned control 0.9074 (17s)
+[14:50:06]   BLA/session seed 13: stack reviewed AUC 0.9162 | ctrl35 0.9103 | pinned control 0.9103 (23s)
+[14:50:12]   BLA/session seed 100: stack reviewed AUC 0.9066 | ctrl35 0.9108 | pinned control 0.9108 (28s)
+[14:50:17]   BLA/session seed 2024: stack reviewed AUC 0.9170 | ctrl35 0.9116 | pinned control 0.9116 (34s)
+[14:50:23]   BLA/session seed 31337: stack reviewed AUC 0.9131 | ctrl35 0.9096 | pinned control 0.9096 (40s)
+[14:50:29]   BLA/session seed 9: stack reviewed AUC 0.9144 | ctrl35 0.9115 | pinned control 0.9115 (45s)
+## BLA session-grouped, CNN = BLA_session_cnn_t8.npz, 8 seeds (2026-09-07 14:50)
+
+| comparison | rows / reals | ref AUC | new AUC | d reviewed AUC | rule_T | FAR @matched junk | junk @matched FAR |
+|---|---|---|---|---|---|---|---|
+| stack (35 + CNN + rank) vs pinned control | 13766 / 2618 | 0.9245 / 0.9099 | 0.9272 / 0.9134 | +0.0034 (-0.0042; 7/8) | 0.03 (0.65 worst) | 0.62 vs 0.76 | 44.3 vs 41.4 (+2.9) |
+| stack vs ctrl35 (same code path) | 13766 / 2618 | 0.9245 / 0.9099 | 0.9272 / 0.9134 | +0.0034 (-0.0042; 7/8) | 0.03 (0.65 worst) | 0.62 vs 0.76 | 44.3 vs 41.4 (+2.9) |
+| ctrl35 vs pinned control (code-path check) | 13766 / 2618 | 0.9245 / 0.9099 | 0.9245 / 0.9099 | +0.0000 (+0.0000; 0/8) | 0.04 (0.92 worst) | 0.76 vs 0.76 | 41.6 vs 41.4 (+0.2) |
+| blend 50/50 vs pinned control (same seeds) | 13766 / 2618 | 0.9245 / 0.9099 | 0.9286 / 0.9144 | +0.0045 (+0.0021; 8/8) | 0.09 (0.95 worst) | 0.54 vs 0.76 | 45.8 vs 41.4 (+4.4) |
+
+gate (stack vs pinned control): AUC fail, junk fail, rule pass -> **FAIL**
+
+| animal | rows | reals | control | blend | stack |
+|---|---|---|---|---|---|
+| bla12 | 2079 | 541 | 0.9206 | 0.9237 | 0.9228 |
+| bla16 | 1056 | 169 | 0.9110 | 0.9037 | 0.9096 |
+| bla21 | 312 | 106 | 0.8515 | 0.8977 | 0.8749 |
+| bla36 | 4724 | 690 | 0.9023 | 0.9064 | 0.9055 |
+| bla37 | 3507 | 783 | 0.9219 | 0.9207 | 0.9211 |
+| bla8 | 2088 | 329 | 0.9087 | 0.9140 | 0.9131 |
+
+[14:50:31] BLA: pool matches snapshot pool_BLA.json (176 labeled sessions)
+[14:50:37]   BLA/animal seed 42: stack reviewed AUC 0.9022 | ctrl35 0.9005 | pinned control 0.9005 (6s)
+[14:50:43]   BLA/animal seed 1: stack reviewed AUC 0.9012 | ctrl35 0.8980 | pinned control 0.8980 (12s)
+[14:50:48]   BLA/animal seed 7: stack reviewed AUC 0.9068 | ctrl35 0.8978 | pinned control 0.8978 (17s)
+[14:50:54]   BLA/animal seed 13: stack reviewed AUC 0.9015 | ctrl35 0.8990 | pinned control 0.8990 (23s)
+[14:51:00]   BLA/animal seed 100: stack reviewed AUC 0.8953 | ctrl35 0.8980 | pinned control 0.8980 (29s)
+[14:51:06]   BLA/animal seed 2024: stack reviewed AUC 0.8998 | ctrl35 0.8992 | pinned control 0.8992 (35s)
+[14:51:11]   BLA/animal seed 31337: stack reviewed AUC 0.9084 | ctrl35 0.8979 | pinned control 0.8979 (40s)
+[14:51:17]   BLA/animal seed 9: stack reviewed AUC 0.9013 | ctrl35 0.9004 | pinned control 0.9004 (46s)
+## BLA animal-grouped, CNN = BLA_animal_cnn_t8.npz, 8 seeds (2026-09-07 14:51)
+
+| comparison | rows / reals | ref AUC | new AUC | d reviewed AUC | rule_T | FAR @matched junk | junk @matched FAR |
+|---|---|---|---|---|---|---|---|
+| stack (35 + CNN + rank) vs pinned control | 13766 / 2618 | 0.9151 / 0.8989 | 0.9174 / 0.9021 | +0.0032 (-0.0027; 7/8) | None (nan worst) | 0.90 vs 1.01 | 42.8 vs 40.6 (+2.2) |
+| stack vs ctrl35 (same code path) | 13766 / 2618 | 0.9151 / 0.8989 | 0.9174 / 0.9021 | +0.0032 (-0.0027; 7/8) | None (nan worst) | 0.90 vs 1.01 | 42.8 vs 40.6 (+2.2) |
+| ctrl35 vs pinned control (code-path check) | 13766 / 2618 | 0.9151 / 0.8989 | 0.9151 / 0.8989 | +0.0000 (+0.0000; 0/8) | 0.03 (0.76 worst) | 1.01 vs 1.01 | 41.0 vs 40.6 (+0.4) |
+| blend 50/50 vs pinned control (same seeds) | 13766 / 2618 | 0.9151 / 0.8989 | 0.9221 / 0.9067 | +0.0078 (+0.0010; 8/8) | 0.09 (0.95 worst) | 0.65 vs 1.01 | 46.8 vs 40.6 (+6.2) |
+
+gate (stack vs pinned control): AUC fail, junk fail, rule fail -> **FAIL**
+
+| animal | rows | reals | control | blend | stack |
+|---|---|---|---|---|---|
+| bla12 | 2079 | 541 | 0.9097 | 0.9192 | 0.9151 |
+| bla16 | 1056 | 169 | 0.9109 | 0.9028 | 0.9113 |
+| bla21 | 312 | 106 | 0.8570 | 0.9039 | 0.8825 |
+| bla36 | 4724 | 690 | 0.8958 | 0.9014 | 0.8975 |
+| bla37 | 3507 | 783 | 0.9151 | 0.9176 | 0.9165 |
+| bla8 | 2088 | 329 | 0.9053 | 0.9150 | 0.9143 |
+

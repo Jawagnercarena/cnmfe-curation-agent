@@ -1,0 +1,40 @@
+pool: 177 labelled sessions (57 agent testable, 8 agent untestable < 5 kept, 112 bootstrap); 6865 agent rows, 1522 kept
+cohort-5 sessions in the testable pool: 12
+   6odorDualDiffRew/AVG5x-TSeries-082626-pnb102-479um-3z-000
+   6odorDualDiffRew/AVG5x-TSeries-082626-pnb104-404um-3z-000
+   6odorDualDiffRew/AVG5x-TSeries-082626-pnb105-397um-35z-000
+   6odorDualDiffRew/AVG5x-TSeries-082626-pnb106-205um-4z-000
+   6odorDualDiffRew/AVG5x-TSeries-082626-pnb109-398um-26z-000
+   6odorDualDiffRew/AVG5x-TSeries-082626-pnb99-399um-3z-000
+   6odorDualDiffRew/AVG5x-TSeries-082726-pnb102-497um-3z-000
+   6odorDualDiffRew/AVG5x-TSeries-082726-pnb104-416um-3z-000
+   6odorDualDiffRew/AVG5x-TSeries-082726-pnb105-391um-35z-000
+   6odorDualDiffRew/AVG5x-TSeries-082726-pnb106-201um-4z-000
+   6odorDualDiffRew/AVG5x-TSeries-082726-pnb109-405um-25z-000
+   6odorDualDiffRew/AVG5x-TSeries-082826-pnb99-436um-3z-000-000
+
+Within-animal OOF (sessions held out, animals seen; 3 seeds). Reviewed rows only are all rows here (threshold-0 reviews).
+pnb99 (2 sessions)           kept   78 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/78), junk 12% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/78), junk 18% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/78), junk 27% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/78), junk 33% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/78), junk 37%
+pnb102 (2 sessions)          kept   84 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/84), junk 17% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/84), junk 24% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/84), junk 34% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/84), junk 41% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/84), junk 46%
+pnb104 (2 sessions)          kept   63 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/63), junk 16% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/63), junk 24% | T=0.020: FAR 0.53% (worst seed 1.59%, 0.3/63), junk 35% | T=0.030: FAR 2.12% (worst seed 3.17%, 1.3/63), junk 40% | T=0.040: FAR 2.65% (worst seed 3.17%, 1.7/63), junk 45%
+pnb105 (2 sessions)          kept   58 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/58), junk 18% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/58), junk 28% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/58), junk 42% | T=0.030: FAR 1.15% (worst seed 1.72%, 0.7/58), junk 50% | T=0.040: FAR 3.45% (worst seed 5.17%, 2.0/58), junk 56%
+pnb106 (2 sessions)          kept   21 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/21), junk 20% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/21), junk 29% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/21), junk 40% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/21), junk 48% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/21), junk 53%
+pnb109 (2 sessions)          kept  106 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/106), junk 19% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/106), junk 29% | T=0.020: FAR 1.57% (worst seed 2.83%, 1.7/106), junk 39% | T=0.030: FAR 2.83% (worst seed 2.83%, 3.0/106), junk 46% | T=0.040: FAR 3.77% (worst seed 3.77%, 4.0/106), junk 53%
+
+AVG5x-TSeries-082626-pnb102-479um-3z-000 kept   44 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/44), junk 18% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/44), junk 24% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/44), junk 34% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/44), junk 41% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/44), junk 45%
+AVG5x-TSeries-082626-pnb104-404um-3z-000 kept   32 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/32), junk 14% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/32), junk 20% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/32), junk 29% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/32), junk 35% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/32), junk 39%
+VG5x-TSeries-082626-pnb105-397um-35z-000 kept   24 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/24), junk 15% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/24), junk 25% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/24), junk 40% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/24), junk 47% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/24), junk 53%
+AVG5x-TSeries-082626-pnb106-205um-4z-000 kept   10 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/10), junk 18% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/10), junk 26% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/10), junk 36% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/10), junk 44% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/10), junk 49%
+VG5x-TSeries-082626-pnb109-398um-26z-000 kept   49 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/49), junk 23% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/49), junk 38% | T=0.020: FAR 1.36% (worst seed 4.08%, 0.7/49), junk 49% | T=0.030: FAR 3.40% (worst seed 4.08%, 1.7/49), junk 55% | T=0.040: FAR 4.08% (worst seed 4.08%, 2.0/49), junk 60%
+/AVG5x-TSeries-082626-pnb99-399um-3z-000 kept   29 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/29), junk 11% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/29), junk 13% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/29), junk 22% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/29), junk 33% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/29), junk 37%
+AVG5x-TSeries-082726-pnb102-497um-3z-000 kept   40 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/40), junk 16% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/40), junk 24% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/40), junk 35% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/40), junk 41% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/40), junk 47%
+AVG5x-TSeries-082726-pnb104-416um-3z-000 kept   31 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/31), junk 18% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/31), junk 29% | T=0.020: FAR 1.08% (worst seed 3.23%, 0.3/31), junk 41% | T=0.030: FAR 4.30% (worst seed 6.45%, 1.3/31), junk 45% | T=0.040: FAR 5.38% (worst seed 6.45%, 1.7/31), junk 51%
+VG5x-TSeries-082726-pnb105-391um-35z-000 kept   34 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/34), junk 23% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/34), junk 33% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/34), junk 47% | T=0.030: FAR 1.96% (worst seed 2.94%, 0.7/34), junk 56% | T=0.040: FAR 5.88% (worst seed 8.82%, 2.0/34), junk 61%
+AVG5x-TSeries-082726-pnb106-201um-4z-000 kept   11 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/11), junk 22% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/11), junk 33% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/11), junk 45% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/11), junk 53% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/11), junk 59%
+VG5x-TSeries-082726-pnb109-405um-25z-000 kept   57 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/57), junk 15% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/57), junk 21% | T=0.020: FAR 1.75% (worst seed 1.75%, 1.0/57), junk 29% | T=0.030: FAR 2.34% (worst seed 3.51%, 1.3/57), junk 38% | T=0.040: FAR 3.51% (worst seed 3.51%, 2.0/57), junk 45%
+5x-TSeries-082826-pnb99-436um-3z-000-000 kept   49 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/49), junk 12% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/49), junk 19% | T=0.020: FAR 0.00% (worst seed 0.00%, 0.0/49), junk 28% | T=0.030: FAR 0.00% (worst seed 0.00%, 0.0/49), junk 34% | T=0.040: FAR 0.00% (worst seed 0.00%, 0.0/49), junk 38%
+
+COHORT-5 POOLED              kept  410 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/410), junk 17% | T=0.010: FAR 0.00% (worst seed 0.00%, 0.0/410), junk 26% | T=0.020: FAR 0.49% (worst seed 0.73%, 2.0/410), junk 37% | T=0.030: FAR 1.22% (worst seed 1.46%, 5.0/410), junk 44% | T=0.040: FAR 1.87% (worst seed 2.20%, 7.7/410), junk 50%
+rest of agent pool           kept 1112 | T=0.005: FAR 0.00% (worst seed 0.00%, 0.0/1112), junk 13% | T=0.010: FAR 0.06% (worst seed 0.09%, 0.7/1112), junk 20% | T=0.020: FAR 0.24% (worst seed 0.27%, 2.7/1112), junk 30% | T=0.030: FAR 0.51% (worst seed 0.54%, 5.7/1112), junk 37% | T=0.040: FAR 0.81% (worst seed 0.99%, 9.0/1112), junk 41%
+AUC (seed 42): cohort-5 rows 0.923, rest 0.922
+wrote C:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\cohort5_2026-09\analysis_2026-10-28\cohort5_within_animal_oof.json
