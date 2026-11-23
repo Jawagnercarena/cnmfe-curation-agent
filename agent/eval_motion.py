@@ -108,8 +108,9 @@ def load_motion_session(sd: Path):
 
 def collect_agent_sessions():
     """All agent (non-bootstrap) labeled sessions. Motion tags only ever appear
-    in agent sessions, and their keep/delete labels are clean (bootstrap labels
-    are ~41% noisy), so restricting here keeps the separability test clean."""
+    in agent sessions, and their keep/delete labels are human review decisions
+    (bootstrap labels are footprint matches to a past curation), so restricting
+    here keeps the separability test clean."""
     recs = []
     for td in sorted(DATA_ROOT.iterdir()):
         if not td.is_dir() or td.name.startswith("."):
