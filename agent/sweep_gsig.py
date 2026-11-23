@@ -13,15 +13,21 @@ A false positive lands in the review package and a human deletes it; a false
 negative never enters neuron.mat and is invisible to every QC surface in the
 pipeline -- viewNeurons offers keep/delete/split/trim but has no "add".
 
-Each arm runs into DG_AL/.sweep/gSig{NN}/ .  The dot prefix keeps the whole
-tree invisible to the watcher, the curator, REVIEW_QUEUE.md and every other
-scanner, so a sweep can never be mistaken for real sessions.
+Each arm runs into <AREA>/.sweep/<session>/gSig{NN}/ .  The dot prefix keeps
+the whole tree invisible to the watcher, the curator, REVIEW_QUEUE.md and every
+other scanner, so a sweep can never be mistaken for real sessions.
 
 Usage:
-    python sweep_gsig.py                       # default arms, default session
+    python sweep_gsig.py                       # default arms, default session (DG_AL)
     python sweep_gsig.py --gsig 4 5 6 7
     python sweep_gsig.py --session <path-to-session-dir>
+    python sweep_gsig.py --area vCA1 --session <vCA1 session dir> --gsig 7 11
     python sweep_gsig.py --compare-only        # skip CNMFe, just re-compare
+
+--area selects the config module injected as "config" (the watcher_<AREA>.py
+idiom) before params / run_cnmfe / features are imported; it decides the
+DATA_ROOT used for the .sweep tree and the watcher-idle check.  Default DG_AL
+keeps the original behaviour.
 
 Reference arm: the session's own completed run is used as-is (not re-run).
 """
@@ -37,8 +43,16 @@ import numpy as np
 AGENT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(AGENT_DIR))
 
-import config_DG_AL
-sys.modules["config"] = config_DG_AL
+# The area is parsed before anything else is imported, because the config
+# module must be injected as "config" before params / run_cnmfe / features load
+# (same idiom as watcher_vCA1.py / watcher_DG_AL.py).  BLA is the bare config.
+AREAS = ("DG_AL", "vCA1", "BLA")
+_pre = argparse.ArgumentParser(add_help=False)
+_pre.add_argument("--area", choices=AREAS, default="DG_AL")
+AREA = _pre.parse_known_args()[0].area
+import importlib
+config = importlib.import_module("config" if AREA == "BLA" else f"config_{AREA}")
+sys.modules["config"] = config
 
 import params as param_estimator
 import run_cnmfe
@@ -62,11 +76,11 @@ def log(msg=""):
 
 def wait_for_watcher_idle(max_wait_min=90):
     """
-    Hold off until the DG_AL watcher has no session mid-flight, so the sweep
+    Hold off until the area's watcher has no session mid-flight, so the sweep
     never becomes a fourth concurrent MATLAB job.  A session is mid-flight if
     its folder has a .tif but no neuron.mat yet.
     """
-    root = config_DG_AL.DATA_ROOT
+    root = config.DATA_ROOT
     deadline = time.time() + max_wait_min * 60
     while time.time() < deadline:
         busy = []
@@ -233,9 +247,25 @@ def _render(missed_sets, ref_label, out_pdf: Path):
     log(f"[COMPARE] wrote {out_pdf}")
 
 
+def live_gsig_label(session_dir: Path) -> str:
+    """
+    Label for the reference arm: the gSig the session's own run used, read from
+    the last 'Final parameters' line of its agent_run.log; 'live' if unknown.
+    """
+    import re
+    try:
+        txt = (session_dir / "agent_run.log").read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return "live"
+    found = re.findall(r"Final parameters:.*?'gSig':\s*(\d+)", txt)
+    return f"gSig={found[-1]} (live)" if found else "live"
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--area", choices=AREAS, default="DG_AL",
+                    help="brain area whose config/DATA_ROOT the sweep runs under (default DG_AL)")
     ap.add_argument("--session", type=Path, default=DEFAULT_SESSION)
     ap.add_argument("--gsig", type=int, nargs="+", default=[5, 7],
                     help="gSig arms to run (gSiz = 4x gSig, this lab's convention)")
@@ -248,9 +278,10 @@ def main():
     if not session_dir.is_dir():
         sys.exit(f"ERROR: session not found: {session_dir}")
 
-    sweep_root = config_DG_AL.DATA_ROOT / ".sweep" / session_dir.name
+    sweep_root = config.DATA_ROOT / ".sweep" / session_dir.name
     sweep_root.mkdir(parents=True, exist_ok=True)
     log("=" * 60)
+    log(f"[SWEEP] area    : {AREA}  (DATA_ROOT {config.DATA_ROOT})")
     log(f"[SWEEP] session : {session_dir.name}")
     log(f"[SWEEP] arms    : gSig {args.gsig}  (+ existing run as reference)")
     log(f"[SWEEP] output  : {sweep_root}")
@@ -272,7 +303,7 @@ def main():
         d = sweep_root / f"gSig{g:02d}"
         if (d / "spatial_footprints.mat").exists():
             arms[f"gSig={g}"] = d
-    ref_label = "gSig=9 (live)"
+    ref_label = live_gsig_label(session_dir)
     arms[ref_label] = session_dir
 
     compare(arms, ref_label, sweep_root / "missed_by_reference.pdf")
