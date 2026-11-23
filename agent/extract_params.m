@@ -1,10 +1,24 @@
 %% extract_params.m
-% One-time setup script. Reads gSig and gSiz from every completed session's
-% neuron.mat and writes agent/config/animal_params.json.
-% Run this from the CNMF_E_LEGACY_BIANE_CLAUDE root directory.
+% Reads gSig and gSiz from every completed session's neuron.mat and writes
+% agent/config/animal_params.json. The watchers run it whenever a neuron.mat
+% is newer than that JSON (watcher.py _refresh_animal_params); it can also be
+% run by hand from the CNMF_E_LEGACY_BIANE_CLAUDE root directory.
 %
 % Flags animals where gSig or gSiz is inconsistent across sessions so you
 % can decide which value to use (or fall back to the safe default of gSiz=36).
+%
+% Per-session cache (2026-11-07): loading every neuron.mat in every area on
+% each refresh (446 files, 6.8 GB) outran the watcher's 15-min timeout while
+% D: was busy, and every timed-out attempt started over. gSig/gSiz are now
+% cached per session in <data parent>/.params_cache/extract_params_cache.mat,
+% keyed by area/task/session and reused while that neuron.mat keeps the same
+% byte size and modification time, so only new or changed files are loaded.
+% The cache is saved after every newly loaded file, so a run that is killed
+% keeps its progress for the next attempt. Delete the cache file to force a
+% full re-read. The JSON written is the same as without the cache.
+%
+% Environment overrides: CNMFE_DATA_PARENT (data root) and
+% CNMFE_ANIMAL_PARAMS_JSON (output file; used to test against scratch paths).
 
 clear; clc;
 
@@ -13,12 +27,24 @@ clear; clc;
 % All areas are scanned automatically -- no manual update needed when adding areas.
 base_root   = getenv('CNMFE_DATA_PARENT');
 if isempty(base_root); base_root = 'D:\Julian_CNMFe'; end
-output_json = fullfile(fileparts(mfilename('fullpath')), 'config', 'animal_params.json');
+output_json = getenv('CNMFE_ANIMAL_PARAMS_JSON');
+if isempty(output_json)
+    output_json = fullfile(fileparts(mfilename('fullpath')), 'config', 'animal_params.json');
+end
+cache_dir  = fullfile(base_root, '.params_cache');
+cache_file = fullfile(cache_dir, 'extract_params_cache.mat');
 
 % Add Sources2D class to path so neuron.mat loads correctly
 script_dir = fileparts(mfilename('fullpath'));
 repo_root  = fileparts(script_dir);  % one level up from agent/
 addpath(genpath(fullfile(repo_root, 'ca_source_extraction')));
+
+%% --- Per-session cache ---
+params_cache = load_params_cache(cache_file);
+fprintf('Cache: %d session(s) in %s\n', params_cache.Count, cache_file);
+n_loaded  = 0;
+n_cached  = 0;
+seen_keys = {};
 
 %% --- Walk every area / task / session folder ---
 area_dirs = dir(base_root);
@@ -65,16 +91,30 @@ for ar = 1:numel(area_dirs)
             end
             animal_id = parts{4};  % e.g. 'bla8', '94', '921'
 
-            % Load neuron object
-            try
-                data_loaded = load(neuron_file, 'neuron');
-                neuron = data_loaded.neuron;
-                gSig = neuron.options.gSig;
-                gSiz = neuron.options.gSiz;
-            catch err
-                fprintf('  [ERROR] %s/%s/%s: %s\n', area_name, task_dirs(t).name, session_name, err.message);
-                continue;
+            % gSig/gSiz from the cache when this neuron.mat is unchanged,
+            % otherwise from the neuron object itself.
+            neuron_info = dir(neuron_file);
+            cache_key   = [area_name '/' task_dirs(t).name '/' session_name];
+            [gSig, gSiz, hit] = cached_params(params_cache, cache_key, neuron_info);
+            if hit
+                n_cached = n_cached + 1;
+            else
+                try
+                    data_loaded = load(neuron_file, 'neuron');
+                    neuron = data_loaded.neuron;
+                    gSig = neuron.options.gSig;
+                    gSiz = neuron.options.gSiz;
+                catch err
+                    fprintf('  [ERROR] %s/%s/%s: %s\n', area_name, task_dirs(t).name, session_name, err.message);
+                    continue;
+                end
+                n_loaded = n_loaded + 1;
+                params_cache(cache_key) = struct('key', cache_key, ...
+                    'bytes', neuron_info.bytes, 'datenum', neuron_info.datenum, ...
+                    'gSig', gSig, 'gSiz', gSiz);
+                save_params_cache(cache_dir, cache_file, params_cache, {}, false);
             end
+            seen_keys{end+1} = cache_key; %#ok<SAGROW>
 
             fprintf('  %s/%s  ->  animal=%s  gSig=%d  gSiz=%d\n', ...
                 task_dirs(t).name, session_name, animal_id, gSig, gSiz);
@@ -90,7 +130,8 @@ for ar = 1:numel(area_dirs)
     end
 end
 
-fprintf('\nFound %d completed sessions.\n\n', numel(records));
+fprintf('\nFound %d completed sessions (%d read from neuron.mat, %d from cache).\n\n', ...
+    numel(records), n_loaded, n_cached);
 
 if isempty(records)
     error('No completed sessions found. Check base_root path.');
@@ -192,4 +233,77 @@ else
     fprintf('\nAll animals have consistent gSig/gSiz across sessions.\n');
 end
 
+% Drop cache entries for sessions that no longer exist or failed to load.
+save_params_cache(cache_dir, cache_file, params_cache, seen_keys, true);
+
 fprintf('\nDone.\n');
+
+
+%% --- Local functions ---
+
+function params_cache = load_params_cache(cache_file)
+% Map from 'area/task/session' to struct(key, bytes, datenum, gSig, gSiz).
+% A missing or unreadable cache gives an empty map: every neuron.mat is read.
+params_cache = containers.Map('KeyType', 'char', 'ValueType', 'any');
+if ~isfile(cache_file)
+    return;
+end
+try
+    S = load(cache_file, 'entries');
+    entries = S.entries;
+    need = {'key', 'bytes', 'datenum', 'gSig', 'gSiz'};
+    if ~isempty(entries) && ~(isstruct(entries) && all(isfield(entries, need)))
+        error('cache entries do not have the fields %s', strjoin(need, ', '));
+    end
+    for i = 1:numel(entries)
+        params_cache(entries(i).key) = entries(i);
+    end
+catch err
+    fprintf('[WARN] Ignoring unreadable cache %s (%s); reading every neuron.mat.\n', ...
+        cache_file, err.message);
+    params_cache = containers.Map('KeyType', 'char', 'ValueType', 'any');
+end
+end
+
+function [gSig, gSiz, hit] = cached_params(params_cache, cache_key, neuron_info)
+% Cached values only if the neuron.mat has the same size and modification
+% time as when they were read (datenum is in days; 1e-5 day is under 1 s).
+gSig = [];
+gSiz = [];
+hit  = false;
+if ~isKey(params_cache, cache_key)
+    return;
+end
+c = params_cache(cache_key);
+if c.bytes == neuron_info.bytes && abs(c.datenum - neuron_info.datenum) < 1e-5
+    gSig = c.gSig;
+    gSiz = c.gSiz;
+    hit  = true;
+end
+end
+
+function save_params_cache(cache_dir, cache_file, params_cache, keep_keys, prune)
+% Write all entries (prune=false) or only those in keep_keys (prune=true).
+% Saved to a temp file and renamed over the cache, so a run killed mid-write
+% leaves the previous cache intact. A failed write only costs speed.
+try
+    keys_out = params_cache.keys;
+    if prune
+        keys_out = intersect(keys_out, keep_keys);
+    end
+    if isempty(keys_out)
+        entries = struct('key', {}, 'bytes', {}, 'datenum', {}, 'gSig', {}, 'gSiz', {});
+    else
+        vals = params_cache.values(keys_out);
+        entries = [vals{:}];
+    end
+    if ~isfolder(cache_dir)
+        mkdir(cache_dir);
+    end
+    tmp_file = fullfile(cache_dir, 'extract_params_cache_tmp.mat');
+    save(tmp_file, 'entries');
+    movefile(tmp_file, cache_file, 'f');
+catch err
+    fprintf('[WARN] Could not save the params cache %s: %s\n', cache_file, err.message);
+end
+end
