@@ -1,0 +1,73 @@
+GO: 12 session(s); interpreter C:\Users\julia\.conda\envs\suite2p\python.exe
+  server X:\Jeremy\2p data\valence (read only); delivered D:\2p data\valence (read only)
+  scratch C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence (free 1318 GiB); logs c:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\logs\remake_valence; slots 2
+  TSeries-091526-pnb99-442um-3z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb99
+  TSeries-091526-pnb102-486um-3z-000: 187 files (182 ome.tif), 37.9 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb102
+  TSeries-091526-pnb104-484um-3z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb104
+  TSeries-091526-pnb105-403um-35z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb105
+  TSeries-091526-pnb106-235um-4z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb106
+  TSeries-091526-pnb109-375um-25z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb109
+  TSeries-091626-pnb99-441um-3z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb99
+  TSeries-091626-pnb102-464um-3z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb102
+  TSeries-091626-pnb104-510um-3z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb104
+  TSeries-091626-pnb105-410um-35z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb105
+  TSeries-091626-pnb106-242um-4z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb106
+  TSeries-091626-pnb109-362um-25z-000: 187 files (182 ome.tif), 38.0 GiB -> C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb109
+2026-11-24 13:34:03 START 12 sessions; interpreter C:\Users\julia\.conda\envs\suite2p\python.exe; process_2p D:\2p data\scripts\process_2p.py
+2026-11-24 13:34:03 COPY 091526-pnb99 start
+2026-11-24 13:42:52 COPY 091526-pnb99 verified: 187 files, 38.0 GiB, XML 182 cycles / 77526 frames, 529 s
+2026-11-24 13:42:52 REG 091526-pnb99 start (slot 1)
+2026-11-24 13:42:52 COPY 091526-pnb102 start
+2026-11-24 13:52:14 COPY 091526-pnb102 verified: 187 files, 37.9 GiB, XML 182 cycles / 77433 frames, 562 s
+2026-11-24 13:52:14 REG 091526-pnb102 start (slot 2)
+2026-11-24 13:52:14 COPY 091526-pnb104 start
+2026-11-24 14:01:59 COPY 091526-pnb104 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 585 s
+2026-11-24 14:01:59 COPY 091526-pnb105 start
+2026-11-24 14:01:59 COPY 091526-pnb105 FAILED: FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\julia\\AppData\\Local\\Temp\\claude\\45dc093469cd1656\\62441754-716d-4e14-b3ac-6c97eee49a36\\scratchpad\\remake_valence\\091526-pnb105\\_incoming\\TSeries-091526-pnb105-403um-35z-000\\References\\TSeries-091526-pnb105-403um-35z-000-Window1-Green-8bit-Reference.tif' (left in C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb105\_incoming\TSeries-091526-pnb105-403um-35z-000)
+2026-11-24 14:02:00 COPY 091526-pnb106 start
+2026-11-24 14:09:48 REG 091526-pnb99 done: 194 reg_tif files, 1616 s
+2026-11-24 14:09:48 REG 091526-pnb104 start (slot 1)
+2026-11-24 14:09:48 AVG 091526-pnb99 start
+2026-11-24 14:12:10 COPY 091526-pnb106 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 611 s
+2026-11-24 14:12:11 COPY 091526-pnb109 start
+2026-11-24 14:12:11 COPY 091526-pnb109 FAILED: FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\julia\\AppData\\Local\\Temp\\claude\\45dc093469cd1656\\62441754-716d-4e14-b3ac-6c97eee49a36\\scratchpad\\remake_valence\\091526-pnb109\\_incoming\\TSeries-091526-pnb109-375um-25z-000\\References\\TSeries-091526-pnb109-375um-25z-000-Window1-Green-8bit-Reference.tif' (left in C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb109\_incoming\TSeries-091526-pnb109-375um-25z-000)
+2026-11-24 14:12:11 COPY 091626-pnb99 start
+2026-11-24 14:13:25 AVG 091526-pnb99 QC FLAGGED: bad frames 28.1% > 5%: new 15505 / expected 15505 / delivered 15505 frames; bad 28.14% degraded 61.59% at limit 0.08%; TSeries kept yes; 218 s
+2026-11-24 14:22:08 COPY 091626-pnb99 verified: 187 files, 38.0 GiB, XML 182 cycles / 77502 frames, 597 s
+2026-11-24 14:23:01 REG 091526-pnb102 done: 194 reg_tif files, 1847 s
+2026-11-24 14:23:01 REG 091526-pnb106 start (slot 2)
+2026-11-24 14:23:01 AVG 091526-pnb102 start
+2026-11-24 14:23:01 COPY 091626-pnb102 start
+2026-11-24 14:27:14 AVG 091526-pnb102 ok: new 15486 / expected 15486 / delivered 15486 frames; bad 0.0% degraded 0.78% at limit 0.0%; TSeries kept no; 253 s
+2026-11-24 14:33:17 COPY 091626-pnb102 verified: 187 files, 38.0 GiB, XML 182 cycles / 77508 frames, 616 s
+2026-11-24 14:42:43 REG 091526-pnb104 done: 194 reg_tif files, 1975 s
+2026-11-24 14:42:43 REG 091626-pnb99 start (slot 1)
+2026-11-24 14:42:43 AVG 091526-pnb104 start
+2026-11-24 14:42:43 COPY 091626-pnb104 start
+2026-11-24 14:46:46 AVG 091526-pnb104 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.01% degraded 3.57% at limit 0.0%; TSeries kept no; 243 s
+2026-11-24 14:52:41 COPY 091626-pnb104 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 598 s
+2026-11-24 14:55:15 REG 091526-pnb106 done: 194 reg_tif files, 1934 s
+2026-11-24 14:55:15 REG 091626-pnb102 start (slot 2)
+2026-11-24 14:55:15 AVG 091526-pnb106 start
+2026-11-24 14:55:15 COPY 091626-pnb105 start
+2026-11-24 14:55:15 COPY 091626-pnb105 FAILED: FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\julia\\AppData\\Local\\Temp\\claude\\45dc093469cd1656\\62441754-716d-4e14-b3ac-6c97eee49a36\\scratchpad\\remake_valence\\091626-pnb105\\_incoming\\TSeries-091626-pnb105-410um-35z-000\\References\\TSeries-091626-pnb105-410um-35z-000-Window1-Green-8bit-Reference.tif' (left in C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb105\_incoming\TSeries-091626-pnb105-410um-35z-000)
+2026-11-24 14:55:15 COPY 091626-pnb106 start
+2026-11-24 14:59:03 AVG 091526-pnb106 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.0% degraded 0.05% at limit 0.0%; TSeries kept no; 228 s
+2026-11-24 15:05:19 COPY 091626-pnb106 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 604 s
+2026-11-24 15:14:07 REG 091626-pnb99 done: 194 reg_tif files, 1884 s
+2026-11-24 15:14:07 REG 091626-pnb104 start (slot 1)
+2026-11-24 15:14:07 AVG 091626-pnb99 start
+2026-11-24 15:14:07 COPY 091626-pnb109 start
+2026-11-24 15:14:08 COPY 091626-pnb109 FAILED: FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\julia\\AppData\\Local\\Temp\\claude\\45dc093469cd1656\\62441754-716d-4e14-b3ac-6c97eee49a36\\scratchpad\\remake_valence\\091626-pnb109\\_incoming\\TSeries-091626-pnb109-362um-25z-000\\References\\TSeries-091626-pnb109-362um-25z-000-Window1-Green-8bit-Reference.tif' (left in C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb109\_incoming\TSeries-091626-pnb109-362um-25z-000)
+2026-11-24 15:17:49 AVG 091626-pnb99 ok: new 15500 / expected 15500 / delivered 15500 frames; bad 0.0% degraded 0.26% at limit 0.0%; TSeries kept no; 223 s
+2026-11-24 15:25:45 REG 091626-pnb102 done: 194 reg_tif files, 1831 s
+2026-11-24 15:25:45 REG 091626-pnb106 start (slot 2)
+2026-11-24 15:25:45 AVG 091626-pnb102 start
+2026-11-24 15:29:18 AVG 091626-pnb102 ok: new 15501 / expected 15501 / delivered 15501 frames; bad 0.14% degraded 2.84% at limit 0.0%; TSeries kept no; 213 s
+2026-11-24 15:44:02 REG 091626-pnb104 done: 194 reg_tif files, 1795 s
+2026-11-24 15:44:02 AVG 091626-pnb104 start
+2026-11-24 15:47:05 AVG 091626-pnb104 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.59% degraded 7.92% at limit 0.01%; TSeries kept no; 183 s
+2026-11-24 15:53:07 REG 091626-pnb106 done: 194 reg_tif files, 1642 s
+2026-11-24 15:53:07 AVG 091626-pnb106 start
+2026-11-24 15:55:07 AVG 091626-pnb106 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.1% degraded 1.34% at limit 0.0%; TSeries kept no; 120 s
+2026-11-24 15:55:07 ALL DONE: 7 of 12 ok; summary c:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\logs\remake_valence\summary.csv

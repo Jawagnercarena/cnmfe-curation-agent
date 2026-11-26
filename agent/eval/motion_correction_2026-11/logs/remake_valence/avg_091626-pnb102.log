@@ -1,0 +1,27 @@
+CMD C:\Users\julia\.conda\envs\suite2p\python.exe "D:\2p data\scripts\process_2p.py" --task-dir C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb102 --only TSeries-091626-pnb102-464um-3z-000 --skip-suite2p
+Task directory : C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091626-pnb102
+Base ops       : C:\Users\julia\.suite2p\ops\ops_user.npy  + overrides {'maxregshift': 0.2}
+Registration   : maxregshift 0.2, reference recentred when more than 5 px off
+Motion QC      : TSeries folder kept above 5% bad frames or 1% of frames at the search limit
+Averaging      : every 5 frames -> 8-bit tif
+Delete TSeries : yes, whole folder, once its new AVG tif verifies
+Sessions found : 1
+
+  session                              fs (Hz)   files  layout      todo
+  TSeries-091626-pnb102-464um-3z-000   30.2344     182  per-cycle   average + delete
+
+Processing 1 session(s).
+
+[1/1] TSeries-091626-pnb102-464um-3z-000
+    averaging ...
+      OK  3.8 GB  (137s)
+    motion QC ...
+      OK  bad 0.1%  degraded 2.8%  at limit 0.0%  reference offset (y +5, x -9)  record AVG5x-TSeries-091626-pnb102-464um-3z-000_mc.npz  (58s)
+    deleting TSeries folder ...
+      OK  freed 151.8 GB  (AVG verified: 15501 frames, 3.8 GB)
+    DONE in 208s
+
+============================================================
+Finished: 1 succeeded, 0 failed.
+  ok    TSeries-091626-pnb102-464um-3z-000  (208s)
+exit 0

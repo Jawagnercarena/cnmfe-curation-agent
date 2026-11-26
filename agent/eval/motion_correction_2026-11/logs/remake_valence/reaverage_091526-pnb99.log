@@ -1,0 +1,15 @@
+2026-11-24 16:46:04 TSeries-091526-pnb99-442um-3z-000: 194 reg_tif files, 77526 raw frames, keep 77525 -> 15505 averaged; median sampled frame mean 304.9, lit threshold 76.2
+2026-11-24 16:46:04   session-wide sample: 1543 lit / 8 dark of 1551 sampled frames; dark sampled frame indices (x50 within file): [0, 1, 2, 3, 4, 5, 6, 7]
+2026-11-24 16:46:04   first lit raw frame 360 (mean 433.6; frame before 7.8); dark raw frames at the start 360; range from averaged frame 72 (0-based) = slice 73, raw 360..364
+2026-11-24 16:46:04   moved the clipped re-make to C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb99\_clipped_range_slice1\AVG5x-TSeries-091526-pnb99-442um-3z-000.tif
+2026-11-24 16:47:47   fiji STAGE=begin heap_gb=191.0 range_slice=73
+2026-11-24 16:47:47   fiji STAGE=imported frames=77526 bitdepth=16 width=512 height=512
+2026-11-24 16:47:47   fiji STAGE=slicekeeper kept=77525 dropped=1
+2026-11-24 16:47:47   fiji STAGE=grouped_z frames=15505 bitdepth=16
+2026-11-24 16:47:47   fiji STAGE=pre8bit default_range=-7..38 range_from_slice=73 slice_mean=347.882 display_range=-244..1612
+2026-11-24 16:47:47   fiji STAGE=8bit frames=15505 bitdepth=8
+2026-11-24 16:47:47   fiji STAGE=saved bytes=4067240684
+2026-11-24 16:47:47   fiji STATUS=OK frames_in=77526 frames_kept=77525 frames_out=15505 factor=5
+2026-11-24 16:47:47   Fiji OK in 104 s
+2026-11-24 16:47:47   verify: OK 15505 frames, 3.8 GB
+2026-11-24 16:48:48   QC row: bad 0.93% degraded 14.3% quiet r 0.566 at limit 0.08% flag ''

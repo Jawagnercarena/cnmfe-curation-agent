@@ -1,0 +1,26 @@
+2026-11-24 15:55:47 START 4 sessions; interpreter C:\Users\julia\.conda\envs\suite2p\python.exe; process_2p D:\2p data\scripts\process_2p.py
+2026-11-24 15:55:47 COPY 091526-pnb105 start
+2026-11-24 16:04:13 COPY 091526-pnb105 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 506 s
+2026-11-24 16:04:13 REG 091526-pnb105 start (slot 1)
+2026-11-24 16:04:13 COPY 091526-pnb109 start
+2026-11-24 16:13:13 COPY 091526-pnb109 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 540 s
+2026-11-24 16:13:13 REG 091526-pnb109 start (slot 2)
+2026-11-24 16:13:13 COPY 091626-pnb105 start
+2026-11-24 16:22:51 COPY 091626-pnb105 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 578 s
+2026-11-24 16:22:51 COPY 091626-pnb109 start
+2026-11-24 16:29:19 REG 091526-pnb105 done: 194 reg_tif files, 1506 s
+2026-11-24 16:29:19 REG 091626-pnb105 start (slot 1)
+2026-11-24 16:29:19 AVG 091526-pnb105 start
+2026-11-24 16:33:07 AVG 091526-pnb105 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.01% degraded 0.14% at limit 0.0%; TSeries kept no; 229 s
+2026-11-24 16:33:36 COPY 091626-pnb109 verified: 187 files, 38.0 GiB, XML 182 cycles / 77532 frames, 645 s
+2026-11-24 16:42:01 REG 091526-pnb109 done: 194 reg_tif files, 1728 s
+2026-11-24 16:42:01 REG 091626-pnb109 start (slot 2)
+2026-11-24 16:42:01 AVG 091526-pnb109 start
+2026-11-24 16:45:21 AVG 091526-pnb109 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.0% degraded 0.03% at limit 0.0%; TSeries kept no; 200 s
+2026-11-24 16:59:57 REG 091626-pnb105 done: 194 reg_tif files, 1839 s
+2026-11-24 16:59:57 AVG 091626-pnb105 start
+2026-11-24 17:03:12 AVG 091626-pnb105 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.1% degraded 1.26% at limit 0.0%; TSeries kept no; 195 s
+2026-11-24 17:10:00 REG 091626-pnb109 done: 194 reg_tif files, 1679 s
+2026-11-24 17:10:00 AVG 091626-pnb109 start
+2026-11-24 17:11:59 AVG 091626-pnb109 ok: new 15506 / expected 15506 / delivered 15506 frames; bad 0.0% degraded 0.14% at limit 0.0%; TSeries kept no; 119 s
+2026-11-24 17:11:59 ALL DONE: 4 of 4 ok; summary c:\code\CNMF_E_LEGACY_BIANE_CLAUDE\agent\eval\motion_correction_2026-11\logs\remake_valence_retry\summary.csv

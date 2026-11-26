@@ -1,0 +1,41 @@
+2026-11-25 14:22:13 start: stage_3odor_2026-11-21.py --src 'D:/2p data/valence' --dest 'D:/Julian_CNMFe/vCA1/Block_Valence' --go (12 cohort-5 valence movies)
+GO: 12 of 12 session(s), 48.80 GB, D:\2p data\valence -> D:\Julian_CNMFe\vCA1\Block_Valence
+  stage   AVG5x-TSeries-091526-pnb102-486um-3z-000  4.06 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091526-pnb104-484um-3z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091526-pnb105-403um-35z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091526-pnb106-235um-4z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091526-pnb109-375um-25z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091526-pnb99-442um-3z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091626-pnb102-464um-3z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091626-pnb104-510um-3z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091626-pnb105-410um-35z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091626-pnb106-242um-4z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091626-pnb109-362um-25z-000  4.07 GB  min_corr 0.7 (animal level)
+  stage   AVG5x-TSeries-091626-pnb99-441um-3z-000  4.07 GB  min_corr 0.7 (animal level)
+  [1/12] copied + verified (sha256) AVG5x-TSeries-091526-pnb102-486um-3z-000  4.06 GB in 0.7 min
+  [2/12] copied + verified (sha256) AVG5x-TSeries-091526-pnb104-484um-3z-000  4.07 GB in 0.7 min
+  [3/12] copied + verified (sha256) AVG5x-TSeries-091526-pnb105-403um-35z-000  4.07 GB in 0.3 min
+  [4/12] copied + verified (sha256) AVG5x-TSeries-091526-pnb106-235um-4z-000  4.07 GB in 0.7 min
+  [5/12] copied + verified (sha256) AVG5x-TSeries-091526-pnb109-375um-25z-000  4.07 GB in 0.3 min
+  [6/12] copied + verified (sha256) AVG5x-TSeries-091526-pnb99-442um-3z-000  4.07 GB in 0.8 min
+  [7/12] copied + verified (sha256) AVG5x-TSeries-091626-pnb102-464um-3z-000  4.07 GB in 0.7 min
+  [8/12] copied + verified (sha256) AVG5x-TSeries-091626-pnb104-510um-3z-000  4.07 GB in 0.6 min
+  [9/12] copied + verified (sha256) AVG5x-TSeries-091626-pnb105-410um-35z-000  4.07 GB in 0.3 min
+  [10/12] copied + verified (sha256) AVG5x-TSeries-091626-pnb106-242um-4z-000  4.07 GB in 0.7 min
+  [11/12] copied + verified (sha256) AVG5x-TSeries-091626-pnb109-362um-25z-000  4.07 GB in 0.3 min
+  [12/12] copied + verified (sha256) AVG5x-TSeries-091626-pnb99-441um-3z-000  4.07 GB in 0.7 min
+  ready   AVG5x-TSeries-091526-pnb102-486um-3z-000.tif
+  ready   AVG5x-TSeries-091526-pnb104-484um-3z-000.tif
+  ready   AVG5x-TSeries-091526-pnb105-403um-35z-000.tif
+  ready   AVG5x-TSeries-091526-pnb106-235um-4z-000.tif
+  ready   AVG5x-TSeries-091526-pnb109-375um-25z-000.tif
+  ready   AVG5x-TSeries-091526-pnb99-442um-3z-000.tif
+  ready   AVG5x-TSeries-091626-pnb102-464um-3z-000.tif
+  ready   AVG5x-TSeries-091626-pnb104-510um-3z-000.tif
+  ready   AVG5x-TSeries-091626-pnb105-410um-35z-000.tif
+  ready   AVG5x-TSeries-091626-pnb106-242um-4z-000.tif
+  ready   AVG5x-TSeries-091626-pnb109-362um-25z-000.tif
+  ready   AVG5x-TSeries-091626-pnb99-441um-3z-000.tif
+done: 12 tif(s) staged in 6.8 min
+exit 0
+2026-11-25 14:29:05 end

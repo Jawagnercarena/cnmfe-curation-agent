@@ -1,0 +1,30 @@
+2026-11-25 14:39:59 cleanup approved by the user 2026-11-25 after the 12 were staged into D:\Julian_CNMFe\vCA1\Block_Valence (SHA-256 verified at staging, sizes re-checked just before this)
+2026-11-25 14:39:59 D: targets: 24 files, 97.60 GB
+2026-11-25 14:39:59 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb102-486um-3z-000.tif (4062256642 bytes) gone=True
+2026-11-25 14:39:59 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb104-484um-3z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb105-403um-35z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb106-235um-4z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb109-375um-25z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb99-442um-3z-000.tif (4067240684 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb102-464um-3z-000.tif (4066191412 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb104-510um-3z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb105-410um-35z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb106-242um-4z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb109-362um-25z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb99-441um-3z-000.tif (4065929094 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\AVG5x-TSeries-091526-pnb102-486um-3z-000.tif (4062256642 bytes) gone=True
+2026-11-25 14:40:00 deleted D:\2p data\valence\AVG5x-TSeries-091526-pnb104-484um-3z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:01 deleted D:\2p data\valence\AVG5x-TSeries-091526-pnb105-403um-35z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:01 deleted D:\2p data\valence\AVG5x-TSeries-091526-pnb106-235um-4z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:01 deleted D:\2p data\valence\AVG5x-TSeries-091526-pnb109-375um-25z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:01 deleted D:\2p data\valence\AVG5x-TSeries-091526-pnb99-442um-3z-000.tif (4067240684 bytes) gone=True
+2026-11-25 14:40:01 deleted D:\2p data\valence\AVG5x-TSeries-091626-pnb102-464um-3z-000.tif (4066191412 bytes) gone=True
+2026-11-25 14:40:01 deleted D:\2p data\valence\AVG5x-TSeries-091626-pnb104-510um-3z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:02 deleted D:\2p data\valence\AVG5x-TSeries-091626-pnb105-410um-35z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:02 deleted D:\2p data\valence\AVG5x-TSeries-091626-pnb106-242um-4z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:03 deleted D:\2p data\valence\AVG5x-TSeries-091626-pnb109-362um-25z-000.tif (4067503002 bytes) gone=True
+2026-11-25 14:40:03 deleted D:\2p data\valence\AVG5x-TSeries-091626-pnb99-441um-3z-000.tif (4065929094 bytes) gone=True
+2026-11-25 14:40:03 deleted scratch C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence (409 files, 185.9 GiB) gone=True
+2026-11-25 14:40:03 deleted scratch C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence_test (4 files, 0.0 GiB) gone=True
+2026-11-25 14:40:03 deleted scratch C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence_test_logs (1 files, 0.0 GiB) gone=True
+2026-11-25 14:40:04 deleted scratch C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\rv (12 files, 15.2 GiB) gone=True

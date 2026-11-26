@@ -1,0 +1,5 @@
+key,session,status,server_files,server_bytes,copy_verified,xml_cycles,xml_raw_frames,expected_avg_frames,new_frames,delivered_frames,frames_ok,bad_pct,degraded_pct,at_limit_pct,ref_offset_y,ref_offset_x,flag,tseries_kept,t_copy_s,t_reg_s,t_avg_s
+091526-pnb105,TSeries-091526-pnb105-403um-35z-000,ok,187,40785087076,yes,182,77532,15506,15506,15506,yes,0.01,0.14,0.0,19,16,,no,506,1506,229
+091526-pnb109,TSeries-091526-pnb109-375um-25z-000,ok,187,40785369627,yes,182,77532,15506,15506,15506,yes,0.0,0.03,0.0,5,-2,,no,540,1728,200
+091626-pnb105,TSeries-091626-pnb105-410um-35z-000,ok,187,40786690507,yes,182,77532,15506,15506,15506,yes,0.1,1.26,0.0,5,17,,no,578,1839,195
+091626-pnb109,TSeries-091626-pnb109-362um-25z-000,ok,187,40785304470,yes,182,77532,15506,15506,15506,yes,0.0,0.14,0.0,6,6,,no,645,1679,119
