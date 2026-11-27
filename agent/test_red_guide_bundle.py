@@ -4,6 +4,8 @@ its skip rule on the way back (ingest_returns.py).
 Everything lives under one temp folder: a fake data tree, a fake retro results
 tree and a fake exchange.  RETRO_RESULTS is pointed at the temp tree before any
 lookup, so the real retro project and the real exchange are never touched.
+FORCNMFE_ROOT is emptied, so stage_one's tif copy is off and the real server's
+for-CNMFe folder is never touched (that step has its own test_forcnmfe_tif.py).
 subprocess.run is replaced for the whole test, so the retro guide hook never
 runs; each case sets the exit code and output it returns.
 """
@@ -87,6 +89,7 @@ try:
     (exchange / "outbox").mkdir(parents=True)
     P.DATA_PARENT = data
     P.RETRO_RESULTS = str(retro)          # never the real retro tree
+    P.FORCNMFE_ROOT = ""                  # tif copy off: never the real for-CNMFe folder
 
     ok_name = "AVG5x-TSeries-090526-pnb99-330um-3z-000"
     sd = make_session(task, ok_name, 10, [1, 2])
@@ -111,6 +114,7 @@ try:
     check(not (sd / "red_guide.png").exists(), "nothing written into the session folder")
     check(src_png.read_bytes() == b"PNG-GUIDE" and (src_png.parent / "candidates_shown.npz").exists(),
           "retro tree untouched")
+    check("CNMFE_FORCNMFE_ROOT is empty" in out, "tif copy is off in this test (no for-CNMFe access)")
 
     print("in-place re-push compares contents, not size")
     src_png.write_bytes(b"PNG-GUIDF")                               # redrawn, same size
