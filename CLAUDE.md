@@ -203,4 +203,6 @@ Operator procedures with side effects live under `.claude/skills/` and are
 manual-only (type the slash command; Claude is not shown them otherwise):
 `/ingest-returns`, `/retrain-area`, `/recurate-sessions`, `/push-review-bundle`,
 `/retire-session`, `/push-training-bundle`, `/summarize-training`, `/rereview`,
-`/session-quality`. `/skills` lists them.
+`/session-quality`, `/ship-branch` (push the current branch, PR, merge, then
+`agent/return_to_main.py` moves this machine back to main by pointer move).
+`/skills` lists them.
