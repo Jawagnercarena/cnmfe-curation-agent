@@ -1,0 +1,79 @@
+=== 2026-11-24 15:56:24 091526-pnb102
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091526-pnb102-486um-3z-000.tif
+    delivered 4062256642 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb102-486um-3z-000.tif
+    re-made   4062256642 bytes -> D:\2p data\valence\AVG5x-TSeries-091526-pnb102-486um-3z-000.tif (via .part)
+    record    AVG5x-TSeries-091526-pnb102-486um-3z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.0%  degraded 0.78%  at limit 0.0%  ref offset (5, 21)
+  swapped AVG5x-TSeries-091526-pnb102-486um-3z-000.tif in 46 s (old SHA-256 c57891c04218..., new aa6c39888dba...)
+done
+exit 0
+=== 2026-11-24 15:57:10 091526-pnb104
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091526-pnb104-484um-3z-000.tif
+    delivered 4067503002 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb104-484um-3z-000.tif
+    re-made   4067503002 bytes -> D:\2p data\valence\AVG5x-TSeries-091526-pnb104-484um-3z-000.tif (via .part)
+    record    AVG5x-TSeries-091526-pnb104-484um-3z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.01%  degraded 3.57%  at limit 0.0%  ref offset (-2, 30)
+  swapped AVG5x-TSeries-091526-pnb104-484um-3z-000.tif in 46 s (old SHA-256 54576f20d589..., new e50475d98802...)
+done
+exit 0
+=== 2026-11-24 15:57:56 091526-pnb106
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091526-pnb106-235um-4z-000.tif
+    delivered 4067503002 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb106-235um-4z-000.tif
+    re-made   4067503002 bytes -> D:\2p data\valence\AVG5x-TSeries-091526-pnb106-235um-4z-000.tif (via .part)
+    record    AVG5x-TSeries-091526-pnb106-235um-4z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.0%  degraded 0.05%  at limit 0.0%  ref offset (0, 22)
+  swapped AVG5x-TSeries-091526-pnb106-235um-4z-000.tif in 42 s (old SHA-256 4f567feed08d..., new c211d776e760...)
+done
+exit 0
+=== 2026-11-24 15:58:38 091626-pnb99
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091626-pnb99-441um-3z-000.tif
+    delivered 4065929094 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb99-441um-3z-000.tif
+    re-made   4065929094 bytes -> D:\2p data\valence\AVG5x-TSeries-091626-pnb99-441um-3z-000.tif (via .part)
+    record    AVG5x-TSeries-091626-pnb99-441um-3z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.0%  degraded 0.26%  at limit 0.0%  ref offset (-1, -6)
+  swapped AVG5x-TSeries-091626-pnb99-441um-3z-000.tif in 47 s (old SHA-256 6a95b91d67b6..., new 6c79d3ddaa6f...)
+done
+exit 0
+=== 2026-11-24 15:59:25 091626-pnb102
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091626-pnb102-464um-3z-000.tif
+    delivered 4066191412 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb102-464um-3z-000.tif
+    re-made   4066191412 bytes -> D:\2p data\valence\AVG5x-TSeries-091626-pnb102-464um-3z-000.tif (via .part)
+    record    AVG5x-TSeries-091626-pnb102-464um-3z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.14%  degraded 2.84%  at limit 0.0%  ref offset (5, -9)
+  swapped AVG5x-TSeries-091626-pnb102-464um-3z-000.tif in 44 s (old SHA-256 2e03803f4e83..., new 28ccd104fbac...)
+done
+exit 0
+=== 2026-11-24 16:00:09 091626-pnb104
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091626-pnb104-510um-3z-000.tif
+    delivered 4067503002 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb104-510um-3z-000.tif
+    re-made   4067503002 bytes -> D:\2p data\valence\AVG5x-TSeries-091626-pnb104-510um-3z-000.tif (via .part)
+    record    AVG5x-TSeries-091626-pnb104-510um-3z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.59%  degraded 7.92%  at limit 0.01%  ref offset (6, 14)
+  swapped AVG5x-TSeries-091626-pnb104-510um-3z-000.tif in 47 s (old SHA-256 20a06b62b6e6..., new 43db71999752...)
+done
+exit 0
+=== 2026-11-24 16:00:56 091626-pnb106
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091626-pnb106-242um-4z-000.tif
+    delivered 4067503002 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091626-pnb106-242um-4z-000.tif
+    re-made   4067503002 bytes -> D:\2p data\valence\AVG5x-TSeries-091626-pnb106-242um-4z-000.tif (via .part)
+    record    AVG5x-TSeries-091626-pnb106-242um-4z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.1%  degraded 1.34%  at limit 0.0%  ref offset (0, 26)
+  swapped AVG5x-TSeries-091626-pnb106-242um-4z-000.tif in 49 s (old SHA-256 d51af165d0fe..., new 4711a4e612cc...)
+done
+exit 0
+=== 2026-11-24 16:51:44 091526-pnb99 (re-averaged, range slice 73)
+GO: 1 movie(s); task D:\2p data\valence; archive D:\2p data\valence\.prev_maxregshift01_2026-11-24
+  swap AVG5x-TSeries-091526-pnb99-442um-3z-000.tif
+    delivered 4067240684 bytes -> D:\2p data\valence\.prev_maxregshift01_2026-11-24\AVG5x-TSeries-091526-pnb99-442um-3z-000.tif
+    re-made   4067240684 bytes -> D:\2p data\valence\AVG5x-TSeries-091526-pnb99-442um-3z-000.tif (via .part)
+    record    AVG5x-TSeries-091526-pnb99-442um-3z-000_mc.npz -> D:\2p data\valence\mc_record
+    QC row    bad 0.93%  degraded 14.3%  at limit 0.08%  ref offset (0, 16)
+  swapped AVG5x-TSeries-091526-pnb99-442um-3z-000.tif in 50 s (old SHA-256 bd2e09a2c6e5..., new 26fc54d3524d...)
+done

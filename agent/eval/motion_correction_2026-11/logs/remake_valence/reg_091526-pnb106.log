@@ -1,0 +1,233 @@
+CMD C:\Users\julia\.conda\envs\suite2p\python.exe "D:\2p data\scripts\process_2p.py" --task-dir C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb106 --only TSeries-091526-pnb106-235um-4z-000 --skip-average
+Task directory : C:\Users\julia\AppData\Local\Temp\claude\45dc093469cd1656\62441754-716d-4e14-b3ac-6c97eee49a36\scratchpad\remake_valence\091526-pnb106
+Base ops       : C:\Users\julia\.suite2p\ops\ops_user.npy  + overrides {'maxregshift': 0.2}
+Registration   : maxregshift 0.2, reference recentred when more than 5 px off
+Motion QC      : TSeries folder kept above 5% bad frames or 1% of frames at the search limit
+Averaging      : every 5 frames -> 8-bit tif
+Delete TSeries : yes, whole folder, once its new AVG tif verifies
+Sessions found : 1
+
+  session                              fs (Hz)   files  layout      todo
+  TSeries-091526-pnb106-235um-4z-000   30.3442     182  per-cycle   suite2p
+
+Processing 1 session(s).
+
+[1/1] TSeries-091526-pnb106-235um-4z-000
+    suite2p (fs=30.3442 Hz) ...
+    reference: the field usually sits (y +0, x +22) px from suite2p's own reference -- recentred from 83 frames within 5 px
+{}
+tif
+** Found 182 tifs - converting to binary **
+time 249.26 sec. Wrote 77532 frames per binary for 1 planes
+>>>>>>>>>>>>>>>>>>>>> PLANE 0 <<<<<<<<<<<<<<<<<<<<<<
+NOTE: not registered / registration forced with ops['do_registration']>1
+      (no previous offsets to delete)
+NOTE: applying default C:\Users\julia\.suite2p\classifiers\classifier_user.npy
+----------- REGISTRATION
+Registered 400/77532 in 7.84s
+Registered 800/77532 in 15.77s
+Registered 1200/77532 in 23.38s
+Registered 1600/77532 in 31.11s
+Registered 2000/77532 in 38.97s
+Registered 2400/77532 in 46.79s
+Registered 2800/77532 in 54.53s
+Registered 3200/77532 in 62.25s
+Registered 3600/77532 in 70.09s
+Registered 4000/77532 in 77.77s
+Registered 4400/77532 in 85.64s
+Registered 4800/77532 in 93.50s
+Registered 5200/77532 in 101.32s
+Registered 5600/77532 in 109.26s
+Registered 6000/77532 in 117.26s
+Registered 6400/77532 in 125.28s
+Registered 6800/77532 in 133.03s
+Registered 7200/77532 in 141.01s
+Registered 7600/77532 in 148.73s
+Registered 8000/77532 in 156.50s
+Registered 8400/77532 in 164.11s
+Registered 8800/77532 in 172.31s
+Registered 9200/77532 in 180.72s
+Registered 9600/77532 in 188.94s
+Registered 10000/77532 in 196.90s
+Registered 10400/77532 in 204.79s
+Registered 10800/77532 in 212.88s
+Registered 11200/77532 in 221.01s
+Registered 11600/77532 in 229.34s
+Registered 12000/77532 in 237.95s
+Registered 12400/77532 in 246.48s
+Registered 12800/77532 in 254.80s
+Registered 13200/77532 in 263.79s
+Registered 13600/77532 in 272.14s
+Registered 14000/77532 in 280.78s
+Registered 14400/77532 in 289.51s
+Registered 14800/77532 in 298.33s
+Registered 15200/77532 in 307.22s
+Registered 15600/77532 in 316.04s
+Registered 16000/77532 in 325.09s
+Registered 16400/77532 in 333.69s
+Registered 16800/77532 in 341.93s
+Registered 17200/77532 in 349.81s
+Registered 17600/77532 in 358.77s
+Registered 18000/77532 in 367.70s
+Registered 18400/77532 in 376.50s
+Registered 18800/77532 in 385.22s
+Registered 19200/77532 in 394.11s
+Registered 19600/77532 in 403.00s
+Registered 20000/77532 in 411.83s
+Registered 20400/77532 in 420.59s
+Registered 20800/77532 in 429.32s
+Registered 21200/77532 in 437.60s
+Registered 21600/77532 in 446.23s
+Registered 22000/77532 in 455.34s
+Registered 22400/77532 in 463.49s
+Registered 22800/77532 in 472.19s
+Registered 23200/77532 in 480.81s
+Registered 23600/77532 in 489.62s
+Registered 24000/77532 in 497.99s
+Registered 24400/77532 in 506.47s
+Registered 24800/77532 in 515.14s
+Registered 25200/77532 in 523.64s
+Registered 25600/77532 in 532.58s
+Registered 26000/77532 in 540.51s
+Registered 26400/77532 in 549.34s
+Registered 26800/77532 in 558.33s
+Registered 27200/77532 in 567.10s
+Registered 27600/77532 in 575.75s
+Registered 28000/77532 in 584.63s
+Registered 28400/77532 in 593.57s
+Registered 28800/77532 in 602.38s
+Registered 29200/77532 in 610.89s
+Registered 29600/77532 in 619.59s
+Registered 30000/77532 in 628.53s
+Registered 30400/77532 in 636.52s
+Registered 30800/77532 in 644.40s
+Registered 31200/77532 in 652.99s
+Registered 31600/77532 in 661.44s
+Registered 32000/77532 in 670.10s
+Registered 32400/77532 in 678.68s
+Registered 32800/77532 in 687.19s
+Registered 33200/77532 in 695.87s
+Registered 33600/77532 in 704.41s
+Registered 34000/77532 in 712.63s
+Registered 34400/77532 in 721.44s
+Registered 34800/77532 in 730.00s
+Registered 35200/77532 in 738.71s
+Registered 35600/77532 in 747.39s
+Registered 36000/77532 in 755.95s
+Registered 36400/77532 in 764.61s
+Registered 36800/77532 in 773.35s
+Registered 37200/77532 in 782.07s
+Registered 37600/77532 in 790.62s
+Registered 38000/77532 in 799.03s
+Registered 38400/77532 in 806.73s
+Registered 38800/77532 in 814.49s
+Registered 39200/77532 in 822.31s
+Registered 39600/77532 in 830.21s
+Registered 40000/77532 in 838.93s
+Registered 40400/77532 in 847.37s
+Registered 40800/77532 in 856.07s
+Registered 41200/77532 in 864.61s
+Registered 41600/77532 in 873.06s
+Registered 42000/77532 in 879.93s
+Registered 42400/77532 in 889.11s
+Registered 42800/77532 in 896.02s
+Registered 43200/77532 in 902.56s
+Registered 43600/77532 in 909.07s
+Registered 44000/77532 in 916.12s
+Registered 44400/77532 in 929.53s
+Registered 44800/77532 in 939.09s
+Registered 45200/77532 in 948.43s
+Registered 45600/77532 in 957.62s
+Registered 46000/77532 in 966.76s
+Registered 46400/77532 in 976.39s
+Registered 46800/77532 in 985.41s
+Registered 47200/77532 in 995.01s
+Registered 47600/77532 in 1004.90s
+Registered 48000/77532 in 1015.38s
+Registered 48400/77532 in 1024.75s
+Registered 48800/77532 in 1035.26s
+Registered 49200/77532 in 1046.62s
+Registered 49600/77532 in 1057.03s
+Registered 50000/77532 in 1067.27s
+Registered 50400/77532 in 1075.32s
+Registered 50800/77532 in 1082.79s
+Registered 51200/77532 in 1090.15s
+Registered 51600/77532 in 1097.39s
+Registered 52000/77532 in 1104.90s
+Registered 52400/77532 in 1112.30s
+Registered 52800/77532 in 1120.33s
+Registered 53200/77532 in 1128.77s
+Registered 53600/77532 in 1137.88s
+Registered 54000/77532 in 1146.74s
+Registered 54400/77532 in 1155.81s
+Registered 54800/77532 in 1164.82s
+Registered 55200/77532 in 1173.33s
+Registered 55600/77532 in 1180.59s
+Registered 56000/77532 in 1188.17s
+Registered 56400/77532 in 1195.71s
+Registered 56800/77532 in 1203.31s
+Registered 57200/77532 in 1210.97s
+Registered 57600/77532 in 1218.52s
+Registered 58000/77532 in 1226.11s
+Registered 58400/77532 in 1233.60s
+Registered 58800/77532 in 1241.14s
+Registered 59200/77532 in 1248.66s
+Registered 59600/77532 in 1256.29s
+Registered 60000/77532 in 1263.68s
+Registered 60400/77532 in 1270.84s
+Registered 60800/77532 in 1278.49s
+Registered 61200/77532 in 1285.93s
+Registered 61600/77532 in 1293.57s
+Registered 62000/77532 in 1301.00s
+Registered 62400/77532 in 1308.22s
+Registered 62800/77532 in 1315.61s
+Registered 63200/77532 in 1323.04s
+Registered 63600/77532 in 1330.49s
+Registered 64000/77532 in 1337.84s
+Registered 64400/77532 in 1345.33s
+Registered 64800/77532 in 1353.66s
+Registered 65200/77532 in 1362.76s
+Registered 65600/77532 in 1371.33s
+Registered 66000/77532 in 1379.74s
+Registered 66400/77532 in 1387.53s
+Registered 66800/77532 in 1394.85s
+Registered 67200/77532 in 1402.12s
+Registered 67600/77532 in 1409.31s
+Registered 68000/77532 in 1416.66s
+Registered 68400/77532 in 1424.32s
+Registered 68800/77532 in 1433.25s
+Registered 69200/77532 in 1441.86s
+Registered 69600/77532 in 1450.15s
+Registered 70000/77532 in 1458.01s
+Registered 70400/77532 in 1467.16s
+Registered 70800/77532 in 1476.11s
+Registered 71200/77532 in 1484.63s
+Registered 71600/77532 in 1493.31s
+Registered 72000/77532 in 1502.29s
+Registered 72400/77532 in 1510.86s
+Registered 72800/77532 in 1519.36s
+Registered 73200/77532 in 1527.80s
+Registered 73600/77532 in 1539.38s
+Registered 74000/77532 in 1547.82s
+Registered 74400/77532 in 1555.67s
+Registered 74800/77532 in 1563.42s
+Registered 75200/77532 in 1571.87s
+Registered 75600/77532 in 1580.31s
+Registered 76000/77532 in 1589.19s
+Registered 76400/77532 in 1598.24s
+Registered 76800/77532 in 1607.05s
+Registered 77200/77532 in 1615.58s
+Registered 77532/77532 in 1622.57s
+----------- Total 1629.46 sec
+Registration metrics, 13.21 sec.
+WARNING: skipping cell detection (ops['roidetect']=False)
+Plane 0 processed in 1643.06 sec (can open in GUI).
+total = 1902.88 sec.
+TOTAL RUNTIME 1902.88 sec
+      OK  194 reg_tif files  (1928s)
+    DONE in 1928s
+
+============================================================
+Finished: 1 succeeded, 0 failed.
+  ok    TSeries-091526-pnb106-235um-4z-000  (1928s)
+exit 0

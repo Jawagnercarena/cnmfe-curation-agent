@@ -1,0 +1,13 @@
+movie,folder,frames,brightness,quiet_r,bad_pct,degraded_pct,block_r_median,block_r_p5,block_r_min,block_low_pct
+AVG5x-TSeries-091526-pnb102-486um-3z-000.tif,D:\2p data\valence,15486,65.49,0.828,0.05,0.94,0.958,0.904,0.836,0.0
+AVG5x-TSeries-091526-pnb104-484um-3z-000.tif,D:\2p data\valence,15506,63.48,0.845,1.35,5.7,0.959,0.867,0.739,1.16
+AVG5x-TSeries-091526-pnb105-403um-35z-000.tif,D:\2p data\valence,15506,57.97,0.877,0.01,0.19,0.973,0.94,0.871,0.0
+AVG5x-TSeries-091526-pnb106-235um-4z-000.tif,D:\2p data\valence,15506,51.22,0.915,0.0,0.12,0.974,0.923,0.884,0.0
+AVG5x-TSeries-091526-pnb109-375um-25z-000.tif,D:\2p data\valence,15506,63.67,0.881,0.0,0.03,0.969,0.928,0.844,0.0
+AVG5x-TSeries-091526-pnb99-442um-3z-000.tif,D:\2p data\valence,15505,251.18,0.388,22.59,58.5,0.748,0.658,-0.033,2.97
+AVG5x-TSeries-091626-pnb102-464um-3z-000.tif,D:\2p data\valence,15501,55.95,0.88,0.21,2.94,0.961,0.893,0.759,0.13
+AVG5x-TSeries-091626-pnb104-510um-3z-000.tif,D:\2p data\valence,15506,69.08,0.813,2.04,8.38,0.931,0.786,0.581,4.77
+AVG5x-TSeries-091626-pnb105-410um-35z-000.tif,D:\2p data\valence,15506,53.06,0.898,0.16,1.5,0.96,0.892,0.795,0.0
+AVG5x-TSeries-091626-pnb106-242um-4z-000.tif,D:\2p data\valence,15506,50.62,0.921,0.34,1.59,0.959,0.882,0.723,0.39
+AVG5x-TSeries-091626-pnb109-362um-25z-000.tif,D:\2p data\valence,15506,49.53,0.887,0.0,0.15,0.969,0.936,0.867,0.0
+AVG5x-TSeries-091626-pnb99-441um-3z-000.tif,D:\2p data\valence,15500,78.83,0.871,0.07,0.33,0.957,0.87,0.829,0.0

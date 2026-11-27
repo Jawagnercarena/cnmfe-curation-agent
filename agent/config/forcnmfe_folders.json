@@ -1,0 +1,37 @@
+{
+  "_about": "Where push_review_bundle.py puts a session's .tif under CNMFE_FORCNMFE_ROOT (X:/Jeremy/for CNMFe). Key = area/task of the local session; value = {animal: folder}, '*' = any other animal. Folders are relative to the root and must already exist (the push never creates one). An unmapped session is pushed without a tif copy, and the push says so.",
+  "_source": "2026-11-25: every entry is where that area/task/animal's tifs already sat on the server (read-only walk, matched by exact session name), except vCA1/3odor cohort 5 (pnb99/102/104/105/106/109 -> cohort5, the user's choice; only pnb99 and pnb102 were there).",
+  "BLA/2tones": {"*": "2tones"},
+  "BLA/3odor": {
+    "bla2": "bla pnb 3odor",
+    "bla3": "bla pnb 3odor",
+    "bla4": "bla pnb 3odor",
+    "bla5": "bla pnb 3odor",
+    "bla6": "bla pnb 3odor",
+    "bla7": "bla pnb 3odor/bla 3 odor cohort2",
+    "bla13": "bla pnb 3odor/bla 3 odor cohort2",
+    "bla14": "bla pnb 3odor/bla 3 odor cohort2",
+    "bla15": "bla pnb 3odor/bla 3 odor cohort2",
+    "bla8": "bla pnb 3odor/bla pnb 3 odor cohort3",
+    "bla36": "bla pnb 3odor/cohort4",
+    "bla37": "bla pnb 3odor/cohort4"
+  },
+  "BLA/4odorDO": {"*": "4odorDO"},
+  "BLA/6odorDualDiffRew": {"*": "6odorDualDiffRew"},
+  "BLA/CTA": {"*": "bla CTA"},
+  "BLA/WSE": {"*": "bla WSE"},
+  "DG_AL/odor_encoding": {"*": "DG AL"},
+  "vCA1/2tones": {"*": "2tones"},
+  "vCA1/3odor": {
+    "pnb88": "bla pnb 3odor/bla pnb 3 odor cohort3",
+    "pnb98": "bla pnb 3odor/cohort4",
+    "pnb99": "bla pnb 3odor/cohort5",
+    "pnb102": "bla pnb 3odor/cohort5",
+    "pnb104": "bla pnb 3odor/cohort5",
+    "pnb105": "bla pnb 3odor/cohort5",
+    "pnb106": "bla pnb 3odor/cohort5",
+    "pnb109": "bla pnb 3odor/cohort5"
+  },
+  "vCA1/6odorDualDiffRew": {"*": "6odorDualDiffRew"},
+  "vCA1/CTA": {"*": "pnb CTA"}
+}
