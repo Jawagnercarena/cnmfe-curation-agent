@@ -59,6 +59,13 @@ EXCHANGE_ROOT = os.environ.get("CNMFE_EXCHANGE_ROOT", "")
 RETRO_RESULTS = os.environ.get("CNMFE_RETRO_RESULTS",
                                r"D:\retro_tdTomato_Alignment\results")
 
+# Shared tif folder on the lab server (X:\Jeremy\for CNMFe). push_review_bundle.py
+# copies a session's .tif there when no copy with that name exists yet, so every
+# reviewer measures from one copy (bundles carry only the movie .mat). Folder per
+# area/task: config/forcnmfe_folders.json. Empty = no copy.
+FORCNMFE_ROOT = os.environ.get("CNMFE_FORCNMFE_ROOT",
+                               r"\\kheirbek-nas.cin.ucsf.edu\kheirbek1\Jeremy\for CNMFe")
+
 # For pnb* sessions push_review_bundle.py first runs the retro project's
 # guide-for-push hook, which reuses a current guide or rebuilds it. 0 = skip the
 # hook; an existing guide is still looked up and checked.

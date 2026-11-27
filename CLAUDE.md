@@ -21,7 +21,13 @@ The exchange scripts have a fixed contract:
   project) and adds `red_guide.png` when one matches (section 4)
   [2026-11-03]. A file already in the outbox is skipped only when byte-identical,
   never on size alone [explicit, 2026-11-03]; `rereview.py request` uses the
-  same check.
+  same check. Its one write outside the exchange root [explicit, 2026-11-25]:
+  the session `.tif` (reviewers measure from it; bundles carry only the movie
+  `.mat`) is copied once into `Jeremy\for CNMFe\<folder>` (`CNMFE_FORCNMFE_ROOT`;
+  folder per area/task/animal in `agent/config/forcnmfe_folders.json`), only
+  when no file of that name exists anywhere there, and read back. A different
+  copy is reported for the operator, never overwritten; a missing or unmapped
+  folder is never created. Re-review and training bundles do not do this.
 - `agent/ingest_returns.py`: read-only on the server; writes only under
   `DATA_PARENT`. Exits gracefully when the inbox is absent.
 - `agent/push_training_bundle.py` [2026-10-01]: copy-only into
@@ -160,6 +166,7 @@ or an entry in `agent/.env` (gitignored; template in `agent/.env.example`).
 | `CNMFE_EXCHANGE_ROOT` | server exchange root, read-only to Claude |
 | `CNMFE_RETRO_RESULTS` | `D:\retro_tdTomato_Alignment\results` (ACORN never writes there; set empty to send no red guides) |
 | `CNMFE_RETRO_GUIDE_BUILD` | on (`0` = the push does not run the retro guide hook) |
+| `CNMFE_FORCNMFE_ROOT` | `\\kheirbek-nas.cin.ucsf.edu\kheirbek1\Jeremy\for CNMFe` (empty = the push copies no tif) |
 
 MATLAB reads `getenv('CNMFE_DATA_PARENT')`.
 

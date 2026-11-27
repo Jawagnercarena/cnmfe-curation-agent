@@ -63,6 +63,13 @@ The review step is **pure MATLAB**. You do not need Python, conda, or the model.
    `review_report.pdf` / `review_summary.txt` (the agent's guidance), and for
    retro-labelled animals `red_guide.png`.
 
+   > **The session's `.tif`** (to measure from separately) is not in the bundle.
+   > There is one copy for everyone on the server, under
+   > `\\kheirbek-nas.cin.ucsf.edu\kheirbek1\Jeremy\for CNMFe\`, in its task folder
+   > (e.g. `6odorDualDiffRew\` or `bla pnb 3odor\cohort5\`), named `{session}.tif`.
+   > Copy it to your local folder; never edit, move or rename it on the server,
+   > and do not push it back with your return.
+
    > **Red guide (retro-labelled animals only).** Some bundles contain
    > `red_guide.png`: the tdTomato (red) image of the same field, with your review
    > candidates outlined (white in the middle panel, yellow on the GCaMP image on

@@ -43,15 +43,26 @@ covers the live review set. Never required: a hook that fails, times out or
 cannot start leaves the session pushed without a guide. CNMFE_RETRO_GUIDE_BUILD=0
 skips the hook. Re-review bundles (rereview.py) only look the guide up.
 
+Session .tif (reviewers measure from it): not in the bundle.  After staging, the
+push puts it once for every reviewer in the shared folder CNMFE_FORCNMFE_ROOT
+(X:\\Jeremy\\for CNMFe, see local_config.py): nothing to do when an identical copy
+with that name is anywhere there; a DIFFERENT copy is reported for the operator
+and never overwritten; otherwise the tif is copied into the folder that
+config/forcnmfe_folders.json maps the session's area/task (and animal) to, which
+must already exist.  Never required: an unmapped session, a missing folder or an
+unreachable server leaves the session pushed without a tif copy, and it says why.
+
 Set CNMFE_EXCHANGE_ROOT (or agent/.env), or pass --exchange.
 
-SAFETY: this script only COPIES files to the server outbox and WRITES a local
-assignment marker / launcher. It never deletes or removes anything, on the server
-or locally. There is no delete/move call anywhere in this file. The one other
+SAFETY: this script only COPIES files to the server (the outbox, and the one tif
+copy into for CNMFe, which never overwrites and never creates a folder) and WRITES
+a local assignment marker / launcher. It never deletes or removes anything, on the
+server or locally. There is no delete/move call anywhere in this file. The one other
 local write: a finished session whose movie .mat was pruned gets it rebuilt from
 its .tif first (movie_mat.py, via MATLAB), inside the local session folder.
 """
 import argparse
+import json
 import os
 import re
 import shutil
@@ -61,8 +72,8 @@ from pathlib import Path
 
 AGENT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(AGENT_DIR))
-from local_config import (DATA_PARENT, EXCHANGE_ROOT, PYTHON_EXE, REPO_ROOT,
-                          RETRO_GUIDE_BUILD, RETRO_RESULTS)
+from local_config import (DATA_PARENT, EXCHANGE_ROOT, FORCNMFE_ROOT, PYTHON_EXE,
+                          REPO_ROOT, RETRO_GUIDE_BUILD, RETRO_RESULTS)
 from review_prep import write_launcher, write_assignment, read_assignment
 import movie_mat
 
@@ -76,6 +87,8 @@ RED_GUIDE = "red_guide.png"
 # tree (read-only here) and find_red_guide() adds it.
 GUIDE_HOOK_TIMEOUT = 900        # s; a first build took 48 s, a current guide ~2.5 s
 COMPARE_CHUNK = 8 << 20
+FORCNMFE_MAP = AGENT_DIR / "config" / "forcnmfe_folders.json"
+# area/task (+ animal) -> folder under FORCNMFE_ROOT for the session .tif.
 
 
 def safe_name(name: str) -> str:
@@ -289,6 +302,87 @@ def same_contents(src: Path, target: Path) -> bool:
                 return True
 
 
+def load_forcnmfe_map(path=None) -> dict:
+    """{'area/task': {animal or '*': folder}} from config/forcnmfe_folders.json.
+    Keys starting with '_' are notes.  A missing or unreadable file = {}."""
+    p = FORCNMFE_MAP if path is None else Path(path)
+    try:
+        raw = json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {k: v for k, v in raw.items() if not k.startswith("_") and isinstance(v, dict)}
+
+
+def forcnmfe_folder(session_dir: Path, mapping: dict):
+    """(area/task key, folder relative to FORCNMFE_ROOT or None when unmapped).
+    The animal's own entry wins over '*'."""
+    parts = session_rel(session_dir).parts
+    key = "/".join(parts[:2]) if len(parts) >= 3 else ""
+    entry = mapping.get(key, {})
+    animal = animal_of(session_dir.name)
+    return key, (entry.get(animal) if animal in entry else entry.get("*"))
+
+
+def stage_tif_forcnmfe(session_dir: Path, dry_run: bool, root=None, mapping=None) -> str:
+    """Put the session's .tif in the shared for-CNMFe folder, once for every
+    reviewer.  Returns one line to print; never raises, never blocks the push.
+
+    A copy with the same file name anywhere under the root (dot folders aside)
+    is looked for first: an identical one (byte for byte) means nothing to do; a
+    different one is reported and NEVER overwritten -- it may be the only copy of
+    an older movie, so replacing it is the operator's call.  Otherwise the tif is
+    copied into the mapped folder, which must already exist (no folder is ever
+    created), and the copy is read back and compared."""
+    root = FORCNMFE_ROOT if root is None else root
+    if not root:
+        return "tif: no for-CNMFe copy (CNMFE_FORCNMFE_ROOT is empty)"
+    tif = movie_mat.movie_tif(session_dir)
+    if tif is None:
+        return "tif: no session .tif here, nothing to put in for CNMFe"
+    try:
+        rootp = Path(root)
+        if not rootp.is_dir():
+            return f"tif: NOT copied -- for-CNMFe root {root} not reachable"
+        stem = tif.stem.lower()
+        hits = []
+        for r, dirs, fs in os.walk(rootp):
+            dirs[:] = [d for d in dirs if not d.startswith(".")]
+            hits += [Path(r) / f for f in fs
+                     if os.path.splitext(f)[0].lower() == stem
+                     and os.path.splitext(f)[1].lower() in (".tif", ".tiff")]
+        if hits:
+            for h in sorted(hits):
+                if same_contents(tif, h):
+                    return f"tif: already in for CNMFe ({h.relative_to(rootp)})"
+            h = sorted(hits)[0]
+            return (f"tif: WARNING -- for CNMFe holds a DIFFERENT {h.name} at "
+                    f"{h.relative_to(rootp)} (an older movie, or an interrupted copy); "
+                    f"NOT overwritten. Operator: replace it with {tif}")
+        key, folder = forcnmfe_folder(session_dir,
+                                      load_forcnmfe_map() if mapping is None else mapping)
+        if not folder:
+            return (f"tif: NOT copied -- no for-CNMFe folder mapped for {key or session_dir.name} "
+                    f"(animal {animal_of(session_dir.name) or '?'}); add it to {FORCNMFE_MAP.name}")
+        dest_dir = rootp / folder
+        if not dest_dir.is_dir():
+            return f"tif: NOT copied -- {dest_dir} does not exist (the operator creates it)"
+        target = dest_dir / tif.name
+        if target.exists():                 # not after the walk above; never overwrite anyway
+            return f"tif: NOT copied -- {target} appeared meanwhile; left as is"
+        size = tif.stat().st_size
+        if dry_run:
+            return f"tif: would copy {tif.name} ({size/1e9:.2f} GB) to for CNMFe/{Path(folder).as_posix()}"
+        print(f"  tif: copying {tif.name} ({size/1e9:.2f} GB) to for CNMFe/"
+              f"{Path(folder).as_posix()} ...", flush=True)
+        shutil.copy2(str(tif), str(target))
+        if not same_contents(tif, target):
+            return (f"tif: WARNING -- the copy at {target} does not read back identical to "
+                    f"{tif}; operator: check and replace it")
+        return f"tif: copied to for CNMFe/{Path(folder).as_posix()} (read back, identical)"
+    except Exception as e:
+        return f"tif: NOT copied -- {type(e).__name__}: {e}"
+
+
 def stage_one(session_dir: Path, exchange: str, dry_run: bool, assignee: str):
     """Stage one session's bundle into outbox/<assignee>/. Returns total bytes."""
     dest = Path(exchange) / "outbox" / assignee / session_rel(session_dir)
@@ -319,6 +413,7 @@ def stage_one(session_dir: Path, exchange: str, dry_run: bool, assignee: str):
         write_assignment(session_dir, assignee)   # mark out-for-review (local marker)
         print("  generated run_final_review.m; marked out-for-review")
         print(f"  -> staged {total/1e6:.1f} MB to {dest}")
+    print(f"  {stage_tif_forcnmfe(session_dir, dry_run)}")
     return total
 
 
